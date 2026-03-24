@@ -32,15 +32,24 @@ const outils = [
     href: "/simulateur-pret-immobilier",
     icone: "🏠",
     couleur: "from-violet-500 to-purple-500",
+    tag: "",
+  },
+  {
+    titre: "Calcul Pourcentage",
+    description:
+      "Pourcentage d'un nombre, augmentation, reduction, part en %. 4 modes de calcul.",
+    href: "/calcul-pourcentage",
+    icone: "📊",
+    couleur: "from-orange-500 to-amber-500",
     tag: "Nouveau",
   },
 ];
 
 const prochainement = [
-  { titre: "Calcul Pourcentage", icone: "📊" },
   { titre: "Calcul IMC", icone: "⚖️" },
   { titre: "Frais de Notaire", icone: "📋" },
   { titre: "Calcul Consommation Electrique", icone: "⚡" },
+  { titre: "Convertisseur Devises", icone: "💱" },
 ];
 
 export default function Home() {
