@@ -41,15 +41,24 @@ const outils = [
     href: "/calcul-pourcentage",
     icone: "📊",
     couleur: "from-orange-500 to-amber-500",
+    tag: "",
+  },
+  {
+    titre: "Calcul IMC",
+    description:
+      "Calculez votre Indice de Masse Corporelle. Interpretation OMS, poids ideal et jauge visuelle.",
+    href: "/calcul-imc",
+    icone: "⚖️",
+    couleur: "from-rose-500 to-pink-500",
     tag: "Nouveau",
   },
 ];
 
 const prochainement = [
-  { titre: "Calcul IMC", icone: "⚖️" },
   { titre: "Frais de Notaire", icone: "📋" },
   { titre: "Calcul Consommation Electrique", icone: "⚡" },
   { titre: "Convertisseur Devises", icone: "💱" },
+  { titre: "Calcul Surface Peinture", icone: "🎨" },
 ];
 
 export default function Home() {
