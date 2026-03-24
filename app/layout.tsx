@@ -60,6 +60,12 @@ export default function RootLayout({
               >
                 TVA
               </a>
+              <a
+                href="/simulateur-pret-immobilier"
+                className="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors"
+              >
+                Pret Immo
+              </a>
             </nav>
           </div>
         </header>
@@ -85,6 +91,12 @@ export default function RootLayout({
                   className="hover:text-slate-600 transition-colors"
                 >
                   Calcul TVA
+                </a>
+                <a
+                  href="/simulateur-pret-immobilier"
+                  className="hover:text-slate-600 transition-colors"
+                >
+                  Pret Immobilier
                 </a>
                 <span className="text-slate-200">|</span>
                 <a

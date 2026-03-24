@@ -23,15 +23,24 @@ const outils = [
     href: "/calcul-tva",
     icone: "🧾",
     couleur: "from-emerald-500 to-teal-500",
+    tag: "",
+  },
+  {
+    titre: "Simulateur Pret Immobilier",
+    description:
+      "Calculez vos mensualites, le cout total et le tableau d'amortissement de votre credit.",
+    href: "/simulateur-pret-immobilier",
+    icone: "🏠",
+    couleur: "from-violet-500 to-purple-500",
     tag: "Nouveau",
   },
 ];
 
 const prochainement = [
-  { titre: "Simulateur Pret Immobilier", icone: "🏠" },
   { titre: "Calcul Pourcentage", icone: "📊" },
   { titre: "Calcul IMC", icone: "⚖️" },
   { titre: "Frais de Notaire", icone: "📋" },
+  { titre: "Calcul Consommation Electrique", icone: "⚡" },
 ];
 
 export default function Home() {
@@ -50,7 +59,7 @@ export default function Home() {
         </p>
       </section>
 
-      <div className="grid gap-6 sm:grid-cols-2">
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {outils.map((outil) => (
           <a
             key={outil.href}
