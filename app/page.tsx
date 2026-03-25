@@ -115,10 +115,15 @@ const outils = [
     couleur: "from-emerald-500 to-green-600",
     tag: "Nouveau",
   },
-];
-
-const prochainement = [
-  { titre: "Calcul Heures de Travail", icone: "⏰" },
+  {
+    titre: "Calcul Heures de Travail",
+    description:
+      "Comptez vos heures de travail, planning semaine, heures supplementaires et estimation de salaire.",
+    href: "/calcul-heures-travail",
+    icone: "⏰",
+    couleur: "from-amber-500 to-orange-500",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {
@@ -180,22 +185,6 @@ export default function Home() {
         ))}
       </div>
 
-      <section className="mt-16">
-        <h2 className="text-lg font-bold text-slate-800 mb-4">
-          Prochainement
-        </h2>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {prochainement.map((item) => (
-            <div
-              key={item.titre}
-              className="flex items-center gap-3 bg-white/60 border border-slate-200 rounded-xl px-4 py-3 opacity-60"
-            >
-              <span className="text-xl">{item.icone}</span>
-              <span className="text-sm text-slate-500">{item.titre}</span>
-            </div>
-          ))}
-        </div>
-      </section>
     </div>
   );
 }
