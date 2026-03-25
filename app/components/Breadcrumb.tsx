@@ -1,24 +1,47 @@
 interface BreadcrumbProps {
   currentPage: string;
+  parentPage?: string;
+  parentHref?: string;
 }
 
-export default function Breadcrumb({ currentPage }: BreadcrumbProps) {
+export default function Breadcrumb({ currentPage, parentPage, parentHref }: BreadcrumbProps) {
+  const items = [
+    {
+      "@type": "ListItem" as const,
+      position: 1,
+      name: "Accueil",
+      item: "https://mes-calculateurs.vercel.app",
+    },
+  ];
+
+  if (parentPage && parentHref) {
+    items.push({
+      "@type": "ListItem" as const,
+      position: 2,
+      name: parentPage,
+      item: `https://mes-calculateurs.vercel.app${parentHref}`,
+    });
+    items.push({
+      "@type": "ListItem" as const,
+      position: 3,
+      name: currentPage,
+      item: "",
+    });
+  } else {
+    items.push({
+      "@type": "ListItem" as const,
+      position: 2,
+      name: currentPage,
+      item: "",
+    });
+  }
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Accueil",
-        item: "https://mes-calculateurs.vercel.app",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        name: currentPage,
-      },
-    ],
+    itemListElement: items.map(({ item, ...rest }) =>
+      item ? { ...rest, item } : rest
+    ),
   };
 
   return (
@@ -39,7 +62,23 @@ export default function Breadcrumb({ currentPage }: BreadcrumbProps) {
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </li>
-          <li className="text-slate-600 font-medium">{currentPage}</li>
+          {parentPage && parentHref ? (
+            <>
+              <li>
+                <a href={parentHref} className="hover:text-blue-600 transition-colors">
+                  {parentPage}
+                </a>
+              </li>
+              <li>
+                <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </li>
+              <li className="text-slate-600 font-medium">{currentPage}</li>
+            </>
+          ) : (
+            <li className="text-slate-600 font-medium">{currentPage}</li>
+          )}
         </ol>
       </nav>
     </>
