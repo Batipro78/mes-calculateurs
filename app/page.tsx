@@ -133,6 +133,15 @@ const outils = [
     couleur: "from-teal-500 to-cyan-600",
     tag: "Nouveau",
   },
+  {
+    titre: "Simulateur Impot Revenu",
+    description:
+      "Estimez votre impot 2026 : tranches, quotient familial, decote, taux marginal et moyen. Bareme officiel.",
+    href: "/simulateur-impot-revenu",
+    icone: "🏛️",
+    couleur: "from-red-500 to-rose-600",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {
