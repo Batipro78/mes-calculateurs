@@ -17,6 +17,7 @@ const ALL_CALCULATORS = [
   { slug: "/calcul-date-accouchement", title: "Date d'Accouchement", emoji: "🤰", color: "from-purple-500 to-pink-500" },
   { slug: "/simulateur-dca", title: "Simulateur DCA", emoji: "📈", color: "from-green-500 to-emerald-600" },
   { slug: "/calculateur-inflation", title: "Calculateur Inflation", emoji: "📉", color: "from-red-500 to-orange-500" },
+  { slug: "/simulateur-apl", title: "Simulateur APL", emoji: "🏘️", color: "from-teal-500 to-cyan-600" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -38,6 +39,7 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calcul-date-accouchement": ["/calcul-age", "/calcul-imc", "/calcul-heures-travail", "/simulateur-epargne"],
   "/simulateur-dca": ["/simulateur-epargne", "/calculateur-inflation", "/convertisseur-devises", "/simulateur-impot-revenu"],
   "/calculateur-inflation": ["/salaire-brut-net", "/simulateur-epargne", "/simulateur-dca", "/simulateur-impot-revenu"],
+  "/simulateur-apl": ["/simulateur-impot-revenu", "/salaire-brut-net", "/simulateur-epargne", "/calcul-consommation-electrique"],
 };
 
 interface RelatedCalculatorsProps {
