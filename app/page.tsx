@@ -68,6 +68,15 @@ const outils = [
     href: "/calcul-consommation-electrique",
     icone: "⚡",
     couleur: "from-yellow-500 to-orange-500",
+    tag: "",
+  },
+  {
+    titre: "Calcul Age Exact",
+    description:
+      "Calculez votre age exact en annees, mois et jours. Jours vecus, prochain anniversaire, signe astro.",
+    href: "/calcul-age",
+    icone: "🎂",
+    couleur: "from-pink-500 to-rose-500",
     tag: "Nouveau",
   },
 ];
@@ -76,7 +85,7 @@ const prochainement = [
   { titre: "Convertisseur Devises", icone: "💱" },
   { titre: "Calcul Surface Peinture", icone: "🎨" },
   { titre: "Indemnite Licenciement", icone: "📄" },
-  { titre: "Calcul Age", icone: "🎂" },
+  { titre: "Simulateur Epargne", icone: "🏦" },
 ];
 
 export default function Home() {
