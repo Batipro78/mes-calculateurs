@@ -77,6 +77,15 @@ const outils = [
     href: "/calcul-age",
     icone: "🎂",
     couleur: "from-pink-500 to-rose-500",
+    tag: "",
+  },
+  {
+    titre: "Indemnite Licenciement",
+    description:
+      "Calculez votre indemnite legale de licenciement ou rupture conventionnelle. Bareme 2026.",
+    href: "/indemnite-licenciement",
+    icone: "📄",
+    couleur: "from-indigo-500 to-purple-500",
     tag: "Nouveau",
   },
 ];
@@ -84,8 +93,8 @@ const outils = [
 const prochainement = [
   { titre: "Convertisseur Devises", icone: "💱" },
   { titre: "Calcul Surface Peinture", icone: "🎨" },
-  { titre: "Indemnite Licenciement", icone: "📄" },
   { titre: "Simulateur Epargne", icone: "🏦" },
+  { titre: "Calcul Heures de Travail", icone: "⏰" },
 ];
 
 export default function Home() {
