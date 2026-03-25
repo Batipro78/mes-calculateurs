@@ -41,8 +41,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    // Tu devras remplacer avec ton vrai code Google Search Console
-    // google: "ton-code-verification-google",
+    google: "google6de3ee45d7bcc37f",
   },
 };
 
