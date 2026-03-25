@@ -97,10 +97,18 @@ const outils = [
     couleur: "from-sky-500 to-blue-600",
     tag: "Nouveau",
   },
+  {
+    titre: "Calcul Surface Peinture",
+    description:
+      "Calculez la surface a peindre, la quantite de peinture et le budget. Murs, plafond, ouvertures.",
+    href: "/calcul-surface-peinture",
+    icone: "🎨",
+    couleur: "from-fuchsia-500 to-pink-500",
+    tag: "Nouveau",
+  },
 ];
 
 const prochainement = [
-  { titre: "Calcul Surface Peinture", icone: "🎨" },
   { titre: "Simulateur Epargne", icone: "🏦" },
   { titre: "Calcul Heures de Travail", icone: "⏰" },
 ];
