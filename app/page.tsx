@@ -50,15 +50,24 @@ const outils = [
     href: "/calcul-imc",
     icone: "⚖️",
     couleur: "from-rose-500 to-pink-500",
+    tag: "",
+  },
+  {
+    titre: "Frais de Notaire",
+    description:
+      "Estimez les frais de notaire pour votre achat immobilier. Ancien, neuf ou terrain. Detail complet.",
+    href: "/frais-de-notaire",
+    icone: "📋",
+    couleur: "from-cyan-500 to-blue-500",
     tag: "Nouveau",
   },
 ];
 
 const prochainement = [
-  { titre: "Frais de Notaire", icone: "📋" },
   { titre: "Calcul Consommation Electrique", icone: "⚡" },
   { titre: "Convertisseur Devises", icone: "💱" },
   { titre: "Calcul Surface Peinture", icone: "🎨" },
+  { titre: "Indemnite Licenciement", icone: "📄" },
 ];
 
 export default function Home() {
