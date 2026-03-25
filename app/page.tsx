@@ -88,10 +88,18 @@ const outils = [
     couleur: "from-indigo-500 to-purple-500",
     tag: "Nouveau",
   },
+  {
+    titre: "Convertisseur Devises",
+    description:
+      "Convertissez entre 14 devises : Euro, Dollar, Livre, Dirham, Dinar, Franc CFA et plus.",
+    href: "/convertisseur-devises",
+    icone: "💱",
+    couleur: "from-sky-500 to-blue-600",
+    tag: "Nouveau",
+  },
 ];
 
 const prochainement = [
-  { titre: "Convertisseur Devises", icone: "💱" },
   { titre: "Calcul Surface Peinture", icone: "🎨" },
   { titre: "Simulateur Epargne", icone: "🏦" },
   { titre: "Calcul Heures de Travail", icone: "⏰" },
