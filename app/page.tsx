@@ -59,15 +59,24 @@ const outils = [
     href: "/frais-de-notaire",
     icone: "📋",
     couleur: "from-cyan-500 to-blue-500",
+    tag: "",
+  },
+  {
+    titre: "Consommation Electrique",
+    description:
+      "Calculez le cout de vos appareils electriques. 12 appareils predefinis, tarif EDF 2026.",
+    href: "/calcul-consommation-electrique",
+    icone: "⚡",
+    couleur: "from-yellow-500 to-orange-500",
     tag: "Nouveau",
   },
 ];
 
 const prochainement = [
-  { titre: "Calcul Consommation Electrique", icone: "⚡" },
   { titre: "Convertisseur Devises", icone: "💱" },
   { titre: "Calcul Surface Peinture", icone: "🎨" },
   { titre: "Indemnite Licenciement", icone: "📄" },
+  { titre: "Calcul Age", icone: "🎂" },
 ];
 
 export default function Home() {
