@@ -142,6 +142,15 @@ const outils = [
     couleur: "from-red-500 to-rose-600",
     tag: "Nouveau",
   },
+  {
+    titre: "Date d'Accouchement",
+    description:
+      "Calculez votre DPA, semaines d'amenorrhee, trimestre et dates cles. 3 methodes de calcul.",
+    href: "/calcul-date-accouchement",
+    icone: "🤰",
+    couleur: "from-purple-500 to-pink-500",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {
