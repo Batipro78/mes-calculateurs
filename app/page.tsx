@@ -124,6 +124,15 @@ const outils = [
     couleur: "from-amber-500 to-orange-500",
     tag: "Nouveau",
   },
+  {
+    titre: "Indemnites Kilometriques",
+    description:
+      "Calculez vos indemnites kilometriques avec le bareme fiscal 2026. Voiture, moto, velo, vehicule electrique.",
+    href: "/calcul-indemnites-kilometriques",
+    icone: "🚗",
+    couleur: "from-teal-500 to-cyan-600",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {
