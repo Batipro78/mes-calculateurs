@@ -160,6 +160,15 @@ const outils = [
     couleur: "from-green-500 to-emerald-600",
     tag: "Nouveau",
   },
+  {
+    titre: "Calculateur Inflation",
+    description:
+      "Combien devriez-vous gagner aujourd'hui pour vivre comme avant ? Le voleur silencieux de votre argent.",
+    href: "/calculateur-inflation",
+    icone: "📉",
+    couleur: "from-red-500 to-orange-500",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {
