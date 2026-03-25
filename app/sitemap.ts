@@ -17,6 +17,11 @@ const POURC_VALEURS = [100, 200, 500, 1000, 1500, 2000, 5000];
 const PRET_MONTANTS = [100000, 150000, 200000, 250000, 300000, 350000, 400000, 500000];
 const PRET_DUREES = [15, 20, 25];
 
+// APL
+const APL_ZONES = ["1", "2", "3"];
+const APL_SITUATIONS = ["seul", "couple"];
+const APL_ENFANTS = [0, 1, 2, 3, 4];
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     {
@@ -215,11 +220,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Pages dynamiques APL
+  const aplPages: MetadataRoute.Sitemap = [];
+  for (const z of APL_ZONES) {
+    for (const s of APL_SITUATIONS) {
+      for (const n of APL_ENFANTS) {
+        aplPages.push({
+          url: `${BASE_URL}/simulateur-apl/zone-${z}-${s}-${n}-enfant${n !== 1 ? "s" : ""}`,
+          lastModified: new Date(),
+          changeFrequency: "monthly",
+          priority: 0.7,
+        });
+      }
+    }
+  }
+
   return [
     ...staticPages,
     ...salairePages,
     ...tvaPages,
     ...pourcentagePages,
     ...pretPages,
+    ...aplPages,
   ];
 }
