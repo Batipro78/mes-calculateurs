@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CalculateurIMC from "./CalculateurIMC";
+import AdSlot from "../components/AdSlot";
 
 export const metadata: Metadata = {
   title: "Calcul IMC 2026 - Indice de Masse Corporelle gratuit",
@@ -35,6 +36,8 @@ export default function Page() {
       </p>
 
       <CalculateurIMC />
+
+      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <section className="mt-12 bg-white rounded-2xl border border-slate-200 p-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">
@@ -107,6 +110,8 @@ export default function Page() {
           bilan personnalise.
         </p>
       </section>
+
+      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

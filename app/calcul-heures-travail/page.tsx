@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CalculateurHeuresTravail from "./CalculateurHeuresTravail";
+import AdSlot from "../components/AdSlot";
 
 export const metadata: Metadata = {
   title:
@@ -36,6 +37,8 @@ export default function Page() {
       </p>
 
       <CalculateurHeuresTravail />
+
+      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       {/* Contenu SEO */}
       <section className="mt-12 bg-white rounded-2xl border border-slate-200 p-8">
@@ -219,6 +222,8 @@ export default function Page() {
           </li>
         </ul>
       </section>
+
+      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

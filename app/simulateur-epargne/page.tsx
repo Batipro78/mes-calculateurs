@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import SimulateurEpargne from "./SimulateurEpargne";
+import AdSlot from "../components/AdSlot";
 
 export const metadata: Metadata = {
   title:
@@ -36,6 +37,8 @@ export default function Page() {
       </p>
 
       <SimulateurEpargne />
+
+      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       {/* Contenu SEO */}
       <section className="mt-12 bg-white rounded-2xl border border-slate-200 p-8">
@@ -198,6 +201,8 @@ export default function Page() {
           30 ans pour doubler votre capital.
         </p>
       </section>
+
+      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

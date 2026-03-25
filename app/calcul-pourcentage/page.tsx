@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CalculateurPourcentage from "./CalculateurPourcentage";
+import AdSlot from "../components/AdSlot";
 
 export const metadata: Metadata = {
   title: "Calcul Pourcentage 2026 - Calculateur gratuit en ligne",
@@ -34,6 +35,8 @@ export default function Page() {
       </p>
 
       <CalculateurPourcentage />
+
+      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <section className="mt-12 bg-white rounded-2xl border border-slate-200 p-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">
@@ -106,6 +109,8 @@ export default function Page() {
           </li>
         </ul>
       </section>
+
+      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }
