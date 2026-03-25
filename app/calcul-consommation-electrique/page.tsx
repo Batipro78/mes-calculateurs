@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import CalculateurElectricite from "./CalculateurElectricite";
 import AdSlot from "../components/AdSlot";
+import Breadcrumb from "../components/Breadcrumb";
+import RelatedCalculators from "../components/RelatedCalculators";
 
 export const metadata: Metadata = {
   title: "Calcul Consommation Electrique 2026 - Estimez votre facture",
@@ -13,14 +15,42 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
-      <div className="mb-8">
-        <a
-          href="/"
-          className="text-sm text-slate-400 hover:text-blue-600 transition-colors"
-        >
-          &larr; Tous les calculateurs
-        </a>
-      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Comment calculer la consommation electrique d'un appareil ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "La consommation se calcule avec la formule : Puissance (en watts) x Duree d'utilisation (en heures) / 1000 = Consommation en kWh. Pour obtenir le cout, multipliez les kWh par le prix du kWh (environ 0,2516 EUR en tarif EDF 2026)."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Quel est le prix du kWh en France en 2026 ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Le tarif reglemente EDF (Tarif Bleu) est d'environ 0,2516 EUR/kWh en option Base pour les particuliers (6 kVA). Ce tarif est fixe par les pouvoirs publics et revise regulierement."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Quels sont les appareils qui consomment le plus d'electricite ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Les appareils les plus energivores sont le chauffage electrique (1000-2500 W), le four electrique (2000-3000 W), le seche-linge (2000-3000 W), le lave-linge (500-2000 W) et le seche-cheveux (1000-2200 W). Le refrigerateur, bien que peu puissant (100-400 W), consomme beaucoup car il fonctionne 24h/24."
+                }
+              }
+            ]
+          })
+        }}
+      />
+      <Breadcrumb currentPage="Consommation Electrique" />
 
       <div className="flex items-center gap-3 mb-2">
         <div className="w-10 h-10 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-xl flex items-center justify-center text-xl shadow-sm">
@@ -107,6 +137,7 @@ export default function Page() {
         </p>
       </section>
 
+      <RelatedCalculators currentSlug="/calcul-consommation-electrique" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );

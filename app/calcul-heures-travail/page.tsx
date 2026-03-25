@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import CalculateurHeuresTravail from "./CalculateurHeuresTravail";
 import AdSlot from "../components/AdSlot";
+import Breadcrumb from "../components/Breadcrumb";
+import RelatedCalculators from "../components/RelatedCalculators";
 
 export const metadata: Metadata = {
   title:
@@ -14,14 +16,42 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
-      <div className="mb-8">
-        <a
-          href="/"
-          className="text-sm text-slate-400 hover:text-blue-600 transition-colors"
-        >
-          &larr; Tous les calculateurs
-        </a>
-      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Quelle est la duree legale du travail en France ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "La duree legale du travail en France est de 35 heures par semaine, soit 151,67 heures par mois. Au-dela de 35 heures, les heures travaillees sont des heures supplementaires majorees de 25% (de la 36e a la 43e heure) puis de 50% (a partir de la 44e heure)."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Comment sont calculees les heures supplementaires ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Les heures supplementaires sont majorees par rapport au taux horaire normal : +25% pour les 8 premieres heures (de la 36e a la 43e heure), puis +50% au-dela (a partir de la 44e heure). Le contingent annuel est de 220 heures par salarie, sauf accord d'entreprise."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Quel est le SMIC horaire en 2026 ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Le SMIC horaire brut est de 11,88 EUR en 2026, soit un SMIC mensuel brut de 1 801,80 EUR pour 35 heures par semaine (151,67 heures mensualisees). Aucun salarie ne peut etre remunere en dessous de ce seuil."
+                }
+              }
+            ]
+          })
+        }}
+      />
+      <Breadcrumb currentPage="Heures de Travail" />
 
       <div className="flex items-center gap-3 mb-2">
         <div className="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl flex items-center justify-center text-xl shadow-sm">
@@ -223,6 +253,7 @@ export default function Page() {
         </ul>
       </section>
 
+      <RelatedCalculators currentSlug="/calcul-heures-travail" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );

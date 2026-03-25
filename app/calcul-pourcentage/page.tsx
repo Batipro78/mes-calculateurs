@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import CalculateurPourcentage from "./CalculateurPourcentage";
 import AdSlot from "../components/AdSlot";
+import Breadcrumb from "../components/Breadcrumb";
+import RelatedCalculators from "../components/RelatedCalculators";
 
 export const metadata: Metadata = {
   title: "Calcul Pourcentage 2026 - Calculateur gratuit en ligne",
@@ -13,14 +15,42 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
-      <div className="mb-8">
-        <a
-          href="/"
-          className="text-sm text-slate-400 hover:text-blue-600 transition-colors"
-        >
-          &larr; Tous les calculateurs
-        </a>
-      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Comment calculer un pourcentage d'un nombre ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Pour calculer X% d'un nombre Y, utilisez la formule : Y x (X / 100). Par exemple, 20% de 150 = 150 x 0.20 = 30."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Comment calculer une augmentation en pourcentage ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "La formule est : ((Nouveau - Ancien) / Ancien) x 100. Par exemple, passer de 80 a 100 represente une augmentation de +25%."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Comment calculer une reduction ou remise en pourcentage ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Utilisez la formule : Prix final = Prix x (1 - Remise / 100). Par exemple, un article a 80 EUR avec -25% de remise = 80 x 0.75 = 60 EUR."
+                }
+              }
+            ]
+          })
+        }}
+      />
+      <Breadcrumb currentPage="Calcul Pourcentage" />
 
       <div className="flex items-center gap-3 mb-2">
         <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-amber-500 rounded-xl flex items-center justify-center text-xl shadow-sm">
@@ -110,6 +140,7 @@ export default function Page() {
         </ul>
       </section>
 
+      <RelatedCalculators currentSlug="/calcul-pourcentage" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );

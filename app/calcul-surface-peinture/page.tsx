@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import CalculateurSurfacePeinture from "./CalculateurSurfacePeinture";
 import AdSlot from "../components/AdSlot";
+import Breadcrumb from "../components/Breadcrumb";
+import RelatedCalculators from "../components/RelatedCalculators";
 
 export const metadata: Metadata = {
   title:
@@ -14,14 +16,42 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
-      <div className="mb-8">
-        <a
-          href="/"
-          className="text-sm text-slate-400 hover:text-blue-600 transition-colors"
-        >
-          &larr; Tous les calculateurs
-        </a>
-      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Comment calculer la surface a peindre d'une piece ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Mesurez chaque mur (largeur x hauteur), additionnez les surfaces, deduisez les ouvertures (portes et fenetres), puis ajoutez le plafond si necessaire. Multipliez le total par le nombre de couches pour obtenir la surface totale a peindre."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Combien de litres de peinture faut-il pour une piece ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Divisez la surface totale a peindre (en m2, couches incluses) par le rendement de la peinture (generalement 10 a 12 m2/L pour une peinture acrylique). Pour une chambre de 12 m2 avec 2 couches, comptez environ 4 a 8 litres de peinture."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Combien de couches de peinture faut-il appliquer ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "En general, 2 couches sont necessaires pour un resultat uniforme. Prevoyez 3 couches si vous passez d'une couleur foncee a une couleur claire, sur un mur neuf (platre, enduit) ou avec une peinture de qualite moyenne."
+                }
+              }
+            ]
+          })
+        }}
+      />
+      <Breadcrumb currentPage="Surface Peinture" />
 
       <div className="flex items-center gap-3 mb-2">
         <div className="w-10 h-10 bg-gradient-to-br from-fuchsia-500 to-pink-500 rounded-xl flex items-center justify-center text-xl shadow-sm">
@@ -240,6 +270,7 @@ export default function Page() {
         </p>
       </section>
 
+      <RelatedCalculators currentSlug="/calcul-surface-peinture" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );

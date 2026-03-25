@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import CalculateurIMC from "./CalculateurIMC";
 import AdSlot from "../components/AdSlot";
+import Breadcrumb from "../components/Breadcrumb";
+import RelatedCalculators from "../components/RelatedCalculators";
 
 export const metadata: Metadata = {
   title: "Calcul IMC 2026 - Indice de Masse Corporelle gratuit",
@@ -13,14 +15,42 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
-      <div className="mb-8">
-        <a
-          href="/"
-          className="text-sm text-slate-400 hover:text-blue-600 transition-colors"
-        >
-          &larr; Tous les calculateurs
-        </a>
-      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Qu'est-ce que l'IMC ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "L'Indice de Masse Corporelle (IMC) est un indicateur utilise par l'Organisation Mondiale de la Sante (OMS) pour evaluer la corpulence d'une personne. Il se calcule en divisant le poids (en kg) par la taille (en metres) au carre."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Comment calculer son IMC ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "La formule de l'IMC est : IMC = Poids (kg) / Taille (m) x Taille (m). Un IMC entre 18.5 et 25 correspond a un poids normal selon la classification OMS."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Quelles sont les limites de l'IMC ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "L'IMC ne distingue pas la masse grasse de la masse musculaire. Un sportif muscle peut avoir un IMC eleve sans etre en surpoids. L'IMC n'est pas adapte aux enfants, aux femmes enceintes et aux personnes agees de plus de 65 ans."
+                }
+              }
+            ]
+          })
+        }}
+      />
+      <Breadcrumb currentPage="Calcul IMC" />
 
       <div className="flex items-center gap-3 mb-2">
         <div className="w-10 h-10 bg-gradient-to-br from-rose-500 to-pink-500 rounded-xl flex items-center justify-center text-xl shadow-sm">
@@ -111,6 +141,7 @@ export default function Page() {
         </p>
       </section>
 
+      <RelatedCalculators currentSlug="/calcul-imc" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );

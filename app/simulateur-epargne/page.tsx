@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import SimulateurEpargne from "./SimulateurEpargne";
 import AdSlot from "../components/AdSlot";
+import Breadcrumb from "../components/Breadcrumb";
+import RelatedCalculators from "../components/RelatedCalculators";
 
 export const metadata: Metadata = {
   title:
@@ -14,14 +16,42 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
-      <div className="mb-8">
-        <a
-          href="/"
-          className="text-sm text-slate-400 hover:text-blue-600 transition-colors"
-        >
-          &larr; Tous les calculateurs
-        </a>
-      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Quel est le taux du Livret A en 2026 ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Le taux du Livret A est de 2,4% net en 2026. Les interets sont exoneres d'impot sur le revenu et de prelevements sociaux. Le plafond de depots est de 22 950 EUR (hors interets capitalises)."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Comment fonctionnent les interets composes ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Les interets composes signifient que les interets generes chaque annee s'ajoutent au capital et produisent eux-memes des interets l'annee suivante. C'est un effet boule de neige : plus la duree est longue, plus l'acceleration est forte. La formule est : Capital final = Capital initial x (1 + taux) puissance duree."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Quel est le meilleur placement en 2026 ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Le LEP (Livret d'Epargne Populaire) offre le meilleur taux a 3,5% net, mais il est reserve aux revenus modestes. Le Livret A (2,4%) et le LDDS (2,4%) sont accessibles a tous et sans impot. L'assurance-vie en fonds euros (~2,5%) est ideale pour l'epargne long terme grace a sa fiscalite avantageuse apres 8 ans."
+                }
+              }
+            ]
+          })
+        }}
+      />
+      <Breadcrumb currentPage="Simulateur Epargne" />
 
       <div className="flex items-center gap-3 mb-2">
         <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-green-600 rounded-xl flex items-center justify-center text-xl shadow-sm">
@@ -202,6 +232,7 @@ export default function Page() {
         </p>
       </section>
 
+      <RelatedCalculators currentSlug="/simulateur-epargne" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );

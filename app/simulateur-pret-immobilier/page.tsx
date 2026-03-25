@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import SimulateurPret from "./SimulateurPret";
 import AdSlot from "../components/AdSlot";
+import Breadcrumb from "../components/Breadcrumb";
+import RelatedCalculators from "../components/RelatedCalculators";
 
 export const metadata: Metadata = {
   title: "Simulateur Pret Immobilier 2026 - Calcul mensualite gratuit",
@@ -13,14 +15,42 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
-      <div className="mb-8">
-        <a
-          href="/"
-          className="text-sm text-slate-400 hover:text-blue-600 transition-colors"
-        >
-          &larr; Tous les calculateurs
-        </a>
-      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Comment fonctionne un pret immobilier ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Un pret immobilier est un emprunt contracte aupres d'une banque pour financer l'achat d'un bien immobilier. Vous remboursez chaque mois une mensualite composee d'une part de capital et d'une part d'interets."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Comment est calculee la mensualite d'un pret immobilier ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "La mensualite est calculee avec la formule d'annuite constante : Mensualite = Capital x (taux / 12) / (1 - (1 + taux / 12)^(-nb mois)). Le taux d'endettement ne doit pas depasser 35% de vos revenus nets."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Quels sont les taux moyens de pret immobilier en 2026 ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Les taux moyens en 2026 sont d'environ 3.10% sur 10 ans, 3.25% sur 15 ans, 3.40% sur 20 ans et 3.55% sur 25 ans."
+                }
+              }
+            ]
+          })
+        }}
+      />
+      <Breadcrumb currentPage="Simulateur Pret Immobilier" />
 
       <div className="flex items-center gap-3 mb-2">
         <div className="w-10 h-10 bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl flex items-center justify-center text-xl shadow-sm">
@@ -104,6 +134,7 @@ export default function Page() {
         </ul>
       </section>
 
+      <RelatedCalculators currentSlug="/simulateur-pret-immobilier" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );

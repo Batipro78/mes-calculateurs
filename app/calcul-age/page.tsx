@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import CalculateurAge from "./CalculateurAge";
 import AdSlot from "../components/AdSlot";
+import Breadcrumb from "../components/Breadcrumb";
+import RelatedCalculators from "../components/RelatedCalculators";
 
 export const metadata: Metadata = {
   title: "Calculer son Age Exact - Date de naissance, jours, heures",
@@ -13,14 +15,42 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
-      <div className="mb-8">
-        <a
-          href="/"
-          className="text-sm text-slate-400 hover:text-blue-600 transition-colors"
-        >
-          &larr; Tous les calculateurs
-        </a>
-      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Comment calculer son age exact en annees, mois et jours ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Pour calculer votre age exact, soustrayez votre date de naissance de la date du jour en tenant compte des annees, mois et jours ecoules. Par exemple, si vous etes ne le 15 mars 1990 et que nous sommes le 25 mars 2026, vous avez exactement 36 ans et 10 jours."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Combien de jours ai-je vecu ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Pour connaitre le nombre de jours vecus, calculez la difference entre la date du jour et votre date de naissance. En moyenne, une personne de 30 ans a vecu environ 10 950 jours, et une personne de 40 ans environ 14 600 jours."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Quel est l'age legal de la retraite en France ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Depuis la reforme de 2023, l'age legal de depart a la retraite est progressivement releve a 64 ans. L'age du taux plein automatique (sans decote) reste fixe a 67 ans. Ces ages s'appliquent quelle que soit la duree de cotisation."
+                }
+              }
+            ]
+          })
+        }}
+      />
+      <Breadcrumb currentPage="Calcul Age" />
 
       <div className="flex items-center gap-3 mb-2">
         <div className="w-10 h-10 bg-gradient-to-br from-pink-500 to-rose-500 rounded-xl flex items-center justify-center text-xl shadow-sm">
@@ -134,6 +164,7 @@ export default function Page() {
         </div>
       </section>
 
+      <RelatedCalculators currentSlug="/calcul-age" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import SimulateurImpot from "./SimulateurImpot";
 import AdSlot from "../components/AdSlot";
+import Breadcrumb from "../components/Breadcrumb";
+import RelatedCalculators from "../components/RelatedCalculators";
 
 export const metadata: Metadata = {
   title:
@@ -14,14 +16,42 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
-      <div className="mb-8">
-        <a
-          href="/"
-          className="text-sm text-slate-400 hover:text-blue-600 transition-colors"
-        >
-          &larr; Tous les calculateurs
-        </a>
-      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Quelles sont les tranches d'imposition en 2026 ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Le bareme progressif 2026 (revenus 2025) comporte 5 tranches : 0% jusqu'a 11 497 EUR, 11% de 11 497 a 29 315 EUR, 30% de 29 315 a 83 823 EUR, 41% de 83 823 a 180 294 EUR, et 45% au-dela de 180 294 EUR. Ces tranches s'appliquent au quotient familial."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Comment fonctionne le quotient familial ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Le quotient familial divise le revenu imposable par un nombre de parts : 1 part pour un celibataire, 2 parts pour un couple, +0,5 part par enfant (1er et 2e), +1 part par enfant a partir du 3e. Le bareme est applique au quotient, puis le resultat est multiplie par le nombre de parts."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Quelle est la difference entre taux marginal et taux moyen ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Le taux marginal est le taux de la tranche la plus elevee de votre revenu (ex: 30%). Le taux moyen (ou effectif) est le rapport entre l'impot paye et le revenu total, toujours inferieur au taux marginal. Par exemple, avec un taux marginal de 30%, votre taux moyen peut n'etre que de 12%."
+                }
+              }
+            ]
+          })
+        }}
+      />
+      <Breadcrumb currentPage="Simulateur Impot" />
 
       <div className="flex items-center gap-3 mb-2">
         <div className="w-10 h-10 bg-gradient-to-br from-red-500 to-rose-600 rounded-xl flex items-center justify-center text-xl shadow-sm">
@@ -242,6 +272,7 @@ export default function Page() {
         </ul>
       </section>
 
+      <RelatedCalculators currentSlug="/simulateur-impot-revenu" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import CalculateurDPA from "./CalculateurDPA";
 import AdSlot from "../components/AdSlot";
+import Breadcrumb from "../components/Breadcrumb";
+import RelatedCalculators from "../components/RelatedCalculators";
 
 export const metadata: Metadata = {
   title:
@@ -14,14 +16,42 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
-      <div className="mb-8">
-        <a
-          href="/"
-          className="text-sm text-slate-400 hover:text-blue-600 transition-colors"
-        >
-          &larr; Tous les calculateurs
-        </a>
-      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Comment calculer sa date d'accouchement ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "La date prevue d'accouchement (DPA) se calcule en ajoutant 280 jours (40 semaines d'amenorrhee) au premier jour des dernieres regles. Si vous connaissez la date de conception, ajoutez 266 jours (38 semaines). L'echographie de datation (11-14 SA) est la methode la plus precise avec une marge de +/- 3 jours."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Quelle difference entre semaines d'amenorrhee et semaines de grossesse ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Les semaines d'amenorrhee (SA) sont comptees a partir du 1er jour des dernieres regles. Les semaines de grossesse (SG) sont comptees a partir de la conception, soit environ 2 semaines de moins. Exemple : 12 SA = 10 SG. En France, les professionnels de sante utilisent les SA."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Quelle est la duree du conge maternite en France ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Pour le 1er ou 2e enfant : 16 semaines (6 avant + 10 apres). Pour le 3e enfant et plus : 26 semaines (8 avant + 18 apres). Pour des jumeaux : 34 semaines. Pour des triples : 46 semaines. Les indemnites journalieres sont calculees sur la base du salaire, plafonnees a 100,36 EUR/jour en 2026."
+                }
+              }
+            ]
+          })
+        }}
+      />
+      <Breadcrumb currentPage="Date d'Accouchement" />
 
       <div className="flex items-center gap-3 mb-2">
         <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center text-xl shadow-sm">
@@ -261,6 +291,7 @@ export default function Page() {
         </p>
       </section>
 
+      <RelatedCalculators currentSlug="/calcul-date-accouchement" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );

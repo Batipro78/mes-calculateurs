@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import ConvertisseurDevises from "./ConvertisseurDevises";
 import AdSlot from "../components/AdSlot";
+import Breadcrumb from "../components/Breadcrumb";
+import RelatedCalculators from "../components/RelatedCalculators";
 
 export const metadata: Metadata = {
   title:
@@ -14,14 +16,42 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
-      <div className="mb-8">
-        <a
-          href="/"
-          className="text-sm text-slate-400 hover:text-blue-600 transition-colors"
-        >
-          &larr; Tous les calculateurs
-        </a>
-      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Comment convertir des euros en dollars ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Pour convertir des euros en dollars, multipliez le montant en euros par le taux de change EUR/USD. Par exemple, si le taux est de 1,0856, alors 1 000 EUR = 1 000 x 1,0856 = 1 085,60 USD. Les taux de change fluctuent en permanence sur le marche des changes (Forex)."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Qu'est-ce qui influence les taux de change ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Les taux de change sont influences par les taux d'interet des banques centrales, l'inflation, la balance commerciale, la stabilite politique et la croissance economique. Un pays avec des taux d'interet eleves et une inflation faible voit generalement sa devise se renforcer."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Quelle est la parite entre l'Euro et le Franc CFA ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Le Franc CFA (XOF et XAF) a une parite fixe avec l'Euro : 1 EUR = 655,957 CFA. Cette parite est garantie par le Tresor francais et ne varie jamais, contrairement aux autres paires de devises."
+                }
+              }
+            ]
+          })
+        }}
+      />
+      <Breadcrumb currentPage="Convertisseur Devises" />
 
       <div className="flex items-center gap-3 mb-2">
         <div className="w-10 h-10 bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl flex items-center justify-center text-xl shadow-sm">
@@ -197,6 +227,7 @@ export default function Page() {
         </div>
       </section>
 
+      <RelatedCalculators currentSlug="/convertisseur-devises" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import CalculateurIndemnite from "./CalculateurIndemnite";
 import AdSlot from "../components/AdSlot";
+import Breadcrumb from "../components/Breadcrumb";
+import RelatedCalculators from "../components/RelatedCalculators";
 
 export const metadata: Metadata = {
   title:
@@ -14,14 +16,42 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
-      <div className="mb-8">
-        <a
-          href="/"
-          className="text-sm text-slate-400 hover:text-blue-600 transition-colors"
-        >
-          &larr; Tous les calculateurs
-        </a>
-      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "Comment calculer l'indemnite de licenciement en 2026 ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "L'indemnite legale se calcule ainsi : 1/4 de mois de salaire par annee d'anciennete pour les 10 premieres annees, puis 1/3 de mois par annee au-dela. Le salaire de reference est le plus avantageux entre la moyenne des 12 ou des 3 derniers mois."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "Qui a droit a l'indemnite de licenciement ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Tout salarie en CDI licencie (sauf faute grave ou lourde) disposant d'au moins 8 mois d'anciennete ininterrompue dans l'entreprise. L'indemnite est egalement due en cas de rupture conventionnelle."
+                }
+              },
+              {
+                "@type": "Question",
+                name: "L'indemnite de licenciement est-elle imposable ?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "L'indemnite de licenciement est exoneree d'impot sur le revenu dans la limite du montant legal ou conventionnel. Au-dela, l'exoneration s'applique dans la limite la plus elevee entre 2 fois la remuneration annuelle brute ou 50% de l'indemnite totale."
+                }
+              }
+            ]
+          })
+        }}
+      />
+      <Breadcrumb currentPage="Indemnite Licenciement" />
 
       <div className="flex items-center gap-3 mb-2">
         <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-xl flex items-center justify-center text-xl shadow-sm">
@@ -136,6 +166,7 @@ export default function Page() {
         </p>
       </section>
 
+      <RelatedCalculators currentSlug="/indemnite-licenciement" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
