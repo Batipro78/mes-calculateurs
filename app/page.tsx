@@ -151,6 +151,15 @@ const outils = [
     couleur: "from-purple-500 to-pink-500",
     tag: "Nouveau",
   },
+  {
+    titre: "Simulateur DCA",
+    description:
+      "Simulez un investissement passe sur le S&P 500, CAC 40 ou Bitcoin. Combien auriez-vous gagne ?",
+    href: "/simulateur-dca",
+    icone: "📈",
+    couleur: "from-green-500 to-emerald-600",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {

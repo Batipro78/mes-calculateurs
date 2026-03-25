@@ -15,6 +15,7 @@ const ALL_CALCULATORS = [
   { slug: "/calcul-indemnites-kilometriques", title: "Indemnites Kilometriques", emoji: "🚗", color: "from-teal-500 to-cyan-600" },
   { slug: "/simulateur-impot-revenu", title: "Simulateur Impot", emoji: "🏛️", color: "from-red-500 to-rose-600" },
   { slug: "/calcul-date-accouchement", title: "Date d'Accouchement", emoji: "🤰", color: "from-purple-500 to-pink-500" },
+  { slug: "/simulateur-dca", title: "Simulateur DCA", emoji: "📈", color: "from-green-500 to-emerald-600" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -34,6 +35,7 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calcul-indemnites-kilometriques": ["/calcul-heures-travail", "/salaire-brut-net", "/calcul-consommation-electrique", "/simulateur-impot-revenu"],
   "/simulateur-impot-revenu": ["/salaire-brut-net", "/simulateur-epargne", "/indemnite-licenciement", "/frais-de-notaire"],
   "/calcul-date-accouchement": ["/calcul-age", "/calcul-imc", "/calcul-heures-travail", "/simulateur-epargne"],
+  "/simulateur-dca": ["/simulateur-epargne", "/simulateur-pret-immobilier", "/convertisseur-devises", "/simulateur-impot-revenu"],
 };
 
 interface RelatedCalculatorsProps {
