@@ -106,10 +106,18 @@ const outils = [
     couleur: "from-fuchsia-500 to-pink-500",
     tag: "Nouveau",
   },
+  {
+    titre: "Simulateur Epargne",
+    description:
+      "Simulez votre epargne : Livret A, LEP, assurance-vie. Interets composes et evolution annuelle.",
+    href: "/simulateur-epargne",
+    icone: "🏦",
+    couleur: "from-emerald-500 to-green-600",
+    tag: "Nouveau",
+  },
 ];
 
 const prochainement = [
-  { titre: "Simulateur Epargne", icone: "🏦" },
   { titre: "Calcul Heures de Travail", icone: "⏰" },
 ];
 
