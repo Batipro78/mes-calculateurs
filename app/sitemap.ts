@@ -22,6 +22,17 @@ const APL_ZONES = ["1", "2", "3"];
 const APL_SITUATIONS = ["seul", "couple"];
 const APL_ENFANTS = [0, 1, 2, 3, 4];
 
+// Date Accouchement
+const DPA_SEMAINES = Array.from({ length: 38 }, (_, i) => i + 4); // 4 SA a 41 SA
+
+// Heures de Travail
+const HT_HEURES = [20, 24, 28, 32, 35, 37, 39, 40, 42, 45, 48];
+const HT_TAUX = [12, 13, 15, 18, 20, 25, 30];
+
+// DCA
+const DCA_MONTANTS = [50, 100, 150, 200, 300, 500, 1000];
+const DCA_ACTIFS = ["sp500", "cac40", "bitcoin"];
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     {
@@ -235,6 +246,43 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Pages dynamiques Date Accouchement
+  const dpaPages: MetadataRoute.Sitemap = [];
+  for (const sa of DPA_SEMAINES) {
+    dpaPages.push({
+      url: `${BASE_URL}/calcul-date-accouchement/enceinte-de-${sa}-semaines`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    });
+  }
+
+  // Pages dynamiques Heures de Travail
+  const heuresPages: MetadataRoute.Sitemap = [];
+  for (const h of HT_HEURES) {
+    for (const t of HT_TAUX) {
+      heuresPages.push({
+        url: `${BASE_URL}/calcul-heures-travail/${h}-heures-${t}-euros`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.7,
+      });
+    }
+  }
+
+  // Pages dynamiques DCA
+  const dcaPages: MetadataRoute.Sitemap = [];
+  for (const m of DCA_MONTANTS) {
+    for (const a of DCA_ACTIFS) {
+      dcaPages.push({
+        url: `${BASE_URL}/simulateur-dca/${m}-euros-par-mois-${a}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.7,
+      });
+    }
+  }
+
   return [
     ...staticPages,
     ...salairePages,
@@ -242,5 +290,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...pourcentagePages,
     ...pretPages,
     ...aplPages,
+    ...dpaPages,
+    ...heuresPages,
+    ...dcaPages,
   ];
 }
