@@ -18,6 +18,7 @@ const ALL_CALCULATORS = [
   { slug: "/simulateur-dca", title: "Simulateur DCA", emoji: "📈", color: "from-green-500 to-emerald-600" },
   { slug: "/calculateur-inflation", title: "Calculateur Inflation", emoji: "📉", color: "from-red-500 to-orange-500" },
   { slug: "/simulateur-apl", title: "Simulateur APL", emoji: "🏘️", color: "from-teal-500 to-cyan-600" },
+  { slug: "/calcul-calories", title: "Calcul Calories", emoji: "🔥", color: "from-green-500 to-emerald-600" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -25,7 +26,7 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calcul-tva": ["/calcul-pourcentage", "/frais-de-notaire", "/convertisseur-devises", "/salaire-brut-net"],
   "/simulateur-pret-immobilier": ["/frais-de-notaire", "/simulateur-epargne", "/simulateur-impot-revenu", "/calcul-surface-peinture"],
   "/calcul-pourcentage": ["/calcul-tva", "/salaire-brut-net", "/simulateur-epargne", "/convertisseur-devises"],
-  "/calcul-imc": ["/calcul-age", "/calcul-date-accouchement", "/calcul-consommation-electrique", "/calcul-heures-travail"],
+  "/calcul-imc": ["/calcul-calories", "/calcul-age", "/calcul-date-accouchement", "/calcul-consommation-electrique"],
   "/frais-de-notaire": ["/simulateur-pret-immobilier", "/simulateur-impot-revenu", "/calcul-tva", "/simulateur-epargne"],
   "/calcul-consommation-electrique": ["/calcul-surface-peinture", "/calcul-pourcentage", "/simulateur-epargne", "/calcul-tva"],
   "/calcul-age": ["/calcul-date-accouchement", "/calcul-imc", "/calcul-heures-travail", "/simulateur-epargne"],
@@ -40,6 +41,7 @@ const RELATED_MAP: Record<string, string[]> = {
   "/simulateur-dca": ["/simulateur-epargne", "/calculateur-inflation", "/convertisseur-devises", "/simulateur-impot-revenu"],
   "/calculateur-inflation": ["/salaire-brut-net", "/simulateur-epargne", "/simulateur-dca", "/simulateur-impot-revenu"],
   "/simulateur-apl": ["/simulateur-impot-revenu", "/salaire-brut-net", "/simulateur-epargne", "/calcul-consommation-electrique"],
+  "/calcul-calories": ["/calcul-imc", "/calcul-age", "/calcul-date-accouchement", "/calcul-heures-travail"],
 };
 
 interface RelatedCalculatorsProps {

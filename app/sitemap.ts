@@ -33,6 +33,12 @@ const HT_TAUX = [12, 13, 15, 18, 20, 25, 30];
 const DCA_MONTANTS = [50, 100, 150, 200, 300, 500, 1000];
 const DCA_ACTIFS = ["sp500", "cac40", "bitcoin"];
 
+// Calories
+const CAL_SEXES = ["homme", "femme"];
+const CAL_AGES = [20, 25, 30, 35, 40, 45, 50, 55, 60];
+const CAL_POIDS = [50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
+const CAL_ACTIVITES = ["sedentaire", "actif", "sportif"];
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     {
@@ -151,6 +157,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/simulateur-apl`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-calories`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -283,6 +295,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Pages dynamiques Calories
+  const caloriesPages: MetadataRoute.Sitemap = [];
+  for (const sexe of CAL_SEXES) {
+    const taille = sexe === "homme" ? 175 : 165;
+    for (const age of CAL_AGES) {
+      for (const poids of CAL_POIDS) {
+        for (const activite of CAL_ACTIVITES) {
+          caloriesPages.push({
+            url: `${BASE_URL}/calcul-calories/${sexe}-${poids}kg-${taille}cm-${age}ans-${activite}`,
+            lastModified: new Date(),
+            changeFrequency: "monthly",
+            priority: 0.7,
+          });
+        }
+      }
+    }
+  }
+
   return [
     ...staticPages,
     ...salairePages,
@@ -293,5 +323,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...dpaPages,
     ...heuresPages,
     ...dcaPages,
+    ...caloriesPages,
   ];
 }

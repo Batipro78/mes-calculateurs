@@ -169,6 +169,15 @@ const outils = [
     couleur: "from-red-500 to-orange-500",
     tag: "Nouveau",
   },
+  {
+    titre: "Calcul Calories (TDEE)",
+    description:
+      "Calculez vos besoins caloriques journaliers, metabolisme de base, objectifs perte/prise de poids et macronutriments.",
+    href: "/calcul-calories",
+    icone: "🔥",
+    couleur: "from-green-500 to-emerald-600",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {

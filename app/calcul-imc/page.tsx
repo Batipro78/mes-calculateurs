@@ -139,6 +139,14 @@ export default function Page() {
           aux personnes agees de plus de 65 ans. Consultez un medecin pour un
           bilan personnalise.
         </p>
+
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Completez avec le calcul de calories</h3>
+        <p className="text-slate-600 leading-relaxed">
+          L&apos;IMC vous indique si votre poids est adapte, mais pour savoir{" "}
+          <strong>combien manger par jour</strong>, utilisez notre{" "}
+          <a href="/calcul-calories" className="text-blue-600 hover:underline font-medium">calculateur de calories (TDEE)</a>.
+          Il calcule vos besoins caloriques selon votre age, poids, taille et activite physique.
+        </p>
       </section>
 
       <RelatedCalculators currentSlug="/calcul-imc" />
