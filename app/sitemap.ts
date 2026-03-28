@@ -33,6 +33,11 @@ const HT_TAUX = [12, 13, 15, 18, 20, 25, 30];
 const DCA_MONTANTS = [50, 100, 150, 200, 300, 500, 1000];
 const DCA_ACTIFS = ["sp500", "cac40", "bitcoin"];
 
+// Chomage
+const CHOMAGE_SALAIRES = [1400, 1600, 1800, 2000, 2200, 2500, 2800, 3000, 3500, 4000, 4500, 5000, 6000];
+const CHOMAGE_MOIS = [6, 12, 18, 24];
+const CHOMAGE_AGES = [25, 30, 35, 40, 45, 50, 53, 55, 60];
+
 // Calories
 const CAL_SEXES = ["homme", "femme"];
 const CAL_AGES = [20, 25, 30, 35, 40, 45, 50, 55, 60];
@@ -163,6 +168,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/calcul-calories`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/simulateur-chomage`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -313,6 +324,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Pages dynamiques Chomage
+  const chomagePages: MetadataRoute.Sitemap = [];
+  for (const s of CHOMAGE_SALAIRES) {
+    for (const m of CHOMAGE_MOIS) {
+      for (const a of CHOMAGE_AGES) {
+        chomagePages.push({
+          url: `${BASE_URL}/simulateur-chomage/${s}-euros-${m}-mois-${a}-ans`,
+          lastModified: new Date(),
+          changeFrequency: "monthly",
+          priority: 0.7,
+        });
+      }
+    }
+  }
+
   return [
     ...staticPages,
     ...salairePages,
@@ -324,5 +350,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...heuresPages,
     ...dcaPages,
     ...caloriesPages,
+    ...chomagePages,
   ];
 }

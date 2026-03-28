@@ -178,6 +178,15 @@ const outils = [
     couleur: "from-green-500 to-emerald-600",
     tag: "Nouveau",
   },
+  {
+    titre: "Simulateur Chomage (ARE)",
+    description:
+      "Estimez votre allocation chomage : montant journalier, mensuel, duree d'indemnisation, degressivite. Bareme 2026.",
+    href: "/simulateur-chomage",
+    icone: "📋",
+    couleur: "from-sky-500 to-blue-600",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {

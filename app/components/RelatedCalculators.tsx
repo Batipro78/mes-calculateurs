@@ -19,6 +19,7 @@ const ALL_CALCULATORS = [
   { slug: "/calculateur-inflation", title: "Calculateur Inflation", emoji: "📉", color: "from-red-500 to-orange-500" },
   { slug: "/simulateur-apl", title: "Simulateur APL", emoji: "🏘️", color: "from-teal-500 to-cyan-600" },
   { slug: "/calcul-calories", title: "Calcul Calories", emoji: "🔥", color: "from-green-500 to-emerald-600" },
+  { slug: "/simulateur-chomage", title: "Simulateur Chomage", emoji: "📋", color: "from-sky-500 to-blue-600" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -42,6 +43,7 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calculateur-inflation": ["/salaire-brut-net", "/simulateur-epargne", "/simulateur-dca", "/simulateur-impot-revenu"],
   "/simulateur-apl": ["/simulateur-impot-revenu", "/salaire-brut-net", "/simulateur-epargne", "/calcul-consommation-electrique"],
   "/calcul-calories": ["/calcul-imc", "/calcul-age", "/calcul-date-accouchement", "/calcul-heures-travail"],
+  "/simulateur-chomage": ["/salaire-brut-net", "/indemnite-licenciement", "/simulateur-impot-revenu", "/calcul-heures-travail"],
 };
 
 interface RelatedCalculatorsProps {
