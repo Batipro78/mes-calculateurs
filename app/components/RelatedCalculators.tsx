@@ -21,6 +21,7 @@ const ALL_CALCULATORS = [
   { slug: "/calcul-calories", title: "Calcul Calories", emoji: "🔥", color: "from-green-500 to-emerald-600" },
   { slug: "/simulateur-chomage", title: "Simulateur Chomage", emoji: "📋", color: "from-sky-500 to-blue-600" },
   { slug: "/simulateur-micro-entreprise", title: "Micro-Entreprise", emoji: "🏢", color: "from-violet-500 to-purple-600" },
+  { slug: "/calcul-ovulation", title: "Calcul Ovulation", emoji: "🌸", color: "from-pink-500 to-rose-500" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -39,13 +40,14 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calcul-heures-travail": ["/salaire-brut-net", "/indemnite-licenciement", "/calcul-indemnites-kilometriques", "/simulateur-impot-revenu"],
   "/calcul-indemnites-kilometriques": ["/calcul-heures-travail", "/salaire-brut-net", "/calcul-consommation-electrique", "/simulateur-impot-revenu"],
   "/simulateur-impot-revenu": ["/salaire-brut-net", "/simulateur-epargne", "/indemnite-licenciement", "/frais-de-notaire"],
-  "/calcul-date-accouchement": ["/calcul-age", "/calcul-imc", "/calcul-heures-travail", "/simulateur-epargne"],
+  "/calcul-date-accouchement": ["/calcul-ovulation", "/calcul-age", "/calcul-imc", "/calcul-heures-travail"],
   "/simulateur-dca": ["/simulateur-epargne", "/calculateur-inflation", "/convertisseur-devises", "/simulateur-impot-revenu"],
   "/calculateur-inflation": ["/salaire-brut-net", "/simulateur-epargne", "/simulateur-dca", "/simulateur-impot-revenu"],
   "/simulateur-apl": ["/simulateur-impot-revenu", "/salaire-brut-net", "/simulateur-epargne", "/calcul-consommation-electrique"],
   "/calcul-calories": ["/calcul-imc", "/calcul-age", "/calcul-date-accouchement", "/calcul-heures-travail"],
   "/simulateur-chomage": ["/salaire-brut-net", "/indemnite-licenciement", "/simulateur-impot-revenu", "/simulateur-micro-entreprise"],
   "/simulateur-micro-entreprise": ["/simulateur-impot-revenu", "/salaire-brut-net", "/calcul-tva", "/simulateur-chomage"],
+  "/calcul-ovulation": ["/calcul-date-accouchement", "/calcul-imc", "/calcul-calories", "/calcul-age"],
 };
 
 interface RelatedCalculatorsProps {

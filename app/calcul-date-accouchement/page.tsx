@@ -291,6 +291,31 @@ export default function Page() {
         </p>
       </section>
 
+      {/* Cross-link vers ovulation */}
+      <section className="mt-8 bg-gradient-to-r from-pink-50 to-rose-50 rounded-2xl border border-pink-100 p-6">
+        <div className="flex items-start gap-4">
+          <div className="text-3xl">🌸</div>
+          <div>
+            <h3 className="font-bold text-slate-800">
+              Pas encore enceinte ? Calculez votre ovulation
+            </h3>
+            <p className="text-slate-600 text-sm mt-1">
+              Identifiez votre fenetre de fertilite, votre date d&apos;ovulation
+              et maximisez vos chances de concevoir.
+            </p>
+            <a
+              href="/calcul-ovulation"
+              className="inline-flex items-center gap-1 text-sm font-medium text-pink-600 hover:text-pink-700 mt-2"
+            >
+              Calcul ovulation
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
       <RelatedCalculators currentSlug="/calcul-date-accouchement" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

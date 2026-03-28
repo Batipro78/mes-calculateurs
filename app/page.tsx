@@ -196,6 +196,15 @@ const outils = [
     couleur: "from-violet-500 to-purple-600",
     tag: "Nouveau",
   },
+  {
+    titre: "Calcul Ovulation",
+    description:
+      "Calculez votre date d'ovulation et votre fenetre de fertilite. Calendrier fertile, prochaines regles, conseils conception.",
+    href: "/calcul-ovulation",
+    icone: "🌸",
+    couleur: "from-pink-500 to-rose-500",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {

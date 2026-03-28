@@ -37,6 +37,10 @@ const DCA_ACTIFS = ["sp500", "cac40", "bitcoin"];
 const MICRO_CA = [10000, 15000, 20000, 25000, 30000, 35000, 40000, 50000, 60000, 70000, 77700];
 const MICRO_ACTIVITES = ["services-bnc", "services-bic", "achat-revente", "liberal"];
 
+// Ovulation
+const OVU_CYCLES = [21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35];
+const OVU_SITUATIONS = ["conception", "regles-irregulieres", "apres-pilule", "allaitement"];
+
 // Chomage
 const CHOMAGE_SALAIRES = [1400, 1600, 1800, 2000, 2200, 2500, 2800, 3000, 3500, 4000, 4500, 5000, 6000];
 const CHOMAGE_MOIS = [6, 12, 18, 24];
@@ -184,6 +188,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/simulateur-micro-entreprise`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-ovulation`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -362,6 +372,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Pages dynamiques Ovulation
+  const ovulationPages: MetadataRoute.Sitemap = [];
+  for (const c of OVU_CYCLES) {
+    ovulationPages.push({
+      url: `${BASE_URL}/calcul-ovulation/cycle-${c}-jours`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    });
+  }
+  for (const s of OVU_SITUATIONS) {
+    ovulationPages.push({
+      url: `${BASE_URL}/calcul-ovulation/ovulation-et-${s}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    });
+  }
+
   return [
     ...staticPages,
     ...salairePages,
@@ -375,5 +404,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...caloriesPages,
     ...chomagePages,
     ...microPages,
+    ...ovulationPages,
   ];
 }
