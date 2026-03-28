@@ -187,6 +187,15 @@ const outils = [
     couleur: "from-sky-500 to-blue-600",
     tag: "Nouveau",
   },
+  {
+    titre: "Simulateur Micro-Entreprise",
+    description:
+      "Calculez vos charges URSSAF, impot et revenu net en auto-entrepreneur. ACRE, versement liberatoire, 5 activites.",
+    href: "/simulateur-micro-entreprise",
+    icone: "🏢",
+    couleur: "from-violet-500 to-purple-600",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {

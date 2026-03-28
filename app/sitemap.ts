@@ -33,6 +33,10 @@ const HT_TAUX = [12, 13, 15, 18, 20, 25, 30];
 const DCA_MONTANTS = [50, 100, 150, 200, 300, 500, 1000];
 const DCA_ACTIFS = ["sp500", "cac40", "bitcoin"];
 
+// Micro-Entreprise
+const MICRO_CA = [10000, 15000, 20000, 25000, 30000, 35000, 40000, 50000, 60000, 70000, 77700];
+const MICRO_ACTIVITES = ["services-bnc", "services-bic", "achat-revente", "liberal"];
+
 // Chomage
 const CHOMAGE_SALAIRES = [1400, 1600, 1800, 2000, 2200, 2500, 2800, 3000, 3500, 4000, 4500, 5000, 6000];
 const CHOMAGE_MOIS = [6, 12, 18, 24];
@@ -174,6 +178,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/simulateur-chomage`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/simulateur-micro-entreprise`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -324,6 +334,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Pages dynamiques Micro-Entreprise
+  const microPages: MetadataRoute.Sitemap = [];
+  for (const ca of MICRO_CA) {
+    for (const act of MICRO_ACTIVITES) {
+      microPages.push({
+        url: `${BASE_URL}/simulateur-micro-entreprise/${ca}-euros-${act}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.7,
+      });
+    }
+  }
+
   // Pages dynamiques Chomage
   const chomagePages: MetadataRoute.Sitemap = [];
   for (const s of CHOMAGE_SALAIRES) {
@@ -351,5 +374,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...dcaPages,
     ...caloriesPages,
     ...chomagePages,
+    ...microPages,
   ];
 }
