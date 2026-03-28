@@ -37,6 +37,10 @@ const DCA_ACTIFS = ["sp500", "cac40", "bitcoin"];
 const MICRO_CA = [10000, 15000, 20000, 25000, 30000, 35000, 40000, 50000, 60000, 70000, 77700];
 const MICRO_ACTIVITES = ["services-bnc", "services-bic", "achat-revente", "liberal"];
 
+// Taux Endettement
+const ENDETT_REVENUS = [1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 8000, 10000];
+const ENDETT_CHARGES = [300, 500, 700, 900, 1000, 1200, 1500, 2000];
+
 // Ovulation
 const OVU_CYCLES = [21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35];
 const OVU_SITUATIONS = ["conception", "regles-irregulieres", "apres-pilule", "allaitement"];
@@ -188,6 +192,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/simulateur-micro-entreprise`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-taux-endettement`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -372,6 +382,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Pages dynamiques Taux Endettement
+  const endettementPages: MetadataRoute.Sitemap = [];
+  for (const r of ENDETT_REVENUS) {
+    for (const c of ENDETT_CHARGES) {
+      if (c < r) {
+        endettementPages.push({
+          url: `${BASE_URL}/calcul-taux-endettement/${r}-euros-revenus-${c}-euros-charges`,
+          lastModified: new Date(),
+          changeFrequency: "monthly",
+          priority: 0.7,
+        });
+      }
+    }
+  }
+
   // Pages dynamiques Ovulation
   const ovulationPages: MetadataRoute.Sitemap = [];
   for (const c of OVU_CYCLES) {
@@ -405,5 +430,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...chomagePages,
     ...microPages,
     ...ovulationPages,
+    ...endettementPages,
   ];
 }

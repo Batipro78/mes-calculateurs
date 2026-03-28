@@ -197,6 +197,15 @@ const outils = [
     tag: "Nouveau",
   },
   {
+    titre: "Taux d'Endettement",
+    description:
+      "Calculez votre taux d'endettement, reste a vivre et capacite d'emprunt. Seuil 33%, regles HCSF, conseils.",
+    href: "/calcul-taux-endettement",
+    icone: "🏦",
+    couleur: "from-blue-500 to-indigo-500",
+    tag: "Nouveau",
+  },
+  {
     titre: "Calcul Ovulation",
     description:
       "Calculez votre date d'ovulation et votre fenetre de fertilite. Calendrier fertile, prochaines regles, conseils conception.",

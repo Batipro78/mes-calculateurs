@@ -22,12 +22,13 @@ const ALL_CALCULATORS = [
   { slug: "/simulateur-chomage", title: "Simulateur Chomage", emoji: "📋", color: "from-sky-500 to-blue-600" },
   { slug: "/simulateur-micro-entreprise", title: "Micro-Entreprise", emoji: "🏢", color: "from-violet-500 to-purple-600" },
   { slug: "/calcul-ovulation", title: "Calcul Ovulation", emoji: "🌸", color: "from-pink-500 to-rose-500" },
+  { slug: "/calcul-taux-endettement", title: "Taux d'Endettement", emoji: "🏦", color: "from-blue-500 to-indigo-500" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
   "/salaire-brut-net": ["/simulateur-impot-revenu", "/indemnite-licenciement", "/calcul-heures-travail", "/calcul-indemnites-kilometriques"],
   "/calcul-tva": ["/calcul-pourcentage", "/frais-de-notaire", "/convertisseur-devises", "/salaire-brut-net"],
-  "/simulateur-pret-immobilier": ["/frais-de-notaire", "/simulateur-epargne", "/simulateur-impot-revenu", "/calcul-surface-peinture"],
+  "/simulateur-pret-immobilier": ["/calcul-taux-endettement", "/frais-de-notaire", "/simulateur-epargne", "/simulateur-impot-revenu"],
   "/calcul-pourcentage": ["/calcul-tva", "/salaire-brut-net", "/simulateur-epargne", "/convertisseur-devises"],
   "/calcul-imc": ["/calcul-calories", "/calcul-age", "/calcul-date-accouchement", "/calcul-consommation-electrique"],
   "/frais-de-notaire": ["/simulateur-pret-immobilier", "/simulateur-impot-revenu", "/calcul-tva", "/simulateur-epargne"],
@@ -48,6 +49,7 @@ const RELATED_MAP: Record<string, string[]> = {
   "/simulateur-chomage": ["/salaire-brut-net", "/indemnite-licenciement", "/simulateur-impot-revenu", "/simulateur-micro-entreprise"],
   "/simulateur-micro-entreprise": ["/simulateur-impot-revenu", "/salaire-brut-net", "/calcul-tva", "/simulateur-chomage"],
   "/calcul-ovulation": ["/calcul-date-accouchement", "/calcul-imc", "/calcul-calories", "/calcul-age"],
+  "/calcul-taux-endettement": ["/simulateur-pret-immobilier", "/frais-de-notaire", "/simulateur-impot-revenu", "/salaire-brut-net"],
 };
 
 interface RelatedCalculatorsProps {
