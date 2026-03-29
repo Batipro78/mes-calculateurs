@@ -214,6 +214,15 @@ const outils = [
     couleur: "from-pink-500 to-rose-500",
     tag: "Nouveau",
   },
+  {
+    titre: "Suis-je Mobilisable ?",
+    description:
+      "Testez si vous seriez mobilise en cas de guerre en France. Age, sante, experience, profession : votre categorie de mobilisation.",
+    href: "/simulateur-mobilisation",
+    icone: "🪖",
+    couleur: "from-slate-700 to-slate-900",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {
