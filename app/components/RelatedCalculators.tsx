@@ -24,6 +24,7 @@ const ALL_CALCULATORS = [
   { slug: "/calcul-ovulation", title: "Calcul Ovulation", emoji: "🌸", color: "from-pink-500 to-rose-500" },
   { slug: "/calcul-taux-endettement", title: "Taux d'Endettement", emoji: "🏦", color: "from-blue-500 to-indigo-500" },
   { slug: "/simulateur-mobilisation", title: "Simulateur Mobilisation", emoji: "🪖", color: "from-slate-700 to-slate-900" },
+  { slug: "/simulateur-bombe-nucleaire", title: "Bombe Nucleaire", emoji: "☢️", color: "from-red-600 to-orange-600" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -51,7 +52,8 @@ const RELATED_MAP: Record<string, string[]> = {
   "/simulateur-micro-entreprise": ["/simulateur-impot-revenu", "/salaire-brut-net", "/calcul-tva", "/simulateur-chomage"],
   "/calcul-ovulation": ["/calcul-date-accouchement", "/calcul-imc", "/calcul-calories", "/calcul-age"],
   "/calcul-taux-endettement": ["/simulateur-pret-immobilier", "/frais-de-notaire", "/simulateur-impot-revenu", "/salaire-brut-net"],
-  "/simulateur-mobilisation": ["/calcul-age", "/salaire-brut-net", "/simulateur-chomage", "/simulateur-impot-revenu"],
+  "/simulateur-mobilisation": ["/simulateur-bombe-nucleaire", "/calcul-age", "/simulateur-chomage", "/simulateur-impot-revenu"],
+  "/simulateur-bombe-nucleaire": ["/simulateur-mobilisation", "/calcul-age", "/calcul-pourcentage", "/calcul-consommation-electrique"],
 };
 
 interface RelatedCalculatorsProps {

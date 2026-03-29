@@ -223,6 +223,15 @@ const outils = [
     couleur: "from-slate-700 to-slate-900",
     tag: "Nouveau",
   },
+  {
+    titre: "Simulateur Bombe Nucleaire",
+    description:
+      "Visualisez l'impact d'une bombe nucleaire sur une carte. Zones de souffle, radiation, brulures. De Hiroshima a la Tsar Bomba.",
+    href: "/simulateur-bombe-nucleaire",
+    icone: "☢️",
+    couleur: "from-red-600 to-orange-600",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {
