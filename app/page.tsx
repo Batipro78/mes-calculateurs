@@ -232,6 +232,15 @@ const outils = [
     couleur: "from-red-600 to-orange-600",
     tag: "Nouveau",
   },
+  {
+    titre: "Simulateur Budget Bunker",
+    description:
+      "Calculez le budget pour un bunker : taille, autonomie, provisions, equipements. De 1 a 20 personnes, 2 semaines a 2 ans.",
+    href: "/simulateur-bunker",
+    icone: "🛡️",
+    couleur: "from-amber-600 to-orange-700",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {
