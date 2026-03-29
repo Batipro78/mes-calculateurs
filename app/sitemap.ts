@@ -45,6 +45,11 @@ const ENDETT_CHARGES = [300, 500, 700, 900, 1000, 1200, 1500, 2000];
 const OVU_CYCLES = [21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35];
 const OVU_SITUATIONS = ["conception", "regles-irregulieres", "apres-pilule", "allaitement"];
 
+// Mobilisation
+const MOBIL_AGES = [18, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70];
+const MOBIL_SEXES = ["homme", "femme"];
+const MOBIL_PROFILS = ["reserviste", "ancien-militaire", "parent-isole", "profession-sante", "femme-enceinte", "etudiant", "double-nationalite"];
+
 // Chomage
 const CHOMAGE_SALAIRES = [1400, 1600, 1800, 2000, 2200, 2500, 2800, 3000, 3500, 4000, 4500, 5000, 6000];
 const CHOMAGE_MOIS = [6, 12, 18, 24];
@@ -422,6 +427,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
 
+  // Pages dynamiques Mobilisation
+  const mobilisationPages: MetadataRoute.Sitemap = [];
+  for (const sexe of MOBIL_SEXES) {
+    for (const age of MOBIL_AGES) {
+      mobilisationPages.push({
+        url: `${BASE_URL}/simulateur-mobilisation/${sexe}-${age}-ans`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.7,
+      });
+    }
+  }
+  for (const profil of MOBIL_PROFILS) {
+    mobilisationPages.push({
+      url: `${BASE_URL}/simulateur-mobilisation/${profil}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    });
+  }
+
   return [
     ...staticPages,
     ...salairePages,
@@ -437,5 +463,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...microPages,
     ...ovulationPages,
     ...endettementPages,
+    ...mobilisationPages,
   ];
 }
