@@ -45,6 +45,10 @@ const ENDETT_CHARGES = [300, 500, 700, 900, 1000, 1200, 1500, 2000];
 const OVU_CYCLES = [21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35];
 const OVU_SITUATIONS = ["conception", "regles-irregulieres", "apres-pilule", "allaitement"];
 
+// Bombe Nucleaire
+const NUKE_ARMES = ["hiroshima", "nagasaki", "tactique", "trident", "tn75", "sarmat", "b83", "tsar-bomba"];
+const NUKE_VILLES = ["paris", "lyon", "marseille", "toulouse", "nice", "lille", "strasbourg", "bordeaux", "nantes", "rennes"];
+
 // Mobilisation
 const MOBIL_AGES = [18, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70];
 const MOBIL_SEXES = ["homme", "femme"];
@@ -433,6 +437,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
 
+  // Pages dynamiques Bombe Nucleaire
+  const nukePages: MetadataRoute.Sitemap = [];
+  for (const arme of NUKE_ARMES) {
+    for (const ville of NUKE_VILLES) {
+      nukePages.push({
+        url: `${BASE_URL}/simulateur-bombe-nucleaire/${arme}-sur-${ville}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.7,
+      });
+    }
+  }
+
   // Pages dynamiques Mobilisation
   const mobilisationPages: MetadataRoute.Sitemap = [];
   for (const sexe of MOBIL_SEXES) {
@@ -470,5 +487,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...ovulationPages,
     ...endettementPages,
     ...mobilisationPages,
+    ...nukePages,
   ];
 }
