@@ -49,6 +49,10 @@ const OVU_SITUATIONS = ["conception", "regles-irregulieres", "apres-pilule", "al
 const NUKE_ARMES = ["hiroshima", "nagasaki", "tactique", "trident", "tn75", "sarmat", "b83", "tsar-bomba"];
 const NUKE_VILLES = ["paris", "lyon", "marseille", "toulouse", "nice", "lille", "strasbourg", "bordeaux", "nantes", "rennes"];
 
+// Retraite
+const RETRAITE_ANNEES = [1960, 1962, 1964, 1965, 1968, 1970, 1975, 1980, 1985, 1990];
+const RETRAITE_SALAIRES = [20000, 25000, 30000, 35000, 40000, 47100];
+
 // Mobilisation
 const MOBIL_AGES = [18, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70];
 const MOBIL_SEXES = ["homme", "femme"];
@@ -213,6 +217,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/calcul-ovulation`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/simulateur-retraite`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -450,6 +460,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Pages dynamiques Retraite
+  const retraitePages: MetadataRoute.Sitemap = [];
+  for (const a of RETRAITE_ANNEES) {
+    for (const s of RETRAITE_SALAIRES) {
+      retraitePages.push({
+        url: `${BASE_URL}/simulateur-retraite/ne-en-${a}-${s}-euros`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.7,
+      });
+    }
+  }
+
   // Pages dynamiques Mobilisation
   const mobilisationPages: MetadataRoute.Sitemap = [];
   for (const sexe of MOBIL_SEXES) {
@@ -486,6 +509,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...microPages,
     ...ovulationPages,
     ...endettementPages,
+    ...retraitePages,
     ...mobilisationPages,
     ...nukePages,
   ];

@@ -233,6 +233,15 @@ const outils = [
     tag: "Nouveau",
   },
   {
+    titre: "Simulateur Retraite",
+    description:
+      "Estimez votre pension de retraite : base + complementaire AGIRC-ARRCO. Reforme 2023, decote, surcote, age legal par generation.",
+    href: "/simulateur-retraite",
+    icone: "🏖️",
+    couleur: "from-teal-500 to-emerald-600",
+    tag: "Nouveau",
+  },
+  {
     titre: "Simulateur Budget Bunker",
     description:
       "Calculez le budget pour un bunker : taille, autonomie, provisions, equipements. De 1 a 20 personnes, 2 semaines a 2 ans.",
