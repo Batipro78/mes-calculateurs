@@ -233,6 +233,15 @@ const outils = [
     tag: "Nouveau",
   },
   {
+    titre: "Simulateur Pension Alimentaire",
+    description:
+      "Calculez la pension alimentaire avec le bareme officiel du Ministere de la Justice. Garde classique, alternee ou reduite. 1 a 6 enfants.",
+    href: "/simulateur-pension-alimentaire",
+    icone: "👨‍👧",
+    couleur: "from-indigo-500 to-purple-600",
+    tag: "Nouveau",
+  },
+  {
     titre: "Calcul Prime d'Activite",
     description:
       "Estimez votre prime d'activite CAF. Montant forfaitaire, bonification, forfait logement. Seul, en couple, avec enfants. Bareme 2026.",

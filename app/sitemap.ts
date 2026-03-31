@@ -49,6 +49,11 @@ const OVU_SITUATIONS = ["conception", "regles-irregulieres", "apres-pilule", "al
 const NUKE_ARMES = ["hiroshima", "nagasaki", "tactique", "trident", "tn75", "sarmat", "b83", "tsar-bomba"];
 const NUKE_VILLES = ["paris", "lyon", "marseille", "toulouse", "nice", "lille", "strasbourg", "bordeaux", "nantes", "rennes"];
 
+// Pension Alimentaire
+const PENSION_REVENUS = [1500, 2000, 2500, 3000, 3500, 4000, 5000];
+const PENSION_ENFANTS = [1, 2, 3, 4];
+const PENSION_GARDES = ["classique", "alternee", "reduit"];
+
 // Prime d'Activite
 const PRIME_REVENUS = [800, 1000, 1200, 1400, 1600, 1800, 2000];
 const PRIME_SITUATIONS = ["seul", "couple"];
@@ -222,6 +227,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/calcul-ovulation`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/simulateur-pension-alimentaire`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -471,6 +482,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Pages dynamiques Pension Alimentaire
+  const pensionPages: MetadataRoute.Sitemap = [];
+  for (const rev of PENSION_REVENUS) {
+    for (const enf of PENSION_ENFANTS) {
+      for (const g of PENSION_GARDES) {
+        pensionPages.push({
+          url: `${BASE_URL}/simulateur-pension-alimentaire/${rev}-euros-${enf}-enfant${enf > 1 ? "s" : ""}-${g}`,
+          lastModified: new Date(),
+          changeFrequency: "monthly",
+          priority: 0.7,
+        });
+      }
+    }
+  }
+
   // Pages dynamiques Prime d'Activite
   const primeActivitePages: MetadataRoute.Sitemap = [];
   for (const sit of PRIME_SITUATIONS) {
@@ -538,6 +564,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...microPages,
     ...ovulationPages,
     ...endettementPages,
+    ...pensionPages,
     ...primeActivitePages,
     ...retraitePages,
     ...mobilisationPages,
