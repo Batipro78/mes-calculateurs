@@ -81,6 +81,11 @@ const MOBIL_AGES = [18, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70];
 const MOBIL_SEXES = ["homme", "femme"];
 const MOBIL_PROFILS = ["reserviste", "ancien-militaire", "parent-isole", "profession-sante", "femme-enceinte", "etudiant", "double-nationalite"];
 
+// Autonomie Financiere
+const AUTO_EPARGNES = [2000, 5000, 10000, 15000, 20000, 30000, 50000];
+const AUTO_ZONES = ["paris", "grande-ville", "ville-moyenne", "rural"];
+const AUTO_SITUATIONS = ["seul", "couple", "famille"];
+
 // Budget Survie
 const BUDGET_ZONES = ["paris", "grande-ville", "ville-moyenne", "rural"];
 const BUDGET_SITUATIONS = ["seul", "couple", "famille"];
@@ -299,6 +304,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/simulateur-bombe-nucleaire`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calculateur-autonomie`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -644,6 +655,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
 
+  // Pages dynamiques Autonomie Financiere
+  const autonomiePages: MetadataRoute.Sitemap = [];
+  for (const e of AUTO_EPARGNES) {
+    for (const z of AUTO_ZONES) {
+      for (const s of AUTO_SITUATIONS) {
+        autonomiePages.push({
+          url: `${BASE_URL}/calculateur-autonomie/${e}-euros-${z}-${s}`,
+          lastModified: new Date(),
+          changeFrequency: "monthly",
+          priority: 0.7,
+        });
+      }
+    }
+  }
+
   // Pages dynamiques Budget Survie
   const budgetSurviePages: MetadataRoute.Sitemap = [];
   for (const z of BUDGET_ZONES) {
@@ -707,5 +733,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...nukePages,
     ...alternantPages,
     ...budgetSurviePages,
+    ...autonomiePages,
   ];
 }

@@ -313,6 +313,15 @@ const outils = [
     couleur: "from-red-500 to-orange-500",
     tag: "Nouveau",
   },
+  {
+    titre: "Calculateur Autonomie Financiere",
+    description:
+      "Combien de temps pouvez-vous vivre avec votre epargne ? Duree d'autonomie par zone, situation et revenus complementaires (RSA, ARE).",
+    href: "/calculateur-autonomie",
+    icone: "⏳",
+    couleur: "from-amber-500 to-red-500",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {
