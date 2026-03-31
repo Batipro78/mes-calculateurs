@@ -81,6 +81,12 @@ const MOBIL_AGES = [18, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70];
 const MOBIL_SEXES = ["homme", "femme"];
 const MOBIL_PROFILS = ["reserviste", "ancien-militaire", "parent-isole", "profession-sante", "femme-enceinte", "etudiant", "double-nationalite"];
 
+// Salaire Alternant
+const ALT_AGES_APP = [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26];
+const ALT_ANNEES = [1, 2, 3];
+const ALT_AGES_PRO = [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26];
+const ALT_NIVEAUX = ["niveau-infra-bac", "niveau-bac"];
+
 // Chomage
 const CHOMAGE_SALAIRES = [1400, 1600, 1800, 2000, 2200, 2500, 2800, 3000, 3500, 4000, 4500, 5000, 6000];
 const CHOMAGE_MOIS = [6, 12, 18, 24];
@@ -288,6 +294,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/simulateur-bombe-nucleaire`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/simulateur-salaire-alternant`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -621,6 +633,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
 
+  // Pages dynamiques Salaire Alternant
+  const alternantPages: MetadataRoute.Sitemap = [];
+  for (const age of ALT_AGES_APP) {
+    for (const annee of ALT_ANNEES) {
+      alternantPages.push({
+        url: `${BASE_URL}/simulateur-salaire-alternant/apprentissage-${age}-ans-${annee}e-annee`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.7,
+      });
+    }
+  }
+  for (const age of ALT_AGES_PRO) {
+    for (const niveau of ALT_NIVEAUX) {
+      alternantPages.push({
+        url: `${BASE_URL}/simulateur-salaire-alternant/professionnalisation-${age}-ans-${niveau}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.7,
+      });
+    }
+  }
+
   return [
     ...staticPages,
     ...salairePages,
@@ -644,5 +679,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...retraitePages,
     ...mobilisationPages,
     ...nukePages,
+    ...alternantPages,
   ];
 }

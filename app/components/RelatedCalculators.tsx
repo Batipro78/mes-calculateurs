@@ -32,6 +32,7 @@ const ALL_CALCULATORS = [
   { slug: "/simulateur-bonus-ecologique", title: "Bonus Ecologique Auto", emoji: "🚗", color: "from-green-500 to-emerald-600" },
   { slug: "/calcul-prime-activite", title: "Prime d'Activite", emoji: "💰", color: "from-emerald-500 to-teal-600" },
   { slug: "/simulateur-retraite", title: "Simulateur Retraite", emoji: "🏖️", color: "from-teal-500 to-emerald-600" },
+  { slug: "/simulateur-salaire-alternant", title: "Salaire Alternant", emoji: "🎓", color: "from-indigo-500 to-purple-500" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -68,6 +69,7 @@ const RELATED_MAP: Record<string, string[]> = {
   "/simulateur-bonus-ecologique": ["/simulateur-credit-conso", "/simulateur-impot-revenu", "/calcul-prime-activite", "/simulateur-epargne"],
   "/calcul-prime-activite": ["/simulateur-chomage", "/simulateur-apl", "/salaire-brut-net", "/simulateur-impot-revenu"],
   "/simulateur-retraite": ["/salaire-brut-net", "/simulateur-impot-revenu", "/simulateur-chomage", "/simulateur-epargne"],
+  "/simulateur-salaire-alternant": ["/salaire-brut-net", "/simulateur-chomage", "/simulateur-micro-entreprise", "/calcul-prime-activite"],
 };
 
 interface RelatedCalculatorsProps {

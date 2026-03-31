@@ -295,6 +295,15 @@ const outils = [
     couleur: "from-amber-600 to-orange-700",
     tag: "Nouveau",
   },
+  {
+    titre: "Simulateur Salaire Alternant",
+    description:
+      "Calculez votre salaire en apprentissage ou professionnalisation. Grilles officielles 2026, brut/net, selon age et annee de contrat.",
+    href: "/simulateur-salaire-alternant",
+    icone: "🎓",
+    couleur: "from-indigo-500 to-purple-500",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {
