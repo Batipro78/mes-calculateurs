@@ -54,6 +54,11 @@ const PENSION_REVENUS = [1500, 2000, 2500, 3000, 3500, 4000, 5000];
 const PENSION_ENFANTS = [1, 2, 3, 4];
 const PENSION_GARDES = ["classique", "alternee", "reduit"];
 
+// Garde Enfant
+const GARDE_REVENUS = [20000, 30000, 40000, 50000, 60000, 80000];
+const GARDE_ENFANTS = [1, 2, 3];
+const GARDE_MODES = ["creche", "assistante-maternelle", "garde-domicile", "micro-creche"];
+
 // Credit Conso
 const CREDIT_MONTANTS = [3000, 5000, 10000, 15000, 20000, 30000, 50000];
 const CREDIT_DUREES = [24, 36, 48, 60, 72];
@@ -241,6 +246,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/simulateur-pension-alimentaire`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-cout-garde-enfant`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -517,6 +528,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Pages dynamiques Garde Enfant
+  const gardePages: MetadataRoute.Sitemap = [];
+  for (const r of GARDE_REVENUS) {
+    for (const e of GARDE_ENFANTS) {
+      for (const m of GARDE_MODES) {
+        gardePages.push({
+          url: `${BASE_URL}/calcul-cout-garde-enfant/${r}-euros-${e}-enfant${e > 1 ? "s" : ""}-${m}`,
+          lastModified: new Date(),
+          changeFrequency: "monthly",
+          priority: 0.7,
+        });
+      }
+    }
+  }
+
   // Pages dynamiques Credit Conso
   const creditPages: MetadataRoute.Sitemap = [];
   for (const m of CREDIT_MONTANTS) {
@@ -611,6 +637,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...ovulationPages,
     ...endettementPages,
     ...pensionPages,
+    ...gardePages,
     ...creditPages,
     ...bonusPages,
     ...primeActivitePages,

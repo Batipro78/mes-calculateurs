@@ -251,6 +251,15 @@ const outils = [
     tag: "Nouveau",
   },
   {
+    titre: "Calcul Cout Garde Enfant",
+    description:
+      "Comparez le cout reel : creche, assistante maternelle, garde a domicile, micro-creche. Aides CAF (CMG), credit d'impot 50%. Bareme 2026.",
+    href: "/calcul-cout-garde-enfant",
+    icone: "👶",
+    couleur: "from-pink-500 to-rose-600",
+    tag: "Nouveau",
+  },
+  {
     titre: "Simulateur Credit Conso",
     description:
       "Calculez votre credit conso : mensualites, cout total, tableau d'amortissement. Taux 2026 actualises. Auto, travaux, voyage.",
