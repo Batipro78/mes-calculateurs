@@ -233,6 +233,15 @@ const outils = [
     tag: "Nouveau",
   },
   {
+    titre: "Calcul Prime d'Activite",
+    description:
+      "Estimez votre prime d'activite CAF. Montant forfaitaire, bonification, forfait logement. Seul, en couple, avec enfants. Bareme 2026.",
+    href: "/calcul-prime-activite",
+    icone: "💰",
+    couleur: "from-emerald-500 to-teal-600",
+    tag: "Nouveau",
+  },
+  {
     titre: "Simulateur Retraite",
     description:
       "Estimez votre pension de retraite : base + complementaire AGIRC-ARRCO. Reforme 2023, decote, surcote, age legal par generation.",

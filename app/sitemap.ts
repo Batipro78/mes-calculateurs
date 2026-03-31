@@ -49,6 +49,11 @@ const OVU_SITUATIONS = ["conception", "regles-irregulieres", "apres-pilule", "al
 const NUKE_ARMES = ["hiroshima", "nagasaki", "tactique", "trident", "tn75", "sarmat", "b83", "tsar-bomba"];
 const NUKE_VILLES = ["paris", "lyon", "marseille", "toulouse", "nice", "lille", "strasbourg", "bordeaux", "nantes", "rennes"];
 
+// Prime d'Activite
+const PRIME_REVENUS = [800, 1000, 1200, 1400, 1600, 1800, 2000];
+const PRIME_SITUATIONS = ["seul", "couple"];
+const PRIME_ENFANTS = [0, 1, 2, 3];
+
 // Retraite
 const RETRAITE_ANNEES = [1960, 1962, 1964, 1965, 1968, 1970, 1975, 1980, 1985, 1990];
 const RETRAITE_SALAIRES = [20000, 25000, 30000, 35000, 40000, 47100];
@@ -217,6 +222,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/calcul-ovulation`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-prime-activite`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -460,6 +471,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Pages dynamiques Prime d'Activite
+  const primeActivitePages: MetadataRoute.Sitemap = [];
+  for (const sit of PRIME_SITUATIONS) {
+    for (const enf of PRIME_ENFANTS) {
+      for (const rev of PRIME_REVENUS) {
+        const slug = enf === 0
+          ? `${sit}-${rev}-euros`
+          : `${sit}-${enf}-enfant${enf > 1 ? "s" : ""}-${rev}-euros`;
+        primeActivitePages.push({
+          url: `${BASE_URL}/calcul-prime-activite/${slug}`,
+          lastModified: new Date(),
+          changeFrequency: "monthly",
+          priority: 0.7,
+        });
+      }
+    }
+  }
+
   // Pages dynamiques Retraite
   const retraitePages: MetadataRoute.Sitemap = [];
   for (const a of RETRAITE_ANNEES) {
@@ -509,6 +538,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...microPages,
     ...ovulationPages,
     ...endettementPages,
+    ...primeActivitePages,
     ...retraitePages,
     ...mobilisationPages,
     ...nukePages,
