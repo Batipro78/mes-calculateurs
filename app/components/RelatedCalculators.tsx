@@ -36,6 +36,7 @@ const ALL_CALCULATORS = [
   { slug: "/calculateur-budget-survie", title: "Budget Survie", emoji: "🧮", color: "from-red-500 to-orange-500" },
   { slug: "/calculateur-autonomie", title: "Autonomie Financiere", emoji: "⏳", color: "from-amber-500 to-red-500" },
   { slug: "/simulateur-blackout", title: "Simulateur Blackout", emoji: "🔦", color: "from-slate-700 to-slate-900" },
+  { slug: "/calcul-capacite-emprunt", title: "Capacite d'Emprunt", emoji: "🏠", color: "from-blue-600 to-indigo-600" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -76,6 +77,7 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calculateur-budget-survie": ["/calculateur-autonomie", "/simulateur-apl", "/calcul-prime-activite", "/salaire-brut-net"],
   "/calculateur-autonomie": ["/calculateur-budget-survie", "/simulateur-epargne", "/simulateur-chomage", "/calcul-prime-activite"],
   "/simulateur-blackout": ["/calcul-consommation-electrique", "/simulateur-bunker", "/calculateur-budget-survie", "/calculateur-autonomie"],
+  "/calcul-capacite-emprunt": ["/simulateur-pret-immobilier", "/calcul-taux-endettement", "/frais-de-notaire", "/simulateur-epargne"],
 };
 
 interface RelatedCalculatorsProps {

@@ -97,6 +97,10 @@ const ALT_ANNEES = [1, 2, 3];
 const ALT_AGES_PRO = [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26];
 const ALT_NIVEAUX = ["niveau-infra-bac", "niveau-bac"];
 
+// Capacite Emprunt
+const EMPRUNT_REVENUS = [1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 8000, 10000];
+const EMPRUNT_DUREES = [15, 20, 25];
+
 // Blackout
 const BLACKOUT_LOGEMENTS = ["appartement", "maison"];
 const BLACKOUT_CHAUFFAGES = ["tout-electrique", "gaz", "bois", "mixte"];
@@ -327,6 +331,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/simulateur-salaire-alternant`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-capacite-emprunt`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -719,6 +729,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Pages dynamiques Capacite Emprunt
+  const empruntPages: MetadataRoute.Sitemap = [];
+  for (const r of EMPRUNT_REVENUS) {
+    for (const d of EMPRUNT_DUREES) {
+      empruntPages.push({
+        url: `${BASE_URL}/calcul-capacite-emprunt/${r}-euros-${d}-ans`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.7,
+      });
+    }
+  }
+
   // Pages dynamiques Blackout
   const blackoutPages: MetadataRoute.Sitemap = [];
   for (const l of BLACKOUT_LOGEMENTS) {
@@ -761,5 +784,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...budgetSurviePages,
     ...autonomiePages,
     ...blackoutPages,
+    ...empruntPages,
   ];
 }

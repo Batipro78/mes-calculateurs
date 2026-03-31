@@ -331,6 +331,15 @@ const outils = [
     couleur: "from-slate-700 to-slate-900",
     tag: "Nouveau",
   },
+  {
+    titre: "Capacite d'Emprunt",
+    description:
+      "Combien pouvez-vous emprunter ? Simulateur selon vos revenus, charges et la duree souhaitee. Regles HCSF 2026.",
+    href: "/calcul-capacite-emprunt",
+    icone: "🏠",
+    couleur: "from-blue-600 to-indigo-600",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {
