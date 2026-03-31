@@ -54,6 +54,10 @@ const PENSION_REVENUS = [1500, 2000, 2500, 3000, 3500, 4000, 5000];
 const PENSION_ENFANTS = [1, 2, 3, 4];
 const PENSION_GARDES = ["classique", "alternee", "reduit"];
 
+// Credit Conso
+const CREDIT_MONTANTS = [3000, 5000, 10000, 15000, 20000, 30000, 50000];
+const CREDIT_DUREES = [24, 36, 48, 60, 72];
+
 // Bonus Ecologique
 const BONUS_VEHICULES = ["renault-5", "peugeot-e208", "citroen-ec3", "dacia-spring", "tesla-model-3", "mg4", "renault-megane", "fiat-500e"];
 const BONUS_RFR = ["revenu-modeste", "revenu-intermediaire", "revenu-standard"];
@@ -237,6 +241,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/simulateur-pension-alimentaire`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/simulateur-credit-conso`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -507,6 +517,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Pages dynamiques Credit Conso
+  const creditPages: MetadataRoute.Sitemap = [];
+  for (const m of CREDIT_MONTANTS) {
+    for (const d of CREDIT_DUREES) {
+      creditPages.push({
+        url: `${BASE_URL}/simulateur-credit-conso/${m}-euros-${d}-mois`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.7,
+      });
+    }
+  }
+
   // Pages dynamiques Bonus Ecologique
   const bonusPages: MetadataRoute.Sitemap = [];
   for (const v of BONUS_VEHICULES) {
@@ -588,6 +611,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...ovulationPages,
     ...endettementPages,
     ...pensionPages,
+    ...creditPages,
     ...bonusPages,
     ...primeActivitePages,
     ...retraitePages,

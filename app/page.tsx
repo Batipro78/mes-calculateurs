@@ -251,6 +251,15 @@ const outils = [
     tag: "Nouveau",
   },
   {
+    titre: "Simulateur Credit Conso",
+    description:
+      "Calculez votre credit conso : mensualites, cout total, tableau d'amortissement. Taux 2026 actualises. Auto, travaux, voyage.",
+    href: "/simulateur-credit-conso",
+    icone: "💳",
+    couleur: "from-blue-500 to-indigo-600",
+    tag: "Nouveau",
+  },
+  {
     titre: "Calcul Prime d'Activite",
     description:
       "Estimez votre prime d'activite CAF. Montant forfaitaire, bonification, forfait logement. Seul, en couple, avec enfants. Bareme 2026.",
