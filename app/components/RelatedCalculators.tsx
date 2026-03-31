@@ -35,6 +35,7 @@ const ALL_CALCULATORS = [
   { slug: "/simulateur-salaire-alternant", title: "Salaire Alternant", emoji: "🎓", color: "from-indigo-500 to-purple-500" },
   { slug: "/calculateur-budget-survie", title: "Budget Survie", emoji: "🧮", color: "from-red-500 to-orange-500" },
   { slug: "/calculateur-autonomie", title: "Autonomie Financiere", emoji: "⏳", color: "from-amber-500 to-red-500" },
+  { slug: "/simulateur-blackout", title: "Simulateur Blackout", emoji: "🔦", color: "from-slate-700 to-slate-900" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -74,6 +75,7 @@ const RELATED_MAP: Record<string, string[]> = {
   "/simulateur-salaire-alternant": ["/salaire-brut-net", "/simulateur-chomage", "/simulateur-micro-entreprise", "/calcul-prime-activite"],
   "/calculateur-budget-survie": ["/calculateur-autonomie", "/simulateur-apl", "/calcul-prime-activite", "/salaire-brut-net"],
   "/calculateur-autonomie": ["/calculateur-budget-survie", "/simulateur-epargne", "/simulateur-chomage", "/calcul-prime-activite"],
+  "/simulateur-blackout": ["/calcul-consommation-electrique", "/simulateur-bunker", "/calculateur-budget-survie", "/calculateur-autonomie"],
 };
 
 interface RelatedCalculatorsProps {

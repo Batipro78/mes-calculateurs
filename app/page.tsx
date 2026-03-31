@@ -322,6 +322,15 @@ const outils = [
     couleur: "from-amber-500 to-red-500",
     tag: "Nouveau",
   },
+  {
+    titre: "Simulateur Blackout",
+    description:
+      "Etes-vous pret pour une coupure d'electricite ? Score d'autonomie, vulnerabilites et budget d'equipement par niveau.",
+    href: "/simulateur-blackout",
+    icone: "🔦",
+    couleur: "from-slate-700 to-slate-900",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {

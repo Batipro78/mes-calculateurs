@@ -97,6 +97,11 @@ const ALT_ANNEES = [1, 2, 3];
 const ALT_AGES_PRO = [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26];
 const ALT_NIVEAUX = ["niveau-infra-bac", "niveau-bac"];
 
+// Blackout
+const BLACKOUT_LOGEMENTS = ["appartement", "maison"];
+const BLACKOUT_CHAUFFAGES = ["tout-electrique", "gaz", "bois", "mixte"];
+const BLACKOUT_PERSONNES = [1, 2, 3, 4, 5];
+
 // Chomage
 const CHOMAGE_SALAIRES = [1400, 1600, 1800, 2000, 2200, 2500, 2800, 3000, 3500, 4000, 4500, 5000, 6000];
 const CHOMAGE_MOIS = [6, 12, 18, 24];
@@ -322,6 +327,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/simulateur-salaire-alternant`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/simulateur-blackout`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -708,6 +719,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Pages dynamiques Blackout
+  const blackoutPages: MetadataRoute.Sitemap = [];
+  for (const l of BLACKOUT_LOGEMENTS) {
+    for (const c of BLACKOUT_CHAUFFAGES) {
+      for (const n of BLACKOUT_PERSONNES) {
+        blackoutPages.push({
+          url: `${BASE_URL}/simulateur-blackout/${l}-${c}-${n}-personnes`,
+          lastModified: new Date(),
+          changeFrequency: "monthly",
+          priority: 0.7,
+        });
+      }
+    }
+  }
+
   return [
     ...staticPages,
     ...salairePages,
@@ -734,5 +760,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...alternantPages,
     ...budgetSurviePages,
     ...autonomiePages,
+    ...blackoutPages,
   ];
 }
