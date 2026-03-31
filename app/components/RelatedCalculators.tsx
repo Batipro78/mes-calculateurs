@@ -27,6 +27,7 @@ const ALL_CALCULATORS = [
   { slug: "/simulateur-bombe-nucleaire", title: "Bombe Nucleaire", emoji: "☢️", color: "from-red-600 to-orange-600" },
   { slug: "/simulateur-bunker", title: "Budget Bunker", emoji: "🛡️", color: "from-amber-600 to-orange-700" },
   { slug: "/simulateur-pension-alimentaire", title: "Pension Alimentaire", emoji: "👨‍👧", color: "from-indigo-500 to-purple-600" },
+  { slug: "/simulateur-bonus-ecologique", title: "Bonus Ecologique Auto", emoji: "🚗", color: "from-green-500 to-emerald-600" },
   { slug: "/calcul-prime-activite", title: "Prime d'Activite", emoji: "💰", color: "from-emerald-500 to-teal-600" },
   { slug: "/simulateur-retraite", title: "Simulateur Retraite", emoji: "🏖️", color: "from-teal-500 to-emerald-600" },
 ];
@@ -60,6 +61,7 @@ const RELATED_MAP: Record<string, string[]> = {
   "/simulateur-bombe-nucleaire": ["/simulateur-mobilisation", "/simulateur-bunker", "/calcul-age", "/calcul-consommation-electrique"],
   "/simulateur-bunker": ["/simulateur-bombe-nucleaire", "/simulateur-mobilisation", "/calcul-surface-peinture", "/simulateur-epargne"],
   "/simulateur-pension-alimentaire": ["/simulateur-impot-revenu", "/salaire-brut-net", "/calcul-prime-activite", "/simulateur-chomage"],
+  "/simulateur-bonus-ecologique": ["/simulateur-impot-revenu", "/calcul-prime-activite", "/simulateur-epargne", "/simulateur-pret-immobilier"],
   "/calcul-prime-activite": ["/simulateur-chomage", "/simulateur-apl", "/salaire-brut-net", "/simulateur-impot-revenu"],
   "/simulateur-retraite": ["/salaire-brut-net", "/simulateur-impot-revenu", "/simulateur-chomage", "/simulateur-epargne"],
 };

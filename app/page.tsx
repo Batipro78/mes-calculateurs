@@ -242,6 +242,15 @@ const outils = [
     tag: "Nouveau",
   },
   {
+    titre: "Simulateur Bonus Ecologique Auto",
+    description:
+      "Calculez votre bonus ecologique 2026 pour l'achat d'une voiture electrique. Bareme officiel selon vos revenus. Surbonus batterie europeenne. Jusqu'a 7 700 €.",
+    href: "/simulateur-bonus-ecologique",
+    icone: "🚗",
+    couleur: "from-green-500 to-emerald-600",
+    tag: "Nouveau",
+  },
+  {
     titre: "Calcul Prime d'Activite",
     description:
       "Estimez votre prime d'activite CAF. Montant forfaitaire, bonification, forfait logement. Seul, en couple, avec enfants. Bareme 2026.",

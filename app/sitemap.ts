@@ -54,6 +54,10 @@ const PENSION_REVENUS = [1500, 2000, 2500, 3000, 3500, 4000, 5000];
 const PENSION_ENFANTS = [1, 2, 3, 4];
 const PENSION_GARDES = ["classique", "alternee", "reduit"];
 
+// Bonus Ecologique
+const BONUS_VEHICULES = ["renault-5", "peugeot-e208", "citroen-ec3", "dacia-spring", "tesla-model-3", "mg4", "renault-megane", "fiat-500e"];
+const BONUS_RFR = ["revenu-modeste", "revenu-intermediaire", "revenu-standard"];
+
 // Prime d'Activite
 const PRIME_REVENUS = [800, 1000, 1200, 1400, 1600, 1800, 2000];
 const PRIME_SITUATIONS = ["seul", "couple"];
@@ -233,6 +237,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/simulateur-pension-alimentaire`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/simulateur-bonus-ecologique`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -497,6 +507,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Pages dynamiques Bonus Ecologique
+  const bonusPages: MetadataRoute.Sitemap = [];
+  for (const v of BONUS_VEHICULES) {
+    for (const r of BONUS_RFR) {
+      bonusPages.push({
+        url: `${BASE_URL}/simulateur-bonus-ecologique/${v}-${r}`,
+        lastModified: new Date(),
+        changeFrequency: "monthly",
+        priority: 0.7,
+      });
+    }
+  }
+
   // Pages dynamiques Prime d'Activite
   const primeActivitePages: MetadataRoute.Sitemap = [];
   for (const sit of PRIME_SITUATIONS) {
@@ -565,6 +588,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...ovulationPages,
     ...endettementPages,
     ...pensionPages,
+    ...bonusPages,
     ...primeActivitePages,
     ...retraitePages,
     ...mobilisationPages,
