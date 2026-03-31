@@ -33,6 +33,7 @@ const ALL_CALCULATORS = [
   { slug: "/calcul-prime-activite", title: "Prime d'Activite", emoji: "💰", color: "from-emerald-500 to-teal-600" },
   { slug: "/simulateur-retraite", title: "Simulateur Retraite", emoji: "🏖️", color: "from-teal-500 to-emerald-600" },
   { slug: "/simulateur-salaire-alternant", title: "Salaire Alternant", emoji: "🎓", color: "from-indigo-500 to-purple-500" },
+  { slug: "/calculateur-budget-survie", title: "Budget Survie", emoji: "🧮", color: "from-red-500 to-orange-500" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -70,6 +71,7 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calcul-prime-activite": ["/simulateur-chomage", "/simulateur-apl", "/salaire-brut-net", "/simulateur-impot-revenu"],
   "/simulateur-retraite": ["/salaire-brut-net", "/simulateur-impot-revenu", "/simulateur-chomage", "/simulateur-epargne"],
   "/simulateur-salaire-alternant": ["/salaire-brut-net", "/simulateur-chomage", "/simulateur-micro-entreprise", "/calcul-prime-activite"],
+  "/calculateur-budget-survie": ["/simulateur-apl", "/calcul-prime-activite", "/salaire-brut-net", "/simulateur-chomage"],
 };
 
 interface RelatedCalculatorsProps {

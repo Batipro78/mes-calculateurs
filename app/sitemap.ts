@@ -81,6 +81,11 @@ const MOBIL_AGES = [18, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70];
 const MOBIL_SEXES = ["homme", "femme"];
 const MOBIL_PROFILS = ["reserviste", "ancien-militaire", "parent-isole", "profession-sante", "femme-enceinte", "etudiant", "double-nationalite"];
 
+// Budget Survie
+const BUDGET_ZONES = ["paris", "grande-ville", "ville-moyenne", "rural"];
+const BUDGET_SITUATIONS = ["seul", "couple", "famille"];
+const BUDGET_TRANSPORTS = ["transport-commun", "voiture"];
+
 // Salaire Alternant
 const ALT_AGES_APP = [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26];
 const ALT_ANNEES = [1, 2, 3];
@@ -294,6 +299,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/simulateur-bombe-nucleaire`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calculateur-budget-survie`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -633,6 +644,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
 
+  // Pages dynamiques Budget Survie
+  const budgetSurviePages: MetadataRoute.Sitemap = [];
+  for (const z of BUDGET_ZONES) {
+    for (const s of BUDGET_SITUATIONS) {
+      for (const t of BUDGET_TRANSPORTS) {
+        budgetSurviePages.push({
+          url: `${BASE_URL}/calculateur-budget-survie/${z}-${s}-${t}`,
+          lastModified: new Date(),
+          changeFrequency: "monthly",
+          priority: 0.7,
+        });
+      }
+    }
+  }
+
   // Pages dynamiques Salaire Alternant
   const alternantPages: MetadataRoute.Sitemap = [];
   for (const age of ALT_AGES_APP) {
@@ -680,5 +706,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...mobilisationPages,
     ...nukePages,
     ...alternantPages,
+    ...budgetSurviePages,
   ];
 }

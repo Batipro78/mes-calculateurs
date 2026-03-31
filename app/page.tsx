@@ -304,6 +304,15 @@ const outils = [
     couleur: "from-indigo-500 to-purple-500",
     tag: "Nouveau",
   },
+  {
+    titre: "Calculateur Budget Survie",
+    description:
+      "Estimez le budget minimum pour vivre en France. Par zone (Paris, grande ville, province, rural), situation et transport. Comparaison RSA, SMIC.",
+    href: "/calculateur-budget-survie",
+    icone: "🧮",
+    couleur: "from-red-500 to-orange-500",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {
