@@ -106,6 +106,31 @@ const BLACKOUT_LOGEMENTS = ["appartement", "maison"];
 const BLACKOUT_CHAUFFAGES = ["tout-electrique", "gaz", "bois", "mixte"];
 const BLACKOUT_PERSONNES = [1, 2, 3, 4, 5];
 
+// --- EN Pages ---
+// Nuclear Bomb EN
+const EN_NUKE_WEAPONS = ["hiroshima", "nagasaki", "tactical", "trident", "b61", "sarmat", "b83", "tsar-bomba"];
+const EN_NUKE_CITIES = ["new-york", "los-angeles", "chicago", "houston", "washington-dc", "miami", "san-francisco", "seattle", "dallas", "denver"];
+
+// Blackout EN
+const EN_BLACKOUT_HOUSINGS = ["apartment", "house", "mobile-home"];
+const EN_BLACKOUT_HEATINGS = ["all-electric", "natural-gas", "wood", "hybrid"];
+const EN_BLACKOUT_PEOPLE = [1, 2, 3, 4, 5];
+
+// Bunker EN
+const EN_BUNKER_TYPES = ["basic", "standard", "nbc", "luxury"];
+const EN_BUNKER_PEOPLE = [2, 4, 6, 8, 12];
+const EN_BUNKER_DURATIONS = ["2-weeks", "1-month", "3-months", "6-months", "1-year", "2-years"];
+
+// Survival Budget EN
+const EN_SURVIVAL_ZONES = ["major-metro", "large-city", "mid-city", "rural"];
+const EN_SURVIVAL_SITUATIONS = ["single", "couple", "family"];
+const EN_SURVIVAL_TRANSPORTS = ["public-transit", "car"];
+
+// Draft EN
+const EN_DRAFT_GENDERS = ["male", "female"];
+const EN_DRAFT_AGES = [18, 20, 22, 25, 30, 35, 40, 45, 50, 55, 60, 65];
+const EN_DRAFT_PROFILES = ["veteran", "national-guard", "single-parent", "healthcare-worker", "college-student", "dual-citizen", "conscientious-objector"];
+
 // Chomage
 const CHOMAGE_SALAIRES = [1400, 1600, 1800, 2000, 2200, 2500, 2800, 3000, 3500, 4000, 4500, 5000, 6000];
 const CHOMAGE_MOIS = [6, 12, 18, 24];
@@ -757,6 +782,65 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // --- EN Static Pages ---
+  const enStaticPages: MetadataRoute.Sitemap = [
+    { url: `${BASE_URL}/en`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/en/nuclear-bomb-simulator`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/en/blackout-simulator`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/en/bunker-cost-calculator`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/en/survival-budget-calculator`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/en/draft-simulator`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+  ];
+
+  // EN Nuclear Bomb dynamic pages
+  const enNukePages: MetadataRoute.Sitemap = [];
+  for (const w of EN_NUKE_WEAPONS) {
+    for (const c of EN_NUKE_CITIES) {
+      enNukePages.push({ url: `${BASE_URL}/en/nuclear-bomb-simulator/${w}-on-${c}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // EN Blackout dynamic pages
+  const enBlackoutPages: MetadataRoute.Sitemap = [];
+  for (const h of EN_BLACKOUT_HOUSINGS) {
+    for (const ht of EN_BLACKOUT_HEATINGS) {
+      for (const p of EN_BLACKOUT_PEOPLE) {
+        enBlackoutPages.push({ url: `${BASE_URL}/en/blackout-simulator/${h}-${ht}-${p}-people`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      }
+    }
+  }
+
+  // EN Bunker dynamic pages
+  const enBunkerPages: MetadataRoute.Sitemap = [];
+  for (const t of EN_BUNKER_TYPES) {
+    for (const p of EN_BUNKER_PEOPLE) {
+      for (const d of EN_BUNKER_DURATIONS) {
+        enBunkerPages.push({ url: `${BASE_URL}/en/bunker-cost-calculator/${t}-${p}-people-${d}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      }
+    }
+  }
+
+  // EN Survival Budget dynamic pages
+  const enSurvivalPages: MetadataRoute.Sitemap = [];
+  for (const z of EN_SURVIVAL_ZONES) {
+    for (const s of EN_SURVIVAL_SITUATIONS) {
+      for (const t of EN_SURVIVAL_TRANSPORTS) {
+        enSurvivalPages.push({ url: `${BASE_URL}/en/survival-budget-calculator/${z}-${s}-${t}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      }
+    }
+  }
+
+  // EN Draft dynamic pages
+  const enDraftPages: MetadataRoute.Sitemap = [];
+  for (const g of EN_DRAFT_GENDERS) {
+    for (const a of EN_DRAFT_AGES) {
+      enDraftPages.push({ url: `${BASE_URL}/en/draft-simulator/${g}-${a}-years-old`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+  for (const p of EN_DRAFT_PROFILES) {
+    enDraftPages.push({ url: `${BASE_URL}/en/draft-simulator/${p}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
   return [
     ...staticPages,
     ...salairePages,
@@ -785,5 +869,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...autonomiePages,
     ...blackoutPages,
     ...empruntPages,
+    ...enStaticPages,
+    ...enNukePages,
+    ...enBlackoutPages,
+    ...enBunkerPages,
+    ...enSurvivalPages,
+    ...enDraftPages,
   ];
 }
