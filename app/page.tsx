@@ -340,6 +340,24 @@ const outils = [
     couleur: "from-blue-600 to-indigo-600",
     tag: "Nouveau",
   },
+  {
+    titre: "Prix Macon 2026",
+    description:
+      "Estimez le prix d'un macon : mur parpaings, dalle beton, terrasse, facade, demolition. Tarifs par region, fournitures + main d'oeuvre.",
+    href: "/prix-macon",
+    icone: "🧱",
+    couleur: "from-amber-500 to-orange-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Prix Peintre 2026",
+    description:
+      "Estimez le prix d'un peintre : murs, plafond, facade, boiseries, papier peint. Tarifs par region, fournitures + main d'oeuvre.",
+    href: "/prix-peintre",
+    icone: "🎨",
+    couleur: "from-violet-500 to-purple-600",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {

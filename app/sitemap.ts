@@ -101,6 +101,36 @@ const ALT_NIVEAUX = ["niveau-infra-bac", "niveau-bac"];
 const EMPRUNT_REVENUS = [1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 8000, 10000];
 const EMPRUNT_DUREES = [15, 20, 25];
 
+// Prix Macon
+const MACON_PRESTATIONS_SEO = [
+  { slug: "mur-parpaings", unite: "m2", quantites: [10, 20, 40, 80] },
+  { slug: "dalle-beton", unite: "m2", quantites: [10, 20, 40, 80] },
+  { slug: "muret-jardin", unite: "ml", quantites: [5, 10, 20, 40] },
+  { slug: "ouverture-mur-porteur", unite: "forfait", quantites: [] },
+  { slug: "demolition-mur", unite: "m2", quantites: [10, 20, 40, 80] },
+  { slug: "ravalement-facade", unite: "m2", quantites: [10, 20, 40, 80] },
+  { slug: "enduit-facade", unite: "m2", quantites: [10, 20, 40, 80] },
+  { slug: "terrasse-beton", unite: "m2", quantites: [10, 20, 40, 80] },
+  { slug: "chape-beton", unite: "m2", quantites: [10, 20, 40, 80] },
+  { slug: "pose-cloture", unite: "ml", quantites: [5, 10, 20, 40] },
+];
+const MACON_REGIONS_SEO = ["ile-de-france", "grandes-villes", "province"];
+
+// Prix Peintre
+const PEINTRE_PRESTATIONS_SEO = [
+  { slug: "peinture-mur", unite: "m2", quantites: [10, 20, 40, 80] },
+  { slug: "peinture-plafond", unite: "m2", quantites: [10, 20, 40, 80] },
+  { slug: "peinture-piece", unite: "m2", quantites: [10, 20, 40, 80] },
+  { slug: "peinture-facade", unite: "m2", quantites: [10, 20, 40, 80] },
+  { slug: "peinture-boiseries", unite: "unites", quantites: [1, 3, 5, 8] },
+  { slug: "papier-peint", unite: "m2", quantites: [10, 20, 40, 80] },
+  { slug: "lessivage-peinture", unite: "m2", quantites: [10, 20, 40, 80] },
+  { slug: "enduit-lissage-peinture", unite: "m2", quantites: [10, 20, 40, 80] },
+  { slug: "peinture-decorative", unite: "m2", quantites: [10, 20, 40, 80] },
+  { slug: "poncage-peinture", unite: "m2", quantites: [10, 20, 40, 80] },
+];
+const PEINTRE_REGIONS_SEO = ["ile-de-france", "grandes-villes", "province"];
+
 // Blackout
 const BLACKOUT_LOGEMENTS = ["appartement", "maison"];
 const BLACKOUT_CHAUFFAGES = ["tout-electrique", "gaz", "bois", "mixte"];
@@ -368,6 +398,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/simulateur-blackout`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/prix-macon`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/prix-peintre`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -782,6 +824,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Pages dynamiques Prix Macon
+  const maconPages: MetadataRoute.Sitemap = [];
+  for (const p of MACON_PRESTATIONS_SEO) {
+    for (const r of MACON_REGIONS_SEO) {
+      if (p.unite === "forfait") {
+        maconPages.push({ url: `${BASE_URL}/prix-macon/${p.slug}-${r}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      } else {
+        for (const q of p.quantites) {
+          maconPages.push({ url: `${BASE_URL}/prix-macon/${p.slug}-${q}${p.unite}-${r}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+        }
+      }
+    }
+  }
+
+  // Pages dynamiques Prix Peintre
+  const peintrePages: MetadataRoute.Sitemap = [];
+  for (const p of PEINTRE_PRESTATIONS_SEO) {
+    for (const r of PEINTRE_REGIONS_SEO) {
+      for (const q of p.quantites) {
+        peintrePages.push({ url: `${BASE_URL}/prix-peintre/${p.slug}-${q}${p.unite}-${r}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      }
+    }
+  }
+
   // --- EN Static Pages ---
   const enStaticPages: MetadataRoute.Sitemap = [
     { url: `${BASE_URL}/en`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
@@ -869,6 +935,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...autonomiePages,
     ...blackoutPages,
     ...empruntPages,
+    ...maconPages,
+    ...peintrePages,
     ...enStaticPages,
     ...enNukePages,
     ...enBlackoutPages,
