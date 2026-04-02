@@ -161,6 +161,21 @@ const PLOMB_PRESTATIONS_SEO = [
 ];
 const PLOMB_REGIONS_SEO = ["ile-de-france", "grandes-villes", "province"];
 
+// Couvreur
+const COUVREUR_PRESTATIONS_SEO = [
+  { slug: "reparation-toiture", unite: "m2", quantites: [20, 50, 100, 150] },
+  { slug: "renovation-toiture", unite: "m2", quantites: [50, 100, 150, 200] },
+  { slug: "demoussage-toiture", unite: "m2", quantites: [50, 100, 150, 200] },
+  { slug: "etancheite-terrasse", unite: "m2", quantites: [20, 50, 100, 150] },
+  { slug: "isolation-sarking", unite: "m2", quantites: [50, 100, 150, 200] },
+  { slug: "isolation-combles", unite: "m2", quantites: [30, 50, 80, 120] },
+  { slug: "velux", unite: "unites", quantites: [1, 2, 3] },
+  { slug: "gouttiere", unite: "ml", quantites: [10, 20, 40, 60] },
+  { slug: "charpente", unite: "m2", quantites: [20, 50, 100, 150] },
+  { slug: "zinguerie", unite: "ml", quantites: [10, 20, 40, 60] },
+];
+const COUVREUR_REGIONS_SEO = ["ile-de-france", "grandes-villes", "province"];
+
 // Blackout
 const BLACKOUT_LOGEMENTS = ["appartement", "maison"];
 const BLACKOUT_CHAUFFAGES = ["tout-electrique", "gaz", "bois", "mixte"];
@@ -452,6 +467,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/prix-plombier`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/prix-couvreur`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -918,6 +939,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Pages dynamiques Prix Couvreur
+  const couvreurPages: MetadataRoute.Sitemap = [];
+  for (const p of COUVREUR_PRESTATIONS_SEO) {
+    for (const r of COUVREUR_REGIONS_SEO) {
+      for (const q of p.quantites) {
+        couvreurPages.push({ url: `${BASE_URL}/prix-couvreur/${p.slug}-${q}${p.unite}-${r}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      }
+    }
+  }
+
   // --- EN Static Pages ---
   const enStaticPages: MetadataRoute.Sitemap = [
     { url: `${BASE_URL}/en`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
@@ -1009,6 +1040,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...peintrePages,
     ...elecPages,
     ...plombPages,
+    ...couvreurPages,
     ...enStaticPages,
     ...enNukePages,
     ...enBlackoutPages,

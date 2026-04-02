@@ -374,6 +374,15 @@ const outils = [
     href: "/prix-plombier",
     icone: "🔧",
     couleur: "from-cyan-500 to-teal-600",
+    tag: "",
+  },
+  {
+    titre: "Prix Couvreur 2026",
+    description:
+      "Estimez le prix d'un couvreur : reparation, renovation toiture, demoussage, isolation sarking, Velux, gouttiere, charpente. Tarifs par region.",
+    href: "/prix-couvreur",
+    icone: "🪜",
+    couleur: "from-red-700 to-amber-600",
     tag: "Nouveau",
   },
 ];

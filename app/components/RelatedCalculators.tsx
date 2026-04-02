@@ -41,6 +41,7 @@ const ALL_CALCULATORS = [
   { slug: "/prix-peintre", title: "Prix Peintre", emoji: "🎨", color: "from-violet-500 to-purple-600" },
   { slug: "/prix-electricien", title: "Prix Electricien", emoji: "⚡", color: "from-blue-500 to-indigo-600" },
   { slug: "/prix-plombier", title: "Prix Plombier", emoji: "🔧", color: "from-cyan-500 to-teal-600" },
+  { slug: "/prix-couvreur", title: "Prix Couvreur", emoji: "🪜", color: "from-red-700 to-amber-600" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -82,10 +83,11 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calculateur-autonomie": ["/calculateur-budget-survie", "/simulateur-epargne", "/simulateur-chomage", "/calcul-prime-activite"],
   "/simulateur-blackout": ["/calcul-consommation-electrique", "/prix-electricien", "/simulateur-bunker", "/calculateur-budget-survie"],
   "/calcul-capacite-emprunt": ["/simulateur-pret-immobilier", "/calcul-taux-endettement", "/frais-de-notaire", "/simulateur-epargne"],
-  "/prix-macon": ["/calcul-surface-peinture", "/prix-peintre", "/prix-electricien", "/frais-de-notaire"],
-  "/prix-peintre": ["/calcul-surface-peinture", "/prix-macon", "/prix-electricien", "/frais-de-notaire"],
-  "/prix-electricien": ["/calcul-consommation-electrique", "/prix-macon", "/prix-plombier", "/prix-peintre"],
-  "/prix-plombier": ["/prix-electricien", "/prix-macon", "/prix-peintre", "/simulateur-pret-immobilier"],
+  "/prix-macon": ["/prix-couvreur", "/prix-peintre", "/prix-electricien", "/prix-plombier"],
+  "/prix-peintre": ["/calcul-surface-peinture", "/prix-macon", "/prix-couvreur", "/prix-electricien"],
+  "/prix-electricien": ["/calcul-consommation-electrique", "/prix-macon", "/prix-plombier", "/prix-couvreur"],
+  "/prix-plombier": ["/prix-electricien", "/prix-macon", "/prix-peintre", "/prix-couvreur"],
+  "/prix-couvreur": ["/prix-macon", "/prix-peintre", "/prix-electricien", "/prix-plombier"],
 };
 
 interface RelatedCalculatorsProps {
