@@ -2,9 +2,10 @@ interface BreadcrumbProps {
   currentPage: string;
   parentPage?: string;
   parentHref?: string;
+  lastUpdated?: string;
 }
 
-export default function Breadcrumb({ currentPage, parentPage, parentHref }: BreadcrumbProps) {
+export default function Breadcrumb({ currentPage, parentPage, parentHref, lastUpdated = "avril 2026" }: BreadcrumbProps) {
   const items = [
     {
       "@type": "ListItem" as const,
@@ -79,6 +80,9 @@ export default function Breadcrumb({ currentPage, parentPage, parentHref }: Brea
           ) : (
             <li className="text-slate-600 font-medium">{currentPage}</li>
           )}
+          <li className="ml-auto text-xs text-slate-400">
+            Mis a jour : {lastUpdated}
+          </li>
         </ol>
       </nav>
     </>
