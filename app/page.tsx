@@ -383,6 +383,15 @@ const outils = [
     href: "/prix-couvreur",
     icone: "🪜",
     couleur: "from-red-700 to-amber-600",
+    tag: "",
+  },
+  {
+    titre: "Prix Chauffagiste 2026",
+    description:
+      "Estimez le prix d'un chauffagiste : chaudiere gaz, pompe a chaleur, chauffe-eau, plancher chauffant, radiateur, entretien, depannage. Tarifs par region.",
+    href: "/prix-chauffagiste",
+    icone: "🔥",
+    couleur: "from-orange-600 to-red-500",
     tag: "Nouveau",
   },
 ];
