@@ -40,6 +40,7 @@ const ALL_CALCULATORS = [
   { slug: "/prix-macon", title: "Prix Macon", emoji: "🧱", color: "from-amber-500 to-orange-600" },
   { slug: "/prix-peintre", title: "Prix Peintre", emoji: "🎨", color: "from-violet-500 to-purple-600" },
   { slug: "/prix-electricien", title: "Prix Electricien", emoji: "⚡", color: "from-blue-500 to-indigo-600" },
+  { slug: "/prix-plombier", title: "Prix Plombier", emoji: "🔧", color: "from-cyan-500 to-teal-600" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -83,7 +84,8 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calcul-capacite-emprunt": ["/simulateur-pret-immobilier", "/calcul-taux-endettement", "/frais-de-notaire", "/simulateur-epargne"],
   "/prix-macon": ["/calcul-surface-peinture", "/prix-peintre", "/prix-electricien", "/frais-de-notaire"],
   "/prix-peintre": ["/calcul-surface-peinture", "/prix-macon", "/prix-electricien", "/frais-de-notaire"],
-  "/prix-electricien": ["/calcul-consommation-electrique", "/prix-macon", "/prix-peintre", "/simulateur-pret-immobilier"],
+  "/prix-electricien": ["/calcul-consommation-electrique", "/prix-macon", "/prix-plombier", "/prix-peintre"],
+  "/prix-plombier": ["/prix-electricien", "/prix-macon", "/prix-peintre", "/simulateur-pret-immobilier"],
 };
 
 interface RelatedCalculatorsProps {

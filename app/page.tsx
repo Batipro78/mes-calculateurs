@@ -367,6 +367,15 @@ const outils = [
     couleur: "from-blue-500 to-indigo-600",
     tag: "Nouveau",
   },
+  {
+    titre: "Prix Plombier 2026",
+    description:
+      "Estimez le prix d'un plombier : robinet, WC, chauffe-eau, douche, debouchage, chaudiere, salle de bain. Tarifs par region.",
+    href: "/prix-plombier",
+    icone: "🔧",
+    couleur: "from-cyan-500 to-teal-600",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {

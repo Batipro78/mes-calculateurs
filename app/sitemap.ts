@@ -146,6 +146,21 @@ const ELEC_PRESTATIONS_SEO = [
 ];
 const ELEC_REGIONS_SEO = ["ile-de-france", "grandes-villes", "province"];
 
+// Plombier
+const PLOMB_PRESTATIONS_SEO = [
+  { slug: "installation-robinet", unite: "unites", quantites: [1, 2, 3, 5] },
+  { slug: "installation-wc", unite: "unites", quantites: [1, 2, 3] },
+  { slug: "chauffe-eau", unite: "forfait", quantites: [1] },
+  { slug: "installation-douche", unite: "forfait", quantites: [1] },
+  { slug: "remplacement-baignoire", unite: "forfait", quantites: [1] },
+  { slug: "debouchage-canalisation", unite: "forfait", quantites: [1] },
+  { slug: "chaudiere-gaz", unite: "forfait", quantites: [1] },
+  { slug: "salle-de-bain", unite: "m2", quantites: [4, 6, 8, 10] },
+  { slug: "adoucisseur-eau", unite: "forfait", quantites: [1] },
+  { slug: "recherche-fuite", unite: "forfait", quantites: [1] },
+];
+const PLOMB_REGIONS_SEO = ["ile-de-france", "grandes-villes", "province"];
+
 // Blackout
 const BLACKOUT_LOGEMENTS = ["appartement", "maison"];
 const BLACKOUT_CHAUFFAGES = ["tout-electrique", "gaz", "bois", "mixte"];
@@ -431,6 +446,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/prix-electricien`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/prix-plombier`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -883,6 +904,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Pages dynamiques Prix Plombier
+  const plombPages: MetadataRoute.Sitemap = [];
+  for (const p of PLOMB_PRESTATIONS_SEO) {
+    for (const r of PLOMB_REGIONS_SEO) {
+      if (p.unite === "forfait") {
+        plombPages.push({ url: `${BASE_URL}/prix-plombier/${p.slug}-${r}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      } else {
+        for (const q of p.quantites) {
+          plombPages.push({ url: `${BASE_URL}/prix-plombier/${p.slug}-${q}${p.unite}-${r}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+        }
+      }
+    }
+  }
+
   // --- EN Static Pages ---
   const enStaticPages: MetadataRoute.Sitemap = [
     { url: `${BASE_URL}/en`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
@@ -973,6 +1008,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...maconPages,
     ...peintrePages,
     ...elecPages,
+    ...plombPages,
     ...enStaticPages,
     ...enNukePages,
     ...enBlackoutPages,
