@@ -131,6 +131,21 @@ const PEINTRE_PRESTATIONS_SEO = [
 ];
 const PEINTRE_REGIONS_SEO = ["ile-de-france", "grandes-villes", "province"];
 
+// Electricien
+const ELEC_PRESTATIONS_SEO = [
+  { slug: "installation-prise", unite: "unites", quantites: [3, 5, 10, 15] },
+  { slug: "point-lumineux", unite: "unites", quantites: [3, 5, 10, 15] },
+  { slug: "tableau-electrique", unite: "forfait", quantites: [1] },
+  { slug: "renovation-electrique", unite: "m2", quantites: [30, 50, 80, 120] },
+  { slug: "radiateur-electrique", unite: "unites", quantites: [2, 4, 6, 8] },
+  { slug: "installation-vmc", unite: "forfait", quantites: [1] },
+  { slug: "volet-roulant", unite: "unites", quantites: [3, 5, 8, 12] },
+  { slug: "diagnostic-electrique", unite: "forfait", quantites: [1] },
+  { slug: "borne-recharge-irve", unite: "forfait", quantites: [1] },
+  { slug: "mise-en-conformite", unite: "m2", quantites: [30, 50, 80, 120] },
+];
+const ELEC_REGIONS_SEO = ["ile-de-france", "grandes-villes", "province"];
+
 // Blackout
 const BLACKOUT_LOGEMENTS = ["appartement", "maison"];
 const BLACKOUT_CHAUFFAGES = ["tout-electrique", "gaz", "bois", "mixte"];
@@ -410,6 +425,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/prix-peintre`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/prix-electricien`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -848,6 +869,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Pages dynamiques Prix Electricien
+  const elecPages: MetadataRoute.Sitemap = [];
+  for (const p of ELEC_PRESTATIONS_SEO) {
+    for (const r of ELEC_REGIONS_SEO) {
+      if (p.unite === "forfait") {
+        elecPages.push({ url: `${BASE_URL}/prix-electricien/${p.slug}-${r}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      } else {
+        for (const q of p.quantites) {
+          elecPages.push({ url: `${BASE_URL}/prix-electricien/${p.slug}-${q}${p.unite}-${r}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+        }
+      }
+    }
+  }
+
   // --- EN Static Pages ---
   const enStaticPages: MetadataRoute.Sitemap = [
     { url: `${BASE_URL}/en`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
@@ -937,6 +972,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...empruntPages,
     ...maconPages,
     ...peintrePages,
+    ...elecPages,
     ...enStaticPages,
     ...enNukePages,
     ...enBlackoutPages,

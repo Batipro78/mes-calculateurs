@@ -39,6 +39,7 @@ const ALL_CALCULATORS = [
   { slug: "/calcul-capacite-emprunt", title: "Capacite d'Emprunt", emoji: "🏠", color: "from-blue-600 to-indigo-600" },
   { slug: "/prix-macon", title: "Prix Macon", emoji: "🧱", color: "from-amber-500 to-orange-600" },
   { slug: "/prix-peintre", title: "Prix Peintre", emoji: "🎨", color: "from-violet-500 to-purple-600" },
+  { slug: "/prix-electricien", title: "Prix Electricien", emoji: "⚡", color: "from-blue-500 to-indigo-600" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -78,10 +79,11 @@ const RELATED_MAP: Record<string, string[]> = {
   "/simulateur-salaire-alternant": ["/salaire-brut-net", "/simulateur-chomage", "/simulateur-micro-entreprise", "/calcul-prime-activite"],
   "/calculateur-budget-survie": ["/calculateur-autonomie", "/simulateur-apl", "/calcul-prime-activite", "/salaire-brut-net"],
   "/calculateur-autonomie": ["/calculateur-budget-survie", "/simulateur-epargne", "/simulateur-chomage", "/calcul-prime-activite"],
-  "/simulateur-blackout": ["/calcul-consommation-electrique", "/simulateur-bunker", "/calculateur-budget-survie", "/calculateur-autonomie"],
+  "/simulateur-blackout": ["/calcul-consommation-electrique", "/prix-electricien", "/simulateur-bunker", "/calculateur-budget-survie"],
   "/calcul-capacite-emprunt": ["/simulateur-pret-immobilier", "/calcul-taux-endettement", "/frais-de-notaire", "/simulateur-epargne"],
-  "/prix-macon": ["/calcul-surface-peinture", "/prix-peintre", "/simulateur-pret-immobilier", "/frais-de-notaire"],
-  "/prix-peintre": ["/calcul-surface-peinture", "/prix-macon", "/simulateur-pret-immobilier", "/frais-de-notaire"],
+  "/prix-macon": ["/calcul-surface-peinture", "/prix-peintre", "/prix-electricien", "/frais-de-notaire"],
+  "/prix-peintre": ["/calcul-surface-peinture", "/prix-macon", "/prix-electricien", "/frais-de-notaire"],
+  "/prix-electricien": ["/calcul-consommation-electrique", "/prix-macon", "/prix-peintre", "/simulateur-pret-immobilier"],
 };
 
 interface RelatedCalculatorsProps {

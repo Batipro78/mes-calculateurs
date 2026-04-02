@@ -356,6 +356,15 @@ const outils = [
     href: "/prix-peintre",
     icone: "🎨",
     couleur: "from-violet-500 to-purple-600",
+    tag: "",
+  },
+  {
+    titre: "Prix Electricien 2026",
+    description:
+      "Estimez le prix d'un electricien : prises, tableau, renovation, VMC, borne IRVE, volets. Tarifs par region.",
+    href: "/prix-electricien",
+    icone: "⚡",
+    couleur: "from-blue-500 to-indigo-600",
     tag: "Nouveau",
   },
 ];
