@@ -134,6 +134,13 @@ export default function Page() {
             seulement la mensualite
           </li>
         </ul>
+
+        <h3 className="font-bold text-slate-800 mt-6 mb-3">
+          Outils complementaires
+        </h3>
+        <p className="text-slate-600 leading-relaxed">
+          Pour une vision complete de votre projet immobilier, estimez vos <a href="/frais-de-notaire" className="text-violet-600 underline hover:text-violet-800">frais de notaire</a>, verifiez votre <a href="/calcul-capacite-emprunt" className="text-violet-600 underline hover:text-violet-800">capacite d&apos;emprunt</a> et votre <a href="/calcul-taux-endettement" className="text-violet-600 underline hover:text-violet-800">taux d&apos;endettement</a>. Si vous achetez un bien a renover, estimez le budget travaux avec nos outils : <a href="/prix-electricien" className="text-violet-600 underline hover:text-violet-800">prix electricien</a>, <a href="/prix-plombier" className="text-violet-600 underline hover:text-violet-800">prix plombier</a>, <a href="/prix-chauffagiste" className="text-violet-600 underline hover:text-violet-800">prix chauffagiste</a> et <a href="/prix-macon" className="text-violet-600 underline hover:text-violet-800">prix macon</a>.
+        </p>
       </section>
 
       <RelatedCalculators currentSlug="/simulateur-pret-immobilier" />

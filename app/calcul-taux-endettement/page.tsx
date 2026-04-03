@@ -293,6 +293,13 @@ export default function Page() {
         </div>
       </section>
 
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">Estimez vos travaux de renovation</h2>
+        <p className="text-slate-600 leading-relaxed">
+          Si vous achetez un bien a renover, anticipez le budget travaux : <a href="/prix-electricien" className="text-violet-600 underline hover:text-violet-800">prix electricien</a>, <a href="/prix-plombier" className="text-violet-600 underline hover:text-violet-800">prix plombier</a>, <a href="/prix-chauffagiste" className="text-violet-600 underline hover:text-violet-800">prix chauffagiste</a>, <a href="/prix-macon" className="text-violet-600 underline hover:text-violet-800">prix macon</a>, <a href="/prix-peintre" className="text-violet-600 underline hover:text-violet-800">prix peintre</a> et <a href="/prix-couvreur" className="text-violet-600 underline hover:text-violet-800">prix couvreur</a>. Estimez aussi les <a href="/frais-de-notaire" className="text-violet-600 underline hover:text-violet-800">frais de notaire</a> et votre <a href="/calcul-capacite-emprunt" className="text-violet-600 underline hover:text-violet-800">capacite d&apos;emprunt</a>.
+        </p>
+      </section>
+
       <RelatedCalculators currentSlug="/calcul-taux-endettement" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

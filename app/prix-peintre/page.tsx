@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import VillesLinks from "../components/VillesLinks";
 
 export const metadata: Metadata = {
   title: "Prix Peintre 2026 : Estimateur en Ligne - Tarifs au m\u00b2",
@@ -113,8 +114,16 @@ export default function Page() {
         <p className="text-slate-600 leading-relaxed">
           Les travaux de peinture dans un <strong>logement de plus de 2 ans</strong> beneficient d&apos;une TVA reduite a 10% (au lieu de 20%), a condition que le peintre fournisse les materiaux. Si vous achetez la peinture vous-meme, seule la main d&apos;oeuvre beneficie du taux reduit.
         </p>
+
+        <h3 className="font-bold text-slate-800 mt-6 mb-3">
+          Budget global de vos travaux
+        </h3>
+        <p className="text-slate-600 leading-relaxed">
+          Pour planifier vos travaux de peinture, pensez a estimer le <strong>budget global</strong> : utilisez notre <a href="/calcul-surface-peinture" className="text-violet-600 underline hover:text-violet-800">calculateur de surface</a> pour evaluer la quantite necessaire, notre <a href="/simulateur-pret-immobilier" className="text-violet-600 underline hover:text-violet-800">simulateur de pret immobilier</a> pour le financement et les <a href="/frais-de-notaire" className="text-violet-600 underline hover:text-violet-800">frais de notaire</a> si vous achetez un bien a renover. Pour une renovation complete, consultez aussi <a href="/prix-macon" className="text-violet-600 underline hover:text-violet-800">prix macon</a>, <a href="/prix-electricien" className="text-violet-600 underline hover:text-violet-800">prix electricien</a> et <a href="/prix-plombier" className="text-violet-600 underline hover:text-violet-800">prix plombier</a>.
+        </p>
       </section>
 
+      <VillesLinks metierSlug="/prix-peintre" />
       <RelatedCalculators currentSlug="/prix-peintre" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

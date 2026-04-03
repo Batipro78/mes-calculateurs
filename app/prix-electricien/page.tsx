@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import VillesLinks from "../components/VillesLinks";
 
 export const metadata: Metadata = {
   title: "Prix Electricien 2026 : Estimateur en Ligne - Tarifs par Prestation",
@@ -128,8 +129,16 @@ export default function Page() {
         <p className="text-slate-600 leading-relaxed">
           Toute installation electrique doit respecter la <strong>norme NF C 15-100</strong> (version 2024). Pour les travaux de renovation dans un logement de plus de 2 ans, la TVA est reduite a <strong>10%</strong>. L&apos;installation d&apos;une borne IRVE beneficie d&apos;une TVA a <strong>5,5%</strong> et d&apos;un credit d&apos;impot de <strong>300 &euro;</strong>. Pensez egalement a <strong>MaPrimeRenov&apos;</strong> pour la VMC.
         </p>
+
+        <h3 className="font-bold text-slate-800 mt-6 mb-3">
+          Budget global de vos travaux
+        </h3>
+        <p className="text-slate-600 leading-relaxed">
+          Pour planifier vos travaux electriques, pensez a estimer le <strong>budget global</strong> : utilisez notre <a href="/simulateur-pret-immobilier" className="text-blue-600 underline hover:text-blue-800">simulateur de pret immobilier</a> pour calculer vos mensualites, verifiez votre <a href="/calcul-capacite-emprunt" className="text-blue-600 underline hover:text-blue-800">capacite d&apos;emprunt</a> et estimez les <a href="/frais-de-notaire" className="text-blue-600 underline hover:text-blue-800">frais de notaire</a> si vous achetez un bien a renover. Si vous prevoyez d&apos;autres travaux, consultez aussi nos estimateurs <a href="/prix-chauffagiste" className="text-blue-600 underline hover:text-blue-800">prix chauffagiste</a>, <a href="/prix-plombier" className="text-blue-600 underline hover:text-blue-800">prix plombier</a> et <a href="/prix-peintre" className="text-blue-600 underline hover:text-blue-800">prix peintre</a>.
+        </p>
       </section>
 
+      <VillesLinks metierSlug="/prix-electricien" />
       <RelatedCalculators currentSlug="/prix-electricien" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

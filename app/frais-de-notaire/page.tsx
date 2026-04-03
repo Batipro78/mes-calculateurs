@@ -125,6 +125,13 @@ export default function Page() {
           <strong>2 a 3%</strong> car les droits de mutation sont remplaces par
           la TVA (deja incluse dans le prix).
         </p>
+
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">
+          Estimez aussi vos travaux de renovation
+        </h3>
+        <p className="text-slate-600 leading-relaxed">
+          Si vous achetez un bien a renover, anticipez le <strong>budget travaux</strong> en complement des frais de notaire. Consultez nos estimateurs : <a href="/prix-electricien" className="text-cyan-600 underline hover:text-cyan-800">prix electricien</a>, <a href="/prix-plombier" className="text-cyan-600 underline hover:text-cyan-800">prix plombier</a>, <a href="/prix-chauffagiste" className="text-cyan-600 underline hover:text-cyan-800">prix chauffagiste</a>, <a href="/prix-macon" className="text-cyan-600 underline hover:text-cyan-800">prix macon</a>, <a href="/prix-peintre" className="text-cyan-600 underline hover:text-cyan-800">prix peintre</a> et <a href="/prix-couvreur" className="text-cyan-600 underline hover:text-cyan-800">prix couvreur</a>. Pour le financement, simulez vos <a href="/simulateur-pret-immobilier" className="text-cyan-600 underline hover:text-cyan-800">mensualites de pret</a> et verifiez votre <a href="/calcul-taux-endettement" className="text-cyan-600 underline hover:text-cyan-800">taux d&apos;endettement</a>.
+        </p>
       </section>
 
       <RelatedCalculators currentSlug="/frais-de-notaire" />

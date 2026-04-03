@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import VillesLinks from "../components/VillesLinks";
 
 export const metadata: Metadata = {
   title: "Prix Chauffagiste 2026 : Estimateur en Ligne - Tarifs par Prestation",
@@ -128,7 +129,16 @@ export default function Page() {
         <p className="text-slate-600 leading-relaxed">
           Les travaux de <strong>renovation energetique</strong> (PAC, chauffe-eau thermodynamique) beneficient d&apos;une TVA a 5,5% et sont eligibles a <strong>MaPrimeRenov&apos;</strong> (jusqu&apos;a 5 000 &euro;), aux <strong>CEE</strong> et a l&apos;eco-pret a taux zero. Les travaux de renovation classique beneficient d&apos;une TVA a 10%. L&apos;artisan doit etre <strong>certifie RGE</strong>.
         </p>
+
+        <h3 className="font-bold text-slate-800 mt-6 mb-3">
+          Budget global de vos travaux
+        </h3>
+        <p className="text-slate-600 leading-relaxed">
+          Pour planifier vos travaux de chauffage, pensez a estimer le <strong>budget global</strong> : utilisez notre <a href="/simulateur-pret-immobilier" className="text-orange-600 underline hover:text-orange-800">simulateur de pret immobilier</a> pour calculer vos mensualites, verifiez votre <a href="/calcul-capacite-emprunt" className="text-orange-600 underline hover:text-orange-800">capacite d&apos;emprunt</a> et estimez les <a href="/frais-de-notaire" className="text-orange-600 underline hover:text-orange-800">frais de notaire</a> si vous achetez un bien a renover. Si vous prevoyez d&apos;autres travaux, consultez aussi nos estimateurs <a href="/prix-electricien" className="text-orange-600 underline hover:text-orange-800">prix electricien</a>, <a href="/prix-plombier" className="text-orange-600 underline hover:text-orange-800">prix plombier</a> et <a href="/prix-couvreur" className="text-orange-600 underline hover:text-orange-800">prix couvreur</a>.
+        </p>
       </section>
+
+      <VillesLinks metierSlug="/prix-chauffagiste" />
 
       <RelatedCalculators currentSlug="/prix-chauffagiste" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

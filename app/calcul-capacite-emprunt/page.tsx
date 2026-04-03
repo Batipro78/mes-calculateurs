@@ -223,6 +223,13 @@ export default function Page() {
         </div>
       </section>
 
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">Outils complementaires</h2>
+        <p className="text-slate-600 leading-relaxed">
+          Pour completer votre projet immobilier, simulez vos <a href="/simulateur-pret-immobilier" className="text-indigo-600 underline hover:text-indigo-800">mensualites de pret</a>, estimez les <a href="/frais-de-notaire" className="text-indigo-600 underline hover:text-indigo-800">frais de notaire</a> et verifiez votre <a href="/calcul-taux-endettement" className="text-indigo-600 underline hover:text-indigo-800">taux d&apos;endettement</a>. Si vous prevoyez des travaux de renovation, consultez nos estimateurs artisans : <a href="/prix-electricien" className="text-indigo-600 underline hover:text-indigo-800">prix electricien</a>, <a href="/prix-plombier" className="text-indigo-600 underline hover:text-indigo-800">prix plombier</a>, <a href="/prix-chauffagiste" className="text-indigo-600 underline hover:text-indigo-800">prix chauffagiste</a>, <a href="/prix-macon" className="text-indigo-600 underline hover:text-indigo-800">prix macon</a> et <a href="/prix-couvreur" className="text-indigo-600 underline hover:text-indigo-800">prix couvreur</a>.
+        </p>
+      </section>
+
       <RelatedCalculators currentSlug="/calcul-capacite-emprunt" />
     </div>
   );

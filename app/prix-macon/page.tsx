@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import VillesLinks from "../components/VillesLinks";
 
 export const metadata: Metadata = {
   title: "Prix Macon 2026 : Estimateur en Ligne - Tarifs au m\u00b2",
@@ -120,8 +121,16 @@ export default function Page() {
         <p className="text-slate-600 leading-relaxed">
           Les travaux de <strong>renovation dans un logement de plus de 2 ans</strong> beneficient d&apos;une TVA reduite a 10%. Pour des travaux d&apos;amelioration energetique (isolation par l&apos;exterieur), la TVA peut descendre a 5,5%. Pensez egalement aux aides MaPrimeRenov&apos; et aux eco-prets a taux zero pour financer vos travaux.
         </p>
+
+        <h3 className="font-bold text-slate-800 mt-6 mb-3">
+          Budget global de vos travaux
+        </h3>
+        <p className="text-slate-600 leading-relaxed">
+          Pour planifier vos travaux de maconnerie, pensez a estimer le <strong>budget global</strong> : utilisez notre <a href="/simulateur-pret-immobilier" className="text-amber-600 underline hover:text-amber-800">simulateur de pret immobilier</a> pour calculer vos mensualites, verifiez votre <a href="/calcul-capacite-emprunt" className="text-amber-600 underline hover:text-amber-800">capacite d&apos;emprunt</a> et estimez les <a href="/frais-de-notaire" className="text-amber-600 underline hover:text-amber-800">frais de notaire</a> si vous achetez un bien a renover. Pour une renovation complete, consultez aussi nos estimateurs <a href="/prix-electricien" className="text-amber-600 underline hover:text-amber-800">prix electricien</a>, <a href="/prix-plombier" className="text-amber-600 underline hover:text-amber-800">prix plombier</a> et <a href="/prix-peintre" className="text-amber-600 underline hover:text-amber-800">prix peintre</a>.
+        </p>
       </section>
 
+      <VillesLinks metierSlug="/prix-macon" />
       <RelatedCalculators currentSlug="/prix-macon" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
