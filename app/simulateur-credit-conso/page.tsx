@@ -3,6 +3,7 @@ import SimulateurCreditConso from "./SimulateurCreditConso";
 import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
+import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
   title: "Simulateur Credit a la Consommation 2026 - Calcul gratuit",
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
+      <WebAppJsonLd name="Simulateur Credit Conso" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

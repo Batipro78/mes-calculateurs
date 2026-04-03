@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import CalculCapaciteEmprunt from "./CalculCapaciteEmprunt";
 import RelatedCalculators from "../components/RelatedCalculators";
+import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
   title: "Calcul Capacite d'Emprunt 2026 - Simulateur gratuit en ligne",
@@ -41,6 +42,7 @@ const faqData = [
 export default function Page() {
   return (
     <div>
+      <WebAppJsonLd name="Calcul Capacite d'Emprunt" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

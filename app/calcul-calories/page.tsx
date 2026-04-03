@@ -3,6 +3,7 @@ import CalculateurCalories from "./CalculateurCalories";
 import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
+import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
   title: "Calcul Calories 2026 - Besoin Calorique Journalier (TDEE) gratuit",
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
+      <WebAppJsonLd name="Calcul Calories Journalier" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

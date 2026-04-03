@@ -3,6 +3,7 @@ import SimulateurRetraite from "./SimulateurRetraite";
 import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
+import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
   title: "Simulateur Retraite 2026 - Calcul pension, age legal, decote",
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
+      <WebAppJsonLd name="Simulateur Retraite" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

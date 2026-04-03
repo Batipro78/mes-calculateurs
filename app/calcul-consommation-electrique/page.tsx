@@ -3,6 +3,7 @@ import CalculateurElectricite from "./CalculateurElectricite";
 import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
+import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
   title: "Calcul Consommation Electrique 2026 - Estimez votre facture",
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
+      <WebAppJsonLd name="Calcul Consommation Electrique" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

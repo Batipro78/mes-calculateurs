@@ -3,6 +3,7 @@ import CalculateurSalaire from "./CalculateurSalaire";
 import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
+import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
   title: "Calcul Salaire Brut Net 2026 - Simulateur gratuit",
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
+      <WebAppJsonLd name="Convertisseur Salaire Brut/Net" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

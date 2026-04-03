@@ -3,6 +3,7 @@ import SimulateurBlackout from "./SimulateurBlackout";
 import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
+import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
   title: "Simulateur Blackout 2026 - Etes-vous pret pour une panne electrique ?",
@@ -67,6 +68,7 @@ const faqJsonLd = {
 export default function Page() {
   return (
     <div>
+      <WebAppJsonLd name="Simulateur Blackout" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}

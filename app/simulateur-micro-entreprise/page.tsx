@@ -3,6 +3,7 @@ import CalculateurMicroEntreprise from "./CalculateurMicroEntreprise";
 import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
+import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
   title: "Simulateur Micro-Entreprise 2026 - Charges, Impot, Revenu Net",
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
+      <WebAppJsonLd name="Simulateur Micro-Entreprise" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

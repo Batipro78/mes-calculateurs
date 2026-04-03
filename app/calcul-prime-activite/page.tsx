@@ -3,6 +3,7 @@ import CalculateurPrimeActivite from "./CalculateurPrimeActivite";
 import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
+import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
   title: "Calcul Prime d'Activite 2026 - Simulateur CAF gratuit",
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
+      <WebAppJsonLd name="Simulateur Prime d'Activite" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

@@ -3,6 +3,7 @@ import EstimateurMacon from "./EstimateurMacon";
 import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
+import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
   title: "Prix Macon 2026 : Estimateur en Ligne - Tarifs au m\u00b2",
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
+      <WebAppJsonLd name="Prix Macon 2026" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

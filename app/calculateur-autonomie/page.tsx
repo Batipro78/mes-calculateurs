@@ -3,6 +3,7 @@ import CalculateurAutonomie from "./CalculateurAutonomie";
 import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
+import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
   title: "Calculateur Autonomie Financiere 2026 - Combien de temps avec mon epargne ?",
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
+      <WebAppJsonLd name="Calculateur Autonomie Financiere" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

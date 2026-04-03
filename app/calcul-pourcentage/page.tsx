@@ -3,6 +3,7 @@ import CalculateurPourcentage from "./CalculateurPourcentage";
 import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
+import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
   title: "Calcul Pourcentage 2026 - Calculateur gratuit en ligne",
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
+      <WebAppJsonLd name="Calcul Pourcentage" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

@@ -3,6 +3,7 @@ import SimulateurAPL from "./SimulateurAPL";
 import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
+import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
   title: "Simulateur APL 2026 - Calcul aide au logement gratuit",
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
+      <WebAppJsonLd name="Simulateur APL" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

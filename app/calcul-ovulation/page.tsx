@@ -3,6 +3,7 @@ import CalculateurOvulation from "./CalculateurOvulation";
 import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
+import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
   title: "Calcul Ovulation 2026 - Calendrier de fertilite gratuit",
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
+      <WebAppJsonLd name="Calcul Ovulation" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

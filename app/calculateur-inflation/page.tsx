@@ -3,6 +3,7 @@ import CalculateurInflation from "./CalculateurInflation";
 import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
+import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
   title: "Calculateur Inflation 2026 - Perte de pouvoir d'achat en France",
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
+      <WebAppJsonLd name="Calculateur Inflation" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

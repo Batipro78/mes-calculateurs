@@ -3,6 +3,7 @@ import SimulateurMobilisation from "./SimulateurMobilisation";
 import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
+import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
   title:
@@ -16,6 +17,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
+      <WebAppJsonLd name="Simulateur Mobilisation" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

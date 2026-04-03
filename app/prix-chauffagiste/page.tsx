@@ -3,6 +3,7 @@ import EstimateurChauffagiste from "./EstimateurChauffagiste";
 import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
+import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
   title: "Prix Chauffagiste 2026 : Estimateur en Ligne - Tarifs par Prestation",
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
+      <WebAppJsonLd name="Prix Chauffagiste 2026" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

@@ -3,6 +3,7 @@ import CalculateurChomage from "./CalculateurChomage";
 import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
+import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
   title: "Simulateur Chomage 2026 - Calcul Allocation ARE gratuit",
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div>
+      <WebAppJsonLd name="Simulateur Chomage ARE" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
