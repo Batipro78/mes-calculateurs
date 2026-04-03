@@ -15,7 +15,6 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "fr_FR",
-    url: "https://mes-calculateurs.vercel.app",
     siteName: "Mes Calculateurs",
     title: "Mes Calculateurs - Outils de calcul gratuits en ligne",
     description:
@@ -26,9 +25,6 @@ export const metadata: Metadata = {
     title: "Mes Calculateurs - Outils de calcul gratuits en ligne",
     description:
       "Calculateurs gratuits : salaire brut/net, TVA, pret immobilier et plus.",
-  },
-  alternates: {
-    canonical: "https://mes-calculateurs.vercel.app",
   },
   robots: {
     index: true,

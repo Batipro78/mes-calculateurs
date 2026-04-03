@@ -97,6 +97,74 @@ const ALT_ANNEES = [1, 2, 3];
 const ALT_AGES_PRO = [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26];
 const ALT_NIVEAUX = ["niveau-infra-bac", "niveau-bac"];
 
+// IMC (MANQUANT du sitemap)
+const IMC_POIDS = [50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100, 110, 120];
+const IMC_TAILLES = [155, 160, 165, 170, 175, 180, 185, 190];
+
+// Frais de Notaire dynamiques (MANQUANT du sitemap)
+const NOTAIRE_PRIX = [100000, 150000, 200000, 250000, 300000, 350000, 400000, 500000, 600000, 750000, 1000000];
+const NOTAIRE_TYPES = ["ancien", "neuf", "terrain"];
+
+// Consommation Electrique (MANQUANT du sitemap)
+const CONSO_APPAREILS = ["ampoule-led", "televiseur", "ordinateur-portable", "pc-gamer", "ps5", "lave-linge", "lave-vaisselle", "radiateur-electrique", "refrigerateur", "four-electrique", "micro-ondes", "plaque-induction", "climatisation", "pompe-a-chaleur", "box-internet", "borne-recharge-ve"];
+
+// Indemnite Licenciement (MANQUANT du sitemap)
+const LICENC_SALAIRES = [1500, 1800, 2000, 2200, 2500, 2800, 3000, 3500, 4000, 4500, 5000];
+const LICENC_ANNEES = [1, 2, 3, 5, 8, 10, 12, 15, 18, 20, 25, 30];
+
+// Convertisseur Devises (MANQUANT du sitemap)
+const DEVISES_MONTANTS = [100, 500, 1000, 2000, 5000, 10000];
+const DEVISES_PAIRES = ["usd", "gbp", "chf", "cad", "jpy", "mad", "tnd", "dzd", "cny", "try", "aed", "xof"];
+
+// Inflation (MANQUANT du sitemap)
+const INFL_MONTANTS = [1000, 1500, 2000, 2500, 3000, 3500, 4000, 5000];
+const INFL_ANNEES = [2000, 2005, 2010, 2015, 2018, 2020, 2022, 2023];
+
+// Age (MANQUANT du sitemap)
+const AGE_ANNEES = Array.from({ length: 71 }, (_, i) => 1950 + i);
+
+// Surface Peinture (MANQUANT du sitemap)
+const SURF_PIECES: { slug: string; surfaces: number[] }[] = [
+  { slug: "chambre", surfaces: [9, 10, 12, 14] },
+  { slug: "salon", surfaces: [18, 20, 25, 30, 35] },
+  { slug: "cuisine", surfaces: [8, 10, 12, 15] },
+  { slug: "salle-de-bain", surfaces: [4, 5, 6, 8] },
+  { slug: "bureau", surfaces: [8, 10, 12] },
+  { slug: "couloir", surfaces: [4, 6, 8] },
+  { slug: "studio", surfaces: [15, 20, 25] },
+];
+
+// Epargne (MANQUANT du sitemap)
+const EPARGNE_CAPITAUX = [1000, 2000, 5000, 10000, 15000, 20000, 30000, 50000, 100000];
+const EPARGNE_PLACEMENTS = ["livret-a", "ldds", "lep", "assurance-vie", "pel"];
+
+// Indemnites Kilometriques (MANQUANT du sitemap)
+const KM_DISTANCES = [3000, 5000, 8000, 10000, 12000, 15000, 18000, 20000, 25000, 30000];
+const KM_CV = ["3cv", "4cv", "5cv", "6cv", "7cv"];
+
+// Impot Revenu (MANQUANT du sitemap)
+const IMPOT_REVENUS = [15000, 18000, 20000, 22000, 25000, 28000, 30000, 32000, 35000, 38000, 40000, 42000, 45000, 48000, 50000, 55000, 60000, 65000, 70000, 75000, 80000, 90000, 100000, 120000, 150000];
+
+// Bunker FR (MANQUANT du sitemap)
+const BUNKER_PERSONNES = [1, 2, 4, 6, 10];
+const BUNKER_DUREES = ["2-semaines", "1-mois", "3-mois", "6-mois", "1-an", "2-ans"];
+const BUNKER_TYPES = ["basique", "standard", "nrbc", "luxe"];
+
+// Prix Chauffagiste (MANQUANT du sitemap)
+const CHAUFF_PRESTATIONS_SEO = [
+  { slug: "chaudiere-gaz-condensation", unite: "forfait", quantites: [] },
+  { slug: "pac-air-eau", unite: "forfait", quantites: [] },
+  { slug: "pac-air-air", unite: "forfait", quantites: [] },
+  { slug: "chauffe-eau-thermodynamique", unite: "forfait", quantites: [] },
+  { slug: "chauffe-eau-electrique", unite: "forfait", quantites: [] },
+  { slug: "plancher-chauffant", unite: "m2", quantites: [30, 50, 80, 120] },
+  { slug: "radiateur", unite: "unites", quantites: [2, 4, 6, 8] },
+  { slug: "entretien-chaudiere", unite: "forfait", quantites: [] },
+  { slug: "desembouage", unite: "forfait", quantites: [] },
+  { slug: "depannage-chauffage", unite: "forfait", quantites: [] },
+];
+const CHAUFF_REGIONS_SEO = ["ile-de-france", "grandes-villes", "province"];
+
 // Capacite Emprunt
 const EMPRUNT_REVENUS = [1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 8000, 10000];
 const EMPRUNT_DUREES = [15, 20, 25];
@@ -1016,6 +1084,112 @@ export default function sitemap(): MetadataRoute.Sitemap {
     enDraftPages.push({ url: `${BASE_URL}/en/draft-simulator/${p}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
+  // Pages dynamiques IMC
+  const imcPages: MetadataRoute.Sitemap = [];
+  for (const p of IMC_POIDS) {
+    for (const t of IMC_TAILLES) {
+      imcPages.push({ url: `${BASE_URL}/calcul-imc/${p}-kg-${t}-cm`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Pages dynamiques Frais de Notaire
+  const notairePages: MetadataRoute.Sitemap = [];
+  for (const p of NOTAIRE_PRIX) {
+    for (const t of NOTAIRE_TYPES) {
+      notairePages.push({ url: `${BASE_URL}/frais-de-notaire/${p}-euros-${t}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Pages dynamiques Consommation Electrique
+  const consoPages: MetadataRoute.Sitemap = [];
+  for (const a of CONSO_APPAREILS) {
+    consoPages.push({ url: `${BASE_URL}/calcul-consommation-electrique/${a}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
+  // Pages dynamiques Indemnite Licenciement
+  const licenciementPages: MetadataRoute.Sitemap = [];
+  for (const s of LICENC_SALAIRES) {
+    for (const a of LICENC_ANNEES) {
+      licenciementPages.push({ url: `${BASE_URL}/indemnite-licenciement/${s}-euros-${a}-ans`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Pages dynamiques Convertisseur Devises
+  const devisesPages: MetadataRoute.Sitemap = [];
+  for (const m of DEVISES_MONTANTS) {
+    for (const d of DEVISES_PAIRES) {
+      devisesPages.push({ url: `${BASE_URL}/convertisseur-devises/${m}-euros-en-${d}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Pages dynamiques Inflation
+  const inflationPages: MetadataRoute.Sitemap = [];
+  for (const m of INFL_MONTANTS) {
+    for (const a of INFL_ANNEES) {
+      inflationPages.push({ url: `${BASE_URL}/calculateur-inflation/${m}-euros-depuis-${a}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Pages dynamiques Age
+  const agePages: MetadataRoute.Sitemap = [];
+  for (const a of AGE_ANNEES) {
+    agePages.push({ url: `${BASE_URL}/calcul-age/ne-en-${a}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
+  // Pages dynamiques Surface Peinture
+  const surfPeinturePages: MetadataRoute.Sitemap = [];
+  for (const piece of SURF_PIECES) {
+    for (const s of piece.surfaces) {
+      surfPeinturePages.push({ url: `${BASE_URL}/calcul-surface-peinture/${piece.slug}-${s}-m2`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Pages dynamiques Epargne
+  const epargnePages: MetadataRoute.Sitemap = [];
+  for (const c of EPARGNE_CAPITAUX) {
+    for (const p of EPARGNE_PLACEMENTS) {
+      epargnePages.push({ url: `${BASE_URL}/simulateur-epargne/${c}-euros-${p}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Pages dynamiques Indemnites Kilometriques
+  const kmPages: MetadataRoute.Sitemap = [];
+  for (const d of KM_DISTANCES) {
+    for (const cv of KM_CV) {
+      kmPages.push({ url: `${BASE_URL}/calcul-indemnites-kilometriques/${d}-km-${cv}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Pages dynamiques Impot Revenu
+  const impotPages: MetadataRoute.Sitemap = [];
+  for (const r of IMPOT_REVENUS) {
+    impotPages.push({ url: `${BASE_URL}/simulateur-impot-revenu/${r}-euros`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
+  // Pages dynamiques Bunker FR
+  const bunkerPages: MetadataRoute.Sitemap = [];
+  for (const p of BUNKER_PERSONNES) {
+    for (const d of BUNKER_DUREES) {
+      for (const t of BUNKER_TYPES) {
+        bunkerPages.push({ url: `${BASE_URL}/simulateur-bunker/${p}-personne${p > 1 ? "s" : ""}-${d}-${t}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      }
+    }
+  }
+
+  // Pages dynamiques Prix Chauffagiste
+  const chauffPages: MetadataRoute.Sitemap = [];
+  for (const p of CHAUFF_PRESTATIONS_SEO) {
+    for (const r of CHAUFF_REGIONS_SEO) {
+      if (p.unite === "forfait") {
+        chauffPages.push({ url: `${BASE_URL}/prix-chauffagiste/${p.slug}-${r}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      } else {
+        for (const q of p.quantites) {
+          chauffPages.push({ url: `${BASE_URL}/prix-chauffagiste/${p.slug}-${q}${p.unite}-${r}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+        }
+      }
+    }
+  }
+
   // Pages ville par metier (25 villes x 6 metiers = 150 pages)
   const villePages: MetadataRoute.Sitemap = [];
   for (const metier of METIERS_PRIX) {
@@ -1057,6 +1231,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...elecPages,
     ...plombPages,
     ...couvreurPages,
+    ...imcPages,
+    ...notairePages,
+    ...consoPages,
+    ...licenciementPages,
+    ...devisesPages,
+    ...inflationPages,
+    ...agePages,
+    ...surfPeinturePages,
+    ...epargnePages,
+    ...kmPages,
+    ...impotPages,
+    ...bunkerPages,
+    ...chauffPages,
     ...villePages,
     ...enStaticPages,
     ...enNukePages,
