@@ -5,13 +5,28 @@ import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
 import { PRESTATIONS_PLOMBIER, REGIONS_SEO, parseSlugPlombier, generateAllSlugsPlombier, calculerPrixPlombier, fmtPrix } from "../calcPlombier";
+import { VILLES, findVille, getVillesSlugs } from "../../data/villes";
+import type { Ville } from "../../data/villes";
 
 export function generateStaticParams() {
-  return generateAllSlugsPlombier().map(s => ({ params: s }));
+  const prestationSlugs = generateAllSlugsPlombier().map(s => ({ params: s }));
+  const villeSlugs = getVillesSlugs().map(s => ({ params: s }));
+  return [...prestationSlugs, ...villeSlugs];
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ params: string }> }): Promise<Metadata> {
   const { params: slug } = await params;
+
+  // Check if it's a city page
+  const ville = findVille(slug);
+  if (ville) {
+    return {
+      title: `Prix Plombier a ${ville.nom} (${ville.departement}) - Tarifs 2026`,
+      description: `Tous les prix plombier a ${ville.nom} en 2026 : debouchage (${Math.round(100 * ville.coefficient)}-${Math.round(450 * ville.coefficient)} EUR), installation WC, salle de bain. Tarifs ${ville.nom} avec coefficient x${ville.coefficient.toFixed(2)}.`,
+      keywords: `prix plombier ${ville.nom.toLowerCase()}, tarif plombier ${ville.nom.toLowerCase()}, cout plombier ${ville.nom.toLowerCase()}, devis plombier ${ville.nom.toLowerCase()} ${ville.departement}`,
+    };
+  }
+
   const parsed = parseSlugPlombier(slug);
   if (!parsed) return {};
 
@@ -26,8 +41,173 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   };
 }
 
+function VillePage({ ville }: { ville: Ville }) {
+  const autresVilles = VILLES.filter(v => v.slug !== ville.slug).slice(0, 12);
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: `Combien coute un plombier a ${ville.nom} en 2026 ?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `Les tarifs plombier a ${ville.nom} (${ville.departement}) varient selon la prestation : debouchage ${Math.round(100 * ville.coefficient)}-${Math.round(450 * ville.coefficient)} \u20ac, installation WC ${Math.round(250 * ville.coefficient)}-${Math.round(900 * ville.coefficient)} \u20ac, salle de bain complete ${Math.round(900 * ville.coefficient)}-${Math.round(2500 * ville.coefficient)} \u20ac/m\u00b2. Coefficient de prix a ${ville.nom} : x${ville.coefficient.toFixed(2)}.`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `Comment trouver un bon plombier a ${ville.nom} ?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `Pour trouver un plombier fiable a ${ville.nom}, demandez au moins 3 devis, verifiez l'assurance decennale et les avis clients. ${ville.nom} compte environ ${ville.population} habitants et une forte demande en plombiers qualifies. Mefiez-vous des depanneurs d'urgence non agrees.`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `Les prix plombier a ${ville.nom} sont-ils plus chers qu'ailleurs ?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: ville.coefficient > 1.0
+            ? `Oui, les prix a ${ville.nom} sont environ ${Math.round((ville.coefficient - 1) * 100)}% plus eleves que la moyenne nationale en raison du cout de la vie et de la forte demande. Le coefficient de prix pour ${ville.nom} est de x${ville.coefficient.toFixed(2)}.`
+            : `Les prix a ${ville.nom} sont dans la moyenne nationale. Le coefficient de prix pour ${ville.nom} est de x${ville.coefficient.toFixed(2)}, ce qui correspond aux tarifs standards en province.`,
+        },
+      },
+    ],
+  };
+
+  return (
+    <div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <Breadcrumb currentPage={`Plombier ${ville.nom}`} parentPage="Prix Plombier" parentHref="/prix-plombier" />
+
+      <div className="flex items-center gap-3 mb-2">
+        <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-teal-600 rounded-xl flex items-center justify-center text-xl shadow-sm">
+          {"\ud83d\udeb0"}
+        </div>
+        <h1 className="text-3xl font-extrabold text-slate-800">
+          Prix Plombier a {ville.nom} ({ville.departement}) &mdash; Tarifs 2026
+        </h1>
+      </div>
+      <p className="text-slate-500 mb-8 ml-[52px]">
+        Tous les tarifs plombier a {ville.nom} : installation, depannage, salle de bain. Coefficient de prix x{ville.coefficient.toFixed(2)}.
+      </p>
+
+      {/* Resume ville */}
+      <div className="bg-gradient-to-br from-cyan-500 to-teal-600 text-white rounded-2xl p-8 shadow-lg shadow-cyan-200/50 mb-8">
+        <p className="text-cyan-200 mb-1">Tarifs plombier a {ville.nom} ({ville.codePostal})</p>
+        <p className="text-3xl font-extrabold tracking-tight mb-1">
+          Coefficient de prix : x{ville.coefficient.toFixed(2)}
+        </p>
+        <p className="text-cyan-200">
+          {ville.coefficient > 1.0 ? `+${Math.round((ville.coefficient - 1) * 100)}% par rapport a la moyenne nationale` : "Prix dans la moyenne nationale"}
+        </p>
+        <div className="h-px bg-white/20 my-5" />
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-sm">
+          <div>
+            <p className="text-cyan-200">Ville</p>
+            <p className="font-bold text-lg">{ville.nom}</p>
+          </div>
+          <div>
+            <p className="text-cyan-200">Departement</p>
+            <p className="font-bold text-lg">{ville.departement}</p>
+          </div>
+          <div>
+            <p className="text-cyan-200">Population</p>
+            <p className="font-bold text-lg">{ville.population} hab.</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Tableau toutes prestations */}
+      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm mb-8">
+        <h2 className="text-lg font-bold text-slate-800 mb-4">Tous les prix plombier a {ville.nom} (2026)</h2>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-slate-200">
+                <th className="text-left py-3 px-2 text-slate-500 font-medium">Prestation</th>
+                <th className="text-right py-3 px-2 text-slate-500 font-medium">Unite</th>
+                <th className="text-right py-3 px-2 text-slate-500 font-medium">Prix min</th>
+                <th className="text-right py-3 px-2 text-slate-500 font-medium">Prix max</th>
+              </tr>
+            </thead>
+            <tbody>
+              {PRESTATIONS_PLOMBIER.map(p => (
+                <tr key={p.id} className="border-b border-slate-100">
+                  <td className="py-2.5 px-2">
+                    <span className="mr-2">{p.emoji}</span>
+                    <span className="text-slate-700">{p.nom}</span>
+                  </td>
+                  <td className="py-2.5 px-2 text-right text-slate-500">{p.uniteLabel}</td>
+                  <td className="py-2.5 px-2 text-right text-slate-600">{Math.round(p.totalMin * ville.coefficient)} &euro;</td>
+                  <td className="py-2.5 px-2 text-right font-bold text-slate-800">{Math.round(p.totalMax * ville.coefficient)} &euro;</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Outil interactif */}
+      <h2 className="text-xl font-bold text-slate-800 mb-4">Estimateur interactif</h2>
+      <EstimateurPlombier />
+
+      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
+
+      {/* Texte SEO */}
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">
+          Prix plombier a {ville.nom} : ce qu&apos;il faut savoir
+        </h2>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          A <strong>{ville.nom}</strong> ({ville.departement}), les tarifs des plombiers suivent un coefficient de <strong>x{ville.coefficient.toFixed(2)}</strong> par rapport aux prix de reference en province.
+          {ville.coefficient > 1.0
+            ? ` Cela represente une majoration de ${Math.round((ville.coefficient - 1) * 100)}%, liee a la forte demande et au cout de la vie dans l'agglomeration de ${ville.nom} (${ville.population} habitants).`
+            : ` Les prix a ${ville.nom} sont dans la moyenne nationale, ce qui est avantageux pour les habitants.`
+          }
+        </p>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Les prestations les plus demandees a <strong>{ville.nom}</strong> sont le <strong>debouchage de canalisation</strong> ({Math.round(100 * ville.coefficient)}-{Math.round(450 * ville.coefficient)} &euro;), l&apos;<strong>installation de WC</strong> ({Math.round(250 * ville.coefficient)}-{Math.round(900 * ville.coefficient)} &euro;) et la <strong>creation de salle de bain</strong> ({Math.round(900 * ville.coefficient)}-{Math.round(2500 * ville.coefficient)} &euro;/m&sup2;).
+        </p>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Pour obtenir le meilleur tarif a {ville.nom}, nous vous recommandons de <strong>comparer au moins 3 devis</strong> de plombiers qualifies dans le {ville.departement}. Attention aux depanneurs d&apos;urgence non agrees qui pratiquent des tarifs abusifs.
+        </p>
+        <p className="text-slate-600 leading-relaxed">
+          Les travaux de plomberie dans un logement de plus de 2 ans beneficient d&apos;une <strong>TVA reduite a 10%</strong>. Verifiez l&apos;assurance decennale de votre artisan avant de signer le devis.
+        </p>
+      </section>
+
+      {/* Autres villes */}
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
+        <h2 className="text-lg font-bold text-slate-800 mb-4">Prix plombier dans d&apos;autres villes</h2>
+        <div className="flex flex-wrap gap-2">
+          {autresVilles.map(v => (
+            <a
+              key={v.slug}
+              href={`/prix-plombier/${v.slug}`}
+              className="px-4 py-2 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:border-cyan-300 hover:text-cyan-600 hover:bg-cyan-50/50 transition-all"
+            >
+              {v.nom} ({v.departement})
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <RelatedCalculators currentSlug="/prix-plombier" />
+      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
+    </div>
+  );
+}
+
 export default async function Page({ params }: { params: Promise<{ params: string }> }) {
   const { params: slug } = await params;
+
+  // Check if it's a city page
+  const ville = findVille(slug);
+  if (ville) return <VillePage ville={ville} />;
+
   const parsed = parseSlugPlombier(slug);
   if (!parsed) notFound();
 

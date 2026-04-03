@@ -206,6 +206,14 @@ const EN_DRAFT_GENDERS = ["male", "female"];
 const EN_DRAFT_AGES = [18, 20, 22, 25, 30, 35, 40, 45, 50, 55, 60, 65];
 const EN_DRAFT_PROFILES = ["veteran", "national-guard", "single-parent", "healthcare-worker", "college-student", "dual-citizen", "conscientious-objector"];
 
+// Villes (pages SEO locales)
+const VILLES_SLUGS = [
+  "paris", "boulogne-billancourt", "saint-denis", "versailles",
+  "marseille", "lyon", "toulouse", "nice", "nantes", "montpellier", "strasbourg", "bordeaux", "lille", "rennes", "toulon",
+  "reims", "saint-etienne", "le-havre", "dijon", "grenoble", "angers", "aix-en-provence", "brest", "le-mans", "clermont-ferrand",
+];
+const METIERS_PRIX = ["prix-chauffagiste", "prix-plombier", "prix-electricien", "prix-macon", "prix-peintre", "prix-couvreur"];
+
 // Chomage
 const CHOMAGE_SALAIRES = [1400, 1600, 1800, 2000, 2200, 2500, 2800, 3000, 3500, 4000, 4500, 5000, 6000];
 const CHOMAGE_MOIS = [6, 12, 18, 24];
@@ -1008,6 +1016,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     enDraftPages.push({ url: `${BASE_URL}/en/draft-simulator/${p}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
+  // Pages ville par metier (25 villes x 6 metiers = 150 pages)
+  const villePages: MetadataRoute.Sitemap = [];
+  for (const metier of METIERS_PRIX) {
+    for (const ville of VILLES_SLUGS) {
+      villePages.push({ url: `${BASE_URL}/${metier}/${ville}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 });
+    }
+  }
+
   return [
     ...staticPages,
     ...salairePages,
@@ -1041,6 +1057,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...elecPages,
     ...plombPages,
     ...couvreurPages,
+    ...villePages,
     ...enStaticPages,
     ...enNukePages,
     ...enBlackoutPages,

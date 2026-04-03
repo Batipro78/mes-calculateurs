@@ -5,13 +5,27 @@ import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
 import { PRESTATIONS_MACON, REGIONS_SEO, parseSlugMacon, generateAllSlugsMacon, calculerPrixMacon, fmtPrix } from "../calcMacon";
+import { VILLES, findVille, getVillesSlugs } from "../../data/villes";
+import type { Ville } from "../../data/villes";
 
 export function generateStaticParams() {
-  return generateAllSlugsMacon().map(s => ({ params: s }));
+  const prestationSlugs = generateAllSlugsMacon().map(s => ({ params: s }));
+  const villeSlugs = getVillesSlugs().map(s => ({ params: s }));
+  return [...prestationSlugs, ...villeSlugs];
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ params: string }> }): Promise<Metadata> {
   const { params: slug } = await params;
+
+  const ville = findVille(slug);
+  if (ville) {
+    return {
+      title: `Prix Macon a ${ville.nom} (${ville.departement}) - Tarifs 2026`,
+      description: `Tous les prix macon a ${ville.nom} en 2026 : mur parpaings, dalle beton, terrasse, facade. Tarifs ${ville.nom} avec coefficient x${ville.coefficient.toFixed(2)}.`,
+      keywords: `prix macon ${ville.nom.toLowerCase()}, tarif macon ${ville.nom.toLowerCase()}, cout macon ${ville.nom.toLowerCase()}, devis macon ${ville.nom.toLowerCase()} ${ville.departement}`,
+    };
+  }
+
   const parsed = parseSlugMacon(slug);
   if (!parsed) return {};
 
@@ -26,8 +40,122 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   };
 }
 
+function VillePage({ ville }: { ville: Ville }) {
+  const murPrixMin = Math.round(25 * ville.coefficient);
+  const murPrixMax = Math.round(85 * ville.coefficient);
+  const dallePrixMin = Math.round(40 * ville.coefficient);
+  const dallePrixMax = Math.round(100 * ville.coefficient);
+  const terrassePrixMin = Math.round(50 * ville.coefficient);
+  const terrassePrixMax = Math.round(120 * ville.coefficient);
+
+  const autresVilles = VILLES.filter(v => v.slug !== ville.slug).slice(0, 12);
+
+  return (
+    <div>
+      <Breadcrumb currentPage={`Prix Macon a ${ville.nom}`} parentPage="Prix Macon" parentHref="/prix-macon" />
+
+      <div className="flex items-center gap-3 mb-2">
+        <div className="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center text-xl shadow-sm">
+          🧱
+        </div>
+        <h1 className="text-3xl font-extrabold text-slate-800">
+          Prix Macon a {ville.nom}
+        </h1>
+      </div>
+      <p className="text-slate-500 mb-8 ml-[52px]">
+        Tous les tarifs macon a {ville.nom} ({ville.departement}) en 2026. Coefficient regional x{ville.coefficient.toFixed(2)}.
+      </p>
+
+      {/* Tableau toutes prestations */}
+      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm mb-8">
+        <h2 className="text-lg font-bold text-slate-800 mb-4">Tous les prix macon a {ville.nom} (2026)</h2>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-slate-200">
+                <th className="text-left py-3 px-2 text-slate-500 font-medium">Prestation</th>
+                <th className="text-right py-3 px-2 text-slate-500 font-medium">Unite</th>
+                <th className="text-right py-3 px-2 text-slate-500 font-medium">Prix min</th>
+                <th className="text-right py-3 px-2 text-slate-500 font-medium">Prix max</th>
+              </tr>
+            </thead>
+            <tbody>
+              {PRESTATIONS_MACON.map(p => (
+                <tr key={p.id} className="border-b border-slate-100">
+                  <td className="py-2.5 px-2">
+                    <span className="mr-2">{p.emoji}</span>
+                    <span className="text-slate-700">{p.nom}</span>
+                  </td>
+                  <td className="py-2.5 px-2 text-right text-slate-500">{p.uniteLabel}</td>
+                  <td className="py-2.5 px-2 text-right text-slate-600">{Math.round(p.totalMin * ville.coefficient)} &euro;</td>
+                  <td className="py-2.5 px-2 text-right font-bold text-slate-800">{Math.round(p.totalMax * ville.coefficient)} &euro;</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Outil interactif */}
+      <h2 className="text-xl font-bold text-slate-800 mb-4">Estimateur interactif</h2>
+      <EstimateurMacon />
+
+      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
+
+      {/* Texte SEO */}
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">
+          Prix macon a {ville.nom} : quel budget prevoir en {new Date().getFullYear()} ?
+        </h2>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          A <strong>{ville.nom}</strong> ({ville.departement}), les tarifs des macons sont appliques avec un coefficient regional de <strong>x{ville.coefficient.toFixed(2)}</strong>.
+          Voici les principales prestations et leurs tarifs estimes :
+        </p>
+        <ul className="text-slate-600 mb-4 leading-relaxed list-disc list-inside">
+          <li><strong>Mur en parpaings</strong> : {murPrixMin}-{murPrixMax} &euro;/m2</li>
+          <li><strong>Dalle beton</strong> : {dallePrixMin}-{dallePrixMax} &euro;/m2</li>
+          <li><strong>Terrasse beton</strong> : {terrassePrixMin}-{terrassePrixMax} &euro;/m2</li>
+        </ul>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Pour obtenir le meilleur tarif a {ville.nom}, nous vous recommandons de <strong>comparer au moins 3 devis</strong> de macons qualifies dans votre region.
+          Les prix peuvent varier selon la complexite de votre chantier et l&apos;accessibilite du site.
+        </p>
+        <p className="text-slate-600 leading-relaxed">
+          N&apos;oubliez pas que les travaux de renovation dans un logement de plus de 2 ans beneficient d&apos;une <strong>TVA reduite a 10%</strong> (au lieu de 20%).
+          Verifiez egalement l&apos;assurance decennale de votre artisan avant de signer le devis.
+        </p>
+      </section>
+
+      {/* Autres villes */}
+      {autresVilles.length > 0 && (
+        <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
+          <h2 className="text-lg font-bold text-slate-800 mb-4">Autres villes en {ville.departement}</h2>
+          <div className="flex flex-wrap gap-2">
+            {autresVilles.map(v => (
+              <a
+                key={v.slug}
+                href={`/prix-macon/${v.slug}`}
+                className="px-4 py-2 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:border-amber-300 hover:text-amber-600 hover:bg-amber-50/50 transition-all"
+              >
+                {v.nom}
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <RelatedCalculators currentSlug="/prix-macon" />
+      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
+    </div>
+  );
+}
+
 export default async function Page({ params }: { params: Promise<{ params: string }> }) {
   const { params: slug } = await params;
+
+  const ville = findVille(slug);
+  if (ville) return <VillePage ville={ville} />;
+
   const parsed = parseSlugMacon(slug);
   if (!parsed) notFound();
 

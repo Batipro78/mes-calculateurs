@@ -5,13 +5,27 @@ import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
 import { PRESTATIONS_PEINTRE, REGIONS_SEO_PEINTRE, parseSlugPeintre, generateAllSlugsPeintre, calculerPrixPeintre, fmtPrix } from "../calcPeintre";
+import { VILLES, findVille, getVillesSlugs } from "../../data/villes";
+import type { Ville } from "../../data/villes";
 
 export function generateStaticParams() {
-  return generateAllSlugsPeintre().map(s => ({ params: s }));
+  const prestationSlugs = generateAllSlugsPeintre().map(s => ({ params: s }));
+  const villeSlugs = getVillesSlugs().map(s => ({ params: s }));
+  return [...prestationSlugs, ...villeSlugs];
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ params: string }> }): Promise<Metadata> {
   const { params: slug } = await params;
+
+  const ville = findVille(slug);
+  if (ville) {
+    return {
+      title: `Prix Peintre a ${ville.nom} (${ville.departement}) - Tarifs 2026`,
+      description: `Tous les prix peintre a ${ville.nom} en 2026 : peinture mur, plafond, facade, papier peint. Tarifs ${ville.nom} avec coefficient x${ville.coefficient.toFixed(2)}.`,
+      keywords: `prix peintre ${ville.nom.toLowerCase()}, tarif peintre ${ville.nom.toLowerCase()}, cout peinture ${ville.nom.toLowerCase()}, devis peintre ${ville.nom.toLowerCase()} ${ville.departement}`,
+    };
+  }
+
   const parsed = parseSlugPeintre(slug);
   if (!parsed) return {};
 
@@ -26,8 +40,111 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   };
 }
 
+function VillePage({ ville }: { ville: Ville }) {
+  return (
+    <div>
+      <Breadcrumb currentPage={`${ville.nom}`} parentPage="Prix Peintre" parentHref="/prix-peintre" />
+
+      <div className="flex items-center gap-3 mb-2">
+        <div className="w-10 h-10 bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl flex items-center justify-center text-xl shadow-sm">
+          🎨
+        </div>
+        <h1 className="text-3xl font-extrabold text-slate-800">
+          Prix Peintre a {ville.nom} ({ville.departement})
+        </h1>
+      </div>
+      <p className="text-slate-500 mb-8 ml-[52px]">
+        Tous les tarifs peintre a {ville.nom} en 2026. Coefficient regional x{ville.coefficient.toFixed(2)}.
+      </p>
+
+      {/* Tableau toutes prestations */}
+      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm mb-8">
+        <h2 className="text-lg font-bold text-slate-800 mb-4">Tous les prix peintre a {ville.nom} (2026)</h2>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-slate-200">
+                <th className="text-left py-3 px-2 text-slate-500 font-medium">Prestation</th>
+                <th className="text-right py-3 px-2 text-slate-500 font-medium">Unite</th>
+                <th className="text-right py-3 px-2 text-slate-500 font-medium">Prix min</th>
+                <th className="text-right py-3 px-2 text-slate-500 font-medium">Prix max</th>
+              </tr>
+            </thead>
+            <tbody>
+              {PRESTATIONS_PEINTRE.map(p => (
+                <tr key={p.id} className="border-b border-slate-100">
+                  <td className="py-2.5 px-2">
+                    <span className="mr-2">{p.emoji}</span>
+                    <span className="text-slate-700">{p.nom}</span>
+                  </td>
+                  <td className="py-2.5 px-2 text-right text-slate-500">{p.uniteLabel}</td>
+                  <td className="py-2.5 px-2 text-right text-slate-600">{Math.round(p.totalMin * ville.coefficient)} &euro;</td>
+                  <td className="py-2.5 px-2 text-right font-bold text-slate-800">{Math.round(p.totalMax * ville.coefficient)} &euro;</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Outil interactif */}
+      <h2 className="text-xl font-bold text-slate-800 mb-4">Estimateur interactif</h2>
+      <EstimateurPeintre />
+
+      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
+
+      {/* Texte SEO */}
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">
+          Tarifs peintre a {ville.nom} : quel budget prevoir ?
+        </h2>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          A <strong>{ville.nom}</strong> ({ville.departement}), les tarifs peintre en 2026 varient en fonction du type de prestation et de la complexite du chantier.
+          Avec un coefficient regional de <strong>x{ville.coefficient.toFixed(2)}</strong>, voici les prix moyens pour les prestations les plus courantes :
+        </p>
+        <ul className="text-slate-600 mb-4 leading-relaxed list-disc list-inside space-y-2">
+          <li><strong>Peinture mur</strong> : {Math.round(12 * ville.coefficient)}-{Math.round(35 * ville.coefficient)} EUR/m2</li>
+          <li><strong>Peinture plafond</strong> : {Math.round(18 * ville.coefficient)}-{Math.round(50 * ville.coefficient)} EUR/m2</li>
+          <li><strong>Peinture facade</strong> : {Math.round(25 * ville.coefficient)}-{Math.round(70 * ville.coefficient)} EUR/m2</li>
+        </ul>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Ces tarifs comprennent generalement la preparation des surfaces (lessivage, rebouchage des fissures), une sous-couche et 2 couches de finition.
+          Les prix varient selon la qualite de la peinture, l&apos;etat de la surface et l&apos;accessibilite du chantier.
+        </p>
+        <p className="text-slate-600 leading-relaxed">
+          Pour obtenir le meilleur prix, nous vous recommandons de <strong>comparer au moins 3 devis</strong> de peintres qualifies a {ville.nom}.
+          N&apos;oubliez pas la <strong>TVA a 10%</strong> pour les travaux de renovation dans un logement de plus de 2 ans.
+        </p>
+      </section>
+
+      {/* Autres villes */}
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
+        <h2 className="text-lg font-bold text-slate-800 mb-4">Autres villes de {ville.nom}</h2>
+        <div className="flex flex-wrap gap-2">
+          {VILLES.filter(v => v.departement === ville.departement && v.slug !== ville.slug).map(v => (
+            <a
+              key={v.slug}
+              href={`/prix-peintre/${v.slug}`}
+              className="px-4 py-2 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:border-violet-300 hover:text-violet-600 hover:bg-violet-50/50 transition-all"
+            >
+              {v.nom}
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <RelatedCalculators currentSlug="/prix-peintre" />
+      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
+    </div>
+  );
+}
+
 export default async function Page({ params }: { params: Promise<{ params: string }> }) {
   const { params: slug } = await params;
+
+  const ville = findVille(slug);
+  if (ville) return <VillePage ville={ville} />;
+
   const parsed = parseSlugPeintre(slug);
   if (!parsed) notFound();
 

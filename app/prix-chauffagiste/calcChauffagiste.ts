@@ -104,3 +104,22 @@ export function generateAllSlugsChauffagiste(): string[] {
   }
   return slugs;
 }
+
+export function calculerPrixChauffagisteCoef(prestationId: string, quantite: number, coefficient: number): ResultatChauffagiste | null {
+  const prestation = PRESTATIONS_CHAUFFAGISTE.find(p => p.id === prestationId);
+  if (!prestation) return null;
+
+  const region: RegionChauffagiste = { id: "custom", nom: "Custom", slug: "custom", coefficient };
+
+  return {
+    prestation,
+    quantite,
+    region,
+    fournituresMin: Math.round(prestation.fournituresMin * quantite * coefficient),
+    fournituresMax: Math.round(prestation.fournituresMax * quantite * coefficient),
+    mainOeuvreMin: Math.round(prestation.mainOeuvreMin * quantite * coefficient),
+    mainOeuvreMax: Math.round(prestation.mainOeuvreMax * quantite * coefficient),
+    totalMin: Math.round(prestation.totalMin * quantite * coefficient),
+    totalMax: Math.round(prestation.totalMax * quantite * coefficient),
+  };
+}
