@@ -293,7 +293,20 @@ const CAL_AGES = [20, 25, 30, 35, 40, 45, 50, 55, 60];
 const CAL_POIDS = [50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
 const CAL_ACTIVITES = ["sedentaire", "actif", "sportif"];
 
-export default function sitemap(): MetadataRoute.Sitemap {
+const CHUNK_SIZE = 500;
+
+export async function generateSitemaps() {
+  const all = generateAllUrls();
+  const count = Math.ceil(all.length / CHUNK_SIZE);
+  return Array.from({ length: count }, (_, i) => ({ id: i }));
+}
+
+export default async function sitemap({ id }: { id: number }): Promise<MetadataRoute.Sitemap> {
+  const all = generateAllUrls();
+  return all.slice(id * CHUNK_SIZE, (id + 1) * CHUNK_SIZE);
+}
+
+function generateAllUrls(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: BASE_URL,
