@@ -119,43 +119,56 @@ export default function RootLayout({
 
         <footer className="bg-white border-t border-slate-200 mt-16">
           <div className="max-w-5xl mx-auto px-4 py-8">
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-6">
+              <div>
+                <h3 className="text-sm font-semibold text-slate-700 mb-2">Finance</h3>
+                <div className="flex flex-col gap-1.5 text-sm text-slate-400">
+                  <a href="/calculateurs-finance" className="hover:text-slate-600 transition-colors">Tous les calculateurs</a>
+                  <a href="/simulateur-pret-immobilier" className="hover:text-slate-600 transition-colors">Pret Immobilier</a>
+                  <a href="/frais-de-notaire" className="hover:text-slate-600 transition-colors">Frais de Notaire</a>
+                  <a href="/simulateur-impot-revenu" className="hover:text-slate-600 transition-colors">Impot Revenu</a>
+                  <a href="/calcul-tva" className="hover:text-slate-600 transition-colors">Calcul TVA</a>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-slate-700 mb-2">Emploi</h3>
+                <div className="flex flex-col gap-1.5 text-sm text-slate-400">
+                  <a href="/simulateurs-emploi" className="hover:text-slate-600 transition-colors">Tous les simulateurs</a>
+                  <a href="/salaire-brut-net" className="hover:text-slate-600 transition-colors">Salaire Brut/Net</a>
+                  <a href="/simulateur-chomage" className="hover:text-slate-600 transition-colors">Chomage</a>
+                  <a href="/indemnite-licenciement" className="hover:text-slate-600 transition-colors">Licenciement</a>
+                  <a href="/simulateur-retraite" className="hover:text-slate-600 transition-colors">Retraite</a>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-slate-700 mb-2">Sante</h3>
+                <div className="flex flex-col gap-1.5 text-sm text-slate-400">
+                  <a href="/calculateurs-sante-famille" className="hover:text-slate-600 transition-colors">Tous les calculateurs</a>
+                  <a href="/calcul-imc" className="hover:text-slate-600 transition-colors">Calcul IMC</a>
+                  <a href="/calcul-calories" className="hover:text-slate-600 transition-colors">Calories</a>
+                  <a href="/calcul-ovulation" className="hover:text-slate-600 transition-colors">Ovulation</a>
+                  <a href="/calcul-date-accouchement" className="hover:text-slate-600 transition-colors">Accouchement</a>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-slate-700 mb-2">Travaux</h3>
+                <div className="flex flex-col gap-1.5 text-sm text-slate-400">
+                  <a href="/prix-travaux-maison" className="hover:text-slate-600 transition-colors">Tous les prix</a>
+                  <a href="/prix-electricien" className="hover:text-slate-600 transition-colors">Electricien</a>
+                  <a href="/prix-plombier" className="hover:text-slate-600 transition-colors">Plombier</a>
+                  <a href="/prix-macon" className="hover:text-slate-600 transition-colors">Macon</a>
+                  <a href="/prix-chauffagiste" className="hover:text-slate-600 transition-colors">Chauffagiste</a>
+                </div>
+              </div>
+            </div>
+            <div className="border-t border-slate-100 pt-4 flex flex-col sm:flex-row items-center justify-between gap-3">
               <p className="text-sm text-slate-400">
                 &copy; {new Date().getFullYear()} Mes Calculateurs &mdash; Tous
                 droits reserves.
               </p>
               <div className="flex flex-wrap gap-4 text-sm text-slate-400">
-                <a
-                  href="/salaire-brut-net"
-                  className="hover:text-slate-600 transition-colors"
-                >
-                  Salaire Brut/Net
-                </a>
-                <a
-                  href="/calcul-tva"
-                  className="hover:text-slate-600 transition-colors"
-                >
-                  Calcul TVA
-                </a>
-                <a
-                  href="/simulateur-pret-immobilier"
-                  className="hover:text-slate-600 transition-colors"
-                >
-                  Pret Immobilier
-                </a>
-                <span className="text-slate-200">|</span>
-                <a
-                  href="/mentions-legales"
-                  className="hover:text-slate-600 transition-colors"
-                >
-                  Mentions legales
-                </a>
-                <a
-                  href="/confidentialite"
-                  className="hover:text-slate-600 transition-colors"
-                >
-                  Confidentialite
-                </a>
+                <a href="/mentions-legales" className="hover:text-slate-600 transition-colors">Mentions legales</a>
+                <a href="/confidentialite" className="hover:text-slate-600 transition-colors">Confidentialite</a>
               </div>
             </div>
           </div>
