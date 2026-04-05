@@ -58,6 +58,10 @@ const ALL_CALCULATORS = [
   { slug: "/calcul-pgcd-ppcm", title: "PGCD / PPCM", emoji: "🔢", color: "from-purple-500 to-violet-600" },
   { slug: "/calcul-duree-entre-dates", title: "Duree Entre Dates", emoji: "📆", color: "from-fuchsia-500 to-pink-600" },
   { slug: "/verificateur-devis", title: "Verificateur Devis", emoji: "📋", color: "from-blue-600 to-indigo-700" },
+  { slug: "/calcul-ascendant-astrologique", title: "Ascendant Astro", emoji: "♈", color: "from-purple-500 to-indigo-600" },
+  { slug: "/calcul-gratification-stage", title: "Gratification Stage", emoji: "🎓", color: "from-indigo-500 to-blue-600" },
+  { slug: "/calcul-droits-succession", title: "Droits Succession", emoji: "⚖️", color: "from-slate-700 to-slate-900" },
+  { slug: "/calcul-cout-kilometrique", title: "Cout Kilometrique", emoji: "🚙", color: "from-sky-500 to-blue-600" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -120,6 +124,10 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calcul-pgcd-ppcm": ["/calcul-moyenne", "/produit-en-croix", "/calcul-pourcentage", "/conversion-temperature"],
   "/calcul-duree-entre-dates": ["/calcul-jours-ouvres", "/calcul-age", "/calcul-conges-payes", "/calcul-heures-travail"],
   "/verificateur-devis": ["/calcul-tva", "/frais-de-notaire", "/simulateur-micro-entreprise", "/calcul-conges-payes"],
+  "/calcul-ascendant-astrologique": ["/calcul-age", "/calcul-date-accouchement", "/calcul-ovulation", "/calcul-duree-entre-dates"],
+  "/calcul-gratification-stage": ["/simulateur-salaire-alternant", "/salaire-brut-net", "/calcul-conges-payes", "/simulateur-chomage"],
+  "/calcul-droits-succession": ["/frais-de-notaire", "/simulateur-impot-revenu", "/calcul-plus-value-immobiliere", "/simulateur-epargne"],
+  "/calcul-cout-kilometrique": ["/calcul-indemnites-kilometriques", "/calcul-consommation-essence", "/simulateur-impot-revenu", "/calcul-tva"],
 };
 
 interface RelatedCalculatorsProps {

@@ -132,6 +132,21 @@ const POIDS_LBS = [1, 5, 10, 20, 50, 100, 110, 120, 130, 140, 150, 160, 170, 180
 const LONG_CM = [1, 2, 5, 10, 20, 30, 50, 100, 150, 155, 160, 165, 170, 175, 180, 185, 190, 195, 200];
 const LONG_POUCES = [1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 15, 20, 24, 27, 32, 40, 43, 50, 55, 65, 75, 85];
 
+// Ascendant Astrologique
+const ASTRO_SIGNES = ["belier","taureau","gemeaux","cancer","lion","vierge","balance","scorpion","sagittaire","capricorne","verseau","poissons"];
+
+// Gratification Stage
+const STAGE_DUREES = [1, 2, 3, 4, 5, 6];
+const STAGE_HEURES = [20, 25, 28, 35];
+
+// Droits Succession
+const SUCC_MONTANTS = [100000, 200000, 300000, 400000, 500000, 750000, 1000000];
+const SUCC_HERITIERS = [1, 2, 3];
+
+// Cout Kilometrique
+const CK_DISTANCES = [3000, 5000, 8000, 10000, 12000, 15000, 20000, 25000, 30000];
+const CK_CV = ["3cv", "4cv", "5cv", "6cv", "7cv"];
+
 // Interet Compose
 const IC_CAPITAUX = [1000, 5000, 10000, 20000, 50000, 100000];
 const IC_TAUX = [3, 5, 8, 10];
@@ -649,6 +664,30 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/verificateur-devis`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-ascendant-astrologique`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-gratification-stage`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-droits-succession`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-cout-kilometrique`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -1401,6 +1440,36 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     longueurPages.push({ url: `${BASE_URL}/conversion-longueur/${p}-pouces-en-cm`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
+  // Pages dynamiques Ascendant Astrologique
+  const astroPages: MetadataRoute.Sitemap = [];
+  for (const s of ASTRO_SIGNES) {
+    astroPages.push({ url: `${BASE_URL}/calcul-ascendant-astrologique/${s}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
+  // Pages dynamiques Gratification Stage
+  const stagePages: MetadataRoute.Sitemap = [];
+  for (const d of STAGE_DUREES) {
+    for (const h of STAGE_HEURES) {
+      stagePages.push({ url: `${BASE_URL}/calcul-gratification-stage/${d}-mois-${h}-heures`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Pages dynamiques Droits Succession
+  const succPages: MetadataRoute.Sitemap = [];
+  for (const m of SUCC_MONTANTS) {
+    for (const h of SUCC_HERITIERS) {
+      succPages.push({ url: `${BASE_URL}/calcul-droits-succession/${m}-euros-${h}-enfants`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Pages dynamiques Cout Kilometrique
+  const ckPages: MetadataRoute.Sitemap = [];
+  for (const d of CK_DISTANCES) {
+    for (const cv of CK_CV) {
+      ckPages.push({ url: `${BASE_URL}/calcul-cout-kilometrique/${d}-km-${cv}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
   // Pages dynamiques Interet Compose
   const icPages: MetadataRoute.Sitemap = [];
   for (const c of IC_CAPITAUX) {
@@ -1552,6 +1621,10 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     ...tempPages,
     ...poidsPages,
     ...longueurPages,
+    ...astroPages,
+    ...stagePages,
+    ...succPages,
+    ...ckPages,
     ...icPages,
     ...malusPages,
     ...pgcdPages,

@@ -413,6 +413,42 @@ const outils = [
     tag: "Nouveau",
   },
   {
+    titre: "Ascendant Astrologique",
+    description:
+      "Decouvrez votre signe, ascendant et personnalite. Date et heure de naissance, qualites, defauts, element.",
+    href: "/calcul-ascendant-astrologique",
+    icone: "♈",
+    couleur: "from-purple-500 to-indigo-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Gratification Stage 2026",
+    description:
+      "Calculez votre gratification de stage : montant mensuel, total, minimum legal. Obligatoire ou facultatif.",
+    href: "/calcul-gratification-stage",
+    icone: "🎓",
+    couleur: "from-indigo-500 to-blue-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Droits de Succession",
+    description:
+      "Calculez les droits de succession. Bareme par lien de parente, abattements, exoneration conjoint.",
+    href: "/calcul-droits-succession",
+    icone: "⚖️",
+    couleur: "from-slate-700 to-slate-900",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Cout Kilometrique 2026",
+    description:
+      "Calculez votre indemnite kilometrique avec le bareme fiscal 2026. Puissance fiscale, electrique +20%.",
+    href: "/calcul-cout-kilometrique",
+    icone: "🚙",
+    couleur: "from-sky-500 to-blue-600",
+    tag: "Nouveau",
+  },
+  {
     titre: "Verificateur de Devis 2026",
     description:
       "Deposez votre devis — l'IA verifie les 16 mentions obligatoires. Conformite legale en quelques secondes.",
