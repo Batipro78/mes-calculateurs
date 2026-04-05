@@ -53,6 +53,10 @@ const ALL_CALCULATORS = [
   { slug: "/calcul-rentabilite-locative", title: "Rentabilite Locative", emoji: "🏢", color: "from-amber-500 to-orange-600" },
   { slug: "/calcul-consommation-essence", title: "Consommation Essence", emoji: "⛽", color: "from-red-500 to-rose-600" },
   { slug: "/calcul-jours-ouvres", title: "Jours Ouvres", emoji: "📅", color: "from-indigo-500 to-purple-600" },
+  { slug: "/calcul-interet-compose", title: "Interet Compose", emoji: "📈", color: "from-cyan-500 to-blue-600" },
+  { slug: "/calcul-malus-ecologique", title: "Malus Ecologique", emoji: "🚗", color: "from-rose-500 to-red-600" },
+  { slug: "/calcul-pgcd-ppcm", title: "PGCD / PPCM", emoji: "🔢", color: "from-purple-500 to-violet-600" },
+  { slug: "/calcul-duree-entre-dates", title: "Duree Entre Dates", emoji: "📆", color: "from-fuchsia-500 to-pink-600" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -110,6 +114,10 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calcul-rentabilite-locative": ["/calcul-plus-value-immobiliere", "/simulateur-pret-immobilier", "/frais-de-notaire", "/calcul-taux-endettement"],
   "/calcul-consommation-essence": ["/calcul-indemnites-kilometriques", "/calcul-consommation-electrique", "/conversion-temperature", "/calcul-pourcentage"],
   "/calcul-jours-ouvres": ["/calcul-conges-payes", "/calcul-heures-travail", "/salaire-brut-net", "/indemnite-licenciement"],
+  "/calcul-interet-compose": ["/simulateur-epargne", "/simulateur-dca", "/calculateur-inflation", "/simulateur-impot-revenu"],
+  "/calcul-malus-ecologique": ["/simulateur-bonus-ecologique", "/calcul-consommation-essence", "/simulateur-credit-conso", "/calcul-tva"],
+  "/calcul-pgcd-ppcm": ["/calcul-moyenne", "/produit-en-croix", "/calcul-pourcentage", "/conversion-temperature"],
+  "/calcul-duree-entre-dates": ["/calcul-jours-ouvres", "/calcul-age", "/calcul-conges-payes", "/calcul-heures-travail"],
 };
 
 interface RelatedCalculatorsProps {

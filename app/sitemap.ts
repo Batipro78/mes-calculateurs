@@ -132,6 +132,20 @@ const POIDS_LBS = [1, 5, 10, 20, 50, 100, 110, 120, 130, 140, 150, 160, 170, 180
 const LONG_CM = [1, 2, 5, 10, 20, 30, 50, 100, 150, 155, 160, 165, 170, 175, 180, 185, 190, 195, 200];
 const LONG_POUCES = [1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 15, 20, 24, 27, 32, 40, 43, 50, 55, 65, 75, 85];
 
+// Interet Compose
+const IC_CAPITAUX = [1000, 5000, 10000, 20000, 50000, 100000];
+const IC_TAUX = [3, 5, 8, 10];
+const IC_DUREES = [10, 20, 30];
+
+// Malus Ecologique
+const MALUS_CO2 = [100, 110, 113, 114, 115, 120, 125, 130, 135, 140, 145, 150, 155, 160, 170, 180, 190, 200, 210, 220];
+
+// PGCD PPCM
+const PGCD_PAIRES = [[6,8],[8,12],[10,15],[12,18],[14,21],[15,20],[16,24],[18,27],[20,30],[24,36],[28,42],[30,45],[36,48],[42,56],[48,72],[56,98],[60,84],[72,108],[84,126],[100,75],[120,84],[150,200],[180,252],[252,360]];
+
+// Duree Entre Dates
+const DUREE_EVENEMENTS = ["noel-2026","nouvel-an-2027","ete-2026","14-juillet-2026","rentree-2026","toussaint-2026","saint-valentin-2027","paques-2026","halloween-2026","fete-musique-2026"];
+
 // Plus-Value Immobiliere
 const PV_PLUS_VALUES = [25000, 50000, 75000, 100000, 150000, 200000];
 const PV_ANNEES = [5, 10, 15, 22, 30];
@@ -629,6 +643,30 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/prix-travaux-maison`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-interet-compose`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-malus-ecologique`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-pgcd-ppcm`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-duree-entre-dates`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -1357,6 +1395,34 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     longueurPages.push({ url: `${BASE_URL}/conversion-longueur/${p}-pouces-en-cm`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
+  // Pages dynamiques Interet Compose
+  const icPages: MetadataRoute.Sitemap = [];
+  for (const c of IC_CAPITAUX) {
+    for (const t of IC_TAUX) {
+      for (const d of IC_DUREES) {
+        icPages.push({ url: `${BASE_URL}/calcul-interet-compose/${c}-euros-${t}-pourcent-${d}-ans`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      }
+    }
+  }
+
+  // Pages dynamiques Malus Ecologique
+  const malusPages: MetadataRoute.Sitemap = [];
+  for (const co2 of MALUS_CO2) {
+    malusPages.push({ url: `${BASE_URL}/calcul-malus-ecologique/${co2}-g-co2`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
+  // Pages dynamiques PGCD PPCM
+  const pgcdPages: MetadataRoute.Sitemap = [];
+  for (const [a, b] of PGCD_PAIRES) {
+    pgcdPages.push({ url: `${BASE_URL}/calcul-pgcd-ppcm/${a}-et-${b}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
+  // Pages dynamiques Duree Entre Dates
+  const dureePages: MetadataRoute.Sitemap = [];
+  for (const ev of DUREE_EVENEMENTS) {
+    dureePages.push({ url: `${BASE_URL}/calcul-duree-entre-dates/${ev}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
   // Pages dynamiques Plus-Value Immobiliere
   const pvImmoPages: MetadataRoute.Sitemap = [];
   for (const pv of PV_PLUS_VALUES) {
@@ -1480,6 +1546,10 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     ...tempPages,
     ...poidsPages,
     ...longueurPages,
+    ...icPages,
+    ...malusPages,
+    ...pgcdPages,
+    ...dureePages,
     ...pvImmoPages,
     ...rentaPages,
     ...essencePages,

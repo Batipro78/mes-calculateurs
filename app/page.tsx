@@ -413,6 +413,42 @@ const outils = [
     tag: "Nouveau",
   },
   {
+    titre: "Interet Compose",
+    description:
+      "Calculez les interets composes. Capital initial, versements mensuels, taux, duree. Tableau d'evolution annuel.",
+    href: "/calcul-interet-compose",
+    icone: "📈",
+    couleur: "from-cyan-500 to-blue-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Malus Ecologique 2026",
+    description:
+      "Calculez le malus ecologique de votre vehicule. Malus CO2 et malus au poids. Bareme officiel 2026.",
+    href: "/calcul-malus-ecologique",
+    icone: "🚗",
+    couleur: "from-rose-500 to-red-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "PGCD / PPCM",
+    description:
+      "Calculez le PGCD et le PPCM de deux nombres. Algorithme d'Euclide detaille et facteurs premiers.",
+    href: "/calcul-pgcd-ppcm",
+    icone: "🔢",
+    couleur: "from-purple-500 to-violet-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Duree Entre Deux Dates",
+    description:
+      "Calculez la duree entre deux dates en jours, semaines, mois. Jours ouvres et compte a rebours.",
+    href: "/calcul-duree-entre-dates",
+    icone: "📆",
+    couleur: "from-fuchsia-500 to-pink-600",
+    tag: "Nouveau",
+  },
+  {
     titre: "Plus-Value Immobiliere",
     description:
       "Calculez la plus-value immobiliere et l'impot. Abattements par duree de detention, IR 19%, PS 17,2%. Bareme 2026.",
