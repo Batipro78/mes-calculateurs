@@ -132,6 +132,21 @@ const POIDS_LBS = [1, 5, 10, 20, 50, 100, 110, 120, 130, 140, 150, 160, 170, 180
 const LONG_CM = [1, 2, 5, 10, 20, 30, 50, 100, 150, 155, 160, 165, 170, 175, 180, 185, 190, 195, 200];
 const LONG_POUCES = [1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 15, 20, 24, 27, 32, 40, 43, 50, 55, 65, 75, 85];
 
+// Plus-Value Immobiliere
+const PV_PLUS_VALUES = [25000, 50000, 75000, 100000, 150000, 200000];
+const PV_ANNEES = [5, 10, 15, 22, 30];
+
+// Rentabilite Locative
+const RENTA_PRIX = [80000, 100000, 120000, 150000, 180000, 200000, 250000, 300000, 400000, 500000];
+const RENTA_LOYERS = [500, 700, 800, 1000];
+
+// Consommation Essence
+const ESS_DISTANCES = [50, 100, 200, 300, 400, 500, 600, 750, 1000, 1500];
+const ESS_CONSOS = [5, 6, 7, 8, 10];
+
+// Jours Ouvres
+const JO_MOIS = ["janvier", "fevrier", "mars", "avril", "mai", "juin", "juillet", "aout", "septembre", "octobre", "novembre", "decembre"];
+
 // Moyenne
 const MOY_MOYENNES = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 const MOY_SUR10 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -614,6 +629,30 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/prix-travaux-maison`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-plus-value-immobiliere`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-rentabilite-locative`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-consommation-essence`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-jours-ouvres`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -1318,6 +1357,39 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     longueurPages.push({ url: `${BASE_URL}/conversion-longueur/${p}-pouces-en-cm`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
+  // Pages dynamiques Plus-Value Immobiliere
+  const pvImmoPages: MetadataRoute.Sitemap = [];
+  for (const pv of PV_PLUS_VALUES) {
+    for (const a of PV_ANNEES) {
+      pvImmoPages.push({ url: `${BASE_URL}/calcul-plus-value-immobiliere/200000-euros-plus-value-${pv}-euros-${a}-ans`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+  for (const pa of [100000, 150000, 200000, 250000, 300000, 400000, 500000]) {
+    pvImmoPages.push({ url: `${BASE_URL}/calcul-plus-value-immobiliere/${pa}-euros-plus-value-100000-euros-10-ans`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
+  // Pages dynamiques Rentabilite Locative
+  const rentaPages: MetadataRoute.Sitemap = [];
+  for (const p of RENTA_PRIX) {
+    for (const l of RENTA_LOYERS) {
+      rentaPages.push({ url: `${BASE_URL}/calcul-rentabilite-locative/${p}-euros-${l}-euros-mois`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Pages dynamiques Consommation Essence
+  const essencePages: MetadataRoute.Sitemap = [];
+  for (const d of ESS_DISTANCES) {
+    for (const c of ESS_CONSOS) {
+      essencePages.push({ url: `${BASE_URL}/calcul-consommation-essence/${d}-km-${c}-litres`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Pages dynamiques Jours Ouvres
+  const joPages: MetadataRoute.Sitemap = [];
+  for (const m of JO_MOIS) {
+    joPages.push({ url: `${BASE_URL}/calcul-jours-ouvres/${m}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
   // Pages dynamiques Calcul Moyenne
   const moyennePages: MetadataRoute.Sitemap = [];
   for (const m of MOY_MOYENNES) {
@@ -1408,6 +1480,10 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     ...tempPages,
     ...poidsPages,
     ...longueurPages,
+    ...pvImmoPages,
+    ...rentaPages,
+    ...essencePages,
+    ...joPages,
     ...moyennePages,
     ...produitPages,
     ...cpPages,

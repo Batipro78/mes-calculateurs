@@ -413,6 +413,42 @@ const outils = [
     tag: "Nouveau",
   },
   {
+    titre: "Plus-Value Immobiliere",
+    description:
+      "Calculez la plus-value immobiliere et l'impot. Abattements par duree de detention, IR 19%, PS 17,2%. Bareme 2026.",
+    href: "/calcul-plus-value-immobiliere",
+    icone: "🏡",
+    couleur: "from-green-500 to-emerald-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Rentabilite Locative",
+    description:
+      "Calculez la rentabilite brute et nette de votre investissement locatif. Charges, taxe fonciere, vacance.",
+    href: "/calcul-rentabilite-locative",
+    icone: "🏢",
+    couleur: "from-amber-500 to-orange-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Consommation Essence",
+    description:
+      "Calculez le cout de votre trajet en carburant. Distance, consommation, prix du litre. Cout au km.",
+    href: "/calcul-consommation-essence",
+    icone: "⛽",
+    couleur: "from-red-500 to-rose-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Jours Ouvres 2026",
+    description:
+      "Comptez les jours ouvres entre deux dates. Calendrier 2026 complet avec jours feries.",
+    href: "/calcul-jours-ouvres",
+    icone: "📅",
+    couleur: "from-indigo-500 to-purple-600",
+    tag: "Nouveau",
+  },
+  {
     titre: "Calcul Moyenne",
     description:
       "Calculez votre moyenne ponderee avec coefficients. Baremes /20, /10, /100. Notes scolaires, bac, examens.",
