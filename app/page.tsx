@@ -394,6 +394,33 @@ const outils = [
     couleur: "from-orange-600 to-red-500",
     tag: "Nouveau",
   },
+  {
+    titre: "Conversion Temperature",
+    description:
+      "Convertissez entre Celsius, Fahrenheit et Kelvin. Formules, tableau de correspondance et reperes pratiques.",
+    href: "/conversion-temperature",
+    icone: "🌡️",
+    couleur: "from-blue-500 to-indigo-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Conversion Poids (kg/lbs)",
+    description:
+      "Convertissez entre kilogrammes, livres, onces, grammes et stones. Tableau et equivalences.",
+    href: "/conversion-poids",
+    icone: "⚖️",
+    couleur: "from-emerald-500 to-teal-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Conversion Longueur (cm/pouces)",
+    description:
+      "Convertissez entre centimetres, pouces, pieds, metres et millimetres. Tailles, ecrans et bricolage.",
+    href: "/conversion-longueur",
+    icone: "📏",
+    couleur: "from-orange-500 to-amber-600",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {

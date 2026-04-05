@@ -120,6 +120,18 @@ const DEVISES_PAIRES = ["usd", "gbp", "chf", "cad", "jpy", "mad", "tnd", "dzd", 
 const INFL_MONTANTS = [1000, 1500, 2000, 2500, 3000, 3500, 4000, 5000];
 const INFL_ANNEES = [2000, 2005, 2010, 2015, 2018, 2020, 2022, 2023];
 
+// Conversion Temperature
+const TEMP_CELSIUS = [-40, -20, -10, 0, 5, 10, 15, 20, 25, 30, 35, 37, 40, 50, 60, 80, 100, 150, 200, 250];
+const TEMP_FAHRENHEIT = [-40, 0, 32, 50, 60, 68, 72, 77, 80, 90, 98.6, 100, 120, 140, 160, 180, 200, 212, 300, 350, 400, 450];
+
+// Conversion Poids
+const POIDS_KG = [1, 2, 3, 5, 10, 15, 20, 25, 30, 40, 50, 60, 65, 70, 75, 80, 85, 90, 95, 100, 120, 150];
+const POIDS_LBS = [1, 5, 10, 20, 50, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 220, 250, 300];
+
+// Conversion Longueur
+const LONG_CM = [1, 2, 5, 10, 20, 30, 50, 100, 150, 155, 160, 165, 170, 175, 180, 185, 190, 195, 200];
+const LONG_POUCES = [1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 15, 20, 24, 27, 32, 40, 43, 50, 55, 65, 75, 85];
+
 // Age (MANQUANT du sitemap)
 const AGE_ANNEES = Array.from({ length: 71 }, (_, i) => 1950 + i);
 
@@ -586,6 +598,24 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/prix-travaux-maison`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/conversion-temperature`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/conversion-poids`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/conversion-longueur`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -1227,6 +1257,33 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     }
   }
 
+  // Pages dynamiques Conversion Temperature
+  const tempPages: MetadataRoute.Sitemap = [];
+  for (const c of TEMP_CELSIUS) {
+    tempPages.push({ url: `${BASE_URL}/conversion-temperature/${c}-celsius-en-fahrenheit`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+  for (const f of TEMP_FAHRENHEIT) {
+    tempPages.push({ url: `${BASE_URL}/conversion-temperature/${f}-fahrenheit-en-celsius`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
+  // Pages dynamiques Conversion Poids
+  const poidsPages: MetadataRoute.Sitemap = [];
+  for (const kg of POIDS_KG) {
+    poidsPages.push({ url: `${BASE_URL}/conversion-poids/${kg}-kg-en-livres`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+  for (const lbs of POIDS_LBS) {
+    poidsPages.push({ url: `${BASE_URL}/conversion-poids/${lbs}-livres-en-kg`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
+  // Pages dynamiques Conversion Longueur
+  const longueurPages: MetadataRoute.Sitemap = [];
+  for (const cm of LONG_CM) {
+    longueurPages.push({ url: `${BASE_URL}/conversion-longueur/${cm}-cm-en-pouces`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+  for (const p of LONG_POUCES) {
+    longueurPages.push({ url: `${BASE_URL}/conversion-longueur/${p}-pouces-en-cm`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
   // Pages ville par metier (25 villes x 6 metiers = 150 pages)
   const villePages: MetadataRoute.Sitemap = [];
   for (const metier of METIERS_PRIX) {
@@ -1288,5 +1345,8 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     ...enBunkerPages,
     ...enSurvivalPages,
     ...enDraftPages,
+    ...tempPages,
+    ...poidsPages,
+    ...longueurPages,
   ];
 }

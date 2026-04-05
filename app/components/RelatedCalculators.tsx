@@ -43,6 +43,9 @@ const ALL_CALCULATORS = [
   { slug: "/prix-plombier", title: "Prix Plombier", emoji: "🔧", color: "from-cyan-500 to-teal-600" },
   { slug: "/prix-couvreur", title: "Prix Couvreur", emoji: "🪜", color: "from-red-700 to-amber-600" },
   { slug: "/prix-chauffagiste", title: "Prix Chauffagiste", emoji: "🔥", color: "from-orange-600 to-red-500" },
+  { slug: "/conversion-temperature", title: "Conversion Temperature", emoji: "🌡️", color: "from-blue-500 to-indigo-600" },
+  { slug: "/conversion-poids", title: "Conversion Poids", emoji: "⚖️", color: "from-emerald-500 to-teal-600" },
+  { slug: "/conversion-longueur", title: "Conversion Longueur", emoji: "📏", color: "from-orange-500 to-amber-600" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -90,6 +93,9 @@ const RELATED_MAP: Record<string, string[]> = {
   "/prix-plombier": ["/prix-electricien", "/prix-macon", "/prix-peintre", "/prix-couvreur"],
   "/prix-couvreur": ["/prix-macon", "/prix-chauffagiste", "/prix-electricien", "/prix-plombier"],
   "/prix-chauffagiste": ["/prix-plombier", "/prix-electricien", "/prix-couvreur", "/prix-macon"],
+  "/conversion-temperature": ["/conversion-poids", "/conversion-longueur", "/convertisseur-devises", "/calcul-pourcentage"],
+  "/conversion-poids": ["/conversion-longueur", "/conversion-temperature", "/calcul-imc", "/calcul-calories"],
+  "/conversion-longueur": ["/conversion-poids", "/conversion-temperature", "/calcul-surface-peinture", "/calcul-imc"],
 };
 
 interface RelatedCalculatorsProps {
