@@ -57,6 +57,7 @@ const ALL_CALCULATORS = [
   { slug: "/calcul-malus-ecologique", title: "Malus Ecologique", emoji: "🚗", color: "from-rose-500 to-red-600" },
   { slug: "/calcul-pgcd-ppcm", title: "PGCD / PPCM", emoji: "🔢", color: "from-purple-500 to-violet-600" },
   { slug: "/calcul-duree-entre-dates", title: "Duree Entre Dates", emoji: "📆", color: "from-fuchsia-500 to-pink-600" },
+  { slug: "/verificateur-devis", title: "Verificateur Devis", emoji: "📋", color: "from-blue-600 to-indigo-700" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -118,6 +119,7 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calcul-malus-ecologique": ["/simulateur-bonus-ecologique", "/calcul-consommation-essence", "/simulateur-credit-conso", "/calcul-tva"],
   "/calcul-pgcd-ppcm": ["/calcul-moyenne", "/produit-en-croix", "/calcul-pourcentage", "/conversion-temperature"],
   "/calcul-duree-entre-dates": ["/calcul-jours-ouvres", "/calcul-age", "/calcul-conges-payes", "/calcul-heures-travail"],
+  "/verificateur-devis": ["/calcul-tva", "/frais-de-notaire", "/simulateur-micro-entreprise", "/calcul-conges-payes"],
 };
 
 interface RelatedCalculatorsProps {

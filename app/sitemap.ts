@@ -648,6 +648,12 @@ function generateAllUrls(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${BASE_URL}/verificateur-devis`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: `${BASE_URL}/calcul-interet-compose`,
       lastModified: new Date(),
       changeFrequency: "monthly",

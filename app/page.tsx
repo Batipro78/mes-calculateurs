@@ -413,6 +413,15 @@ const outils = [
     tag: "Nouveau",
   },
   {
+    titre: "Verificateur de Devis 2026",
+    description:
+      "Deposez votre devis — l'IA verifie les 16 mentions obligatoires. Conformite legale en quelques secondes.",
+    href: "/verificateur-devis",
+    icone: "📋",
+    couleur: "from-blue-600 to-indigo-700",
+    tag: "Nouveau",
+  },
+  {
     titre: "Interet Compose",
     description:
       "Calculez les interets composes. Capital initial, versements mensuels, taux, duree. Tableau d'evolution annuel.",
