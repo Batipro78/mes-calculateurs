@@ -46,6 +46,9 @@ const ALL_CALCULATORS = [
   { slug: "/conversion-temperature", title: "Conversion Temperature", emoji: "🌡️", color: "from-blue-500 to-indigo-600" },
   { slug: "/conversion-poids", title: "Conversion Poids", emoji: "⚖️", color: "from-emerald-500 to-teal-600" },
   { slug: "/conversion-longueur", title: "Conversion Longueur", emoji: "📏", color: "from-orange-500 to-amber-600" },
+  { slug: "/calcul-moyenne", title: "Calcul Moyenne", emoji: "🎓", color: "from-violet-500 to-purple-600" },
+  { slug: "/produit-en-croix", title: "Produit en Croix", emoji: "✖️", color: "from-sky-500 to-blue-600" },
+  { slug: "/calcul-conges-payes", title: "Calcul Conges Payes", emoji: "🏖️", color: "from-teal-500 to-cyan-600" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -96,6 +99,9 @@ const RELATED_MAP: Record<string, string[]> = {
   "/conversion-temperature": ["/conversion-poids", "/conversion-longueur", "/convertisseur-devises", "/calcul-pourcentage"],
   "/conversion-poids": ["/conversion-longueur", "/conversion-temperature", "/calcul-imc", "/calcul-calories"],
   "/conversion-longueur": ["/conversion-poids", "/conversion-temperature", "/calcul-surface-peinture", "/calcul-imc"],
+  "/calcul-moyenne": ["/produit-en-croix", "/calcul-pourcentage", "/calcul-age", "/simulateur-impot-revenu"],
+  "/produit-en-croix": ["/calcul-moyenne", "/calcul-pourcentage", "/calcul-tva", "/conversion-temperature"],
+  "/calcul-conges-payes": ["/salaire-brut-net", "/calcul-heures-travail", "/indemnite-licenciement", "/simulateur-chomage"],
 };
 
 interface RelatedCalculatorsProps {

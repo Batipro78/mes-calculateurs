@@ -132,6 +132,22 @@ const POIDS_LBS = [1, 5, 10, 20, 50, 100, 110, 120, 130, 140, 150, 160, 170, 180
 const LONG_CM = [1, 2, 5, 10, 20, 30, 50, 100, 150, 155, 160, 165, 170, 175, 180, 185, 190, 195, 200];
 const LONG_POUCES = [1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 15, 20, 24, 27, 32, 40, 43, 50, 55, 65, 75, 85];
 
+// Moyenne
+const MOY_MOYENNES = [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+const MOY_SUR10 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const MOY_SUR100 = [25, 30, 40, 50, 60, 70, 75, 80, 85, 90, 95, 100];
+
+// Produit en Croix
+const PRODUIT_EXEMPLES = [
+  [2,5,6], [2,5,10], [3,4,9], [3,6,12], [4,5,8], [4,7,12], [5,8,10], [5,3,15],
+  [6,10,9], [7,3,14], [8,5,16], [10,4,25], [10,15,20], [12,8,18], [15,20,30],
+  [20,50,40], [25,100,50], [50,75,100], [100,250,40], [100,150,200],
+];
+
+// Conges Payes
+const CP_SALAIRES = [1500, 1800, 2000, 2200, 2500, 2800, 3000, 3500, 4000, 4500, 5000];
+const CP_MOIS = [3, 6, 9, 12];
+
 // Age (MANQUANT du sitemap)
 const AGE_ANNEES = Array.from({ length: 71 }, (_, i) => 1950 + i);
 
@@ -598,6 +614,24 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/prix-travaux-maison`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-moyenne`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/produit-en-croix`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-conges-payes`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -1284,6 +1318,32 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     longueurPages.push({ url: `${BASE_URL}/conversion-longueur/${p}-pouces-en-cm`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
+  // Pages dynamiques Calcul Moyenne
+  const moyennePages: MetadataRoute.Sitemap = [];
+  for (const m of MOY_MOYENNES) {
+    moyennePages.push({ url: `${BASE_URL}/calcul-moyenne/${m}-sur-20`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+  for (const m of MOY_SUR10) {
+    moyennePages.push({ url: `${BASE_URL}/calcul-moyenne/${m}-sur-10`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+  for (const m of MOY_SUR100) {
+    moyennePages.push({ url: `${BASE_URL}/calcul-moyenne/${m}-sur-100`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
+  // Pages dynamiques Produit en Croix
+  const produitPages: MetadataRoute.Sitemap = [];
+  for (const [a, b, c] of PRODUIT_EXEMPLES) {
+    produitPages.push({ url: `${BASE_URL}/produit-en-croix/${a}-sur-${b}-egale-${c}-sur-x`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
+  // Pages dynamiques Conges Payes
+  const cpPages: MetadataRoute.Sitemap = [];
+  for (const s of CP_SALAIRES) {
+    for (const m of CP_MOIS) {
+      cpPages.push({ url: `${BASE_URL}/calcul-conges-payes/${s}-euros-${m}-mois`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
   // Pages ville par metier (25 villes x 6 metiers = 150 pages)
   const villePages: MetadataRoute.Sitemap = [];
   for (const metier of METIERS_PRIX) {
@@ -1348,5 +1408,8 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     ...tempPages,
     ...poidsPages,
     ...longueurPages,
+    ...moyennePages,
+    ...produitPages,
+    ...cpPages,
   ];
 }

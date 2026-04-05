@@ -413,6 +413,33 @@ const outils = [
     tag: "Nouveau",
   },
   {
+    titre: "Calcul Moyenne",
+    description:
+      "Calculez votre moyenne ponderee avec coefficients. Baremes /20, /10, /100. Notes scolaires, bac, examens.",
+    href: "/calcul-moyenne",
+    icone: "🎓",
+    couleur: "from-violet-500 to-purple-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Produit en Croix",
+    description:
+      "Calculez un produit en croix (regle de trois). Trouvez la 4e valeur proportionnelle. Formule et exemples.",
+    href: "/produit-en-croix",
+    icone: "✖️",
+    couleur: "from-sky-500 to-blue-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Calcul Conges Payes",
+    description:
+      "Calculez vos jours de conges acquis et votre indemnite. Methode 1/10e vs maintien, temps partiel. Bareme 2026.",
+    href: "/calcul-conges-payes",
+    icone: "🏖️",
+    couleur: "from-teal-500 to-cyan-600",
+    tag: "Nouveau",
+  },
+  {
     titre: "Conversion Longueur (cm/pouces)",
     description:
       "Convertissez entre centimetres, pouces, pieds, metres et millimetres. Tailles, ecrans et bricolage.",
