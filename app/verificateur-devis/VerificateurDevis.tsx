@@ -1,218 +1,169 @@
 "use client";
-import { useState, useCallback } from "react";
+import { useState } from "react";
 
 interface Mention {
   id: number;
   label: string;
-  status: "present" | "absent" | "partiel";
-  detail: string;
+  description: string;
+  categorie: "identite" | "contenu" | "prix" | "legal";
+  status: "present" | "absent" | "na";
 }
 
-interface Resultat {
-  mentions: Mention[];
-  score: number;
-  verdict: string;
-  resume: string;
-}
+const MENTIONS_INIT: Mention[] = [
+  { id: 1, label: "Date du devis", description: "Date a laquelle le devis est etabli", categorie: "identite", status: "absent" },
+  { id: 2, label: "Numero du devis", description: "Numerotation chronologique unique", categorie: "identite", status: "absent" },
+  { id: 3, label: "Nom et adresse de l'entreprise", description: "Raison sociale + adresse du siege", categorie: "identite", status: "absent" },
+  { id: 4, label: "Numero SIRET", description: "14 chiffres identifiant l'etablissement", categorie: "identite", status: "absent" },
+  { id: 5, label: "Forme juridique", description: "SARL, SAS, EI, auto-entrepreneur, etc.", categorie: "identite", status: "absent" },
+  { id: 6, label: "Nom et adresse du client", description: "Identite complete du destinataire", categorie: "identite", status: "absent" },
+  { id: 7, label: "Description detaillee des travaux", description: "Nature et etendue de chaque prestation", categorie: "contenu", status: "absent" },
+  { id: 8, label: "Quantites et prix unitaires HT", description: "Detail poste par poste", categorie: "prix", status: "absent" },
+  { id: 9, label: "Taux de TVA applicable(s)", description: "20%, 10%, 5,5% selon les travaux", categorie: "prix", status: "absent" },
+  { id: 10, label: "Montant total HT et TTC", description: "Totaux hors taxe et toutes taxes comprises", categorie: "prix", status: "absent" },
+  { id: 11, label: "Duree de validite du devis", description: "Combien de temps l'offre est valable", categorie: "legal", status: "absent" },
+  { id: 12, label: "Conditions de paiement", description: "Echeancier, acompte, delais", categorie: "legal", status: "absent" },
+  { id: 13, label: "Assurance decennale", description: "N° de police + nom assureur (obligatoire BTP)", categorie: "legal", status: "absent" },
+  { id: 14, label: "Mention gestion des dechets", description: "Obligatoire pour travaux depuis 2021", categorie: "legal", status: "absent" },
+  { id: 15, label: "Date de debut et duree des travaux", description: "Quand et combien de temps", categorie: "contenu", status: "absent" },
+  { id: 16, label: "Signature du client", description: "\"Devis recu avant execution\" + signature", categorie: "legal", status: "absent" },
+];
+
+const CATEGORIES = [
+  { id: "identite" as const, label: "Identite", emoji: "🏢" },
+  { id: "contenu" as const, label: "Contenu", emoji: "📝" },
+  { id: "prix" as const, label: "Prix", emoji: "💰" },
+  { id: "legal" as const, label: "Legal", emoji: "⚖️" },
+];
 
 export default function VerificateurDevis() {
-  const [file, setFile] = useState<File | null>(null);
-  const [preview, setPreview] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [resultat, setResultat] = useState<Resultat | null>(null);
-  const [erreur, setErreur] = useState<string | null>(null);
+  const [mentions, setMentions] = useState<Mention[]>(MENTIONS_INIT);
+  const [secteur, setSecteur] = useState<"btp" | "services" | "commerce">("btp");
 
-  const handleFile = useCallback((f: File) => {
-    setFile(f);
-    setResultat(null);
-    setErreur(null);
-
-    if (f.type.startsWith("image/")) {
-      const reader = new FileReader();
-      reader.onload = (e) => setPreview(e.target?.result as string);
-      reader.readAsDataURL(f);
-    } else {
-      setPreview(null);
-    }
-  }, []);
-
-  const handleDrop = useCallback((e: React.DragEvent) => {
-    e.preventDefault();
-    const f = e.dataTransfer.files[0];
-    if (f) handleFile(f);
-  }, [handleFile]);
-
-  const analyser = async () => {
-    if (!file) return;
-    setLoading(true);
-    setErreur(null);
-    setResultat(null);
-
-    try {
-      const reader = new FileReader();
-      const base64 = await new Promise<string>((resolve, reject) => {
-        reader.onload = () => {
-          const result = reader.result as string;
-          const base64Data = result.split(",")[1];
-          resolve(base64Data);
-        };
-        reader.onerror = reject;
-        reader.readAsDataURL(file);
-      });
-
-      const response = await fetch("/api/verify-devis", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          imageBase64: base64,
-          mimeType: file.type,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        setErreur(data.error || "Erreur lors de l'analyse");
-        return;
-      }
-
-      setResultat(data);
-    } catch {
-      setErreur("Erreur de connexion. Veuillez reessayer.");
-    } finally {
-      setLoading(false);
-    }
+  const toggleMention = (id: number) => {
+    setMentions(mentions.map((m) => {
+      if (m.id !== id) return m;
+      if (m.status === "absent") return { ...m, status: "present" };
+      if (m.status === "present") return { ...m, status: "na" };
+      return { ...m, status: "absent" };
+    }));
   };
 
-  const statusIcon = (status: string) => {
-    if (status === "present") return <span className="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-sm font-bold">&#10003;</span>;
-    if (status === "partiel") return <span className="w-6 h-6 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-sm font-bold">~</span>;
-    return <span className="w-6 h-6 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-sm font-bold">&#10007;</span>;
-  };
+  const mentionsActives = mentions.filter((m) => {
+    if (secteur !== "btp" && (m.id === 13 || m.id === 14)) return false;
+    return true;
+  });
+
+  const presentes = mentionsActives.filter((m) => m.status === "present").length;
+  const na = mentionsActives.filter((m) => m.status === "na").length;
+  const total = mentionsActives.length - na;
+  const score = total > 0 ? presentes : 0;
+  const pourcent = total > 0 ? Math.round((presentes / total) * 100) : 0;
+
+  const verdict = pourcent >= 90 ? "conforme" : pourcent >= 60 ? "a corriger" : "non conforme";
+
+  const reset = () => setMentions(MENTIONS_INIT);
 
   return (
     <div className="space-y-8">
-      {/* Zone d'upload */}
-      <div
-        onDrop={handleDrop}
-        onDragOver={(e) => e.preventDefault()}
-        className={`border-2 border-dashed rounded-2xl p-8 text-center transition-all ${
-          file ? "border-blue-300 bg-blue-50/30" : "border-slate-300 hover:border-blue-400 hover:bg-blue-50/20"
-        }`}
-      >
-        {preview ? (
-          <div className="space-y-4">
-            <img src={preview} alt="Apercu devis" className="max-h-64 mx-auto rounded-xl shadow-sm" />
-            <p className="text-sm text-slate-500">{file?.name}</p>
-          </div>
-        ) : file ? (
-          <div className="space-y-2">
-            <div className="w-16 h-16 mx-auto bg-blue-100 rounded-2xl flex items-center justify-center text-3xl">📄</div>
-            <p className="text-sm font-medium text-slate-700">{file.name}</p>
-            <p className="text-xs text-slate-400">{(file.size / 1024).toFixed(0)} Ko</p>
-          </div>
-        ) : (
-          <div className="space-y-3">
-            <div className="w-16 h-16 mx-auto bg-slate-100 rounded-2xl flex items-center justify-center text-3xl">📋</div>
-            <p className="text-slate-600 font-medium">Deposez votre devis ici</p>
-            <p className="text-xs text-slate-400">PDF, JPG, PNG (max 10 Mo)</p>
-          </div>
-        )}
-
-        <label className="mt-4 inline-block px-6 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-medium text-slate-600 hover:border-blue-300 hover:text-blue-600 cursor-pointer transition-all">
-          {file ? "Changer de fichier" : "Choisir un fichier"}
-          <input
-            type="file"
-            accept="image/*,application/pdf"
-            className="hidden"
-            onChange={(e) => {
-              const f = e.target.files?.[0];
-              if (f) handleFile(f);
-            }}
-          />
-        </label>
+      {/* Choix du secteur */}
+      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+        <p className="text-sm font-semibold text-slate-700 mb-3">Type d&apos;activite</p>
+        <div className="flex gap-2">
+          {[
+            { v: "btp" as const, label: "BTP / Travaux", desc: "16 mentions" },
+            { v: "services" as const, label: "Services", desc: "14 mentions" },
+            { v: "commerce" as const, label: "Commerce", desc: "14 mentions" },
+          ].map((s) => (
+            <button key={s.v} onClick={() => setSecteur(s.v)}
+              className={`flex-1 py-3 rounded-xl text-sm font-medium transition-all ${secteur === s.v ? "bg-blue-600 text-white shadow-sm" : "border border-slate-200 text-slate-600 hover:border-blue-300"}`}>
+              <p>{s.label}</p>
+              <p className="text-xs opacity-70">{s.desc}</p>
+            </button>
+          ))}
+        </div>
       </div>
 
-      {/* Bouton analyser */}
-      {file && !loading && (
-        <button
-          onClick={analyser}
-          className="w-full py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded-2xl font-bold text-lg shadow-lg shadow-blue-200/50 hover:shadow-xl hover:shadow-blue-200/60 hover:-translate-y-0.5 transition-all"
-        >
-          Analyser la conformite du devis
-        </button>
-      )}
-
-      {/* Loading */}
-      {loading && (
-        <div className="text-center py-8">
-          <div className="w-12 h-12 mx-auto border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin" />
-          <p className="text-slate-500 mt-4 text-sm">Analyse en cours par l&apos;IA...</p>
-          <p className="text-xs text-slate-400 mt-1">Verification des 16 mentions obligatoires</p>
-        </div>
-      )}
-
-      {/* Erreur */}
-      {erreur && (
-        <div className="bg-red-50 border border-red-200 rounded-2xl p-6">
-          <p className="text-red-600 font-medium">{erreur}</p>
-        </div>
-      )}
-
-      {/* Resultats */}
-      {resultat && (
-        <div className="space-y-6">
-          {/* Score global */}
-          <div className={`rounded-2xl p-8 shadow-lg text-white ${
-            resultat.verdict === "conforme" ? "bg-gradient-to-br from-green-500 to-emerald-600 shadow-green-200/50" :
-            resultat.verdict === "a corriger" ? "bg-gradient-to-br from-amber-500 to-orange-600 shadow-amber-200/50" :
-            "bg-gradient-to-br from-red-500 to-rose-600 shadow-red-200/50"
-          }`}>
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm opacity-80 mb-1">Score de conformite</p>
-                <p className="text-5xl font-extrabold">{resultat.score}<span className="text-2xl font-semibold">/16</span></p>
-              </div>
-              <div className="text-right">
-                <p className="text-2xl font-bold capitalize">{resultat.verdict}</p>
-                <p className="text-sm opacity-80 mt-1">{resultat.resume}</p>
-              </div>
-            </div>
+      {/* Score en temps reel */}
+      <div className={`rounded-2xl p-6 shadow-lg text-white ${
+        verdict === "conforme" ? "bg-gradient-to-br from-green-500 to-emerald-600 shadow-green-200/50" :
+        verdict === "a corriger" ? "bg-gradient-to-br from-amber-500 to-orange-600 shadow-amber-200/50" :
+        "bg-gradient-to-br from-red-500 to-rose-600 shadow-red-200/50"
+      }`}>
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-sm opacity-80 mb-1">Score de conformite</p>
+            <p className="text-5xl font-extrabold">{score}<span className="text-2xl font-semibold">/{total}</span></p>
           </div>
+          <div className="text-right">
+            <p className="text-3xl font-bold">{pourcent}%</p>
+            <p className="text-sm opacity-80 capitalize">{verdict}</p>
+          </div>
+        </div>
+        {/* Barre de progression */}
+        <div className="mt-4 w-full bg-white/20 rounded-full h-3 overflow-hidden">
+          <div className="h-3 rounded-full bg-white/80 transition-all duration-500" style={{ width: `${pourcent}%` }} />
+        </div>
+      </div>
 
-          {/* Checklist */}
-          <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-            <h2 className="text-lg font-bold text-slate-800 mb-4">16 mentions obligatoires</h2>
-            <div className="space-y-3">
-              {resultat.mentions.map((m) => (
-                <div key={m.id} className={`flex items-start gap-3 p-3 rounded-xl ${
-                  m.status === "present" ? "bg-green-50/50" : m.status === "partiel" ? "bg-amber-50/50" : "bg-red-50/50"
-                }`}>
-                  {statusIcon(m.status)}
+      {/* Checklist par categorie */}
+      {CATEGORIES.map((cat) => {
+        const catMentions = mentionsActives.filter((m) => m.categorie === cat.id);
+        if (catMentions.length === 0) return null;
+        const catPresentes = catMentions.filter((m) => m.status === "present").length;
+
+        return (
+          <div key={cat.id} className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
+                <span>{cat.emoji}</span> {cat.label}
+              </h2>
+              <span className="text-sm font-medium text-slate-400">{catPresentes}/{catMentions.length}</span>
+            </div>
+            <div className="space-y-2">
+              {catMentions.map((m) => (
+                <button
+                  key={m.id}
+                  onClick={() => toggleMention(m.id)}
+                  className={`w-full flex items-center gap-3 p-3 rounded-xl text-left transition-all ${
+                    m.status === "present" ? "bg-green-50 border border-green-200" :
+                    m.status === "na" ? "bg-slate-50 border border-slate-200 opacity-50" :
+                    "bg-red-50/50 border border-red-100 hover:border-red-200"
+                  }`}
+                >
+                  <span className={`w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold shrink-0 ${
+                    m.status === "present" ? "bg-green-100 text-green-600" :
+                    m.status === "na" ? "bg-slate-200 text-slate-400" :
+                    "bg-red-100 text-red-500"
+                  }`}>
+                    {m.status === "present" ? "\u2713" : m.status === "na" ? "—" : m.id}
+                  </span>
                   <div className="flex-1">
-                    <p className="text-sm font-semibold text-slate-700">{m.id}. {m.label}</p>
-                    <p className="text-xs text-slate-500 mt-0.5">{m.detail}</p>
+                    <p className={`text-sm font-semibold ${m.status === "na" ? "text-slate-400 line-through" : "text-slate-700"}`}>{m.label}</p>
+                    <p className="text-xs text-slate-400">{m.description}</p>
                   </div>
                   <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
                     m.status === "present" ? "bg-green-100 text-green-700" :
-                    m.status === "partiel" ? "bg-amber-100 text-amber-700" :
-                    "bg-red-100 text-red-700"
+                    m.status === "na" ? "bg-slate-100 text-slate-400" :
+                    "bg-red-100 text-red-600"
                   }`}>
-                    {m.status === "present" ? "OK" : m.status === "partiel" ? "Partiel" : "Manquant"}
+                    {m.status === "present" ? "OK" : m.status === "na" ? "N/A" : "Manquant"}
                   </span>
-                </div>
+                </button>
               ))}
             </div>
           </div>
+        );
+      })}
 
-          {/* Legende */}
-          <div className="flex gap-4 justify-center text-xs text-slate-500">
-            <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-full bg-green-500 inline-block" /> Present</span>
-            <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-full bg-amber-500 inline-block" /> Partiel</span>
-            <span className="flex items-center gap-1"><span className="w-3 h-3 rounded-full bg-red-500 inline-block" /> Manquant</span>
-          </div>
+      {/* Legende + reset */}
+      <div className="flex items-center justify-between">
+        <div className="flex gap-4 text-xs text-slate-500">
+          <span>Cliquez : <strong>Manquant</strong> → <strong className="text-green-600">OK</strong> → <strong className="text-slate-400">N/A</strong> → ...</span>
         </div>
-      )}
+        <button onClick={reset} className="text-xs text-slate-400 hover:text-red-500 transition-colors">
+          Reinitialiser
+        </button>
+      </div>
     </div>
   );
 }
