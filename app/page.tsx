@@ -53,6 +53,15 @@ const outils = [
     tag: "",
   },
   {
+    titre: "Masse Grasse",
+    description:
+      "Calculez votre taux de masse grasse avec la methode US Navy. Masse grasse, masse maigre, categorie.",
+    href: "/calcul-masse-grasse",
+    icone: "🏋️",
+    couleur: "from-violet-500 to-purple-500",
+    tag: "",
+  },
+  {
     titre: "Frais de Notaire",
     description:
       "Estimez les frais de notaire pour votre achat immobilier. Ancien, neuf ou terrain. Detail complet.",
@@ -176,6 +185,15 @@ const outils = [
     href: "/calcul-calories",
     icone: "🔥",
     couleur: "from-green-500 to-emerald-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Calcul Poids Ideal",
+    description:
+      "Calculez votre poids ideal avec les formules de Lorentz, Devine et Creff. Fourchette de poids sain, comparaison homme/femme.",
+    href: "/calcul-poids-ideal",
+    icone: "⚖️",
+    couleur: "from-violet-500 to-purple-600",
     tag: "Nouveau",
   },
   {
@@ -413,6 +431,42 @@ const outils = [
     tag: "Nouveau",
   },
   {
+    titre: "Pension de Reversion",
+    description:
+      "Calculez votre pension de reversion : regime general (54%) et AGIRC-ARRCO (60%). Plafond de ressources, age minimum.",
+    href: "/calcul-pension-reversion",
+    icone: "💜",
+    couleur: "from-violet-500 to-purple-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Surface Cercle",
+    description:
+      "Calculez la surface, le perimetre et le diametre d'un cercle. A partir du rayon, diametre ou perimetre.",
+    href: "/calcul-surface-cercle",
+    icone: "⭕",
+    couleur: "from-blue-500 to-cyan-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Volume Cylindre",
+    description:
+      "Calculez le volume d'un cylindre. Rayon, hauteur, surface laterale, conversion en litres.",
+    href: "/calcul-volume-cylindre",
+    icone: "🛢️",
+    couleur: "from-teal-500 to-emerald-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Racine Carree",
+    description:
+      "Calculez la racine carree de n'importe quel nombre. Carres parfaits, racine cubique, verification.",
+    href: "/calcul-racine-carree",
+    icone: "√",
+    couleur: "from-amber-500 to-orange-600",
+    tag: "Nouveau",
+  },
+  {
     titre: "Ascendant Astrologique",
     description:
       "Decouvrez votre signe, ascendant et personnalite. Date et heure de naissance, qualites, defauts, element.",
@@ -563,6 +617,78 @@ const outils = [
     href: "/conversion-longueur",
     icone: "📏",
     couleur: "from-orange-500 to-amber-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Calcul Metabolisme de Base (BMR)",
+    description:
+      "Calculez votre metabolisme de base avec Mifflin-St Jeor et Harris-Benedict. TDEE par niveau d'activite.",
+    href: "/calcul-metabolisme-base",
+    icone: "🔥",
+    couleur: "from-orange-500 to-red-500",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Calcul Proteines par Jour",
+    description:
+      "Estimez vos besoins en proteines selon votre poids, activite et objectif. Sources alimentaires et repartition.",
+    href: "/calcul-proteines",
+    icone: "🥩",
+    couleur: "from-red-500 to-rose-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Calcul Besoin Sommeil",
+    description:
+      "Calculez vos heures de sommeil ideales selon votre age et activite. Cycles de 90 min, heure de coucher et reveil optimaux.",
+    href: "/calcul-besoin-sommeil",
+    icone: "🌙",
+    couleur: "from-indigo-500 to-purple-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Calcul Macros Nutrition",
+    description:
+      "Repartition proteines, glucides et lipides selon vos calories et objectif. 5 profils : maintien, perte, prise, seche, cetogene.",
+    href: "/calcul-macros",
+    icone: "🥗",
+    couleur: "from-violet-500 to-purple-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Calcul Consommation Eau",
+    description:
+      "Calculez votre besoin en eau quotidien selon votre poids, activite physique et climat. Repartition optimale sur la journee.",
+    href: "/calcul-consommation-eau",
+    icone: "💧",
+    couleur: "from-blue-500 to-cyan-500",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Indice Glycemique des Aliments",
+    description:
+      "Tableau IG et charge glycemique de plus de 40 aliments. Comparez fruits, feculents, cereales. Outil indispensable pour diabetiques et sportifs.",
+    href: "/calcul-indice-glycemique",
+    icone: "🌿",
+    couleur: "from-green-500 to-emerald-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Calcul Age Metabolique",
+    description:
+      "Estimez votre age biologique vs votre age reel. BMR, activite, tour de taille, habitudes de vie.",
+    href: "/calcul-age-metabolique",
+    icone: "🧬",
+    couleur: "from-violet-500 to-purple-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Risque Cardiovasculaire",
+    description:
+      "Evaluez votre risque cardiaque a 10 ans (score Framingham). Cholesterol, tension, tabac, diabete.",
+    href: "/calcul-risque-cardiovasculaire",
+    icone: "❤️",
+    couleur: "from-red-600 to-rose-600",
     tag: "Nouveau",
   },
 ];

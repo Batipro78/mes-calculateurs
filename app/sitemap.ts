@@ -132,6 +132,18 @@ const POIDS_LBS = [1, 5, 10, 20, 50, 100, 110, 120, 130, 140, 150, 160, 170, 180
 const LONG_CM = [1, 2, 5, 10, 20, 30, 50, 100, 150, 155, 160, 165, 170, 175, 180, 185, 190, 195, 200];
 const LONG_POUCES = [1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 15, 20, 24, 27, 32, 40, 43, 50, 55, 65, 75, 85];
 
+// Pension Reversion
+const REVERSION_PENSIONS = [800, 1000, 1200, 1500, 1800, 2000, 2500, 3000];
+
+// Surface Cercle
+const CERCLE_RAYONS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20, 25, 30, 50, 100];
+
+// Volume Cylindre
+const CYLINDRE_COMBOS = [[2,5],[3,8],[5,10],[5,15],[5,20],[7,10],[10,10],[10,15],[10,20],[10,30],[15,20],[15,30],[20,30],[20,40],[25,50],[30,50]];
+
+// Racine Carree
+const RACINE_NOMBRES = [2, 3, 4, 5, 7, 8, 9, 10, 12, 15, 16, 20, 25, 27, 32, 36, 49, 50, 64, 75, 81, 100, 121, 125, 144, 169, 196, 200, 225, 256, 289, 324, 361, 400, 500, 625, 729, 900, 1000, 10000];
+
 // Ascendant Astrologique
 const ASTRO_SIGNES = ["belier","taureau","gemeaux","cancer","lion","vierge","balance","scorpion","sagittaire","capricorne","verseau","poissons"];
 
@@ -365,6 +377,29 @@ const CAL_AGES = [20, 25, 30, 35, 40, 45, 50, 55, 60];
 const CAL_POIDS = [50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
 const CAL_ACTIVITES = ["sedentaire", "actif", "sportif"];
 
+// Metabolisme de Base
+const MB_SEXES = ["homme", "femme"];
+const MB_POIDS = [50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
+const MB_AGES = [20, 25, 30, 35, 40, 45, 50, 55, 60, 65];
+
+// Proteines
+const PROT_POIDS = [50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
+const PROT_ACTIVITES = ["sedentaire", "actif", "sportif", "musculation", "endurance"];
+
+// Macros
+const MACROS_CALORIES = [1400, 1600, 1800, 2000, 2200, 2500, 2800, 3000, 3500];
+const MACROS_OBJECTIFS = ["maintien", "perte", "prise", "seche", "cetogene"];
+
+// Age Metabolique
+const AM_SEXES = ["homme", "femme"];
+const AM_AGES = [25, 30, 35, 40, 45, 50, 55, 60, 65];
+const AM_ACTIVITES = ["sedentaire", "leger", "modere", "actif", "intense"];
+
+// Risque Cardiovasculaire
+const RC_SEXES = ["homme", "femme"];
+const RC_AGES = [30, 35, 40, 45, 50, 55, 60, 65, 70];
+const RC_PROFILS = ["sans-facteur", "fumeur", "diabetique", "hypertension", "cholesterol-eleve"];
+
 const CHUNK_SIZE = 500;
 
 export async function generateSitemaps() {
@@ -412,6 +447,12 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/calcul-imc`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-masse-grasse`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -502,6 +543,12 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/calcul-calories`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-poids-ideal`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -669,6 +716,30 @@ function generateAllUrls(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${BASE_URL}/calcul-pension-reversion`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-surface-cercle`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-volume-cylindre`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-racine-carree`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: `${BASE_URL}/calcul-ascendant-astrologique`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -772,6 +843,54 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/conversion-longueur`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-metabolisme-base`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-proteines`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-besoin-sommeil`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-macros`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-consommation-eau`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-indice-glycemique`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-age-metabolique`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-risque-cardiovasculaire`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -1307,11 +1426,37 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     enDraftPages.push({ url: `${BASE_URL}/en/draft-simulator/${p}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
+  // Pages dynamiques Poids Ideal
+  const PI_SEXES = ["homme", "femme"];
+  const PI_TAILLES = [155, 158, 160, 163, 165, 168, 170, 173, 175, 178, 180, 183, 185, 188, 190];
+  const PI_AGES = [20, 25, 30, 35, 40, 45, 50, 55, 60];
+  const poidsIdealPages: MetadataRoute.Sitemap = [];
+  for (const s of PI_SEXES) {
+    for (const t of PI_TAILLES) {
+      for (const a of PI_AGES) {
+        poidsIdealPages.push({ url: `${BASE_URL}/calcul-poids-ideal/${s}-${t}cm-${a}ans`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      }
+    }
+  }
+
   // Pages dynamiques IMC
   const imcPages: MetadataRoute.Sitemap = [];
   for (const p of IMC_POIDS) {
     for (const t of IMC_TAILLES) {
       imcPages.push({ url: `${BASE_URL}/calcul-imc/${p}-kg-${t}-cm`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Pages dynamiques Masse Grasse
+  const MG_SEXES = ["homme", "femme"];
+  const MG_POIDS = [55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
+  const MG_TAILLES = [160, 165, 170, 175, 180, 185];
+  const masseGrassePages: MetadataRoute.Sitemap = [];
+  for (const s of MG_SEXES) {
+    for (const p of MG_POIDS) {
+      for (const t of MG_TAILLES) {
+        masseGrassePages.push({ url: `${BASE_URL}/calcul-masse-grasse/${s}-${p}kg-${t}cm`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      }
     }
   }
 
@@ -1440,6 +1585,30 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     longueurPages.push({ url: `${BASE_URL}/conversion-longueur/${p}-pouces-en-cm`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
+  // Pages dynamiques Pension Reversion
+  const reversionPages: MetadataRoute.Sitemap = [];
+  for (const p of REVERSION_PENSIONS) {
+    reversionPages.push({ url: `${BASE_URL}/calcul-pension-reversion/${p}-euros`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
+  // Pages dynamiques Surface Cercle
+  const cerclePages: MetadataRoute.Sitemap = [];
+  for (const r of CERCLE_RAYONS) {
+    cerclePages.push({ url: `${BASE_URL}/calcul-surface-cercle/rayon-${r}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
+  // Pages dynamiques Volume Cylindre
+  const cylindrePages: MetadataRoute.Sitemap = [];
+  for (const [r, h] of CYLINDRE_COMBOS) {
+    cylindrePages.push({ url: `${BASE_URL}/calcul-volume-cylindre/rayon-${r}-hauteur-${h}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
+  // Pages dynamiques Racine Carree
+  const racinePages: MetadataRoute.Sitemap = [];
+  for (const n of RACINE_NOMBRES) {
+    racinePages.push({ url: `${BASE_URL}/calcul-racine-carree/racine-de-${n}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
   // Pages dynamiques Ascendant Astrologique
   const astroPages: MetadataRoute.Sitemap = [];
   for (const s of ASTRO_SIGNES) {
@@ -1565,6 +1734,95 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     }
   }
 
+  // Pages dynamiques Metabolisme de Base
+  const metabolismePages: MetadataRoute.Sitemap = [];
+  for (const s of MB_SEXES) {
+    for (const p of MB_POIDS) {
+      for (const a of MB_AGES) {
+        metabolismePages.push({ url: `${BASE_URL}/calcul-metabolisme-base/${s}-${p}kg-${a}ans`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      }
+    }
+  }
+
+  // Pages dynamiques Proteines
+  const proteinesPages: MetadataRoute.Sitemap = [];
+  for (const p of PROT_POIDS) {
+    for (const a of PROT_ACTIVITES) {
+      proteinesPages.push({ url: `${BASE_URL}/calcul-proteines/${p}kg-${a}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Pages dynamiques Besoin Sommeil
+  const SOMMEIL_AGES = [1, 3, 6, 10, 14, 18, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70];
+  const SOMMEIL_ACTIVITES = ["sedentaire", "modere", "actif", "intense"];
+  const sommeilPages: MetadataRoute.Sitemap = [];
+  for (const age of SOMMEIL_AGES) {
+    for (const act of SOMMEIL_ACTIVITES) {
+      sommeilPages.push({ url: `${BASE_URL}/calcul-besoin-sommeil/${age}ans-${act}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Pages dynamiques Consommation Eau
+  const EAU_POIDS = [50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
+  const EAU_ACTIVITES = ["sedentaire", "leger", "modere", "actif", "intense"];
+  const EAU_CLIMATS = ["tempere", "chaud", "tres-chaud"];
+  const eauPages: MetadataRoute.Sitemap = [];
+  for (const p of EAU_POIDS) {
+    for (const a of EAU_ACTIVITES) {
+      for (const c of EAU_CLIMATS) {
+        eauPages.push({ url: `${BASE_URL}/calcul-consommation-eau/${p}kg-${a}-${c}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      }
+    }
+  }
+
+  // Pages dynamiques Macros
+  const macrosPages: MetadataRoute.Sitemap = [];
+  for (const c of MACROS_CALORIES) {
+    for (const o of MACROS_OBJECTIFS) {
+      macrosPages.push({ url: `${BASE_URL}/calcul-macros/${c}kcal-${o}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Pages dynamiques Indice Glycemique (une page par aliment)
+  const IG_SLUGS = [
+    "pain-blanc", "pain-complet", "baguette", "riz-blanc", "riz-basmati", "riz-complet",
+    "pates-blanches-cuites", "pates-completes-cuites", "pomme-de-terre-cuite-a-l-eau",
+    "patate-douce", "quinoa-cuit", "lentilles", "pois-chiches", "haricots-rouges",
+    "petits-pois", "carotte", "brocoli", "pomme", "banane", "banane-mure",
+    "orange", "mangue", "raisin", "fraise", "ananas", "peche",
+    "flocons-d-avoine", "corn-flakes", "muesli-sans-sucre",
+    "chocolat-noir-70", "chocolat-au-lait", "miel", "sucre-blanc", "confiture",
+    "yaourt-nature", "lait-entier", "glace-a-la-vanille",
+    "coca-cola", "jus-d-orange", "jus-de-pomme",
+  ];
+  // Note: slugs sont generes par slugify() dans indiceGlycemiqueCalc.ts
+  const igPages: MetadataRoute.Sitemap = IG_SLUGS.map((slug) => ({
+    url: `${BASE_URL}/calcul-indice-glycemique/${slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  // Pages dynamiques Age Metabolique
+  const ageMetaPages: MetadataRoute.Sitemap = [];
+  for (const s of AM_SEXES) {
+    for (const a of AM_AGES) {
+      for (const act of AM_ACTIVITES) {
+        ageMetaPages.push({ url: `${BASE_URL}/calcul-age-metabolique/${s}-${a}ans-${act}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      }
+    }
+  }
+
+  // Pages dynamiques Risque Cardiovasculaire
+  const risqueCardioPages: MetadataRoute.Sitemap = [];
+  for (const s of RC_SEXES) {
+    for (const a of RC_AGES) {
+      for (const p of RC_PROFILS) {
+        risqueCardioPages.push({ url: `${BASE_URL}/calcul-risque-cardiovasculaire/${s}-${a}ans-${p}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      }
+    }
+  }
+
   return [
     ...staticPages,
     ...salairePages,
@@ -1599,6 +1857,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     ...plombPages,
     ...couvreurPages,
     ...imcPages,
+    ...masseGrassePages,
     ...notairePages,
     ...consoPages,
     ...licenciementPages,
@@ -1621,6 +1880,10 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     ...tempPages,
     ...poidsPages,
     ...longueurPages,
+    ...reversionPages,
+    ...cerclePages,
+    ...cylindrePages,
+    ...racinePages,
     ...astroPages,
     ...stagePages,
     ...succPages,
@@ -1636,5 +1899,14 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     ...moyennePages,
     ...produitPages,
     ...cpPages,
+    ...poidsIdealPages,
+    ...metabolismePages,
+    ...proteinesPages,
+    ...sommeilPages,
+    ...macrosPages,
+    ...eauPages,
+    ...igPages,
+    ...ageMetaPages,
+    ...risqueCardioPages,
   ];
 }
