@@ -350,6 +350,15 @@ const outils = [
     tag: "Nouveau",
   },
   {
+    titre: "Simulateur Facture Gaz",
+    description:
+      "Estimez votre facture de gaz naturel : cuisson, eau chaude, chauffage. Tarifs GRDF Q1 2026 par zone. Comparaison fournisseurs.",
+    href: "/simulateur-facture-gaz",
+    icone: "🔥",
+    couleur: "from-orange-500 to-red-500",
+    tag: "Nouveau",
+  },
+  {
     titre: "Capacite d'Emprunt",
     description:
       "Combien pouvez-vous emprunter ? Simulateur selon vos revenus, charges et la duree souhaitee. Regles HCSF 2026.",
@@ -494,13 +503,22 @@ const outils = [
     tag: "Nouveau",
   },
   {
+    titre: "Simulateur Cout Total Voiture 2026",
+    description:
+      "Calculez le vrai cout de votre voiture : carburant, assurance, entretien, depreciation, CT. Thermique vs electrique.",
+    href: "/simulateur-cout-voiture",
+    icone: "🚗",
+    couleur: "from-blue-600 to-indigo-600",
+    tag: "Nouveau",
+  },
+  {
     titre: "Cout Kilometrique 2026",
     description:
       "Calculez votre indemnite kilometrique avec le bareme fiscal 2026. Puissance fiscale, electrique +20%.",
     href: "/calcul-cout-kilometrique",
     icone: "🚙",
     couleur: "from-sky-500 to-blue-600",
-    tag: "Nouveau",
+    tag: "",
   },
   {
     titre: "Verificateur de Devis 2026",
@@ -563,6 +581,15 @@ const outils = [
     href: "/calcul-rentabilite-locative",
     icone: "🏢",
     couleur: "from-amber-500 to-orange-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Revenus Fonciers",
+    description:
+      "Simulez l'imposition de vos loyers. Comparez micro-foncier (30%) vs regime reel, deficit foncier, TMI 2026.",
+    href: "/calcul-revenus-fonciers",
+    icone: "🏘️",
+    couleur: "from-indigo-500 to-violet-600",
     tag: "Nouveau",
   },
   {
@@ -689,6 +716,24 @@ const outils = [
     href: "/calcul-risque-cardiovasculaire",
     icone: "❤️",
     couleur: "from-red-600 to-rose-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Simulateur DPE 2026",
+    description:
+      "Estimez la classe energetique de votre logement (A a G). Consommation kWh/m²/an, emissions CO2, cout annuel et economies possibles selon le chauffage et l'isolation.",
+    href: "/calculateur-dpe",
+    icone: "🏠",
+    couleur: "from-emerald-500 to-green-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Simulateur Credit Auto 2026",
+    description:
+      "Calculez vos mensualites de credit auto. Taux moyens 2026, 8 vehicules predefinis, tableau d'amortissement.",
+    href: "/simulateur-credit-auto",
+    icone: "🚙",
+    couleur: "from-blue-500 to-indigo-600",
     tag: "Nouveau",
   },
 ];

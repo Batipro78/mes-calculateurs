@@ -400,6 +400,15 @@ const RC_SEXES = ["homme", "femme"];
 const RC_AGES = [30, 35, 40, 45, 50, 55, 60, 65, 70];
 const RC_PROFILS = ["sans-facteur", "fumeur", "diabetique", "hypertension", "cholesterol-eleve"];
 
+// DPE
+const DPE_SURFACES = [30, 50, 70, 90, 110, 130, 150];
+const DPE_CHAUFFAGES = ["electrique", "gaz", "fioul", "pac", "bois"];
+const DPE_EPOQUES = ["avant-1975", "1975-1989", "1990-2005", "2006-2012", "apres-2012"];
+
+// Credit Auto
+const CA_MONTANTS = [10000, 15000, 20000, 25000, 30000, 35000, 40000, 50000];
+const CA_DUREES = [24, 36, 48, 60, 72];
+
 const CHUNK_SIZE = 500;
 
 export async function generateSitemaps() {
@@ -656,6 +665,12 @@ function generateAllUrls(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${BASE_URL}/simulateur-facture-gaz`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: `${BASE_URL}/prix-macon`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -758,6 +773,12 @@ function generateAllUrls(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${BASE_URL}/simulateur-cout-voiture`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: `${BASE_URL}/calcul-cout-kilometrique`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -795,6 +816,12 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/calcul-rentabilite-locative`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-revenus-fonciers`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -891,6 +918,18 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     },
     {
       url: `${BASE_URL}/calcul-risque-cardiovasculaire`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calculateur-dpe`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/simulateur-credit-auto`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -1631,6 +1670,19 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     }
   }
 
+  // Pages dynamiques Simulateur Cout Voiture
+  const coutVoitureTypes = ["citadine", "berline", "suv", "electrique", "utilitaire"];
+  const coutVoitureKm = [5000, 10000, 15000, 20000, 25000, 30000];
+  const coutVoitureDurees = [3, 5, 7, 10];
+  const coutVoiturePages: MetadataRoute.Sitemap = [];
+  for (const t of coutVoitureTypes) {
+    for (const k of coutVoitureKm) {
+      for (const d of coutVoitureDurees) {
+        coutVoiturePages.push({ url: `${BASE_URL}/simulateur-cout-voiture/${t}-${k}km-${d}ans`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      }
+    }
+  }
+
   // Pages dynamiques Cout Kilometrique
   const ckPages: MetadataRoute.Sitemap = [];
   for (const d of CK_DISTANCES) {
@@ -1676,6 +1728,16 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
   for (const pa of [100000, 150000, 200000, 250000, 300000, 400000, 500000]) {
     pvImmoPages.push({ url: `${BASE_URL}/calcul-plus-value-immobiliere/${pa}-euros-plus-value-100000-euros-10-ans`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
+  // Pages dynamiques Revenus Fonciers
+  const revFoncPages: MetadataRoute.Sitemap = [];
+  for (const loyers of [6000, 8000, 10000, 12000, 15000, 18000, 24000, 36000]) {
+    for (const tmi of [11, 30, 41]) {
+      for (const regime of ["micro-foncier", "reel"]) {
+        revFoncPages.push({ url: `${BASE_URL}/calcul-revenus-fonciers/${loyers}-euros-tmi-${tmi}-${regime}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      }
+    }
   }
 
   // Pages dynamiques Rentabilite Locative
@@ -1823,6 +1885,34 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     }
   }
 
+  // Pages dynamiques DPE (7 surfaces x 5 chauffages x 5 epoques = 175 pages)
+  const dpePages: MetadataRoute.Sitemap = [];
+  for (const s of DPE_SURFACES) {
+    for (const ch of DPE_CHAUFFAGES) {
+      for (const ep of DPE_EPOQUES) {
+        dpePages.push({ url: `${BASE_URL}/calculateur-dpe/${s}m2-${ch}-${ep}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      }
+    }
+  }
+
+  // Pages dynamiques Simulateur Facture Gaz (5 usages x 6 zones = 30 pages)
+  const FAC_GAZ_USAGES = ["cuisson", "eau-chaude", "chauffage-50m2", "chauffage-80m2", "chauffage-120m2"];
+  const FAC_GAZ_ZONES = ["zone1", "zone2", "zone3", "zone4", "zone5", "zone6"];
+  const facGazPages: MetadataRoute.Sitemap = [];
+  for (const u of FAC_GAZ_USAGES) {
+    for (const z of FAC_GAZ_ZONES) {
+      facGazPages.push({ url: `${BASE_URL}/simulateur-facture-gaz/${u}-${z}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Pages dynamiques Credit Auto
+  const creditAutoPages: MetadataRoute.Sitemap = [];
+  for (const m of CA_MONTANTS) {
+    for (const d of CA_DUREES) {
+      creditAutoPages.push({ url: `${BASE_URL}/simulateur-credit-auto/${m}-euros-${d}-mois`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
   return [
     ...staticPages,
     ...salairePages,
@@ -1887,12 +1977,14 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     ...astroPages,
     ...stagePages,
     ...succPages,
+    ...coutVoiturePages,
     ...ckPages,
     ...icPages,
     ...malusPages,
     ...pgcdPages,
     ...dureePages,
     ...pvImmoPages,
+    ...revFoncPages,
     ...rentaPages,
     ...essencePages,
     ...joPages,
@@ -1908,5 +2000,8 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     ...igPages,
     ...ageMetaPages,
     ...risqueCardioPages,
+    ...dpePages,
+    ...facGazPages,
+    ...creditAutoPages,
   ];
 }

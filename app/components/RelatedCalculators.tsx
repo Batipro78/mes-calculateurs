@@ -53,6 +53,7 @@ const ALL_CALCULATORS = [
   { slug: "/calcul-conges-payes", title: "Calcul Conges Payes", emoji: "🏖️", color: "from-teal-500 to-cyan-600" },
   { slug: "/calcul-plus-value-immobiliere", title: "Plus-Value Immobiliere", emoji: "🏡", color: "from-green-500 to-emerald-600" },
   { slug: "/calcul-rentabilite-locative", title: "Rentabilite Locative", emoji: "🏢", color: "from-amber-500 to-orange-600" },
+  { slug: "/calcul-revenus-fonciers", title: "Revenus Fonciers", emoji: "🏘️", color: "from-indigo-500 to-violet-600" },
   { slug: "/calcul-consommation-essence", title: "Consommation Essence", emoji: "⛽", color: "from-red-500 to-rose-600" },
   { slug: "/calcul-jours-ouvres", title: "Jours Ouvres", emoji: "📅", color: "from-indigo-500 to-purple-600" },
   { slug: "/calcul-interet-compose", title: "Interet Compose", emoji: "📈", color: "from-cyan-500 to-blue-600" },
@@ -63,6 +64,7 @@ const ALL_CALCULATORS = [
   { slug: "/calcul-ascendant-astrologique", title: "Ascendant Astro", emoji: "♈", color: "from-purple-500 to-indigo-600" },
   { slug: "/calcul-gratification-stage", title: "Gratification Stage", emoji: "🎓", color: "from-indigo-500 to-blue-600" },
   { slug: "/calcul-droits-succession", title: "Droits Succession", emoji: "⚖️", color: "from-slate-700 to-slate-900" },
+  { slug: "/simulateur-cout-voiture", title: "Cout Total Voiture", emoji: "🚗", color: "from-blue-600 to-indigo-600" },
   { slug: "/calcul-cout-kilometrique", title: "Cout Kilometrique", emoji: "🚙", color: "from-sky-500 to-blue-600" },
   { slug: "/calcul-pension-reversion", title: "Pension Reversion", emoji: "💜", color: "from-violet-500 to-purple-600" },
   { slug: "/calcul-surface-cercle", title: "Surface Cercle", emoji: "⭕", color: "from-blue-500 to-cyan-600" },
@@ -76,6 +78,9 @@ const ALL_CALCULATORS = [
   { slug: "/calcul-age-metabolique", title: "Age Metabolique", emoji: "🧬", color: "from-violet-500 to-purple-600" },
   { slug: "/calcul-risque-cardiovasculaire", title: "Risque Cardiovasculaire", emoji: "❤️", color: "from-red-600 to-rose-600" },
   { slug: "/calcul-indice-glycemique", title: "Indice Glycemique", emoji: "🌿", color: "from-green-500 to-emerald-600" },
+  { slug: "/calculateur-dpe", title: "Simulateur DPE", emoji: "🏠", color: "from-emerald-500 to-green-600" },
+  { slug: "/simulateur-facture-gaz", title: "Facture Gaz", emoji: "🔥", color: "from-orange-500 to-red-500" },
+  { slug: "/simulateur-credit-auto", title: "Credit Auto", emoji: "🚙", color: "from-blue-500 to-indigo-600" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -131,8 +136,9 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calcul-moyenne": ["/produit-en-croix", "/calcul-pourcentage", "/calcul-age", "/simulateur-impot-revenu"],
   "/produit-en-croix": ["/calcul-moyenne", "/calcul-pourcentage", "/calcul-tva", "/conversion-temperature"],
   "/calcul-conges-payes": ["/salaire-brut-net", "/calcul-heures-travail", "/indemnite-licenciement", "/simulateur-chomage"],
-  "/calcul-plus-value-immobiliere": ["/frais-de-notaire", "/simulateur-pret-immobilier", "/calcul-rentabilite-locative", "/simulateur-impot-revenu"],
-  "/calcul-rentabilite-locative": ["/calcul-plus-value-immobiliere", "/simulateur-pret-immobilier", "/frais-de-notaire", "/calcul-taux-endettement"],
+  "/calcul-plus-value-immobiliere": ["/frais-de-notaire", "/simulateur-pret-immobilier", "/calcul-rentabilite-locative", "/calcul-revenus-fonciers"],
+  "/calcul-rentabilite-locative": ["/calcul-revenus-fonciers", "/calcul-plus-value-immobiliere", "/frais-de-notaire", "/calcul-taux-endettement"],
+  "/calcul-revenus-fonciers": ["/calcul-rentabilite-locative", "/calcul-plus-value-immobiliere", "/simulateur-impot-revenu", "/frais-de-notaire"],
   "/calcul-consommation-essence": ["/calcul-indemnites-kilometriques", "/calcul-consommation-electrique", "/conversion-temperature", "/calcul-pourcentage"],
   "/calcul-jours-ouvres": ["/calcul-conges-payes", "/calcul-heures-travail", "/salaire-brut-net", "/indemnite-licenciement"],
   "/calcul-interet-compose": ["/simulateur-epargne", "/simulateur-dca", "/calculateur-inflation", "/simulateur-impot-revenu"],
@@ -143,7 +149,8 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calcul-ascendant-astrologique": ["/calcul-age", "/calcul-date-accouchement", "/calcul-ovulation", "/calcul-duree-entre-dates"],
   "/calcul-gratification-stage": ["/simulateur-salaire-alternant", "/salaire-brut-net", "/calcul-conges-payes", "/simulateur-chomage"],
   "/calcul-droits-succession": ["/frais-de-notaire", "/simulateur-impot-revenu", "/calcul-plus-value-immobiliere", "/simulateur-epargne"],
-  "/calcul-cout-kilometrique": ["/calcul-indemnites-kilometriques", "/calcul-consommation-essence", "/simulateur-impot-revenu", "/calcul-tva"],
+  "/simulateur-cout-voiture": ["/calcul-cout-kilometrique", "/calcul-consommation-essence", "/calcul-malus-ecologique", "/simulateur-bonus-ecologique"],
+  "/calcul-cout-kilometrique": ["/simulateur-cout-voiture", "/calcul-indemnites-kilometriques", "/calcul-consommation-essence", "/simulateur-impot-revenu"],
   "/calcul-pension-reversion": ["/simulateur-retraite", "/simulateur-impot-revenu", "/calcul-droits-succession", "/salaire-brut-net"],
   "/calcul-surface-cercle": ["/calcul-volume-cylindre", "/calcul-surface-peinture", "/calcul-pourcentage", "/calcul-racine-carree"],
   "/calcul-volume-cylindre": ["/calcul-surface-cercle", "/calcul-surface-peinture", "/calcul-racine-carree", "/calcul-pourcentage"],
@@ -156,6 +163,9 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calcul-risque-cardiovasculaire": ["/calcul-imc", "/calcul-metabolisme-base", "/calcul-poids-ideal", "/calcul-calories"],
   "/calcul-indice-glycemique": ["/calcul-calories", "/calcul-macros", "/calcul-imc", "/calcul-metabolisme-base"],
   "/calcul-age-metabolique": ["/calcul-metabolisme-base", "/calcul-imc", "/calcul-calories", "/calcul-masse-grasse"],
+  "/calculateur-dpe": ["/calcul-consommation-electrique", "/simulateur-pret-immobilier", "/frais-de-notaire", "/calcul-rentabilite-locative"],
+  "/simulateur-facture-gaz": ["/calcul-consommation-electrique", "/simulateur-pret-immobilier", "/prix-chauffagiste", "/calculateur-dpe"],
+  "/simulateur-credit-auto": ["/simulateur-credit-conso", "/simulateur-cout-voiture", "/calcul-taux-endettement", "/calcul-capacite-emprunt"],
 };
 
 interface RelatedCalculatorsProps {
