@@ -754,6 +754,32 @@ export default function Home() {
         </p>
       </section>
 
+      <nav className="mb-10">
+        <h2 className="text-lg font-bold text-slate-800 mb-4">Explorer par categorie</h2>
+        <div className="flex flex-wrap gap-3">
+          {[
+            { href: "/calculateurs-finance", label: "Finance & Impots", emoji: "💰" },
+            { href: "/calculateurs-immobilier", label: "Immobilier", emoji: "🏠" },
+            { href: "/simulateurs-emploi", label: "Emploi & Salaire", emoji: "💼" },
+            { href: "/calculateurs-sante-famille", label: "Sante & Famille", emoji: "❤️" },
+            { href: "/calculateurs-nutrition", label: "Nutrition", emoji: "🥗" },
+            { href: "/simulateurs-auto", label: "Auto & Vehicule", emoji: "🚗" },
+            { href: "/prix-travaux-maison", label: "Prix Travaux", emoji: "🔧" },
+            { href: "/calculateurs-mathematiques", label: "Mathematiques", emoji: "📊" },
+            { href: "/convertisseurs", label: "Convertisseurs", emoji: "🔄" },
+          ].map((cat) => (
+            <a
+              key={cat.href}
+              href={cat.href}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-full text-sm font-medium text-slate-700 hover:bg-blue-50 hover:border-blue-300 hover:text-blue-700 transition-all"
+            >
+              <span>{cat.emoji}</span>
+              {cat.label}
+            </a>
+          ))}
+        </div>
+      </nav>
+
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {outils.map((outil) => (
           <a
