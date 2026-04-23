@@ -736,6 +736,33 @@ const outils = [
     couleur: "from-blue-500 to-indigo-600",
     tag: "Nouveau",
   },
+  {
+    titre: "Calcul Score Stress",
+    description:
+      "Evaluez votre niveau de stress avec le test PSS-10. 10 questions, score sur 40, interpretation et conseils personnalises.",
+    href: "/calcul-score-stress",
+    icone: "🧠",
+    couleur: "from-violet-500 to-purple-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Electrique vs Thermique",
+    description:
+      "Comparez le cout total d'une voiture electrique vs thermique. Achat, carburant, entretien, depreciation sur 1 a 10 ans.",
+    href: "/simulateur-electrique-vs-thermique",
+    icone: "⚡",
+    couleur: "from-green-500 to-emerald-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Vignette Crit'Air",
+    description:
+      "Determinez votre vignette Crit'Air selon votre vehicule, carburant et date d'immatriculation. Restrictions ZFE incluses.",
+    href: "/calcul-vignette-critair",
+    icone: "🚗",
+    couleur: "from-amber-500 to-orange-600",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {

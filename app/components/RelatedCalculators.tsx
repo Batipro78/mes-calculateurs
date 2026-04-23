@@ -81,6 +81,9 @@ const ALL_CALCULATORS = [
   { slug: "/calculateur-dpe", title: "Simulateur DPE", emoji: "🏠", color: "from-emerald-500 to-green-600" },
   { slug: "/simulateur-facture-gaz", title: "Facture Gaz", emoji: "🔥", color: "from-orange-500 to-red-500" },
   { slug: "/simulateur-credit-auto", title: "Credit Auto", emoji: "🚙", color: "from-blue-500 to-indigo-600" },
+  { slug: "/calcul-score-stress", title: "Score Stress", emoji: "🧠", color: "from-violet-500 to-purple-600" },
+  { slug: "/simulateur-electrique-vs-thermique", title: "Electrique vs Thermique", emoji: "⚡", color: "from-green-500 to-emerald-600" },
+  { slug: "/calcul-vignette-critair", title: "Vignette Crit'Air", emoji: "🚗", color: "from-amber-500 to-orange-600" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -166,6 +169,9 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calculateur-dpe": ["/calcul-consommation-electrique", "/simulateur-pret-immobilier", "/frais-de-notaire", "/calcul-rentabilite-locative"],
   "/simulateur-facture-gaz": ["/calcul-consommation-electrique", "/simulateur-pret-immobilier", "/prix-chauffagiste", "/calculateur-dpe"],
   "/simulateur-credit-auto": ["/simulateur-credit-conso", "/simulateur-cout-voiture", "/calcul-taux-endettement", "/calcul-capacite-emprunt"],
+  "/calcul-score-stress": ["/calcul-risque-cardiovasculaire", "/calcul-besoin-sommeil", "/calcul-imc", "/calcul-age-metabolique"],
+  "/simulateur-electrique-vs-thermique": ["/simulateur-cout-voiture", "/calcul-malus-ecologique", "/simulateur-bonus-ecologique", "/calcul-consommation-essence"],
+  "/calcul-vignette-critair": ["/calcul-malus-ecologique", "/simulateur-bonus-ecologique", "/simulateur-cout-voiture", "/simulateur-electrique-vs-thermique"],
 };
 
 interface RelatedCalculatorsProps {
