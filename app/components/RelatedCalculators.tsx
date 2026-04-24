@@ -97,6 +97,8 @@ const ALL_CALCULATORS = [
   { slug: "/calcul-indice-inflammation", title: "Indice Inflammation", emoji: "🥗", color: "from-emerald-500 to-red-500" },
   { slug: "/calcul-prestation-compensatoire", title: "Prestation Compensatoire", emoji: "⚖️", color: "from-violet-500 to-purple-600" },
   { slug: "/calcul-prise-poids-grossesse", title: "Prise Poids Grossesse", emoji: "🤰", color: "from-pink-500 to-rose-600" },
+  { slug: "/calcul-amortissement-lmnp", title: "Amortissement LMNP", emoji: "🏠", color: "from-teal-500 to-emerald-600" },
+  { slug: "/simulateur-dividendes", title: "Simulateur Dividendes", emoji: "💎", color: "from-violet-500 to-purple-600" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -198,6 +200,8 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calcul-indice-inflammation": ["/calcul-calories", "/calcul-macros", "/calcul-imc", "/calcul-risque-cardiovasculaire"],
   "/calcul-prestation-compensatoire": ["/simulateur-pension-alimentaire", "/calcul-cout-garde-enfant", "/calcul-allocation-familiale", "/salaire-brut-net"],
   "/calcul-prise-poids-grossesse": ["/calcul-date-accouchement", "/calcul-imc", "/calcul-ovulation", "/calcul-calories"],
+  "/calcul-amortissement-lmnp": ["/calcul-rentabilite-locative", "/calcul-revenus-fonciers", "/frais-de-notaire", "/calcul-plus-value-immobiliere"],
+  "/simulateur-dividendes": ["/simulateur-impot-societe", "/simulateur-impot-revenu", "/simulateur-micro-entreprise", "/calcul-taux-endettement"],
 };
 
 interface RelatedCalculatorsProps {

@@ -879,6 +879,24 @@ const outils = [
     href: "/calcul-prise-poids-grossesse",
     icone: "🤰",
     couleur: "from-pink-500 to-rose-600",
+    tag: "",
+  },
+  {
+    titre: "Amortissement LMNP",
+    description:
+      "Calculez l'amortissement LMNP regime reel et l'economie fiscale vs micro-BIC. Bien + mobilier.",
+    href: "/calcul-amortissement-lmnp",
+    icone: "🏠",
+    couleur: "from-teal-500 to-emerald-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Simulateur Dividendes",
+    description:
+      "Fiscalite dividendes 2026 : PFU (flat tax 30%) vs bareme progressif avec abattement 40%.",
+    href: "/simulateur-dividendes",
+    icone: "💎",
+    couleur: "from-violet-500 to-purple-600",
     tag: "Nouveau",
   },
 ];

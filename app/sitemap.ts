@@ -857,6 +857,18 @@ function generateAllUrls(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${BASE_URL}/calcul-amortissement-lmnp`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/simulateur-dividendes`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: `${BASE_URL}/calcul-pension-reversion`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -2023,6 +2035,22 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     grossessePages.push({ url: `${BASE_URL}/calcul-prise-poids-grossesse/${s}-semaines`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
+  // Batch 4 (LMNP, dividendes)
+  const LMNP_SLUGS = ["studio-100000-euros", "appartement-150000-euros", "appartement-200000-euros", "appartement-300000-euros", "maison-400000-euros", "tmi-41-appartement-200000", "tmi-11-appartement-150000"];
+  const lmnpPages: MetadataRoute.Sitemap = [];
+  for (const s of LMNP_SLUGS) {
+    lmnpPages.push({ url: `${BASE_URL}/calcul-amortissement-lmnp/${s}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
+  const DIV_MONTANTS = [5000, 10000, 15000, 20000, 30000, 50000, 75000, 100000, 150000, 200000];
+  const DIV_TMIS = [11, 30, 41];
+  const dividendesPages: MetadataRoute.Sitemap = [];
+  for (const m of DIV_MONTANTS) {
+    for (const t of DIV_TMIS) {
+      dividendesPages.push({ url: `${BASE_URL}/simulateur-dividendes/${m}-euros-tmi-${t}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
   // Pages dynamiques Metabolisme de Base
   const metabolismePages: MetadataRoute.Sitemap = [];
   for (const s of MB_SEXES) {
@@ -2199,6 +2227,8 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     ...inflammationPages,
     ...prestationPages,
     ...grossessePages,
+    ...lmnpPages,
+    ...dividendesPages,
     ...enStaticPages,
     ...enNukePages,
     ...enBlackoutPages,
