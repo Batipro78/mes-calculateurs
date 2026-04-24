@@ -87,6 +87,10 @@ const ALL_CALCULATORS = [
   { slug: "/calcul-remboursement-mutuelle", title: "Remboursement Mutuelle", emoji: "🏥", color: "from-cyan-500 to-blue-600" },
   { slug: "/calcul-allocation-familiale", title: "Allocation Familiale", emoji: "👨‍👩‍👧‍👦", color: "from-green-500 to-emerald-600" },
   { slug: "/calcul-taxe-fonciere", title: "Taxe Fonciere", emoji: "🏠", color: "from-amber-500 to-yellow-600" },
+  { slug: "/simulateur-assurance-emprunteur", title: "Assurance Emprunteur", emoji: "🛡", color: "from-indigo-500 to-purple-600" },
+  { slug: "/simulateur-rendement-scpi", title: "Rendement SCPI", emoji: "🏢", color: "from-teal-500 to-cyan-600" },
+  { slug: "/simulateur-rente-viagere", title: "Rente Viagere", emoji: "🏦", color: "from-amber-500 to-orange-600" },
+  { slug: "/calcul-ifi", title: "Calcul IFI", emoji: "🏛", color: "from-rose-500 to-pink-600" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -178,6 +182,10 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calcul-remboursement-mutuelle": ["/calcul-risque-cardiovasculaire", "/calcul-score-stress", "/calcul-prime-activite", "/simulateur-impot-revenu"],
   "/calcul-allocation-familiale": ["/calcul-cout-garde-enfant", "/simulateur-pension-alimentaire", "/calcul-prime-activite", "/simulateur-apl"],
   "/calcul-taxe-fonciere": ["/frais-de-notaire", "/calcul-rentabilite-locative", "/calcul-revenus-fonciers", "/calcul-plus-value-immobiliere"],
+  "/simulateur-assurance-emprunteur": ["/simulateur-pret-immobilier", "/calcul-capacite-emprunt", "/frais-de-notaire", "/calcul-taux-endettement"],
+  "/simulateur-rendement-scpi": ["/calcul-rentabilite-locative", "/simulateur-epargne", "/simulateur-dca", "/calcul-revenus-fonciers"],
+  "/simulateur-rente-viagere": ["/simulateur-retraite", "/simulateur-epargne", "/calcul-pension-reversion", "/calculateur-autonomie"],
+  "/calcul-ifi": ["/calcul-taxe-fonciere", "/calcul-plus-value-immobiliere", "/calcul-droits-succession", "/calcul-rentabilite-locative"],
 };
 
 interface RelatedCalculatorsProps {

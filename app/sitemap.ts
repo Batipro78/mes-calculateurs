@@ -797,6 +797,30 @@ function generateAllUrls(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${BASE_URL}/simulateur-assurance-emprunteur`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/simulateur-rendement-scpi`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/simulateur-rente-viagere`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-ifi`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: `${BASE_URL}/calcul-pension-reversion`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -1883,6 +1907,40 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     taxeFonciereVillePages.push({ url: `${BASE_URL}/calcul-taxe-fonciere/${v}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 });
   }
 
+  // Pages dynamiques 4 nouveaux calcs finance (session 14)
+  const ASSURANCE_CAPITAUX = [100000, 150000, 200000, 250000, 300000, 400000, 500000];
+  const ASSURANCE_DUREES = [15, 20, 25];
+  const assurancePages: MetadataRoute.Sitemap = [];
+  for (const c of ASSURANCE_CAPITAUX) {
+    for (const d of ASSURANCE_DUREES) {
+      assurancePages.push({ url: `${BASE_URL}/simulateur-assurance-emprunteur/${c}-euros-${d}-ans`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  const SCPI_MONTANTS = [10000, 20000, 30000, 50000, 75000, 100000, 150000, 200000, 300000];
+  const SCPI_TMIS = [11, 30, 41];
+  const scpiPages: MetadataRoute.Sitemap = [];
+  for (const m of SCPI_MONTANTS) {
+    for (const t of SCPI_TMIS) {
+      scpiPages.push({ url: `${BASE_URL}/simulateur-rendement-scpi/${m}-euros-tmi-${t}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  const RENTE_CAPITAUX = [50000, 100000, 150000, 200000, 300000, 500000, 750000, 1000000];
+  const RENTE_AGES = [55, 60, 65, 70, 75];
+  const rentePages: MetadataRoute.Sitemap = [];
+  for (const c of RENTE_CAPITAUX) {
+    for (const a of RENTE_AGES) {
+      rentePages.push({ url: `${BASE_URL}/simulateur-rente-viagere/${c}-euros-a-${a}-ans`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  const IFI_PATRIMOINES = [1400000, 1500000, 1700000, 2000000, 2500000, 3000000, 4000000, 5000000, 7500000, 10000000];
+  const ifiPages: MetadataRoute.Sitemap = [];
+  for (const p of IFI_PATRIMOINES) {
+    ifiPages.push({ url: `${BASE_URL}/calcul-ifi/patrimoine-${p}-euros`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
   // Pages dynamiques Metabolisme de Base
   const metabolismePages: MetadataRoute.Sitemap = [];
   for (const s of MB_SEXES) {
@@ -2049,6 +2107,10 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     ...chauffPages,
     ...villePages,
     ...taxeFonciereVillePages,
+    ...assurancePages,
+    ...scpiPages,
+    ...rentePages,
+    ...ifiPages,
     ...enStaticPages,
     ...enNukePages,
     ...enBlackoutPages,

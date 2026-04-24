@@ -789,6 +789,42 @@ const outils = [
     href: "/calcul-taxe-fonciere",
     icone: "🏠",
     couleur: "from-amber-500 to-yellow-600",
+    tag: "",
+  },
+  {
+    titre: "Assurance Emprunteur",
+    description:
+      "Calculez le cout de votre assurance de pret et l'economie avec la delegation (loi Lemoine 2022).",
+    href: "/simulateur-assurance-emprunteur",
+    icone: "🛡",
+    couleur: "from-indigo-500 to-purple-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Rendement SCPI",
+    description:
+      "Simulez le rendement net de votre investissement en SCPI. TDVM, frais d'entree, fiscalite revenus fonciers.",
+    href: "/simulateur-rendement-scpi",
+    icone: "🏢",
+    couleur: "from-teal-500 to-cyan-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Rente Viagere",
+    description:
+      "Convertissez votre capital en rente viagere a vie. Taux de conversion selon age, fiscalite abattement.",
+    href: "/simulateur-rente-viagere",
+    icone: "🏦",
+    couleur: "from-amber-500 to-orange-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Calcul IFI",
+    description:
+      "Impot sur la Fortune Immobiliere 2026. Bareme officiel, abattement residence principale 30%, decote.",
+    href: "/calcul-ifi",
+    icone: "🏛",
+    couleur: "from-rose-500 to-pink-600",
     tag: "Nouveau",
   },
 ];
