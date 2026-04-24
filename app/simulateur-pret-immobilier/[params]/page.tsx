@@ -4,6 +4,8 @@ import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
+import { VILLES, findVille, getVillesSlugs } from "../../data/villes";
+import type { Ville } from "../../data/villes";
 
 const MONTANTS = [100000, 150000, 200000, 250000, 300000, 350000, 400000, 500000];
 const DUREES = [15, 20, 25];
@@ -43,11 +45,39 @@ export function generateStaticParams() {
       params.push({ params: `${m}-euros-${d}-ans` });
     }
   }
+  for (const s of getVillesSlugs()) {
+    params.push({ params: s });
+  }
   return params;
+}
+
+// Prix median approximatif par ville (base 250k, ajuste par coefficient immobilier local)
+function prixMedianVille(ville: Ville): number {
+  return Math.round(250000 * ville.coefficient);
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ params: string }> }): Promise<Metadata> {
   const { params: slug } = await params;
+
+  const ville = findVille(slug);
+  if (ville) {
+    const prixMedian = prixMedianVille(ville);
+    const apport = Math.round(prixMedian * 0.1);
+    const montantEmprunt = prixMedian - apport;
+    const taux = TAUX_PAR_DUREE[20];
+    const mensualite = calculerMensualite(montantEmprunt, taux, 20);
+    return {
+      alternates: { canonical: `/simulateur-pret-immobilier/${slug}` },
+      title: `Simulateur pret immobilier a ${ville.nom} - Mensualite 2026`,
+      description: `Simulez un pret immobilier a ${ville.nom} en 2026. Pour un bien de ${fmtInt(prixMedian)} EUR (prix median local), mensualite de ${fmt(mensualite)} EUR sur 20 ans au taux de ${taux}%. Exemples par montant.`,
+      keywords: `pret immobilier ${ville.nom.toLowerCase()}, credit immobilier ${ville.nom.toLowerCase()}, simulation pret ${ville.nom.toLowerCase()}, mensualite ${ville.nom.toLowerCase()}, taux pret ${ville.nom.toLowerCase()}`,
+      openGraph: {
+        title: `Pret immobilier a ${ville.nom} - Mensualite ${fmt(mensualite)} EUR`,
+        description: `Achat a ${ville.nom} (bien median ${fmtInt(prixMedian)} EUR) : mensualite ${fmt(mensualite)} EUR sur 20 ans.`,
+      },
+    };
+  }
+
   const parsed = parseSlug(slug);
   if (!parsed) return {};
 
@@ -69,8 +99,218 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   };
 }
 
+function VillePretPage({ ville }: { ville: Ville }) {
+  const prixMedian = prixMedianVille(ville);
+  const apport = Math.round(prixMedian * 0.1);
+  const montantEmprunt = prixMedian - apport;
+
+  // Tableau par tranche de prix adaptee a la ville
+  const brackets = [
+    Math.round(prixMedian * 0.5),
+    Math.round(prixMedian * 0.7),
+    prixMedian,
+    Math.round(prixMedian * 1.3),
+    Math.round(prixMedian * 1.7),
+  ];
+
+  const autresVilles = VILLES.filter((v) => v.slug !== ville.slug).slice(0, 12);
+
+  const tauxRef = TAUX_PAR_DUREE[20];
+  const mensualiteRef = calculerMensualite(montantEmprunt, tauxRef, 20);
+  const interetsRef = mensualiteRef * 20 * 12 - montantEmprunt;
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: `Quel est le budget necessaire pour acheter a ${ville.nom} ?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `A ${ville.nom}, le prix median d'un bien est estime a ${fmtInt(prixMedian)} EUR en 2026. Avec un apport de 10% (${fmtInt(apport)} EUR), il faut emprunter ${fmtInt(montantEmprunt)} EUR. Sur 20 ans au taux de ${tauxRef}%, cela represente une mensualite de ${fmt(mensualiteRef)} EUR.`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `Quel salaire pour emprunter a ${ville.nom} ?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `Pour une mensualite de ${fmt(mensualiteRef)} EUR (pret median a ${ville.nom}), la regle du taux d'endettement a 35% impose un salaire net de ${fmtInt(Math.round(mensualiteRef / 0.35))} EUR/mois minimum. Les banques peuvent etre plus souples selon le reste a vivre et la situation.`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `Les taux de pret sont-ils differents a ${ville.nom} ?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `Les taux de pret immobilier sont nationaux : a ${ville.nom} comme partout en France, comptez environ ${TAUX_PAR_DUREE[15]}% sur 15 ans, ${TAUX_PAR_DUREE[20]}% sur 20 ans, et ${TAUX_PAR_DUREE[25]}% sur 25 ans en 2026. Ce qui varie, c'est le montant emprunte selon les prix locaux.`,
+        },
+      },
+    ],
+  };
+
+  return (
+    <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <Breadcrumb
+        currentPage={`Pret immobilier a ${ville.nom}`}
+        parentPage="Simulateur Pret Immobilier"
+        parentHref="/simulateur-pret-immobilier"
+      />
+
+      <div className="flex items-center gap-3 mb-2">
+        <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center text-xl shadow-sm">
+          🏠
+        </div>
+        <h1 className="text-3xl font-extrabold text-slate-800">
+          Pret immobilier a {ville.nom}
+        </h1>
+      </div>
+      <p className="text-slate-500 mb-8 ml-[52px]">
+        Simulation de pret immobilier a {ville.nom} ({ville.departement}) — taux 2026 et exemples par montant.
+      </p>
+
+      {/* Resultat median */}
+      <div className="bg-gradient-to-br from-blue-500 to-indigo-600 text-white rounded-2xl p-8 shadow-lg shadow-blue-200/50 mb-8">
+        <p className="text-blue-200 mb-1">Mensualite mediane a {ville.nom} (20 ans, {tauxRef}%)</p>
+        <p className="text-5xl font-extrabold tracking-tight">
+          {fmt(mensualiteRef)} <span className="text-2xl font-semibold">EUR/mois</span>
+        </p>
+        <p className="text-blue-200 mt-2">
+          Pour un bien de {fmtInt(prixMedian)} EUR avec {fmtInt(apport)} EUR d&apos;apport
+        </p>
+        <div className="h-px bg-white/20 my-4" />
+        <div className="grid grid-cols-3 gap-4 text-sm">
+          <div>
+            <p className="text-blue-200">Prix median local</p>
+            <p className="font-semibold">{fmtInt(prixMedian)} EUR</p>
+          </div>
+          <div>
+            <p className="text-blue-200">Montant emprunte</p>
+            <p className="font-semibold">{fmtInt(montantEmprunt)} EUR</p>
+          </div>
+          <div>
+            <p className="text-blue-200">Cout interets</p>
+            <p className="font-semibold">{fmt(interetsRef)} EUR</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Tableau par tranche a cette ville */}
+      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm mb-8">
+        <h2 className="text-lg font-bold text-slate-800 mb-4">
+          Mensualite de pret a {ville.nom} — par montant (20 ans)
+        </h2>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-slate-200">
+                <th className="text-left py-3 px-2 text-slate-500 font-medium">Prix du bien</th>
+                <th className="text-right py-3 px-2 text-slate-500 font-medium">Emprunt (10% apport)</th>
+                <th className="text-right py-3 px-2 text-slate-500 font-medium">Mensualite 20 ans</th>
+                <th className="text-right py-3 px-2 text-slate-500 font-medium">Simulation</th>
+              </tr>
+            </thead>
+            <tbody>
+              {brackets.map((p) => {
+                const ap = Math.round(p * 0.1);
+                const em = p - ap;
+                const mens = calculerMensualite(em, tauxRef, 20);
+                const nearest = MONTANTS.reduce((prev, curr) => Math.abs(curr - em) < Math.abs(prev - em) ? curr : prev, MONTANTS[0]);
+                return (
+                  <tr key={p} className="border-b border-slate-100">
+                    <td className="py-2.5 px-2 text-slate-700 font-medium">{fmtInt(p)} EUR</td>
+                    <td className="py-2.5 px-2 text-right text-slate-600">{fmtInt(em)} EUR</td>
+                    <td className="py-2.5 px-2 text-right font-bold text-blue-600">{fmt(mens)} EUR</td>
+                    <td className="py-2.5 px-2 text-right">
+                      <a href={`/simulateur-pret-immobilier/${nearest}-euros-20-ans`} className="text-blue-600 hover:underline text-xs font-medium">
+                        voir {fmtInt(nearest)} EUR &rarr;
+                      </a>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Simulateur interactif */}
+      <h2 className="text-xl font-bold text-slate-800 mb-4">Simulateur interactif</h2>
+      <SimulateurPret />
+
+      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
+
+      {/* Texte SEO localise */}
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">
+          Acheter a {ville.nom} en 2026 : quel pret immobilier ?
+        </h2>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          A <strong>{ville.nom}</strong> ({ville.departement}), le prix median d&apos;un bien immobilier est estime a
+          <strong> {fmtInt(prixMedian)} EUR</strong> en 2026. Pour financer un tel achat, les {ville.gentile} doivent
+          generalement apporter <strong>10% du prix</strong> ({fmtInt(apport)} EUR) et emprunter le reste,
+          soit <strong>{fmtInt(montantEmprunt)} EUR</strong>.
+        </p>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Aux taux de 2026 ({TAUX_PAR_DUREE[15]}% sur 15 ans, {TAUX_PAR_DUREE[20]}% sur 20 ans, {TAUX_PAR_DUREE[25]}% sur 25 ans),
+          voici les mensualites typiques a {ville.nom} :
+        </p>
+        <ul className="list-disc list-inside text-slate-600 space-y-1 mb-4">
+          <li><strong>Sur 15 ans</strong> : {fmt(calculerMensualite(montantEmprunt, TAUX_PAR_DUREE[15], 15))} EUR/mois</li>
+          <li><strong>Sur 20 ans</strong> : {fmt(mensualiteRef)} EUR/mois (recommande)</li>
+          <li><strong>Sur 25 ans</strong> : {fmt(calculerMensualite(montantEmprunt, TAUX_PAR_DUREE[25], 25))} EUR/mois</li>
+        </ul>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Quel salaire pour emprunter a {ville.nom} ?</h3>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          La regle du taux d&apos;endettement a 35% impose, pour une mensualite de {fmt(mensualiteRef)} EUR,
+          un salaire net de <strong>{fmtInt(Math.round(mensualiteRef / 0.35))} EUR/mois minimum</strong> (soit environ
+          {" "}{fmtInt(Math.round(mensualiteRef / 0.35 * 12))} EUR par an).
+          Certaines banques peuvent etre plus souples si le reste a vivre est suffisant.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">N&apos;oubliez pas les frais de notaire a {ville.nom}</h3>
+        <p className="text-slate-600 leading-relaxed">
+          En plus du pret, prevoyez environ <strong>7 a 8%</strong> du prix d&apos;achat dans l&apos;ancien pour les
+          <a href={`/frais-de-notaire/${ville.slug}`} className="text-blue-600 hover:underline"> frais de notaire a {ville.nom}</a>.
+          Pour un bien de {fmtInt(prixMedian)} EUR, cela represente environ {fmtInt(Math.round(prixMedian * 0.075))} EUR
+          qui viennent s&apos;ajouter a l&apos;apport personnel.
+        </p>
+      </section>
+
+      {/* Autres villes */}
+      {autresVilles.length > 0 && (
+        <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
+          <h2 className="text-lg font-bold text-slate-800 mb-4">Pret immobilier dans d&apos;autres villes</h2>
+          <div className="flex flex-wrap gap-2">
+            {autresVilles.map((v) => (
+              <a
+                key={v.slug}
+                href={`/simulateur-pret-immobilier/${v.slug}`}
+                className="px-4 py-2 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:border-blue-300 hover:text-blue-600 hover:bg-blue-50/50 transition-all"
+              >
+                {v.nom}
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <RelatedCalculators currentSlug="/simulateur-pret-immobilier" />
+      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
+    </div>
+  );
+}
+
 export default async function Page({ params }: { params: Promise<{ params: string }> }) {
   const { params: slug } = await params;
+
+  const ville = findVille(slug);
+  if (ville) return <VillePretPage ville={ville} />;
+
   const parsed = parseSlug(slug);
   if (!parsed) notFound();
 

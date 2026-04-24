@@ -1030,6 +1030,9 @@ function generateAllUrls(): MetadataRoute.Sitemap {
       priority: 0.7,
     });
   }
+  for (const v of VILLES_SLUGS) {
+    salairePages.push({ url: `${BASE_URL}/salaire-brut-net/${v}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 });
+  }
 
   // Pages dynamiques TVA
   const tvaPages: MetadataRoute.Sitemap = [];
@@ -1074,6 +1077,9 @@ function generateAllUrls(): MetadataRoute.Sitemap {
         priority: 0.7,
       });
     }
+  }
+  for (const v of VILLES_SLUGS) {
+    pretPages.push({ url: `${BASE_URL}/simulateur-pret-immobilier/${v}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 });
   }
 
   // Pages dynamiques APL
@@ -1572,6 +1578,9 @@ function generateAllUrls(): MetadataRoute.Sitemap {
       notairePages.push({ url: `${BASE_URL}/frais-de-notaire/${p}-euros-${t}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
     }
   }
+  for (const v of VILLES_SLUGS) {
+    notairePages.push({ url: `${BASE_URL}/frais-de-notaire/${v}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 });
+  }
 
   // Pages dynamiques Consommation Electrique
   const consoPages: MetadataRoute.Sitemap = [];
@@ -1862,6 +1871,12 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     }
   }
 
+  // Pages ville taxe fonciere (25 pages)
+  const taxeFonciereVillePages: MetadataRoute.Sitemap = [];
+  for (const v of VILLES_SLUGS) {
+    taxeFonciereVillePages.push({ url: `${BASE_URL}/calcul-taxe-fonciere/${v}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 });
+  }
+
   // Pages dynamiques Metabolisme de Base
   const metabolismePages: MetadataRoute.Sitemap = [];
   for (const s of MB_SEXES) {
@@ -2027,6 +2042,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     ...bunkerPages,
     ...chauffPages,
     ...villePages,
+    ...taxeFonciereVillePages,
     ...enStaticPages,
     ...enNukePages,
     ...enBlackoutPages,

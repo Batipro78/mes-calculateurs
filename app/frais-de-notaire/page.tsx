@@ -3,6 +3,7 @@ import CalculateurNotaire from "./CalculateurNotaire";
 import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
+import VillesLinks from "../components/VillesLinks";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
@@ -135,6 +136,7 @@ export default function Page() {
         </p>
       </section>
 
+      <VillesLinks baseSlug="/frais-de-notaire" title="Frais de notaire par ville" color="cyan" />
       <RelatedCalculators currentSlug="/frais-de-notaire" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

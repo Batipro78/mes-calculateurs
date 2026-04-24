@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import VillesLinks from "../components/VillesLinks";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-taxe-fonciere" },
@@ -151,6 +152,7 @@ export default function Page() {
         </p>
       </section>
 
+      <VillesLinks baseSlug="/calcul-taxe-fonciere" title="Taxe fonciere par ville" color="amber" />
       <RelatedCalculators currentSlug="/calcul-taxe-fonciere" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

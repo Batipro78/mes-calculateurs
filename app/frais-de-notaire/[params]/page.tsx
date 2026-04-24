@@ -4,6 +4,8 @@ import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
+import { VILLES, findVille, getVillesSlugs } from "../../data/villes";
+import type { Ville } from "../../data/villes";
 
 type TypeBien = "ancien" | "neuf" | "terrain";
 
@@ -81,11 +83,36 @@ export function generateStaticParams() {
       params.push({ params: `${p}-euros-${t}` });
     }
   }
+  for (const s of getVillesSlugs()) {
+    params.push({ params: s });
+  }
   return params;
+}
+
+// Prix median approximatif par coefficient (base nationale 2026)
+function prixMedianVille(ville: Ville): number {
+  return Math.round(250000 * ville.coefficient);
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ params: string }> }): Promise<Metadata> {
   const { params: slug } = await params;
+
+  const ville = findVille(slug);
+  if (ville) {
+    const prixMedian = prixMedianVille(ville);
+    const fraisMedian = calculerFrais(prixMedian, "ancien");
+    return {
+      alternates: { canonical: `/frais-de-notaire/${slug}` },
+      title: `Frais de notaire a ${ville.nom} (${ville.departement}) - Simulation 2026`,
+      description: `Calcul des frais de notaire a ${ville.nom} en 2026. Pour un bien de ${fmtInt(prixMedian)} EUR (prix median local), frais estimes a ${fmt(fraisMedian.totalFrais)} EUR dans l'ancien. Bareme 2026 et exemples par prix.`,
+      keywords: `frais notaire ${ville.nom.toLowerCase()}, frais notaire ${ville.departement}, cout notaire ${ville.nom.toLowerCase()}, simulation notaire ${ville.nom.toLowerCase()}, achat immobilier ${ville.nom.toLowerCase()}`,
+      openGraph: {
+        title: `Frais de notaire a ${ville.nom} - Estimation 2026`,
+        description: `Simulation frais de notaire a ${ville.nom} : ${fmt(fraisMedian.totalFrais)} EUR pour un bien de ${fmtInt(prixMedian)} EUR dans l'ancien.`,
+      },
+    };
+  }
+
   const parsed = parseSlug(slug);
   if (!parsed) return {};
 
@@ -104,8 +131,211 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   };
 }
 
+function VilleNotairePage({ ville }: { ville: Ville }) {
+  const prixMedian = prixMedianVille(ville);
+  const fraisMedianAncien = calculerFrais(prixMedian, "ancien");
+  const fraisMedianNeuf = calculerFrais(prixMedian, "neuf");
+
+  // Tableau par tranche de prix adaptee a la ville
+  const brackets = [
+    Math.round(prixMedian * 0.5),
+    Math.round(prixMedian * 0.7),
+    prixMedian,
+    Math.round(prixMedian * 1.3),
+    Math.round(prixMedian * 1.7),
+    Math.round(prixMedian * 2.5),
+  ];
+
+  const autresVilles = VILLES.filter((v) => v.slug !== ville.slug).slice(0, 12);
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: `Combien coutent les frais de notaire a ${ville.nom} en 2026 ?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `A ${ville.nom}, les frais de notaire dans l'ancien representent environ 7-8% du prix d'achat. Pour un bien de ${fmtInt(prixMedian)} EUR (prix median local), les frais sont estimes a ${fmt(fraisMedianAncien.totalFrais)} EUR (${fmt(fraisMedianAncien.pourcentage)}%). Dans le neuf, ils tombent a ${fmt(fraisMedianNeuf.totalFrais)} EUR (2-3%).`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `Les frais de notaire sont-ils differents a ${ville.nom} qu'ailleurs en France ?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `Non, le bareme des frais de notaire est national et identique a ${ville.nom} que dans le reste de la France : 5,80% de droits de mutation dans l'ancien, 0,71% dans le neuf. Ce qui varie, c'est le prix du bien : a ${ville.nom} (${ville.departement}), les prix au m2 etant differents, les frais en valeur absolue le sont aussi.`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `Qui paye les frais de notaire a ${ville.nom} : acheteur ou vendeur ?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `A ${ville.nom} comme partout en France, les frais de notaire sont a la charge de l'acheteur. Ils doivent etre payes le jour de la signature de l'acte authentique chez le notaire, en plus du prix de vente. Ils ne sont pas inclus dans le pret immobilier.`,
+        },
+      },
+    ],
+  };
+
+  return (
+    <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <Breadcrumb
+        currentPage={`Frais de notaire a ${ville.nom}`}
+        parentPage="Frais de Notaire"
+        parentHref="/frais-de-notaire"
+      />
+
+      <div className="flex items-center gap-3 mb-2">
+        <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-blue-500 rounded-xl flex items-center justify-center text-xl shadow-sm">
+          📋
+        </div>
+        <h1 className="text-3xl font-extrabold text-slate-800">
+          Frais de notaire a {ville.nom}
+        </h1>
+      </div>
+      <p className="text-slate-500 mb-8 ml-[52px]">
+        Estimation des frais de notaire a {ville.nom} ({ville.departement}) — bareme national 2026, exemples par prix local.
+      </p>
+
+      {/* Resultat median */}
+      <div className="bg-gradient-to-br from-cyan-500 to-blue-600 text-white rounded-2xl p-8 shadow-lg shadow-cyan-200/50 mb-8">
+        <p className="text-cyan-200 mb-1">Frais de notaire a {ville.nom} — exemple median</p>
+        <p className="text-5xl font-extrabold tracking-tight">
+          {fmt(fraisMedianAncien.totalFrais)} <span className="text-2xl font-semibold">EUR</span>
+        </p>
+        <p className="text-cyan-200 mt-2">
+          Pour un bien ancien de {fmtInt(prixMedian)} EUR (prix median a {ville.nom})
+        </p>
+        <div className="h-px bg-white/20 my-4" />
+        <div className="grid grid-cols-3 gap-4 text-sm">
+          <div>
+            <p className="text-cyan-200">Prix median local</p>
+            <p className="font-semibold">{fmtInt(prixMedian)} EUR</p>
+          </div>
+          <div>
+            <p className="text-cyan-200">Frais (ancien)</p>
+            <p className="font-semibold">{fmt(fraisMedianAncien.totalFrais)} EUR</p>
+          </div>
+          <div>
+            <p className="text-cyan-200">Frais (neuf)</p>
+            <p className="font-semibold">{fmt(fraisMedianNeuf.totalFrais)} EUR</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Tableau des frais par tranche de prix a cette ville */}
+      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm mb-8">
+        <h2 className="text-lg font-bold text-slate-800 mb-4">
+          Frais de notaire a {ville.nom} — par tranche de prix
+        </h2>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-slate-200">
+                <th className="text-left py-3 px-2 text-slate-500 font-medium">Prix du bien</th>
+                <th className="text-right py-3 px-2 text-slate-500 font-medium">Frais ancien</th>
+                <th className="text-right py-3 px-2 text-slate-500 font-medium">Frais neuf</th>
+                <th className="text-right py-3 px-2 text-slate-500 font-medium">Simulation</th>
+              </tr>
+            </thead>
+            <tbody>
+              {brackets.map((p) => {
+                const nearestPrix = PRIX.reduce((prev, curr) => Math.abs(curr - p) < Math.abs(prev - p) ? curr : prev, PRIX[0]);
+                const fAncien = calculerFrais(p, "ancien");
+                const fNeuf = calculerFrais(p, "neuf");
+                return (
+                  <tr key={p} className="border-b border-slate-100">
+                    <td className="py-2.5 px-2 text-slate-700 font-medium">{fmtInt(p)} EUR</td>
+                    <td className="py-2.5 px-2 text-right font-bold text-cyan-600">{fmt(fAncien.totalFrais)} EUR</td>
+                    <td className="py-2.5 px-2 text-right text-slate-600">{fmt(fNeuf.totalFrais)} EUR</td>
+                    <td className="py-2.5 px-2 text-right">
+                      <a href={`/frais-de-notaire/${nearestPrix}-euros-ancien`} className="text-cyan-600 hover:underline text-xs font-medium">
+                        voir {fmtInt(nearestPrix)} EUR &rarr;
+                      </a>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Simulateur interactif */}
+      <h2 className="text-xl font-bold text-slate-800 mb-4">Simulateur interactif</h2>
+      <CalculateurNotaire />
+
+      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
+
+      {/* Texte SEO localise */}
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">
+          Frais de notaire a {ville.nom} en 2026 : ce qu&apos;il faut savoir
+        </h2>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          A <strong>{ville.nom}</strong> ({ville.departement}, code postal {ville.codePostal}), les frais de notaire
+          suivent le meme bareme national que dans le reste de la France. Pour un bien immobilier dans l&apos;ancien,
+          comptez environ <strong>7 a 8% du prix d&apos;achat</strong>. Dans le neuf, ces frais tombent a
+          <strong> 2 a 3%</strong> grace a un taux reduit de droits de mutation.
+        </p>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Pour un bien au prix median a {ville.nom} (~{fmtInt(prixMedian)} EUR), les {ville.gentile} doivent prevoir
+          environ <strong>{fmt(fraisMedianAncien.totalFrais)} EUR</strong> de frais de notaire dans l&apos;ancien,
+          soit <strong>{fmt(fraisMedianAncien.pourcentage)}%</strong> du prix d&apos;achat. Ces frais couvrent :
+        </p>
+        <ul className="list-disc list-inside text-slate-600 space-y-1 mb-4">
+          <li><strong>Droits de mutation</strong> : {fmt(fraisMedianAncien.droitsMutation)} EUR (taxes Etat + departement {ville.departement})</li>
+          <li><strong>Emoluments du notaire</strong> : {fmt(fraisMedianAncien.emoluments)} EUR HT (remuneration du notaire)</li>
+          <li><strong>TVA sur emoluments</strong> : {fmt(fraisMedianAncien.emolumentsTVA)} EUR</li>
+          <li><strong>Debours</strong> : {fmt(fraisMedianAncien.debours)} EUR (formalites administratives, cadastre, hypotheque)</li>
+        </ul>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">
+          Comment reduire les frais de notaire a {ville.nom} ?
+        </h3>
+        <ul className="list-disc list-inside text-slate-600 space-y-1">
+          <li>Deduire la <strong>valeur du mobilier</strong> (cuisine equipee, meubles) du prix de vente</li>
+          <li>Negocier les <strong>emoluments</strong> au-dela de 100 000 EUR (remise possible jusqu&apos;a 20%)</li>
+          <li>Acheter dans le <strong>neuf</strong> plutot que dans l&apos;ancien (frais divises par 3)</li>
+          <li>Prevoir ces frais dans votre <strong>apport personnel</strong> (non finances par le pret)</li>
+        </ul>
+      </section>
+
+      {/* Autres villes */}
+      {autresVilles.length > 0 && (
+        <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
+          <h2 className="text-lg font-bold text-slate-800 mb-4">Frais de notaire dans d&apos;autres villes</h2>
+          <div className="flex flex-wrap gap-2">
+            {autresVilles.map((v) => (
+              <a
+                key={v.slug}
+                href={`/frais-de-notaire/${v.slug}`}
+                className="px-4 py-2 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:border-cyan-300 hover:text-cyan-600 hover:bg-cyan-50/50 transition-all"
+              >
+                {v.nom}
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <RelatedCalculators currentSlug="/frais-de-notaire" />
+      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
+    </div>
+  );
+}
+
 export default async function Page({ params }: { params: Promise<{ params: string }> }) {
   const { params: slug } = await params;
+
+  const ville = findVille(slug);
+  if (ville) return <VilleNotairePage ville={ville} />;
+
   const parsed = parseSlug(slug);
   if (!parsed) notFound();
 

@@ -4,6 +4,8 @@ import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
+import { VILLES, findVille, getVillesSlugs } from "../../data/villes";
+import type { Ville } from "../../data/villes";
 
 const MONTANTS_BRUT = [1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300, 2400, 2500, 2600, 2700, 2800, 2900, 3000, 3200, 3500, 3800, 4000, 4500, 5000];
 const MONTANTS_NET = [1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300, 2400, 2500, 2600, 2700, 2800, 2900, 3000, 3200, 3500, 3800, 4000, 4500, 5000];
@@ -34,11 +36,36 @@ export function generateStaticParams() {
   for (const m of MONTANTS_NET) {
     params.push({ montant: `${m}-euros-net` });
   }
+  for (const s of getVillesSlugs()) {
+    params.push({ montant: s });
+  }
   return params;
+}
+
+// Salaire brut median approximatif par ville (base 2500 EUR, ajuste par coefficient local)
+function salaireMedianVille(ville: Ville): number {
+  return Math.round(2500 * ville.coefficient);
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ montant: string }> }): Promise<Metadata> {
   const { montant } = await params;
+
+  const ville = findVille(montant);
+  if (ville) {
+    const brutMedian = salaireMedianVille(ville);
+    const netMedian = Math.round(brutMedian * (1 - TAUX["non-cadre"]));
+    return {
+      alternates: { canonical: `/salaire-brut-net/${montant}` },
+      title: `Salaire brut net a ${ville.nom} - Simulateur 2026`,
+      description: `Convertisseur salaire brut net a ${ville.nom}. Le salaire brut median local est estime a ${fmt(brutMedian)} EUR, soit ${fmt(netMedian)} EUR net pour un non-cadre. Simulez pour cadre, non-cadre et fonction publique.`,
+      keywords: `salaire brut net ${ville.nom.toLowerCase()}, salaire moyen ${ville.nom.toLowerCase()}, salaire net ${ville.nom.toLowerCase()}, calcul salaire ${ville.nom.toLowerCase()}, paye ${ville.nom.toLowerCase()}`,
+      openGraph: {
+        title: `Salaire brut net a ${ville.nom} - ${fmt(brutMedian)} EUR brut = ${fmt(netMedian)} EUR net`,
+        description: `Salaire median a ${ville.nom} : ${fmt(brutMedian)} EUR brut / ${fmt(netMedian)} EUR net (non-cadre). Simulateur gratuit.`,
+      },
+    };
+  }
+
   const parsed = parseSlug(montant);
   if (!parsed) return {};
 
@@ -71,8 +98,199 @@ export async function generateMetadata({ params }: { params: Promise<{ montant: 
   };
 }
 
+function VilleSalairePage({ ville }: { ville: Ville }) {
+  const brutMedian = salaireMedianVille(ville);
+  const autresVilles = VILLES.filter((v) => v.slug !== ville.slug).slice(0, 12);
+
+  // Calcul pour les 3 statuts
+  const resultats = (Object.entries(TAUX) as [string, number][]).map(([statut, taux]) => {
+    const net = Math.round(brutMedian * (1 - taux));
+    const cotisations = brutMedian - net;
+    return { statut, taux, net, cotisations };
+  });
+  const nonCadre = resultats[0];
+
+  // Tableau par tranche
+  const brackets = [
+    Math.round(brutMedian * 0.6),
+    Math.round(brutMedian * 0.8),
+    brutMedian,
+    Math.round(brutMedian * 1.2),
+    Math.round(brutMedian * 1.5),
+    Math.round(brutMedian * 2),
+  ];
+
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: `Quel est le salaire moyen a ${ville.nom} en 2026 ?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `A ${ville.nom}, le salaire brut median est estime a environ ${fmt(brutMedian)} EUR par mois en 2026, soit ${fmt(nonCadre.net)} EUR net pour un non-cadre. Les salaires peuvent etre plus eleves dans l'ile-de-France et les grandes villes, et plus bas en province.`,
+        },
+      },
+      {
+        "@type": "Question",
+        name: `Les cotisations sociales sont-elles differentes a ${ville.nom} ?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: `Non, les cotisations sociales sont identiques sur tout le territoire francais. A ${ville.nom} comme ailleurs, comptez environ 22% de cotisations pour un non-cadre, 25% pour un cadre et 15% pour la fonction publique. Ce qui varie, c'est le niveau des salaires locaux.`,
+        },
+      },
+    ],
+  };
+
+  return (
+    <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <Breadcrumb
+        currentPage={`Salaire brut net a ${ville.nom}`}
+        parentPage="Salaire Brut / Net"
+        parentHref="/salaire-brut-net"
+      />
+
+      <div className="flex items-center gap-3 mb-2">
+        <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center text-xl shadow-sm">
+          💼
+        </div>
+        <h1 className="text-3xl font-extrabold text-slate-800">
+          Salaire brut net a {ville.nom}
+        </h1>
+      </div>
+      <p className="text-slate-500 mb-8 ml-[52px]">
+        Convertisseur brut/net a {ville.nom} ({ville.departement}) — base salaire median local 2026.
+      </p>
+
+      {/* Resultat median */}
+      <div className="bg-gradient-to-br from-emerald-500 to-teal-600 text-white rounded-2xl p-8 shadow-lg shadow-emerald-200/50 mb-8">
+        <p className="text-emerald-100 mb-1">Salaire median a {ville.nom}</p>
+        <p className="text-5xl font-extrabold tracking-tight">
+          {fmt(brutMedian)} <span className="text-2xl font-semibold">EUR brut</span>
+        </p>
+        <p className="text-emerald-100 mt-2">
+          soit {fmt(nonCadre.net)} EUR net / mois (non-cadre)
+        </p>
+        <div className="h-px bg-white/20 my-4" />
+        <div className="grid grid-cols-3 gap-4 text-sm">
+          {resultats.map((r) => (
+            <div key={r.statut}>
+              <p className="text-emerald-100 capitalize">{r.statut}</p>
+              <p className="font-semibold">{fmt(r.net)} EUR net</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Tableau par tranche */}
+      <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm mb-8">
+        <h2 className="text-lg font-bold text-slate-800 mb-4">
+          Conversion brut/net a {ville.nom} — par tranche
+        </h2>
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-slate-200">
+                <th className="text-left py-3 px-2 text-slate-500 font-medium">Salaire brut</th>
+                <th className="text-right py-3 px-2 text-slate-500 font-medium">Net non-cadre</th>
+                <th className="text-right py-3 px-2 text-slate-500 font-medium">Net cadre</th>
+                <th className="text-right py-3 px-2 text-slate-500 font-medium">Simulation</th>
+              </tr>
+            </thead>
+            <tbody>
+              {brackets.map((b) => {
+                const netNc = Math.round(b * (1 - TAUX["non-cadre"]));
+                const netC = Math.round(b * (1 - TAUX.cadre));
+                const nearest = MONTANTS_BRUT.reduce((prev, curr) => Math.abs(curr - b) < Math.abs(prev - b) ? curr : prev, MONTANTS_BRUT[0]);
+                return (
+                  <tr key={b} className="border-b border-slate-100">
+                    <td className="py-2.5 px-2 text-slate-700 font-medium">{fmt(b)} EUR</td>
+                    <td className="py-2.5 px-2 text-right font-bold text-emerald-600">{fmt(netNc)} EUR</td>
+                    <td className="py-2.5 px-2 text-right text-slate-600">{fmt(netC)} EUR</td>
+                    <td className="py-2.5 px-2 text-right">
+                      <a href={`/salaire-brut-net/${nearest}-euros`} className="text-emerald-600 hover:underline text-xs font-medium">
+                        voir {fmt(nearest)} EUR &rarr;
+                      </a>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* Simulateur interactif */}
+      <h2 className="text-xl font-bold text-slate-800 mb-4">Convertisseur brut/net interactif</h2>
+      <CalculateurSalaire />
+
+      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
+
+      {/* Texte SEO localise */}
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">
+          Salaires a {ville.nom} en 2026
+        </h2>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          A <strong>{ville.nom}</strong> ({ville.departement}), le salaire brut median est estime a environ
+          <strong> {fmt(brutMedian)} EUR par mois</strong> en 2026. Pour un non-cadre, cela correspond a
+          <strong> {fmt(nonCadre.net)} EUR net</strong> apres deduction des cotisations sociales (22%).
+          Les {ville.gentile} cadres touchent en moyenne {fmt(resultats[1].net)} EUR net, et les
+          agents de la fonction publique {fmt(resultats[2].net)} EUR net sur la meme base brute.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">
+          Comment calculer son salaire net a {ville.nom} ?
+        </h3>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          La conversion brut en net depend de votre statut :
+        </p>
+        <ul className="list-disc list-inside text-slate-600 space-y-1 mb-4">
+          <li><strong>Non-cadre</strong> : ~22% de cotisations sociales (net = brut × 0,78)</li>
+          <li><strong>Cadre</strong> : ~25% de cotisations sociales (net = brut × 0,75)</li>
+          <li><strong>Fonction publique</strong> : ~15% de cotisations sociales (net = brut × 0,85)</li>
+        </ul>
+        <p className="text-slate-600 leading-relaxed">
+          Ces taux sont identiques partout en France. A {ville.nom}, ce qui change par rapport a d&apos;autres villes,
+          c&apos;est le niveau de salaire proposé par les employeurs locaux, et le cout de la vie qui influence
+          votre pouvoir d&apos;achat reel.
+        </p>
+      </section>
+
+      {/* Autres villes */}
+      {autresVilles.length > 0 && (
+        <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
+          <h2 className="text-lg font-bold text-slate-800 mb-4">Salaires dans d&apos;autres villes</h2>
+          <div className="flex flex-wrap gap-2">
+            {autresVilles.map((v) => (
+              <a
+                key={v.slug}
+                href={`/salaire-brut-net/${v.slug}`}
+                className="px-4 py-2 rounded-xl border border-slate-200 text-sm font-medium text-slate-600 hover:border-emerald-300 hover:text-emerald-600 hover:bg-emerald-50/50 transition-all"
+              >
+                {v.nom}
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <RelatedCalculators currentSlug="/salaire-brut-net" />
+      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
+    </div>
+  );
+}
+
 export default async function Page({ params }: { params: Promise<{ montant: string }> }) {
   const { montant } = await params;
+
+  const ville = findVille(montant);
+  if (ville) return <VilleSalairePage ville={ville} />;
+
   const parsed = parseSlug(montant);
   if (!parsed) notFound();
 
