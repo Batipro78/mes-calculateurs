@@ -825,6 +825,33 @@ const outils = [
     href: "/calcul-ifi",
     icone: "🏛",
     couleur: "from-rose-500 to-pink-600",
+    tag: "",
+  },
+  {
+    titre: "Simulateur IS",
+    description:
+      "Calculez l'Impot sur les Societes 2026. Taux reduit PME 15% jusqu'a 42 500 EUR, taux normal 25%.",
+    href: "/simulateur-impot-societe",
+    icone: "🏦",
+    couleur: "from-blue-500 to-indigo-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Amende Exces de Vitesse",
+    description:
+      "Amende, points et suspension selon depassement. Bareme officiel Code de la route 2026.",
+    href: "/simulateur-amende-exces-vitesse",
+    icone: "🚨",
+    couleur: "from-red-500 to-orange-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "LOA vs LLD",
+    description:
+      "Comparez Location avec Option d'Achat vs Location Longue Duree : cout total, rachat, avantages.",
+    href: "/simulateur-loa-lld",
+    icone: "🚘",
+    couleur: "from-sky-500 to-blue-600",
     tag: "Nouveau",
   },
 ];

@@ -91,6 +91,9 @@ const ALL_CALCULATORS = [
   { slug: "/simulateur-rendement-scpi", title: "Rendement SCPI", emoji: "🏢", color: "from-teal-500 to-cyan-600" },
   { slug: "/simulateur-rente-viagere", title: "Rente Viagere", emoji: "🏦", color: "from-amber-500 to-orange-600" },
   { slug: "/calcul-ifi", title: "Calcul IFI", emoji: "🏛", color: "from-rose-500 to-pink-600" },
+  { slug: "/simulateur-impot-societe", title: "Simulateur IS", emoji: "🏦", color: "from-blue-500 to-indigo-600" },
+  { slug: "/simulateur-amende-exces-vitesse", title: "Amende Vitesse", emoji: "🚨", color: "from-red-500 to-orange-600" },
+  { slug: "/simulateur-loa-lld", title: "LOA vs LLD", emoji: "🚘", color: "from-sky-500 to-blue-600" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -186,6 +189,9 @@ const RELATED_MAP: Record<string, string[]> = {
   "/simulateur-rendement-scpi": ["/calcul-rentabilite-locative", "/simulateur-epargne", "/simulateur-dca", "/calcul-revenus-fonciers"],
   "/simulateur-rente-viagere": ["/simulateur-retraite", "/simulateur-epargne", "/calcul-pension-reversion", "/calculateur-autonomie"],
   "/calcul-ifi": ["/calcul-taxe-fonciere", "/calcul-plus-value-immobiliere", "/calcul-droits-succession", "/calcul-rentabilite-locative"],
+  "/simulateur-impot-societe": ["/simulateur-micro-entreprise", "/simulateur-impot-revenu", "/calcul-tva", "/calculateur-autonomie"],
+  "/simulateur-amende-exces-vitesse": ["/calcul-malus-ecologique", "/calcul-vignette-critair", "/simulateur-cout-voiture", "/calcul-consommation-essence"],
+  "/simulateur-loa-lld": ["/simulateur-credit-auto", "/simulateur-cout-voiture", "/simulateur-electrique-vs-thermique", "/calcul-malus-ecologique"],
 };
 
 interface RelatedCalculatorsProps {

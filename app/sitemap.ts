@@ -821,6 +821,24 @@ function generateAllUrls(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${BASE_URL}/simulateur-impot-societe`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/simulateur-amende-exces-vitesse`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/simulateur-loa-lld`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: `${BASE_URL}/calcul-pension-reversion`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -1941,6 +1959,33 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     ifiPages.push({ url: `${BASE_URL}/calcul-ifi/patrimoine-${p}-euros`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
+  // Pages dynamiques batch 2 (IS, amende vitesse, LOA/LLD)
+  const IS_BENEFICES = [10000, 25000, 42500, 50000, 75000, 100000, 150000, 200000, 300000, 500000, 1000000];
+  const isPages: MetadataRoute.Sitemap = [];
+  for (const b of IS_BENEFICES) {
+    isPages.push({ url: `${BASE_URL}/simulateur-impot-societe/${b}-euros-benefice`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
+  const AMENDE_SLUGS = [
+    "60-en-zone-50", "65-en-zone-50", "80-en-zone-50", "100-en-zone-50",
+    "90-en-zone-80", "100-en-zone-80", "120-en-zone-80",
+    "140-en-zone-90", "150-en-zone-130", "160-en-zone-130", "180-en-zone-130", "200-en-zone-130",
+  ];
+  const amendePages: MetadataRoute.Sitemap = [];
+  for (const s of AMENDE_SLUGS) {
+    amendePages.push({ url: `${BASE_URL}/simulateur-amende-exces-vitesse/${s}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
+  const LOA_LLD_SLUGS = [
+    "voiture-20000-euros-36-mois", "voiture-25000-euros-48-mois", "voiture-30000-euros-48-mois",
+    "voiture-35000-euros-48-mois", "voiture-40000-euros-48-mois", "voiture-50000-euros-60-mois",
+    "voiture-electrique-30000-euros-48-mois",
+  ];
+  const loaLldPages: MetadataRoute.Sitemap = [];
+  for (const s of LOA_LLD_SLUGS) {
+    loaLldPages.push({ url: `${BASE_URL}/simulateur-loa-lld/${s}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
   // Pages dynamiques Metabolisme de Base
   const metabolismePages: MetadataRoute.Sitemap = [];
   for (const s of MB_SEXES) {
@@ -2111,6 +2156,9 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     ...scpiPages,
     ...rentePages,
     ...ifiPages,
+    ...isPages,
+    ...amendePages,
+    ...loaLldPages,
     ...enStaticPages,
     ...enNukePages,
     ...enBlackoutPages,
