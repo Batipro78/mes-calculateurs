@@ -17,6 +17,7 @@ const calculateurs = [
   { slug: "/calcul-droits-succession", titre: "Droits de Succession", emoji: "⚖️", desc: "Estimez les droits de succession selon le lien de parente et la valeur du patrimoine.", gradient: "from-red-400 to-rose-500" },
   { slug: "/calculateur-dpe", titre: "Simulateur DPE", emoji: "🏠", desc: "Estimez la classe energetique de votre logement selon sa surface, chauffage et epoque.", gradient: "from-teal-400 to-cyan-500" },
   { slug: "/calcul-surface-peinture", titre: "Surface Peinture", emoji: "🎨", desc: "Calculez la surface a peindre et le budget peinture pour vos travaux.", gradient: "from-fuchsia-400 to-pink-500" },
+  { slug: "/calcul-taxe-fonciere", titre: "Taxe Fonciere", emoji: "🏠", desc: "Estimez votre taxe fonciere selon la surface, le type de bien et la ville.", gradient: "from-amber-400 to-yellow-500" },
 ];
 
 const faqData = [

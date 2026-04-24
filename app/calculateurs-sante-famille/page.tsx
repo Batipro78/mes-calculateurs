@@ -16,6 +16,8 @@ const calculateurs = [
   { slug: "/simulateur-pension-alimentaire", titre: "Pension Alimentaire", emoji: "👨‍👩‍👧‍👦", desc: "Bareme officiel du Ministere de la Justice 2025-2026.", gradient: "from-blue-400 to-indigo-500" },
   { slug: "/calcul-cout-garde-enfant", titre: "Cout Garde Enfant", emoji: "🏠", desc: "Comparez creche, assistante maternelle, garde a domicile, micro-creche.", gradient: "from-amber-400 to-yellow-500" },
   { slug: "/calcul-age", titre: "Calcul Age Exact", emoji: "🎂", desc: "Calculez votre age exact en annees, mois et jours.", gradient: "from-cyan-400 to-blue-500" },
+  { slug: "/calcul-remboursement-mutuelle", titre: "Remboursement Mutuelle", emoji: "🏥", desc: "Calculez le remboursement SS + mutuelle pour 10 types d'actes medicaux.", gradient: "from-teal-400 to-cyan-500" },
+  { slug: "/calcul-allocation-familiale", titre: "Allocation Familiale CAF", emoji: "👨‍👩‍👧‍👦", desc: "Estimez vos allocations familiales, complement familial et ARS 2026.", gradient: "from-green-400 to-emerald-500" },
 ];
 
 const faqData = [

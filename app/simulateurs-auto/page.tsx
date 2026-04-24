@@ -14,6 +14,8 @@ const calculateurs = [
   { slug: "/calcul-consommation-essence", titre: "Consommation Essence", emoji: "⛽", desc: "Calculez votre consommation de carburant en L/100km et le cout de vos trajets.", gradient: "from-amber-400 to-orange-500" },
   { slug: "/calcul-cout-kilometrique", titre: "Cout Kilometrique", emoji: "🚙", desc: "Calculez le cout reel de vos trajets au kilometre, tous frais inclus.", gradient: "from-cyan-400 to-teal-500" },
   { slug: "/calcul-indemnites-kilometriques", titre: "Indemnites Kilometriques", emoji: "🚗", desc: "Calculez vos indemnites kilometriques selon le bareme fiscal 2026.", gradient: "from-teal-400 to-cyan-500" },
+  { slug: "/simulateur-electrique-vs-thermique", titre: "Electrique vs Thermique", emoji: "⚡", desc: "Comparez le cout total d'une voiture electrique vs thermique sur 1 a 10 ans.", gradient: "from-green-400 to-emerald-500" },
+  { slug: "/calcul-vignette-critair", titre: "Vignette Crit'Air", emoji: "🏷️", desc: "Determinez votre classe Crit'Air et les restrictions ZFE de votre vehicule.", gradient: "from-amber-400 to-orange-500" },
 ];
 
 const faqData = [

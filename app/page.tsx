@@ -763,6 +763,33 @@ const outils = [
     couleur: "from-amber-500 to-orange-600",
     tag: "Nouveau",
   },
+  {
+    titre: "Remboursement Mutuelle",
+    description:
+      "Calculez le remboursement Securite Sociale + mutuelle. 10 types d'actes, 3 niveaux de garantie, reste a charge.",
+    href: "/calcul-remboursement-mutuelle",
+    icone: "🏥",
+    couleur: "from-cyan-500 to-blue-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Allocation Familiale CAF",
+    description:
+      "Estimez vos allocations familiales, complement familial et ARS. Baremes CAF 2026 selon vos revenus.",
+    href: "/calcul-allocation-familiale",
+    icone: "👨‍👩‍👧‍👦",
+    couleur: "from-green-500 to-emerald-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Calcul Taxe Fonciere",
+    description:
+      "Estimez votre taxe fonciere selon la surface, le type de bien et la ville. Taux communaux 2026 des grandes villes.",
+    href: "/calcul-taxe-fonciere",
+    icone: "🏠",
+    couleur: "from-amber-500 to-yellow-600",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {

@@ -84,6 +84,9 @@ const ALL_CALCULATORS = [
   { slug: "/calcul-score-stress", title: "Score Stress", emoji: "🧠", color: "from-violet-500 to-purple-600" },
   { slug: "/simulateur-electrique-vs-thermique", title: "Electrique vs Thermique", emoji: "⚡", color: "from-green-500 to-emerald-600" },
   { slug: "/calcul-vignette-critair", title: "Vignette Crit'Air", emoji: "🚗", color: "from-amber-500 to-orange-600" },
+  { slug: "/calcul-remboursement-mutuelle", title: "Remboursement Mutuelle", emoji: "🏥", color: "from-cyan-500 to-blue-600" },
+  { slug: "/calcul-allocation-familiale", title: "Allocation Familiale", emoji: "👨‍👩‍👧‍👦", color: "from-green-500 to-emerald-600" },
+  { slug: "/calcul-taxe-fonciere", title: "Taxe Fonciere", emoji: "🏠", color: "from-amber-500 to-yellow-600" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -172,6 +175,9 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calcul-score-stress": ["/calcul-risque-cardiovasculaire", "/calcul-besoin-sommeil", "/calcul-imc", "/calcul-age-metabolique"],
   "/simulateur-electrique-vs-thermique": ["/simulateur-cout-voiture", "/calcul-malus-ecologique", "/simulateur-bonus-ecologique", "/calcul-consommation-essence"],
   "/calcul-vignette-critair": ["/calcul-malus-ecologique", "/simulateur-bonus-ecologique", "/simulateur-cout-voiture", "/simulateur-electrique-vs-thermique"],
+  "/calcul-remboursement-mutuelle": ["/calcul-risque-cardiovasculaire", "/calcul-score-stress", "/calcul-prime-activite", "/simulateur-impot-revenu"],
+  "/calcul-allocation-familiale": ["/calcul-cout-garde-enfant", "/simulateur-pension-alimentaire", "/calcul-prime-activite", "/simulateur-apl"],
+  "/calcul-taxe-fonciere": ["/frais-de-notaire", "/calcul-rentabilite-locative", "/calcul-revenus-fonciers", "/calcul-plus-value-immobiliere"],
 };
 
 interface RelatedCalculatorsProps {

@@ -19,6 +19,7 @@ const calculateurs = [
   { slug: "/calcul-besoin-sommeil", titre: "Besoin Sommeil", emoji: "🌙", desc: "Decouvrez votre besoin en sommeil et les heures ideales de coucher.", gradient: "from-indigo-400 to-violet-500" },
   { slug: "/calcul-age-metabolique", titre: "Age Metabolique", emoji: "🧬", desc: "Comparez votre age metabolique a votre age reel pour evaluer votre forme.", gradient: "from-purple-400 to-violet-500" },
   { slug: "/calcul-risque-cardiovasculaire", titre: "Risque Cardiovasculaire", emoji: "❤️", desc: "Evaluez votre risque cardiovasculaire selon les facteurs de sante.", gradient: "from-red-400 to-rose-500" },
+  { slug: "/calcul-score-stress", titre: "Score Stress (PSS-10)", emoji: "🧠", desc: "Evaluez votre niveau de stress avec le test PSS-10. 10 questions, resultats instantanes.", gradient: "from-violet-400 to-purple-500" },
 ];
 
 const faqData = [
