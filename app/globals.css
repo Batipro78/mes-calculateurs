@@ -1,1 +1,15 @@
 @import "tailwindcss";
+
+/* Mode embed : masquer header/footer quand la page est destinee a etre iframee */
+body:has([data-embed="true"]) {
+  background: transparent !important;
+}
+body:has([data-embed="true"]) > header,
+body:has([data-embed="true"]) > footer {
+  display: none !important;
+}
+body:has([data-embed="true"]) > main {
+  max-width: 100% !important;
+  padding: 12px !important;
+  margin: 0 !important;
+}
