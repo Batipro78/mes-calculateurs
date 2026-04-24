@@ -94,6 +94,9 @@ const ALL_CALCULATORS = [
   { slug: "/simulateur-impot-societe", title: "Simulateur IS", emoji: "🏦", color: "from-blue-500 to-indigo-600" },
   { slug: "/simulateur-amende-exces-vitesse", title: "Amende Vitesse", emoji: "🚨", color: "from-red-500 to-orange-600" },
   { slug: "/simulateur-loa-lld", title: "LOA vs LLD", emoji: "🚘", color: "from-sky-500 to-blue-600" },
+  { slug: "/calcul-indice-inflammation", title: "Indice Inflammation", emoji: "🥗", color: "from-emerald-500 to-red-500" },
+  { slug: "/calcul-prestation-compensatoire", title: "Prestation Compensatoire", emoji: "⚖️", color: "from-violet-500 to-purple-600" },
+  { slug: "/calcul-prise-poids-grossesse", title: "Prise Poids Grossesse", emoji: "🤰", color: "from-pink-500 to-rose-600" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -192,6 +195,9 @@ const RELATED_MAP: Record<string, string[]> = {
   "/simulateur-impot-societe": ["/simulateur-micro-entreprise", "/simulateur-impot-revenu", "/calcul-tva", "/calculateur-autonomie"],
   "/simulateur-amende-exces-vitesse": ["/calcul-malus-ecologique", "/calcul-vignette-critair", "/simulateur-cout-voiture", "/calcul-consommation-essence"],
   "/simulateur-loa-lld": ["/simulateur-credit-auto", "/simulateur-cout-voiture", "/simulateur-electrique-vs-thermique", "/calcul-malus-ecologique"],
+  "/calcul-indice-inflammation": ["/calcul-calories", "/calcul-macros", "/calcul-imc", "/calcul-risque-cardiovasculaire"],
+  "/calcul-prestation-compensatoire": ["/simulateur-pension-alimentaire", "/calcul-cout-garde-enfant", "/calcul-allocation-familiale", "/salaire-brut-net"],
+  "/calcul-prise-poids-grossesse": ["/calcul-date-accouchement", "/calcul-imc", "/calcul-ovulation", "/calcul-calories"],
 };
 
 interface RelatedCalculatorsProps {

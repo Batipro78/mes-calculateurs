@@ -852,6 +852,33 @@ const outils = [
     href: "/simulateur-loa-lld",
     icone: "🚘",
     couleur: "from-sky-500 to-blue-600",
+    tag: "",
+  },
+  {
+    titre: "Indice Inflammation Alimentaire",
+    description:
+      "Evaluez le score inflammatoire de votre alimentation (DII). Questionnaire + recommandations.",
+    href: "/calcul-indice-inflammation",
+    icone: "🥗",
+    couleur: "from-emerald-500 to-red-500",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Prestation Compensatoire Divorce",
+    description:
+      "Estimez le montant de la prestation compensatoire en cas de divorce. 3 methodes (Depondt, moyenne, esperance).",
+    href: "/calcul-prestation-compensatoire",
+    icone: "⚖️",
+    couleur: "from-violet-500 to-purple-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Prise de Poids Grossesse",
+    description:
+      "Evaluez votre prise de poids pendant la grossesse selon votre IMC. Recommandations IOM officielles.",
+    href: "/calcul-prise-poids-grossesse",
+    icone: "🤰",
+    couleur: "from-pink-500 to-rose-600",
     tag: "Nouveau",
   },
 ];

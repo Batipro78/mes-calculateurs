@@ -839,6 +839,24 @@ function generateAllUrls(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${BASE_URL}/calcul-indice-inflammation`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-prestation-compensatoire`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-prise-poids-grossesse`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: `${BASE_URL}/calcul-pension-reversion`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -1986,6 +2004,25 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     loaLldPages.push({ url: `${BASE_URL}/simulateur-loa-lld/${s}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
+  // Batch 3 (inflammation, prestation compensatoire, grossesse)
+  const INFLAMMATION_SLUGS = ["regime-mediterraneen", "regime-vegetarien", "regime-vegan", "regime-occidental-standard", "regime-keto", "regime-paleo"];
+  const inflammationPages: MetadataRoute.Sitemap = [];
+  for (const s of INFLAMMATION_SLUGS) {
+    inflammationPages.push({ url: `${BASE_URL}/calcul-indice-inflammation/${s}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
+  const PRESTATION_SLUGS = ["mariage-10-ans", "mariage-15-ans", "mariage-20-ans", "mariage-25-ans", "mariage-30-ans", "mariage-5-ans-sans-enfant", "femme-au-foyer-20-ans"];
+  const prestationPages: MetadataRoute.Sitemap = [];
+  for (const s of PRESTATION_SLUGS) {
+    prestationPages.push({ url: `${BASE_URL}/calcul-prestation-compensatoire/${s}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
+  const GROSSESSE_SEMAINES = [8, 12, 16, 20, 24, 28, 32, 36, 40];
+  const grossessePages: MetadataRoute.Sitemap = [];
+  for (const s of GROSSESSE_SEMAINES) {
+    grossessePages.push({ url: `${BASE_URL}/calcul-prise-poids-grossesse/${s}-semaines`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
   // Pages dynamiques Metabolisme de Base
   const metabolismePages: MetadataRoute.Sitemap = [];
   for (const s of MB_SEXES) {
@@ -2159,6 +2196,9 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     ...isPages,
     ...amendePages,
     ...loaLldPages,
+    ...inflammationPages,
+    ...prestationPages,
+    ...grossessePages,
     ...enStaticPages,
     ...enNukePages,
     ...enBlackoutPages,
