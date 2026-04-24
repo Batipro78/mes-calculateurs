@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/convertisseur-devises" },
   title:
     "Convertisseur de Devises Gratuit 2026 - Taux de change en temps reel",
   description:

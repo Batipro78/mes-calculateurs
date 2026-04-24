@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-proteines" },
   title: "Calcul Proteines par Jour 2026 - Besoin Protidique Gratuit",
   description:
     "Calculez votre besoin en proteines journalier gratuitement. Adapte a votre poids, niveau d'activite et objectif (maintien, perte de poids, prise de masse). Formule g/kg.",

@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/simulateur-cout-voiture" },
   title: "Cout Total Voiture 2026 - Simulateur Budget Auto Complet Gratuit",
   description:
     "Calculez le cout total de possession de votre voiture : carburant, assurance, entretien, depreciation, controles techniques. Comparaison thermique vs electrique. Gratuit.",

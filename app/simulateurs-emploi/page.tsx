@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/simulateurs-emploi" },
   title: "Simulateurs Emploi & Salaire Gratuits 2026 - Calcul en ligne",
   description:
     "Calculez votre salaire brut/net, simulez vos allocations chomage, indemnites de licenciement, prime d'activite, retraite, heures de travail et indemnites kilometriques. Gratuit.",

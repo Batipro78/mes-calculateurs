@@ -52,6 +52,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const versSymb = de === "cm" ? "pouces" : "cm";
 
   return {
+    alternates: { canonical: `/conversion-longueur/${slug}` },
     title: `${valeur} ${deSymb} en ${versSymb} = ${fmtInt(resultat)} ${versSymb}`,
     description: `${valeur} ${deSymb} = ${fmtInt(resultat)} ${versSymb}. Conversion longueur ${de === "cm" ? "centimetres en pouces" : "pouces en centimetres"} avec tableau, formule et equivalences.`,
     keywords: `${valeur} ${deSymb} en ${versSymb}, conversion ${valeur} ${deSymb}, ${deSymb} ${versSymb}, longueur ${valeur}`,

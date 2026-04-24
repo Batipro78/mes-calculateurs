@@ -61,6 +61,7 @@ export async function generateMetadata({
   const result = calcBunkerCost(parsed.bunkerType, parsed.numPeople, parsed.duration);
 
   return {
+    alternates: { canonical: `/en/bunker-cost-calculator/${slug}` },
     title: `${type.name} Bunker for ${parsed.numPeople} People (${dur.label}) - Cost: ${fmtUSD(result.totalCost)}`,
     description: `How much does a ${type.name.toLowerCase()} survival bunker cost for ${parsed.numPeople} people for ${dur.label}? Total estimate: ${fmtUSD(result.totalCost)}. Construction: ${fmtUSD(result.constructionCost)}, Food: ${fmtUSD(result.foodCost)}, Water: ${fmtUSD(result.waterCost)}. ${fmtNumber(result.totalSqFt)} sq ft.`,
     keywords: `${type.name.toLowerCase()} bunker cost, bunker ${parsed.numPeople} people, survival shelter ${dur.label}, underground bunker price ${parsed.numPeople} person`,

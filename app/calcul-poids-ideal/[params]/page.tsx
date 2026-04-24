@@ -62,6 +62,7 @@ export async function generateMetadata({
   const sexeArticle = sexe === "homme" ? "un homme" : "une femme";
 
   return {
+    alternates: { canonical: `/calcul-poids-ideal/${slug}` },
     title: `Poids ideal ${sexeLabel} ${taille} cm ${age} ans = ${fmt(result.moyenne)} kg (Lorentz, Devine, Creff)`,
     description: `Calcul du poids ideal pour ${sexeArticle} de ${taille} cm et ${age} ans. Lorentz : ${fmt(result.lorentz)} kg, Devine : ${fmt(result.devine)} kg, Creff : ${fmt(result.creff)} kg. Fourchette saine : ${fmt(result.fourchette.min)}–${fmt(result.fourchette.max)} kg.`,
     keywords: `poids ideal ${sexeLabel.toLowerCase()} ${taille} cm, poids ideal ${age} ans, poids ideal ${taille} cm, formule lorentz ${taille} cm`,

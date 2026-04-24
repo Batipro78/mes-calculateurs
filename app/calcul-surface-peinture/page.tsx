@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-surface-peinture" },
   title:
     "Calcul Surface Peinture 2026 - Estimez la quantite de peinture necessaire",
   description:

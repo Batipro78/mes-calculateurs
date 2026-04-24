@@ -66,6 +66,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const r = calcARE(salaire, mois, age);
 
   return {
+    alternates: { canonical: `/simulateur-chomage/${slug}` },
     title: `Chomage ${salaire.toLocaleString("fr-FR")} EUR brut = ${fmt(r.areMois)} EUR/mois | ${r.dureeMax} mois`,
     description: `Allocation chomage pour un salaire de ${salaire.toLocaleString("fr-FR")} EUR brut, ${mois} mois travailles, ${age} ans : ${fmt(r.areMois)} EUR/mois (${fmt(r.areJour)} EUR/jour). Duree : ${r.dureeMax} mois. SJR : ${fmt(r.sjr)} EUR.`,
     keywords: `chomage ${salaire} euros, allocation chomage ${salaire} euros brut, ARE ${salaire} euros, simulation chomage ${age} ans`,

@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description: "Calculate the total cost of building an underground survival bunker. Estimate construction, food, water, and equipment costs based on capacity and duration. US prices.",
   keywords: "bunker cost calculator, survival bunker price, underground shelter cost, doomsday bunker, prepper bunker USA, NBC shelter cost, how much does a bunker cost",
   alternates: {
+    canonical: "/en/bunker-cost-calculator",
     languages: {
       "fr": "/simulateur-bunker",
       "en": "/en/bunker-cost-calculator",

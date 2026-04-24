@@ -89,6 +89,7 @@ export async function generateMetadata({
   const result = calcForType(type, km, duree);
   const label = TYPE_LABELS[type];
   return {
+    alternates: { canonical: `/simulateur-cout-voiture/${slug}` },
     title: `Cout ${label} : ${fmt(km)} km/an pendant ${duree} ans = ${fmt(result.coutTotal)} €`,
     description: `Cout total d'une ${label} pour ${fmt(km)} km/an sur ${duree} ans : ${fmt(result.coutTotal)} € soit ${fmt(result.coutMensuel)} €/mois ou ${result.coutKilometre.toFixed(2)} €/km. Detail complet : carburant, assurance, entretien, depreciation.`,
   };

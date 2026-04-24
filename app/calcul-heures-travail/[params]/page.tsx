@@ -79,6 +79,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const regime = getRegimeLabel(heures);
 
   return {
+    alternates: { canonical: `/calcul-heures-travail/${slug}` },
     title: `${heures} heures/semaine a ${taux} EUR/h - Salaire ${fmt(calc.salaireMensuel)} EUR/mois | 2026`,
     description: `Calcul pour ${heures}h/semaine a ${taux} EUR/heure : ${fmt(calc.salaireSemaine)} EUR/semaine, ${fmt(calc.salaireMensuel)} EUR/mois brut. ${calc.heuresSupTotal > 0 ? `${calc.heuresSupTotal}h supplementaires majorees.` : ""} ${regime}. Simulation 2026.`,
     keywords: `${heures} heures semaine salaire, ${taux} euros heure, ${heures}h travail, salaire ${heures} heures, heures supplementaires ${heures}h`,

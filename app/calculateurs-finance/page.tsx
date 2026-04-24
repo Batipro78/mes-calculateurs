@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calculateurs-finance" },
   title: "Calculateurs Financiers Gratuits 2026 - Simulateurs en ligne",
   description:
     "Tous nos calculateurs financiers gratuits : simulateur pret immobilier, frais de notaire, credit conso, impot revenu, epargne, taux endettement, capacite emprunt, TVA et plus.",

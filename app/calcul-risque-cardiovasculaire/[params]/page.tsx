@@ -102,6 +102,7 @@ export async function generateMetadata({
   const profilLabel = config.label.toLowerCase();
 
   return {
+    alternates: { canonical: `/calcul-risque-cardiovasculaire/${slug}` },
     title: `Risque cardiovasculaire ${sexe} ${age} ans ${profilLabel} — ${res.risquePourcentage} a 10 ans`,
     description: `Risque cardiovasculaire a 10 ans pour un ${sexeLabel} de ${age} ans ${profilLabel} : ${res.risquePourcentage} (${config.description}). Score Framingham : ${res.score}/30. Categorie : ${res.categorie}. Calcul gratuit.`,
     keywords: `risque cardiovasculaire ${sexe} ${age} ans, score Framingham ${sexe}, risque cardiaque ${profilLabel}, prevention cardiovasculaire ${age} ans`,

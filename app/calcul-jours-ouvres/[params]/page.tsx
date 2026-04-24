@@ -48,6 +48,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const { ouvres, feries } = compterJO(parsed.mois);
   const nom = MOIS_NOMS_CAP[parsed.mois];
   return {
+    alternates: { canonical: `/calcul-jours-ouvres/${slug}` },
     title: `Jours ouvres ${nom} 2026 — ${ouvres} jours travailles`,
     description: `${nom} 2026 compte ${ouvres} jours ouvres et ${feries} jour(s) ferie(s). Calendrier complet, jours feries et planning.`,
     keywords: `jours ouvres ${nom.toLowerCase()} 2026, nombre jours travailles ${nom.toLowerCase()}, calendrier ${nom.toLowerCase()} 2026, jours feries ${nom.toLowerCase()}`,

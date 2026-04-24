@@ -25,6 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   if (!parsed) return {};
   const rev = Math.round(parsed.pension * 0.54);
   return {
+    alternates: { canonical: `/calcul-pension-reversion/${slug}` },
     title: `Pension reversion ${fmt(parsed.pension)} \u20ac = ${fmt(rev)} \u20ac/mois (54%)`,
     description: `Pension de reversion pour une retraite de ${fmt(parsed.pension)} \u20ac/mois : ${fmt(rev)} \u20ac/mois (regime general 54%), ${fmt(Math.round(parsed.pension * 0.60))} \u20ac (AGIRC-ARRCO 60%).`,
   };

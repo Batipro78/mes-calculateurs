@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-calories" },
   title: "Calcul Calories 2026 - Besoin Calorique Journalier (TDEE) gratuit",
   description:
     "Calculez vos besoins caloriques journaliers (TDEE) gratuitement. Metabolisme de base, objectifs perte/prise de poids, repartition macronutriments. Formule Mifflin-St Jeor.",

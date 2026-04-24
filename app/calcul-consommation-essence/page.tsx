@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-consommation-essence" },
   title: "Calcul Consommation Essence - Cout Trajet et Prix Carburant",
   description:
     "Calculez le cout de votre trajet en carburant. Distance, consommation L/100km, prix du litre. Cout au kilometre et budget mensuel.",

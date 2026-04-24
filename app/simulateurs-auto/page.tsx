@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/simulateurs-auto" },
   title: "Simulateurs Auto & Vehicule Gratuits 2026 - Cout, Credit, Malus, Bonus",
   description: "Calculez le cout total de votre voiture, credit auto, malus ecologique, bonus ecologique, consommation essence, cout kilometrique. Simulateurs auto gratuits.",
   keywords: "simulateur auto, cout voiture, credit auto, malus ecologique, bonus ecologique, consommation essence, cout kilometrique, budget voiture 2026",

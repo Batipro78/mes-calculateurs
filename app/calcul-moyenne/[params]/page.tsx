@@ -52,6 +52,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const sur20 = bareme === 20 ? moyenne : ((moyenne / bareme) * 20).toFixed(1);
 
   return {
+    alternates: { canonical: `/calcul-moyenne/${slug}` },
     title: `Moyenne de ${moyenne}/${bareme} — ${mention}${bareme !== 20 ? ` (${sur20}/20)` : ""}`,
     description: `Une moyenne de ${moyenne}/${bareme} correspond a la mention "${mention}". ${bareme !== 20 ? `Equivalence : ${sur20}/20.` : ""} Conseils pour ameliorer sa moyenne et coefficients du bac.`,
     keywords: `moyenne ${moyenne} sur ${bareme}, ${moyenne}/${bareme} mention, ameliorer sa moyenne, moyenne bac, note ${moyenne}`,

@@ -35,6 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const litres = (conso / 100) * distance;
   const cout = litres * 1.75;
   return {
+    alternates: { canonical: `/calcul-consommation-essence/${slug}` },
     title: `Cout trajet ${distance} km a ${conso} L/100 = ${fmt(cout)} \u20ac`,
     description: `Trajet de ${distance} km avec une consommation de ${conso} L/100km : ${fmt(litres)} litres, cout ${fmt(cout)} \u20ac (a 1,75\u20ac/L). Tableau par distance et consommation.`,
     keywords: `cout trajet ${distance} km, consommation ${conso} litres 100, essence ${distance} km, carburant ${distance} km prix`,

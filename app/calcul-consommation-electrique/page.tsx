@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-consommation-electrique" },
   title: "Calcul Consommation Electrique 2026 - Estimez votre facture",
   description:
     "Calculez la consommation electrique de vos appareils et estimez le cout sur votre facture. Mode multi-appareils, comparaison Base vs HP/HC. Tarif EDF 2026. Outil gratuit.",

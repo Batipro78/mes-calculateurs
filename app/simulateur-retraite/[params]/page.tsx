@@ -43,6 +43,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const r160 = calcRetraite(annee, salaire, 160, 64);
 
   return {
+    alternates: { canonical: `/simulateur-retraite/${slug}` },
     title: `Retraite ne(e) en ${annee}, ${fmtInt(salaire)} EUR/an = ${fmtInt(r172.pensionTotaleNette)} EUR/mois net`,
     description: `Simulation retraite pour une personne nee en ${annee} avec un SAM de ${fmtInt(salaire)} EUR : pension nette estimee ${fmtInt(r172.pensionTotaleNette)} EUR/mois (carriere complete) ou ${fmtInt(r160.pensionTotaleNette)} EUR/mois (160 trimestres). Age legal : ${r172.ageLegal} ans.`,
     keywords: `retraite ${annee}, pension retraite ${fmtInt(salaire)} euros, simulation retraite ne en ${annee}, age legal retraite ${annee}`,

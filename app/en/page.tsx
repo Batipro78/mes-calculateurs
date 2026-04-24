@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   description: "Free survival simulators and preparedness tools. Nuclear bomb simulator, blackout readiness test, bunker cost calculator, draft risk assessment, and survival budget calculator. Educational tools for 2026.",
   keywords: "nuclear bomb simulator, blackout simulator, bunker cost calculator, draft simulator, survival budget calculator, prepper tools, emergency preparedness, SHTF calculator",
   alternates: {
+    canonical: "/en",
     languages: {
       "fr": "/",
       "en": "/en",

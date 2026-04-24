@@ -83,6 +83,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const sim10 = simulerEpargne(capital, placementInfo.taux, 10);
 
   return {
+    alternates: { canonical: `/simulateur-epargne/${slug}` },
     title: `${fmtInt(capital)} EUR sur ${placementInfo.label} - Combien ca rapporte ? (2026)`,
     description: `Combien rapportent ${fmtInt(capital)} EUR places sur un ${placementInfo.label} a ${placementInfo.taux}% ? Apres 10 ans : ${fmt(sim10.capitalFinal)} EUR (+${fmt(sim10.totalInterets)} EUR d'interets). Simulation 2026.`,
     keywords: `${fmtInt(capital)} euros ${placementInfo.label}, combien rapporte ${fmtInt(capital)} euros, ${placementInfo.label} ${fmtInt(capital)} euros, placement ${fmtInt(capital)} euros`,

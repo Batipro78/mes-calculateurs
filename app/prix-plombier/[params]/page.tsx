@@ -21,6 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const ville = findVille(slug);
   if (ville) {
     return {
+    alternates: { canonical: `/prix-plombier/${slug}` },
       title: `Prix Plombier a ${ville.nom} (${ville.departement}) - Tarifs 2026`,
       description: `Tous les prix plombier a ${ville.nom} en 2026 : debouchage (${Math.round(100 * ville.coefficient)}-${Math.round(450 * ville.coefficient)} EUR), installation WC, salle de bain. Tarifs ${ville.nom} avec coefficient x${ville.coefficient.toFixed(2)}.`,
       keywords: `prix plombier ${ville.nom.toLowerCase()}, tarif plombier ${ville.nom.toLowerCase()}, cout plombier ${ville.nom.toLowerCase()}, devis plombier ${ville.nom.toLowerCase()} ${ville.departement}`,
@@ -35,6 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const qtyLabel = prestation.unite === "forfait" ? "" : ` ${quantite} ${prestation.uniteLabel}`;
 
   return {
+    alternates: { canonical: `/prix-plombier/${slug}` },
     title: `Prix ${prestation.nom}${qtyLabel} ${region.nom} - ${fmtPrix(r.totalMin)} a ${fmtPrix(r.totalMax)} (2026)`,
     description: `Cout ${prestation.nom.toLowerCase()}${qtyLabel} en ${region.nom} : ${fmtPrix(r.totalMin)} a ${fmtPrix(r.totalMax)} TTC. Detail fournitures (${fmtPrix(r.fournituresMin)}-${fmtPrix(r.fournituresMax)}) et main d'oeuvre (${fmtPrix(r.mainOeuvreMin)}-${fmtPrix(r.mainOeuvreMax)}). Tarif plombier 2026.`,
     keywords: `prix ${prestation.nom.toLowerCase()}, cout ${prestation.nom.toLowerCase()} ${region.nom.toLowerCase()}, tarif plombier ${prestation.nom.toLowerCase()}, devis plombier`,

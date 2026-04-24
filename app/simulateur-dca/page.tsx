@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/simulateur-dca" },
   title: "Simulateur DCA 2026 - Calculez vos gains d'investissement passe",
   description:
     "Simulez un investissement DCA (Dollar Cost Averaging) sur le S&P 500, CAC 40 ou Bitcoin. Decouvrez combien vous auriez gagne en investissant chaque mois depuis 2010. Gratuit et instantane.",

@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description: "Calculate the minimum monthly budget to survive in any US city. Includes rent, food, transport, health insurance, and utilities. Compare to federal poverty line and SNAP benefits.",
   keywords: "cost of living calculator USA, minimum budget to live, survival budget, monthly expenses calculator, poverty line 2026, SNAP benefits, living wage calculator, how much to survive",
   alternates: {
+    canonical: "/en/survival-budget-calculator",
     languages: {
       "fr": "/calculateur-budget-survie",
       "en": "/en/survival-budget-calculator",

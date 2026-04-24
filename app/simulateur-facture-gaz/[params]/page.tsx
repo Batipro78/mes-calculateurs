@@ -77,6 +77,7 @@ export async function generateMetadata({
   const zoneLabel = ZONE_LABELS[zone] ?? zone;
 
   return {
+    alternates: { canonical: `/simulateur-facture-gaz/${slug}` },
     title: `Facture Gaz ${usageLabel} ${zoneLabel} 2026 - Estimation gratuite`,
     description: `Estimation de la facture de gaz pour ${usageLabel.toLowerCase()} en ${zoneLabel} (${ZONE_VILLES[zone]}). Facture mensuelle : ${fmt(resultat.factureMensuelle)} EUR, annuelle : ${fmt(resultat.factureAnnuelle)} EUR. Tarif GRDF Q1 2026.`,
     keywords: `facture gaz ${usageLabel.toLowerCase()}, gaz naturel ${zoneLabel}, prix gaz ${zone}, tarif GRDF ${zone}, simulation facture gaz 2026`,

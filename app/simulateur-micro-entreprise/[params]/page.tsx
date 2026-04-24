@@ -88,6 +88,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const r = calcMicro(parsed.ca, activite);
 
   return {
+    alternates: { canonical: `/simulateur-micro-entreprise/${slug}` },
     title: `Micro-entreprise ${fmt(parsed.ca)} EUR ${activite.label} = ${fmt(r.revenuNet)} EUR net`,
     description: `Simulateur micro-entreprise pour ${fmt(parsed.ca)} EUR de CA en ${activite.label.toLowerCase()} : charges ${fmt(r.totalCharges)} EUR, impot ${fmt(r.impot)} EUR, revenu net ${fmt(r.revenuNet)} EUR/an (${fmt(r.revenuNet / 12)} EUR/mois). Taux URSSAF ${activite.tauxCharges}%.`,
     keywords: `micro-entreprise ${fmt(parsed.ca)} euros, auto-entrepreneur ${activite.label.toLowerCase()}, charges ${activite.tauxCharges}%, revenu net micro-entreprise`,

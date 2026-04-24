@@ -70,6 +70,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const resultat = montant * devise.taux;
 
   return {
+    alternates: { canonical: `/convertisseur-devises/${slug}` },
     title: `${fmtInt(montant)} EUR en ${devise.code} - Conversion Euro ${devise.nom} (2026)`,
     description: `${fmtInt(montant)} euros en ${devise.nom} = ${fmt(resultat)} ${devise.code}. Taux de change 1 EUR = ${fmt(devise.taux, 4)} ${devise.code}. Convertisseur gratuit 2026.`,
     keywords: `${fmtInt(montant)} euros en ${devise.code}, convertir EUR ${devise.code}, ${fmtInt(montant)} EUR ${devise.nom}, taux change euro ${devise.nom}`,

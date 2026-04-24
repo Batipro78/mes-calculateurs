@@ -68,6 +68,7 @@ export async function generateMetadata({
   const activiteLabel = ACTIVITE_LABELS[activite];
 
   return {
+    alternates: { canonical: `/calcul-age-metabolique/${slug}` },
     title: `Age Metabolique ${sexe} ${age} ans ${activiteLabel} = ${res.ageMetabolique} ans`,
     description: `Age metabolique pour un ${sexeLabel} de ${age} ans avec un niveau d'activite ${activiteLabel.toLowerCase()} : ${res.ageMetabolique} ans (ecart ${res.ecart > 0 ? "+" : ""}${res.ecart} an${Math.abs(res.ecart) > 1 ? "s" : ""}). BMR ${fmt(res.bmr)} kcal vs reference ${fmt(res.bmrRef)} kcal.`,
     keywords: `age metabolique ${sexe} ${age} ans, age biologique ${sexe} ${age} ans, metabolisme ${activite} ${age} ans`,

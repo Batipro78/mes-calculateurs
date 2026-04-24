@@ -62,6 +62,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const poidsIdealHaut = 25 * tailleM * tailleM;
 
   return {
+    alternates: { canonical: `/calcul-imc/${slug}` },
     title: `IMC ${poids} kg pour ${taille} cm = ${fmt(imc)} - ${categorie.label}`,
     description: `Calcul IMC pour ${poids} kg et ${taille} cm : IMC de ${fmt(imc)} (${categorie.label}). Poids ideal pour ${taille} cm : ${fmt(poidsIdealBas)} a ${fmt(poidsIdealHaut)} kg. Classification OMS 2026.`,
     keywords: `IMC ${poids} kg ${taille} cm, calcul IMC ${poids} kg, IMC ${taille} cm, poids ideal ${taille} cm`,

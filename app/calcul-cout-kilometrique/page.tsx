@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-cout-kilometrique" },
   title: "Calcul Cout Kilometrique 2026 - Bareme Fiscal IK",
   description:
     "Calculez votre cout kilometrique avec le bareme fiscal 2026. Indemnites km par puissance fiscale, distance, vehicule electrique (+20%). Bareme officiel.",

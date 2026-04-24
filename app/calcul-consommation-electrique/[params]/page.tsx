@@ -71,6 +71,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const calc = calculConso(appareil.puissance, appareil.heuresDefaut);
 
   return {
+    alternates: { canonical: `/calcul-consommation-electrique/${slug}` },
     title: `Consommation ${appareil.nom} - Combien ca coute en electricite ? (2026)`,
     description: `Consommation electrique d'un ${appareil.nom} (${fmtInt(appareil.puissance)}W) : ${fmt(calc.consoAn)} kWh/an soit ${fmt(calc.coutAn)} EUR/an au tarif EDF 2026 (${TARIF_BASE} EUR/kWh). Cout par jour, mois et an.`,
     keywords: `consommation ${appareil.nom}, cout electricite ${appareil.nom}, combien consomme ${appareil.nom}, ${appareil.nom} kWh, watt ${appareil.nom}`,

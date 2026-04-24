@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calculateur-inflation" },
   title: "Calculateur Inflation 2026 - Perte de pouvoir d'achat en France",
   description:
     "Calculez l'impact de l'inflation sur votre salaire et votre pouvoir d'achat. Combien devriez-vous gagner aujourd'hui pour vivre comme en 2020 ? Donnees INSEE, gratuit et instantane.",

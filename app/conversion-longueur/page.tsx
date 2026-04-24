@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/conversion-longueur" },
   title: "Conversion cm en Pouces et Pieds - Convertisseur Longueur",
   description:
     "Convertissez entre centimetres, pouces (inches), pieds (feet), metres et millimetres. Tableau de correspondance taille et equivalences. Gratuit.",

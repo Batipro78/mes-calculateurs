@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-indemnites-kilometriques" },
   title:
     "Calcul Indemnites Kilometriques 2026 - Bareme fiscal IK gratuit",
   description:

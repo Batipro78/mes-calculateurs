@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-taux-endettement" },
   title: "Calcul Taux d'Endettement 2026 - Simulateur gratuit",
   description:
     "Calculez votre taux d'endettement gratuitement. Seuil des 33%, reste a vivre, capacite d'emprunt. Outil indispensable avant une demande de credit immobilier.",

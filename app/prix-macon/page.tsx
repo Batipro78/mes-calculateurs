@@ -7,6 +7,7 @@ import WebAppJsonLd from "../components/WebAppJsonLd";
 import VillesLinks from "../components/VillesLinks";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/prix-macon" },
   title: "Prix Macon 2026 : Estimateur en Ligne - Tarifs au m\u00b2",
   description:
     "Estimez le prix d'un macon en 2026. Tarifs au m\u00b2 : mur parpaings, dalle beton, terrasse, facade, demolition. Fournitures + main d'oeuvre par region. Gratuit.",

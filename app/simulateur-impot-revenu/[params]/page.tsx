@@ -95,6 +95,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const parMois = Math.round(result.impotNet / 12);
 
   return {
+    alternates: { canonical: `/simulateur-impot-revenu/${slug}` },
     title: `Impot sur ${fmt(revenu)} EUR de revenu - Simulation 2026`,
     description: `Combien d'impot pour ${fmt(revenu)} EUR de revenu annuel ? Resultat : ${fmt(Math.round(result.impotNet))} EUR/an (${fmt(parMois)} EUR/mois). Taux marginal ${result.tauxMarginal}%, taux moyen ${fmt2(result.tauxMoyen)}%. Bareme 2026.`,
     keywords: `impot ${fmt(revenu)} euros, simulation impot ${fmt(revenu)}, combien impot ${fmt(revenu)}, impot revenu ${fmt(revenu)} euros 2026`,

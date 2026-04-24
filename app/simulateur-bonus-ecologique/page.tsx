@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/simulateur-bonus-ecologique" },
   title: "Simulateur Bonus Ecologique Auto 2026 - Calcul gratuit",
   description:
     "Calculez votre bonus ecologique 2026 pour l'achat d'une voiture electrique. Bareme officiel selon vos revenus (RFR). Surbonus batterie europeenne. Jusqu'a 7 700 €.",

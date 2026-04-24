@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-ovulation" },
   title: "Calcul Ovulation 2026 - Calendrier de fertilite gratuit",
   description:
     "Calculez votre date d'ovulation et votre periode fertile. Calendrier de fertilite, duree du cycle, prochaines regles. Outil gratuit et instantane.",

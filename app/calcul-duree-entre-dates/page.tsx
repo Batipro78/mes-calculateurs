@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-duree-entre-dates" },
   title: "Calcul Duree Entre Deux Dates - Jours, Semaines, Mois",
   description:
     "Calculez la duree entre deux dates en jours, semaines, mois et annees. Jours ouvres, heures, minutes. Compte a rebours evenements.",

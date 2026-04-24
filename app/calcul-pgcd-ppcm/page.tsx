@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-pgcd-ppcm" },
   title: "Calcul PGCD et PPCM - Algorithme d'Euclide",
   description:
     "Calculez le PGCD et le PPCM de deux nombres. Algorithme d'Euclide detaille, decomposition en facteurs premiers, verification. Gratuit.",

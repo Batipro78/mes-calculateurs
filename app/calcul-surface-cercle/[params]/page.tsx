@@ -22,7 +22,8 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const parsed = parseSlug(slug);
   if (!parsed) return {};
   const s = Math.PI * parsed.rayon * parsed.rayon;
-  return { title: `Surface cercle rayon ${parsed.rayon} = ${fmt(s)}`, description: `Surface d'un cercle de rayon ${parsed.rayon} = ${fmt(s)} unites\u00b2. Perimetre = ${fmt(2 * Math.PI * parsed.rayon)}. Formule et calcul detaille.` };
+  return {
+    alternates: { canonical: `/calcul-surface-cercle/${slug}` }, title: `Surface cercle rayon ${parsed.rayon} = ${fmt(s)}`, description: `Surface d'un cercle de rayon ${parsed.rayon} = ${fmt(s)} unites\u00b2. Perimetre = ${fmt(2 * Math.PI * parsed.rayon)}. Formule et calcul detaille.` };
 }
 
 export default async function Page({ params }: { params: Promise<{ params: string }> }) {

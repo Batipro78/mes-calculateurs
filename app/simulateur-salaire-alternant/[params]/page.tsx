@@ -82,6 +82,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
     const r = calcSalaireAlternant("apprentissage", parsed.age, parsed.annee);
     const anneeLabel = parsed.annee === 1 ? "1ere" : `${parsed.annee}eme`;
     return {
+    alternates: { canonical: `/simulateur-salaire-alternant/${slug}` },
       title: `Salaire apprenti ${parsed.age} ans en ${anneeLabel} annee 2026 = ${fmt(r.brut)} EUR brut`,
       description: `Salaire d'un apprenti de ${parsed.age} ans en ${anneeLabel} annee : ${fmt(r.brut)} EUR brut/mois (${r.pourcentageSmic}% du SMIC). Net estime : ${fmt(r.net)} EUR. Grille officielle apprentissage 2026.`,
       keywords: `salaire apprenti ${parsed.age} ans, apprentissage ${anneeLabel} annee salaire, remuneration apprenti 2026, SMIC apprenti ${parsed.age} ans`,
@@ -94,6 +95,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
     const r = calcSalaireAlternant("professionnalisation", parsed.age, 1, parsed.niveau);
     const niveauLabel = NIVEAU_LABELS[parsed.niveau];
     return {
+    alternates: { canonical: `/simulateur-salaire-alternant/${slug}` },
       title: `Salaire pro ${parsed.age} ans ${niveauLabel} 2026 = ${fmt(r.brut)} EUR brut`,
       description: `Salaire en contrat de professionnalisation a ${parsed.age} ans (${niveauLabel}) : ${fmt(r.brut)} EUR brut/mois (${r.pourcentageSmic}% du SMIC). Net estime : ${fmt(r.net)} EUR. Grille officielle 2026.`,
       keywords: `salaire professionnalisation ${parsed.age} ans, contrat pro ${niveauLabel} salaire, remuneration professionnalisation 2026`,

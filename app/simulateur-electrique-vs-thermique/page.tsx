@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/simulateur-electrique-vs-thermique" },
   title:
     "Voiture Electrique vs Thermique 2026 - Comparateur Cout Total Gratuit",
   description:

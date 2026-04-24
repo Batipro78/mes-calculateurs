@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-age-metabolique" },
   title: "Calcul Age Metabolique 2026 - Age Biologique Gratuit",
   description:
     "Calculez votre age metabolique gratuitement. Comparez votre metabolisme de base reel au metabolisme de reference pour votre age et sexe. Resultats instantanes avec conseils personnalises.",

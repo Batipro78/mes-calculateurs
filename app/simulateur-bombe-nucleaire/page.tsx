@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/simulateur-bombe-nucleaire" },
   title:
     "Simulateur Bombe Nucleaire 2026 - Carte d'impact et zones de destruction",
   description:

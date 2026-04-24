@@ -99,6 +99,7 @@ export async function generateMetadata({
   const zones = calculateZones(weapon.yield);
 
   return {
+    alternates: { canonical: `/en/nuclear-bomb-simulator/${slug}` },
     title: `${weapon.name} on ${city.name} - Nuclear Impact Simulation 2026`,
     description: `What would happen if ${weapon.article} (${weapon.yield >= 1000 ? `${weapon.yield / 1000} Mt` : `${weapon.yield} kT`}) hit ${city.name}? Total destruction within ${fmtDist(zones[2].radius)}, buildings collapsed within ${fmtDist(zones[3].radius)}, windows shattered within ${fmtDist(zones[5].radius)}. Interactive map.`,
     keywords: `nuclear bomb ${city.name}, ${weapon.name} ${city.name}, nuclear impact ${city.name}, atomic bomb ${city.name}, nuke simulation ${city.name}`,

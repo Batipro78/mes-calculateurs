@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-racine-carree" },
   title: "Calcul Racine Carree - Racine Cubique, Carres Parfaits",
   description:
     "Calculez la racine carree de n'importe quel nombre. Racine cubique, verification, carres parfaits proches. Tableau des racines. Gratuit.",

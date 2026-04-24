@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-date-accouchement" },
   title:
     "Calcul Date d'Accouchement 2026 - DPA, semaines de grossesse gratuit",
   description:

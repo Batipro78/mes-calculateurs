@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-heures-travail" },
   title:
     "Calcul Heures de Travail 2026 - Compteur d'heures gratuit en ligne",
   description:

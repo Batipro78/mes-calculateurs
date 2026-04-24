@@ -88,6 +88,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const mois = Math.floor(sg / 4.33);
 
   return {
+    alternates: { canonical: `/calcul-date-accouchement/${slug}` },
     title: `Enceinte de ${sa} semaines (${sg} SG) - ${trimestre} | Taille, poids, developpement`,
     description: `Grossesse a ${sa} semaines d'amenorrhee (${sg} SG, ${mois} mois). Bebe : ${info.taille}, ${info.poids}. ${info.developpement.slice(0, 100)}...`,
     keywords: `enceinte ${sa} semaines, grossesse ${sa} SA, ${sg} semaines grossesse, ${sa} semaines amenorrhee, bebe ${sa} semaines, ${trimestre} grossesse`,

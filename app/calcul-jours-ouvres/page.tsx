@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-jours-ouvres" },
   title: "Calcul Jours Ouvres 2026 - Nombre de Jours Travailles",
   description:
     "Calculez le nombre de jours ouvres entre deux dates. Calendrier 2026 avec jours feries, week-ends. Par mois et par periode. Gratuit.",

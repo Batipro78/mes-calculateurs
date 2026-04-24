@@ -125,6 +125,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const { apl } = calculerAPLMontant(loyerExemple, zone, situation, nbCharges, revenusExemple);
 
   return {
+    alternates: { canonical: `/simulateur-apl/${slug}` },
     title: `APL ${sitLabel} ${enfantsLabel} ${zoneLabel} - Simulation 2026`,
     description: `Calculez votre APL en ${zoneLabel} pour ${nbCharges === 0 ? "une " : ""}${sitLabel} ${enfantsLabel}. Exemple : ${fmt(apl)} EUR/mois pour un loyer de ${fmtInt(loyerExemple)} EUR. Baremes 2026.`,
     keywords: `APL ${sitLabel}, APL zone ${zone}, APL ${enfantsLabel}, aide logement ${sitLabel}, simulation APL 2026 ${zoneLabel}`,

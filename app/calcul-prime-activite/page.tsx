@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-prime-activite" },
   title: "Calcul Prime d'Activite 2026 - Simulateur CAF gratuit",
   description:
     "Calculez votre prime d'activite gratuitement. Montant forfaitaire, bonification, forfait logement. Bareme CAF 2026, seul ou en couple, avec enfants.",

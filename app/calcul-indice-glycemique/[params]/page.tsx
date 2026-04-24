@@ -37,6 +37,7 @@ export async function generateMetadata({
     aliment.ig <= 55 ? "bas" : aliment.ig <= 69 ? "moyen" : "eleve";
 
   return {
+    alternates: { canonical: `/calcul-indice-glycemique/${slug}` },
     title: `Indice Glycemique ${aliment.nom} = ${aliment.ig} (IG ${categorieIG}) | CG ${res.chargeGlycemique}`,
     description: `Indice glycemique de ${aliment.nom} : IG ${aliment.ig} (${categorieIG}), charge glycemique ${res.chargeGlycemique} pour une portion de ${aliment.portion}g. ${aliment.glucidesPar100g}g de glucides pour 100g. Conseils nutrition.`,
     keywords: `indice glycemique ${aliment.nom}, IG ${aliment.nom}, charge glycemique ${aliment.nom}, ${aliment.nom} diabete, ${aliment.nom} glycemie`,

@@ -7,6 +7,7 @@ import WebAppJsonLd from "../components/WebAppJsonLd";
 import VillesLinks from "../components/VillesLinks";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/prix-plombier" },
   title: "Prix Plombier 2026 : Estimateur en Ligne - Tarifs par Prestation",
   description:
     "Estimez le prix d'un plombier en 2026. Tarifs : robinet, WC, chauffe-eau, douche, baignoire, debouchage, chaudiere, salle de bain. Fournitures + main d'oeuvre par region.",

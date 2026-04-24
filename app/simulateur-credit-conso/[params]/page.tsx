@@ -40,6 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const sim = calcCreditConso(montant, duree, taux, 2500, 0.36);
 
   return {
+    alternates: { canonical: `/simulateur-credit-conso/${slug}` },
     title: `Credit conso ${fmtInt(montant)} € sur ${duree} mois — Mensualite ${fmt(sim.mensualite)} €`,
     description: `Simulez un credit consommation de ${fmtInt(montant)} € sur ${duree} mois a ${taux}%. Mensualite : ${fmt(sim.mensualite)} €. Cout total : ${fmt(sim.coutTotal)} €. Taux 2026 actualises.`,
   };

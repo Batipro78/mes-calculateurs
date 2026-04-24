@@ -56,6 +56,7 @@ export async function generateMetadata({
   const activiteLabel = ACTIVITE_LABELS[activite];
 
   return {
+    alternates: { canonical: `/calcul-proteines/${slug}` },
     title: `Proteines ${poids} kg ${activiteLabel} = ${result.grammes}g/jour | Calcul 2026`,
     description: `Besoin en proteines pour une personne de ${poids} kg, profil ${activiteLabel.toLowerCase()} : ${result.grammes}g/jour (${result.parRepas}g par repas). Fourchette recommandee : ${Math.round(result.fourchette.min * poids)}g – ${Math.round(result.fourchette.max * poids)}g.`,
     keywords: `proteines ${poids} kg, besoin proteines ${activiteLabel.toLowerCase()}, apport protidique ${poids}kg, proteines par jour ${poids} kilos`,

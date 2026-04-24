@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-age" },
   title: "Calculer son Age Exact - Date de naissance, jours, heures",
   description:
     "Calculez votre age exact en annees, mois et jours a partir de votre date de naissance. Nombre de jours vecus, prochain anniversaire, signe astrologique. Gratuit.",

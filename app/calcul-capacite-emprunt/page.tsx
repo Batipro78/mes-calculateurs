@@ -4,6 +4,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-capacite-emprunt" },
   title: "Calcul Capacite d'Emprunt 2026 - Simulateur gratuit en ligne",
   description:
     "Calculez votre capacite d'emprunt immobilier en 2026. Simulateur gratuit selon vos revenus, charges, apport et duree. Regles HCSF, taux d'endettement 35%, comparatif 15/20/25 ans.",

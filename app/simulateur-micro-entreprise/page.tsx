@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/simulateur-micro-entreprise" },
   title: "Simulateur Micro-Entreprise 2026 - Charges, Impot, Revenu Net",
   description:
     "Simulez vos revenus en micro-entreprise (auto-entrepreneur). Charges URSSAF, impot sur le revenu, ACRE, versement liberatoire. Calcul du revenu net annuel et mensuel.",

@@ -35,6 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const diff = Math.floor((parsed.date.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
   const abs = Math.abs(diff);
   return {
+    alternates: { canonical: `/calcul-duree-entre-dates/${slug}` },
     title: `Combien de jours avant ${parsed.label} ? ${abs} jours`,
     description: `Il reste environ ${abs} jours avant ${parsed.label}. Compte a rebours en jours, semaines et mois. Calculez la duree exacte depuis aujourd'hui.`,
     keywords: `combien de jours avant ${parsed.label.toLowerCase()}, compte a rebours ${parsed.label.toLowerCase()}, jours restants ${parsed.label.toLowerCase()}`,

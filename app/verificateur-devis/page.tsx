@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/verificateur-devis" },
   title: "Verificateur de Devis 2026 - Conformite 16 Mentions Obligatoires",
   description:
     "Deposez votre devis et verifiez sa conformite legale. L'IA analyse les 16 mentions obligatoires en France (2026) : SIRET, assurance decennale, TVA, dechets. Gratuit.",

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calculateurs-nutrition" },
   title: "Calculateurs Sante & Nutrition Gratuits 2026 - IMC, Calories, Macros",
   description: "Calculez votre metabolisme de base, apport en proteines, macros, besoin en eau, indice glycemique, risque cardiovasculaire. Outils sante et nutrition gratuits.",
   keywords: "calculateur nutrition, metabolisme de base, calcul proteines, macros nutrition, besoin eau, indice glycemique, risque cardiovasculaire, age metabolique, BMR",

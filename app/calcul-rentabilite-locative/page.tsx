@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-rentabilite-locative" },
   title: "Calcul Rentabilite Locative - Brute et Nette 2026",
   description:
     "Calculez la rentabilite locative brute et nette de votre investissement immobilier. Charges, taxe fonciere, vacance locative. Simulateur gratuit.",

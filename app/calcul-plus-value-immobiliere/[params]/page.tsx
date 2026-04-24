@@ -51,6 +51,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const total = ir + ps;
 
   return {
+    alternates: { canonical: `/calcul-plus-value-immobiliere/${slug}` },
     title: `Plus-value ${fmt(plusValue)} \u20ac apres ${annees} ans = ${fmt(total)} \u20ac d'impot`,
     description: `Plus-value immobiliere de ${fmt(plusValue)} \u20ac apres ${annees} ans de detention : ${fmt(total)} \u20ac d'impot (IR ${fmt(ir)} \u20ac + PS ${fmt(ps)} \u20ac). Abattement IR ${abIR.toFixed(0)}%.`,
   };

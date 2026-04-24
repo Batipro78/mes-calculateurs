@@ -55,6 +55,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   if (parsed.type === "age") {
     const result = calcDraftRisk(parsed.gender, parsed.age, "fit", "registered", "single", "standard");
     return {
+    alternates: { canonical: `/en/draft-simulator/${slug}` },
       title: `Would a ${parsed.age}-year-old ${GENDER_LABELS[parsed.gender].toLowerCase()} be drafted? Score: ${result.score}/100`,
       description: `Draft priority analysis for a ${parsed.age}-year-old ${GENDER_LABELS[parsed.gender].toLowerCase()}: ${result.label} (${result.score}/100). ${result.description} Based on US Selective Service regulations and historical draft patterns.`,
       keywords: `draft ${parsed.age} year old ${GENDER_LABELS[parsed.gender].toLowerCase()}, military draft age ${parsed.age}, selective service ${parsed.age}, would ${parsed.age} be drafted`,
@@ -64,6 +65,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
     const result = calcDraftRisk(p.gender, p.age, "fit", p.military, p.slug === "single-parent" ? "single-parent" : "single",
       p.slug === "healthcare-worker" ? "healthcare" : "standard");
     return {
+    alternates: { canonical: `/en/draft-simulator/${slug}` },
       title: `Would a ${p.label} be drafted? ${result.label} (${result.score}/100)`,
       description: `Draft analysis for ${p.label.toLowerCase()}s: ${result.description} Priority score: ${result.score}/100. Based on US Selective Service system.`,
       keywords: `draft ${p.slug.replace(/-/g, " ")}, military draft ${p.slug.replace(/-/g, " ")}, selective service ${p.slug.replace(/-/g, " ")}`,

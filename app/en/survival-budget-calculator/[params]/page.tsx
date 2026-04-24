@@ -36,6 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const result = calcSurvivalBudget(parsed.zone, parsed.situation, parsed.transport);
   const zoneShort = ZONE_LABELS[parsed.zone].split("(")[0].trim();
   return {
+    alternates: { canonical: `/en/survival-budget-calculator/${slug}` },
     title: `Cost of Living: ${SITUATION_LABELS[parsed.situation]} in ${zoneShort} (${TRANSPORT_LABELS[parsed.transport]}) - ${fmtUSD(result.total)}/mo`,
     description: `Minimum monthly budget for a ${parsed.situation} in a ${zoneShort.toLowerCase()} with ${TRANSPORT_LABELS[parsed.transport].toLowerCase()}: ${fmtUSD(result.total)}/month (${fmtUSD(result.total * 12)}/year). Rent: ${fmtUSD(result.lines[0].amount)}, Food: ${fmtUSD(result.lines[1].amount)}, Healthcare: ${fmtUSD(result.lines[5].amount)}.`,
     keywords: `cost of living ${zoneShort.toLowerCase()}, ${parsed.situation} budget ${zoneShort.toLowerCase()}, minimum expenses USA, survival budget ${parsed.situation}`,

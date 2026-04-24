@@ -54,6 +54,7 @@ export async function generateMetadata({
   const objectifLabel = OBJECTIF_LABELS[objectif];
 
   return {
+    alternates: { canonical: `/calcul-macros/${slug}` },
     title: `Macros ${calories} kcal (${objectifLabel}) — ${fmt(macros.proteines.grammes)}g P / ${fmt(macros.glucides.grammes)}g G / ${fmt(macros.lipides.grammes)}g L`,
     description: `Repartition des macronutriments pour ${calories} kcal/jour en mode ${objectifLabel.toLowerCase()} : ${fmt(macros.proteines.grammes)}g de proteines, ${fmt(macros.glucides.grammes)}g de glucides, ${fmt(macros.lipides.grammes)}g de lipides. Calcul instantane et gratuit.`,
     keywords: `macros ${calories} kcal, repartition macronutriments ${objectifLabel.toLowerCase()}, proteines glucides lipides ${calories} calories`,

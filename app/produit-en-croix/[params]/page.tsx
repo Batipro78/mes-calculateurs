@@ -42,6 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const d = (b * c) / a;
 
   return {
+    alternates: { canonical: `/produit-en-croix/${slug}` },
     title: `Produit en croix : ${a}/${b} = ${c}/? → ${fmtInt(d)}`,
     description: `Produit en croix : si ${a}/${b} = ${c}/x, alors x = ${fmtInt(d)}. Calcul detaille, verification et formule.`,
     keywords: `produit en croix ${a} ${b} ${c}, regle de trois ${a} ${b} ${c}, ${a} sur ${b} egale ${c} sur, proportionnalite`,

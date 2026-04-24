@@ -33,6 +33,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const signe = parseSlug(slug);
   if (!signe) return {};
   return {
+    alternates: { canonical: `/calcul-ascendant-astrologique/${slug}` },
     title: `${signe.symbole} ${signe.nom} — Personnalite, Ascendant, Qualites et Defauts`,
     description: `Tout sur le signe ${signe.nom} (${signe.dates}). Element ${signe.element}, planete ${signe.planete}. Personnalite, qualites, defauts et compatibilites.`,
     keywords: `${signe.nom.toLowerCase()} personnalite, signe ${signe.nom.toLowerCase()}, ${signe.nom.toLowerCase()} qualites defauts, ${signe.nom.toLowerCase()} ascendant, horoscope ${signe.nom.toLowerCase()}`,

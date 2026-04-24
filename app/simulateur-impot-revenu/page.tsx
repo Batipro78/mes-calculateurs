@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/simulateur-impot-revenu" },
   title:
     "Simulateur Impot sur le Revenu 2026 - Calcul gratuit en ligne",
   description:

@@ -202,6 +202,7 @@ export async function generateMetadata({
     const { age, sexe } = parsed;
     const cat = getCategorie(age, sexe.slug);
     return {
+    alternates: { canonical: `/simulateur-mobilisation/${slug}` },
       title: `Mobilisation ${sexe.label} de ${age} ans - Suis-je mobilisable ? 2026`,
       description: `${sexe.label === "homme" ? "Un homme" : "Une femme"} de ${age} ans est-${sexe.label === "homme" ? "il" : "elle"} mobilisable en cas de guerre en France ? ${cat.label}. Simulateur gratuit base sur le Code de la defense.`,
       keywords: `mobilisation ${sexe.label} ${age} ans, ${sexe.label} ${age} ans mobilisable, guerre France ${age} ans, conscription ${age} ans`,
@@ -209,6 +210,7 @@ export async function generateMetadata({
   }
 
   return {
+    alternates: { canonical: `/simulateur-mobilisation/${slug}` },
     title: `${parsed.profil.titre} mobilisable ? - Simulateur mobilisation 2026`,
     description: parsed.profil.description,
     keywords: parsed.profil.keywords,

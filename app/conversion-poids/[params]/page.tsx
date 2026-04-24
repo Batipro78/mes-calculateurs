@@ -53,6 +53,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const versLabel = de === "kg" ? "livres" : "kg";
 
   return {
+    alternates: { canonical: `/conversion-poids/${slug}` },
     title: `${valeur} ${deSymb} en ${versLabel} = ${fmtInt(resultat)} ${versSymb}`,
     description: `${valeur} ${deSymb} = ${fmtInt(resultat)} ${versSymb}. Conversion poids ${de === "kg" ? "kilogrammes en livres" : "livres en kilogrammes"} avec tableau, formule et equivalences.`,
     keywords: `${valeur} ${deSymb} en ${versLabel}, conversion ${valeur} ${deSymb}, ${deSymb} ${versSymb}, poids ${valeur}`,

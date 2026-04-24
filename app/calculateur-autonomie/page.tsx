@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calculateur-autonomie" },
   title: "Calculateur Autonomie Financiere 2026 - Combien de temps avec mon epargne ?",
   description:
     "Calculez combien de temps vous pouvez vivre avec votre epargne. Budget minimum par zone, situation et revenus complementaires. Duree d'autonomie en mois et jours.",

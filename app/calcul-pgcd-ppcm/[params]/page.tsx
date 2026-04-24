@@ -27,6 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const g = pgcd(parsed.a, parsed.b);
   const p = (parsed.a * parsed.b) / g;
   return {
+    alternates: { canonical: `/calcul-pgcd-ppcm/${slug}` },
     title: `PGCD et PPCM de ${parsed.a} et ${parsed.b} — PGCD=${g}, PPCM=${fmtInt(p)}`,
     description: `PGCD(${parsed.a}, ${parsed.b}) = ${g}. PPCM(${parsed.a}, ${parsed.b}) = ${fmtInt(p)}. Algorithme d'Euclide detaille et decomposition.`,
   };

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/prix-travaux-maison" },
   title: "Prix Travaux & Artisans 2026 - Estimateurs Gratuits par Metier",
   description:
     "Estimez le prix de vos travaux par metier : macon, peintre, electricien, plombier, couvreur, chauffagiste. Prix au m2, par prestation et par region. Tarifs 2026.",

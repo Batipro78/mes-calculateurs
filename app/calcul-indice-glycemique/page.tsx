@@ -7,6 +7,7 @@ import WebAppJsonLd from "../components/WebAppJsonLd";
 import { ALIMENTS } from "./indiceGlycemiqueCalc";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-indice-glycemique" },
   title: "Indice Glycemique des Aliments 2026 - Tableau IG et Charge Glycemique",
   description:
     "Tableau complet de l'indice glycemique (IG) et de la charge glycemique (CG) de plus de 40 aliments. Comparez les IG des fruits, feculents, cereales, boissons. Outil gratuit pour diabetiques et sportifs.",

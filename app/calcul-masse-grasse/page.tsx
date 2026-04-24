@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-masse-grasse" },
   title: "Calcul Masse Grasse 2026 - Taux de Graisse Corporelle Gratuit",
   description:
     "Calculez votre taux de masse grasse gratuitement avec la methode US Navy et la formule IMC. Classez votre resultat : essentiel, athlete, fitness, normal, surpoids.",

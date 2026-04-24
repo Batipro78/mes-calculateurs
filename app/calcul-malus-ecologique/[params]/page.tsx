@@ -41,6 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   if (!parsed) return {};
   const malus = calculerMalus(parsed.co2);
   return {
+    alternates: { canonical: `/calcul-malus-ecologique/${slug}` },
     title: `Malus ecologique ${parsed.co2} g CO2/km = ${fmtInt(malus)} \u20ac (2026)`,
     description: `Un vehicule emettant ${parsed.co2} g de CO2/km est soumis a un malus de ${fmtInt(malus)} \u20ac en 2026. Bareme officiel et detail du calcul.`,
   };

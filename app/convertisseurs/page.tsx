@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/convertisseurs" },
   title: "Convertisseurs Gratuits 2026 - Temperature, Poids, Longueur, Devises",
   description: "Convertissez facilement temperatures (°C/°F/K), poids (kg/lbs), longueurs (cm/pouces/pieds), devises (EUR/USD). Convertisseurs en ligne gratuits et precis.",
   keywords: "convertisseur temperature, convertisseur poids, convertisseur longueur, convertisseur devises, conversion celsius fahrenheit, kg en livres, cm en pouces",

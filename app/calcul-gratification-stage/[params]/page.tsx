@@ -30,6 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const hMois = parsed.heures * 52 / 12;
   const mensuel = GRATIF * hMois;
   return {
+    alternates: { canonical: `/calcul-gratification-stage/${slug}` },
     title: `Gratification stage ${parsed.duree} mois ${parsed.heures}h/sem = ${fmt(mensuel)} \u20ac/mois`,
     description: `Stage de ${parsed.duree} mois a ${parsed.heures}h/semaine : gratification de ${fmt(mensuel)} \u20ac/mois (minimum legal 2026). Total : ${fmt(mensuel * parsed.duree)} \u20ac.`,
   };

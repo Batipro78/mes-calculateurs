@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-vignette-critair" },
   title: "Calcul Vignette Crit'Air 2026 - Simulateur Gratuit en Ligne",
   description:
     "Determinez votre vignette Crit'Air gratuitement. Type de vehicule, carburant, date d'immatriculation. Classification, restrictions ZFE, prix et commande.",

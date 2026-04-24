@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-score-stress" },
   title: "Calcul Score Stress 2026 - Test PSS-10 Gratuit en Ligne",
   description:
     "Evaluez votre niveau de stress avec le test PSS-10 (Perceived Stress Scale). 10 questions, resultats instantanes, conseils personnalises. Gratuit et anonyme.",

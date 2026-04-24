@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-remboursement-mutuelle" },
   title: "Calcul Remboursement Mutuelle 2026 - Simulateur Gratuit",
   description:
     "Simulez le remboursement de votre mutuelle sante : Securite Sociale + complementaire. Consultations, dentaire, optique, hospitalisation. Comparatif par niveau de garantie.",

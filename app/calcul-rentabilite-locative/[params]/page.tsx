@@ -34,6 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const { prix, loyer } = parsed;
   const renta = ((loyer * 12) / prix) * 100;
   return {
+    alternates: { canonical: `/calcul-rentabilite-locative/${slug}` },
     title: `Rentabilite locative : ${fmtInt(prix)} \u20ac, ${loyer} \u20ac/mois = ${fmt(renta)}% brut`,
     description: `Investissement de ${fmtInt(prix)} \u20ac avec un loyer de ${loyer} \u20ac/mois : rentabilite brute de ${fmt(renta)}%. Calcul detaille brut et net.`,
   };

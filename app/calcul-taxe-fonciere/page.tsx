@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-taxe-fonciere" },
   title: "Calcul Taxe Fonciere 2026 - Simulateur Estimation Gratuit",
   description:
     "Estimez votre taxe fonciere 2026 en ligne. Valeur locative cadastrale, taux communal par ville, abattement 50%, exoneration neuf. Simulateur gratuit et instantane.",

@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/indemnite-licenciement" },
   title:
     "Calcul Indemnite de Licenciement 2026 - Simulateur gratuit",
   description:

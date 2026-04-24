@@ -62,6 +62,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const label = SLUG_TO_LABEL[parsed.modeSlug];
 
   return {
+    alternates: { canonical: `/calcul-cout-garde-enfant/${slug}` },
     title: `Cout garde enfant ${label} — ${fmtInt(parsed.revenu)} €/an, ${parsed.enfants} enfant${parsed.enfants > 1 ? "s" : ""} : ${fmt(sim.coutMensuelNet)} €/mois`,
     description: `Calculez le cout d'une garde ${label} pour un foyer a ${fmtInt(parsed.revenu)} €/an avec ${parsed.enfants} enfant${parsed.enfants > 1 ? "s" : ""}. Cout net apres aides : ${fmt(sim.coutMensuelNet)} €/mois. CMG, credit impot 50% inclus.`,
   };

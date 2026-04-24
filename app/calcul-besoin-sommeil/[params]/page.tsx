@@ -50,6 +50,7 @@ export async function generateMetadata({
   const activiteLabel = ACTIVITE_LABELS[activite].toLowerCase();
 
   return {
+    alternates: { canonical: `/calcul-besoin-sommeil/${slug}` },
     title: `Besoin Sommeil ${age} ans (${ACTIVITE_LABELS[activite]}) = ${res.heuresAjustees}h - ${res.cycles} cycles`,
     description: `Combien d'heures de sommeil pour ${age} ans avec un niveau d'activite ${activiteLabel} ? Besoin ideal : ${res.heuresAjustees}h/nuit, soit ${res.cycles} cycles de 90 min. Heures recommandees : ${res.heuresRecommandees.min}-${res.heuresRecommandees.max}h selon la NSF.`,
     keywords: `besoin sommeil ${age} ans, heures sommeil ${age} ans, sommeil ${activiteLabel}, cycles sommeil ${age} ans`,

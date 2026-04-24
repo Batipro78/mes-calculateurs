@@ -57,6 +57,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
     : `${score.dureeAutonomieH}h`;
 
   return {
+    alternates: { canonical: `/simulateur-blackout/${slug}` },
     title: `Blackout ${logLabel.toLowerCase()} ${chauffLabel} (${parsed.nbPersonnes} pers.) — ${dureeStr} d'autonomie`,
     description: `${logLabel} avec chauffage ${chauffLabel}, ${parsed.nbPersonnes} personnes : score ${score.scoreTotal}/100, autonomie estimee ${dureeStr} sans electricite. Budget equipement et conseils.`,
     keywords: `blackout ${logLabel.toLowerCase()}, panne electricite ${chauffLabel}, autonomie coupure ${parsed.nbPersonnes} personnes, preparation blackout`,

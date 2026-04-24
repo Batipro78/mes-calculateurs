@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description: "Hypothetical US military draft simulator. See your draft priority score based on age, gender, military experience, medical status, and occupation. Educational tool based on Selective Service regulations.",
   keywords: "military draft simulator, would I be drafted, selective service draft, US conscription, draft lottery simulator, military mobilization USA, draft age, Iran war draft",
   alternates: {
+    canonical: "/en/draft-simulator",
     languages: {
       "fr": "/simulateur-mobilisation",
       "en": "/en/draft-simulator",

@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-tva" },
   title: "Calcul TVA 2026 - Convertisseur HT / TTC gratuit",
   description:
     "Calculez la TVA, le montant HT et TTC instantanement. Tous les taux francais : 20%, 10%, 5.5%, 2.1%. Outil gratuit et precis.",

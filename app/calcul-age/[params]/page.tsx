@@ -47,6 +47,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const gen = getGeneration(annee);
 
   return {
+    alternates: { canonical: `/calcul-age/${slug}` },
     title: `Ne(e) en ${annee} - Quel age ? ${age} ans en 2026`,
     description: `Personne nee en ${annee} : ${age} ans en 2026. ${gen.nom}. Calcul age exact en jours, semaines, mois. Prochain anniversaire, signe astrologique.`,
     keywords: `ne en ${annee} quel age, age ${annee}, ${age} ans annee naissance, generation ${annee}, calcul age ${annee}`,

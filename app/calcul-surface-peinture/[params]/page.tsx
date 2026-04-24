@@ -87,6 +87,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const r = calcul(surface, piece);
 
   return {
+    alternates: { canonical: `/calcul-surface-peinture/${slug}` },
     title: `Peinture ${piece.nom} ${surface} m2 - Surface et quantite (2026)`,
     description: `${piece.nom} de ${surface} m2 : ${fmt(r.surfaceTotale)} m2 a peindre, ${fmt(r.litres)} litres necessaires (2 couches). Budget estime : ${fmtInt(Math.ceil(r.budget))} EUR. Calcul gratuit.`,
     keywords: `peinture ${piece.nom.toLowerCase()} ${surface}m2, surface peinture ${piece.nom.toLowerCase()}, quantite peinture ${surface} m2, combien litres peinture ${piece.nom.toLowerCase()}`,

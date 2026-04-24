@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/frais-de-notaire" },
   title: "Calcul Frais de Notaire 2026 - Simulateur gratuit",
   description:
     "Estimez les frais de notaire pour votre achat immobilier en 2026. Ancien, neuf, terrain. Calcul detaille : droits de mutation, emoluments, debours.",

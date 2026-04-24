@@ -36,6 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const { capital, taux, duree } = parsed;
   const final = capital * Math.pow(1 + taux / 100, duree);
   return {
+    alternates: { canonical: `/calcul-interet-compose/${slug}` },
     title: `${fmtInt(capital)} \u20ac a ${taux}% pendant ${duree} ans = ${fmtInt(final)} \u20ac`,
     description: `${fmtInt(capital)} \u20ac places a ${taux}% par an pendant ${duree} ans deviennent ${fmtInt(final)} \u20ac grace aux interets composes. Gain : +${fmtInt(final - capital)} \u20ac.`,
   };

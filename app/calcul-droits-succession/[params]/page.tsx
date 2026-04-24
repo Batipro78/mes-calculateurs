@@ -38,6 +38,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   if (!parsed) return {};
   const droits = calculerDroits(parsed.montant, parsed.heritiers);
   return {
+    alternates: { canonical: `/calcul-droits-succession/${slug}` },
     title: `Succession ${fmt(parsed.montant)} \u20ac, ${parsed.heritiers} enfant${parsed.heritiers > 1 ? "s" : ""} = ${fmt(droits)} \u20ac de droits`,
     description: `Droits de succession pour ${fmt(parsed.montant)} \u20ac repartis entre ${parsed.heritiers} enfant${parsed.heritiers > 1 ? "s" : ""} : ${fmt(droits)} \u20ac. Abattement 100 000 \u20ac par enfant, bareme progressif.`,
   };

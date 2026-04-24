@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description: "Test your blackout readiness. Score your home's autonomy during a power outage based on your heating, cooking, and emergency equipment. Free preparedness tool.",
   keywords: "blackout simulator, power outage preparedness, emergency kit calculator, grid failure USA, Texas blackout, California power outage, survival kit cost, SHTF preparedness",
   alternates: {
+    canonical: "/en/blackout-simulator",
     languages: {
       "fr": "/simulateur-blackout",
       "en": "/en/blackout-simulator",

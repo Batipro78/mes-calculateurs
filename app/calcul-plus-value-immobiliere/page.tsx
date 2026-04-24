@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-plus-value-immobiliere" },
   title: "Calcul Plus-Value Immobiliere 2026 - Simulateur Impot",
   description:
     "Calculez la plus-value immobiliere et l'impot a payer. Abattements par duree de detention, IR 19%, prelevements sociaux 17,2%. Bareme 2026.",

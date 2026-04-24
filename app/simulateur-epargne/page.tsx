@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/simulateur-epargne" },
   title:
     "Simulateur Epargne 2026 - Calculez les interets de votre placement",
   description:

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/confidentialite" },
   title: "Politique de confidentialite",
   description:
     "Politique de confidentialite du site Mes Calculateurs. Informations sur les cookies et donnees.",

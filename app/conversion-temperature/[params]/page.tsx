@@ -57,6 +57,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const versSymb = vers === "celsius" ? "\u00b0C" : "\u00b0F";
 
   return {
+    alternates: { canonical: `/conversion-temperature/${slug}` },
     title: `${valeur}${deSymb} en ${vers === "celsius" ? "Celsius" : "Fahrenheit"} = ${fmtInt(resultat)}${versSymb}`,
     description: `${valeur}${deSymb} = ${fmtInt(resultat)}${versSymb}. Conversion temperature ${de === "celsius" ? "Celsius vers Fahrenheit" : "Fahrenheit vers Celsius"} avec formule, tableau et reperes.`,
     keywords: `${valeur} ${de} en ${vers}, conversion ${valeur}${deSymb}, ${valeur} degres ${de} ${vers}, temperature ${valeur}`,

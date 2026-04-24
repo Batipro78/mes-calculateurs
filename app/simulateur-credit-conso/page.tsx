@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/simulateur-credit-conso" },
   title: "Simulateur Credit a la Consommation 2026 - Calcul gratuit",
   description:
     "Calculez votre credit conso : mensualites, cout total, tableau d'amortissement. Taux moyens 2026, taux d'usure, taux d'endettement. Auto, travaux, voyage.",

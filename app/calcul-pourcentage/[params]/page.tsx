@@ -41,6 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const resultat = valeur * (pourcent / 100);
 
   return {
+    alternates: { canonical: `/calcul-pourcentage/${slug}` },
     title: `${pourcent}% de ${fmtInt(valeur)} = ${fmt(resultat)} - Calcul pourcentage`,
     description: `Combien fait ${pourcent}% de ${fmtInt(valeur)} ? Resultat : ${fmt(resultat)}. Calculateur de pourcentage gratuit avec explications detaillees.`,
     keywords: `${pourcent} pourcent de ${valeur}, ${pourcent}% de ${valeur}, calcul ${pourcent} pourcentage ${valeur}, combien fait ${pourcent} pour cent de ${valeur}`,

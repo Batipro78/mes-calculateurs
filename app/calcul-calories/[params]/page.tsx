@@ -78,6 +78,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const sexeLabel = sexe === "homme" ? "Homme" : "Femme";
 
   return {
+    alternates: { canonical: `/calcul-calories/${slug}` },
     title: `Calories ${sexeLabel} ${age} ans, ${poids} kg, ${taille} cm (${activite.label}) = ${fmt(tdee)} kcal/jour`,
     description: `Besoin calorique journalier pour ${sexeLabel === "Homme" ? "un homme" : "une femme"} de ${age} ans, ${poids} kg, ${taille} cm, ${activite.label.toLowerCase()} : ${fmt(tdee)} kcal/jour. Metabolisme de base : ${fmt(mb)} kcal. Objectifs perte et prise de poids.`,
     keywords: `calories ${sexeLabel.toLowerCase()} ${age} ans, besoin calorique ${poids} kg, TDEE ${sexeLabel.toLowerCase()}, calories par jour ${age} ans ${poids} kg`,

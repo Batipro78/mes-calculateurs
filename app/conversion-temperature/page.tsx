@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/conversion-temperature" },
   title: "Conversion Celsius Fahrenheit Kelvin - Convertisseur Temperature",
   description:
     "Convertissez les temperatures entre Celsius, Fahrenheit et Kelvin. Formules, tableau de correspondance et reperes pratiques. Gratuit et instantane.",

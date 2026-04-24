@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-pourcentage" },
   title: "Calcul Pourcentage 2026 - Calculateur gratuit en ligne",
   description:
     "Calculez un pourcentage facilement : pourcentage d'un nombre, augmentation, reduction, part en pourcentage. Outil gratuit, instantane et sans inscription.",

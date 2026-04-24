@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-moyenne" },
   title: "Calcul Moyenne Ponderee - Notes, Coefficients, Bareme",
   description:
     "Calculez votre moyenne ponderee avec coefficients. Baremes /20, /10, /100. Notes scolaires, concours, examens. Gratuit et instantane.",

@@ -53,6 +53,7 @@ export async function generateMetadata({
   const sexeLabel = sexe === "homme" ? "homme" : "femme";
 
   return {
+    alternates: { canonical: `/calcul-metabolisme-base/${slug}` },
     title: `BMR ${sexe} ${poids} kg ${age} ans = ${fmt(res.mifflin)} kcal - Metabolisme de Base`,
     description: `Metabolisme de base pour un ${sexeLabel} de ${poids} kg a ${age} ans : ${fmt(res.mifflin)} kcal/jour (Mifflin-St Jeor) et ${fmt(res.harris)} kcal/jour (Harris-Benedict). TDEE sedentaire : ${fmt(res.tdee.sedentaire)} kcal.`,
     keywords: `metabolisme base ${sexe} ${poids} kg ${age} ans, BMR ${poids}kg ${age}ans, calories repos ${sexe} ${age} ans`,

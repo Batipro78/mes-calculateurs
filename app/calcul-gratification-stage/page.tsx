@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-gratification-stage" },
   title: "Calcul Gratification Stage 2026 - Montant Minimum et Total",
   description:
     "Calculez la gratification de stage 2026 : montant mensuel, total, minimum legal (4,35\u20ac/h). Stage obligatoire ou facultatif, exoneration charges.",

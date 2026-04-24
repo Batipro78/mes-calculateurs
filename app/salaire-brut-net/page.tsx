@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/salaire-brut-net" },
   title: "Calcul Salaire Brut Net 2026 - Simulateur gratuit",
   description:
     "Calculez votre salaire net a partir du brut (ou inversement) en 2026. Cadre, non-cadre, fonction publique. Simulateur gratuit et precis.",

@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/simulateur-facture-gaz" },
   title: "Simulateur Facture Gaz 2026 - Estimez votre Facture Gratuit",
   description:
     "Estimez votre facture de gaz naturel 2026 : abonnement GRDF, prix kWh par zone, taxes (CTA, TICGN, TVA). Comparaison EDF, Engie, TotalEnergies, Eni. Calcul gratuit et instantane.",

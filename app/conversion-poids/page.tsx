@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/conversion-poids" },
   title: "Conversion kg en Livres (lbs) et Onces - Convertisseur Poids",
   description:
     "Convertissez entre kilogrammes, livres (lbs), onces (oz), grammes et stones. Tableau de correspondance et equivalences. Gratuit et instantane.",

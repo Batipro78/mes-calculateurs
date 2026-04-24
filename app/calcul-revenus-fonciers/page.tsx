@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-revenus-fonciers" },
   title: "Calcul Revenus Fonciers 2026 - Simulateur Impot Location Gratuit",
   description:
     "Simulez l'imposition de vos revenus fonciers 2026. Comparez micro-foncier (abattement 30%) vs regime reel, deficit foncier, prelevements sociaux 17,2%. Bareme TMI inclus.",

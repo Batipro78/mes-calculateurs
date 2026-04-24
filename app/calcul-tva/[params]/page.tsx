@@ -62,6 +62,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
     const ht = montant / (1 + tauxObj.taux);
     const tva = montant - ht;
     return {
+    alternates: { canonical: `/calcul-tva/${slug}` },
       title: `TVA sur ${fmtInt(montant)} EUR TTC a ${tauxObj.label} - Calcul 2026`,
       description: `${fmtInt(montant)} EUR TTC avec TVA ${tauxObj.label} = ${fmt(ht)} EUR HT. Montant de la TVA : ${fmt(tva)} EUR. Calculateur gratuit.`,
       keywords: `TVA ${fmtInt(montant)} euros TTC, ${fmtInt(montant)} TTC en HT, calcul TVA ${tauxObj.label}, TVA sur ${fmtInt(montant)} euros`,
@@ -75,6 +76,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const tva = montant * tauxObj.taux;
   const ttc = montant + tva;
   return {
+    alternates: { canonical: `/calcul-tva/${slug}` },
     title: `TVA sur ${fmtInt(montant)} EUR HT a ${tauxObj.label} - Calcul 2026`,
     description: `${fmtInt(montant)} EUR HT + TVA ${tauxObj.label} = ${fmt(ttc)} EUR TTC. Montant de la TVA : ${fmt(tva)} EUR. Calculateur gratuit.`,
     keywords: `TVA ${fmtInt(montant)} euros HT, ${fmtInt(montant)} HT en TTC, calcul TVA ${tauxObj.label}, TVA sur ${fmtInt(montant)} euros`,

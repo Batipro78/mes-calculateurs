@@ -22,7 +22,8 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const parsed = parseSlug(slug);
   if (!parsed) return {};
   const v = Math.PI * parsed.rayon * parsed.rayon * parsed.hauteur;
-  return { title: `Volume cylindre r=${parsed.rayon} h=${parsed.hauteur} = ${fmt(v)}`, description: `Volume d'un cylindre de rayon ${parsed.rayon} et hauteur ${parsed.hauteur} = ${fmt(v)} unites\u00b3. Soit ${fmt(v / 1000)} litres.` };
+  return {
+    alternates: { canonical: `/calcul-volume-cylindre/${slug}` }, title: `Volume cylindre r=${parsed.rayon} h=${parsed.hauteur} = ${fmt(v)}`, description: `Volume d'un cylindre de rayon ${parsed.rayon} et hauteur ${parsed.hauteur} = ${fmt(v)} unites\u00b3. Soit ${fmt(v / 1000)} litres.` };
 }
 
 export default async function Page({ params }: { params: Promise<{ params: string }> }) {

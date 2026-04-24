@@ -80,6 +80,7 @@ export async function generateMetadata({
   const res = calcDPE(surface, chauffage, "partielle", "double", annee, "centre");
 
   return {
+    alternates: { canonical: `/calculateur-dpe/${slug}` },
     title: `DPE ${surface} m² - ${CHAUFFAGE_LABEL[chauffage]} - ${EPOQUE_LABEL[epoque]} = Classe ${res.classeEnergie}`,
     description: `Simulateur DPE pour un logement de ${surface} m² chauffage ${CHAUFFAGE_LABEL[chauffage]}, construit ${EPOQUE_LABEL[epoque]}. Consommation estimee : ${res.consommationEstimee} kWh/m²/an (classe ${res.classeEnergie}). Cout annuel : ${res.coutAnnuel} €.`,
     keywords: `DPE ${surface} m2, DPE ${chauffage}, DPE ${epoque}, classe energetique ${res.classeEnergie}, diagnostic performance energetique`,

@@ -74,6 +74,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const result = calculInflation(montant, annee);
 
   return {
+    alternates: { canonical: `/calculateur-inflation/${slug}` },
     title: `${fmtInt(montant)} EUR en ${annee} = combien aujourd'hui ? Calculateur inflation`,
     description: `${fmtInt(montant)} EUR de ${annee} valent ${fmt(result.equivalent)} EUR en ${CURRENT_YEAR}. Inflation cumulee : +${fmt(result.pertePct)}%. Perte de pouvoir d'achat : ${fmt(result.perte)} EUR. Donnees INSEE.`,
     keywords: `inflation ${fmtInt(montant)} euros ${annee}, pouvoir achat ${annee}, ${fmtInt(montant)} euros ${annee} equivalent aujourd'hui, inflation france ${annee}`,

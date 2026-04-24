@@ -75,6 +75,7 @@ export async function generateMetadata({
   const res = calcConsommationEau(poids, activite, climatKey, false, false);
 
   return {
+    alternates: { canonical: `/calcul-consommation-eau/${slug}` },
     title: `Eau ${poids} kg ${ACTIVITE_LABELS[activite]} = ${fmtL(res.total)} L/jour - Hydratation`,
     description: `Besoin en eau pour ${poids} kg, ${ACTIVITE_LABELS[activite]}, ${CLIMAT_LABELS[climat]} : ${fmtL(res.total)} litres par jour (${res.verres} verres de 250 ml). Base ${fmtL(res.base)} L + bonus activite ${fmtL(res.activiteBonus)} L.`,
     keywords: `eau ${poids} kg, hydratation ${activite}, besoin eau ${poids}kg, consommation eau ${activite}, litres eau ${poids} kilos`,

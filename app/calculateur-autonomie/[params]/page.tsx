@@ -53,6 +53,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const sitLabel = SITUATION_LABELS[parsed.situation].toLowerCase();
 
   return {
+    alternates: { canonical: `/calculateur-autonomie/${slug}` },
     title: `${fmt(parsed.epargne)} EUR d'epargne ${sitLabel} a ${zoneLabel} = ${mois} mois d'autonomie`,
     description: `Avec ${fmt(parsed.epargne)} EUR d'epargne, ${sitLabel} a ${zoneLabel}, vous pouvez tenir ${mois} mois. Budget minimum : ${fmt(budget.total)} EUR/mois. Calculateur autonomie financiere 2026.`,
     keywords: `autonomie financiere ${fmt(parsed.epargne)} euros, vivre sans travailler ${parsed.zone}, duree epargne ${fmt(parsed.epargne)}, budget survie ${parsed.zone}`,

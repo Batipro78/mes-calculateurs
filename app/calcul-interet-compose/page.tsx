@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-interet-compose" },
   title: "Calcul Interet Compose - Simulateur Epargne et Investissement",
   description:
     "Calculez les interets composes sur votre epargne ou investissement. Capital initial, versements mensuels, taux, duree. Tableau d'evolution annuel.",

@@ -57,6 +57,7 @@ export async function generateMetadata({
   const result = calcRevenusFonciers(loyers, charges, 0, 0, regimeCalc, tmi);
 
   return {
+    alternates: { canonical: `/calcul-revenus-fonciers/${slug}` },
     title: `${fmt(loyers)} € loyers, TMI ${tmi}% - Regime ${regime === "micro-foncier" ? "micro-foncier" : "reel"} : ${fmt(result.totalImposition)} € d'impot`,
     description: `Revenus fonciers de ${fmt(loyers)} € avec TMI ${tmi}% en regime ${regime}. Impot total : ${fmt(result.totalImposition)} €, revenu imposable : ${fmt(result.revenuImposable)} €, rendement net : ${fmtP(result.rendementNet)}%. Simulateur 2026.`,
   };

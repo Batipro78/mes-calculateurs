@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-ascendant-astrologique" },
   title: "Calcul Ascendant Astrologique - Signe, Personnalite, Profil Astral",
   description:
     "Calculez votre signe astrologique, ascendant et personnalite. Entrez votre date et heure de naissance. Qualites, defauts, element, planete. Gratuit.",

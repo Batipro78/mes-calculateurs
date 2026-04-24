@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calculateurs-mathematiques" },
   title: "Calculateurs Mathematiques Gratuits 2026 - Pourcentage, Moyenne, Geometrie",
   description: "Calculez pourcentages, moyennes, PGCD, PPCM, racine carree, surface du cercle, volume du cylindre, produit en croix. Outils mathematiques gratuits en ligne.",
   keywords: "calcul pourcentage, calcul moyenne, PGCD PPCM, racine carree, surface cercle, volume cylindre, produit en croix, calculatrice en ligne",

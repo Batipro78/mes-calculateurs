@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/mentions-legales" },
   title: "Mentions legales",
   description: "Mentions legales du site Mes Calculateurs.",
 };

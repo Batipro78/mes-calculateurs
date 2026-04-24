@@ -20,6 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const ville = findVille(slug);
   if (ville) {
     return {
+    alternates: { canonical: `/prix-electricien/${slug}` },
       title: `Prix Electricien a ${ville.nom} (${ville.departement}) - Tarifs 2026`,
       description: `Tous les prix electricien a ${ville.nom} en 2026 : installation prise, tableau electrique, renovation. Tarifs ${ville.nom} avec coefficient x${ville.coefficient.toFixed(2)}.`,
       keywords: `prix electricien ${ville.nom.toLowerCase()}, tarif electricien ${ville.nom.toLowerCase()}, cout electricien ${ville.nom.toLowerCase()}, devis electricien ${ville.nom.toLowerCase()} ${ville.departement}`,
@@ -34,6 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const qtyLabel = prestation.unite === "forfait" ? "" : ` ${quantite} ${prestation.uniteLabel}`;
 
   return {
+    alternates: { canonical: `/prix-electricien/${slug}` },
     title: `Prix ${prestation.nom}${qtyLabel} ${region.nom} - ${fmtPrix(r.totalMin)} a ${fmtPrix(r.totalMax)} (2026)`,
     description: `Cout ${prestation.nom.toLowerCase()}${qtyLabel} en ${region.nom} : ${fmtPrix(r.totalMin)} a ${fmtPrix(r.totalMax)} TTC. Detail fournitures (${fmtPrix(r.fournituresMin)}-${fmtPrix(r.fournituresMax)}) et main d'oeuvre (${fmtPrix(r.mainOeuvreMin)}-${fmtPrix(r.mainOeuvreMax)}). Tarif electricien 2026.`,
     keywords: `prix ${prestation.nom.toLowerCase()}, cout ${prestation.nom.toLowerCase()} ${region.nom.toLowerCase()}, tarif electricien ${prestation.nom.toLowerCase()}, devis electricien`,

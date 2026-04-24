@@ -49,6 +49,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const moisInd = salaire > 0 ? indemnite / salaire : 0;
 
   return {
+    alternates: { canonical: `/indemnite-licenciement/${slug}` },
     title: `Indemnite licenciement ${fmtInt(salaire)} EUR brut - ${annees} ans d'anciennete`,
     description: `Indemnite de licenciement pour ${fmtInt(salaire)} EUR brut/mois avec ${annees} ans d'anciennete : ${fmt(indemnite)} EUR (${fmt(moisInd)} mois de salaire). Calcul legal 2026.`,
     keywords: `indemnite licenciement ${fmtInt(salaire)} euros ${annees} ans, calcul indemnite ${annees} ans anciennete, prime licenciement ${fmtInt(salaire)}`,

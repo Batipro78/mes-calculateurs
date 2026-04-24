@@ -59,6 +59,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const transLabel = TRANSPORT_LABELS[parsed.transport].toLowerCase();
 
   return {
+    alternates: { canonical: `/calculateur-budget-survie/${slug}` },
     title: `Budget survie ${sitLabel} a ${zoneLabel} = ${fmt(r.total)} EUR/mois (${transLabel})`,
     description: `Budget minimum pour vivre ${sitLabel} a ${zoneLabel} en 2026 : ${fmt(r.total)} EUR/mois avec ${transLabel}. Logement ${fmt(r.postes[0].montant)} EUR, alimentation ${fmt(r.postes[1].montant)} EUR. Comparaison RSA, SMIC, seuil de pauvrete.`,
     keywords: `budget minimum ${parsed.zone}, cout de la vie ${parsed.zone}, vivre ${sitLabel} ${parsed.zone}, budget survie 2026`,

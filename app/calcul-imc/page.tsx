@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-imc" },
   title: "Calcul IMC 2026 - Indice de Masse Corporelle gratuit",
   description:
     "Calculez votre IMC (Indice de Masse Corporelle) gratuitement. Interpretez votre resultat selon les normes OMS : maigreur, normal, surpoids, obesite.",

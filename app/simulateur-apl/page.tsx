@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/simulateur-apl" },
   title: "Simulateur APL 2026 - Calcul aide au logement gratuit",
   description:
     "Estimez votre APL en 2 minutes. Simulateur gratuit base sur les baremes 2026. Zone 1, 2 ou 3, seul ou en couple, avec ou sans enfants.",

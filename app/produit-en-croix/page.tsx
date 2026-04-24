@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/produit-en-croix" },
   title: "Produit en Croix - Calculateur de Proportionnalite",
   description:
     "Calculez un produit en croix (regle de trois) en ligne. Trouvez la 4e valeur proportionnelle. Formule, exemples et calcul detaille. Gratuit.",

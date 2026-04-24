@@ -87,6 +87,7 @@ export async function generateMetadata({
   const cat = getCategorieBMI(mgBMI, sexe);
 
   return {
+    alternates: { canonical: `/calcul-masse-grasse/${slug}` },
     title: `Masse grasse ${sexe} ${poids} kg ${taille} cm ≈ ${fmt(mgBMI)} % — ${cat.label}`,
     description: `Estimation du taux de masse grasse pour un ${sexe} de ${poids} kg et ${taille} cm : environ ${fmt(mgBMI)} % (${cat.label}). Calculez precisement avec la methode US Navy.`,
     keywords: `masse grasse ${sexe} ${poids} kg ${taille} cm, taux graisse ${sexe}, calcul masse grasse ${poids}kg`,

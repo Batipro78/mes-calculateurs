@@ -7,6 +7,7 @@ import WebAppJsonLd from "../components/WebAppJsonLd";
 import VillesLinks from "../components/VillesLinks";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/prix-couvreur" },
   title: "Prix Couvreur 2026 : Estimateur en Ligne - Tarifs par Prestation",
   description:
     "Estimez le prix d'un couvreur en 2026. Tarifs : reparation, renovation toiture, demoussage, isolation sarking, Velux, gouttiere, charpente, zinguerie. Fournitures + main d'oeuvre par region.",

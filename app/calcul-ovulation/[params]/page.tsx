@@ -80,12 +80,14 @@ export async function generateMetadata({
     const c = parsed.cycleLength!;
     const ovuDay = c - 14;
     return {
+    alternates: { canonical: `/calcul-ovulation/${slug}` },
       title: `Ovulation Cycle de ${c} Jours - Jour ${ovuDay}, Calendrier Fertile`,
       description: `Calculez votre ovulation pour un cycle de ${c} jours. Ovulation au jour ${ovuDay}, fenetre fertile du jour ${ovuDay - 5} au jour ${ovuDay + 1}. Calendrier et conseils.`,
     };
   }
 
   return {
+    alternates: { canonical: `/calcul-ovulation/${slug}` },
     title: `Calcul Ovulation et ${getSituationTitle(parsed.situation!)} - Guide 2026`,
     description: getSituationDescription(parsed.situation!),
   };

@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-cout-garde-enfant" },
   title: "Calcul Cout Garde Enfant 2026 - Creche, Nounou, Micro-creche",
   description:
     "Comparez le cout reel de la garde d'enfant : creche, assistante maternelle, garde a domicile, micro-creche. Aides CAF (CMG), credit d'impot 50%. Bareme 2026.",

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calculateurs-immobilier" },
   title: "Calculateurs Immobilier & Investissement Gratuits 2026 - Simulateurs en Ligne",
   description: "Calculez votre plus-value immobiliere, rentabilite locative, revenus fonciers, DPE, capacite d'emprunt, frais de notaire. Simulateurs immobiliers gratuits et precis.",
   keywords: "calculateur immobilier, plus-value immobiliere, rentabilite locative, revenus fonciers, DPE, capacite emprunt, frais de notaire, simulation immobilier 2026",

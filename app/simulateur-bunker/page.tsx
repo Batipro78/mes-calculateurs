@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/simulateur-bunker" },
   title:
     "Simulateur Budget Bunker 2026 - Prix, taille et autonomie par personne",
   description:

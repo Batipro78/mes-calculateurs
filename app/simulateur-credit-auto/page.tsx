@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/simulateur-credit-auto" },
   title: "Simulateur Credit Auto 2026 - Calculez vos Mensualites Gratuit",
   description:
     "Simulez votre credit auto en ligne gratuitement. Calculez vos mensualites, le cout total et le taux d'endettement. Taux moyens 2026 par duree (24 a 84 mois), tableau d'amortissement inclus.",

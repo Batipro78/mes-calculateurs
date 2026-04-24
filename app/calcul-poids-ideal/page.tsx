@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-poids-ideal" },
   title: "Calcul Poids Ideal 2026 - Lorentz, Devine, Creff Gratuit",
   description:
     "Calculez votre poids ideal gratuitement avec les 3 formules de reference : Lorentz, Devine et Creff. Fourchette de poids sain, comparaison homme/femme selon la taille et l'age.",

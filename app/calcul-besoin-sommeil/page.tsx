@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-besoin-sommeil" },
   title: "Calcul Besoin Sommeil 2026 - Heures de Sommeil par Age Gratuit",
   description:
     "Calculez vos besoins en sommeil selon votre age (NSF guidelines), activite physique et qualite de sommeil. Heures ideales, cycles de 90 min, heure de coucher et reveil optimaux. Gratuit et instantane.",

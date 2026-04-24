@@ -54,6 +54,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const res = calcCreditAuto(montant, duree, taux, 0);
 
   return {
+    alternates: { canonical: `/simulateur-credit-auto/${slug}` },
     title: `Credit auto ${fmtInt(montant)} € sur ${duree} mois — Mensualite ${fmt(res.mensualite)} €`,
     description: `Simulez un credit auto de ${fmtInt(montant)} € sur ${duree} mois au taux moyen de ${taux}% (2026). Mensualite : ${fmt(res.mensualite)} €/mois. Cout du credit : ${fmt(res.coutCredit)} €. Simulation gratuite.`,
     keywords: `credit auto ${fmtInt(montant)} euros ${duree} mois, mensualite voiture ${fmtInt(montant)}€, pret automobile ${duree} mois, simulation credit auto 2026`,

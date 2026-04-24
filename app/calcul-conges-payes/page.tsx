@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-conges-payes" },
   title: "Calcul Conges Payes 2026 - Jours Acquis et Indemnite",
   description:
     "Calculez vos conges payes : nombre de jours acquis, indemnite (methode du 1/10e vs maintien). Temps partiel, CDD, periode de reference. Bareme 2026.",

@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-pension-reversion" },
   title: "Calcul Pension de Reversion 2026 - Montant et Conditions",
   description:
     "Calculez votre pension de reversion : regime general (54%) et AGIRC-ARRCO (60%). Plafond de ressources, age minimum, montant estime. Bareme 2026.",

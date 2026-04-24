@@ -40,6 +40,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const indemnite = (salaire * mois) / 10;
 
   return {
+    alternates: { canonical: `/calcul-conges-payes/${slug}` },
     title: `Conges payes : ${salaire} \u20ac brut, ${mois} mois = ${jours} jours, ${fmt(indemnite)} \u20ac`,
     description: `Pour un salaire de ${salaire} \u20ac brut sur ${mois} mois : ${jours} jours de conges acquis, indemnite de ${fmt(indemnite)} \u20ac (methode 1/10e). Calcul detaille.`,
     keywords: `conges payes ${salaire} euros, conges ${mois} mois, indemnite conges payes ${salaire}, jours conges ${mois} mois`,

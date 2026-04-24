@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/simulateur-chomage" },
   title: "Simulateur Chomage 2026 - Calcul Allocation ARE gratuit",
   description:
     "Calculez votre allocation chomage (ARE) gratuitement. Montant journalier, mensuel, duree d'indemnisation, degressivite. Bareme France Travail 2026.",

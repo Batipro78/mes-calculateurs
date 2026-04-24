@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/simulateur-pret-immobilier" },
   title: "Simulateur Pret Immobilier 2026 - Calcul mensualite gratuit",
   description:
     "Simulez votre pret immobilier gratuitement. Calculez vos mensualites, le cout total du credit et le tableau d'amortissement. Taux 2026 mis a jour.",

@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-volume-cylindre" },
   title: "Calcul Volume Cylindre - Formule, Surface, Litres",
   description:
     "Calculez le volume d'un cylindre a partir du rayon et de la hauteur. Formule pi r2 h, surface laterale et totale, conversion en litres. Gratuit.",

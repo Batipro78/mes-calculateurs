@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/simulateur-salaire-alternant" },
   title: "Simulateur Salaire Alternant 2026 - Apprentissage et Professionnalisation",
   description:
     "Calculez votre salaire en alternance gratuitement. Grilles officielles apprentissage et professionnalisation 2026, salaire brut et net, selon votre age et annee de contrat.",

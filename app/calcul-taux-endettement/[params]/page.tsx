@@ -45,6 +45,7 @@ export async function generateMetadata({
   const taux = ((parsed.charges / parsed.revenus) * 100).toFixed(1);
 
   return {
+    alternates: { canonical: `/calcul-taux-endettement/${slug}` },
     title: `Taux d'Endettement : ${fmt(parsed.revenus)} EUR de revenus, ${fmt(parsed.charges)} EUR de charges = ${taux}%`,
     description: `Avec ${fmt(parsed.revenus)} EUR de revenus mensuels et ${fmt(parsed.charges)} EUR de charges, votre taux d'endettement est de ${taux}%. ${Number(taux) <= 33 ? "Vous respectez le seuil bancaire de 33%." : "Vous depassez le seuil bancaire de 33%."}`,
   };

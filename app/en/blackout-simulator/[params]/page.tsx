@@ -64,6 +64,7 @@ export async function generateMetadata({
   const score = calcAutonomyScore(heating, "electric", "electric", numPeople, []);
 
   return {
+    alternates: { canonical: `/en/blackout-simulator/${slug}` },
     title: `Blackout in ${HOUSING_LABELS[housing]} with ${HEATING_LABELS[heating]} heating (${numPeople} people) - Power Outage Simulator 2026`,
     description: `How long can a ${HOUSING_LABELS[housing].toLowerCase()} with ${HEATING_LABELS[heating].toLowerCase()} heating survive a blackout? Readiness score: ${score.totalScore}/100. Estimated autonomy: ${fmtDuration(score.autonomyDurationH)}. ${numPeople} people. Free preparedness test.`,
     keywords: `blackout ${HOUSING_LABELS[housing].toLowerCase()}, power outage ${HEATING_LABELS[heating].toLowerCase()} heating, emergency preparedness ${numPeople} people, blackout survival`,

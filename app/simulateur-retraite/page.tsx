@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/simulateur-retraite" },
   title: "Simulateur Retraite 2026 - Calcul pension, age legal, decote",
   description:
     "Calculez votre retraite gratuitement : pension brute et nette, age legal (reforme 2023), decote/surcote, complementaire AGIRC-ARRCO, taux de remplacement. Bareme 2026.",

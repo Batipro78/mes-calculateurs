@@ -73,6 +73,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const parKm = km > 0 ? montant / km : 0;
 
   return {
+    alternates: { canonical: `/calcul-indemnites-kilometriques/${slug}` },
     title: `Indemnites kilometriques ${fmtInt(km)} km ${cvInfo.label} - Bareme 2026`,
     description: `Indemnites kilometriques pour ${fmtInt(km)} km/an avec une voiture ${cvInfo.label} : ${fmt(montant)} EUR/an (${fmt(parMois)} EUR/mois, ${fmt(parKm)} EUR/km). Bareme fiscal 2026.`,
     keywords: `indemnites kilometriques ${fmtInt(km)} km, IK ${cvInfo.label}, bareme km ${fmtInt(km)}, frais kilometriques ${cvInfo.label} ${fmtInt(km)} km`,

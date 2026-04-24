@@ -93,6 +93,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const frais = calculerFrais(prix, type);
 
   return {
+    alternates: { canonical: `/frais-de-notaire/${slug}` },
     title: `Frais de notaire ${fmtInt(prix)} EUR ${TYPE_LABELS[type]} - Simulation 2026`,
     description: `Frais de notaire pour un achat de ${fmtInt(prix)} EUR ${TYPE_LABELS[type]} : ${fmt(frais.totalFrais)} EUR (${fmt(frais.pourcentage)}%). Detail : droits de mutation, emoluments, debours. Bareme 2026.`,
     keywords: `frais notaire ${fmtInt(prix)} euros, frais notaire ${type}, achat ${fmtInt(prix)} euros ${type}, simulation notaire ${fmtInt(prix)}`,

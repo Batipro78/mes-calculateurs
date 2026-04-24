@@ -46,6 +46,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   if (!parsed) return {};
   const indemnite = calculer(parsed.cvIdx, parsed.distance);
   return {
+    alternates: { canonical: `/calcul-cout-kilometrique/${slug}` },
     title: `Cout km : ${fmtInt(parsed.distance)} km, ${CV_LABELS[parsed.cvIdx]} = ${fmtInt(indemnite)} \u20ac`,
     description: `Indemnite kilometrique pour ${fmtInt(parsed.distance)} km avec un vehicule ${CV_LABELS[parsed.cvIdx]} : ${fmtInt(indemnite)} \u20ac (bareme fiscal 2026).`,
   };

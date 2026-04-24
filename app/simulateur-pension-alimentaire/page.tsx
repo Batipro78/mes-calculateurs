@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/simulateur-pension-alimentaire" },
   title: "Simulateur Pension Alimentaire 2026 - Calcul gratuit",
   description:
     "Calculez la pension alimentaire avec le bareme officiel du Ministere de la Justice. Garde classique, alternee ou reduite. 1 a 6 enfants.",

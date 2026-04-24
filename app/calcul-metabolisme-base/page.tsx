@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-metabolisme-base" },
   title: "Calcul Metabolisme de Base 2026 - BMR Gratuit (Mifflin-St Jeor)",
   description:
     "Calculez votre metabolisme de base (BMR) gratuitement. Formules Mifflin-St Jeor et Harris-Benedict, TDEE selon votre activite physique. Resultats instantanes pour hommes et femmes.",

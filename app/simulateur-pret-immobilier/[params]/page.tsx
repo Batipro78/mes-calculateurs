@@ -58,6 +58,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const coutInterets = coutTotal - montant;
 
   return {
+    alternates: { canonical: `/simulateur-pret-immobilier/${slug}` },
     title: `Pret ${fmtInt(montant)} EUR sur ${duree} ans - Simulation 2026`,
     description: `Simulez un pret immobilier de ${fmtInt(montant)} EUR sur ${duree} ans au taux de ${taux}%. Mensualite : ${fmt(mensualite)} EUR. Cout total des interets : ${fmt(coutInterets)} EUR.`,
     keywords: `pret ${fmtInt(montant)} euros ${duree} ans, mensualite ${fmtInt(montant)}, credit immobilier ${fmtInt(montant)}, simulation pret ${duree} ans`,

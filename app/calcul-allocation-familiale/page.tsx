@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-allocation-familiale" },
   title: "Calcul Allocation Familiale CAF 2026 - Simulateur Gratuit",
   description:
     "Calculez vos allocations familiales CAF 2026 gratuitement. Allocations familiales, complement familial, allocation de rentree scolaire (ARS). Bareme officiel selon vos revenus et nombre d'enfants.",

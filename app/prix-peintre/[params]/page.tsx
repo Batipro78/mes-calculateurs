@@ -20,6 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const ville = findVille(slug);
   if (ville) {
     return {
+    alternates: { canonical: `/prix-peintre/${slug}` },
       title: `Prix Peintre a ${ville.nom} (${ville.departement}) - Tarifs 2026`,
       description: `Tous les prix peintre a ${ville.nom} en 2026 : peinture mur, plafond, facade, papier peint. Tarifs ${ville.nom} avec coefficient x${ville.coefficient.toFixed(2)}.`,
       keywords: `prix peintre ${ville.nom.toLowerCase()}, tarif peintre ${ville.nom.toLowerCase()}, cout peinture ${ville.nom.toLowerCase()}, devis peintre ${ville.nom.toLowerCase()} ${ville.departement}`,
@@ -34,6 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const qtyLabel = `${quantite} ${prestation.uniteLabel}`;
 
   return {
+    alternates: { canonical: `/prix-peintre/${slug}` },
     title: `Prix ${prestation.nom} ${qtyLabel} ${region.nom} - ${fmtPrix(r.totalMin)} a ${fmtPrix(r.totalMax)} (2026)`,
     description: `Cout ${prestation.nom.toLowerCase()} ${qtyLabel} en ${region.nom} : ${fmtPrix(r.totalMin)} a ${fmtPrix(r.totalMax)} TTC. Detail fournitures (${fmtPrix(r.fournituresMin)}-${fmtPrix(r.fournituresMax)}) et main d'oeuvre (${fmtPrix(r.mainOeuvreMin)}-${fmtPrix(r.mainOeuvreMax)}). Tarif peintre 2026.`,
     keywords: `prix ${prestation.nom.toLowerCase()}, cout peinture ${region.nom.toLowerCase()}, tarif peintre ${prestation.nom.toLowerCase()}, devis peinture ${quantite} ${prestation.uniteLabel}`,

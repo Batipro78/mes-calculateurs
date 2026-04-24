@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-consommation-eau" },
   title: "Calcul Consommation Eau par Jour 2026 - Besoin Hydratation Gratuit",
   description:
     "Calculez votre besoin en eau quotidien gratuitement selon votre poids, activite physique et climat. Resultats instantanes en litres et verres. Repartition par moment de la journee.",

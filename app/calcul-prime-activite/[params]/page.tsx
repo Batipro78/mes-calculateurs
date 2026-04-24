@@ -70,6 +70,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const sitLabel = situationLabel(situation, enfants);
 
   return {
+    alternates: { canonical: `/calcul-prime-activite/${slug}` },
     title: `Prime d'activite ${sitLabel} a ${fmtInt(revenu)} EUR = ${r.eligible ? fmt(r.primeActivite) : "0"} EUR/mois`,
     description: `Simulation prime d'activite pour ${sitLabel} avec ${fmtInt(revenu)} EUR net/mois : ${r.eligible ? `${fmt(r.primeActivite)} EUR/mois estimes` : "non eligible"}. Forfaitaire : ${fmt(r.montantForfaitaire)} EUR. Bonification : ${fmt(r.bonification)} EUR.`,
     keywords: `prime activite ${fmtInt(revenu)} euros, prime activite ${situation}, calcul prime activite ${enfants} enfant${enfants > 1 ? "s" : ""}`,

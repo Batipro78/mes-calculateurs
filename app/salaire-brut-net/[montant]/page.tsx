@@ -47,6 +47,7 @@ export async function generateMetadata({ params }: { params: Promise<{ montant: 
   if (isNet) {
     const brut = Math.round(value / (1 - TAUX["non-cadre"]));
     return {
+    alternates: { canonical: `/salaire-brut-net/${montant}` },
       title: `${fmt(value)} euros net en brut - Calcul salaire 2026`,
       description: `Combien fait ${fmt(value)} euros net en salaire brut ? Environ ${fmt(brut)} EUR brut pour un non-cadre. Simulateur gratuit avec tous les statuts.`,
       keywords: `${value} euros net en brut, salaire ${value} net, convertir ${value} net en brut, salaire brut net ${value}`,
@@ -59,6 +60,7 @@ export async function generateMetadata({ params }: { params: Promise<{ montant: 
 
   const net = Math.round(value * (1 - TAUX["non-cadre"]));
   return {
+    alternates: { canonical: `/salaire-brut-net/${montant}` },
     title: `${fmt(value)} euros brut en net - Calcul salaire 2026`,
     description: `Combien fait ${fmt(value)} euros brut en net ? Environ ${fmt(net)} EUR net pour un non-cadre. Simulateur gratuit avec detail des cotisations.`,
     keywords: `${value} euros brut en net, salaire ${value} brut, convertir ${value} brut en net, salaire brut net ${value}`,

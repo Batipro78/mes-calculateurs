@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-malus-ecologique" },
   title: "Calcul Malus Ecologique 2026 - CO2 et Poids",
   description:
     "Calculez le malus ecologique 2026 de votre vehicule. Malus CO2 (seuil 113 g/km) et malus au poids (seuil 1600 kg). Bareme officiel, plafond 70 000 euros.",

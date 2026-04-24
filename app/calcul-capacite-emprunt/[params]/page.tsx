@@ -35,13 +35,15 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { params: slug } = await params;
   const parsed = parseSlug(slug);
-  if (!parsed) return { title: "Capacite d'emprunt" };
+  if (!parsed) return {
+    alternates: { canonical: `/calcul-capacite-emprunt/${slug}` }, title: "Capacite d'emprunt" };
 
   const { revenu, duree } = parsed;
   const taux = TAUX_MOYENS[duree] || 3.35;
   const res = calcCapaciteEmprunt(revenu, 0, 0, 0, duree, taux, TAUX_ASSURANCE_DEFAUT);
 
   return {
+    alternates: { canonical: `/calcul-capacite-emprunt/${slug}` },
     title: `Capacite d'emprunt avec ${fmt(revenu)} € de revenus sur ${duree} ans - Simulation 2026`,
     description: `Avec ${fmt(revenu)} € de revenus mensuels, vous pouvez emprunter jusqu'a ${fmt(res.capitalMax)} € sur ${duree} ans (taux ${taux}%). Mensualite max : ${fmt(res.mensualiteMax)} €. Calcul gratuit selon les regles HCSF 2026.`,
   };

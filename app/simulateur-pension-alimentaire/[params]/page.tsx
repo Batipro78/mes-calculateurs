@@ -53,6 +53,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const r = calcPensionAlimentaire(revenu, enfants, garde);
 
   return {
+    alternates: { canonical: `/simulateur-pension-alimentaire/${slug}` },
     title: `Pension alimentaire ${fmtInt(revenu)} EUR, ${enfants} enfant${enfants > 1 ? "s" : ""}, ${GARDE_LABELS[garde].toLowerCase()} = ${fmt(r.pensionTotale)} EUR`,
     description: `Simulation pension alimentaire pour ${fmtInt(revenu)} EUR de revenu net, ${enfants} enfant${enfants > 1 ? "s" : ""} en ${GARDE_LABELS[garde].toLowerCase()} : ${fmt(r.pensionTotale)} EUR/mois total (${fmt(r.pensionParEnfant)} EUR par enfant). Bareme Justice 2026.`,
     keywords: `pension alimentaire ${fmtInt(revenu)} euros, pension ${enfants} enfant${enfants > 1 ? "s" : ""}, ${GARDE_LABELS[garde].toLowerCase()}, calcul pension alimentaire`,

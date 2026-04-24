@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calculateurs-sante-famille" },
   title: "Calculateurs Sante & Famille Gratuits 2026 - Outils en ligne",
   description:
     "Calculez votre IMC, vos besoins caloriques, votre date d'accouchement, votre ovulation, la pension alimentaire et le cout de garde d'enfant. Gratuit et sans inscription.",

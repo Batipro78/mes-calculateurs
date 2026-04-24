@@ -103,6 +103,7 @@ export async function generateMetadata({
   const budget = calculerBudget(nbPersonnes, duree.jours, type.prixM2);
 
   return {
+    alternates: { canonical: `/simulateur-bunker/${slug}` },
     title: `Bunker ${type.label} ${nbPersonnes} personne${nbPersonnes > 1 ? "s" : ""} ${duree.label} - Budget ${formatPrix(budget.total)}`,
     description: `Budget bunker ${type.label.toLowerCase()} pour ${nbPersonnes} personne${nbPersonnes > 1 ? "s" : ""} avec ${duree.label} d'autonomie : ${formatPrix(budget.total)}. Surface ${budget.surfaceTotale} m², ${Math.round(budget.litresEau / 1000 * 10) / 10} m³ d'eau. Estimation detaillee.`,
     keywords: `bunker ${nbPersonnes} personnes, bunker ${type.label.toLowerCase()} prix, abri ${duree.label} autonomie, budget bunker ${formatPrix(budget.total)}, bunker survie France`,

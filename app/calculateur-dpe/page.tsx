@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calculateur-dpe" },
   title: "Simulateur DPE 2026 - Diagnostic Performance Energetique Gratuit",
   description:
     "Simulez le DPE de votre logement gratuitement. Calculez la classe energetique (A a G), les emissions GES, le cout annuel et les economies possibles selon la surface, le chauffage et l'isolation.",

@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   description: "Simulate the impact of a nuclear bomb on any US city. Interactive map showing fireball, radiation, blast, and thermal burn zones. Free educational tool.",
   keywords: "nuclear bomb simulator, nuclear explosion map, nuke impact simulator, nuclear war simulation, Hiroshima bomb radius, Tsar Bomba impact, nuclear attack map USA, atomic bomb damage radius",
   alternates: {
+    canonical: "/en/nuclear-bomb-simulator",
     languages: {
       "fr": "/simulateur-bombe-nucleaire",
       "en": "/en/nuclear-bomb-simulator",

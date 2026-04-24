@@ -56,6 +56,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const sim = calcBonusEcologique(vehicule.prix, vehicule.poids, rfr.rfr, "electrique", vehicule.battEU);
 
   return {
+    alternates: { canonical: `/simulateur-bonus-ecologique/${slug}` },
     title: `Bonus ecologique ${vehicule.nom} 2026 — ${rfr.label} : ${fmt(sim.bonusTotal)} €`,
     description: `Simulez le bonus ecologique pour une ${vehicule.nom} (${fmt(vehicule.prix)} €) avec des ${rfr.label}. Bonus : ${fmt(sim.bonusTotal)} €. Cout reel : ${fmt(vehicule.prix - sim.bonusTotal)} €.`,
   };

@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-risque-cardiovasculaire" },
   title: "Calcul Risque Cardiovasculaire 2026 - Score Framingham Gratuit",
   description:
     "Estimez votre risque cardiovasculaire sur 10 ans gratuitement. Score de Framingham simplifie : cholesterol, tension arterielle, tabac, diabete, antecedents. Resultats instantanes.",

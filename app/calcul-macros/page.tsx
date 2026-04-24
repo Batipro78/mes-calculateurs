@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-macros" },
   title: "Calcul Macros 2026 - Repartition Macronutriments Gratuit",
   description:
     "Calculez gratuitement vos macronutriments journaliers (proteines, glucides, lipides) selon votre objectif : maintien, perte de poids, prise de masse, seche ou cetogene. Formule Mifflin incluse.",

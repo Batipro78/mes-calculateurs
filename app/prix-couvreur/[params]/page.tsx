@@ -20,6 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const ville = findVille(slug);
   if (ville) {
     return {
+    alternates: { canonical: `/prix-couvreur/${slug}` },
       title: `Prix Couvreur a ${ville.nom} (${ville.departement}) - Tarifs 2026`,
       description: `Tous les prix couvreur a ${ville.nom} en 2026 : reparation toiture, renovation, demoussage, isolation. Tarifs ${ville.nom} avec coefficient x${ville.coefficient.toFixed(2)}.`,
       keywords: `prix couvreur ${ville.nom.toLowerCase()}, tarif couvreur ${ville.nom.toLowerCase()}, cout toiture ${ville.nom.toLowerCase()}, devis couvreur ${ville.nom.toLowerCase()} ${ville.departement}`,
@@ -34,6 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const qtyLabel = ` ${quantite} ${prestation.uniteLabel}`;
 
   return {
+    alternates: { canonical: `/prix-couvreur/${slug}` },
     title: `Prix ${prestation.nom}${qtyLabel} ${region.nom} - ${fmtPrix(r.totalMin)} a ${fmtPrix(r.totalMax)} (2026)`,
     description: `Cout ${prestation.nom.toLowerCase()}${qtyLabel} en ${region.nom} : ${fmtPrix(r.totalMin)} a ${fmtPrix(r.totalMax)} TTC. Detail fournitures (${fmtPrix(r.fournituresMin)}-${fmtPrix(r.fournituresMax)}) et main d'oeuvre (${fmtPrix(r.mainOeuvreMin)}-${fmtPrix(r.mainOeuvreMax)}). Tarif couvreur 2026.`,
     keywords: `prix ${prestation.nom.toLowerCase()}, cout ${prestation.nom.toLowerCase()} ${region.nom.toLowerCase()}, tarif couvreur ${prestation.nom.toLowerCase()}, devis couvreur`,

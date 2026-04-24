@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-surface-cercle" },
   title: "Calcul Surface Cercle - Aire, Perimetre, Rayon, Diametre",
   description:
     "Calculez la surface (aire) d'un cercle a partir du rayon, diametre ou perimetre. Formule pi x r2, perimetre, schema. Gratuit.",

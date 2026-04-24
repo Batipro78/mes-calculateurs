@@ -23,7 +23,8 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   if (!parsed) return {};
   const r = Math.sqrt(parsed.nombre);
   const parfait = Math.abs(r - Math.round(r)) < 0.0000001;
-  return { title: `Racine carree de ${parsed.nombre} = ${parfait ? Math.round(r) : fmt(r)}`, description: `\u221a${parsed.nombre} = ${parfait ? Math.round(r) : fmt(r)}. ${parfait ? `${parsed.nombre} est un carre parfait.` : `${parsed.nombre} n'est pas un carre parfait.`} Verification et calcul detaille.` };
+  return {
+    alternates: { canonical: `/calcul-racine-carree/${slug}` }, title: `Racine carree de ${parsed.nombre} = ${parfait ? Math.round(r) : fmt(r)}`, description: `\u221a${parsed.nombre} = ${parfait ? Math.round(r) : fmt(r)}. ${parfait ? `${parsed.nombre} est un carre parfait.` : `${parsed.nombre} n'est pas un carre parfait.`} Verification et calcul detaille.` };
 }
 
 export default async function Page({ params }: { params: Promise<{ params: string }> }) {

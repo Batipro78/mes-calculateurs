@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/calcul-droits-succession" },
   title: "Calcul Droits de Succession 2026 - Bareme et Abattements",
   description:
     "Calculez les droits de succession 2026. Bareme par lien de parente, abattements (100 000\u20ac enfants), exoneration conjoint. Simulateur gratuit.",

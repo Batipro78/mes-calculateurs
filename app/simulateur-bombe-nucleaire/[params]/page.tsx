@@ -97,6 +97,7 @@ export async function generateMetadata({
   const zones = calculerZones(arme.puissance);
 
   return {
+    alternates: { canonical: `/simulateur-bombe-nucleaire/${slug}` },
     title: `${arme.nom} sur ${ville.nom} - Simulation impact nucleaire 2026`,
     description: `Que se passerait-il si ${arme.article} (${arme.puissance >= 1000 ? `${arme.puissance / 1000} Mt` : `${arme.puissance} kT`}) explosait sur ${ville.nom} ? Destruction totale sur ${fmtDist(zones[2].rayon)}, batiments effondres sur ${fmtDist(zones[3].rayon)}, vitres brisees sur ${fmtDist(zones[5].rayon)}. Carte interactive.`,
     keywords: `bombe nucleaire ${ville.nom}, ${arme.nom} ${ville.nom}, impact nucleaire ${ville.nom}, explosion atomique ${ville.nom}, simulation bombe ${ville.nom}`,

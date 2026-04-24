@@ -187,6 +187,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   if (!sim) return {};
 
   return {
+    alternates: { canonical: `/simulateur-dca/${slug}` },
     title: `DCA ${montant} EUR/mois sur ${assetInfo.label} - Combien auriez-vous gagne ? (2026)`,
     description: `Simulation DCA : ${montant} EUR investis chaque mois sur le ${assetInfo.label} depuis 2020. Total investi : ${fmtInt(Math.round(sim.totalInvested))} EUR, valeur actuelle : ${fmtInt(Math.round(sim.currentValue))} EUR (${sim.gain >= 0 ? "+" : ""}${sim.gainPct.toFixed(1)}%).`,
     keywords: `DCA ${montant} euros ${assetInfo.label}, investir ${montant} euros par mois, ${assetInfo.label} DCA, dollar cost averaging ${assetInfo.label}, si j'avais investi ${montant} euros`,
