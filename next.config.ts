@@ -1,6 +1,14 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: "/sitemap/:id.xml",
+        destination: "/sitemap/:id",
+      },
+    ];
+  },
   async headers() {
     return [
       // Headers securite stricts pour tout le site

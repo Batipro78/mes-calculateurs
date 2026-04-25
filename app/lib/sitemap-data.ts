@@ -1,6 +1,19 @@
-import type { MetadataRoute } from "next";
+export type SitemapEntry = {
+  url: string;
+  lastModified?: string | Date;
+  changeFrequency?:
+    | "always"
+    | "hourly"
+    | "daily"
+    | "weekly"
+    | "monthly"
+    | "yearly"
+    | "never";
+  priority?: number;
+};
 
-const BASE_URL = "https://mescalculateurs.fr";
+export const BASE_URL = "https://mescalculateurs.fr";
+export const CHUNK_SIZE = 500;
 
 // Salaire Brut/Net
 const SALAIRE_MONTANTS = [1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100, 2200, 2300, 2400, 2500, 2600, 2700, 2800, 2900, 3000, 3200, 3500, 3800, 4000, 4500, 5000];
@@ -409,30 +422,26 @@ const DPE_EPOQUES = ["avant-1975", "1975-1989", "1990-2005", "2006-2012", "apres
 const CA_MONTANTS = [10000, 15000, 20000, 25000, 30000, 35000, 40000, 50000];
 const CA_DUREES = [24, 36, 48, 60, 72];
 
-const CHUNK_SIZE = 500;
-
-let _cachedAll: MetadataRoute.Sitemap | null = null;
-function getAll(): MetadataRoute.Sitemap {
+let _cachedAll: SitemapEntry[] | null = null;
+export function getAllUrls(): SitemapEntry[] {
   if (_cachedAll === null) _cachedAll = generateAllUrls();
   return _cachedAll;
 }
 
-export async function generateSitemaps() {
-  const all = getAll();
-  const count = Math.ceil(all.length / CHUNK_SIZE);
-  return Array.from({ length: count }, (_, i) => ({ id: i }));
+export function getSitemapsCount(): number {
+  return Math.ceil(getAllUrls().length / CHUNK_SIZE);
 }
 
-export default async function sitemap({ id }: { id: number }): Promise<MetadataRoute.Sitemap> {
-  const all = getAll();
-  const safeId = Number(id) || 0;
+export function getSitemapChunk(id: number): SitemapEntry[] {
+  const all = getAllUrls();
+  const safeId = Number.isFinite(id) && id >= 0 ? Math.floor(id) : 0;
   const start = safeId * CHUNK_SIZE;
   const end = start + CHUNK_SIZE;
   return all.slice(start, end);
 }
 
-function generateAllUrls(): MetadataRoute.Sitemap {
-  const staticPages: MetadataRoute.Sitemap = [
+function generateAllUrls(): SitemapEntry[] {
+  const staticPages: SitemapEntry[] = [
     {
       url: BASE_URL,
       lastModified: new Date(),
@@ -1102,7 +1111,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   ];
 
   // Pages dynamiques Salaire Brut/Net
-  const salairePages: MetadataRoute.Sitemap = [];
+  const salairePages: SitemapEntry[] = [];
   for (const m of SALAIRE_MONTANTS) {
     salairePages.push({
       url: `${BASE_URL}/salaire-brut-net/${m}-euros`,
@@ -1122,7 +1131,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques TVA
-  const tvaPages: MetadataRoute.Sitemap = [];
+  const tvaPages: SitemapEntry[] = [];
   for (const m of TVA_MONTANTS) {
     for (const t of TVA_TAUX) {
       tvaPages.push({
@@ -1141,7 +1150,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Pourcentage
-  const pourcentagePages: MetadataRoute.Sitemap = [];
+  const pourcentagePages: SitemapEntry[] = [];
   for (const p of POURC_POURCENTAGES) {
     for (const v of POURC_VALEURS) {
       pourcentagePages.push({
@@ -1154,7 +1163,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Pret Immobilier
-  const pretPages: MetadataRoute.Sitemap = [];
+  const pretPages: SitemapEntry[] = [];
   for (const m of PRET_MONTANTS) {
     for (const d of PRET_DUREES) {
       pretPages.push({
@@ -1170,7 +1179,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques APL
-  const aplPages: MetadataRoute.Sitemap = [];
+  const aplPages: SitemapEntry[] = [];
   for (const z of APL_ZONES) {
     for (const s of APL_SITUATIONS) {
       for (const n of APL_ENFANTS) {
@@ -1185,7 +1194,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Date Accouchement
-  const dpaPages: MetadataRoute.Sitemap = [];
+  const dpaPages: SitemapEntry[] = [];
   for (const sa of DPA_SEMAINES) {
     dpaPages.push({
       url: `${BASE_URL}/calcul-date-accouchement/enceinte-de-${sa}-semaines`,
@@ -1196,7 +1205,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Heures de Travail
-  const heuresPages: MetadataRoute.Sitemap = [];
+  const heuresPages: SitemapEntry[] = [];
   for (const h of HT_HEURES) {
     for (const t of HT_TAUX) {
       heuresPages.push({
@@ -1209,7 +1218,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques DCA
-  const dcaPages: MetadataRoute.Sitemap = [];
+  const dcaPages: SitemapEntry[] = [];
   for (const m of DCA_MONTANTS) {
     for (const a of DCA_ACTIFS) {
       dcaPages.push({
@@ -1222,7 +1231,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Calories
-  const caloriesPages: MetadataRoute.Sitemap = [];
+  const caloriesPages: SitemapEntry[] = [];
   for (const sexe of CAL_SEXES) {
     const taille = sexe === "homme" ? 175 : 165;
     for (const age of CAL_AGES) {
@@ -1240,7 +1249,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Micro-Entreprise
-  const microPages: MetadataRoute.Sitemap = [];
+  const microPages: SitemapEntry[] = [];
   for (const ca of MICRO_CA) {
     for (const act of MICRO_ACTIVITES) {
       microPages.push({
@@ -1253,7 +1262,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Chomage
-  const chomagePages: MetadataRoute.Sitemap = [];
+  const chomagePages: SitemapEntry[] = [];
   for (const s of CHOMAGE_SALAIRES) {
     for (const m of CHOMAGE_MOIS) {
       for (const a of CHOMAGE_AGES) {
@@ -1268,7 +1277,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Taux Endettement
-  const endettementPages: MetadataRoute.Sitemap = [];
+  const endettementPages: SitemapEntry[] = [];
   for (const r of ENDETT_REVENUS) {
     for (const c of ENDETT_CHARGES) {
       if (c < r) {
@@ -1283,7 +1292,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Ovulation
-  const ovulationPages: MetadataRoute.Sitemap = [];
+  const ovulationPages: SitemapEntry[] = [];
   for (const c of OVU_CYCLES) {
     ovulationPages.push({
       url: `${BASE_URL}/calcul-ovulation/cycle-${c}-jours`,
@@ -1302,7 +1311,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Bombe Nucleaire
-  const nukePages: MetadataRoute.Sitemap = [];
+  const nukePages: SitemapEntry[] = [];
   for (const arme of NUKE_ARMES) {
     for (const ville of NUKE_VILLES) {
       nukePages.push({
@@ -1315,7 +1324,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Pension Alimentaire
-  const pensionPages: MetadataRoute.Sitemap = [];
+  const pensionPages: SitemapEntry[] = [];
   for (const rev of PENSION_REVENUS) {
     for (const enf of PENSION_ENFANTS) {
       for (const g of PENSION_GARDES) {
@@ -1330,7 +1339,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Garde Enfant
-  const gardePages: MetadataRoute.Sitemap = [];
+  const gardePages: SitemapEntry[] = [];
   for (const r of GARDE_REVENUS) {
     for (const e of GARDE_ENFANTS) {
       for (const m of GARDE_MODES) {
@@ -1345,7 +1354,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Credit Conso
-  const creditPages: MetadataRoute.Sitemap = [];
+  const creditPages: SitemapEntry[] = [];
   for (const m of CREDIT_MONTANTS) {
     for (const d of CREDIT_DUREES) {
       creditPages.push({
@@ -1358,7 +1367,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Bonus Ecologique
-  const bonusPages: MetadataRoute.Sitemap = [];
+  const bonusPages: SitemapEntry[] = [];
   for (const v of BONUS_VEHICULES) {
     for (const r of BONUS_RFR) {
       bonusPages.push({
@@ -1371,7 +1380,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Prime d'Activite
-  const primeActivitePages: MetadataRoute.Sitemap = [];
+  const primeActivitePages: SitemapEntry[] = [];
   for (const sit of PRIME_SITUATIONS) {
     for (const enf of PRIME_ENFANTS) {
       for (const rev of PRIME_REVENUS) {
@@ -1389,7 +1398,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Retraite
-  const retraitePages: MetadataRoute.Sitemap = [];
+  const retraitePages: SitemapEntry[] = [];
   for (const a of RETRAITE_ANNEES) {
     for (const s of RETRAITE_SALAIRES) {
       retraitePages.push({
@@ -1402,7 +1411,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Mobilisation
-  const mobilisationPages: MetadataRoute.Sitemap = [];
+  const mobilisationPages: SitemapEntry[] = [];
   for (const sexe of MOBIL_SEXES) {
     for (const age of MOBIL_AGES) {
       mobilisationPages.push({
@@ -1423,7 +1432,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Autonomie Financiere
-  const autonomiePages: MetadataRoute.Sitemap = [];
+  const autonomiePages: SitemapEntry[] = [];
   for (const e of AUTO_EPARGNES) {
     for (const z of AUTO_ZONES) {
       for (const s of AUTO_SITUATIONS) {
@@ -1438,7 +1447,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Budget Survie
-  const budgetSurviePages: MetadataRoute.Sitemap = [];
+  const budgetSurviePages: SitemapEntry[] = [];
   for (const z of BUDGET_ZONES) {
     for (const s of BUDGET_SITUATIONS) {
       for (const t of BUDGET_TRANSPORTS) {
@@ -1453,7 +1462,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Salaire Alternant
-  const alternantPages: MetadataRoute.Sitemap = [];
+  const alternantPages: SitemapEntry[] = [];
   for (const age of ALT_AGES_APP) {
     for (const annee of ALT_ANNEES) {
       alternantPages.push({
@@ -1476,7 +1485,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Capacite Emprunt
-  const empruntPages: MetadataRoute.Sitemap = [];
+  const empruntPages: SitemapEntry[] = [];
   for (const r of EMPRUNT_REVENUS) {
     for (const d of EMPRUNT_DUREES) {
       empruntPages.push({
@@ -1489,7 +1498,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Blackout
-  const blackoutPages: MetadataRoute.Sitemap = [];
+  const blackoutPages: SitemapEntry[] = [];
   for (const l of BLACKOUT_LOGEMENTS) {
     for (const c of BLACKOUT_CHAUFFAGES) {
       for (const n of BLACKOUT_PERSONNES) {
@@ -1504,7 +1513,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Prix Macon
-  const maconPages: MetadataRoute.Sitemap = [];
+  const maconPages: SitemapEntry[] = [];
   for (const p of MACON_PRESTATIONS_SEO) {
     for (const r of MACON_REGIONS_SEO) {
       if (p.unite === "forfait") {
@@ -1518,7 +1527,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Prix Peintre
-  const peintrePages: MetadataRoute.Sitemap = [];
+  const peintrePages: SitemapEntry[] = [];
   for (const p of PEINTRE_PRESTATIONS_SEO) {
     for (const r of PEINTRE_REGIONS_SEO) {
       for (const q of p.quantites) {
@@ -1528,7 +1537,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Prix Electricien
-  const elecPages: MetadataRoute.Sitemap = [];
+  const elecPages: SitemapEntry[] = [];
   for (const p of ELEC_PRESTATIONS_SEO) {
     for (const r of ELEC_REGIONS_SEO) {
       if (p.unite === "forfait") {
@@ -1542,7 +1551,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Prix Plombier
-  const plombPages: MetadataRoute.Sitemap = [];
+  const plombPages: SitemapEntry[] = [];
   for (const p of PLOMB_PRESTATIONS_SEO) {
     for (const r of PLOMB_REGIONS_SEO) {
       if (p.unite === "forfait") {
@@ -1556,7 +1565,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Prix Couvreur
-  const couvreurPages: MetadataRoute.Sitemap = [];
+  const couvreurPages: SitemapEntry[] = [];
   for (const p of COUVREUR_PRESTATIONS_SEO) {
     for (const r of COUVREUR_REGIONS_SEO) {
       for (const q of p.quantites) {
@@ -1566,7 +1575,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // --- EN Static Pages ---
-  const enStaticPages: MetadataRoute.Sitemap = [
+  const enStaticPages: SitemapEntry[] = [
     { url: `${BASE_URL}/en`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE_URL}/en/nuclear-bomb-simulator`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE_URL}/en/blackout-simulator`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
@@ -1576,7 +1585,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   ];
 
   // EN Nuclear Bomb dynamic pages
-  const enNukePages: MetadataRoute.Sitemap = [];
+  const enNukePages: SitemapEntry[] = [];
   for (const w of EN_NUKE_WEAPONS) {
     for (const c of EN_NUKE_CITIES) {
       enNukePages.push({ url: `${BASE_URL}/en/nuclear-bomb-simulator/${w}-on-${c}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
@@ -1584,7 +1593,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // EN Blackout dynamic pages
-  const enBlackoutPages: MetadataRoute.Sitemap = [];
+  const enBlackoutPages: SitemapEntry[] = [];
   for (const h of EN_BLACKOUT_HOUSINGS) {
     for (const ht of EN_BLACKOUT_HEATINGS) {
       for (const p of EN_BLACKOUT_PEOPLE) {
@@ -1594,7 +1603,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // EN Bunker dynamic pages
-  const enBunkerPages: MetadataRoute.Sitemap = [];
+  const enBunkerPages: SitemapEntry[] = [];
   for (const t of EN_BUNKER_TYPES) {
     for (const p of EN_BUNKER_PEOPLE) {
       for (const d of EN_BUNKER_DURATIONS) {
@@ -1604,7 +1613,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // EN Survival Budget dynamic pages
-  const enSurvivalPages: MetadataRoute.Sitemap = [];
+  const enSurvivalPages: SitemapEntry[] = [];
   for (const z of EN_SURVIVAL_ZONES) {
     for (const s of EN_SURVIVAL_SITUATIONS) {
       for (const t of EN_SURVIVAL_TRANSPORTS) {
@@ -1614,7 +1623,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // EN Draft dynamic pages
-  const enDraftPages: MetadataRoute.Sitemap = [];
+  const enDraftPages: SitemapEntry[] = [];
   for (const g of EN_DRAFT_GENDERS) {
     for (const a of EN_DRAFT_AGES) {
       enDraftPages.push({ url: `${BASE_URL}/en/draft-simulator/${g}-${a}-years-old`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
@@ -1628,7 +1637,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   const PI_SEXES = ["homme", "femme"];
   const PI_TAILLES = [155, 158, 160, 163, 165, 168, 170, 173, 175, 178, 180, 183, 185, 188, 190];
   const PI_AGES = [20, 25, 30, 35, 40, 45, 50, 55, 60];
-  const poidsIdealPages: MetadataRoute.Sitemap = [];
+  const poidsIdealPages: SitemapEntry[] = [];
   for (const s of PI_SEXES) {
     for (const t of PI_TAILLES) {
       for (const a of PI_AGES) {
@@ -1638,7 +1647,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques IMC
-  const imcPages: MetadataRoute.Sitemap = [];
+  const imcPages: SitemapEntry[] = [];
   for (const p of IMC_POIDS) {
     for (const t of IMC_TAILLES) {
       imcPages.push({ url: `${BASE_URL}/calcul-imc/${p}-kg-${t}-cm`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
@@ -1649,7 +1658,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   const MG_SEXES = ["homme", "femme"];
   const MG_POIDS = [55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
   const MG_TAILLES = [160, 165, 170, 175, 180, 185];
-  const masseGrassePages: MetadataRoute.Sitemap = [];
+  const masseGrassePages: SitemapEntry[] = [];
   for (const s of MG_SEXES) {
     for (const p of MG_POIDS) {
       for (const t of MG_TAILLES) {
@@ -1659,7 +1668,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Frais de Notaire
-  const notairePages: MetadataRoute.Sitemap = [];
+  const notairePages: SitemapEntry[] = [];
   for (const p of NOTAIRE_PRIX) {
     for (const t of NOTAIRE_TYPES) {
       notairePages.push({ url: `${BASE_URL}/frais-de-notaire/${p}-euros-${t}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
@@ -1670,13 +1679,13 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Consommation Electrique
-  const consoPages: MetadataRoute.Sitemap = [];
+  const consoPages: SitemapEntry[] = [];
   for (const a of CONSO_APPAREILS) {
     consoPages.push({ url: `${BASE_URL}/calcul-consommation-electrique/${a}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
   // Pages dynamiques Indemnite Licenciement
-  const licenciementPages: MetadataRoute.Sitemap = [];
+  const licenciementPages: SitemapEntry[] = [];
   for (const s of LICENC_SALAIRES) {
     for (const a of LICENC_ANNEES) {
       licenciementPages.push({ url: `${BASE_URL}/indemnite-licenciement/${s}-euros-${a}-ans`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
@@ -1684,7 +1693,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Convertisseur Devises
-  const devisesPages: MetadataRoute.Sitemap = [];
+  const devisesPages: SitemapEntry[] = [];
   for (const m of DEVISES_MONTANTS) {
     for (const d of DEVISES_PAIRES) {
       devisesPages.push({ url: `${BASE_URL}/convertisseur-devises/${m}-euros-en-${d}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
@@ -1692,7 +1701,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Inflation
-  const inflationPages: MetadataRoute.Sitemap = [];
+  const inflationPages: SitemapEntry[] = [];
   for (const m of INFL_MONTANTS) {
     for (const a of INFL_ANNEES) {
       inflationPages.push({ url: `${BASE_URL}/calculateur-inflation/${m}-euros-depuis-${a}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
@@ -1700,13 +1709,13 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Age
-  const agePages: MetadataRoute.Sitemap = [];
+  const agePages: SitemapEntry[] = [];
   for (const a of AGE_ANNEES) {
     agePages.push({ url: `${BASE_URL}/calcul-age/ne-en-${a}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
   // Pages dynamiques Surface Peinture
-  const surfPeinturePages: MetadataRoute.Sitemap = [];
+  const surfPeinturePages: SitemapEntry[] = [];
   for (const piece of SURF_PIECES) {
     for (const s of piece.surfaces) {
       surfPeinturePages.push({ url: `${BASE_URL}/calcul-surface-peinture/${piece.slug}-${s}-m2`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
@@ -1714,7 +1723,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Epargne
-  const epargnePages: MetadataRoute.Sitemap = [];
+  const epargnePages: SitemapEntry[] = [];
   for (const c of EPARGNE_CAPITAUX) {
     for (const p of EPARGNE_PLACEMENTS) {
       epargnePages.push({ url: `${BASE_URL}/simulateur-epargne/${c}-euros-${p}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
@@ -1722,7 +1731,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Indemnites Kilometriques
-  const kmPages: MetadataRoute.Sitemap = [];
+  const kmPages: SitemapEntry[] = [];
   for (const d of KM_DISTANCES) {
     for (const cv of KM_CV) {
       kmPages.push({ url: `${BASE_URL}/calcul-indemnites-kilometriques/${d}-km-${cv}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
@@ -1730,13 +1739,13 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Impot Revenu
-  const impotPages: MetadataRoute.Sitemap = [];
+  const impotPages: SitemapEntry[] = [];
   for (const r of IMPOT_REVENUS) {
     impotPages.push({ url: `${BASE_URL}/simulateur-impot-revenu/${r}-euros`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
   // Pages dynamiques Bunker FR
-  const bunkerPages: MetadataRoute.Sitemap = [];
+  const bunkerPages: SitemapEntry[] = [];
   for (const p of BUNKER_PERSONNES) {
     for (const d of BUNKER_DUREES) {
       for (const t of BUNKER_TYPES) {
@@ -1746,7 +1755,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Prix Chauffagiste
-  const chauffPages: MetadataRoute.Sitemap = [];
+  const chauffPages: SitemapEntry[] = [];
   for (const p of CHAUFF_PRESTATIONS_SEO) {
     for (const r of CHAUFF_REGIONS_SEO) {
       if (p.unite === "forfait") {
@@ -1760,7 +1769,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Conversion Temperature
-  const tempPages: MetadataRoute.Sitemap = [];
+  const tempPages: SitemapEntry[] = [];
   for (const c of TEMP_CELSIUS) {
     tempPages.push({ url: `${BASE_URL}/conversion-temperature/${c}-celsius-en-fahrenheit`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
@@ -1769,7 +1778,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Conversion Poids
-  const poidsPages: MetadataRoute.Sitemap = [];
+  const poidsPages: SitemapEntry[] = [];
   for (const kg of POIDS_KG) {
     poidsPages.push({ url: `${BASE_URL}/conversion-poids/${kg}-kg-en-livres`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
@@ -1778,7 +1787,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Conversion Longueur
-  const longueurPages: MetadataRoute.Sitemap = [];
+  const longueurPages: SitemapEntry[] = [];
   for (const cm of LONG_CM) {
     longueurPages.push({ url: `${BASE_URL}/conversion-longueur/${cm}-cm-en-pouces`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
@@ -1787,37 +1796,37 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Pension Reversion
-  const reversionPages: MetadataRoute.Sitemap = [];
+  const reversionPages: SitemapEntry[] = [];
   for (const p of REVERSION_PENSIONS) {
     reversionPages.push({ url: `${BASE_URL}/calcul-pension-reversion/${p}-euros`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
   // Pages dynamiques Surface Cercle
-  const cerclePages: MetadataRoute.Sitemap = [];
+  const cerclePages: SitemapEntry[] = [];
   for (const r of CERCLE_RAYONS) {
     cerclePages.push({ url: `${BASE_URL}/calcul-surface-cercle/rayon-${r}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
   // Pages dynamiques Volume Cylindre
-  const cylindrePages: MetadataRoute.Sitemap = [];
+  const cylindrePages: SitemapEntry[] = [];
   for (const [r, h] of CYLINDRE_COMBOS) {
     cylindrePages.push({ url: `${BASE_URL}/calcul-volume-cylindre/rayon-${r}-hauteur-${h}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
   // Pages dynamiques Racine Carree
-  const racinePages: MetadataRoute.Sitemap = [];
+  const racinePages: SitemapEntry[] = [];
   for (const n of RACINE_NOMBRES) {
     racinePages.push({ url: `${BASE_URL}/calcul-racine-carree/racine-de-${n}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
   // Pages dynamiques Ascendant Astrologique
-  const astroPages: MetadataRoute.Sitemap = [];
+  const astroPages: SitemapEntry[] = [];
   for (const s of ASTRO_SIGNES) {
     astroPages.push({ url: `${BASE_URL}/calcul-ascendant-astrologique/${s}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
   // Pages dynamiques Gratification Stage
-  const stagePages: MetadataRoute.Sitemap = [];
+  const stagePages: SitemapEntry[] = [];
   for (const d of STAGE_DUREES) {
     for (const h of STAGE_HEURES) {
       stagePages.push({ url: `${BASE_URL}/calcul-gratification-stage/${d}-mois-${h}-heures`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
@@ -1825,7 +1834,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Droits Succession
-  const succPages: MetadataRoute.Sitemap = [];
+  const succPages: SitemapEntry[] = [];
   for (const m of SUCC_MONTANTS) {
     for (const h of SUCC_HERITIERS) {
       succPages.push({ url: `${BASE_URL}/calcul-droits-succession/${m}-euros-${h}-enfants`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
@@ -1836,7 +1845,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   const coutVoitureTypes = ["citadine", "berline", "suv", "electrique", "utilitaire"];
   const coutVoitureKm = [5000, 10000, 15000, 20000, 25000, 30000];
   const coutVoitureDurees = [3, 5, 7, 10];
-  const coutVoiturePages: MetadataRoute.Sitemap = [];
+  const coutVoiturePages: SitemapEntry[] = [];
   for (const t of coutVoitureTypes) {
     for (const k of coutVoitureKm) {
       for (const d of coutVoitureDurees) {
@@ -1846,7 +1855,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Cout Kilometrique
-  const ckPages: MetadataRoute.Sitemap = [];
+  const ckPages: SitemapEntry[] = [];
   for (const d of CK_DISTANCES) {
     for (const cv of CK_CV) {
       ckPages.push({ url: `${BASE_URL}/calcul-cout-kilometrique/${d}-km-${cv}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
@@ -1854,7 +1863,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Interet Compose
-  const icPages: MetadataRoute.Sitemap = [];
+  const icPages: SitemapEntry[] = [];
   for (const c of IC_CAPITAUX) {
     for (const t of IC_TAUX) {
       for (const d of IC_DUREES) {
@@ -1864,25 +1873,25 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Malus Ecologique
-  const malusPages: MetadataRoute.Sitemap = [];
+  const malusPages: SitemapEntry[] = [];
   for (const co2 of MALUS_CO2) {
     malusPages.push({ url: `${BASE_URL}/calcul-malus-ecologique/${co2}-g-co2`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
   // Pages dynamiques PGCD PPCM
-  const pgcdPages: MetadataRoute.Sitemap = [];
+  const pgcdPages: SitemapEntry[] = [];
   for (const [a, b] of PGCD_PAIRES) {
     pgcdPages.push({ url: `${BASE_URL}/calcul-pgcd-ppcm/${a}-et-${b}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
   // Pages dynamiques Duree Entre Dates
-  const dureePages: MetadataRoute.Sitemap = [];
+  const dureePages: SitemapEntry[] = [];
   for (const ev of DUREE_EVENEMENTS) {
     dureePages.push({ url: `${BASE_URL}/calcul-duree-entre-dates/${ev}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
   // Pages dynamiques Plus-Value Immobiliere
-  const pvImmoPages: MetadataRoute.Sitemap = [];
+  const pvImmoPages: SitemapEntry[] = [];
   for (const pv of PV_PLUS_VALUES) {
     for (const a of PV_ANNEES) {
       pvImmoPages.push({ url: `${BASE_URL}/calcul-plus-value-immobiliere/200000-euros-plus-value-${pv}-euros-${a}-ans`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
@@ -1893,7 +1902,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Revenus Fonciers
-  const revFoncPages: MetadataRoute.Sitemap = [];
+  const revFoncPages: SitemapEntry[] = [];
   for (const loyers of [6000, 8000, 10000, 12000, 15000, 18000, 24000, 36000]) {
     for (const tmi of [11, 30, 41]) {
       for (const regime of ["micro-foncier", "reel"]) {
@@ -1903,7 +1912,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Rentabilite Locative
-  const rentaPages: MetadataRoute.Sitemap = [];
+  const rentaPages: SitemapEntry[] = [];
   for (const p of RENTA_PRIX) {
     for (const l of RENTA_LOYERS) {
       rentaPages.push({ url: `${BASE_URL}/calcul-rentabilite-locative/${p}-euros-${l}-euros-mois`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
@@ -1911,7 +1920,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Consommation Essence
-  const essencePages: MetadataRoute.Sitemap = [];
+  const essencePages: SitemapEntry[] = [];
   for (const d of ESS_DISTANCES) {
     for (const c of ESS_CONSOS) {
       essencePages.push({ url: `${BASE_URL}/calcul-consommation-essence/${d}-km-${c}-litres`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
@@ -1919,13 +1928,13 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Jours Ouvres
-  const joPages: MetadataRoute.Sitemap = [];
+  const joPages: SitemapEntry[] = [];
   for (const m of JO_MOIS) {
     joPages.push({ url: `${BASE_URL}/calcul-jours-ouvres/${m}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
   // Pages dynamiques Calcul Moyenne
-  const moyennePages: MetadataRoute.Sitemap = [];
+  const moyennePages: SitemapEntry[] = [];
   for (const m of MOY_MOYENNES) {
     moyennePages.push({ url: `${BASE_URL}/calcul-moyenne/${m}-sur-20`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
@@ -1937,13 +1946,13 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Produit en Croix
-  const produitPages: MetadataRoute.Sitemap = [];
+  const produitPages: SitemapEntry[] = [];
   for (const [a, b, c] of PRODUIT_EXEMPLES) {
     produitPages.push({ url: `${BASE_URL}/produit-en-croix/${a}-sur-${b}-egale-${c}-sur-x`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
   // Pages dynamiques Conges Payes
-  const cpPages: MetadataRoute.Sitemap = [];
+  const cpPages: SitemapEntry[] = [];
   for (const s of CP_SALAIRES) {
     for (const m of CP_MOIS) {
       cpPages.push({ url: `${BASE_URL}/calcul-conges-payes/${s}-euros-${m}-mois`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
@@ -1951,7 +1960,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages ville par metier (25 villes x 6 metiers = 150 pages)
-  const villePages: MetadataRoute.Sitemap = [];
+  const villePages: SitemapEntry[] = [];
   for (const metier of METIERS_PRIX) {
     for (const ville of VILLES_SLUGS) {
       villePages.push({ url: `${BASE_URL}/${metier}/${ville}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 });
@@ -1959,7 +1968,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages ville taxe fonciere (25 pages)
-  const taxeFonciereVillePages: MetadataRoute.Sitemap = [];
+  const taxeFonciereVillePages: SitemapEntry[] = [];
   for (const v of VILLES_SLUGS) {
     taxeFonciereVillePages.push({ url: `${BASE_URL}/calcul-taxe-fonciere/${v}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 });
   }
@@ -1967,7 +1976,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   // Pages dynamiques 4 nouveaux calcs finance (session 14)
   const ASSURANCE_CAPITAUX = [100000, 150000, 200000, 250000, 300000, 400000, 500000];
   const ASSURANCE_DUREES = [15, 20, 25];
-  const assurancePages: MetadataRoute.Sitemap = [];
+  const assurancePages: SitemapEntry[] = [];
   for (const c of ASSURANCE_CAPITAUX) {
     for (const d of ASSURANCE_DUREES) {
       assurancePages.push({ url: `${BASE_URL}/simulateur-assurance-emprunteur/${c}-euros-${d}-ans`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
@@ -1976,7 +1985,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
 
   const SCPI_MONTANTS = [10000, 20000, 30000, 50000, 75000, 100000, 150000, 200000, 300000];
   const SCPI_TMIS = [11, 30, 41];
-  const scpiPages: MetadataRoute.Sitemap = [];
+  const scpiPages: SitemapEntry[] = [];
   for (const m of SCPI_MONTANTS) {
     for (const t of SCPI_TMIS) {
       scpiPages.push({ url: `${BASE_URL}/simulateur-rendement-scpi/${m}-euros-tmi-${t}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
@@ -1985,7 +1994,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
 
   const RENTE_CAPITAUX = [50000, 100000, 150000, 200000, 300000, 500000, 750000, 1000000];
   const RENTE_AGES = [55, 60, 65, 70, 75];
-  const rentePages: MetadataRoute.Sitemap = [];
+  const rentePages: SitemapEntry[] = [];
   for (const c of RENTE_CAPITAUX) {
     for (const a of RENTE_AGES) {
       rentePages.push({ url: `${BASE_URL}/simulateur-rente-viagere/${c}-euros-a-${a}-ans`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
@@ -1993,14 +2002,14 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   const IFI_PATRIMOINES = [1400000, 1500000, 1700000, 2000000, 2500000, 3000000, 4000000, 5000000, 7500000, 10000000];
-  const ifiPages: MetadataRoute.Sitemap = [];
+  const ifiPages: SitemapEntry[] = [];
   for (const p of IFI_PATRIMOINES) {
     ifiPages.push({ url: `${BASE_URL}/calcul-ifi/patrimoine-${p}-euros`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
   // Pages dynamiques batch 2 (IS, amende vitesse, LOA/LLD)
   const IS_BENEFICES = [10000, 25000, 42500, 50000, 75000, 100000, 150000, 200000, 300000, 500000, 1000000];
-  const isPages: MetadataRoute.Sitemap = [];
+  const isPages: SitemapEntry[] = [];
   for (const b of IS_BENEFICES) {
     isPages.push({ url: `${BASE_URL}/simulateur-impot-societe/${b}-euros-benefice`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
@@ -2010,7 +2019,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     "90-en-zone-80", "100-en-zone-80", "120-en-zone-80",
     "140-en-zone-90", "150-en-zone-130", "160-en-zone-130", "180-en-zone-130", "200-en-zone-130",
   ];
-  const amendePages: MetadataRoute.Sitemap = [];
+  const amendePages: SitemapEntry[] = [];
   for (const s of AMENDE_SLUGS) {
     amendePages.push({ url: `${BASE_URL}/simulateur-amende-exces-vitesse/${s}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
@@ -2020,40 +2029,40 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     "voiture-35000-euros-48-mois", "voiture-40000-euros-48-mois", "voiture-50000-euros-60-mois",
     "voiture-electrique-30000-euros-48-mois",
   ];
-  const loaLldPages: MetadataRoute.Sitemap = [];
+  const loaLldPages: SitemapEntry[] = [];
   for (const s of LOA_LLD_SLUGS) {
     loaLldPages.push({ url: `${BASE_URL}/simulateur-loa-lld/${s}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
   // Batch 3 (inflammation, prestation compensatoire, grossesse)
   const INFLAMMATION_SLUGS = ["regime-mediterraneen", "regime-vegetarien", "regime-vegan", "regime-occidental-standard", "regime-keto", "regime-paleo"];
-  const inflammationPages: MetadataRoute.Sitemap = [];
+  const inflammationPages: SitemapEntry[] = [];
   for (const s of INFLAMMATION_SLUGS) {
     inflammationPages.push({ url: `${BASE_URL}/calcul-indice-inflammation/${s}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
   const PRESTATION_SLUGS = ["mariage-10-ans", "mariage-15-ans", "mariage-20-ans", "mariage-25-ans", "mariage-30-ans", "mariage-5-ans-sans-enfant", "femme-au-foyer-20-ans"];
-  const prestationPages: MetadataRoute.Sitemap = [];
+  const prestationPages: SitemapEntry[] = [];
   for (const s of PRESTATION_SLUGS) {
     prestationPages.push({ url: `${BASE_URL}/calcul-prestation-compensatoire/${s}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
   const GROSSESSE_SEMAINES = [8, 12, 16, 20, 24, 28, 32, 36, 40];
-  const grossessePages: MetadataRoute.Sitemap = [];
+  const grossessePages: SitemapEntry[] = [];
   for (const s of GROSSESSE_SEMAINES) {
     grossessePages.push({ url: `${BASE_URL}/calcul-prise-poids-grossesse/${s}-semaines`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
   // Batch 4 (LMNP, dividendes)
   const LMNP_SLUGS = ["studio-100000-euros", "appartement-150000-euros", "appartement-200000-euros", "appartement-300000-euros", "maison-400000-euros", "tmi-41-appartement-200000", "tmi-11-appartement-150000"];
-  const lmnpPages: MetadataRoute.Sitemap = [];
+  const lmnpPages: SitemapEntry[] = [];
   for (const s of LMNP_SLUGS) {
     lmnpPages.push({ url: `${BASE_URL}/calcul-amortissement-lmnp/${s}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
   const DIV_MONTANTS = [5000, 10000, 15000, 20000, 30000, 50000, 75000, 100000, 150000, 200000];
   const DIV_TMIS = [11, 30, 41];
-  const dividendesPages: MetadataRoute.Sitemap = [];
+  const dividendesPages: SitemapEntry[] = [];
   for (const m of DIV_MONTANTS) {
     for (const t of DIV_TMIS) {
       dividendesPages.push({ url: `${BASE_URL}/simulateur-dividendes/${m}-euros-tmi-${t}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
@@ -2061,7 +2070,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Metabolisme de Base
-  const metabolismePages: MetadataRoute.Sitemap = [];
+  const metabolismePages: SitemapEntry[] = [];
   for (const s of MB_SEXES) {
     for (const p of MB_POIDS) {
       for (const a of MB_AGES) {
@@ -2071,7 +2080,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Proteines
-  const proteinesPages: MetadataRoute.Sitemap = [];
+  const proteinesPages: SitemapEntry[] = [];
   for (const p of PROT_POIDS) {
     for (const a of PROT_ACTIVITES) {
       proteinesPages.push({ url: `${BASE_URL}/calcul-proteines/${p}kg-${a}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
@@ -2081,7 +2090,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   // Pages dynamiques Besoin Sommeil
   const SOMMEIL_AGES = [1, 3, 6, 10, 14, 18, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70];
   const SOMMEIL_ACTIVITES = ["sedentaire", "modere", "actif", "intense"];
-  const sommeilPages: MetadataRoute.Sitemap = [];
+  const sommeilPages: SitemapEntry[] = [];
   for (const age of SOMMEIL_AGES) {
     for (const act of SOMMEIL_ACTIVITES) {
       sommeilPages.push({ url: `${BASE_URL}/calcul-besoin-sommeil/${age}ans-${act}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
@@ -2092,7 +2101,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   const EAU_POIDS = [50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
   const EAU_ACTIVITES = ["sedentaire", "leger", "modere", "actif", "intense"];
   const EAU_CLIMATS = ["tempere", "chaud", "tres-chaud"];
-  const eauPages: MetadataRoute.Sitemap = [];
+  const eauPages: SitemapEntry[] = [];
   for (const p of EAU_POIDS) {
     for (const a of EAU_ACTIVITES) {
       for (const c of EAU_CLIMATS) {
@@ -2102,7 +2111,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Macros
-  const macrosPages: MetadataRoute.Sitemap = [];
+  const macrosPages: SitemapEntry[] = [];
   for (const c of MACROS_CALORIES) {
     for (const o of MACROS_OBJECTIFS) {
       macrosPages.push({ url: `${BASE_URL}/calcul-macros/${c}kcal-${o}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
@@ -2122,7 +2131,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
     "coca-cola", "jus-d-orange", "jus-de-pomme",
   ];
   // Note: slugs sont generes par slugify() dans indiceGlycemiqueCalc.ts
-  const igPages: MetadataRoute.Sitemap = IG_SLUGS.map((slug) => ({
+  const igPages: SitemapEntry[] = IG_SLUGS.map((slug) => ({
     url: `${BASE_URL}/calcul-indice-glycemique/${slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly",
@@ -2130,7 +2139,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }));
 
   // Pages dynamiques Age Metabolique
-  const ageMetaPages: MetadataRoute.Sitemap = [];
+  const ageMetaPages: SitemapEntry[] = [];
   for (const s of AM_SEXES) {
     for (const a of AM_AGES) {
       for (const act of AM_ACTIVITES) {
@@ -2140,7 +2149,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Risque Cardiovasculaire
-  const risqueCardioPages: MetadataRoute.Sitemap = [];
+  const risqueCardioPages: SitemapEntry[] = [];
   for (const s of RC_SEXES) {
     for (const a of RC_AGES) {
       for (const p of RC_PROFILS) {
@@ -2150,7 +2159,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques DPE (7 surfaces x 5 chauffages x 5 epoques = 175 pages)
-  const dpePages: MetadataRoute.Sitemap = [];
+  const dpePages: SitemapEntry[] = [];
   for (const s of DPE_SURFACES) {
     for (const ch of DPE_CHAUFFAGES) {
       for (const ep of DPE_EPOQUES) {
@@ -2162,7 +2171,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   // Pages dynamiques Simulateur Facture Gaz (5 usages x 6 zones = 30 pages)
   const FAC_GAZ_USAGES = ["cuisson", "eau-chaude", "chauffage-50m2", "chauffage-80m2", "chauffage-120m2"];
   const FAC_GAZ_ZONES = ["zone1", "zone2", "zone3", "zone4", "zone5", "zone6"];
-  const facGazPages: MetadataRoute.Sitemap = [];
+  const facGazPages: SitemapEntry[] = [];
   for (const u of FAC_GAZ_USAGES) {
     for (const z of FAC_GAZ_ZONES) {
       facGazPages.push({ url: `${BASE_URL}/simulateur-facture-gaz/${u}-${z}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
@@ -2170,7 +2179,7 @@ function generateAllUrls(): MetadataRoute.Sitemap {
   }
 
   // Pages dynamiques Credit Auto
-  const creditAutoPages: MetadataRoute.Sitemap = [];
+  const creditAutoPages: SitemapEntry[] = [];
   for (const m of CA_MONTANTS) {
     for (const d of CA_DUREES) {
       creditAutoPages.push({ url: `${BASE_URL}/simulateur-credit-auto/${m}-euros-${d}-mois`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
