@@ -411,15 +411,24 @@ const CA_DUREES = [24, 36, 48, 60, 72];
 
 const CHUNK_SIZE = 500;
 
+let _cachedAll: MetadataRoute.Sitemap | null = null;
+function getAll(): MetadataRoute.Sitemap {
+  if (_cachedAll === null) _cachedAll = generateAllUrls();
+  return _cachedAll;
+}
+
 export async function generateSitemaps() {
-  const all = generateAllUrls();
+  const all = getAll();
   const count = Math.ceil(all.length / CHUNK_SIZE);
   return Array.from({ length: count }, (_, i) => ({ id: i }));
 }
 
 export default async function sitemap({ id }: { id: number }): Promise<MetadataRoute.Sitemap> {
-  const all = generateAllUrls();
-  return all.slice(id * CHUNK_SIZE, (id + 1) * CHUNK_SIZE);
+  const all = getAll();
+  const safeId = Number(id) || 0;
+  const start = safeId * CHUNK_SIZE;
+  const end = start + CHUNK_SIZE;
+  return all.slice(start, end);
 }
 
 function generateAllUrls(): MetadataRoute.Sitemap {
