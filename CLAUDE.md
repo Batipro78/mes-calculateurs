@@ -24,8 +24,10 @@ app/
   layout.tsx              # Layout global + metadata + AdSense script
   page.tsx                # Accueil — liste tous les calculateurs (tableau `outils`)
   globals.css             # Styles globaux
-  sitemap.ts              # Sitemap principal (gros fichier, toutes les URLs)
-  sitemap-index.xml/      # Sitemap index manuel (Next.js ne le genere pas auto)
+  lib/sitemap-data.ts     # Source des URLs (getAllUrls, getSitemapsCount, getSitemapChunk)
+  sitemap/[id]/route.ts   # Route handler manuel pour chaque chunk (SSG, 500 URLs/chunk)
+  sitemap.xml/            # Index XML (route handler manuel)
+  sitemap-index.xml/      # Index XML alias (meme contenu que sitemap.xml)
   robots.ts               # robots.txt + GEO
   components/             # Composants partages
     AdSlot.tsx             # Pub AdSense
@@ -49,7 +51,7 @@ app/
 1. Creer le dossier `app/[nom-calculateur]/`
 2. Creer : `page.tsx` (metadata + composant) + `[Name]Calc.ts` (logique) + `[Name].tsx` (composant client)
 3. Creer `[params]/page.tsx` pour les pages dynamiques (villes, variantes)
-4. Ajouter dans `app/sitemap.ts` (URLs statiques + dynamiques)
+4. Ajouter dans `app/lib/sitemap-data.ts` (URLs statiques + dynamiques)
 5. Ajouter dans `app/page.tsx` (tableau `outils` sur l'accueil)
 6. Ajouter dans `RelatedCalculators.tsx` (liens croises)
 7. Build pour verifier : `npm run build`
@@ -59,7 +61,7 @@ app/
 - **Noms de fichiers** : `calcXxx.ts` cause des erreurs RSC ("Could not find module in React Client Manifest"). Utiliser `xxxCalc.ts` a la place.
 - **Tailwind v4** : classes dynamiques dans objets JS = non detectees. Toujours en dur dans le JSX.
 - **Next.js 15** : `useSearchParams()` doit etre dans un `<Suspense>`.
-- **generateSitemaps** : ne genere PAS de sitemap index auto. Utiliser le route handler manuel `app/sitemap-index.xml/route.ts`.
+- **Sitemap** : ne PAS utiliser `generateSitemaps` (bug Next.js 15 : chunks gonfles a 1000+ URLs au lieu de 500 en prod). Tout passe par les route handlers manuels (`app/sitemap/[id]/route.ts` + `app/sitemap.xml/route.ts`). Pour ajouter des URLs, modifier `app/lib/sitemap-data.ts`.
 - **Pages dynamiques** : ne JAMAIS oublier les pages dynamiques + sitemap quand on ajoute un calculateur.
 - **Imports dans pages dynamiques** : depuis `app/xxx/[params]/page.tsx`, les composants sont en `../components/` (pas `./components/`).
 
