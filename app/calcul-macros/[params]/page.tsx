@@ -123,8 +123,8 @@ export default async function Page({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://mes-calculateurs.vercel.app" },
-      { "@type": "ListItem", position: 2, name: "Calcul Macros", item: "https://mes-calculateurs.vercel.app/calcul-macros" },
+      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://mescalculateurs.fr" },
+      { "@type": "ListItem", position: 2, name: "Calcul Macros", item: "https://mescalculateurs.fr/calcul-macros" },
       { "@type": "ListItem", position: 3, name: `${calories} kcal — ${objectifLabel}` },
     ],
   };

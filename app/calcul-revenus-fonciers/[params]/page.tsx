@@ -125,13 +125,13 @@ export default async function Page({
                 "@type": "ListItem",
                 position: 1,
                 name: "Accueil",
-                item: "https://mes-calculateurs.vercel.app",
+                item: "https://mescalculateurs.fr",
               },
               {
                 "@type": "ListItem",
                 position: 2,
                 name: "Revenus Fonciers",
-                item: "https://mes-calculateurs.vercel.app/calcul-revenus-fonciers",
+                item: "https://mescalculateurs.fr/calcul-revenus-fonciers",
               },
               {
                 "@type": "ListItem",

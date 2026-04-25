@@ -60,12 +60,12 @@ export default async function EmbedPage({ params }: { params: Promise<{ slug: st
       <p className="mt-4 text-xs text-slate-400 text-center">
         Widget fourni par{" "}
         <a
-          href={`https://mes-calculateurs.vercel.app${embed.sourcePath}?utm_source=embed&utm_medium=iframe&utm_campaign=${slug}`}
+          href={`https://mescalculateurs.fr${embed.sourcePath}?utm_source=embed&utm_medium=iframe&utm_campaign=${slug}`}
           target="_blank"
           rel="noopener noreferrer"
           className="text-slate-500 hover:text-slate-700 underline"
         >
-          mes-calculateurs.vercel.app
+          mescalculateurs.fr
         </a>
       </p>
     </div>

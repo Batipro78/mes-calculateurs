@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const BASE_URL = "https://mes-calculateurs.vercel.app";
+const BASE_URL = "https://mescalculateurs.fr";
 
 export async function GET() {
   // Import the generateSitemaps function to know how many sitemaps exist

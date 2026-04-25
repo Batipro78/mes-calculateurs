@@ -127,19 +127,19 @@ export default async function Page({
         "@type": "ListItem",
         position: 1,
         name: "Accueil",
-        item: "https://mes-calculateurs.vercel.app",
+        item: "https://mescalculateurs.fr",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Calcul Besoin Sommeil",
-        item: "https://mes-calculateurs.vercel.app/calcul-besoin-sommeil",
+        item: "https://mescalculateurs.fr/calcul-besoin-sommeil",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: `${age} ans — ${activiteLabel}`,
-        item: `https://mes-calculateurs.vercel.app/calcul-besoin-sommeil/${age}ans-${activite}`,
+        item: `https://mescalculateurs.fr/calcul-besoin-sommeil/${age}ans-${activite}`,
       },
     ],
   };

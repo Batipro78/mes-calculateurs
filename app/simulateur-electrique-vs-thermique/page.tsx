@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     description:
       "Comparez le cout total d'une voiture electrique vs thermique : achat, carburant, entretien, assurance, depreciation. Simulateur gratuit.",
     type: "website",
-    url: "https://mes-calculateurs.vercel.app/simulateur-electrique-vs-thermique",
+    url: "https://mescalculateurs.fr/simulateur-electrique-vs-thermique",
   },
   twitter: {
     card: "summary_large_image",

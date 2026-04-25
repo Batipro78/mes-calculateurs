@@ -28,7 +28,7 @@ export default function WebAppJsonLd({
     publisher: {
       "@type": "Organization",
       name: "Mes Calculateurs",
-      url: "https://mes-calculateurs.vercel.app",
+      url: "https://mescalculateurs.fr",
     },
   };
 

@@ -155,8 +155,8 @@ export default async function Page({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://mes-calculateurs.vercel.app" },
-      { "@type": "ListItem", position: 2, name: "Simulateur DPE", item: "https://mes-calculateurs.vercel.app/calculateur-dpe" },
+      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://mescalculateurs.fr" },
+      { "@type": "ListItem", position: 2, name: "Simulateur DPE", item: "https://mescalculateurs.fr/calculateur-dpe" },
       { "@type": "ListItem", position: 3, name: `DPE ${surface} m² ${CHAUFFAGE_LABEL[chauffage]}` },
     ],
   };

@@ -15,7 +15,7 @@ npm run lint     # Linting
 - Next.js 15.3.2, React 19, TypeScript 5.8
 - Tailwind CSS 4.1 (classes en dur dans JSX, jamais d'objets JS dynamiques)
 - Deploy : Vercel
-- Domaine : mes-calculateurs.vercel.app
+- Domaine : mescalculateurs.fr
 
 ## Structure
 

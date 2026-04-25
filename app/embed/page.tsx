@@ -39,7 +39,7 @@ export default function EmbedIndexPage() {
         </ol>
         <p className="text-xs text-slate-500 mt-4">
           <strong>Licence</strong> : utilisation libre et gratuite, y compris sur sites commerciaux.
-          Un lien discret vers mes-calculateurs.vercel.app est inclus par defaut.
+          Un lien discret vers mescalculateurs.fr est inclus par defaut.
         </p>
       </div>
 

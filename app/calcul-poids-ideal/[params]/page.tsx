@@ -136,9 +136,9 @@ export default async function Page({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://mes-calculateurs.vercel.app" },
-      { "@type": "ListItem", position: 2, name: "Calcul Poids Ideal", item: "https://mes-calculateurs.vercel.app/calcul-poids-ideal" },
-      { "@type": "ListItem", position: 3, name: `${sexeLabel} ${taille} cm ${age} ans`, item: `https://mes-calculateurs.vercel.app/calcul-poids-ideal/${sexe}-${taille}cm-${age}ans` },
+      { "@type": "ListItem", position: 1, name: "Accueil", item: "https://mescalculateurs.fr" },
+      { "@type": "ListItem", position: 2, name: "Calcul Poids Ideal", item: "https://mescalculateurs.fr/calcul-poids-ideal" },
+      { "@type": "ListItem", position: 3, name: `${sexeLabel} ${taille} cm ${age} ans`, item: `https://mescalculateurs.fr/calcul-poids-ideal/${sexe}-${taille}cm-${age}ans` },
     ],
   };
 

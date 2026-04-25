@@ -3,7 +3,7 @@ import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mes-calculateurs.vercel.app"),
+  metadataBase: new URL("https://mescalculateurs.fr"),
   title: {
     default: "Mes Calculateurs - Outils de calcul gratuits en ligne",
     template: "%s | Mes Calculateurs",
@@ -46,13 +46,13 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "Mes Calculateurs",
-  url: "https://mes-calculateurs.vercel.app",
+  url: "https://mescalculateurs.fr",
   description:
     "Calculateurs gratuits en ligne : salaire brut/net, TVA, pret immobilier, pourcentage, IMC et plus.",
   inLanguage: "fr-FR",
   potentialAction: {
     "@type": "SearchAction",
-    target: "https://mes-calculateurs.vercel.app/?q={search_term_string}",
+    target: "https://mescalculateurs.fr/?q={search_term_string}",
     "query-input": "required name=search_term_string",
   },
 };

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import type { EmbedDef } from "./embeds";
 
-const BASE_URL = "https://mes-calculateurs.vercel.app";
+const BASE_URL = "https://mescalculateurs.fr";
 
 export default function EmbedCard({ embed }: { embed: EmbedDef }) {
   const [copied, setCopied] = useState(false);

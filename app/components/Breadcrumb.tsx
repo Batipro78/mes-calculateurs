@@ -11,7 +11,7 @@ export default function Breadcrumb({ currentPage, parentPage, parentHref, lastUp
       "@type": "ListItem" as const,
       position: 1,
       name: "Accueil",
-      item: "https://mes-calculateurs.vercel.app",
+      item: "https://mescalculateurs.fr",
     },
   ];
 
@@ -20,7 +20,7 @@ export default function Breadcrumb({ currentPage, parentPage, parentHref, lastUp
       "@type": "ListItem" as const,
       position: 2,
       name: parentPage,
-      item: `https://mes-calculateurs.vercel.app${parentHref}`,
+      item: `https://mescalculateurs.fr${parentHref}`,
     });
     items.push({
       "@type": "ListItem" as const,

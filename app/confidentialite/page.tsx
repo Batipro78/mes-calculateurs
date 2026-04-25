@@ -29,7 +29,7 @@ export default function Page() {
             1. Introduction
           </h2>
           <p className="text-slate-600 leading-relaxed">
-            Le site <strong>mes-calculateurs.vercel.app</strong> respecte votre
+            Le site <strong>mescalculateurs.fr</strong> respecte votre
             vie privee. Cette page vous explique quelles donnees sont collectees
             et comment elles sont utilisees.
           </p>

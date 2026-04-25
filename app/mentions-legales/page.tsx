@@ -28,7 +28,7 @@ export default function Page() {
             1. Editeur du site
           </h2>
           <p className="text-slate-600 leading-relaxed">
-            Le site <strong>mes-calculateurs.vercel.app</strong> est edite par :
+            Le site <strong>mescalculateurs.fr</strong> est edite par :
           </p>
           <ul className="text-slate-600 mt-2 space-y-1">
             <li>

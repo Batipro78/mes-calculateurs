@@ -49,8 +49,8 @@ export default function robots(): MetadataRoute.Robots {
       },
     ],
     sitemap: [
-      "https://mes-calculateurs.vercel.app/sitemap.xml",
-      "https://mes-calculateurs.vercel.app/sitemap-index.xml",
+      "https://mescalculateurs.fr/sitemap.xml",
+      "https://mescalculateurs.fr/sitemap-index.xml",
     ],
   };
 }

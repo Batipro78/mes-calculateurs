@@ -148,13 +148,13 @@ export default async function Page({
         "@type": "ListItem",
         position: 1,
         name: "Accueil",
-        item: "https://mes-calculateurs.vercel.app",
+        item: "https://mescalculateurs.fr",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Simulateur Cout Voiture",
-        item: "https://mes-calculateurs.vercel.app/simulateur-cout-voiture",
+        item: "https://mescalculateurs.fr/simulateur-cout-voiture",
       },
       {
         "@type": "ListItem",
