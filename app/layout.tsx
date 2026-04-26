@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import GoogleAnalytics from "./components/GoogleAnalytics";
 import "./globals.css";
+
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mescalculateurs.fr"),
@@ -72,6 +75,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 text-gray-900 antialiased">
+        {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
         <Script
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7951968617097687"
           strategy="afterInteractive"

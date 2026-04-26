@@ -1108,6 +1108,12 @@ function generateAllUrls(): SitemapEntry[] {
       changeFrequency: "monthly",
       priority: 0.6,
     },
+    {
+      url: `${BASE_URL}/integrateurs`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
   ];
 
   // Pages dynamiques Salaire Brut/Net
