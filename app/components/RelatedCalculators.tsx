@@ -99,6 +99,7 @@ const ALL_CALCULATORS = [
   { slug: "/calcul-prise-poids-grossesse", title: "Prise Poids Grossesse", emoji: "🤰", color: "from-pink-500 to-rose-600" },
   { slug: "/calcul-amortissement-lmnp", title: "Amortissement LMNP", emoji: "🏠", color: "from-teal-500 to-emerald-600" },
   { slug: "/simulateur-dividendes", title: "Simulateur Dividendes", emoji: "💎", color: "from-violet-500 to-purple-600" },
+  { slug: "/audit-frais-bancaires", title: "Audit Frais Bancaires", emoji: "🔍", color: "from-red-500 to-orange-600" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -202,6 +203,7 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calcul-prise-poids-grossesse": ["/calcul-date-accouchement", "/calcul-imc", "/calcul-ovulation", "/calcul-calories"],
   "/calcul-amortissement-lmnp": ["/calcul-rentabilite-locative", "/calcul-revenus-fonciers", "/frais-de-notaire", "/calcul-plus-value-immobiliere"],
   "/simulateur-dividendes": ["/simulateur-impot-societe", "/simulateur-impot-revenu", "/simulateur-micro-entreprise", "/calcul-taux-endettement"],
+  "/audit-frais-bancaires": ["/calcul-taux-endettement", "/simulateur-credit-conso", "/simulateur-epargne", "/calculateur-budget-survie"],
 };
 
 interface RelatedCalculatorsProps {

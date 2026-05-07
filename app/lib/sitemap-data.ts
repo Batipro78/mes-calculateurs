@@ -887,6 +887,12 @@ function generateAllUrls(): SitemapEntry[] {
       priority: 0.9,
     },
     {
+      url: `${BASE_URL}/audit-frais-bancaires`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: `${BASE_URL}/calcul-pension-reversion`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -2192,6 +2198,18 @@ function generateAllUrls(): SitemapEntry[] {
     }
   }
 
+  // Pages dynamiques Audit Frais Bancaires (par banque)
+  const AUDIT_BANQUES_SLUGS = [
+    "credit-agricole", "bnp-paribas", "societe-generale", "banque-postale", "lcl",
+    "caisse-epargne", "credit-mutuel", "cic", "bred", "hsbc-france",
+    "boursobank", "fortuneo", "hello-bank", "monabanq", "bforbank",
+    "revolut", "n26", "lydia",
+  ];
+  const auditBanquesPages: SitemapEntry[] = [];
+  for (const b of AUDIT_BANQUES_SLUGS) {
+    auditBanquesPages.push({ url: `${BASE_URL}/audit-frais-bancaires/${b}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 });
+  }
+
   return [
     ...staticPages,
     ...salairePages,
@@ -2295,5 +2313,6 @@ function generateAllUrls(): SitemapEntry[] {
     ...dpePages,
     ...facGazPages,
     ...creditAutoPages,
+    ...auditBanquesPages,
   ];
 }
