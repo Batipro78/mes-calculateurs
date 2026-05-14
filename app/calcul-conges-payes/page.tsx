@@ -7,9 +7,9 @@ import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-conges-payes" },
-  title: "Calcul Conges Payes 2026 - Jours Acquis et Indemnite",
+  title: "Calcul Congés Payés 2026 : Indemnité 1/10e vs Maintien",
   description:
-    "Calculez vos conges payes : nombre de jours acquis, indemnite (methode du 1/10e vs maintien). Temps partiel, CDD, periode de reference. Bareme 2026.",
+    "Calculez vos congés payés 2026 : jours acquis, deux méthodes d'indemnité comparées. Temps partiel, CDD, rupture inclus. Simulateur gratuit.",
   keywords:
     "calcul conges payes, jours conges payes, indemnite conges payes, conges payes 2026, 2.5 jours par mois, methode dixieme, calcul cp, solde conges payes",
 };

@@ -8,9 +8,9 @@ import VillesLinks from "../components/VillesLinks";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-taxe-fonciere" },
-  title: "Calcul Taxe Fonciere 2026 - Simulateur Estimation Gratuit",
+  title: "Calcul Taxe Foncière 2026 : Simulateur Précis par Ville",
   description:
-    "Estimez votre taxe fonciere 2026 en ligne. Valeur locative cadastrale, taux communal par ville, abattement 50%, exoneration neuf. Simulateur gratuit et instantane.",
+    "Taxe foncière 2026 en 30 secondes : taux par ville, abattement 50%, exonérations neuf. Estimation gratuite + comparaison 2025 vs 2026.",
   keywords:
     "calcul taxe fonciere, simulateur taxe fonciere 2026, estimation taxe fonciere, valeur locative cadastrale, taux communal, taxe fonciere par ville, exoneration taxe fonciere neuf",
 };

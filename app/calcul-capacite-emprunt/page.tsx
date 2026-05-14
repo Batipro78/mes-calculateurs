@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import CalculCapaciteEmprunt from "./CalculCapaciteEmprunt";
+import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-capacite-emprunt" },
-  title: "Calcul Capacite d'Emprunt 2026 - Simulateur gratuit en ligne",
+  title: "Capacité d'Emprunt 2026 : Simulateur HCSF 35% + Apport",
   description:
-    "Calculez votre capacite d'emprunt immobilier en 2026. Simulateur gratuit selon vos revenus, charges, apport et duree. Regles HCSF, taux d'endettement 35%, comparatif 15/20/25 ans.",
+    "Combien pouvez-vous emprunter en 2026 ? Calcul HCSF 35%, comparatif 15/20/25 ans, taux actuels. 5 leviers pour augmenter votre capacité.",
   keywords:
     "capacite emprunt, combien emprunter, simulateur emprunt immobilier, calcul capacite emprunt 2026, taux endettement, HCSF, pret immobilier, mensualite maximale",
 };
@@ -44,6 +45,7 @@ export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Capacite d'Emprunt" />
+      <Breadcrumb currentPage="Calcul Capacite d'Emprunt" />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
