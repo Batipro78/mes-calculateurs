@@ -1,60 +1,37 @@
-# Indexation automatique - mescalculateurs.fr
+# Indexation - mescalculateurs.fr
 
-Push automatique des URLs vers Google + Bing/Yandex chaque jour pour forcer l'indexation.
+## Etat actuel (mai 2026)
 
-## Comment ca marche
+- **IndexNow (Bing/Yandex)** : actif via `.github/workflows/indexnow.yml`. Pousse tout le sitemap chaque lundi + a chaque modif. Aucune action requise.
+- **Google Indexing API** : **DESACTIVE** (workflow renomme `.disabled`). Voir section "Pourquoi desactive" plus bas.
+- **Sitemap Google** : `sitemap-index.xml` soumis dans Google Search Console. Google crawl naturellement.
 
-- **Google Indexing API** : 200 URLs/jour pousses en rotation. Cycle complet (~6700 URLs) en ~34 jours.
-- **IndexNow (Bing/Yandex)** : tout le sitemap pousse chaque lundi + a chaque modif du sitemap.
+## Strategie d'indexation Google
 
-## Setup Google Indexing API (a faire une fois)
+Pour accelerer l'indexation des nouvelles pages :
 
-### 1. Activer l'API
-- Aller sur https://console.cloud.google.com/
-- Creer un projet (ex: "mescalculateurs-indexing") ou utiliser un projet existant
-- Menu -> APIs & Services -> Library
-- Chercher "Web Search Indexing API" -> Enable
+1. **Sitemap dans GSC** : `https://mescalculateurs.fr/sitemap-index.xml` doit etre present dans Search Console -> Sitemaps. Verifier qu'il n'y a pas d'erreur de lecture.
 
-### 2. Creer un service account
-- Menu -> IAM & Admin -> Service Accounts -> Create Service Account
-- Nom: `indexing-pusher`
-- Role: aucun a ajouter (skip)
-- Create
+2. **URL Inspection > Demander l'indexation** : pour les 10 calculateurs prioritaires (top volume Google), aller dans GSC -> "Inspecter une URL" -> coller l'URL -> "Demander l'indexation". Limite 10/jour mais ciblé et garanti.
 
-### 3. Generer la cle JSON
-- Cliquer sur le service account cree
-- Onglet "Keys" -> Add Key -> Create new key -> JSON
-- Telecharger le fichier (le garder PRECIEUSEMENT, on ne peut pas le retelecharger)
+3. **Backlinks** : campagne de prospection en cours (voir `backlinks-campagne.md` en memoire). C'est le levier le plus efficace pour l'autorite du domaine et donc la vitesse de crawl Google.
 
-### 4. Ajouter le service account dans Search Console
-- Copier le `client_email` du JSON (ex: `indexing-pusher@projet.iam.gserviceaccount.com`)
-- Aller sur https://search.google.com/search-console
-- Selectionner la propriete mescalculateurs.fr
-- Settings (engrenage en bas) -> Users and permissions -> Add user
-- Email du service account, role: **Owner** (obligatoire pour l'Indexing API)
+4. **Internal linking** : `RelatedCalculators.tsx` croise les calculateurs entre eux. Continuer a maintenir un maillage interne dense.
 
-### 5. Mettre le JSON en GitHub Secret
-- Repo GitHub -> Settings -> Secrets and variables -> Actions -> New repository secret
-- Nom: `GOOGLE_INDEXING_CREDENTIALS`
-- Valeur: coller le **contenu complet** du fichier JSON (tout, accolades comprises)
-- Add secret
+## Pourquoi le Google Indexing API a ete desactive (16/05/2026)
 
-## Setup IndexNow (rien a faire)
+3 raisons structurelles :
 
-Tout est deja en place. Apres deploiement, le fichier `public/8f4d3c2b1a9e8f7d6c5b4a3e2d1c9b8a.txt` sera accessible sur https://mescalculateurs.fr/8f4d3c2b1a9e8f7d6c5b4a3e2d1c9b8a.txt et IndexNow validera automatiquement.
+1. **Non supporte officiellement pour les calculateurs**. Google reserve l'Indexing API aux pages `JobPosting` (offres d'emploi) et `BroadcastEvent` (livestreams). Pour le reste, Google peut ignorer les push ou meme blacklister un site qui abuse.
 
-## Lancer manuellement
+2. **Quota de 200 URLs/jour** : avec 6682 URLs au sitemap, un cycle complet prend 34 jours. Et Google n'indexe pas a la demande de toute facon — ça push juste une "suggestion" de crawl que Google peut ignorer.
 
-- Repo GitHub -> Actions -> "Google Indexing API" -> Run workflow
-- Repo GitHub -> Actions -> "IndexNow (Bing/Yandex)" -> Run workflow
+3. **Setup complexe pour benefice incertain** : il faut creer un service account Google Cloud, le verifier comme Owner d'une propriete Search Console (impossible direct sur les proprietes Domain), et maintenir le secret GitHub. Le ROI ne le justifie pas.
 
-## Suivi
+Le script `scripts/google-indexing.mjs` est conserve mais inutilise. Le workflow `.github/workflows/google-indexing.yml.disabled` n'est plus execute par GitHub Actions (extension `.disabled` ignoree).
 
-- Google : Search Console -> Indexing -> Pages (verifier la progression chaque semaine)
-- Bing : https://www.bing.com/webmasters (ajouter le site avec la meme cle IndexNow pour suivre)
+## Re-activer le workflow (si besoin un jour)
 
-## Cycle Google
-
-Le script pousse 200 URLs/jour en rotation. Avec ~6700 URLs au sitemap :
-- ~34 jours pour un cycle complet
-- Puis le cycle recommence (Google reverifie les pages deja indexees, normal)
+1. Renommer `.github/workflows/google-indexing.yml.disabled` -> `.github/workflows/google-indexing.yml`
+2. Re-faire le setup Google Cloud + Search Console (voir l'historique git de ce fichier pour le guide original)
+3. Verifier que le secret `GOOGLE_INDEXING_CREDENTIALS` existe encore dans GitHub
