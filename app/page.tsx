@@ -943,6 +943,46 @@ export default function Home() {
         </div>
       </nav>
 
+      <section className="mb-10">
+        <h2 className="text-lg font-bold text-slate-800 mb-4">Par pays</h2>
+        <div className="grid gap-3 sm:grid-cols-2">
+          <a
+            href="/be"
+            className="group flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-2xl hover:border-red-300 hover:shadow-md transition-all"
+          >
+            <div className="w-12 h-12 bg-gradient-to-br from-yellow-500 to-red-600 rounded-xl flex items-center justify-center text-2xl shadow-sm shrink-0">
+              🇧🇪
+            </div>
+            <div className="min-w-0">
+              <h3 className="text-base font-bold text-slate-800 group-hover:text-red-600 transition-colors">
+                Calculateurs Belgique
+              </h3>
+              <p className="text-sm text-slate-500 leading-relaxed">
+                Salaire brut/net, TVA 21 %, droits d&apos;enregistrement,
+                precompte immobilier. Baremes 2026.
+              </p>
+            </div>
+          </a>
+          <a
+            href="/en"
+            className="group flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-2xl hover:border-blue-300 hover:shadow-md transition-all"
+          >
+            <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center text-2xl shadow-sm shrink-0">
+              🇺🇸
+            </div>
+            <div className="min-w-0">
+              <h3 className="text-base font-bold text-slate-800 group-hover:text-blue-600 transition-colors">
+                English calculators
+              </h3>
+              <p className="text-sm text-slate-500 leading-relaxed">
+                Nuclear bomb, blackout, bunker, survival budget, draft. US
+                edition.
+              </p>
+            </div>
+          </a>
+        </div>
+      </section>
+
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {outils.map((outil) => (
           <a

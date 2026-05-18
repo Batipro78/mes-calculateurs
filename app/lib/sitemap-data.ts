@@ -1645,6 +1645,15 @@ function generateAllUrls(): SitemapEntry[] {
     enDraftPages.push({ url: `${BASE_URL}/en/draft-simulator/${p}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
+  // --- BE Static Pages (Belgique) ---
+  const beStaticPages: SitemapEntry[] = [
+    { url: `${BASE_URL}/be`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/be/salaire-brut-net`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/be/calcul-tva`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/be/droits-enregistrement`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/be/precompte-immobilier`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+  ];
+
   // Pages dynamiques Poids Ideal
   const PI_SEXES = ["homme", "femme"];
   const PI_TAILLES = [155, 158, 160, 163, 165, 168, 170, 173, 175, 178, 180, 183, 185, 188, 190];
@@ -2277,6 +2286,7 @@ function generateAllUrls(): SitemapEntry[] {
     ...enBunkerPages,
     ...enSurvivalPages,
     ...enDraftPages,
+    ...beStaticPages,
     ...tempPages,
     ...poidsPages,
     ...longueurPages,
