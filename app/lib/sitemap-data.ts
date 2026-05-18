@@ -1652,6 +1652,11 @@ function generateAllUrls(): SitemapEntry[] {
     { url: `${BASE_URL}/be/calcul-tva`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE_URL}/be/droits-enregistrement`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE_URL}/be/precompte-immobilier`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/be/simulateur-pret-immobilier`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/be/indemnite-licenciement`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/be/simulateur-chomage`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/be/droits-succession`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/be/calcul-capacite-emprunt`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
   ];
 
   // --- BE Dynamic Pages ---
@@ -1701,6 +1706,62 @@ function generateAllUrls(): SitemapEntry[] {
   for (const rc of BE_PRECOMPTE_RC) {
     for (const r of BE_PRECOMPTE_REGIONS) {
       bePrecomptePages.push({ url: `${BASE_URL}/be/precompte-immobilier/${rc}-rc-${r}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Pret immobilier BE : montant x duree
+  const BE_PRET_MONTANTS = [100000, 150000, 200000, 250000, 300000, 350000, 400000, 500000, 600000];
+  const BE_PRET_DUREES = [15, 20, 25, 30];
+  const bePretPages: SitemapEntry[] = [];
+  for (const m of BE_PRET_MONTANTS) {
+    for (const d of BE_PRET_DUREES) {
+      bePretPages.push({ url: `${BASE_URL}/be/simulateur-pret-immobilier/${m}-euros-${d}-ans`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Indemnite licenciement BE : brut x annees
+  const BE_LICENC_BRUTS = [2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000];
+  const BE_LICENC_ANNEES = [1, 2, 5, 10, 15, 20, 25, 30];
+  const beLicenciementPages: SitemapEntry[] = [];
+  for (const b of BE_LICENC_BRUTS) {
+    for (const a of BE_LICENC_ANNEES) {
+      beLicenciementPages.push({ url: `${BASE_URL}/be/indemnite-licenciement/${b}-euros-${a}-ans`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Chomage BE : brut x situation x mois
+  const BE_CHOMAGE_BRUTS = [1800, 2000, 2400, 2800, 3000, 3500, 4000, 5000];
+  const BE_CHOMAGE_SITUATIONS = ["isole", "chef-famille", "cohabitant"];
+  const BE_CHOMAGE_MOIS = [3, 6, 12, 18, 24];
+  const beChomagePages: SitemapEntry[] = [];
+  for (const b of BE_CHOMAGE_BRUTS) {
+    for (const s of BE_CHOMAGE_SITUATIONS) {
+      for (const m of BE_CHOMAGE_MOIS) {
+        beChomagePages.push({ url: `${BASE_URL}/be/simulateur-chomage/${b}-euros-${s}-${m}-mois`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      }
+    }
+  }
+
+  // Succession BE : patrimoine x region x heritiers
+  const BE_SUCC_PATRIMOINES = [100000, 200000, 300000, 500000, 750000, 1000000, 1500000];
+  const BE_SUCC_REGIONS = ["wallonie", "flandre", "bruxelles"];
+  const BE_SUCC_HERITIERS = [1, 2, 3];
+  const beSuccPages: SitemapEntry[] = [];
+  for (const p of BE_SUCC_PATRIMOINES) {
+    for (const r of BE_SUCC_REGIONS) {
+      for (const h of BE_SUCC_HERITIERS) {
+        beSuccPages.push({ url: `${BASE_URL}/be/droits-succession/${p}-euros-${r}-${h}-heritier${h > 1 ? "s" : ""}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      }
+    }
+  }
+
+  // Capacite emprunt BE : revenu x duree
+  const BE_CAPACITE_REVENUS = [1800, 2000, 2500, 3000, 3500, 4000, 5000, 6000, 8000];
+  const BE_CAPACITE_DUREES = [15, 20, 25, 30];
+  const beCapacitePages: SitemapEntry[] = [];
+  for (const r of BE_CAPACITE_REVENUS) {
+    for (const d of BE_CAPACITE_DUREES) {
+      beCapacitePages.push({ url: `${BASE_URL}/be/calcul-capacite-emprunt/${r}-euros-${d}-ans`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
     }
   }
 
@@ -2341,6 +2402,11 @@ function generateAllUrls(): SitemapEntry[] {
     ...beSalairePages,
     ...beDroitsPages,
     ...bePrecomptePages,
+    ...bePretPages,
+    ...beLicenciementPages,
+    ...beChomagePages,
+    ...beSuccPages,
+    ...beCapacitePages,
     ...tempPages,
     ...poidsPages,
     ...longueurPages,

@@ -23,9 +23,27 @@ const outilsBe = [
     tag: "Populaire",
   },
   {
+    titre: "Simulateur Pret Hypothecaire",
+    description:
+      "Calculez votre mensualite, cout total et interets au taux marche belge 2026 (3,05 % a 3,45 %).",
+    href: "/be/simulateur-pret-immobilier",
+    icone: "🏠",
+    couleur: "from-violet-500 to-purple-500",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Capacite d'Emprunt BE",
+    description:
+      "Combien pouvez-vous emprunter en Belgique ? Taux endettement max 33 %, taux marche 2026, simulation par duree.",
+    href: "/be/calcul-capacite-emprunt",
+    icone: "💼",
+    couleur: "from-blue-500 to-indigo-600",
+    tag: "Nouveau",
+  },
+  {
     titre: "Calcul TVA Belgique",
     description:
-      "Calculez HT, TVAC et TVA aux taux belges : 21%, 12% et 6%. Conforme 2026.",
+      "Calculez HTVA, TVAC et TVA aux taux belges : 21 %, 12 % et 6 %. Conforme 2026.",
     href: "/be/calcul-tva",
     icone: "🧾",
     couleur: "from-emerald-500 to-teal-500",
@@ -34,11 +52,11 @@ const outilsBe = [
   {
     titre: "Droits d'Enregistrement Immobilier",
     description:
-      "Calculez les droits d'enregistrement par region : Wallonie 3% / Flandre 2% / Bruxelles avec abattement 200 000 EUR.",
+      "Calculez les droits d'enregistrement par region : Wallonie 3 % / Flandre 2 % / Bruxelles avec abattement 200 000 EUR.",
     href: "/be/droits-enregistrement",
-    icone: "🏠",
+    icone: "🏘️",
     couleur: "from-rose-500 to-red-600",
-    tag: "Nouveau",
+    tag: "",
   },
   {
     titre: "Precompte Immobilier",
@@ -47,6 +65,33 @@ const outilsBe = [
     href: "/be/precompte-immobilier",
     icone: "🏛️",
     couleur: "from-amber-500 to-orange-600",
+    tag: "",
+  },
+  {
+    titre: "Droits de Succession",
+    description:
+      "Calcul des droits de succession en ligne directe selon votre region. Baremes 2026 + reforme wallonne 2028.",
+    href: "/be/droits-succession",
+    icone: "⚖️",
+    couleur: "from-slate-700 to-slate-900",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Indemnite Licenciement",
+    description:
+      "Calculez votre indemnite de rupture selon le bareme officiel post-2014 (statut unifie ouvriers/employes).",
+    href: "/be/indemnite-licenciement",
+    icone: "📄",
+    couleur: "from-indigo-500 to-purple-500",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Simulateur Chomage ONEM",
+    description:
+      "Calculez vos allocations chomage avec la reforme 2026 : taux degressifs 65 % / 60 % / 40 %, duree max 24 mois.",
+    href: "/be/simulateur-chomage",
+    icone: "📋",
+    couleur: "from-sky-500 to-blue-600",
     tag: "Nouveau",
   },
 ];
