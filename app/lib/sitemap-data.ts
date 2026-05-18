@@ -1654,6 +1654,56 @@ function generateAllUrls(): SitemapEntry[] {
     { url: `${BASE_URL}/be/precompte-immobilier`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
   ];
 
+  // --- BE Dynamic Pages ---
+  // TVA BE : montant x taux
+  const BE_TVA_MONTANTS = [50, 100, 200, 500, 1000, 2000, 5000, 10000];
+  const BE_TVA_TAUX = ["21", "12", "6"];
+  const beTvaPages: SitemapEntry[] = [];
+  for (const m of BE_TVA_MONTANTS) {
+    for (const t of BE_TVA_TAUX) {
+      beTvaPages.push({ url: `${BASE_URL}/be/calcul-tva/${m}-euros-${t}-pourcent`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Salaire BE : brut/net x situation familiale
+  const BE_SAL_BRUT = [1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 8000];
+  const BE_SAL_NET = [1200, 1500, 1800, 2000, 2300, 2500, 2800, 3000, 3500, 4000, 4500];
+  const BE_SAL_SITUATIONS = ["isole", "marie-1-revenu", "marie-2-revenus"];
+  const beSalairePages: SitemapEntry[] = [];
+  for (const b of BE_SAL_BRUT) {
+    for (const s of BE_SAL_SITUATIONS) {
+      beSalairePages.push({ url: `${BASE_URL}/be/salaire-brut-net/${b}-euros-${s}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+  for (const n of BE_SAL_NET) {
+    for (const s of BE_SAL_SITUATIONS) {
+      beSalairePages.push({ url: `${BASE_URL}/be/salaire-brut-net/${n}-euros-net-${s}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Droits d'enregistrement BE : prix x region x statut
+  const BE_DROITS_PRIX = [100000, 150000, 200000, 250000, 300000, 350000, 400000, 500000];
+  const BE_DROITS_REGIONS = ["wallonie", "flandre", "bruxelles"];
+  const BE_DROITS_STATUTS = ["habitation-unique", "investissement"];
+  const beDroitsPages: SitemapEntry[] = [];
+  for (const p of BE_DROITS_PRIX) {
+    for (const r of BE_DROITS_REGIONS) {
+      for (const s of BE_DROITS_STATUTS) {
+        beDroitsPages.push({ url: `${BASE_URL}/be/droits-enregistrement/${p}-euros-${r}-${s}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      }
+    }
+  }
+
+  // Precompte immobilier BE : RC x region
+  const BE_PRECOMPTE_RC = [500, 800, 1000, 1200, 1500, 2000, 3000, 5000];
+  const BE_PRECOMPTE_REGIONS = ["wallonie", "flandre", "bruxelles"];
+  const bePrecomptePages: SitemapEntry[] = [];
+  for (const rc of BE_PRECOMPTE_RC) {
+    for (const r of BE_PRECOMPTE_REGIONS) {
+      bePrecomptePages.push({ url: `${BASE_URL}/be/precompte-immobilier/${rc}-rc-${r}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
   // Pages dynamiques Poids Ideal
   const PI_SEXES = ["homme", "femme"];
   const PI_TAILLES = [155, 158, 160, 163, 165, 168, 170, 173, 175, 178, 180, 183, 185, 188, 190];
@@ -2287,6 +2337,10 @@ function generateAllUrls(): SitemapEntry[] {
     ...enSurvivalPages,
     ...enDraftPages,
     ...beStaticPages,
+    ...beTvaPages,
+    ...beSalairePages,
+    ...beDroitsPages,
+    ...bePrecomptePages,
     ...tempPages,
     ...poidsPages,
     ...longueurPages,
