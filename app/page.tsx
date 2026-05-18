@@ -899,6 +899,33 @@ const outils = [
     couleur: "from-violet-500 to-purple-600",
     tag: "Nouveau",
   },
+  {
+    titre: "Calculateur Gain Pari Sportif",
+    description:
+      "Calcul mathematique du gain potentiel selon la cote (decimale/fractionnelle/americaine). Outil neutre.",
+    href: "/calculateur-gain-pari",
+    icone: "🎯",
+    couleur: "from-slate-700 to-slate-900",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Calculateur Pari Combine",
+    description:
+      "Cote totale = produit des cotes. Calcul gain combine 2 a 10 selections. Probabilite implicite.",
+    href: "/calculateur-pari-combine",
+    icone: "🔗",
+    couleur: "from-indigo-600 to-purple-700",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Convertisseur Cote / Probabilite",
+    description:
+      "Conversion entre cotes decimales, fractionnelles, americaines et probabilites implicites. Marge bookmaker.",
+    href: "/convertisseur-cote-probabilite",
+    icone: "📊",
+    couleur: "from-teal-600 to-cyan-700",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {

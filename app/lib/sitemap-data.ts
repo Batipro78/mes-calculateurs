@@ -422,6 +422,14 @@ const DPE_EPOQUES = ["avant-1975", "1975-1989", "1990-2005", "2006-2012", "apres
 const CA_MONTANTS = [10000, 15000, 20000, 25000, 30000, 35000, 40000, 50000];
 const CA_DUREES = [24, 36, 48, 60, 72];
 
+// Paris sportifs
+const PARI_MISES = [1, 5, 10, 20, 50, 100, 500];
+const PARI_COTES_SLUGS = ["1-25", "1-50", "1-80", "2-00", "2-50", "3-00", "5-00", "10-00"];
+const COMBINE_NB = [2, 3, 4, 5];
+const COMBINE_COTES = ["1-50", "1-80", "2-00", "2-50", "3-00"];
+const COMBINE_MISES = [5, 10, 20, 50];
+const PROBA_COTES = ["1-10", "1-25", "1-50", "1-80", "2-00", "2-25", "2-50", "3-00", "4-00", "5-00", "7-00", "10-00"];
+
 let _cachedAll: SitemapEntry[] | null = null;
 export function getAllUrls(): SitemapEntry[] {
   if (_cachedAll === null) _cachedAll = generateAllUrls();
@@ -1877,6 +1885,37 @@ function generateAllUrls(): SitemapEntry[] {
     }
   }
 
+  // Paris sportifs (calcs mathematiques, racine - utilisables FR/BE/CH)
+  const parisSportifsStaticPages: SitemapEntry[] = [
+    { url: `${BASE_URL}/calculateur-gain-pari`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calculateur-pari-combine`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/convertisseur-cote-probabilite`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+  ];
+
+  // Gain pari : mise x cote
+  const gainPariPages: SitemapEntry[] = [];
+  for (const m of PARI_MISES) {
+    for (const c of PARI_COTES_SLUGS) {
+      gainPariPages.push({ url: `${BASE_URL}/calculateur-gain-pari/${m}-euros-cote-${c}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Pari combine : nb x cote x mise
+  const combinePages: SitemapEntry[] = [];
+  for (const n of COMBINE_NB) {
+    for (const c of COMBINE_COTES) {
+      for (const m of COMBINE_MISES) {
+        combinePages.push({ url: `${BASE_URL}/calculateur-pari-combine/${n}-selections-${c}-cote-${m}-mise`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      }
+    }
+  }
+
+  // Probabilite cote : cote
+  const probaPages: SitemapEntry[] = [];
+  for (const c of PROBA_COTES) {
+    probaPages.push({ url: `${BASE_URL}/convertisseur-cote-probabilite/cote-${c}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
   // Pages dynamiques Poids Ideal
   const PI_SEXES = ["homme", "femme"];
   const PI_TAILLES = [155, 158, 160, 163, 165, 168, 170, 173, 175, 178, 180, 183, 185, 188, 190];
@@ -2527,6 +2566,10 @@ function generateAllUrls(): SitemapEntry[] {
     ...beAtnPages,
     ...beCongesPages,
     ...bePvPages,
+    ...parisSportifsStaticPages,
+    ...gainPariPages,
+    ...combinePages,
+    ...probaPages,
     ...tempPages,
     ...poidsPages,
     ...longueurPages,
