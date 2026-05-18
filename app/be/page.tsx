@@ -94,6 +94,42 @@ const outilsBe = [
     couleur: "from-sky-500 to-blue-600",
     tag: "Nouveau",
   },
+  {
+    titre: "Pension Alimentaire - Méthode Renard",
+    description:
+      "Calculez la pension alimentaire selon la méthode Renard officielle. Coefficients par age, plafond 1/3, déduction 80%.",
+    href: "/be/pension-alimentaire",
+    icone: "👨‍👩‍👧",
+    couleur: "from-pink-500 to-rose-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Indemnité Kilométrique",
+    description:
+      "Calculez votre indemnite kilometrique selon les taux belges 2026 : 0,4326 EUR/km (trimestriel), 0,4449 EUR/km (annuel), fonctionnaire.",
+    href: "/be/indemnite-kilometrique",
+    icone: "🚗",
+    couleur: "from-teal-500 to-cyan-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Simulateur Dividendes",
+    description:
+      "Calculez le net apres precompte mobilier belge : 30 % standard, 15 % VVPRbis PME, 6,5 % reserves liquidation. Exoneration 833 EUR.",
+    href: "/be/simulateur-dividendes",
+    icone: "📈",
+    couleur: "from-green-500 to-emerald-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Impôt des Sociétés (ISOC)",
+    description:
+      "Calculez l'impot des societes belge : taux normal 25 %, taux reduit PME 20 % sur les 100 000 EUR de benefice. Conditions PME 2026.",
+    href: "/be/simulateur-isoc",
+    icone: "🏢",
+    couleur: "from-blue-600 to-indigo-700",
+    tag: "Nouveau",
+  },
 ];
 
 export default function PageBe() {

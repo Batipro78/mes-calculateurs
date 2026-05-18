@@ -1657,6 +1657,10 @@ function generateAllUrls(): SitemapEntry[] {
     { url: `${BASE_URL}/be/simulateur-chomage`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE_URL}/be/droits-succession`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE_URL}/be/calcul-capacite-emprunt`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/be/pension-alimentaire`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/be/indemnite-kilometrique`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/be/simulateur-dividendes`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/be/simulateur-isoc`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
   ];
 
   // --- BE Dynamic Pages ---
@@ -1762,6 +1766,52 @@ function generateAllUrls(): SitemapEntry[] {
   for (const r of BE_CAPACITE_REVENUS) {
     for (const d of BE_CAPACITE_DUREES) {
       beCapacitePages.push({ url: `${BASE_URL}/be/calcul-capacite-emprunt/${r}-euros-${d}-ans`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Pension alimentaire BE : revenu1 x revenu2 x age x nbenfants
+  const BE_PENSION_REVENUS1 = [2000, 3000, 4000, 5000];
+  const BE_PENSION_REVENUS2 = [0, 1500, 2500, 3500];
+  const BE_PENSION_AGES = [5, 10, 15];
+  const BE_PENSION_ENFANTS = [1, 2, 3];
+  const bePensionPages: SitemapEntry[] = [];
+  for (const r1 of BE_PENSION_REVENUS1) {
+    for (const r2 of BE_PENSION_REVENUS2) {
+      for (const a of BE_PENSION_AGES) {
+        for (const e of BE_PENSION_ENFANTS) {
+          bePensionPages.push({ url: `${BASE_URL}/be/pension-alimentaire/${r1}-euros-${r2}-euros-${a}-ans-${e}-enfant`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+        }
+      }
+    }
+  }
+
+  // Indemnite kilometrique BE : distance x regime
+  const BE_KM_DISTANCES = [1000, 3000, 5000, 8000, 10000, 15000, 20000, 25000, 30000];
+  const BE_KM_REGIMES = ["trimestrielle", "annuelle", "fonctionnaire", "fraisReels"];
+  const beKmPages: SitemapEntry[] = [];
+  for (const d of BE_KM_DISTANCES) {
+    for (const r of BE_KM_REGIMES) {
+      beKmPages.push({ url: `${BASE_URL}/be/indemnite-kilometrique/${d}-km-${r}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Dividendes BE : montant x regime
+  const BE_DIV_MONTANTS = [500, 1000, 2500, 5000, 10000, 25000, 50000, 100000];
+  const BE_DIV_REGIMES = ["standard-30", "vvprbis-15", "liquidation-6.5"];
+  const beDividendesPages: SitemapEntry[] = [];
+  for (const m of BE_DIV_MONTANTS) {
+    for (const r of BE_DIV_REGIMES) {
+      beDividendesPages.push({ url: `${BASE_URL}/be/simulateur-dividendes/${m}-euros-${r}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // ISOC BE : benefice x statut
+  const BE_ISOC_BENEFICES = [10000, 25000, 50000, 75000, 100000, 150000, 250000, 500000, 1000000];
+  const BE_ISOC_STATUTS = ["pme", "non-pme"];
+  const beIsocPages: SitemapEntry[] = [];
+  for (const b of BE_ISOC_BENEFICES) {
+    for (const s of BE_ISOC_STATUTS) {
+      beIsocPages.push({ url: `${BASE_URL}/be/simulateur-isoc/${b}-euros-${s}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
     }
   }
 
@@ -2407,6 +2457,10 @@ function generateAllUrls(): SitemapEntry[] {
     ...beChomagePages,
     ...beSuccPages,
     ...beCapacitePages,
+    ...bePensionPages,
+    ...beKmPages,
+    ...beDividendesPages,
+    ...beIsocPages,
     ...tempPages,
     ...poidsPages,
     ...longueurPages,
