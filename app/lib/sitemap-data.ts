@@ -1661,6 +1661,10 @@ function generateAllUrls(): SitemapEntry[] {
     { url: `${BASE_URL}/be/indemnite-kilometrique`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE_URL}/be/simulateur-dividendes`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE_URL}/be/simulateur-isoc`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/be/allocations-familiales`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/be/atn-voiture-societe`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/be/conges-payes`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/be/plus-value-immobiliere`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
   ];
 
   // --- BE Dynamic Pages ---
@@ -1812,6 +1816,64 @@ function generateAllUrls(): SitemapEntry[] {
   for (const b of BE_ISOC_BENEFICES) {
     for (const s of BE_ISOC_STATUTS) {
       beIsocPages.push({ url: `${BASE_URL}/be/simulateur-isoc/${b}-euros-${s}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  // Allocations familiales BE : region x enfants x age moyen
+  const BE_ALLOC_REGIONS = ["wallonie", "flandre", "bruxelles"];
+  const BE_ALLOC_ENFANTS = [1, 2, 3, 4];
+  const BE_ALLOC_AGES = [3, 8, 12, 15];
+  const beAllocPages: SitemapEntry[] = [];
+  for (const r of BE_ALLOC_REGIONS) {
+    for (const n of BE_ALLOC_ENFANTS) {
+      for (const a of BE_ALLOC_AGES) {
+        beAllocPages.push({ url: `${BASE_URL}/be/allocations-familiales/${r}-${n}-enfants-${a}-ans`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      }
+    }
+  }
+
+  // ATN voiture societe BE : valeur x co2 x carburant
+  const BE_ATN_VALEURS = [20000, 30000, 40000, 50000, 70000];
+  const BE_ATN_CO2 = [100, 120, 150, 180];
+  const BE_ATN_CARBURANTS_TH = ["essence", "diesel"];
+  const beAtnPages: SitemapEntry[] = [];
+  for (const v of BE_ATN_VALEURS) {
+    for (const c of BE_ATN_CARBURANTS_TH) {
+      for (const co2 of BE_ATN_CO2) {
+        beAtnPages.push({ url: `${BASE_URL}/be/atn-voiture-societe/${v}-euros-${co2}g-${c}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      }
+    }
+    // Electrique : co2=0 uniquement
+    beAtnPages.push({ url: `${BASE_URL}/be/atn-voiture-societe/${v}-euros-0g-electrique`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
+  // Conges payes BE : brut x statut x mois
+  const BE_CONGES_BRUTS = [2000, 2500, 3000, 3500, 4000, 5000];
+  const BE_CONGES_STATUTS = ["employe", "ouvrier"];
+  const BE_CONGES_MOIS = [6, 9, 12];
+  const beCongesPages: SitemapEntry[] = [];
+  for (const b of BE_CONGES_BRUTS) {
+    for (const s of BE_CONGES_STATUTS) {
+      for (const m of BE_CONGES_MOIS) {
+        beCongesPages.push({ url: `${BASE_URL}/be/conges-payes/${b}-euros-${s}-${m}-mois`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      }
+    }
+  }
+
+  // Plus-value immobiliere BE : prixAchat x prixVente x duree x type (filtrage prixVente > prixAchat)
+  const BE_PV_PRIX_ACHATS = [150000, 200000, 250000, 300000];
+  const BE_PV_PRIX_VENTES = [180000, 250000, 300000, 400000];
+  const BE_PV_DUREES = [2, 4, 6, 10];
+  const BE_PV_TYPES = ["habitation", "bati", "terrain"];
+  const bePvPages: SitemapEntry[] = [];
+  for (const pa of BE_PV_PRIX_ACHATS) {
+    for (const pv of BE_PV_PRIX_VENTES) {
+      if (pv <= pa) continue;
+      for (const d of BE_PV_DUREES) {
+        for (const t of BE_PV_TYPES) {
+          bePvPages.push({ url: `${BASE_URL}/be/plus-value-immobiliere/${pa}-euros-${pv}-euros-${d}-ans-${t}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+        }
+      }
     }
   }
 
@@ -2461,6 +2523,10 @@ function generateAllUrls(): SitemapEntry[] {
     ...beKmPages,
     ...beDividendesPages,
     ...beIsocPages,
+    ...beAllocPages,
+    ...beAtnPages,
+    ...beCongesPages,
+    ...bePvPages,
     ...tempPages,
     ...poidsPages,
     ...longueurPages,

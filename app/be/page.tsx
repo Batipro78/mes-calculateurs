@@ -130,6 +130,42 @@ const outilsBe = [
     couleur: "from-blue-600 to-indigo-700",
     tag: "Nouveau",
   },
+  {
+    titre: "Allocations Familiales",
+    description:
+      "Calculez vos allocations familiales par region : Wallonie (FAMIWAL), Flandre (Groeipakket), Bruxelles (Famiris). Baremes 2026.",
+    href: "/be/allocations-familiales",
+    icone: "👶",
+    couleur: "from-cyan-500 to-blue-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "ATN Voiture de Société",
+    description:
+      "Calculez l'avantage de toute nature de votre voiture de societe : valeur catalogue x 6/7 x % CO2 selon carburant et age. References CO2 2026.",
+    href: "/be/atn-voiture-societe",
+    icone: "🚗",
+    couleur: "from-orange-500 to-red-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Congés Payés & Pécule",
+    description:
+      "Calculez votre pecule de vacances belge : simple et double pecule (92 % brut), 20 jours legal, regimes employe et ouvrier.",
+    href: "/be/conges-payes",
+    icone: "🏖️",
+    couleur: "from-yellow-400 to-amber-500",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Plus-Value Immobilière",
+    description:
+      "Taxation plus-value vente immobilier BE : exoneration habitation principale, 16,5 % si revente < 5 ans, regles terrain.",
+    href: "/be/plus-value-immobiliere",
+    icone: "🏘️",
+    couleur: "from-purple-500 to-fuchsia-600",
+    tag: "Nouveau",
+  },
 ];
 
 export default function PageBe() {
