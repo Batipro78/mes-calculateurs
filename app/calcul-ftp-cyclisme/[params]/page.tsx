@@ -166,12 +166,13 @@ export async function generateMetadata({
   };
 }
 
-export default function Page({
+export default async function Page({
   params,
 }: {
-  params: { params: string };
+  params: Promise<{ params: string }>;
 }) {
-  const parsed = parseSlug(params.params);
+  const { params: slug } = await params;
+  const parsed = parseSlug(slug);
   if (parsed === null) {
     notFound();
   }
