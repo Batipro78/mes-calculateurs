@@ -962,6 +962,51 @@ const outils = [
     couleur: "from-fuchsia-600 to-pink-700",
     tag: "Nouveau",
   },
+  {
+    titre: "Calcul VMA Running",
+    description:
+      "Test Cooper / demi-Cooper, zones cardiaques Karvonen, allures cibles 65-110% VMA.",
+    href: "/calcul-vma",
+    icone: "🏃",
+    couleur: "from-emerald-600 to-teal-700",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Calcul 1RM Musculation",
+    description:
+      "5 formules (Brzycki, Epley, Lander, Lombardi, O'Connor) + tableau % de 1RM par reps.",
+    href: "/calcul-1rm",
+    icone: "🏋️",
+    couleur: "from-violet-600 to-purple-700",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Calories Brulees par Sport",
+    description:
+      "Formule METs : 40+ sports (course, velo, natation, foot, muscu, yoga, HIIT...).",
+    href: "/calcul-calories-sport",
+    icone: "🔥",
+    couleur: "from-orange-500 to-red-500",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Convertisseur FOV Jeux",
+    description:
+      "HFOV ↔ VFOV + conversion entre ratios 4:3, 16:9, 16:10, 21:9, 32:9. FOV par jeu (CS2, Valorant, Apex).",
+    href: "/calcul-fov-jeu",
+    icone: "🎯",
+    couleur: "from-teal-600 to-cyan-700",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Temps de Telechargement",
+    description:
+      "Mb/s en Mo/s, presets jeux (CoD 220Go, Cyberpunk 70Go, Fortnite 30Go) et FAI (ADSL/Fibre).",
+    href: "/calcul-temps-telechargement",
+    icone: "⬇️",
+    couleur: "from-cyan-500 to-blue-600",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {

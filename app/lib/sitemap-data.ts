@@ -1995,6 +1995,101 @@ function generateAllUrls(): SitemapEntry[] {
     priority: 0.7,
   }));
 
+  // Sport + Gaming batch 2 (5 calcs ajoutes 19/05/2026 session 52 bis)
+  const sportGaming2StaticPages: SitemapEntry[] = [
+    { url: `${BASE_URL}/calcul-vma`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-1rm`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-calories-sport`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-fov-jeu`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-temps-telechargement`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+  ];
+
+  // VMA : 21 valeurs km/h + 8 distances cooper = 29 variantes
+  const vmaPages: SitemapEntry[] = [];
+  for (let v = 10; v <= 20; v += 0.5) {
+    const s = v % 1 === 0 ? v.toString() : v.toFixed(1);
+    vmaPages.push({ url: `${BASE_URL}/calcul-vma/vma-${s}-kmh`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+  for (const d of [2200, 2400, 2600, 2800, 3000, 3200, 3400, 3600]) {
+    vmaPages.push({ url: `${BASE_URL}/calcul-vma/cooper-${d}m`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
+  // 1RM : poids x reps populaires
+  const ONE_RM_SLUGS = [
+    "40kg-3-reps", "40kg-5-reps", "40kg-8-reps", "40kg-10-reps",
+    "60kg-3-reps", "60kg-5-reps", "60kg-8-reps", "60kg-10-reps",
+    "80kg-3-reps", "80kg-5-reps", "80kg-8-reps", "80kg-10-reps",
+    "100kg-3-reps", "100kg-5-reps", "100kg-8-reps", "100kg-10-reps",
+    "120kg-3-reps", "120kg-5-reps", "120kg-8-reps", "120kg-10-reps",
+    "140kg-5-reps", "140kg-8-reps",
+    "160kg-3-reps", "160kg-5-reps", "160kg-8-reps",
+  ];
+  const oneRmPages: SitemapEntry[] = ONE_RM_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-1rm/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Calories sport : sport-poids-duree
+  const CALORIES_SPORT_SLUGS = [
+    "course-10kmh-60kg-30min", "course-10kmh-70kg-30min", "course-10kmh-80kg-30min",
+    "course-10kmh-70kg-60min", "course-10kmh-80kg-60min",
+    "velo-route-25-70kg-30min", "velo-route-25-70kg-60min", "velo-route-25-80kg-60min",
+    "natation-moderee-70kg-30min", "natation-moderee-70kg-60min", "natation-rapide-70kg-30min",
+    "football-match-70kg-60min", "football-match-80kg-60min", "football-recreatif-70kg-60min",
+    "muscu-moderee-70kg-30min", "muscu-intense-70kg-60min", "crossfit-70kg-30min",
+    "hiit-70kg-30min", "hiit-70kg-60min",
+    "yoga-vinyasa-60kg-60min", "yoga-vinyasa-70kg-60min",
+    "marche-rapide-70kg-30min", "marche-rapide-70kg-60min",
+    "randonnee-montagne-70kg-60min", "randonnee-montagne-80kg-60min",
+    "zumba-60kg-60min", "zumba-70kg-60min",
+    "basketball-match-70kg-60min", "tennis-simple-70kg-60min",
+    "aviron-intense-70kg-30min", "aviron-intense-70kg-60min",
+  ];
+  const caloriesSportPages: SitemapEntry[] = CALORIES_SPORT_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-calories-sport/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // FOV : fov-X-ratioSource-vers-ratioCible
+  const FOV_SLUGS = [
+    "fov-90-16-9-vers-21-9", "fov-90-21-9-vers-16-9", "fov-90-4-3-vers-16-9", "fov-90-16-9-vers-4-3",
+    "fov-103-16-9-vers-21-9", "fov-103-21-9-vers-16-9", "fov-103-16-9-vers-16-10",
+    "fov-110-16-9-vers-21-9", "fov-110-21-9-vers-16-9", "fov-110-16-9-vers-16-10",
+    "fov-80-16-9-vers-21-9", "fov-80-21-9-vers-16-9", "fov-80-16-10-vers-16-9",
+    "fov-100-16-9-vers-21-9", "fov-100-21-9-vers-16-9", "fov-100-4-3-vers-21-9",
+    "fov-106-16-9-vers-21-9", "fov-106-21-9-vers-16-9", "fov-106-16-10-vers-21-9",
+    "fov-120-21-9-vers-16-9", "fov-120-32-9-vers-21-9",
+  ];
+  const fovPages: SitemapEntry[] = FOV_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-fov-jeu/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Temps telechargement : taille-debit + jeu-debit
+  const TEMPS_DL_SLUGS = [
+    "5go-en-8mbs", "5go-en-50mbs", "5go-en-100mbs", "5go-en-500mbs", "5go-en-1000mbs",
+    "10go-en-8mbs", "10go-en-50mbs", "10go-en-100mbs", "10go-en-500mbs", "10go-en-1000mbs",
+    "30go-en-50mbs", "30go-en-100mbs", "30go-en-500mbs", "30go-en-1000mbs",
+    "50go-en-50mbs", "50go-en-100mbs", "50go-en-500mbs", "50go-en-1000mbs",
+    "100go-en-50mbs", "100go-en-100mbs", "100go-en-500mbs", "100go-en-1000mbs",
+    "150go-en-50mbs", "150go-en-100mbs", "150go-en-1000mbs",
+    "220go-en-50mbs", "220go-en-100mbs", "220go-en-1000mbs",
+    "cyberpunk-en-100mbs", "gta5-en-100mbs", "fortnite-en-100mbs",
+    "baldursgate3-en-100mbs", "starfield-en-100mbs", "cod-en-100mbs",
+  ];
+  const tempsDlPages: SitemapEntry[] = TEMPS_DL_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-temps-telechargement/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
   // Pages dynamiques Poids Ideal
   const PI_SEXES = ["homme", "femme"];
   const PI_TAILLES = [155, 158, 160, 163, 165, 168, 170, 173, 175, 178, 180, 183, 185, 188, 190];
@@ -2654,6 +2749,12 @@ function generateAllUrls(): SitemapEntry[] {
     ...allureCoursePages,
     ...ffmiPages,
     ...monnaieJeuPages,
+    ...sportGaming2StaticPages,
+    ...vmaPages,
+    ...oneRmPages,
+    ...caloriesSportPages,
+    ...fovPages,
+    ...tempsDlPages,
     ...tempPages,
     ...poidsPages,
     ...longueurPages,

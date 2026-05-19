@@ -104,6 +104,11 @@ const ALL_CALCULATORS = [
   { slug: "/convertisseur-allure-course", title: "Allure Course", emoji: "🏃", color: "from-emerald-600 to-teal-700" },
   { slug: "/calcul-ffmi", title: "Calcul FFMI", emoji: "💪", color: "from-violet-600 to-purple-700" },
   { slug: "/convertisseur-monnaie-jeu", title: "Monnaie Jeu Video", emoji: "🎮", color: "from-fuchsia-600 to-pink-700" },
+  { slug: "/calcul-vma", title: "Calcul VMA", emoji: "🏃", color: "from-emerald-600 to-teal-700" },
+  { slug: "/calcul-1rm", title: "Calcul 1RM", emoji: "🏋️", color: "from-violet-600 to-purple-700" },
+  { slug: "/calcul-calories-sport", title: "Calories par Sport", emoji: "🔥", color: "from-orange-500 to-red-500" },
+  { slug: "/calcul-fov-jeu", title: "Convertisseur FOV", emoji: "🎯", color: "from-teal-600 to-cyan-700" },
+  { slug: "/calcul-temps-telechargement", title: "Temps Telechargement", emoji: "⬇️", color: "from-cyan-500 to-blue-600" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -212,6 +217,11 @@ const RELATED_MAP: Record<string, string[]> = {
   "/convertisseur-allure-course": ["/calcul-imc", "/calcul-calories", "/calcul-masse-grasse", "/calcul-ffmi"],
   "/calcul-ffmi": ["/calcul-masse-grasse", "/calcul-imc", "/calcul-poids-ideal", "/calcul-proteines"],
   "/convertisseur-monnaie-jeu": ["/convertisseur-sensibilite-fps", "/convertisseur-devises", "/calcul-pourcentage", "/calcul-tva"],
+  "/calcul-vma": ["/convertisseur-allure-course", "/calcul-calories-sport", "/calcul-imc", "/calcul-1rm"],
+  "/calcul-1rm": ["/calcul-ffmi", "/calcul-masse-grasse", "/calcul-calories-sport", "/calcul-proteines"],
+  "/calcul-calories-sport": ["/calcul-calories", "/calcul-vma", "/calcul-imc", "/calcul-1rm"],
+  "/calcul-fov-jeu": ["/convertisseur-sensibilite-fps", "/convertisseur-monnaie-jeu", "/calcul-temps-telechargement", "/calcul-pourcentage"],
+  "/calcul-temps-telechargement": ["/convertisseur-sensibilite-fps", "/convertisseur-monnaie-jeu", "/calcul-fov-jeu", "/calcul-pourcentage"],
 };
 
 interface RelatedCalculatorsProps {
