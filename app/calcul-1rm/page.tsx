@@ -203,7 +203,7 @@ export default function Page() {
 
       <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
-      <RelatedCalculators calculatorSlug="calcul-1rm" />
+      <RelatedCalculators currentSlug="/calcul-1rm" />
     </div>
   );
 }
