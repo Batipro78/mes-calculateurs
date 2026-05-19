@@ -129,6 +129,11 @@ const ALL_CALCULATORS = [
   { slug: "/calcul-ration-chien", title: "Ration Chien", emoji: "🍖", color: "from-amber-500 to-orange-600" },
   { slug: "/calcul-calories-chien-chat", title: "Calories Chien Chat", emoji: "🐾", color: "from-orange-500 to-red-500" },
   { slug: "/calcul-dose-medicament-animaux", title: "Dose Medicament Animaux", emoji: "💊", color: "from-blue-500 to-cyan-600" },
+  { slug: "/calcul-signe-zodiaque", title: "Signe Zodiaque", emoji: "✨", color: "from-violet-600 to-purple-700" },
+  { slug: "/calcul-chemin-de-vie", title: "Chemin de Vie", emoji: "🔮", color: "from-purple-600 to-indigo-700" },
+  { slug: "/compatibilite-signes-astrologiques", title: "Compatibilite Astro", emoji: "💕", color: "from-pink-500 to-rose-600" },
+  { slug: "/calcul-signe-lunaire", title: "Signe Lunaire", emoji: "🌙", color: "from-slate-700 to-indigo-800" },
+  { slug: "/numerologie-nom-prenom", title: "Numerologie Nom", emoji: "✨", color: "from-purple-600 to-fuchsia-700" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -262,6 +267,11 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calcul-ration-chien": ["/calcul-calories-chien-chat", "/calcul-age-chien-humain", "/calcul-dose-medicament-animaux", "/calcul-age-chat-humain"],
   "/calcul-calories-chien-chat": ["/calcul-ration-chien", "/calcul-age-chien-humain", "/calcul-age-chat-humain", "/calcul-calories"],
   "/calcul-dose-medicament-animaux": ["/calcul-age-chien-humain", "/calcul-age-chat-humain", "/calcul-ration-chien", "/calcul-calories-chien-chat"],
+  "/calcul-signe-zodiaque": ["/calcul-ascendant-astrologique", "/signe-astrologique-chinois", "/calcul-signe-lunaire", "/compatibilite-signes-astrologiques"],
+  "/calcul-chemin-de-vie": ["/numerologie-nom-prenom", "/calcul-signe-zodiaque", "/calcul-ascendant-astrologique", "/calcul-age"],
+  "/compatibilite-signes-astrologiques": ["/calcul-signe-zodiaque", "/calcul-ascendant-astrologique", "/calcul-signe-lunaire", "/calcul-chemin-de-vie"],
+  "/calcul-signe-lunaire": ["/calcul-signe-zodiaque", "/calcul-ascendant-astrologique", "/compatibilite-signes-astrologiques", "/signe-astrologique-chinois"],
+  "/numerologie-nom-prenom": ["/calcul-chemin-de-vie", "/calcul-signe-zodiaque", "/calcul-age", "/calcul-ascendant-astrologique"],
 };
 
 interface RelatedCalculatorsProps {

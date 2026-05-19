@@ -2468,6 +2468,85 @@ function generateAllUrls(): SitemapEntry[] {
     priority: 0.7,
   }));
 
+  // Astro + Numerologie (5 calcs ajoutes 19/05/2026 session 54 bis)
+  const astroStaticPages: SitemapEntry[] = [
+    { url: `${BASE_URL}/calcul-signe-zodiaque`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-chemin-de-vie`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/compatibilite-signes-astrologiques`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-signe-lunaire`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/numerologie-nom-prenom`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+  ];
+
+  const SIGNE_ZOD_SLUGS = [
+    "signe-belier", "signe-taureau", "signe-gemeaux", "signe-cancer",
+    "signe-lion", "signe-vierge", "signe-balance", "signe-scorpion",
+    "signe-sagittaire", "signe-capricorne", "signe-verseau", "signe-poissons",
+    "element-feu", "element-terre", "element-air", "element-eau",
+    "mode-cardinal", "mode-fixe", "mode-mutable",
+    "signe-juin", "signe-juillet",
+  ];
+  const signeZodPages: SitemapEntry[] = SIGNE_ZOD_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-signe-zodiaque/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  const CHEMIN_VIE_SLUGS = [
+    "chemin-de-vie-1", "chemin-de-vie-2", "chemin-de-vie-3", "chemin-de-vie-4",
+    "chemin-de-vie-5", "chemin-de-vie-6", "chemin-de-vie-7", "chemin-de-vie-8",
+    "chemin-de-vie-9", "chemin-de-vie-11", "chemin-de-vie-22", "chemin-de-vie-33",
+    "comment-calculer-chemin-de-vie", "nombre-maitre-numerologie",
+    "numerologie-pythagore", "chemin-de-vie-amour",
+  ];
+  const cheminViePages: SitemapEntry[] = CHEMIN_VIE_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-chemin-de-vie/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  const COMPAT_SLUGS = [
+    "belier-lion", "belier-sagittaire", "lion-sagittaire", "taureau-cancer",
+    "gemeaux-verseau", "scorpion-poissons", "cancer-scorpion", "vierge-taureau",
+    "balance-gemeaux", "capricorne-vierge", "verseau-balance", "poissons-cancer",
+    "belier-balance", "taureau-scorpion", "lion-verseau", "cancer-capricorne",
+    "vierge-poissons", "gemeaux-sagittaire", "scorpion-taureau", "belier-cancer",
+  ];
+  const compatPages: SitemapEntry[] = COMPAT_SLUGS.map((s) => ({
+    url: `${BASE_URL}/compatibilite-signes-astrologiques/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  const LUNAIRE_SLUGS = [
+    "lune-belier", "lune-taureau", "lune-gemeaux", "lune-cancer",
+    "lune-lion", "lune-vierge", "lune-balance", "lune-scorpion",
+    "lune-sagittaire", "lune-capricorne", "lune-verseau", "lune-poissons",
+    "lune-vs-soleil-astrologie", "comment-calculer-signe-lunaire",
+    "signe-lunaire-amour", "signe-lunaire-emotions",
+  ];
+  const lunairePages: SitemapEntry[] = LUNAIRE_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-signe-lunaire/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  const NUMEROLOGIE_SLUGS = [
+    "expression-1", "expression-2", "expression-3", "expression-4",
+    "expression-5", "expression-6", "expression-7", "expression-8", "expression-9",
+    "comment-calculer-numerologie-nom", "numerologie-prenom-signification",
+    "voyelles-consonnes-numerologie",
+  ];
+  const numerologiePages: SitemapEntry[] = NUMEROLOGIE_SLUGS.map((s) => ({
+    url: `${BASE_URL}/numerologie-nom-prenom/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
   // Pages dynamiques Poids Ideal
   const PI_SEXES = ["homme", "femme"];
   const PI_TAILLES = [155, 158, 160, 163, 165, 168, 170, 173, 175, 178, 180, 183, 185, 188, 190];
@@ -3157,6 +3236,12 @@ function generateAllUrls(): SitemapEntry[] {
     ...rationChienPages,
     ...caloriesAnimauxPages,
     ...dosePages,
+    ...astroStaticPages,
+    ...signeZodPages,
+    ...cheminViePages,
+    ...compatPages,
+    ...lunairePages,
+    ...numerologiePages,
     ...tempPages,
     ...poidsPages,
     ...longueurPages,

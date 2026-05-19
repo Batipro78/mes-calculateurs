@@ -1187,6 +1187,51 @@ const outils = [
     couleur: "from-blue-500 to-cyan-600",
     tag: "Nouveau",
   },
+  {
+    titre: "Signe Zodiaque Occidental",
+    description:
+      "12 signes astrologiques selon date de naissance. Element (feu/terre/air/eau), mode, planete, pierre.",
+    href: "/calcul-signe-zodiaque",
+    icone: "✨",
+    couleur: "from-violet-600 to-purple-700",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Chemin de Vie Numerologie",
+    description:
+      "Numerologie pythagoricienne. 9 chemins de vie + 3 nombres maitres (11/22/33).",
+    href: "/calcul-chemin-de-vie",
+    icone: "🔮",
+    couleur: "from-purple-600 to-indigo-700",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Compatibilite Signes Astro",
+    description:
+      "Compatibilite amoureuse entre 2 signes du zodiaque. Affinites par element, top 10 couples.",
+    href: "/compatibilite-signes-astrologiques",
+    icone: "💕",
+    couleur: "from-pink-500 to-rose-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Signe Lunaire",
+    description:
+      "Signe occupe par la Lune a votre naissance. Emotions, inconscient, rapport a la mere.",
+    href: "/calcul-signe-lunaire",
+    icone: "🌙",
+    couleur: "from-slate-700 to-indigo-800",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Numerologie Nom et Prenom",
+    description:
+      "Vibration de votre nom complet : Expression, Coeur, Personnalite. Methode pythagoricienne.",
+    href: "/numerologie-nom-prenom",
+    icone: "✨",
+    couleur: "from-purple-600 to-fuchsia-700",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {
