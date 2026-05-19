@@ -1007,6 +1007,51 @@ const outils = [
     couleur: "from-cyan-500 to-blue-600",
     tag: "Nouveau",
   },
+  {
+    titre: "Calcul Zakat al-Mal",
+    description:
+      "Aumone legale annuelle 2,5% sur patrimoine. Nisab or/argent au choix, ecoles hanafite et majoritaire. Conforme ECFR/CFCM.",
+    href: "/calcul-zakat",
+    icone: "🕋",
+    couleur: "from-emerald-600 to-green-700",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Calcul Zakat al-Fitr 2026",
+    description:
+      "Aumone fin Ramadan par personne du foyer. Montants officiels Mosquee de Paris (7€) et CFCM (9€).",
+    href: "/calcul-zakat-al-fitr",
+    icone: "📿",
+    couleur: "from-emerald-600 to-green-700",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Convertisseur Hijri Gregorien",
+    description:
+      "Date musulmane vers gregorienne et inverse. Methodes TIC et Umm al-Qura. Calcul age en annees lunaires.",
+    href: "/convertisseur-calendrier-hijri",
+    icone: "🌙",
+    couleur: "from-teal-600 to-emerald-700",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Date Ramadan 2026 + Aid",
+    description:
+      "Date debut Ramadan 18 fevrier 2026, Aid al-Fitr 20 mars, Aid al-Adha 27 mai. Calendrier 2026-2030.",
+    href: "/calcul-date-ramadan",
+    icone: "☪️",
+    couleur: "from-emerald-600 to-teal-700",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Date Paques 2026",
+    description:
+      "Calcul Paques catholique (Meeus) et orthodoxe + Cendres, Ascension, Pentecote, toutes les fetes mobiles.",
+    href: "/calcul-date-paques",
+    icone: "🕊️",
+    couleur: "from-amber-500 to-orange-600",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {

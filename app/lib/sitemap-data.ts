@@ -2090,6 +2090,98 @@ function generateAllUrls(): SitemapEntry[] {
     priority: 0.7,
   }));
 
+  // Religion (5 calcs ajoutes 19/05/2026 session 52 ter)
+  const religionStaticPages: SitemapEntry[] = [
+    { url: `${BASE_URL}/calcul-zakat`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-zakat-al-fitr`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/convertisseur-calendrier-hijri`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-date-ramadan`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-date-paques`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+  ];
+
+  // Zakat al-Mal : patrimoines + ecoles + cas speciaux
+  const ZAKAT_SLUGS = [
+    "5000-euros", "10000-euros", "15000-euros", "20000-euros", "25000-euros",
+    "30000-euros", "40000-euros", "50000-euros", "75000-euros", "100000-euros",
+    "150000-euros", "200000-euros",
+    "10000-euros-majoritaire", "25000-euros-hanafite", "50000-euros-majoritaire", "100000-euros-hanafite",
+    "5000-euros-epargne", "10000-euros-epargne", "25000-euros-epargne",
+    "nisab-or-actuel", "nisab-argent-actuel",
+    "calcul-zakat-avec-bijoux", "zakat-dettes-court-terme", "hawl-annee-lunaire", "zakat-crypto-avis-ecfr",
+  ];
+  const zakatPages: SitemapEntry[] = ZAKAT_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-zakat/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Zakat al-Fitr : nb personnes
+  const ZAKAT_FITR_SLUGS = [
+    "1-personne", "2-personnes", "3-personnes", "4-personnes", "5-personnes",
+    "6-personnes", "7-personnes", "8-personnes",
+    "2-personnes-cfcm", "4-personnes-cfcm", "6-personnes-cfcm",
+    "famille-3-personnes", "famille-4-personnes", "famille-5-personnes", "couple-2-personnes",
+  ];
+  const zakatFitrPages: SitemapEntry[] = ZAKAT_FITR_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-zakat-al-fitr/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Hijri : dates + ages
+  const HIJRI_SLUGS = [
+    "aujourd-hui-en-hijri",
+    "annee-1444", "annee-1445", "annee-1446", "annee-1447",
+    "annee-1448", "annee-1449", "annee-1450",
+    "ne-en-1980", "ne-en-1985", "ne-en-1990", "ne-en-1995",
+    "ne-en-2000", "ne-en-2005", "ne-en-2010",
+    "1-janvier-2026", "1-juillet-2026", "31-decembre-2026",
+    "nouvelle-annee-hijri-2026", "ramadan-2026-en-gregorien", "aid-2026-en-hijri",
+  ];
+  const hijriPages: SitemapEntry[] = HIJRI_SLUGS.map((s) => ({
+    url: `${BASE_URL}/convertisseur-calendrier-hijri/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Date Ramadan : 5 annees x 3 evenements + 2 questions + 5 calendriers
+  const RAMADAN_SLUGS = [
+    "ramadan-2026", "ramadan-2027", "ramadan-2028", "ramadan-2029", "ramadan-2030",
+    "aid-al-fitr-2026", "aid-al-fitr-2027", "aid-al-fitr-2028", "aid-al-fitr-2029", "aid-al-fitr-2030",
+    "aid-al-adha-2026", "aid-al-adha-2027", "aid-al-adha-2028", "aid-al-adha-2029", "aid-al-adha-2030",
+    "combien-de-jours-avant-ramadan", "combien-de-jours-avant-aid",
+    "calendrier-musulman-2026", "calendrier-musulman-2027", "calendrier-musulman-2028",
+    "calendrier-musulman-2029", "calendrier-musulman-2030",
+  ];
+  const ramadanPages: SitemapEntry[] = RAMADAN_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-date-ramadan/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Date Paques : 10 annees + orthodoxe + fetes derivees
+  const PAQUES_SLUGS = [
+    "paques-2026", "paques-2027", "paques-2028", "paques-2029", "paques-2030",
+    "paques-2031", "paques-2032", "paques-2033", "paques-2034", "paques-2035",
+    "paques-orthodoxe-2026", "paques-orthodoxe-2027", "paques-orthodoxe-2028",
+    "mercredi-cendres-2026", "mercredi-cendres-2027",
+    "ascension-2026", "ascension-2027", "ascension-2028",
+    "pentecote-2026", "pentecote-2027",
+    "combien-de-jours-avant-paques", "combien-de-jours-avant-ascension",
+    "paques-meeus-algorithme", "coincidence-paques-orthodoxe-catholique-2028",
+    "pourquoi-paques-date-change",
+  ];
+  const paquesPages: SitemapEntry[] = PAQUES_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-date-paques/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
   // Pages dynamiques Poids Ideal
   const PI_SEXES = ["homme", "femme"];
   const PI_TAILLES = [155, 158, 160, 163, 165, 168, 170, 173, 175, 178, 180, 183, 185, 188, 190];
@@ -2755,6 +2847,12 @@ function generateAllUrls(): SitemapEntry[] {
     ...caloriesSportPages,
     ...fovPages,
     ...tempsDlPages,
+    ...religionStaticPages,
+    ...zakatPages,
+    ...zakatFitrPages,
+    ...hijriPages,
+    ...ramadanPages,
+    ...paquesPages,
     ...tempPages,
     ...poidsPages,
     ...longueurPages,
