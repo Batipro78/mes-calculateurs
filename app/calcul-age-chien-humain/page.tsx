@@ -137,7 +137,7 @@ export default function Page() {
             <p className="text-xs text-red-700 mt-1">Ex : 5 ans = 49 ans humain</p>
           </div>
           <div className="bg-rose-50 rounded-lg p-3 border border-rose-200">
-            <p className="font-semibold text-rose-900">Géant (>45 kg)</p>
+            <p className="font-semibold text-rose-900">Géant (plus de 45 kg)</p>
             <p className="text-sm text-rose-800">+7 ans humains par année</p>
             <p className="text-xs text-rose-700 mt-1">Ex : 5 ans = 54 ans humain</p>
           </div>
