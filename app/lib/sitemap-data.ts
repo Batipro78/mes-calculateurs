@@ -1916,6 +1916,85 @@ function generateAllUrls(): SitemapEntry[] {
     probaPages.push({ url: `${BASE_URL}/convertisseur-cote-probabilite/cote-${c}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
   }
 
+  // Sport + Gaming (4 calcs ajoutes 19/05/2026 session 52)
+  const sportGamingStaticPages: SitemapEntry[] = [
+    { url: `${BASE_URL}/convertisseur-sensibilite-fps`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/convertisseur-allure-course`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-ffmi`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/convertisseur-monnaie-jeu`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+  ];
+
+  // Sensibilite FPS : conversions paires de jeux
+  const SENSI_FPS_SLUGS = [
+    "valorant-vers-cs2", "cs2-vers-valorant", "apex-vers-valorant", "valorant-vers-apex",
+    "fortnite-vers-valorant", "valorant-vers-fortnite", "cs2-vers-apex", "apex-vers-cs2",
+    "overwatch-vers-valorant", "valorant-vers-overwatch", "r6-vers-cs2", "cs2-vers-r6",
+    "fortnite-vers-cs2", "cs2-vers-fortnite", "overwatch-vers-cs2", "r6-vers-valorant",
+    "valorant-vers-r6", "apex-vers-fortnite", "fortnite-vers-apex", "overwatch-vers-apex",
+    "apex-vers-overwatch", "r6-vers-fortnite", "fortnite-vers-r6", "overwatch-vers-r6",
+  ];
+  const sensiFpsPages: SitemapEntry[] = SENSI_FPS_SLUGS.map((s) => ({
+    url: `${BASE_URL}/convertisseur-sensibilite-fps/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Allure course : allures min/km + vitesses km/h + temps cibles
+  const ALLURE_COURSE_SLUGS = [
+    "allure-3min30-par-km", "allure-4min-par-km", "allure-4min30-par-km",
+    "allure-5min-par-km", "allure-5min30-par-km", "allure-6min-par-km",
+    "allure-6min30-par-km", "allure-7min-par-km", "allure-7min30-par-km", "allure-8min-par-km",
+    "vitesse-8-kmh", "vitesse-9-kmh", "vitesse-10-kmh", "vitesse-11-kmh",
+    "vitesse-12-kmh", "vitesse-13-kmh", "vitesse-14-kmh", "vitesse-15-kmh",
+    "marathon-4h", "marathon-3h30", "semi-1h45", "semi-2h",
+    "10km-50min", "10km-45min", "5km-25min", "5km-22min",
+  ];
+  const allureCoursePages: SitemapEntry[] = ALLURE_COURSE_SLUGS.map((s) => ({
+    url: `${BASE_URL}/convertisseur-allure-course/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // FFMI : sexe-poids-taille-MG
+  const FFMI_SLUGS = [
+    "homme-70kg-170cm-15-mg", "homme-75kg-175cm-15-mg", "homme-80kg-180cm-15-mg",
+    "homme-85kg-185cm-15-mg", "homme-90kg-185cm-15-mg", "homme-75kg-175cm-10-mg",
+    "homme-80kg-180cm-10-mg", "homme-80kg-180cm-20-mg", "homme-75kg-170cm-20-mg",
+    "homme-85kg-180cm-15-mg", "homme-70kg-175cm-15-mg", "homme-80kg-185cm-15-mg",
+    "homme-90kg-180cm-15-mg", "homme-75kg-180cm-12-mg", "homme-80kg-175cm-18-mg",
+    "femme-55kg-160cm-22-mg", "femme-60kg-165cm-22-mg", "femme-65kg-170cm-22-mg",
+    "femme-70kg-170cm-22-mg", "femme-55kg-165cm-20-mg", "femme-60kg-160cm-25-mg",
+    "femme-65kg-165cm-20-mg", "femme-70kg-165cm-22-mg", "femme-60kg-165cm-25-mg",
+    "femme-55kg-160cm-20-mg",
+  ];
+  const ffmiPages: SitemapEntry[] = FFMI_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-ffmi/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Monnaie jeu : quantite-monnaie-en-euros + euros-en-monnaie
+  const MONNAIE_JEU_SLUGS = [
+    "1000-vbucks-en-euros", "2800-vbucks-en-euros", "5000-vbucks-en-euros", "13500-vbucks-en-euros",
+    "650-rp-en-euros", "1380-rp-en-euros", "2800-rp-en-euros", "5000-rp-en-euros",
+    "1000-apex-en-euros", "2150-apex-en-euros", "4350-apex-en-euros", "6700-apex-en-euros", "11500-apex-en-euros",
+    "400-robux-en-euros", "800-robux-en-euros", "1700-robux-en-euros", "4500-robux-en-euros", "10000-robux-en-euros",
+    "500-cp-en-euros", "1100-cp-en-euros", "2400-cp-en-euros", "5000-cp-en-euros",
+    "500-fp-en-euros", "1050-fp-en-euros", "2200-fp-en-euros", "5900-fp-en-euros", "12000-fp-en-euros",
+    "475-vp-en-euros", "1000-vp-en-euros", "2050-vp-en-euros", "3650-vp-en-euros",
+    "320-minecoins-en-euros", "1020-minecoins-en-euros", "1720-minecoins-en-euros", "3500-minecoins-en-euros",
+    "5-euros-en-vbucks", "10-euros-en-rp", "10-euros-en-apex", "10-euros-en-robux", "20-euros-en-cp",
+  ];
+  const monnaieJeuPages: SitemapEntry[] = MONNAIE_JEU_SLUGS.map((s) => ({
+    url: `${BASE_URL}/convertisseur-monnaie-jeu/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
   // Pages dynamiques Poids Ideal
   const PI_SEXES = ["homme", "femme"];
   const PI_TAILLES = [155, 158, 160, 163, 165, 168, 170, 173, 175, 178, 180, 183, 185, 188, 190];
@@ -2570,6 +2649,11 @@ function generateAllUrls(): SitemapEntry[] {
     ...gainPariPages,
     ...combinePages,
     ...probaPages,
+    ...sportGamingStaticPages,
+    ...sensiFpsPages,
+    ...allureCoursePages,
+    ...ffmiPages,
+    ...monnaieJeuPages,
     ...tempPages,
     ...poidsPages,
     ...longueurPages,

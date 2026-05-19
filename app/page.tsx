@@ -926,6 +926,42 @@ const outils = [
     couleur: "from-teal-600 to-cyan-700",
     tag: "Nouveau",
   },
+  {
+    titre: "Convertisseur Sensibilite FPS",
+    description:
+      "Conversion sensibilite souris entre CS2, Valorant, Apex, Fortnite, Overwatch, R6. Calcul eDPI et cm/360°.",
+    href: "/convertisseur-sensibilite-fps",
+    icone: "🎯",
+    couleur: "from-teal-600 to-cyan-700",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Convertisseur Allure Course",
+    description:
+      "Allure min/km ↔ km/h ↔ min/mile. Prediction temps sur 5km, 10km, semi-marathon et marathon.",
+    href: "/convertisseur-allure-course",
+    icone: "🏃",
+    couleur: "from-emerald-600 to-teal-700",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Calcul FFMI Musculation",
+    description:
+      "Indice de masse maigre normalise (formule Kouri). Niveau musculaire et limite naturelle.",
+    href: "/calcul-ffmi",
+    icone: "💪",
+    couleur: "from-violet-600 to-purple-700",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Convertisseur Monnaie Jeu",
+    description:
+      "V-bucks, RP LoL, Apex coins, Robux, COD Points, FIFA Points en euros. Taux officiels.",
+    href: "/convertisseur-monnaie-jeu",
+    icone: "🎮",
+    couleur: "from-fuchsia-600 to-pink-700",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {
