@@ -1142,6 +1142,51 @@ const outils = [
     couleur: "from-rose-500 to-pink-600",
     tag: "Nouveau",
   },
+  {
+    titre: "Age Chien en Annees Humaines",
+    description:
+      "Formule AVMA officielle + etude Wang 2019 (ADN). Conversion par taille du chien (petit/moyen/grand/geant).",
+    href: "/calcul-age-chien-humain",
+    icone: "🐕",
+    couleur: "from-amber-500 to-orange-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Age Chat en Annees Humaines",
+    description:
+      "Formule AAFP officielle, 6 phases de vie (chaton, junior, adulte, senior, super-senior, venerable).",
+    href: "/calcul-age-chat-humain",
+    icone: "🐱",
+    couleur: "from-orange-400 to-amber-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Ration Chien (BARF, Croquettes)",
+    description:
+      "Dose journaliere par poids, activite, age. BARF 2-3% du poids, croquettes Royal Canin, patee.",
+    href: "/calcul-ration-chien",
+    icone: "🍖",
+    couleur: "from-amber-500 to-orange-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Calories Chien Chat (BER, DER)",
+    description:
+      "Besoin energetique quotidien selon formule WSAVA. BER 70 x poids^0.75, facteurs activite et stade.",
+    href: "/calcul-calories-chien-chat",
+    icone: "🐾",
+    couleur: "from-orange-500 to-red-500",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Dose Medicament Chien Chat",
+    description:
+      "Vermifuge (Milbemax, Drontal), anti-puces (Frontline, Bravecto, Stronghold). Sources Vidal, ANSES.",
+    href: "/calcul-dose-medicament-animaux",
+    icone: "💊",
+    couleur: "from-blue-500 to-cyan-600",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {

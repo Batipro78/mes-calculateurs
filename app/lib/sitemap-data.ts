@@ -2366,6 +2366,108 @@ function generateAllUrls(): SitemapEntry[] {
     priority: 0.7,
   }));
 
+  // Animaux (5 calcs ajoutes 19/05/2026 session 54)
+  const animauxStaticPages: SitemapEntry[] = [
+    { url: `${BASE_URL}/calcul-age-chien-humain`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-age-chat-humain`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-ration-chien`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-calories-chien-chat`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-dose-medicament-animaux`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+  ];
+
+  // Age chien : taille x annees
+  const AGE_CHIEN_SLUGS: string[] = [];
+  for (const a of [1, 2, 3, 5, 7, 10, 12, 15]) AGE_CHIEN_SLUGS.push(`${a}-ans-petit-chien`);
+  for (const a of [1, 3, 5, 7, 10, 12]) AGE_CHIEN_SLUGS.push(`${a}-ans-chien-moyen`);
+  for (const a of [1, 3, 5, 7, 9, 11]) AGE_CHIEN_SLUGS.push(`${a}-ans-grand-chien`);
+  for (const a of [1, 3, 5, 7, 9]) AGE_CHIEN_SLUGS.push(`${a}-ans-chien-geant`);
+  const ageChienPages: SitemapEntry[] = AGE_CHIEN_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-age-chien-humain/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Age chat : annees + mois + environnement + questions
+  const AGE_CHAT_SLUGS = [
+    "1-an-chat", "2-ans-chat", "3-ans-chat", "5-ans-chat", "7-ans-chat",
+    "10-ans-chat", "12-ans-chat", "15-ans-chat", "18-ans-chat", "20-ans-chat",
+    "3-mois-chaton", "6-mois-chaton", "9-mois-chaton",
+    "chat-interieur-5-ans", "chat-interieur-10-ans", "chat-interieur-15-ans",
+    "chat-exterieur-5-ans", "chat-exterieur-10-ans",
+    "combien-de-temps-vit-chat", "chat-1-an-en-humain", "chat-15-ans-en-humain",
+    "chat-vieux-soins", "chat-senior-soins", "chat-chaton-developpement", "chat-super-senior",
+  ];
+  const ageChatPages: SitemapEntry[] = AGE_CHAT_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-age-chat-humain/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Ration chien : poids x methode + questions
+  const RATION_SLUGS: string[] = [];
+  for (const kg of [5, 10, 15, 20, 25, 30, 40]) {
+    RATION_SLUGS.push(`chien-${kg}kg-croquettes`);
+    RATION_SLUGS.push(`chien-${kg}kg-barf`);
+  }
+  for (const m of [3, 6, 9]) RATION_SLUGS.push(`chiot-${m}-mois`);
+  for (const kg of [10, 20, 30]) RATION_SLUGS.push(`chien-senior-${kg}kg`);
+  RATION_SLUGS.push(
+    "combien-grammes-croquettes-chien",
+    "combien-viande-barf-chien",
+    "chien-perd-du-poids",
+    "chien-prend-du-poids",
+    "transition-croquettes-barf",
+  );
+  const rationChienPages: SitemapEntry[] = RATION_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-ration-chien/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Calories chien chat
+  const CALORIES_ANIMAUX_SLUGS: string[] = [];
+  for (const kg of [5, 10, 15, 20, 25, 30, 40]) CALORIES_ANIMAUX_SLUGS.push(`chien-${kg}kg-adulte`);
+  for (const kg of [10, 20, 30]) CALORIES_ANIMAUX_SLUGS.push(`chien-${kg}kg-actif`);
+  for (const kg of [3, 4, 5, 6, 8]) CALORIES_ANIMAUX_SLUGS.push(`chat-${kg}kg-adulte`);
+  for (const kg of [3, 4, 5, 6]) CALORIES_ANIMAUX_SLUGS.push(`chat-${kg}kg-sterilise`);
+  CALORIES_ANIMAUX_SLUGS.push(
+    "combien-calories-chien-jour",
+    "combien-calories-chat-jour",
+    "chien-perd-poids-calories",
+    "chat-sterilise-calories",
+    "chiot-besoin-calories",
+    "chat-senior-calories",
+  );
+  const caloriesAnimauxPages: SitemapEntry[] = CALORIES_ANIMAUX_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-calories-chien-chat/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Dose medicament animaux
+  const DOSE_SLUGS: string[] = [];
+  for (const kg of [5, 10, 15, 20, 25]) DOSE_SLUGS.push(`milbemax-chien-${kg}kg`);
+  for (const kg of [10, 20, 30, 40]) DOSE_SLUGS.push(`frontline-chien-${kg}kg`);
+  for (const kg of [10, 20, 30, 40]) DOSE_SLUGS.push(`bravecto-chien-${kg}kg`);
+  for (const kg of [3, 5, 7]) DOSE_SLUGS.push(`milbemax-chat-${kg}kg`);
+  for (const kg of [3, 5]) DOSE_SLUGS.push(`stronghold-chat-${kg}kg`);
+  DOSE_SLUGS.push(
+    "combien-fois-vermifuger-chien",
+    "combien-fois-vermifuger-chat",
+    "frontline-vs-bravecto",
+    "vermifuge-chiot",
+  );
+  const dosePages: SitemapEntry[] = DOSE_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-dose-medicament-animaux/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
   // Pages dynamiques Poids Ideal
   const PI_SEXES = ["homme", "femme"];
   const PI_TAILLES = [155, 158, 160, 163, 165, 168, 170, 173, 175, 178, 180, 183, 185, 188, 190];
@@ -3049,6 +3151,12 @@ function generateAllUrls(): SitemapEntry[] {
     ...natationPages,
     ...tennisFftPages,
     ...wthrPages,
+    ...animauxStaticPages,
+    ...ageChienPages,
+    ...ageChatPages,
+    ...rationChienPages,
+    ...caloriesAnimauxPages,
+    ...dosePages,
     ...tempPages,
     ...poidsPages,
     ...longueurPages,

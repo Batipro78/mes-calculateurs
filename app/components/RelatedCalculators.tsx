@@ -124,6 +124,11 @@ const ALL_CALCULATORS = [
   { slug: "/calcul-allure-natation", title: "Allure Natation", emoji: "🏊", color: "from-cyan-500 to-blue-600" },
   { slug: "/calcul-classement-tennis-fft", title: "Classement Tennis FFT", emoji: "🎾", color: "from-yellow-500 to-orange-600" },
   { slug: "/calcul-rapport-taille-tour-de-taille", title: "WtHR Sante", emoji: "❤️", color: "from-rose-500 to-pink-600" },
+  { slug: "/calcul-age-chien-humain", title: "Age Chien Humain", emoji: "🐕", color: "from-amber-500 to-orange-600" },
+  { slug: "/calcul-age-chat-humain", title: "Age Chat Humain", emoji: "🐱", color: "from-orange-400 to-amber-600" },
+  { slug: "/calcul-ration-chien", title: "Ration Chien", emoji: "🍖", color: "from-amber-500 to-orange-600" },
+  { slug: "/calcul-calories-chien-chat", title: "Calories Chien Chat", emoji: "🐾", color: "from-orange-500 to-red-500" },
+  { slug: "/calcul-dose-medicament-animaux", title: "Dose Medicament Animaux", emoji: "💊", color: "from-blue-500 to-cyan-600" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -252,6 +257,11 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calcul-allure-natation": ["/convertisseur-allure-course", "/calcul-vma", "/calcul-calories-sport", "/calcul-ftp-cyclisme"],
   "/calcul-classement-tennis-fft": ["/calcul-calories-sport", "/calcul-imc", "/calcul-vma", "/calcul-ftp-cyclisme"],
   "/calcul-rapport-taille-tour-de-taille": ["/calcul-imc", "/calcul-masse-grasse", "/calcul-ffmi", "/calcul-poids-ideal"],
+  "/calcul-age-chien-humain": ["/calcul-age-chat-humain", "/calcul-ration-chien", "/calcul-calories-chien-chat", "/calcul-dose-medicament-animaux"],
+  "/calcul-age-chat-humain": ["/calcul-age-chien-humain", "/calcul-calories-chien-chat", "/calcul-dose-medicament-animaux", "/calcul-age"],
+  "/calcul-ration-chien": ["/calcul-calories-chien-chat", "/calcul-age-chien-humain", "/calcul-dose-medicament-animaux", "/calcul-age-chat-humain"],
+  "/calcul-calories-chien-chat": ["/calcul-ration-chien", "/calcul-age-chien-humain", "/calcul-age-chat-humain", "/calcul-calories"],
+  "/calcul-dose-medicament-animaux": ["/calcul-age-chien-humain", "/calcul-age-chat-humain", "/calcul-ration-chien", "/calcul-calories-chien-chat"],
 };
 
 interface RelatedCalculatorsProps {
