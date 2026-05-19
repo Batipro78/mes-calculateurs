@@ -119,6 +119,11 @@ const ALL_CALCULATORS = [
   { slug: "/calcul-kaffara-ramadan", title: "Kaffara Ramadan", emoji: "🕌", color: "from-emerald-600 to-green-700" },
   { slug: "/convertisseur-calendrier-hebraique", title: "Calendrier Hebraique", emoji: "✡️", color: "from-blue-600 to-indigo-700" },
   { slug: "/calcul-date-bar-mitzvah", title: "Bar / Bat Mitzvah", emoji: "📜", color: "from-blue-600 to-indigo-700" },
+  { slug: "/calcul-ftp-cyclisme", title: "FTP Cyclisme", emoji: "🚴", color: "from-orange-500 to-red-600" },
+  { slug: "/calcul-handicap-golf-whs", title: "Handicap Golf WHS", emoji: "⛳", color: "from-green-600 to-emerald-700" },
+  { slug: "/calcul-allure-natation", title: "Allure Natation", emoji: "🏊", color: "from-cyan-500 to-blue-600" },
+  { slug: "/calcul-classement-tennis-fft", title: "Classement Tennis FFT", emoji: "🎾", color: "from-yellow-500 to-orange-600" },
+  { slug: "/calcul-rapport-taille-tour-de-taille", title: "WtHR Sante", emoji: "❤️", color: "from-rose-500 to-pink-600" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -242,6 +247,11 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calcul-kaffara-ramadan": ["/calcul-zakat", "/calcul-zakat-al-fitr", "/calcul-date-ramadan", "/convertisseur-calendrier-hijri"],
   "/convertisseur-calendrier-hebraique": ["/calcul-date-bar-mitzvah", "/convertisseur-calendrier-hijri", "/calcul-age", "/calcul-duree-entre-dates"],
   "/calcul-date-bar-mitzvah": ["/convertisseur-calendrier-hebraique", "/calcul-age", "/calcul-duree-entre-dates", "/calcul-date-paques"],
+  "/calcul-ftp-cyclisme": ["/calcul-vma", "/calcul-calories-sport", "/convertisseur-allure-course", "/calcul-1rm"],
+  "/calcul-handicap-golf-whs": ["/calcul-calories-sport", "/calcul-imc", "/calcul-ftp-cyclisme", "/calcul-allure-natation"],
+  "/calcul-allure-natation": ["/convertisseur-allure-course", "/calcul-vma", "/calcul-calories-sport", "/calcul-ftp-cyclisme"],
+  "/calcul-classement-tennis-fft": ["/calcul-calories-sport", "/calcul-imc", "/calcul-vma", "/calcul-ftp-cyclisme"],
+  "/calcul-rapport-taille-tour-de-taille": ["/calcul-imc", "/calcul-masse-grasse", "/calcul-ffmi", "/calcul-poids-ideal"],
 };
 
 interface RelatedCalculatorsProps {

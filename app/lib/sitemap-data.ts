@@ -2275,6 +2275,97 @@ function generateAllUrls(): SitemapEntry[] {
     priority: 0.7,
   }));
 
+  // Sport 3 (5 calcs ajoutes 19/05/2026 session 53)
+  const sport3StaticPages: SitemapEntry[] = [
+    { url: `${BASE_URL}/calcul-ftp-cyclisme`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-handicap-golf-whs`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-allure-natation`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-classement-tennis-fft`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-rapport-taille-tour-de-taille`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+  ];
+
+  // FTP cyclisme : watts + W/kg + VAM + questions
+  const FTP_SLUGS = [
+    "ftp-150-watts", "ftp-175-watts", "ftp-200-watts", "ftp-225-watts", "ftp-250-watts",
+    "ftp-275-watts", "ftp-300-watts", "ftp-325-watts", "ftp-350-watts", "ftp-400-watts",
+    "watts-kg-2-5", "watts-kg-3", "watts-kg-3-5", "watts-kg-4", "watts-kg-4-5", "watts-kg-5",
+    "vam-800", "vam-1000", "vam-1200", "vam-1400", "vam-1600",
+    "test-20-minutes-cyclisme", "niveau-cycliste-pro", "niveau-cycliste-amateur", "comment-ameliorer-ftp",
+  ];
+  const ftpPages: SitemapEntry[] = FTP_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-ftp-cyclisme/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Handicap golf WHS
+  const GOLF_SLUGS = [
+    "index-5", "index-10", "index-15", "index-18", "index-20", "index-24", "index-28", "index-36",
+    "slope-100", "slope-113", "slope-125", "slope-135", "slope-145",
+    "handicap-debutant", "handicap-amateur", "handicap-pro", "handicap-femme-moyen",
+    "combien-cartes-pour-index", "formule-differentiel-golf", "whs-vs-eda",
+  ];
+  const golfPages: SitemapEntry[] = GOLF_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-handicap-golf-whs/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Allure natation + SWOLF
+  const NATATION_SLUGS = [
+    "allure-1min-100m", "allure-1min15-100m", "allure-1min30-100m", "allure-1min45-100m",
+    "allure-2min-100m", "allure-2min15-100m", "allure-2min30-100m",
+    "vitesse-3-kmh", "vitesse-3-5-kmh", "vitesse-4-kmh", "vitesse-4-5-kmh", "vitesse-5-kmh",
+    "ironman-3800m-en-1h", "ironman-3800m-en-1h15", "ironman-3800m-en-1h30",
+    "half-ironman-1900m-en-35min", "half-ironman-1900m-en-40min", "half-ironman-1900m-en-50min",
+    "1500m-en-25min", "1500m-en-30min", "400m-en-7min",
+    "swolf-30", "swolf-40", "swolf-50", "swolf-60",
+  ];
+  const natationPages: SitemapEntry[] = NATATION_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-allure-natation/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Tennis FFT
+  const TENNIS_FFT_SLUGS = [
+    "classement-nc", "classement-40", "classement-30-5", "classement-30-3", "classement-30",
+    "classement-15-5", "classement-15-3", "classement-15",
+    "classement-5-6", "classement-4-6", "classement-1-6", "classement-0",
+    "progresser-de-nc-a-40", "progresser-de-40-a-30", "progresser-de-30-a-15", "progresser-de-15-a-5",
+    "meilleur-classement-amateur-tennis", "classement-pro-tennis-fft", "bilan-tennis-saison", "comment-monter-15-tennis",
+  ];
+  const tennisFftPages: SitemapEntry[] = TENNIS_FFT_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-classement-tennis-fft/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // WtHR : combos hommes + femmes + ratios + questions
+  const WTHR_SLUGS: string[] = [];
+  for (const tour of [80, 85, 90, 95, 100, 105]) {
+    for (const taille of [160, 165, 170, 175, 180, 185]) {
+      WTHR_SLUGS.push(`homme-${tour}cm-${taille}cm`);
+    }
+  }
+  for (const tour of [65, 70, 75, 80, 85, 90]) {
+    for (const taille of [160, 165, 170, 175, 180, 185]) {
+      WTHR_SLUGS.push(`femme-${tour}cm-${taille}cm`);
+    }
+  }
+  WTHR_SLUGS.push("wthr-0-43", "wthr-0-48", "wthr-0-50", "wthr-0-55", "wthr-0-60");
+  WTHR_SLUGS.push("wthr-vs-imc", "regle-or-oms-0-5", "graisse-viscerale-mesure", "risque-cardiovasculaire-wthr");
+  const wthrPages: SitemapEntry[] = WTHR_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-rapport-taille-tour-de-taille/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
   // Pages dynamiques Poids Ideal
   const PI_SEXES = ["homme", "femme"];
   const PI_TAILLES = [155, 158, 160, 163, 165, 168, 170, 173, 175, 178, 180, 183, 185, 188, 190];
@@ -2952,6 +3043,12 @@ function generateAllUrls(): SitemapEntry[] {
     ...kaffaraPages,
     ...hebraiquePages,
     ...barMitzvahPages,
+    ...sport3StaticPages,
+    ...ftpPages,
+    ...golfPages,
+    ...natationPages,
+    ...tennisFftPages,
+    ...wthrPages,
     ...tempPages,
     ...poidsPages,
     ...longueurPages,

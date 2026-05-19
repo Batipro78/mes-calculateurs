@@ -1097,6 +1097,51 @@ const outils = [
     couleur: "from-blue-600 to-indigo-700",
     tag: "Nouveau",
   },
+  {
+    titre: "Calcul FTP Cyclisme",
+    description:
+      "Test 20 min, W/kg, VAM, tableau niveau cycliste (Pass'Cyclisme, Cat 1-3 FFC, Pro). Sources Coggan.",
+    href: "/calcul-ftp-cyclisme",
+    icone: "🚴",
+    couleur: "from-orange-500 to-red-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Handicap Golf WHS",
+    description:
+      "Index officiel FFGolf 2026 : 8 meilleurs differentiels sur 20 cartes. Handicap de jeu. WHS officiel.",
+    href: "/calcul-handicap-golf-whs",
+    icone: "⛳",
+    couleur: "from-green-600 to-emerald-700",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Allure Natation + SWOLF",
+    description:
+      "Allure min/100m, prediction 200m a 3800m (Ironman). SWOLF par niveau. Triathlon FR.",
+    href: "/calcul-allure-natation",
+    icone: "🏊",
+    couleur: "from-cyan-500 to-blue-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Classement Tennis FFT",
+    description:
+      "Estimer son nouveau classement FFT (NC a -30). Bilan V-E-2I-5G. 1 million de licencies FFT.",
+    href: "/calcul-classement-tennis-fft",
+    icone: "🎾",
+    couleur: "from-yellow-500 to-orange-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "WtHR Rapport Taille / Tour de Taille",
+    description:
+      "Alternative a l'IMC, mesure la graisse viscerale. Regle d'or OMS = 0.5. Sources NHS UK 2022, Harvard.",
+    href: "/calcul-rapport-taille-tour-de-taille",
+    icone: "❤️",
+    couleur: "from-rose-500 to-pink-600",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {
