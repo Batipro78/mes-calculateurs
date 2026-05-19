@@ -301,7 +301,7 @@ export default function Page() {
           <li className="flex gap-3">
             <span className="font-bold text-amber-600">•</span>
             <span>
-              <strong>Chiots très jeunes</strong> (< 2-6 semaines) : certaines
+              <strong>Chiots très jeunes</strong> (moins de 2-6 semaines) : certaines
               formules ne conviennent pas. Respecter l&apos;âge minimum sur la
               notice.
             </span>
