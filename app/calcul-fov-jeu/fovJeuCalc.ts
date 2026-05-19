@@ -155,7 +155,7 @@ export function convertirFovRatiosVertminus(
 export interface JeuFov {
   jeu: string;
   emoji: string;
-  hfov: number;
+  hfov?: number;
   vfovLocked?: number;
   min?: number;
   max?: number;
