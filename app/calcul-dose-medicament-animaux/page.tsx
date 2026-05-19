@@ -30,7 +30,7 @@ export default function Page() {
                 name: "Combien de fois vermifuger un chien adulte ?",
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: "Un chien adulte doit être vermifugé tous les 3 mois (4 fois par an). Un chiot doit l'être chaque mois jusqu'à 6 mois, puis tous les 3 mois. Un chien senior (> 7 ans) peut être vermifugé 2 fois par an si pas d'exposition à des risques.",
+                  text: "Un chien adulte doit être vermifugé tous les 3 mois (4 fois par an). Un chiot doit l'être chaque mois jusqu'à 6 mois, puis tous les 3 mois. Un chien senior (plus de 7 ans) peut être vermifugé 2 fois par an si pas d'exposition à des risques.",
                 },
               },
               {
@@ -253,7 +253,7 @@ export default function Page() {
                 (trimestres)
               </li>
               <li>
-                <strong>Chien senior (> 7 ans)</strong> : 2-4 fois par an
+                <strong>Chien senior (plus de 7 ans)</strong> : 2-4 fois par an
               </li>
               <li>
                 <strong>Chienne gestante</strong> : consultation vétérinaire
@@ -270,7 +270,7 @@ export default function Page() {
                 <strong>Chat adulte (1-7 ans)</strong> : 2 fois par an
               </li>
               <li>
-                <strong>Chat senior (> 7 ans)</strong> : 1-2 fois par an
+                <strong>Chat senior (plus de 7 ans)</strong> : 1-2 fois par an
               </li>
               <li>
                 <strong>Chat d&apos;intérieur</strong> : 1 fois par an

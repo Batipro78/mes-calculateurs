@@ -192,7 +192,7 @@ export default async function Page({ params }: DynamicPageParams) {
               tous les 3 mois)
             </li>
             <li>
-              <strong>Chien senior (> 7 ans)</strong> : 2-4 fois par an selon
+              <strong>Chien senior (plus de 7 ans)</strong> : 2-4 fois par an selon
               l&apos;exposition à des risques
             </li>
             <li>
@@ -236,7 +236,7 @@ export default async function Page({ params }: DynamicPageParams) {
               6 mois)
             </li>
             <li>
-              <strong>Chat senior (> 7 ans)</strong> : 1-2 fois par an selon
+              <strong>Chat senior (plus de 7 ans)</strong> : 1-2 fois par an selon
               l&apos;état de santé
             </li>
             <li>
