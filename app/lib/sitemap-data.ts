@@ -2182,6 +2182,99 @@ function generateAllUrls(): SitemapEntry[] {
     priority: 0.7,
   }));
 
+  // Religion 2 (5 calcs ajoutes 19/05/2026 session 52 quater)
+  const religion2StaticPages: SitemapEntry[] = [
+    { url: `${BASE_URL}/signe-astrologique-chinois`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-fetes-catholiques`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-kaffara-ramadan`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/convertisseur-calendrier-hebraique`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-date-bar-mitzvah`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+  ];
+
+  // Signe astrologique chinois : annees + signes + nouvel an
+  const SIGNE_CHINOIS_SLUGS = [
+    "annee-1970", "annee-1975", "annee-1980", "annee-1985", "annee-1990",
+    "annee-1995", "annee-2000", "annee-2005", "annee-2010", "annee-2015",
+    "annee-2020", "annee-2024", "annee-2025", "annee-2026",
+    "signe-rat", "signe-buffle", "signe-tigre", "signe-lapin", "signe-dragon",
+    "signe-serpent", "signe-cheval", "signe-chevre", "signe-singe", "signe-coq",
+    "signe-chien", "signe-cochon",
+    "nouvel-an-chinois-2026", "nouvel-an-chinois-2027",
+  ];
+  const signeChinoisPages: SitemapEntry[] = SIGNE_CHINOIS_SLUGS.map((s) => ({
+    url: `${BASE_URL}/signe-astrologique-chinois/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Fetes catholiques : pack toutes fetes mobiles + fixes par annee
+  const FETES_CATHO_SLUGS = [
+    "fetes-2026", "fetes-2027", "fetes-2028", "fetes-2029", "fetes-2030",
+    "toussaint-2026", "toussaint-2027", "toussaint-2028",
+    "assomption-2026", "assomption-2027", "assomption-2028",
+    "avent-2026", "avent-2027", "avent-2028",
+    "epiphanie-2026", "epiphanie-2027",
+    "chandeleur-2026", "chandeleur-2027",
+    "careme-2026", "careme-2027",
+    "quand-tombe-noel-2026", "quand-tombe-paques-2026",
+    "jours-feries-religieux-2026",
+    "calendrier-liturgique-2026", "calendrier-liturgique-2027",
+  ];
+  const fetesCathoPages: SitemapEntry[] = FETES_CATHO_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-fetes-catholiques/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Kaffara Ramadan + Fidya
+  const KAFFARA_SLUGS = [
+    "kaffara-1-jour", "kaffara-2-jours", "kaffara-3-jours", "kaffara-5-jours",
+    "kaffara-7-jours", "kaffara-10-jours", "kaffara-15-jours", "kaffara-30-jours",
+    "fidya-1-jour", "fidya-5-jours", "fidya-10-jours", "fidya-20-jours", "fidya-30-jours",
+    "kaffara-rapport-conjugal-ramadan", "fidya-personne-agee",
+  ];
+  const kaffaraPages: SitemapEntry[] = KAFFARA_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-kaffara-ramadan/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Calendrier hebraique
+  const HEBRAIQUE_SLUGS = [
+    "aujourd-hui-en-hebreu",
+    "annee-5780", "annee-5783", "annee-5784", "annee-5785",
+    "annee-5786", "annee-5787", "annee-5788",
+    "ne-en-1980", "ne-en-1985", "ne-en-1990", "ne-en-1995",
+    "ne-en-2000", "ne-en-2005", "ne-en-2010",
+    "1-janvier-2026", "1-juillet-2026", "31-decembre-2026",
+    "rosh-hashanah-2026", "yom-kippour-2026",
+    "pessah-2026-hebraique", "shavouot-2026-hebraique",
+  ];
+  const hebraiquePages: SitemapEntry[] = HEBRAIQUE_SLUGS.map((s) => ({
+    url: `${BASE_URL}/convertisseur-calendrier-hebraique/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Bar / Bat Mitzvah
+  const BAR_MITZVAH_SLUGS = [
+    "ne-en-2010-garcon", "ne-en-2011-garcon", "ne-en-2012-garcon",
+    "ne-en-2013-garcon", "ne-en-2014-garcon", "ne-en-2015-garcon",
+    "ne-en-2012-fille", "ne-en-2013-fille", "ne-en-2014-fille",
+    "ne-en-2015-fille", "ne-en-2016-fille", "ne-en-2017-fille",
+    "quand-bar-mitzvah-13-ans", "quand-bat-mitzvah-12-ans", "difference-bar-bat-mitzvah",
+  ];
+  const barMitzvahPages: SitemapEntry[] = BAR_MITZVAH_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-date-bar-mitzvah/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
   // Pages dynamiques Poids Ideal
   const PI_SEXES = ["homme", "femme"];
   const PI_TAILLES = [155, 158, 160, 163, 165, 168, 170, 173, 175, 178, 180, 183, 185, 188, 190];
@@ -2853,6 +2946,12 @@ function generateAllUrls(): SitemapEntry[] {
     ...hijriPages,
     ...ramadanPages,
     ...paquesPages,
+    ...religion2StaticPages,
+    ...signeChinoisPages,
+    ...fetesCathoPages,
+    ...kaffaraPages,
+    ...hebraiquePages,
+    ...barMitzvahPages,
     ...tempPages,
     ...poidsPages,
     ...longueurPages,

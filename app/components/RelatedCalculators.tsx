@@ -114,6 +114,11 @@ const ALL_CALCULATORS = [
   { slug: "/convertisseur-calendrier-hijri", title: "Calendrier Hijri", emoji: "🌙", color: "from-teal-600 to-emerald-700" },
   { slug: "/calcul-date-ramadan", title: "Date Ramadan", emoji: "☪️", color: "from-emerald-600 to-teal-700" },
   { slug: "/calcul-date-paques", title: "Date Paques", emoji: "🕊️", color: "from-amber-500 to-orange-600" },
+  { slug: "/signe-astrologique-chinois", title: "Signe Chinois", emoji: "🐉", color: "from-rose-600 to-red-700" },
+  { slug: "/calcul-fetes-catholiques", title: "Fetes Catholiques", emoji: "⛪", color: "from-amber-500 to-orange-600" },
+  { slug: "/calcul-kaffara-ramadan", title: "Kaffara Ramadan", emoji: "🕌", color: "from-emerald-600 to-green-700" },
+  { slug: "/convertisseur-calendrier-hebraique", title: "Calendrier Hebraique", emoji: "✡️", color: "from-blue-600 to-indigo-700" },
+  { slug: "/calcul-date-bar-mitzvah", title: "Bar / Bat Mitzvah", emoji: "📜", color: "from-blue-600 to-indigo-700" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -232,6 +237,11 @@ const RELATED_MAP: Record<string, string[]> = {
   "/convertisseur-calendrier-hijri": ["/calcul-date-ramadan", "/calcul-zakat", "/calcul-age", "/calcul-duree-entre-dates"],
   "/calcul-date-ramadan": ["/convertisseur-calendrier-hijri", "/calcul-zakat-al-fitr", "/calcul-zakat", "/calcul-date-paques"],
   "/calcul-date-paques": ["/calcul-date-ramadan", "/calcul-duree-entre-dates", "/calcul-age", "/calcul-jours-ouvres"],
+  "/signe-astrologique-chinois": ["/calcul-age", "/convertisseur-calendrier-hebraique", "/convertisseur-calendrier-hijri", "/calcul-ascendant-astrologique"],
+  "/calcul-fetes-catholiques": ["/calcul-date-paques", "/calcul-jours-ouvres", "/calcul-duree-entre-dates", "/calcul-age"],
+  "/calcul-kaffara-ramadan": ["/calcul-zakat", "/calcul-zakat-al-fitr", "/calcul-date-ramadan", "/convertisseur-calendrier-hijri"],
+  "/convertisseur-calendrier-hebraique": ["/calcul-date-bar-mitzvah", "/convertisseur-calendrier-hijri", "/calcul-age", "/calcul-duree-entre-dates"],
+  "/calcul-date-bar-mitzvah": ["/convertisseur-calendrier-hebraique", "/calcul-age", "/calcul-duree-entre-dates", "/calcul-date-paques"],
 };
 
 interface RelatedCalculatorsProps {

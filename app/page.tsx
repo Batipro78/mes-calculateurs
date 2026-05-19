@@ -1052,6 +1052,51 @@ const outils = [
     couleur: "from-amber-500 to-orange-600",
     tag: "Nouveau",
   },
+  {
+    titre: "Signe Astrologique Chinois",
+    description:
+      "12 animaux et 5 elements (Bois, Feu, Terre, Metal, Eau). Cycle 60 ans, ajustement Nouvel An lunaire.",
+    href: "/signe-astrologique-chinois",
+    icone: "🐉",
+    couleur: "from-rose-600 to-red-700",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Calendrier Fetes Catholiques",
+    description:
+      "Toutes les fetes : Paques, Toussaint, Assomption, Ascension, Pentecote, Avent. Mobiles et fixes.",
+    href: "/calcul-fetes-catholiques",
+    icone: "⛪",
+    couleur: "from-amber-500 to-orange-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Calcul Kaffara Ramadan",
+    description:
+      "Compensation jeune rompu : 60 repas/jour (Kaffara) ou 1 repas/jour manque (Fidya). Sources Secours Islamique.",
+    href: "/calcul-kaffara-ramadan",
+    icone: "🕌",
+    couleur: "from-emerald-600 to-green-700",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Convertisseur Calendrier Hebraique",
+    description:
+      "Date hebraique vers gregorienne. 12 mois + Adar II. Cycle Meton 19 ans. Calcul age hebraique.",
+    href: "/convertisseur-calendrier-hebraique",
+    icone: "✡️",
+    couleur: "from-blue-600 to-indigo-700",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Date Bar / Bat Mitzvah",
+    description:
+      "Calcul date Bar Mitzvah (garcon 13 ans hebreu) ou Bat Mitzvah (fille 12 ans hebreu). Consensus rabbinique.",
+    href: "/calcul-date-bar-mitzvah",
+    icone: "📜",
+    couleur: "from-blue-600 to-indigo-700",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {
