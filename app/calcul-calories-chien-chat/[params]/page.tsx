@@ -17,8 +17,8 @@ import {
 const ESPECES: Espece[] = ["chien", "chat"];
 const POIDS_CHIEN = [5, 10, 15, 20, 25, 30, 40];
 const POIDS_CHAT = [3, 4, 5, 6, 8];
-const STADES_CHIEN: Stade[] = ["adulte", "actif", "senior"];
-const STADES_CHAT: Stade[] = ["adulte", "sterilise", "senior"];
+const STADES_CHIEN: string[] = ["adulte", "actif", "senior"];
+const STADES_CHAT: string[] = ["adulte", "sterilise", "senior"];
 
 /**
  * Types de slugs dynamiques générés
