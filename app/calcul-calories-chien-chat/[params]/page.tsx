@@ -216,14 +216,12 @@ export default async function Page({ params }: { params: Promise<{ params: strin
   return (
     <div>
       <Breadcrumb
-        items={[
-          { label: "Accueil", href: "/" },
-          { label: "Calcul Calories Chien Chat", href: "/calcul-calories-chien-chat" },
-          { label: breadcrumbLabel },
-        ]}
+        currentPage={breadcrumbLabel}
+        parentPage="Calcul Calories Chien Chat"
+        parentHref="/calcul-calories-chien-chat"
       />
 
-      <AdSlot />
+      <AdSlot adSlot="1234567890" />
 
       <div className="mx-auto max-w-6xl px-4 py-8">
         {/* En-tête */}
@@ -239,7 +237,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
           <CalculCaloriesChienChat />
         </div>
 
-        <AdSlot />
+        <AdSlot adSlot="1234567890" />
 
         {/* Contenu spécifique selon slug */}
         {parsed.type === "weight" && parsed.poids && parsed.stade && (
@@ -270,7 +268,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
           </section>
         )}
 
-        <AdSlot />
+        <AdSlot adSlot="1234567890" />
       </div>
 
       <RelatedCalculators currentSlug="/calcul-calories-chien-chat" />

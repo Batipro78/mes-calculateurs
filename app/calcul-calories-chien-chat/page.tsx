@@ -87,11 +87,9 @@ export default function Page() {
         }}
       />
 
-      <Breadcrumb
-        items={[{ label: "Accueil", href: "/" }, { label: "Calcul Calories Chien Chat" }]}
-      />
+      <Breadcrumb currentPage="Calcul Calories Chien Chat" />
 
-      <AdSlot />
+      <AdSlot adSlot="1234567890" />
 
       <div className="mx-auto max-w-6xl px-4 py-8">
         {/* En-tête */}
@@ -112,7 +110,7 @@ export default function Page() {
           <CalculCaloriesChienChat />
         </div>
 
-        <AdSlot />
+        <AdSlot adSlot="1234567890" />
 
         {/* Section BER */}
         <section className="mb-12">
@@ -262,7 +260,7 @@ export default function Page() {
           </div>
         </section>
 
-        <AdSlot />
+        <AdSlot adSlot="1234567890" />
 
         {/* Section BER vs DER */}
         <section className="mb-12">
@@ -324,7 +322,7 @@ export default function Page() {
           </p>
         </section>
 
-        <AdSlot />
+        <AdSlot adSlot="1234567890" />
       </div>
 
       <RelatedCalculators currentSlug="/calcul-calories-chien-chat" />
