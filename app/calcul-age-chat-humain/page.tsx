@@ -9,7 +9,6 @@ export const metadata: Metadata = {
     "Convertissez l'âge de votre chat en équivalent humain avec la formule AAFP. Découvrez la phase de vie, les conseils santé et l'espérance de vie selon l'environnement.",
   keywords:
     "âge chat humain, conversion âge chat, mon chat quel âge, formule AAFP, phase de vie chat, espérance de vie chat, chat senior, chaton",
-  ogImage: "/og-default.png",
   alternates: {
     canonical: "https://mescalculateurs.fr/calcul-age-chat-humain",
   },

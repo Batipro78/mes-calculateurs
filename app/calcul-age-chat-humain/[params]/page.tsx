@@ -103,7 +103,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title,
     description,
     keywords: "âge chat, conversion, calculer âge, phase de vie, sénior, chaton, espérance de vie, AAFP",
-    ogImage: "/og-default.png",
     alternates: {
       canonical: `https://mescalculateurs.fr/calcul-age-chat-humain/${slug}`,
     },
