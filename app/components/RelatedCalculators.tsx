@@ -134,6 +134,16 @@ const ALL_CALCULATORS = [
   { slug: "/compatibilite-signes-astrologiques", title: "Compatibilite Astro", emoji: "💕", color: "from-pink-500 to-rose-600" },
   { slug: "/calcul-signe-lunaire", title: "Signe Lunaire", emoji: "🌙", color: "from-slate-700 to-indigo-800" },
   { slug: "/numerologie-nom-prenom", title: "Numerologie Nom", emoji: "✨", color: "from-purple-600 to-fuchsia-700" },
+  { slug: "/calcul-mention-bac", title: "Mention au Bac", emoji: "🎓", color: "from-blue-500 to-indigo-600" },
+  { slug: "/calcul-age-corrige-prema", title: "Age Corrige Prema", emoji: "👶", color: "from-pink-500 to-rose-600" },
+  { slug: "/calcul-percentile-bebe", title: "Percentile Bebe", emoji: "📊", color: "from-purple-500 to-pink-600" },
+  { slug: "/calcul-cycles-sommeil", title: "Cycles Sommeil", emoji: "🛌", color: "from-indigo-500 to-purple-600" },
+  { slug: "/calcul-dette-sommeil", title: "Dette Sommeil", emoji: "😴", color: "from-indigo-600 to-purple-700" },
+  { slug: "/test-depression-phq9", title: "Test Depression PHQ-9", emoji: "🧠", color: "from-rose-600 to-pink-700" },
+  { slug: "/test-anxiete-gad7", title: "Test Anxiete GAD-7", emoji: "😰", color: "from-amber-500 to-orange-600" },
+  { slug: "/test-burnout-mbi", title: "Test Burnout MBI", emoji: "🔥", color: "from-red-500 to-orange-600" },
+  { slug: "/calcul-cote-argus-voiture", title: "Cote Argus Voiture", emoji: "🚗", color: "from-blue-500 to-indigo-600" },
+  { slug: "/calcul-cout-trajet-voiture", title: "Cout Trajet Voiture", emoji: "🛣️", color: "from-sky-500 to-blue-600" },
 ];
 
 const RELATED_MAP: Record<string, string[]> = {
@@ -272,6 +282,16 @@ const RELATED_MAP: Record<string, string[]> = {
   "/compatibilite-signes-astrologiques": ["/calcul-signe-zodiaque", "/calcul-ascendant-astrologique", "/calcul-signe-lunaire", "/calcul-chemin-de-vie"],
   "/calcul-signe-lunaire": ["/calcul-signe-zodiaque", "/calcul-ascendant-astrologique", "/compatibilite-signes-astrologiques", "/signe-astrologique-chinois"],
   "/numerologie-nom-prenom": ["/calcul-chemin-de-vie", "/calcul-signe-zodiaque", "/calcul-age", "/calcul-ascendant-astrologique"],
+  "/calcul-mention-bac": ["/calcul-moyenne", "/calcul-pourcentage", "/calcul-gratification-stage", "/simulateur-salaire-alternant"],
+  "/calcul-age-corrige-prema": ["/calcul-percentile-bebe", "/calcul-date-accouchement", "/calcul-ovulation", "/calcul-age"],
+  "/calcul-percentile-bebe": ["/calcul-age-corrige-prema", "/calcul-imc", "/calcul-date-accouchement", "/calcul-prise-poids-grossesse"],
+  "/calcul-cycles-sommeil": ["/calcul-dette-sommeil", "/calcul-besoin-sommeil", "/calcul-score-stress", "/calcul-metabolisme-base"],
+  "/calcul-dette-sommeil": ["/calcul-cycles-sommeil", "/calcul-besoin-sommeil", "/calcul-score-stress", "/test-burnout-mbi"],
+  "/test-depression-phq9": ["/test-anxiete-gad7", "/test-burnout-mbi", "/calcul-score-stress", "/calcul-besoin-sommeil"],
+  "/test-anxiete-gad7": ["/test-depression-phq9", "/test-burnout-mbi", "/calcul-score-stress", "/calcul-dette-sommeil"],
+  "/test-burnout-mbi": ["/test-depression-phq9", "/test-anxiete-gad7", "/calcul-score-stress", "/calcul-dette-sommeil"],
+  "/calcul-cote-argus-voiture": ["/simulateur-cout-voiture", "/calcul-cout-trajet-voiture", "/calcul-malus-ecologique", "/calcul-vignette-critair"],
+  "/calcul-cout-trajet-voiture": ["/calcul-consommation-essence", "/calcul-indemnites-kilometriques", "/calcul-cout-kilometrique", "/simulateur-cout-voiture"],
 };
 
 interface RelatedCalculatorsProps {

@@ -3112,6 +3112,177 @@ function generateAllUrls(): SitemapEntry[] {
     auditBanquesPages.push({ url: `${BASE_URL}/audit-frais-bancaires/${b}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 });
   }
 
+  // Batch session 54bis 20/05/2026 : 10 calcs (education, prema, percentile, sommeil x2, sante mentale x3, voiture x2)
+  const batch54bisStaticPages: SitemapEntry[] = [
+    { url: `${BASE_URL}/calcul-mention-bac`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-age-corrige-prema`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-percentile-bebe`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-cycles-sommeil`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-dette-sommeil`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/test-depression-phq9`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/test-anxiete-gad7`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/test-burnout-mbi`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-cote-argus-voiture`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/calcul-cout-trajet-voiture`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
+  ];
+
+  // Mention Bac : 19 moyennes
+  const MENTION_BAC_SLUGS = [
+    "moyenne-8", "moyenne-10", "moyenne-11", "moyenne-12", "moyenne-13", "moyenne-13-5",
+    "moyenne-14", "moyenne-14-5", "moyenne-15", "moyenne-15-5", "moyenne-16", "moyenne-16-5",
+    "moyenne-17", "moyenne-17-5", "moyenne-18", "moyenne-18-5", "moyenne-19", "moyenne-19-5",
+    "moyenne-20",
+  ];
+  const mentionBacPages: SitemapEntry[] = MENTION_BAC_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-mention-bac/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Age Corrige Prema : 18 variantes SA + age
+  const AGE_CORRIGE_SLUGS = [
+    "ne-a-24sa-6-mois", "ne-a-25sa-12-mois", "ne-a-26sa-6-mois", "ne-a-27sa-12-mois",
+    "ne-a-28sa-6-mois", "ne-a-28sa-18-mois", "ne-a-29sa-9-mois", "ne-a-30sa-6-mois",
+    "ne-a-30sa-12-mois", "ne-a-31sa-6-mois", "ne-a-32sa-6-mois", "ne-a-32sa-12-mois",
+    "ne-a-33sa-6-mois", "ne-a-34sa-6-mois", "ne-a-34sa-12-mois", "ne-a-35sa-6-mois",
+    "ne-a-36sa-6-mois", "ne-a-36sa-12-mois",
+  ];
+  const ageCorrigePages: SitemapEntry[] = AGE_CORRIGE_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-age-corrige-prema/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Percentile Bebe : 16 variantes OMS
+  const PERCENTILE_BEBE_SLUGS = [
+    "percentile-garcon-3-mois", "percentile-fille-3-mois",
+    "percentile-garcon-6-mois", "percentile-fille-6-mois",
+    "percentile-garcon-9-mois", "percentile-fille-9-mois",
+    "percentile-garcon-12-mois", "percentile-fille-12-mois",
+    "percentile-garcon-18-mois", "percentile-fille-18-mois",
+    "percentile-garcon-24-mois", "percentile-fille-24-mois",
+    "percentile-naissance-garcon", "percentile-naissance-fille",
+    "bebe-grand-percentile-90", "bebe-petit-percentile-10",
+  ];
+  const percentileBebePages: SitemapEntry[] = PERCENTILE_BEBE_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-percentile-bebe/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Cycles Sommeil : 16 variantes (reveil + coucher)
+  const CYCLES_SOMMEIL_SLUGS = [
+    "reveil-5h30", "reveil-6h", "reveil-6h30", "reveil-7h", "reveil-7h30",
+    "reveil-8h", "reveil-8h30", "reveil-9h",
+    "coucher-21h", "coucher-21h30", "coucher-22h", "coucher-22h30",
+    "coucher-23h", "coucher-23h30", "coucher-minuit", "coucher-1h",
+  ];
+  const cyclesSommeilPages: SitemapEntry[] = CYCLES_SOMMEIL_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-cycles-sommeil/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Dette Sommeil : 16 variantes
+  const DETTE_SOMMEIL_SLUGS = [
+    "dormir-4h-par-nuit-7-jours", "dormir-5h-par-nuit-7-jours",
+    "dormir-6h-par-nuit-7-jours", "dormir-7h-par-nuit-7-jours",
+    "dormir-5h-par-nuit-14-jours", "dormir-6h-par-nuit-14-jours",
+    "dette-sommeil-semaine-charge", "dette-sommeil-jeune-parent",
+    "dette-sommeil-etudiant-examens", "dette-sommeil-travailleur-nuit",
+    "besoin-9h-dormir-7h-7-jours", "besoin-7h-dormir-5h-7-jours",
+    "dette-sommeil-10-jours", "dette-sommeil-12-jours",
+    "rattraper-dette-sommeil-weekend", "sieste-20-minutes-recuperation",
+  ];
+  const detteSommeilPages: SitemapEntry[] = DETTE_SOMMEIL_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-dette-sommeil/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Test Depression PHQ-9 : 12 variantes
+  const PHQ9_SLUGS = [
+    "test-depression-en-ligne", "depression-saisonniere-test",
+    "depression-post-partum-test", "depression-adolescent-test",
+    "test-depression-personnes-agees", "depression-burnout-difference",
+    "phq-9-validite-scientifique", "score-phq-9-interpretation",
+    "phq-9-versus-beck-bdi", "depression-anxiete-test-combine",
+    "depression-homme-test-symptomes", "phq-9-suivi-traitement",
+  ];
+  const phq9Pages: SitemapEntry[] = PHQ9_SLUGS.map((s) => ({
+    url: `${BASE_URL}/test-depression-phq9/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Test Anxiete GAD-7 : 15 variantes
+  const GAD7_SLUGS = [
+    "anxiete-travail", "anxiete-etudiant", "anxiete-generalisee", "anxiete-sociale",
+    "depistage-rapide", "anxiete-adolescent", "anxiete-grossesse", "anxiete-post-partum",
+    "anxiete-confinement", "anxiete-couple", "anxiete-financiere", "anxiete-conducteur",
+    "anxiete-avion", "anxiete-sante", "anxiete-burn-out",
+  ];
+  const gad7Pages: SitemapEntry[] = GAD7_SLUGS.map((s) => ({
+    url: `${BASE_URL}/test-anxiete-gad7/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Test Burnout MBI : 15 variantes
+  const MBI_SLUGS = [
+    "burnout-soignant", "burnout-enseignant", "burnout-manager", "burnout-medecin",
+    "burnout-aidant-familial", "burnout-commercial", "burnout-entrepreneur",
+    "burnout-travail-social", "burnout-rh", "burnout-tech-developpeur",
+    "test-mbi-en-ligne-gratuit", "epuisement-professionnel-symptomes",
+    "burnout-fonction-publique", "burnout-jeune-diplome", "burnout-femme-charge-mentale",
+  ];
+  const mbiPages: SitemapEntry[] = MBI_SLUGS.map((s) => ({
+    url: `${BASE_URL}/test-burnout-mbi/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Cote Argus Voiture : 20 modeles
+  const ARGUS_SLUGS = [
+    "renault-clio-2020", "peugeot-208-2019", "citroen-c3-2018", "renault-megane-2019",
+    "peugeot-308-2020", "dacia-sandero-2021", "renault-captur-2020", "peugeot-3008-2018",
+    "volkswagen-golf-2019", "ford-fiesta-2018", "toyota-yaris-2020", "toyota-corolla-2021",
+    "renault-zoe-2020", "tesla-model-3-2021", "bmw-serie-1-2019", "audi-a3-2018",
+    "mercedes-classe-a-2019", "fiat-500-2020", "nissan-qashqai-2019", "hyundai-tucson-2020",
+  ];
+  const argusPages: SitemapEntry[] = ARGUS_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-cote-argus-voiture/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  // Cout Trajet Voiture : 10 trajets x essence + 3 diesel + 4 electrique + 3 km-conso = 20
+  const TRAJET_SLUGS: string[] = [];
+  const TRAJETS_BASE = [
+    "paris-lyon", "paris-marseille", "paris-bordeaux", "paris-toulouse",
+    "paris-nantes", "paris-strasbourg", "paris-lille",
+    "lyon-marseille", "lyon-bordeaux", "marseille-nice",
+  ];
+  for (const t of TRAJETS_BASE) TRAJET_SLUGS.push(`${t}-essence`);
+  for (const t of ["paris-lyon", "paris-marseille", "paris-bordeaux"]) TRAJET_SLUGS.push(`${t}-diesel`);
+  for (const t of ["paris-lyon", "paris-marseille", "paris-bordeaux", "marseille-nice"]) TRAJET_SLUGS.push(`${t}-electrique`);
+  TRAJET_SLUGS.push("100km-7L-essence", "500km-7L-essence", "1000km-7L-essence");
+  const trajetPages: SitemapEntry[] = TRAJET_SLUGS.map((s) => ({
+    url: `${BASE_URL}/calcul-cout-trajet-voiture/${s}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
   return [
     ...staticPages,
     ...salairePages,
@@ -3279,5 +3450,16 @@ function generateAllUrls(): SitemapEntry[] {
     ...facGazPages,
     ...creditAutoPages,
     ...auditBanquesPages,
+    ...batch54bisStaticPages,
+    ...mentionBacPages,
+    ...ageCorrigePages,
+    ...percentileBebePages,
+    ...cyclesSommeilPages,
+    ...detteSommeilPages,
+    ...phq9Pages,
+    ...gad7Pages,
+    ...mbiPages,
+    ...argusPages,
+    ...trajetPages,
   ];
 }

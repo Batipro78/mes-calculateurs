@@ -1232,6 +1232,96 @@ const outils = [
     couleur: "from-purple-600 to-fuchsia-700",
     tag: "Nouveau",
   },
+  {
+    titre: "Mention au Bac",
+    description:
+      "Quelle mention pour votre moyenne au bac ? Passable, AB, B, TB, TB Felicitations. Bareme officiel.",
+    href: "/calcul-mention-bac",
+    icone: "🎓",
+    couleur: "from-blue-500 to-indigo-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Age Corrige Bebe Prema",
+    description:
+      "Age corrige pour bebe ne prematurement. Correction jusqu'a 24 mois selon les semaines de prematurite.",
+    href: "/calcul-age-corrige-prema",
+    icone: "👶",
+    couleur: "from-pink-500 to-rose-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Percentile Bebe (OMS)",
+    description:
+      "Percentile poids et taille bebe selon courbes OMS 2006. Methode LMS. P3, P10, P50, P85, P97.",
+    href: "/calcul-percentile-bebe",
+    icone: "📊",
+    couleur: "from-purple-500 to-pink-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Cycles de Sommeil",
+    description:
+      "Heures de coucher / reveil ideales selon les cycles de 90 minutes. Reveil leger sans fatigue.",
+    href: "/calcul-cycles-sommeil",
+    icone: "🛌",
+    couleur: "from-indigo-500 to-purple-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Dette de Sommeil",
+    description:
+      "Calculez votre dette de sommeil cumulee. Combien d'heures rattraper et plan de recuperation.",
+    href: "/calcul-dette-sommeil",
+    icone: "😴",
+    couleur: "from-indigo-600 to-purple-700",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Test Depression PHQ-9",
+    description:
+      "Test de depression valide scientifiquement (PHQ-9, 9 questions). Score 0-27, 5 niveaux.",
+    href: "/test-depression-phq9",
+    icone: "🧠",
+    couleur: "from-rose-600 to-pink-700",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Test Anxiete GAD-7",
+    description:
+      "Echelle d'anxiete generalisee GAD-7. Test scientifique en 7 questions. Score 0-21, 4 niveaux.",
+    href: "/test-anxiete-gad7",
+    icone: "😰",
+    couleur: "from-amber-500 to-orange-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Test Burnout MBI",
+    description:
+      "Maslach Burnout Inventory. Epuisement, depersonnalisation, accomplissement. Test reference mondiale.",
+    href: "/test-burnout-mbi",
+    icone: "🔥",
+    couleur: "from-red-500 to-orange-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Cote Argus Voiture",
+    description:
+      "Estimation cote argus voiture occasion. Decote par age, kilometrage, carburant, marque.",
+    href: "/calcul-cote-argus-voiture",
+    icone: "🚗",
+    couleur: "from-blue-500 to-indigo-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Cout Trajet Voiture",
+    description:
+      "Cout reel d'un trajet en voiture : carburant + peages + amortissement. Comparaison train / avion.",
+    href: "/calcul-cout-trajet-voiture",
+    icone: "🛣️",
+    couleur: "from-sky-500 to-blue-600",
+    tag: "Nouveau",
+  },
 ];
 
 export default function Home() {
