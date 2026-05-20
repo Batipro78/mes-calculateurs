@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import CalculDoseMedicamentAnimaux from "../CalculDoseMedicamentAnimaux";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
@@ -153,7 +154,7 @@ export default async function Page({ params }: DynamicPageParams) {
 
   let pageTitle = "";
   let pageDescription = "";
-  let customContent: JSX.Element | null = null;
+  let customContent: ReactNode = null;
 
   // ===== DOSAGE PAGE =====
   if (parsed.medicament && parsed.animal && parsed.poids) {

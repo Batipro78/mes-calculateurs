@@ -224,7 +224,8 @@ export async function generateMetadata({
   };
 }
 
-export default function Page() {
+export default async function Page({ params }: { params: Promise<{ params: string }> }) {
+  await params;
   return (
     <div>
       <Breadcrumb currentPage="Calcul Signe Zodiaque" />
