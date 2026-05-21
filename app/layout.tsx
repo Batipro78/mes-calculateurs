@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ConditionalScripts from "./components/ConditionalScripts";
 import ConditionalChrome from "./components/ConditionalChrome";
+import SearchBar from "./components/SearchBar";
 import "./globals.css";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
@@ -79,12 +80,12 @@ export default function RootLayout({
         <ConditionalChrome
           header={
             <header className="bg-white/80 backdrop-blur-sm border-b border-slate-200 sticky top-0 z-50">
-              <div className="max-w-5xl mx-auto px-4 py-4 flex items-center justify-between">
-                <a href="/" className="flex items-center gap-2.5">
+              <div className="max-w-5xl mx-auto px-4 py-3 flex items-center gap-3 sm:gap-6">
+                <a href="/" className="flex items-center gap-2.5 shrink-0">
                   <div className="w-9 h-9 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl flex items-center justify-center text-white font-bold text-sm shadow-sm">
                     MC
                   </div>
-                  <div>
+                  <div className="hidden sm:block">
                     <span className="text-lg font-bold text-slate-800">
                       Mes Calculateurs
                     </span>
@@ -93,7 +94,10 @@ export default function RootLayout({
                     </p>
                   </div>
                 </a>
-                <nav className="hidden sm:flex items-center gap-1 text-sm">
+                <div className="flex-1 min-w-0">
+                  <SearchBar />
+                </div>
+                <nav className="hidden md:flex items-center gap-1 text-sm shrink-0">
                   <a
                     href="/salaire-brut-net"
                     className="px-3 py-1.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 transition-colors"
