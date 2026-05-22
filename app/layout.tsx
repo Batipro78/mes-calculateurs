@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import ConditionalScripts from "./components/ConditionalScripts";
 import ConditionalChrome from "./components/ConditionalChrome";
 import SearchBar from "./components/SearchBar";
+import CookieBanner from "./components/CookieBanner";
+import CookieSettingsButton from "./components/CookieSettingsButton";
 import "./globals.css";
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
@@ -174,6 +176,7 @@ export default function RootLayout({
                     <a href="/embed" className="hover:text-slate-600 transition-colors">Widgets</a>
                     <a href="/mentions-legales" className="hover:text-slate-600 transition-colors">Mentions legales</a>
                     <a href="/confidentialite" className="hover:text-slate-600 transition-colors">Confidentialite</a>
+                    <CookieSettingsButton />
                   </div>
                 </div>
               </div>
@@ -182,6 +185,7 @@ export default function RootLayout({
         >
           {children}
         </ConditionalChrome>
+        <CookieBanner />
       </body>
     </html>
   );

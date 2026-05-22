@@ -123,6 +123,15 @@ export default function Page() {
         </ul>
       </section>
 
+      <section className="mt-8 bg-amber-50 border-l-4 border-amber-400 rounded-r-xl p-4">
+        <p className="text-sm text-amber-900">
+          <strong>Information indicative.</strong> Cet outil estime le montant
+          theorique de l&apos;IFI selon le bareme fiscal. Il ne tient pas
+          compte de toutes les situations particulieres (exonerations,
+          decotes, regime matrimonial, demembrement). Pour une declaration
+          IFI reelle, consultez un conseiller fiscal ou un avocat fiscaliste.
+        </p>
+      </section>
       <RelatedCalculators currentSlug="/calcul-ifi" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

@@ -59,6 +59,16 @@ export default function Page() {
           </table>
         </div>
       </section>
+      <section className="mt-8 bg-amber-50 border-l-4 border-amber-400 rounded-r-xl p-4">
+        <p className="text-sm text-amber-900">
+          <strong>Information indicative.</strong> Ce calcul donne une
+          estimation des droits de succession bases sur le bareme fiscal en
+          vigueur. Il ne constitue pas un conseil juridique ou fiscal
+          personnalise. Pour une succession reelle, consultez un notaire qui
+          tiendra compte des exonerations, des donations anterieures, du
+          regime matrimonial et de la nature des biens.
+        </p>
+      </section>
       <RelatedCalculators currentSlug="/calcul-droits-succession" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
