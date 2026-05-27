@@ -3,6 +3,7 @@ import EstimateurCouvreur from "../EstimateurCouvreur";
 import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
+import LeadCaptureForm from "../../components/LeadCaptureForm";
 import { notFound } from "next/navigation";
 import { PRESTATIONS_COUVREUR, REGIONS_SEO, parseSlugCouvreur, generateAllSlugsCouvreur, calculerPrixCouvreur, fmtPrix } from "../calcCouvreur";
 import { VILLES, findVille, getVillesSlugs } from "../../data/villes";
@@ -139,6 +140,12 @@ function VillePage({ ville }: { ville: Ville }) {
       {/* Outil interactif */}
       <h2 className="text-xl font-bold text-slate-800 mb-4">Estimateur interactif</h2>
       <EstimateurCouvreur />
+
+      <LeadCaptureForm
+        nicheId="renovation-globale"
+        ville={ville.nom}
+        departement={ville.departement}
+      />
 
       <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 

@@ -3,6 +3,7 @@ import EstimateurChauffagiste from "../EstimateurChauffagiste";
 import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
+import LeadCaptureForm from "../../components/LeadCaptureForm";
 import { notFound } from "next/navigation";
 import { PRESTATIONS_CHAUFFAGISTE, REGIONS_SEO, parseSlugChauffagiste, generateAllSlugsChauffagiste, calculerPrixChauffagiste, calculerPrixChauffagisteCoef, fmtPrix } from "../calcChauffagiste";
 import { VILLES, findVille, getVillesSlugs } from "../../data/villes";
@@ -154,6 +155,13 @@ function VillePage({ ville }: { ville: Ville }) {
       {/* Outil interactif */}
       <h2 className="text-xl font-bold text-slate-800 mb-4">Estimateur interactif</h2>
       <EstimateurChauffagiste />
+
+      {/* Formulaire de capture lead */}
+      <LeadCaptureForm
+        nicheId="chauffage-pac"
+        ville={ville.nom}
+        departement={ville.departement}
+      />
 
       <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 

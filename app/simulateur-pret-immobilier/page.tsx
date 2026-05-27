@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import VillesLinks from "../components/VillesLinks";
+import LeadCaptureForm from "../components/LeadCaptureForm";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-pret-immobilier" },
@@ -70,6 +71,12 @@ export default function Page() {
       </p>
 
       <SimulateurPret />
+
+      <LeadCaptureForm
+        nicheId="credit-immobilier"
+        titreOverride="Obtenez le meilleur taux pour votre pret immobilier"
+        couleur="#1d4ed8"
+      />
 
       <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 

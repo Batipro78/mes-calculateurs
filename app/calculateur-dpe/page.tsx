@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import LeadCaptureForm from "../components/LeadCaptureForm";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calculateur-dpe" },
@@ -79,6 +80,12 @@ export default function Page() {
       </p>
 
       <CalculateurDPE />
+
+      <LeadCaptureForm
+        nicheId="isolation"
+        titreOverride="Ameliorez votre DPE : obtenez 3 devis gratuits"
+        couleur="#059669"
+      />
 
       <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 

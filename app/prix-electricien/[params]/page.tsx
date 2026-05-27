@@ -3,6 +3,7 @@ import EstimateurElectricien from "../EstimateurElectricien";
 import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
+import LeadCaptureForm from "../../components/LeadCaptureForm";
 import { notFound } from "next/navigation";
 import { PRESTATIONS_ELECTRICIEN, REGIONS_SEO, parseSlugElectricien, generateAllSlugsElectricien, calculerPrixElectricien, fmtPrix } from "../calcElectricien";
 import { VILLES, findVille, getVillesSlugs } from "../../data/villes";
@@ -130,6 +131,12 @@ function VillePage({ ville }: VillePageProps) {
       {/* Outil interactif */}
       <h2 className="text-xl font-bold text-slate-800 mb-4">Estimateur interactif</h2>
       <EstimateurElectricien />
+
+      <LeadCaptureForm
+        nicheId="electricite"
+        ville={ville.nom}
+        departement={ville.departement}
+      />
 
       <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 

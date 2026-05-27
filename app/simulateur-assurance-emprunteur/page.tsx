@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import LeadCaptureForm from "../components/LeadCaptureForm";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-assurance-emprunteur" },
@@ -76,6 +77,12 @@ export default function Page() {
       </p>
 
       <SimulateurAssuranceEmprunteur />
+
+      <LeadCaptureForm
+        nicheId="assurance-pret"
+        titreOverride="Comparez les meilleures offres d'assurance emprunteur"
+        couleur="#0d9488"
+      />
 
       <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
