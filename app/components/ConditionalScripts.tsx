@@ -16,12 +16,14 @@ export default function ConditionalScripts({ gaId }: { gaId: string | undefined 
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
+          gtag('set', 'url_passthrough', true);
+          gtag('set', 'ads_data_redaction', true);
           gtag('consent', 'default', {
             ad_storage: 'denied',
             analytics_storage: 'denied',
             ad_user_data: 'denied',
             ad_personalization: 'denied',
-            wait_for_update: 500
+            wait_for_update: 2000
           });
         `}
       </Script>
