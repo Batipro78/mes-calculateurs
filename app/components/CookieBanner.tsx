@@ -75,17 +75,17 @@ export default function CookieBanner() {
       <div className="max-w-5xl mx-auto px-4 py-4 flex flex-col gap-3 sm:flex-row sm:items-center">
         <div className="flex-1 text-sm text-slate-700">
           <p className="font-semibold text-slate-800 mb-1">
-            Cookies et vie privee
+            Aidez-nous a garder ce site 100 % gratuit
           </p>
           <p className="text-slate-600 leading-relaxed">
-            Nous utilisons des cookies pour mesurer l&apos;audience (Google
-            Analytics) et afficher des publicites (Google AdSense). Aucune
-            donnee n&apos;est collectee sans votre accord. Consultez notre{" "}
+            Acceptez les cookies pour nous permettre de mesurer l&apos;audience
+            et d&apos;afficher quelques publicites discretes : c&apos;est ce
+            qui finance le developpement de tous les calculateurs.{" "}
             <a
               href="/confidentialite"
               className="text-blue-600 hover:underline font-medium"
             >
-              politique de confidentialite
+              En savoir plus
             </a>
             .
           </p>
@@ -94,16 +94,16 @@ export default function CookieBanner() {
           <button
             type="button"
             onClick={() => choose("necessary")}
-            className="px-4 py-2.5 rounded-lg border border-slate-300 text-slate-700 text-sm font-semibold hover:bg-slate-50 transition-colors"
+            className="px-4 py-2.5 rounded-lg border border-slate-300 bg-white text-slate-600 text-sm font-medium hover:bg-slate-50 transition-colors"
           >
             Refuser
           </button>
           <button
             type="button"
             onClick={() => choose("all")}
-            className="px-4 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition-colors"
+            className="px-4 py-2.5 rounded-lg bg-blue-600 text-white text-sm font-semibold shadow-lg shadow-blue-600/30 hover:bg-blue-700 hover:shadow-blue-600/40 transition-all"
           >
-            Tout accepter
+            Accepter
           </button>
         </div>
       </div>
