@@ -9,6 +9,15 @@ export const metadata: Metadata = {
 
 const outils = [
   {
+    titre: "Prix Panneaux Solaires",
+    description:
+      "Estimez le prix d'une installation photovoltaique en 2026 : 3, 6 ou 9 kWc, batterie, aides MaPrimeRenov'.",
+    href: "/prix-panneaux-solaires",
+    icone: "☀️",
+    couleur: "from-amber-400 to-yellow-500",
+    tag: "Nouveau",
+  },
+  {
     titre: "Salaire Brut / Net",
     description:
       "Convertissez votre salaire brut en net et inversement. Cadre, non-cadre, fonction publique.",

@@ -52,6 +52,7 @@ export const ALL_CALCULATORS: Calculator[] = [
   { slug: "/prix-plombier", title: "Prix Plombier", emoji: "🔧", color: "from-cyan-500 to-teal-600" },
   { slug: "/prix-couvreur", title: "Prix Couvreur", emoji: "🪜", color: "from-red-700 to-amber-600" },
   { slug: "/prix-chauffagiste", title: "Prix Chauffagiste", emoji: "🔥", color: "from-orange-600 to-red-500" },
+  { slug: "/prix-panneaux-solaires", title: "Prix Panneaux Solaires", emoji: "☀️", color: "from-amber-400 to-yellow-500" },
   { slug: "/conversion-temperature", title: "Conversion Temperature", emoji: "🌡️", color: "from-blue-500 to-indigo-600" },
   { slug: "/conversion-poids", title: "Conversion Poids", emoji: "⚖️", color: "from-emerald-500 to-teal-600" },
   { slug: "/conversion-longueur", title: "Conversion Longueur", emoji: "📏", color: "from-orange-500 to-amber-600" },

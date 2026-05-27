@@ -262,6 +262,21 @@ const CHAUFF_PRESTATIONS_SEO = [
 ];
 const CHAUFF_REGIONS_SEO = ["ile-de-france", "grandes-villes", "province"];
 
+// Prix Panneaux Solaires
+const SOLAIRE_PRESTATIONS_SEO = [
+  { slug: "panneaux-3kwc", unite: "unites", quantites: [1, 2] },
+  { slug: "panneaux-6kwc", unite: "unites", quantites: [1, 2] },
+  { slug: "panneaux-9kwc", unite: "unites", quantites: [1] },
+  { slug: "batterie-5kwh", unite: "unites", quantites: [1, 2] },
+  { slug: "batterie-10kwh", unite: "unites", quantites: [1, 2] },
+  { slug: "solaire-thermique", unite: "unites", quantites: [1, 2] },
+  { slug: "onduleur", unite: "unites", quantites: [1, 2] },
+  { slug: "carport-solaire", unite: "unites", quantites: [1, 2] },
+  { slug: "demoussage-panneaux", unite: "unites", quantites: [1, 2] },
+  { slug: "audit-solaire", unite: "unites", quantites: [1] },
+];
+const SOLAIRE_REGIONS_SEO = ["ile-de-france", "grandes-villes", "province"];
+
 // Capacite Emprunt
 const EMPRUNT_REVENUS = [1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 8000, 10000];
 const EMPRUNT_DUREES = [15, 20, 25];
@@ -377,7 +392,7 @@ const VILLES_SLUGS = [
   "marseille", "lyon", "toulouse", "nice", "nantes", "montpellier", "strasbourg", "bordeaux", "lille", "rennes", "toulon",
   "reims", "saint-etienne", "le-havre", "dijon", "grenoble", "angers", "aix-en-provence", "brest", "le-mans", "clermont-ferrand",
 ];
-const METIERS_PRIX = ["prix-chauffagiste", "prix-plombier", "prix-electricien", "prix-macon", "prix-peintre", "prix-couvreur"];
+const METIERS_PRIX = ["prix-chauffagiste", "prix-plombier", "prix-electricien", "prix-macon", "prix-peintre", "prix-couvreur", "prix-panneaux-solaires"];
 
 // Chomage
 const CHOMAGE_SALAIRES = [1400, 1600, 1800, 2000, 2200, 2500, 2800, 3000, 3500, 4000, 4500, 5000, 6000];
@@ -722,6 +737,12 @@ function generateAllUrls(): SitemapEntry[] {
     },
     {
       url: `${BASE_URL}/prix-couvreur`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/prix-panneaux-solaires`,
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.9,
@@ -2682,6 +2703,20 @@ function generateAllUrls(): SitemapEntry[] {
     }
   }
 
+  // Pages dynamiques Prix Panneaux Solaires
+  const solairePages: SitemapEntry[] = [];
+  for (const p of SOLAIRE_PRESTATIONS_SEO) {
+    for (const r of SOLAIRE_REGIONS_SEO) {
+      for (const q of p.quantites) {
+        solairePages.push({ url: `${BASE_URL}/prix-panneaux-solaires/${p.slug}-${q}${p.unite}-${r}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+      }
+    }
+  }
+  // Pages ville prix-panneaux-solaires
+  for (const v of VILLES_SLUGS) {
+    solairePages.push({ url: `${BASE_URL}/prix-panneaux-solaires/${v}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
   // Pages dynamiques Conversion Temperature
   const tempPages: SitemapEntry[] = [];
   for (const c of TEMP_CELSIUS) {
@@ -3330,6 +3365,7 @@ function generateAllUrls(): SitemapEntry[] {
     ...impotPages,
     ...bunkerPages,
     ...chauffPages,
+    ...solairePages,
     ...villePages,
     ...taxeFonciereVillePages,
     ...assurancePages,
