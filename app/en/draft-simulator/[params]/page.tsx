@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import DraftSimulator from "../DraftSimulator";
-import AdSlot from "../../../components/AdSlot";
 import BreadcrumbEN from "../../../components/BreadcrumbEN";
 import RelatedCalculatorsEN from "../../../components/RelatedCalculatorsEN";
 import { notFound } from "next/navigation";
@@ -166,7 +165,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
       <h2 className="text-xl font-bold text-slate-800 mb-4">Interactive Simulator</h2>
       <DraftSimulator />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       {/* Other ages */}
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
@@ -195,7 +193,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
       </section>
 
       <RelatedCalculatorsEN currentSlug="/en/draft-simulator" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

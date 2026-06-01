@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import SigneAstrologiqueChinois from "../SigneAstrologiqueChinois";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { calculerSigneChinois, formatAnneeChinoise } from "../signeChinoisCalc";
@@ -158,9 +157,7 @@ export default function Page() {
     <div>
       <Breadcrumb currentPage="Signe Astrologique Chinois" />
       <SigneAstrologiqueChinois />
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
       <RelatedCalculators currentSlug="/signe-astrologique-chinois" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

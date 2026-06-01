@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import ConvertisseurHebraique from "../ConvertisseurHebraique";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
-import AdSlot from "../../components/AdSlot";
 import {
   gregorienVersHebraique,
   hebraiqueVersGregorien,
@@ -307,7 +306,6 @@ export default async function Page({ params }: PageProps) {
 
       <ConvertisseurHebraique />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <section className="mt-8 bg-blue-50 border border-blue-200 rounded-2xl p-6">
         <h2 className="text-lg font-semibold text-blue-900 mb-2">
@@ -322,7 +320,6 @@ export default async function Page({ params }: PageProps) {
       </section>
 
       <RelatedCalculators currentSlug="/convertisseur-calendrier-hebraique" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

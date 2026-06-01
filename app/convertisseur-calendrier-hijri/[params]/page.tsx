@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import ConvertisseurHijri from "../ConvertisseurHijri";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
-import AdSlot from "../../components/AdSlot";
 import {
   gregorienVersHijri,
   hijriVersGregorien,
@@ -298,7 +297,6 @@ export default async function Page({ params }: PageProps) {
 
       <ConvertisseurHijri />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <section className="mt-8 bg-blue-50 border border-blue-200 rounded-2xl p-6">
         <h2 className="text-lg font-semibold text-blue-900 mb-2">
@@ -313,7 +311,6 @@ export default async function Page({ params }: PageProps) {
       </section>
 
       <RelatedCalculators currentSlug="/convertisseur-calendrier-hijri" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

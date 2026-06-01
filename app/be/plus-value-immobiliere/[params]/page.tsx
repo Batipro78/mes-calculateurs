@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import CalculateurPlusValueBE from "../CalculateurPlusValueBE";
-import AdSlot from "../../../components/AdSlot";
 import Breadcrumb from "../../../components/Breadcrumb";
 import { calculerPlusValueBE, type TypeBien } from "../plusValueImmoBeCalc";
 
@@ -204,7 +203,6 @@ export default async function DynamicPage(props: {
         </div>
       </div>
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <div className="bg-white rounded-2xl border border-slate-200 p-8 mb-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">

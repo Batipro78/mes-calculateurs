@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurIndiceGlycemique from "../CalculateurIndiceGlycemique";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { ALIMENTS, ALIMENTS_BY_SLUG, calcChargeGlycemique } from "../indiceGlycemiqueCalc";
@@ -146,7 +145,6 @@ export default async function Page({
         {CATEGORIE_LABELS[aliment.categorie]}
       </p>
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="mb-8" />
 
       {/* Resultat principal */}
       <div className={`bg-gradient-to-br ${badgeIGColor} text-white rounded-2xl p-8 shadow-lg mb-8`}>
@@ -354,7 +352,6 @@ export default async function Page({
       <CalculateurIndiceGlycemique />
 
       <RelatedCalculators currentSlug="/calcul-indice-glycemique" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

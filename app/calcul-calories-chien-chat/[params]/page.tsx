@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculCaloriesChienChat from "../CalculCaloriesChienChat";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import {
@@ -221,7 +220,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         parentHref="/calcul-calories-chien-chat"
       />
 
-      <AdSlot adSlot="1234567890" />
 
       <div className="mx-auto max-w-6xl px-4 py-8">
         {/* En-tête */}
@@ -237,7 +235,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
           <CalculCaloriesChienChat />
         </div>
 
-        <AdSlot adSlot="1234567890" />
 
         {/* Contenu spécifique selon slug */}
         {parsed.type === "weight" && parsed.poids && parsed.stade && (
@@ -268,7 +265,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
           </section>
         )}
 
-        <AdSlot adSlot="1234567890" />
       </div>
 
       <RelatedCalculators currentSlug="/calcul-calories-chien-chat" />

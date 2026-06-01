@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import CalculRationChien from "../CalculRationChien";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
@@ -523,7 +522,6 @@ export default async function Page({
 
       {content}
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <RelatedCalculators currentSlug="/calcul-ration-chien" />
     </div>

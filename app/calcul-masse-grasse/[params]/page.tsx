@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import CalculateurMasseGrasse from "../CalculateurMasseGrasse";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
@@ -333,7 +332,6 @@ export default async function Page({
       </h2>
       <CalculateurMasseGrasse />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">
@@ -378,7 +376,6 @@ export default async function Page({
       </section>
 
       <RelatedCalculators currentSlug="/calcul-masse-grasse" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

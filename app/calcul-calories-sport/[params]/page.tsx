@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import CalculCaloriesSport from "../CalculCaloriesSport";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
@@ -278,7 +277,6 @@ export default async function Page({
       </h2>
       <CalculCaloriesSport />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       {/* Explication */}
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
@@ -299,7 +297,6 @@ export default async function Page({
       </section>
 
       <RelatedCalculators currentSlug="/calcul-calories-sport" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurEndettement from "../CalculateurEndettement";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 
@@ -108,7 +107,6 @@ export default async function Page({
 
       <CalculateurEndettement initialRevenus={revenus} initialCharges={charges} />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <section className="mt-12 bg-white rounded-2xl border border-slate-200 p-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">
@@ -219,7 +217,6 @@ export default async function Page({
       </section>
 
       <RelatedCalculators currentSlug="/calcul-taux-endettement" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

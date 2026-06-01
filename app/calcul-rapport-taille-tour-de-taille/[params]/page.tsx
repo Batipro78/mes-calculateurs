@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { calculerWthr, fmt, type Sexe } from "../wthrCalc";
@@ -430,7 +429,6 @@ export default async function Page({
           </div>
         </div>
 
-        <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
         {/* Interprétation */}
         <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
@@ -479,7 +477,6 @@ export default async function Page({
         </section>
 
         <RelatedCalculators currentSlug="/calcul-rapport-taille-tour-de-taille" />
-        <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
       </div>
     );
   }

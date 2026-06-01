@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurAgeMetabolique from "../CalculateurAgeMetabolique";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { calcAgeMetabolique } from "../ageMetaboliqueCalc";
@@ -166,7 +165,6 @@ export default async function Page({
         avec un niveau d&apos;activite {activiteLabel.toLowerCase()}.
       </p>
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="mb-8" />
 
       {/* Resultat principal */}
       <div className="bg-gradient-to-br from-violet-500 to-purple-600 text-white rounded-2xl p-8 shadow-lg mb-8">
@@ -325,7 +323,6 @@ export default async function Page({
       <CalculateurAgeMetabolique />
 
       <RelatedCalculators currentSlug="/calcul-age-metabolique" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

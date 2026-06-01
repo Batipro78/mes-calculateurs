@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import CalculClassementTennisFFT from "../CalculClassementTennisFFT";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
@@ -224,7 +223,6 @@ export default async function Page({
       </h2>
       <CalculClassementTennisFFT />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <section className="mt-8 bg-blue-50 rounded-2xl border border-blue-200 p-8">
         <h2 className="text-lg font-bold text-blue-900 mb-3">📊 À savoir</h2>
@@ -234,7 +232,6 @@ export default async function Page({
       </section>
 
       <RelatedCalculators currentSlug="/calcul-classement-tennis-fft" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

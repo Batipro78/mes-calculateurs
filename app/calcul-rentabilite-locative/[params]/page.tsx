@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import CalculateurRentabilite from "../CalculateurRentabilite";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
@@ -97,7 +96,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
 
       <h2 className="text-xl font-bold text-slate-800 mb-4">Simulateur complet</h2>
       <CalculateurRentabilite />
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">Investissement de {fmtInt(prix)} &euro; a {loyer} &euro;/mois</h2>
@@ -109,7 +107,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
       </section>
 
       <RelatedCalculators currentSlug="/calcul-rentabilite-locative" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

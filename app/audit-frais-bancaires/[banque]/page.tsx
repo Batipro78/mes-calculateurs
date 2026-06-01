@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import AuditFraisBancaires from "../AuditFraisBancaires";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { BANQUES, getBanqueBySlug, BANQUE_SLUGS } from "../banques";
@@ -215,7 +214,6 @@ export default async function Page({ params }: Props) {
         </div>
       )}
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <h2 className="text-2xl font-bold text-slate-800 mb-4">
         Auditez vos frais bancaires {data.nom}
@@ -226,7 +224,6 @@ export default async function Page({ params }: Props) {
 
       <AuditFraisBancaires />
 
-      <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
 
       <RelatedCalculators currentSlug="/audit-frais-bancaires" />
     </div>

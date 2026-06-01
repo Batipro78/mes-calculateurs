@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurPoidsIdeal from "../CalculateurPoidsIdeal";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { calcPoidsIdeal } from "../poidsIdealCalc";
@@ -224,7 +223,6 @@ export default async function Page({
         </div>
       </div>
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="mb-8" />
 
       {/* Tableau : variation par taille */}
       <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm mb-8">
@@ -397,7 +395,6 @@ export default async function Page({
       <h2 className="text-xl font-bold text-slate-800 mb-4">Calculateur interactif</h2>
       <CalculateurPoidsIdeal />
 
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="my-8" />
 
       <RelatedCalculators currentSlug="/calcul-poids-ideal" />
     </div>

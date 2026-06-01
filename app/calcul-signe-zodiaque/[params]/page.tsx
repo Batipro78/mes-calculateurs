@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import CalculSigneZodiaque from "../CalculSigneZodiaque";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { calculerSigne, SIGNES, ELEMENTS_INFO, MODES_INFO } from "../signeZodiaqueCalc";
@@ -230,9 +229,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
     <div>
       <Breadcrumb currentPage="Calcul Signe Zodiaque" />
       <CalculSigneZodiaque />
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
       <RelatedCalculators currentSlug="/calcul-signe-zodiaque" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

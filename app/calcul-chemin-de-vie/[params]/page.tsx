@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { CHEMINS } from "../cheminDeVieCalc";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 
@@ -289,10 +288,8 @@ export default async function Page({
         </div>
       </div>
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <RelatedCalculators currentSlug="/calcul-chemin-de-vie" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

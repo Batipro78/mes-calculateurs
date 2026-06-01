@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurRisqueCardio from "../CalculateurRisqueCardio";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { calcRisqueCardio } from "../risqueCardioCalc";
@@ -209,7 +208,6 @@ export default async function Page({
         {config.description}. Score Framingham : {res.score}/30 — Risque a 10 ans : {res.risquePourcentage}.
       </p>
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="mb-8" />
 
       {/* Disclaimer medical */}
       <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-8">
@@ -423,7 +421,6 @@ export default async function Page({
       <CalculateurRisqueCardio />
 
       <RelatedCalculators currentSlug="/calcul-risque-cardiovasculaire" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

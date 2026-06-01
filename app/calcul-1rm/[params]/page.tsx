@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Calcul1RM from "../Calcul1RM";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
@@ -153,7 +152,6 @@ export default async function Page({
 
       <Calcul1RM />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       {/* Comparaisons */}
       {variations.length > 0 && (
@@ -184,7 +182,6 @@ export default async function Page({
         </section>
       )}
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <RelatedCalculators currentSlug="/calcul-1rm" />
     </div>

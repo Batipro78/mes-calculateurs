@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import TestAnxieteGAD7 from "../TestAnxieteGAD7";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
@@ -325,7 +324,6 @@ export default async function Page({
 
       <TestAnxieteGAD7 />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <section className="mt-12 bg-blue-50 border border-blue-200 rounded-2xl p-8">
         <h2 className="text-xl font-bold text-blue-900 mb-3">
@@ -369,7 +367,6 @@ export default async function Page({
       </section>
 
       <RelatedCalculators currentSlug="/test-anxiete-gad7" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

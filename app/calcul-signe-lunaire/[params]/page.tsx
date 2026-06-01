@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import CalculSigneLunaire from "../CalculSigneLunaire";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
@@ -168,7 +167,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         )}
 
         <RelatedCalculators currentSlug="/calcul-signe-lunaire" />
-        <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
       </div>
     );
   }
@@ -209,10 +207,8 @@ export default async function Page({ params }: { params: Promise<{ params: strin
 
       <CalculSigneLunaire />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <RelatedCalculators currentSlug="/calcul-signe-lunaire" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

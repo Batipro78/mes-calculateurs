@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import ConvertisseurAllureCourse from "../ConvertisseurAllureCourse";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
@@ -316,7 +315,6 @@ export default async function Page({
       </h2>
       <ConvertisseurAllureCourse />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       {/* Comparaison avec autres allures */}
       {comparaison.length > 0 && (
@@ -356,7 +354,6 @@ export default async function Page({
       </section>
 
       <RelatedCalculators currentSlug="/convertisseur-allure-course" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

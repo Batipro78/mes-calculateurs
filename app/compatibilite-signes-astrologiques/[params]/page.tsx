@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import CompatibiliteSignesAstro from "../CompatibiliteSignesAstro";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import {
@@ -107,9 +106,7 @@ export default function Page({
     <div>
       <Breadcrumb currentPage="Compatibilité Signes Astrologiques" />
       <CompatibiliteSignesAstro />
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
       <RelatedCalculators currentSlug="/compatibilite-signes-astrologiques" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

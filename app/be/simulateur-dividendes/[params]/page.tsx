@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import SimulateurDividendesBE from "../SimulateurDividendesBE";
 import { REGIMES_FISCAUX, calculerDividendesBE } from "../dividendesBeCalc";
-import AdSlot from "../../../components/AdSlot";
 import Breadcrumb from "../../../components/Breadcrumb";
 
 const MONTANTS = [500, 1000, 2500, 5000, 10000, 25000, 50000, 100000];
@@ -185,7 +184,6 @@ export default async function Page({
       </h2>
       <SimulateurDividendesBE />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">

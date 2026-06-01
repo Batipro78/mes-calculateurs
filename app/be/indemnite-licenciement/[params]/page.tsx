@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurIndemniteBE from "../CalculateurIndemniteBE";
-import AdSlot from "../../../components/AdSlot";
 import Breadcrumb from "../../../components/Breadcrumb";
 import {
   calculerIndemniteLicenciementBE,
@@ -171,7 +170,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
       </h2>
       <CalculateurIndemniteBE />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <div className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
         <h3 className="font-bold text-slate-800 mb-3">

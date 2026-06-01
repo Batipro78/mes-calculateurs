@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import SimulateurCreditConso from "../SimulateurCreditConso";
 import { calcCreditConso, TAUX_MOYENS, DUREES, PROJET_LABELS, PROJET_EMOJIS, type TypeProjet } from "../calcCreditConso";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
@@ -143,7 +142,6 @@ export default async function Page({ params }: Props) {
 
       <SimulateurCreditConso />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       {/* Comparaison par duree */}
       <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 mb-8">
@@ -211,7 +209,6 @@ export default async function Page({ params }: Props) {
         </div>
       </div>
 
-      <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
 
       <RelatedCalculators currentSlug="/simulateur-credit-conso" />
     </div>

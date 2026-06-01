@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurPariCombine from "../CalculateurPariCombine";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 
 const NB_SELECTIONS = [2, 3, 4, 5];
@@ -196,7 +195,6 @@ export default async function Page({
       </h2>
       <CalculateurPariCombine />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <div className="grid gap-8 mt-8 lg:grid-cols-2">
         {/* Autres mises */}

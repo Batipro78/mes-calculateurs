@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import ConvertisseurMonnaieJeu from "../ConvertisseurMonnaieJeu";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
@@ -340,10 +339,8 @@ export default async function Page({
       </h2>
       <ConvertisseurMonnaieJeu />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <RelatedCalculators currentSlug="/convertisseur-monnaie-jeu" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

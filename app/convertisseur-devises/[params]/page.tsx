@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import ConvertisseurDevises from "../ConvertisseurDevises";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
@@ -240,7 +239,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
       <h2 className="text-xl font-bold text-slate-800 mb-4">Convertisseur interactif</h2>
       <ConvertisseurDevises />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       {/* Texte SEO */}
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
@@ -287,7 +285,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
       </section>
 
       <RelatedCalculators currentSlug="/convertisseur-devises" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

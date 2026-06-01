@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurSalaireBE from "../CalculateurSalaireBE";
-import AdSlot from "../../../components/AdSlot";
 import Breadcrumb from "../../../components/Breadcrumb";
 import {
   brutVersNetBE,
@@ -278,7 +277,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
       </h2>
       <CalculateurSalaireBE />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">

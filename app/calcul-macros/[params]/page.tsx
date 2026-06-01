@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { calcMacros, type Objectif } from "../macrosCalc";
 import CalculateurMacros from "../CalculateurMacros";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 
@@ -178,7 +177,6 @@ export default async function Page({
         </div>
       </div>
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="mb-8" />
 
       {/* Comparaison par objectif */}
       <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm mb-8">
@@ -317,7 +315,6 @@ export default async function Page({
       <h2 className="text-xl font-bold text-slate-800 mb-4">Calculateur interactif</h2>
       <CalculateurMacros />
 
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="my-8" />
 
       <RelatedCalculators currentSlug="/calcul-macros" />
     </div>

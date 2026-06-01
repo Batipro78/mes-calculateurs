@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import CalculateurSalaire from "../CalculateurSalaire";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
@@ -229,7 +228,6 @@ function VilleSalairePage({ ville }: { ville: Ville }) {
       <h2 className="text-xl font-bold text-slate-800 mb-4">Convertisseur brut/net interactif</h2>
       <CalculateurSalaire />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       {/* Texte SEO localise */}
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
@@ -280,7 +278,6 @@ function VilleSalairePage({ ville }: { ville: Ville }) {
       )}
 
       <RelatedCalculators currentSlug="/salaire-brut-net" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }
@@ -425,7 +422,6 @@ export default async function Page({ params }: { params: Promise<{ montant: stri
       </h2>
       <CalculateurSalaire />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       {/* Texte explicatif unique */}
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
@@ -508,7 +504,6 @@ export default async function Page({ params }: { params: Promise<{ montant: stri
       )}
 
       <RelatedCalculators currentSlug="/salaire-brut-net" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

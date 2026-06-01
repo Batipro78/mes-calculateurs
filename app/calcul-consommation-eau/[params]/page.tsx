@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurConsommationEau from "../CalculateurConsommationEau";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { calcConsommationEau } from "../consommationEauCalc";
@@ -176,7 +175,6 @@ export default async function Page({
         {ACTIVITE_LABELS[activite]}, {CLIMAT_LABELS[climat]}.
       </p>
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="mb-8" />
 
       {/* Resultat principal */}
       <div className="bg-gradient-to-br from-blue-500 to-cyan-500 text-white rounded-2xl p-8 shadow-lg mb-8">
@@ -360,7 +358,6 @@ export default async function Page({
       <CalculateurConsommationEau />
 
       <RelatedCalculators currentSlug="/calcul-consommation-eau" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

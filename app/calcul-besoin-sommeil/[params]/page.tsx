@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurBesoinSommeil from "../CalculateurBesoinSommeil";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { calcBesoinSommeil } from "../besoinSommeilCalc";
@@ -173,7 +172,6 @@ export default async function Page({
         Heures ideales, cycles et horaires recommandes.
       </p>
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="mb-8" />
 
       {/* Resultat principal */}
       <div className="bg-gradient-to-br from-indigo-600 to-purple-600 text-white rounded-2xl p-8 shadow-lg mb-8">
@@ -365,7 +363,6 @@ export default async function Page({
       <CalculateurBesoinSommeil />
 
       <RelatedCalculators currentSlug="/calcul-besoin-sommeil" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import SimulateurPensionAlimentaire from "../SimulateurPensionAlimentaire";
 import { calcPensionAlimentaire, GARDE_LABELS, type TypeGarde } from "../calcPensionAlimentaire";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
@@ -251,7 +250,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         </table>
       </div>
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <h2 className="text-2xl font-bold text-slate-800 mb-6 mt-8">Simulateur interactif</h2>
       <SimulateurPensionAlimentaire />

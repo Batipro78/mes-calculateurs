@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurPensionAlimentaireBE from "../CalculateurPensionAlimentaireBE";
 import { calculerPensionAlimentaireBE } from "../pensionAlimentaireBeCalc";
-import AdSlot from "../../../components/AdSlot";
 import Breadcrumb from "../../../components/Breadcrumb";
 
 // Tableaux de valeurs possibles pour limiter les combinaisons
@@ -171,7 +170,6 @@ export default async function Page({
 
       <CalculateurPensionAlimentaireBE />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <section className="mt-12 bg-white rounded-2xl border border-slate-200 p-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">
@@ -209,7 +207,6 @@ export default async function Page({
         </div>
       </section>
 
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

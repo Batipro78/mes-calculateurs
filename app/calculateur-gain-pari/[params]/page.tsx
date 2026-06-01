@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import CalculateurGainPari from "../CalculateurGainPari";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import WebAppJsonLd from "../../components/WebAppJsonLd";
 
@@ -124,7 +123,6 @@ export default async function Page({ params }: { params: Params }) {
 
       <CalculateurGainPari />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
     </div>
   );
 }

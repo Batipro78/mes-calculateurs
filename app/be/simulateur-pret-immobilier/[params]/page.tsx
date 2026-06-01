@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import SimulateurPretBE from "../SimulateurPretBE";
-import AdSlot from "../../../components/AdSlot";
 import Breadcrumb from "../../../components/Breadcrumb";
 import { calculerPretBE, TAUX_MOYENS_BE } from "../pretImmoBeCalc";
 
@@ -167,7 +166,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
       <h2 className="text-xl font-bold text-slate-800 mb-4">Calculateur interactif (taux personnalise)</h2>
       <SimulateurPretBE />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <div className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
         <h3 className="font-bold text-slate-800 mb-3">Autres montants sur {parsed.duree} ans</h3>

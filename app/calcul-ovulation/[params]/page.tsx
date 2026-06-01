@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurOvulation from "../CalculateurOvulation";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 
@@ -159,7 +158,6 @@ export default async function Page({
 
         <CalculateurOvulation initialCycle={c} />
 
-        <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
         <section className="mt-12 bg-white rounded-2xl border border-slate-200 p-8">
           <h2 className="text-xl font-bold text-slate-800 mb-4">
@@ -232,7 +230,6 @@ export default async function Page({
         </section>
 
         <RelatedCalculators currentSlug="/calcul-ovulation" />
-        <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
       </div>
     );
   }
@@ -466,7 +463,6 @@ export default async function Page({
 
       <CalculateurOvulation />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <section className="mt-12 bg-white rounded-2xl border border-slate-200 p-8">
         {content[situation]}
@@ -498,7 +494,6 @@ export default async function Page({
       </section>
 
       <RelatedCalculators currentSlug="/calcul-ovulation" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

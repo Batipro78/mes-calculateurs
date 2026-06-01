@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import SimulateurCreditAuto from "../SimulateurCreditAuto";
 import { calcCreditAuto, TAUX_MOYENS } from "../creditAutoCalc";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 
@@ -176,7 +175,6 @@ export default async function Page({ params }: Props) {
         </div>
       </div>
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="mb-8" />
 
       {/* Comparaison par montant */}
       <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 mb-8">
@@ -321,7 +319,6 @@ export default async function Page({ params }: Props) {
       <SimulateurCreditAuto />
 
       <RelatedCalculators currentSlug="/simulateur-credit-auto" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

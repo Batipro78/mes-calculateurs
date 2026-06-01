@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import SimulateurMobilisation from "../SimulateurMobilisation";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
@@ -333,7 +332,6 @@ export default async function Page({
         </h2>
         <SimulateurMobilisation />
 
-        <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
         {/* Liens vers autres ages */}
         <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
@@ -372,7 +370,6 @@ export default async function Page({
         </section>
 
         <RelatedCalculators currentSlug="/simulateur-mobilisation" />
-        <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
       </div>
     );
   }
@@ -445,7 +442,6 @@ export default async function Page({
       </h2>
       <SimulateurMobilisation />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       {/* Autres profils */}
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
@@ -484,7 +480,6 @@ export default async function Page({
       </section>
 
       <RelatedCalculators currentSlug="/simulateur-mobilisation" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

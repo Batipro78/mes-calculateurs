@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import NuclearSimulator from "../NuclearSimulator";
-import AdSlot from "../../../components/AdSlot";
 import BreadcrumbEN from "../../../components/BreadcrumbEN";
 import RelatedCalculatorsEN from "../../../components/RelatedCalculatorsEN";
 import { notFound } from "next/navigation";
@@ -249,7 +248,6 @@ export default async function Page({
       </h2>
       <NuclearSimulator />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       {/* Same weapon, other cities */}
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
@@ -288,7 +286,6 @@ export default async function Page({
       </section>
 
       <RelatedCalculatorsEN currentSlug="/en/nuclear-bomb-simulator" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

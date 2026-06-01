@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import SimulateurISOCBE from "../SimulateurISOCBE";
 import { calculerISOC } from "../isocBeCalc";
-import AdSlot from "../../../components/AdSlot";
 import Breadcrumb from "../../../components/Breadcrumb";
 
 const BENEFICES = [10000, 25000, 50000, 75000, 100000, 150000, 250000, 500000, 1000000];
@@ -213,7 +212,6 @@ export default async function Page({
       </h2>
       <SimulateurISOCBE />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">

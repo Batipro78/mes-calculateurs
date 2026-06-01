@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import CalculateurGratificationStage from "../CalculateurGratificationStage";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
@@ -87,9 +86,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
       </div>
       <h2 className="text-xl font-bold text-slate-800 mb-4">Calculateur interactif</h2>
       <CalculateurGratificationStage />
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
       <RelatedCalculators currentSlug="/calcul-gratification-stage" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

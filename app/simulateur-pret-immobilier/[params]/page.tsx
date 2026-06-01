@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import SimulateurPret from "../SimulateurPret";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
@@ -243,7 +242,6 @@ function VillePretPage({ ville }: { ville: Ville }) {
       <h2 className="text-xl font-bold text-slate-800 mb-4">Simulateur interactif</h2>
       <SimulateurPret />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       {/* Texte SEO localise */}
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
@@ -300,7 +298,6 @@ function VillePretPage({ ville }: { ville: Ville }) {
       )}
 
       <RelatedCalculators currentSlug="/simulateur-pret-immobilier" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }
@@ -528,7 +525,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
       </h2>
       <SimulateurPret />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       {/* Texte explicatif */}
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
@@ -581,7 +577,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
       </section>
 
       <RelatedCalculators currentSlug="/simulateur-pret-immobilier" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

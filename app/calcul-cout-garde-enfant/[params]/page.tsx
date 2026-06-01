@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import SimulateurGardeEnfant from "../SimulateurGardeEnfant";
 import { calcGardeEnfant, MODES, MODE_LABELS, MODE_EMOJIS, type ModeGarde } from "../calcGardeEnfant";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
@@ -161,7 +160,6 @@ export default async function Page({ params }: Props) {
 
       <SimulateurGardeEnfant />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       {/* Comparaison modes */}
       <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 mb-8">
@@ -221,7 +219,6 @@ export default async function Page({ params }: Props) {
         </div>
       </div>
 
-      <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
 
       <RelatedCalculators currentSlug="/calcul-cout-garde-enfant" />
     </div>

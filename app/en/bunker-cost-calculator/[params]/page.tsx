@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import BunkerCalculator from "../BunkerCalculator";
-import AdSlot from "../../../components/AdSlot";
 import BreadcrumbEN from "../../../components/BreadcrumbEN";
 import RelatedCalculatorsEN from "../../../components/RelatedCalculatorsEN";
 import { notFound } from "next/navigation";
@@ -199,7 +198,6 @@ export default async function Page({
       <h2 className="text-xl font-bold text-slate-800 mb-4">Interactive Calculator</h2>
       <BunkerCalculator />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       {/* Other types */}
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
@@ -230,7 +228,6 @@ export default async function Page({
       </section>
 
       <RelatedCalculatorsEN currentSlug="/en/bunker-cost-calculator" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

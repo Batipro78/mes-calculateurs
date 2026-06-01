@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import CalculDateBarMitzvah from "../CalculDateBarMitzvah";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
@@ -143,9 +142,7 @@ export default function Page() {
     <div>
       <Breadcrumb currentPage="Calcul Date Bar/Bat Mitzvah" />
       <CalculDateBarMitzvah />
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
       <RelatedCalculators currentSlug="/calcul-date-bar-mitzvah" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

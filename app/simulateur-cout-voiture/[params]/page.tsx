@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { calcCoutVoiture, PRESETS_VEHICULES } from "../coutVoitureCalc";
@@ -217,7 +216,6 @@ export default async function Page({
         </div>
       </div>
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="mb-8" />
 
       {/* Comparison table 1: vary type, same km + duree */}
       <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm mb-6">
@@ -323,7 +321,6 @@ export default async function Page({
       </div>
 
       <RelatedCalculators currentSlug="/simulateur-cout-voiture" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }

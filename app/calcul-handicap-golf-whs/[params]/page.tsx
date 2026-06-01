@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import CalculHandicapGolfWHS from "../CalculHandicapGolfWHS";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
@@ -306,10 +305,8 @@ export default async function Page({
         </h2>
         <CalculHandicapGolfWHS />
 
-        <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
         <RelatedCalculators currentSlug="/calcul-handicap-golf-whs" />
-        <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
       </div>
     );
   }
@@ -406,10 +403,8 @@ export default async function Page({
         </h2>
         <CalculHandicapGolfWHS />
 
-        <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
         <RelatedCalculators currentSlug="/calcul-handicap-golf-whs" />
-        <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
       </div>
     );
   }
@@ -587,10 +582,8 @@ export default async function Page({
         </h2>
         <CalculHandicapGolfWHS />
 
-        <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
         <RelatedCalculators currentSlug="/calcul-handicap-golf-whs" />
-        <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
       </div>
     );
   }

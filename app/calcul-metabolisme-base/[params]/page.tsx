@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurMetabolisme from "../CalculateurMetabolisme";
-import AdSlot from "../../components/AdSlot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { calcMetabolisme } from "../metabolismeCalc";
@@ -158,7 +157,6 @@ export default async function Page({
         {poids} kg a {age} ans — formules Mifflin-St Jeor et Harris-Benedict.
       </p>
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="mb-8" />
 
       {/* Resultat principal */}
       <div className="bg-gradient-to-br from-orange-500 to-amber-500 text-white rounded-2xl p-8 shadow-lg mb-8">
@@ -354,7 +352,6 @@ export default async function Page({
       <CalculateurMetabolisme />
 
       <RelatedCalculators currentSlug="/calcul-metabolisme-base" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }
