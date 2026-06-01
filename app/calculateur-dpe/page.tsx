@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import CalculateurDPE from "./CalculateurDPE";
-import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
@@ -87,7 +86,6 @@ export default function Page() {
         couleur="#059669"
       />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       {/* Contenu SEO */}
       <section className="mt-12 bg-white rounded-2xl border border-slate-200 p-8">
@@ -188,7 +186,6 @@ export default function Page() {
       </section>
 
       <RelatedCalculators currentSlug="/calculateur-dpe" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }
