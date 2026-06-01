@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import EstimateurCouvreur from "./EstimateurCouvreur";
-import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
@@ -78,7 +77,6 @@ export default function Page() {
 
       <EstimateurCouvreur />
 
-      <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
       <section className="mt-12 bg-white rounded-2xl border border-slate-200 p-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">
@@ -142,7 +140,6 @@ export default function Page() {
       <VillesLinks metierSlug="/prix-couvreur" />
 
       <RelatedCalculators currentSlug="/prix-couvreur" />
-      <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
   );
 }
