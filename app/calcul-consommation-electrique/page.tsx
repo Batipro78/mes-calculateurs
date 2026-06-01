@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-consommation-electrique" },
@@ -14,53 +15,33 @@ export const metadata: Metadata = {
     "calcul consommation electrique, cout electricite, facture EDF, consommation appareil, kWh prix, tarif electricite 2026, heures pleines heures creuses, HP HC",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment calculer la consommation electrique d'un appareil ?",
+    a: "La consommation se calcule avec la formule : Puissance (en watts) x Duree d'utilisation (en heures) / 1000 = Consommation en kWh. Pour obtenir le cout, multipliez les kWh par le prix du kWh (environ 0,2516 EUR en tarif EDF Base 2026).",
+  },
+  {
+    q: "Quel est le prix du kWh en France en 2026 ?",
+    a: "Le tarif reglemente EDF (Tarif Bleu) est d'environ 0,2516 EUR/kWh en option Base pour les particuliers (6 kVA). En option Heures Pleines / Heures Creuses, le tarif est de 0,27 EUR/kWh en HP et 0,2068 EUR/kWh en HC.",
+  },
+  {
+    q: "Quels sont les appareils qui consomment le plus d'electricite ?",
+    a: "Les appareils les plus energivores sont la borne de recharge pour vehicule electrique (7400 W), le four electrique et la plaque a induction (2500 W), la climatisation (2000 W), le seche-cheveux et l'aspirateur (1800 W), et le radiateur electrique (1500 W). Le refrigerateur, bien que peu puissant (150 W), consomme beaucoup car il fonctionne 24h/24.",
+  },
+  {
+    q: "Quelle est la difference entre l'option Base et l'option Heures Pleines / Heures Creuses ?",
+    a: "L'option Base propose un tarif unique (0,2516 EUR/kWh) quelle que soit l'heure. L'option HP/HC propose un tarif plus cher en Heures Pleines (0,27 EUR/kWh, environ 16h/jour) et moins cher en Heures Creuses (0,2068 EUR/kWh, environ 8h la nuit). L'option HP/HC est avantageuse si vous pouvez decaler vos usages (lave-linge, lave-vaisselle, chauffe-eau) sur les heures creuses.",
+  },
+  {
+    q: "Comment reduire sa facture d'electricite ?",
+    a: "Les leviers principaux sont : programmer les appareils energivores en heures creuses (si option HP/HC), remplacer les vieux appareils par des modeles plus efficaces, isoler son logement pour reduire le chauffage electrique, et utiliser des prises programmables pour eviter la veille des appareils (TV, box, consoles).",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Consommation Electrique" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment calculer la consommation electrique d'un appareil ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La consommation se calcule avec la formule : Puissance (en watts) x Duree d'utilisation (en heures) / 1000 = Consommation en kWh. Pour obtenir le cout, multipliez les kWh par le prix du kWh (environ 0,2516 EUR en tarif EDF Base 2026)."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Quel est le prix du kWh en France en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le tarif reglemente EDF (Tarif Bleu) est d'environ 0,2516 EUR/kWh en option Base pour les particuliers (6 kVA). En option Heures Pleines / Heures Creuses, le tarif est de 0,27 EUR/kWh en HP et 0,2068 EUR/kWh en HC."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Quels sont les appareils qui consomment le plus d'electricite ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les appareils les plus energivores sont la borne de recharge pour vehicule electrique (7400 W), le four electrique et la plaque a induction (2500 W), la climatisation (2000 W), le seche-cheveux et l'aspirateur (1800 W), et le radiateur electrique (1500 W). Le refrigerateur, bien que peu puissant (150 W), consomme beaucoup car il fonctionne 24h/24."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la difference entre l'option Base et l'option Heures Pleines / Heures Creuses ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L'option Base propose un tarif unique (0,2516 EUR/kWh) quelle que soit l'heure. L'option HP/HC propose un tarif plus cher en Heures Pleines (0,27 EUR/kWh, environ 16h/jour) et moins cher en Heures Creuses (0,2068 EUR/kWh, environ 8h la nuit). L'option HP/HC est avantageuse si vous pouvez decaler vos usages (lave-linge, lave-vaisselle, chauffe-eau) sur les heures creuses."
-                }
-              }
-            ]
-          })
-        }}
-      />
       <Breadcrumb currentPage="Consommation Electrique" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -161,6 +142,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-consommation-electrique" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-age" },
@@ -14,45 +15,29 @@ export const metadata: Metadata = {
     "calculer son age, calcul age exact, age en jours, combien de jours ai-je vecu, date de naissance age, prochain anniversaire, signe astrologique",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment calculer son age exact en annees, mois et jours ?",
+    a: "Pour calculer votre age exact, soustrayez votre date de naissance de la date du jour en tenant compte des annees, mois et jours ecoules. Par exemple, si vous etes ne le 15 mars 1990 et que nous sommes le 25 mars 2026, vous avez exactement 36 ans et 10 jours.",
+  },
+  {
+    q: "Combien de jours ai-je vecu ?",
+    a: "Pour connaitre le nombre de jours vecus, calculez la difference entre la date du jour et votre date de naissance. En moyenne, une personne de 30 ans a vecu environ 10 950 jours, et une personne de 40 ans environ 14 600 jours.",
+  },
+  {
+    q: "Quel est l'age legal de la retraite en France ?",
+    a: "Depuis la reforme de 2023, l'age legal de depart a la retraite est progressivement releve a 64 ans. L'age du taux plein automatique (sans decote) reste fixe a 67 ans. Ces ages s'appliquent quelle que soit la duree de cotisation.",
+  },
+  {
+    q: "Qu'est-ce que le signe astrologique et comment est-il determine ?",
+    a: "Le signe astrologique est determine par la position du Soleil au moment de votre naissance. Il correspond a l'une des 12 constellations du zodiaque selon votre date de naissance. Par exemple, naitre entre le 21 mars et le 19 avril correspond au signe du Belier.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Age Exact" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment calculer son age exact en annees, mois et jours ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour calculer votre age exact, soustrayez votre date de naissance de la date du jour en tenant compte des annees, mois et jours ecoules. Par exemple, si vous etes ne le 15 mars 1990 et que nous sommes le 25 mars 2026, vous avez exactement 36 ans et 10 jours."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Combien de jours ai-je vecu ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour connaitre le nombre de jours vecus, calculez la difference entre la date du jour et votre date de naissance. En moyenne, une personne de 30 ans a vecu environ 10 950 jours, et une personne de 40 ans environ 14 600 jours."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Quel est l'age legal de la retraite en France ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Depuis la reforme de 2023, l'age legal de depart a la retraite est progressivement releve a 64 ans. L'age du taux plein automatique (sans decote) reste fixe a 67 ans. Ces ages s'appliquent quelle que soit la duree de cotisation."
-                }
-              }
-            ]
-          })
-        }}
-      />
       <Breadcrumb currentPage="Calcul Age" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -167,6 +152,7 @@ export default function Page() {
         </div>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-age" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

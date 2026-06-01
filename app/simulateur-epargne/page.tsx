@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-epargne" },
@@ -15,45 +16,29 @@ export const metadata: Metadata = {
     "simulateur epargne, calcul interets composes, livret A 2026, simulateur placement, rendement epargne, calcul livret A, interets livret A, simulateur LEP, epargne mensuelle, capital final",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quel est le taux du Livret A en 2026 ?",
+    a: "Le taux du Livret A est de 2,4% net en 2026. Les interets sont exoneres d'impot sur le revenu et de prelevements sociaux. Le plafond de depots est de 22 950 EUR (hors interets capitalises).",
+  },
+  {
+    q: "Comment fonctionnent les interets composes ?",
+    a: "Les interets composes signifient que les interets generes chaque annee s'ajoutent au capital et produisent eux-memes des interets l'annee suivante. C'est un effet boule de neige : plus la duree est longue, plus l'acceleration est forte. La formule est : Capital final = Capital initial x (1 + taux) puissance duree.",
+  },
+  {
+    q: "Quel est le meilleur placement en 2026 ?",
+    a: "Le LEP (Livret d'Epargne Populaire) offre le meilleur taux a 3,5% net, mais il est reserve aux revenus modestes. Le Livret A (2,4%) et le LDDS (2,4%) sont accessibles a tous et sans impot. L'assurance-vie en fonds euros (~2,5%) est ideale pour l'epargne long terme grace a sa fiscalite avantageuse apres 8 ans.",
+  },
+  {
+    q: "A partir de quel montant vaut-il la peine d'epargner ?",
+    a: "Il n'y a pas de montant minimum : meme 20 ou 50 EUR par mois places regulierement sur un Livret A ou une assurance-vie produisent un capital significatif sur 10-20 ans grace aux interets composes. L'essentiel est de commencer tot et de maintenir une regularite.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Simulateur Epargne" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quel est le taux du Livret A en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le taux du Livret A est de 2,4% net en 2026. Les interets sont exoneres d'impot sur le revenu et de prelevements sociaux. Le plafond de depots est de 22 950 EUR (hors interets capitalises)."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Comment fonctionnent les interets composes ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les interets composes signifient que les interets generes chaque annee s'ajoutent au capital et produisent eux-memes des interets l'annee suivante. C'est un effet boule de neige : plus la duree est longue, plus l'acceleration est forte. La formule est : Capital final = Capital initial x (1 + taux) puissance duree."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Quel est le meilleur placement en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le LEP (Livret d'Epargne Populaire) offre le meilleur taux a 3,5% net, mais il est reserve aux revenus modestes. Le Livret A (2,4%) et le LDDS (2,4%) sont accessibles a tous et sans impot. L'assurance-vie en fonds euros (~2,5%) est ideale pour l'epargne long terme grace a sa fiscalite avantageuse apres 8 ans."
-                }
-              }
-            ]
-          })
-        }}
-      />
       <Breadcrumb currentPage="Simulateur Epargne" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -235,6 +220,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/simulateur-epargne" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

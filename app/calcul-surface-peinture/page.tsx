@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-surface-peinture" },
@@ -15,45 +16,29 @@ export const metadata: Metadata = {
     "calcul surface peinture, quantite peinture, surface mur a peindre, combien de peinture, calculer peinture, surface peinture piece, nombre de litres peinture, budget peinture, peinture m2",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment calculer la surface a peindre d'une piece ?",
+    a: "Mesurez chaque mur (largeur x hauteur), additionnez les surfaces, deduisez les ouvertures (portes et fenetres), puis ajoutez le plafond si necessaire. Multipliez le total par le nombre de couches pour obtenir la surface totale a peindre.",
+  },
+  {
+    q: "Combien de litres de peinture faut-il pour une piece ?",
+    a: "Divisez la surface totale a peindre (en m2, couches incluses) par le rendement de la peinture (generalement 10 a 12 m2/L pour une peinture acrylique). Pour une chambre de 12 m2 avec 2 couches, comptez environ 4 a 8 litres de peinture.",
+  },
+  {
+    q: "Combien de couches de peinture faut-il appliquer ?",
+    a: "En general, 2 couches sont necessaires pour un resultat uniforme. Prevoyez 3 couches si vous passez d'une couleur foncee a une couleur claire, sur un mur neuf (platre, enduit) ou avec une peinture de qualite moyenne.",
+  },
+  {
+    q: "Faut-il deduire les portes et fenetres du calcul de peinture ?",
+    a: "Oui, il est recommande de deduire les ouvertures pour un calcul precis. Une porte standard fait environ 1.89 m2 et une fenetre standard 1.44 m2. Notre calculateur le fait automatiquement selon le nombre de portes et fenetres renseignees.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Surface Peinture" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment calculer la surface a peindre d'une piece ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Mesurez chaque mur (largeur x hauteur), additionnez les surfaces, deduisez les ouvertures (portes et fenetres), puis ajoutez le plafond si necessaire. Multipliez le total par le nombre de couches pour obtenir la surface totale a peindre."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Combien de litres de peinture faut-il pour une piece ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Divisez la surface totale a peindre (en m2, couches incluses) par le rendement de la peinture (generalement 10 a 12 m2/L pour une peinture acrylique). Pour une chambre de 12 m2 avec 2 couches, comptez environ 4 a 8 litres de peinture."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Combien de couches de peinture faut-il appliquer ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "En general, 2 couches sont necessaires pour un resultat uniforme. Prevoyez 3 couches si vous passez d'une couleur foncee a une couleur claire, sur un mur neuf (platre, enduit) ou avec une peinture de qualite moyenne."
-                }
-              }
-            ]
-          })
-        }}
-      />
       <Breadcrumb currentPage="Surface Peinture" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -273,6 +258,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-surface-peinture" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

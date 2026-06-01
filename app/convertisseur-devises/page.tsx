@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/convertisseur-devises" },
@@ -15,45 +16,29 @@ export const metadata: Metadata = {
     "convertisseur devises, taux de change, euro dollar, conversion monnaie, convertisseur euro, change devise, EUR USD, EUR GBP, EUR MAD, EUR TND, EUR DZD, convertisseur monnaie gratuit",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment convertir des euros en dollars ?",
+    a: "Pour convertir des euros en dollars, multipliez le montant en euros par le taux de change EUR/USD. Par exemple, si le taux est de 1,0856, alors 1 000 EUR = 1 000 x 1,0856 = 1 085,60 USD. Les taux de change fluctuent en permanence sur le marche des changes (Forex).",
+  },
+  {
+    q: "Qu'est-ce qui influence les taux de change ?",
+    a: "Les taux de change sont influences par les taux d'interet des banques centrales, l'inflation, la balance commerciale, la stabilite politique et la croissance economique. Un pays avec des taux d'interet eleves et une inflation faible voit generalement sa devise se renforcer.",
+  },
+  {
+    q: "Quelle est la parite entre l'Euro et le Franc CFA ?",
+    a: "Le Franc CFA (XOF et XAF) a une parite fixe avec l'Euro : 1 EUR = 655,957 CFA. Cette parite est garantie par le Tresor francais et ne varie jamais, contrairement aux autres paires de devises.",
+  },
+  {
+    q: "Quelles devises sont disponibles dans ce convertisseur ?",
+    a: "Notre convertisseur prend en charge 14 devises : Euro (EUR), Dollar americain (USD), Livre sterling (GBP), Franc suisse (CHF), Dollar canadien (CAD), Yen japonais (JPY), Dirham marocain (MAD), Dinar tunisien (TND), Dinar algerien (DZD), et d'autres monnaies couramment utilisees depuis la France.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Convertisseur Devises" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment convertir des euros en dollars ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour convertir des euros en dollars, multipliez le montant en euros par le taux de change EUR/USD. Par exemple, si le taux est de 1,0856, alors 1 000 EUR = 1 000 x 1,0856 = 1 085,60 USD. Les taux de change fluctuent en permanence sur le marche des changes (Forex)."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Qu'est-ce qui influence les taux de change ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les taux de change sont influences par les taux d'interet des banques centrales, l'inflation, la balance commerciale, la stabilite politique et la croissance economique. Un pays avec des taux d'interet eleves et une inflation faible voit generalement sa devise se renforcer."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la parite entre l'Euro et le Franc CFA ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le Franc CFA (XOF et XAF) a une parite fixe avec l'Euro : 1 EUR = 655,957 CFA. Cette parite est garantie par le Tresor francais et ne varie jamais, contrairement aux autres paires de devises."
-                }
-              }
-            ]
-          })
-        }}
-      />
       <Breadcrumb currentPage="Convertisseur Devises" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -230,6 +215,7 @@ export default function Page() {
         </div>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/convertisseur-devises" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
