@@ -4,55 +4,84 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-pourcentage" },
   title: "Calcul Pourcentage 2026 - Calculateur gratuit en ligne",
   description:
-    "Calculez un pourcentage facilement : pourcentage d'un nombre, augmentation, reduction, part en pourcentage. Outil gratuit, instantane et sans inscription.",
+    "Calculez un pourcentage facilement : pourcentage d'un nombre, augmentation, reduction, part. Formules, exemples concrets, astuces de calcul mental et FAQ.",
   keywords:
-    "calcul pourcentage, pourcentage d'un nombre, calculer pourcentage, augmentation pourcentage, reduction pourcentage, remise pourcentage",
+    "calcul pourcentage, pourcentage d'un nombre, calculer pourcentage, augmentation pourcentage, reduction pourcentage, remise pourcentage, points de pourcentage",
 };
+
+const SECTIONS: { title: string; paras: string[] }[] = [
+  {
+    title: "Les 4 calculs de pourcentage les plus utiles",
+    paras: [
+      "Pourcentage d'un nombre : pour trouver X % de Y, multipliez Y par X puis divisez par 100. Exemple : 20 % de 150 = 150 x 20 / 100 = 30.",
+      "Part en pourcentage : pour savoir quelle proportion represente une partie dans un total, faites (partie / total) x 100. Exemple : 30 sur 120 = 25 %.",
+      "Augmentation en pourcentage : ((valeur d'arrivee - valeur de depart) / valeur de depart) x 100. Exemple : passer de 80 a 100 represente +25 %.",
+      "Reduction ou remise : prix final = prix x (1 - remise / 100). Exemple : un article a 80 EUR avec 25 % de remise revient a 80 x 0,75 = 60 EUR.",
+    ],
+  },
+  {
+    title: "Le piege des hausses et baisses successives",
+    paras: [
+      "Une baisse de 20 % suivie d'une hausse de 20 % ne ramene PAS au prix de depart. Sur 100 EUR : -20 % donne 80 EUR, puis +20 % donne 96 EUR. On perd 4 EUR.",
+      "Pour cumuler deux variations, on multiplie les coefficients, on ne les additionne pas. -20 % puis +20 % equivaut a 0,80 x 1,20 = 0,96, soit -4 % au total.",
+      "Meme logique pour deux remises successives de 30 % et 10 % : le prix est multiplie par 0,70 puis par 0,90 = 0,63, soit une remise reelle de 37 %, et non 40 %.",
+    ],
+  },
+  {
+    title: "Pourcentage et points de pourcentage : ne pas confondre",
+    paras: [
+      "Passer d'un taux de 4 % a 6 % est une hausse de 2 points de pourcentage, mais une augmentation de 50 % en valeur relative (2 / 4 = 50 %).",
+      "Cette distinction est essentielle pour lire correctement un taux d'interet, un taux de chomage ou une part de marche.",
+    ],
+  },
+  {
+    title: "Astuces de calcul mental",
+    paras: [
+      "10 % d'un nombre : decalez la virgule d'un rang. 10 % de 240 = 24.",
+      "5 % : c'est la moitie de 10 %. 5 % de 240 = 12.",
+      "1 % : decalez la virgule de deux rangs. 1 % de 240 = 2,4.",
+      "Astuce de symetrie : X % de Y est toujours egal a Y % de X. Ainsi 18 % de 50 = 50 % de 18 = 9.",
+    ],
+  },
+];
+
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment calculer un pourcentage d'un nombre ?",
+    a: "Multipliez le nombre par le pourcentage puis divisez par 100. Exemple : 20 % de 150 = 150 x 20 / 100 = 30.",
+  },
+  {
+    q: "Comment calculer une augmentation en pourcentage ?",
+    a: "Utilisez ((valeur d'arrivee - valeur de depart) / valeur de depart) x 100. Passer de 80 a 100 donne ((100 - 80) / 80) x 100 = +25 %.",
+  },
+  {
+    q: "Comment calculer une remise ou une reduction ?",
+    a: "Prix final = prix x (1 - remise / 100). Un article a 80 EUR avec -25 % revient a 80 x 0,75 = 60 EUR.",
+  },
+  {
+    q: "Une baisse puis une hausse du meme pourcentage annulent-elles l'effet ?",
+    a: "Non. -20 % puis +20 % sur 100 EUR donnent 96 EUR, pas 100. On multiplie les coefficients (0,80 x 1,20 = 0,96), soit -4 % au total.",
+  },
+  {
+    q: "Quelle difference entre pourcentage et point de pourcentage ?",
+    a: "Passer de 4 % a 6 %, c'est +2 points de pourcentage mais +50 % en valeur relative (2 / 4). Les deux notions ne sont pas interchangeables.",
+  },
+  {
+    q: "Comment trouver quel pourcentage represente un nombre par rapport a un autre ?",
+    a: "Faites (partie / total) x 100. Exemple : 30 sur 120 = (30 / 120) x 100 = 25 %.",
+  },
+];
 
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Pourcentage" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment calculer un pourcentage d'un nombre ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour calculer X% d'un nombre Y, utilisez la formule : Y x (X / 100). Par exemple, 20% de 150 = 150 x 0.20 = 30."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Comment calculer une augmentation en pourcentage ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La formule est : ((Nouveau - Ancien) / Ancien) x 100. Par exemple, passer de 80 a 100 represente une augmentation de +25%."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Comment calculer une reduction ou remise en pourcentage ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Utilisez la formule : Prix final = Prix x (1 - Remise / 100). Par exemple, un article a 80 EUR avec -25% de remise = 80 x 0.75 = 60 EUR."
-                }
-              }
-            ]
-          })
-        }}
-      />
       <Breadcrumb currentPage="Calcul Pourcentage" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -73,10 +102,8 @@ export default function Page() {
 
       <section className="mt-12 bg-white rounded-2xl border border-slate-200 p-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">
-          Comment calculer un pourcentage ?
+          Les formules en un coup d&apos;oeil
         </h2>
-
-        <h3 className="font-bold text-slate-800 mt-4 mb-3">Les formules</h3>
         <div className="grid gap-3 sm:grid-cols-2">
           <div className="bg-slate-50 rounded-xl p-4">
             <p className="font-semibold text-slate-700 text-sm">
@@ -123,25 +150,27 @@ export default function Page() {
             </p>
           </div>
         </div>
-
-        <h3 className="font-bold text-slate-800 mt-6 mb-2">
-          Exemples courants
-        </h3>
-        <ul className="list-disc list-inside text-slate-600 space-y-1">
-          <li>
-            <strong>Soldes :</strong> un article a 80 EUR avec -30% = 56 EUR
-          </li>
-          <li>
-            <strong>Pourboire :</strong> 15% de 45 EUR = 6,75 EUR
-          </li>
-          <li>
-            <strong>Augmentation loyer :</strong> 750 EUR + 3,5% = 776,25 EUR
-          </li>
-          <li>
-            <strong>Note :</strong> 14 sur 20 = 70%
-          </li>
-        </ul>
       </section>
+
+      {SECTIONS.map((section) => (
+        <section
+          key={section.title}
+          className="mt-8 bg-white rounded-2xl border border-slate-200 p-8"
+        >
+          <h2 className="text-xl font-bold text-slate-800 mb-4">
+            {section.title}
+          </h2>
+          <div className="space-y-3">
+            {section.paras.map((p, i) => (
+              <p key={i} className="text-slate-600 leading-relaxed">
+                {p}
+              </p>
+            ))}
+          </div>
+        </section>
+      ))}
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-pourcentage" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

@@ -6,55 +6,85 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import VillesLinks from "../components/VillesLinks";
 import LeadCaptureForm from "../components/LeadCaptureForm";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-pret-immobilier" },
   title: "Simulateur Pret Immobilier 2026 - Calcul mensualite gratuit",
   description:
-    "Simulez votre pret immobilier gratuitement. Calculez vos mensualites, le cout total du credit et le tableau d'amortissement. Taux 2026 mis a jour.",
+    "Simulez votre pret immobilier gratuitement. Calculez vos mensualites, le cout total du credit et le tableau d'amortissement. Taux 2026, TAEG, apport et FAQ.",
   keywords:
-    "simulateur pret immobilier, calcul mensualite, credit immobilier, taux pret, tableau amortissement, emprunt immobilier 2026",
+    "simulateur pret immobilier, calcul mensualite, credit immobilier, taux pret, tableau amortissement, emprunt immobilier 2026, TAEG, taux endettement",
 };
+
+const SECTIONS: { title: string; paras: string[] }[] = [
+  {
+    title: "Ce qui compose vraiment le cout de votre credit",
+    paras: [
+      "La mensualite affichee ne raconte pas toute l'histoire. Le cout total d'un pret immobilier additionne plusieurs elements qu'il faut comparer banque par banque.",
+      "Les interets : c'est la remuneration de la banque, calculee sur le capital restant du. Plus la duree est longue, plus le total d'interets grimpe.",
+      "L'assurance emprunteur : souvent 0,10 % a 0,40 % du capital par an. Sur 20 ans, elle peut representer plusieurs milliers d'euros. Depuis la loi Lemoine, vous pouvez en changer a tout moment pour la faire baisser.",
+      "Les frais de garantie (caution ou hypotheque) et les frais de dossier : quelques centaines a quelques milliers d'euros, parfois negociables.",
+    ],
+  },
+  {
+    title: "Le TAEG, le bon chiffre a comparer",
+    paras: [
+      "Le TAEG (taux annuel effectif global) regroupe le taux d'interet, l'assurance, les frais de dossier et de garantie. C'est l'indicateur le plus fiable pour comparer deux offres.",
+      "Deux prets affichant le meme taux nominal peuvent avoir un TAEG different a cause de l'assurance ou des frais. Comparez toujours les TAEG, pas seulement le taux mis en avant.",
+      "Le TAEG ne peut pas depasser le taux d'usure, un plafond legal fixe par la Banque de France et revise regulierement.",
+    ],
+  },
+  {
+    title: "Apport, duree et taux d'endettement",
+    paras: [
+      "Taux d'endettement : vos mensualites de credit ne doivent en principe pas depasser 35 % de vos revenus nets, assurance comprise.",
+      "Apport personnel : un apport de 10 a 20 % du prix (souvent destine a couvrir les frais de notaire et de garantie) rassure la banque et permet d'obtenir un meilleur taux.",
+      "Duree : allonger la duree reduit la mensualite mais augmente le cout total. Raccourcir la duree fait l'inverse. La duree maximale courante est de 25 ans.",
+    ],
+  },
+  {
+    title: "Comment obtenir un meilleur taux",
+    paras: [
+      "Faites jouer la concurrence : sollicitez plusieurs banques ou passez par un courtier.",
+      "Soignez votre dossier : revenus stables, comptes bien tenus, absence de decouverts sur les 3 derniers mois.",
+      "Negociez l'assurance separement : c'est souvent la plus grosse marge d'economie, grace a la delegation d'assurance.",
+      "Comparez le cout total du credit sur toute la duree, pas uniquement la mensualite.",
+    ],
+  },
+];
+
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment est calculee la mensualite d'un pret immobilier ?",
+    a: "Avec la formule d'annuite constante : Mensualite = Capital x (taux mensuel) / (1 - (1 + taux mensuel)^(-nombre de mois)), ou le taux mensuel est le taux annuel divise par 12. Le simulateur ci-dessus fait le calcul pour vous.",
+  },
+  {
+    q: "Quels sont les taux moyens de pret immobilier en 2026 ?",
+    a: "A titre indicatif, environ 3,10 % sur 10 ans, 3,25 % sur 15 ans, 3,40 % sur 20 ans et 3,55 % sur 25 ans. Les taux varient selon votre profil et la banque ; verifiez les baremes du moment.",
+  },
+  {
+    q: "Quel taux d'endettement maximum est accepte ?",
+    a: "En regle generale, vos mensualites (assurance comprise) ne doivent pas depasser 35 % de vos revenus nets. Au-dela, l'obtention du pret devient difficile.",
+  },
+  {
+    q: "Faut-il un apport pour emprunter ?",
+    a: "Ce n'est pas obligatoire mais fortement recommande. Un apport de 10 a 20 % du prix couvre les frais annexes et permet d'obtenir un meilleur taux.",
+  },
+  {
+    q: "C'est quoi le TAEG ?",
+    a: "Le taux annuel effectif global inclut le taux d'interet, l'assurance et les frais (dossier, garantie). C'est l'indicateur a comparer pour choisir la meilleure offre, car il reflete le cout reel.",
+  },
+  {
+    q: "Peut-on changer d'assurance emprunteur pour payer moins cher ?",
+    a: "Oui. Depuis la loi Lemoine, vous pouvez resilier et changer d'assurance emprunteur a tout moment, ce qui permet souvent d'economiser plusieurs milliers d'euros sur la duree du pret.",
+  },
+];
 
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Simulateur Pret Immobilier" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment fonctionne un pret immobilier ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Un pret immobilier est un emprunt contracte aupres d'une banque pour financer l'achat d'un bien immobilier. Vous remboursez chaque mois une mensualite composee d'une part de capital et d'une part d'interets."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Comment est calculee la mensualite d'un pret immobilier ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La mensualite est calculee avec la formule d'annuite constante : Mensualite = Capital x (taux / 12) / (1 - (1 + taux / 12)^(-nb mois)). Le taux d'endettement ne doit pas depasser 35% de vos revenus nets."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Quels sont les taux moyens de pret immobilier en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les taux moyens en 2026 sont d'environ 3.10% sur 10 ans, 3.25% sur 15 ans, 3.40% sur 20 ans et 3.55% sur 25 ans."
-                }
-              }
-            ]
-          })
-        }}
-      />
       <Breadcrumb currentPage="Simulateur Pret Immobilier" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -82,20 +112,9 @@ export default function Page() {
 
       <section className="mt-12 bg-white rounded-2xl border border-slate-200 p-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">
-          Comment fonctionne un pret immobilier ?
+          Taux moyens en 2026 et formule de calcul
         </h2>
-        <p className="text-slate-600 mb-4 leading-relaxed">
-          Un pret immobilier est un emprunt contracte aupres d&apos;une banque
-          pour financer l&apos;achat d&apos;un bien immobilier. Vous remboursez
-          chaque mois une <strong>mensualite</strong> composee d&apos;une part
-          de <strong>capital</strong> et d&apos;une part
-          d&apos;<strong>interets</strong>.
-        </p>
-
-        <h3 className="font-bold text-slate-800 mt-6 mb-3">
-          Taux moyens en 2026
-        </h3>
-        <div className="grid gap-3 sm:grid-cols-4">
+        <div className="grid gap-3 sm:grid-cols-4 mb-6">
           <div className="bg-slate-50 rounded-xl p-4">
             <p className="font-semibold text-slate-700 text-sm">10 ans</p>
             <p className="text-2xl font-bold text-violet-600 mt-1">~3,10%</p>
@@ -113,44 +132,46 @@ export default function Page() {
             <p className="text-2xl font-bold text-violet-600 mt-1">~3,55%</p>
           </div>
         </div>
-
-        <h3 className="font-bold text-slate-800 mt-6 mb-2">
-          La formule de calcul
-        </h3>
-        <p className="text-slate-600 leading-relaxed mb-2">
-          La mensualite est calculee avec la formule d&apos;annuite constante :
-        </p>
         <div className="bg-slate-50 rounded-xl p-4 font-mono text-sm text-slate-700">
           Mensualite = Capital x (taux / 12) / (1 - (1 + taux / 12)^(-nb mois))
         </div>
+      </section>
 
-        <h3 className="font-bold text-slate-800 mt-6 mb-2">
-          Conseils pour votre emprunt
-        </h3>
-        <ul className="list-disc list-inside text-slate-600 space-y-1">
-          <li>
-            Votre taux d&apos;endettement ne doit pas depasser <strong>35%</strong> de
-            vos revenus nets
-          </li>
-          <li>
-            La duree maximale recommandee est de <strong>25 ans</strong>
-          </li>
-          <li>
-            Un apport de <strong>10 a 20%</strong> du prix ameliore votre taux
-          </li>
-          <li>
-            Comparez toujours le <strong>cout total du credit</strong>, pas
-            seulement la mensualite
-          </li>
-        </ul>
+      {SECTIONS.map((section) => (
+        <section
+          key={section.title}
+          className="mt-8 bg-white rounded-2xl border border-slate-200 p-8"
+        >
+          <h2 className="text-xl font-bold text-slate-800 mb-4">
+            {section.title}
+          </h2>
+          <div className="space-y-3">
+            {section.paras.map((p, i) => (
+              <p key={i} className="text-slate-600 leading-relaxed">
+                {p}
+              </p>
+            ))}
+          </div>
+        </section>
+      ))}
 
-        <h3 className="font-bold text-slate-800 mt-6 mb-3">
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-3">
           Outils complementaires
-        </h3>
+        </h2>
         <p className="text-slate-600 leading-relaxed">
-          Pour une vision complete de votre projet immobilier, estimez vos <a href="/frais-de-notaire" className="text-violet-600 underline hover:text-violet-800">frais de notaire</a>, verifiez votre <a href="/calcul-capacite-emprunt" className="text-violet-600 underline hover:text-violet-800">capacite d&apos;emprunt</a> et votre <a href="/calcul-taux-endettement" className="text-violet-600 underline hover:text-violet-800">taux d&apos;endettement</a>. Si vous achetez un bien a renover, estimez le budget travaux avec nos outils : <a href="/prix-electricien" className="text-violet-600 underline hover:text-violet-800">prix electricien</a>, <a href="/prix-plombier" className="text-violet-600 underline hover:text-violet-800">prix plombier</a>, <a href="/prix-chauffagiste" className="text-violet-600 underline hover:text-violet-800">prix chauffagiste</a> et <a href="/prix-macon" className="text-violet-600 underline hover:text-violet-800">prix macon</a>.
+          Pour une vision complete de votre projet, estimez vos{" "}
+          <a href="/frais-de-notaire" className="text-violet-600 underline hover:text-violet-800">frais de notaire</a>, verifiez votre{" "}
+          <a href="/calcul-capacite-emprunt" className="text-violet-600 underline hover:text-violet-800">capacite d&apos;emprunt</a> et votre{" "}
+          <a href="/calcul-taux-endettement" className="text-violet-600 underline hover:text-violet-800">taux d&apos;endettement</a>. Pour un bien a renover, chiffrez les travaux avec{" "}
+          <a href="/prix-electricien" className="text-violet-600 underline hover:text-violet-800">prix electricien</a>,{" "}
+          <a href="/prix-plombier" className="text-violet-600 underline hover:text-violet-800">prix plombier</a>,{" "}
+          <a href="/prix-chauffagiste" className="text-violet-600 underline hover:text-violet-800">prix chauffagiste</a> et{" "}
+          <a href="/prix-macon" className="text-violet-600 underline hover:text-violet-800">prix macon</a>.
         </p>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <VillesLinks baseSlug="/simulateur-pret-immobilier" title="Pret immobilier par ville" color="blue" />
       <RelatedCalculators currentSlug="/simulateur-pret-immobilier" />
