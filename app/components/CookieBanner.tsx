@@ -10,22 +10,30 @@ type Choice = "all" | "necessary" | null;
 declare global {
   interface Window {
     dataLayer?: unknown[];
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
 function applyConsent(choice: "all" | "necessary") {
   if (typeof window === "undefined") return;
+  const granted = choice === "all";
+  const params = {
+    ad_storage: granted ? "granted" : "denied",
+    analytics_storage: granted ? "granted" : "denied",
+    ad_user_data: granted ? "granted" : "denied",
+    ad_personalization: granted ? "granted" : "denied",
+  };
+  // Utiliser le vrai gtag (defini par le script consent-default) qui pousse
+  // un objet `arguments` : un simple tableau pousse dans dataLayer n'est PAS
+  // interprete comme une commande de consentement par gtag.js.
   window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push([
-    "consent",
-    "update",
-    {
-      ad_storage: choice === "all" ? "granted" : "denied",
-      analytics_storage: choice === "all" ? "granted" : "denied",
-      ad_user_data: choice === "all" ? "granted" : "denied",
-      ad_personalization: choice === "all" ? "granted" : "denied",
-    },
-  ]);
+  if (typeof window.gtag !== "function") {
+    window.gtag = function () {
+      // eslint-disable-next-line prefer-rest-params
+      window.dataLayer!.push(arguments);
+    };
+  }
+  window.gtag!("consent", "update", params);
 }
 
 export default function CookieBanner() {
