@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-chomage" },
@@ -14,53 +15,37 @@ export const metadata: Metadata = {
     "simulateur chomage, calcul allocation chomage, ARE, aide retour emploi, France Travail, Pole emploi, indemnite chomage, SJR, montant chomage",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment est calculee l'allocation chomage (ARE) ?",
+    a: "A partir du Salaire Journalier de Reference (SJR). Le montant journalier est le plus avantageux entre 57,4 % du SJR, ou 40,4 % du SJR + 13,18 EUR. Plancher : 31,59 EUR/jour ; plafond : 274,80 EUR/jour.",
+  },
+  {
+    q: "Combien de temps peut-on toucher le chomage ?",
+    a: "Selon l'age et les mois travailles : jusqu'a 18 mois avant 53 ans, 22,5 mois entre 53 et 54 ans, 27 mois a partir de 55 ans. Il faut avoir travaille au moins 6 mois sur les 24 derniers mois.",
+  },
+  {
+    q: "Qu'est-ce que la degressivite de l'ARE ?",
+    a: "Pour un salaire anterieur superieur a environ 4 965 EUR brut/mois, l'ARE est reduite de 30 % apres 6 mois d'indemnisation. Cette regle ne s'applique pas aux 57 ans et plus.",
+  },
+  {
+    q: "Quel est le montant minimum du chomage ?",
+    a: "Le plancher de l'ARE est d'environ 31,59 EUR par jour, soit environ 948 EUR par mois (30 jours), quelle que soit la methode de calcul retenue.",
+  },
+  {
+    q: "La rupture conventionnelle ouvre-t-elle droit au chomage ?",
+    a: "Oui. Comme un licenciement, la rupture conventionnelle ouvre droit a l'ARE, contrairement a une demission classique (sauf demission consideree comme legitime).",
+  },
+  {
+    q: "Quel pourcentage de mon salaire vais-je toucher ?",
+    a: "En moyenne, l'ARE represente 57 a 75 % du salaire brut, soit environ 72 % du net. Plus le salaire etait eleve, plus ce taux de remplacement baisse a cause du plafond.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Simulateur Chomage ARE" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment est calculee l'allocation chomage (ARE) ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L'ARE est calculee a partir du Salaire Journalier de Reference (SJR). Le montant journalier est le plus avantageux entre : 57,4% du SJR ou 40,4% du SJR + 13,18 EUR. Le minimum est de 31,59 EUR/jour et le maximum de 274,80 EUR/jour.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien de temps peut-on toucher le chomage ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La duree d'indemnisation depend de l'age et des mois travailles : maximum 18 mois avant 53 ans, 22,5 mois entre 53 et 54 ans, et 27 mois a partir de 55 ans. Il faut avoir travaille au moins 6 mois sur les 24 derniers mois.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qu'est-ce que la degressivite de l'ARE ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour les salaires superieurs a 4 965 EUR brut/mois, l'ARE est reduite de 30% apres 6 mois d'indemnisation. Cette degressivite ne s'applique pas aux personnes de 57 ans et plus.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel est le montant minimum du chomage ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le montant minimum de l'ARE est de 31,59 EUR par jour, soit environ 948 EUR par mois (30 jours). Ce plancher s'applique quelle que soit la methode de calcul utilisee.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Simulateur Chomage" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -204,6 +189,8 @@ export default function Page() {
           plus le taux de remplacement est bas (a cause du plafond).
         </p>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/simulateur-chomage" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

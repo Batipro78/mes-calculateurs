@@ -4,56 +4,45 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/indemnite-licenciement" },
   title:
     "Calcul Indemnite de Licenciement 2026 - Simulateur gratuit",
   description:
-    "Calculez votre indemnite de licenciement legale en 2026. Licenciement, rupture conventionnelle, mise a la retraite. Bareme legal, anciennete, salaire de reference. Gratuit.",
+    "Calculez votre indemnite de licenciement legale en 2026. Licenciement, rupture conventionnelle, mise a la retraite. Bareme legal, anciennete, salaire de reference et FAQ.",
   keywords:
     "indemnite licenciement, calcul indemnite, rupture conventionnelle, indemnite legale, licenciement economique, simulateur indemnite 2026",
 };
+
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment calculer l'indemnite de licenciement en 2026 ?",
+    a: "L'indemnite legale est de 1/4 de mois de salaire par annee d'anciennete pour les 10 premieres annees, puis 1/3 de mois par annee au-dela. Le salaire de reference est le plus avantageux entre la moyenne des 12 ou des 3 derniers mois.",
+  },
+  {
+    q: "Qui a droit a l'indemnite de licenciement ?",
+    a: "Tout salarie en CDI licencie (sauf faute grave ou lourde) ayant au moins 8 mois d'anciennete ininterrompue dans l'entreprise. Elle est aussi due en cas de rupture conventionnelle.",
+  },
+  {
+    q: "L'indemnite de licenciement est-elle imposable ?",
+    a: "Elle est exoneree d'impot sur le revenu dans la limite du montant legal ou conventionnel. Au-dela, l'exoneration s'applique dans la limite la plus elevee entre 2 fois la remuneration annuelle brute ou 50 % de l'indemnite totale.",
+  },
+  {
+    q: "La rupture conventionnelle donne-t-elle droit au chomage ?",
+    a: "Oui. Contrairement a la demission, la rupture conventionnelle ouvre droit aux allocations chomage (ARE) et a une indemnite au moins egale a l'indemnite legale de licenciement.",
+  },
+  {
+    q: "Ma convention collective peut-elle prevoir plus que le minimum legal ?",
+    a: "Oui. Si votre convention collective prevoit une indemnite superieure, c'est le montant le plus favorable au salarie qui s'applique. C'est souvent le cas dans la metallurgie, la banque ou la chimie.",
+  },
+];
 
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Indemnite Licenciement" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment calculer l'indemnite de licenciement en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L'indemnite legale se calcule ainsi : 1/4 de mois de salaire par annee d'anciennete pour les 10 premieres annees, puis 1/3 de mois par annee au-dela. Le salaire de reference est le plus avantageux entre la moyenne des 12 ou des 3 derniers mois."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Qui a droit a l'indemnite de licenciement ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Tout salarie en CDI licencie (sauf faute grave ou lourde) disposant d'au moins 8 mois d'anciennete ininterrompue dans l'entreprise. L'indemnite est egalement due en cas de rupture conventionnelle."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "L'indemnite de licenciement est-elle imposable ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L'indemnite de licenciement est exoneree d'impot sur le revenu dans la limite du montant legal ou conventionnel. Au-dela, l'exoneration s'applique dans la limite la plus elevee entre 2 fois la remuneration annuelle brute ou 50% de l'indemnite totale."
-                }
-              }
-            ]
-          })
-        }}
-      />
       <Breadcrumb currentPage="Indemnite Licenciement" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -168,6 +157,8 @@ export default function Page() {
           (ex-Direccte).
         </p>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/indemnite-licenciement" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

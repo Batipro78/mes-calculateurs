@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-calories" },
@@ -14,45 +15,33 @@ export const metadata: Metadata = {
     "calcul calories, besoin calorique journalier, TDEE, metabolisme de base, calories par jour, deficit calorique, perte de poids, prise de masse, macronutriments",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment calculer ses besoins caloriques journaliers ?",
+    a: "Le TDEE se calcule en multipliant le metabolisme de base par un coefficient d'activite. Formule Mifflin-St Jeor : MB homme = 10 x poids + 6,25 x taille - 5 x age + 5 ; MB femme = 10 x poids + 6,25 x taille - 5 x age - 161. Puis TDEE = MB x coefficient d'activite.",
+  },
+  {
+    q: "Combien de calories par jour pour maigrir ?",
+    a: "Creez un deficit de 250 a 500 kcal sous votre TDEE. Un deficit de 500 kcal/jour fait perdre environ 0,5 kg par semaine. Ne descendez pas sous 1 200 kcal/jour (femmes) ou 1 500 kcal/jour (hommes).",
+  },
+  {
+    q: "Quelle difference entre metabolisme de base et TDEE ?",
+    a: "Le metabolisme de base est l'energie brulee au repos pour les fonctions vitales. Le TDEE est ce metabolisme multiplie par votre coefficient d'activite : il represente le total de calories brulees dans une journee.",
+  },
+  {
+    q: "Combien de calories pour prendre du muscle ?",
+    a: "Visez un surplus de 250 a 500 kcal au-dessus de votre TDEE, avec un apport en proteines de 1,6 a 2,2 g par kilo de poids de corps, et un entrainement en resistance regulier.",
+  },
+  {
+    q: "Faut-il compter ses calories tous les jours ?",
+    a: "Pas forcement. Compter precisement pendant 1 a 2 semaines aide a prendre des reperes. Ensuite, beaucoup de personnes maintiennent leurs resultats avec de simples habitudes, sans tout peser.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Calories Journalier" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment calculer ses besoins caloriques journaliers ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le besoin calorique journalier (TDEE) se calcule en multipliant le metabolisme de base (MB) par un coefficient d'activite physique. La formule Mifflin-St Jeor est la plus precise : MB homme = 10 x poids + 6.25 x taille - 5 x age + 5. MB femme = 10 x poids + 6.25 x taille - 5 x age - 161.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien de calories par jour pour maigrir ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour perdre du poids, il faut creer un deficit calorique de 250 a 500 kcal par jour en dessous de votre TDEE. Un deficit de 500 kcal/jour permet de perdre environ 0,5 kg par semaine. Ne descendez jamais en dessous de 1200 kcal/jour (femmes) ou 1500 kcal/jour (hommes).",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la difference entre metabolisme de base et TDEE ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le metabolisme de base (MB) represente les calories brulees au repos pour maintenir les fonctions vitales (respiration, circulation, temperature). Le TDEE (Total Daily Energy Expenditure) est le MB multiplie par le coefficient d'activite physique. Le TDEE represente le total de calories brulees dans une journee.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Calories" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -218,6 +207,8 @@ export default function Page() {
           en etes, puis utilisez le calcul de calories pour definir votre plan alimentaire.
         </p>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-calories" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

@@ -5,55 +5,44 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import VillesLinks from "../components/VillesLinks";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/frais-de-notaire" },
   title: "Calcul Frais de Notaire 2026 - Simulateur gratuit",
   description:
-    "Estimez les frais de notaire pour votre achat immobilier en 2026. Ancien, neuf, terrain. Calcul detaille : droits de mutation, emoluments, debours.",
+    "Estimez les frais de notaire pour votre achat immobilier en 2026. Ancien, neuf, terrain. Calcul detaille : droits de mutation, emoluments, debours. FAQ et conseils.",
   keywords:
     "frais de notaire, calcul frais notaire, simulateur frais notaire, frais acquisition, droits mutation, achat immobilier 2026",
 };
+
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Combien coutent les frais de notaire dans l'ancien en 2026 ?",
+    a: "Environ 7 a 8 % du prix du bien. Ils comprennent les droits de mutation (environ 5,80 %), les emoluments du notaire (bareme reglemente) et les debours (frais avances pour les documents administratifs).",
+  },
+  {
+    q: "Quelle difference entre frais de notaire dans le neuf et l'ancien ?",
+    a: "Dans le neuf, ils sont reduits a environ 2 a 3 % du prix, car les droits de mutation sont remplaces par la TVA deja incluse dans le prix de vente. Dans l'ancien, ils s'elevent a 7-8 %.",
+  },
+  {
+    q: "Peut-on negocier les frais de notaire ?",
+    a: "Les droits de mutation (l'essentiel des frais) sont fixes par l'Etat et non negociables. Mais le notaire peut accorder une remise jusqu'a 20 % sur ses emoluments au-dela de 100 000 EUR. Vous pouvez aussi deduire la valeur du mobilier (cuisine equipee, meubles) du prix de vente pour reduire l'assiette des droits.",
+  },
+  {
+    q: "Qui paie les frais de notaire ?",
+    a: "C'est l'acheteur qui regle les frais de notaire, en plus du prix du bien. Ils sont verses le jour de la signature de l'acte authentique.",
+  },
+  {
+    q: "Les frais de notaire peuvent-ils etre finances par le pret ?",
+    a: "Oui, mais les banques preferent que l'apport personnel couvre au moins les frais de notaire. Les inclure dans le pret augmente le montant emprunte et le cout total du credit.",
+  },
+];
 
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Frais de Notaire" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Combien coutent les frais de notaire dans l'ancien en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les frais de notaire dans l'ancien representent environ 7 a 8% du prix du bien. Ils comprennent les droits de mutation (environ 5,80%), les emoluments du notaire (bareme reglemente) et les debours (frais avances pour les documents administratifs)."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la difference entre les frais de notaire dans le neuf et l'ancien ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Dans le neuf, les frais de notaire sont reduits a environ 2 a 3% du prix car les droits de mutation sont remplaces par la TVA (deja incluse dans le prix de vente). Dans l'ancien, ils s'elevent a 7-8% en raison des droits de mutation plus eleves."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Peut-on negocier les frais de notaire ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les droits de mutation (80% des frais) sont fixes par l'Etat et non negociables. En revanche, depuis 2021, le notaire peut accorder une remise jusqu'a 20% sur ses emoluments pour les transactions superieures a 100 000 EUR. Vous pouvez aussi deduire la valeur du mobilier (cuisine equipee, meubles) du prix de vente pour reduire l'assiette des droits."
-                }
-              }
-            ]
-          })
-        }}
-      />
       <Breadcrumb currentPage="Frais de Notaire" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -135,6 +124,8 @@ export default function Page() {
           Si vous achetez un bien a renover, anticipez le <strong>budget travaux</strong> en complement des frais de notaire. Consultez nos estimateurs : <a href="/prix-electricien" className="text-cyan-600 underline hover:text-cyan-800">prix electricien</a>, <a href="/prix-plombier" className="text-cyan-600 underline hover:text-cyan-800">prix plombier</a>, <a href="/prix-chauffagiste" className="text-cyan-600 underline hover:text-cyan-800">prix chauffagiste</a>, <a href="/prix-macon" className="text-cyan-600 underline hover:text-cyan-800">prix macon</a>, <a href="/prix-peintre" className="text-cyan-600 underline hover:text-cyan-800">prix peintre</a> et <a href="/prix-couvreur" className="text-cyan-600 underline hover:text-cyan-800">prix couvreur</a>. Pour le financement, simulez vos <a href="/simulateur-pret-immobilier" className="text-cyan-600 underline hover:text-cyan-800">mensualites de pret</a> et verifiez votre <a href="/calcul-taux-endettement" className="text-cyan-600 underline hover:text-cyan-800">taux d&apos;endettement</a>.
         </p>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <VillesLinks baseSlug="/frais-de-notaire" title="Frais de notaire par ville" color="cyan" />
       <RelatedCalculators currentSlug="/frais-de-notaire" />

@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-impot-revenu" },
@@ -15,45 +16,37 @@ export const metadata: Metadata = {
     "simulateur impot revenu 2026, calcul impot, tranches imposition 2026, quotient familial, impot sur le revenu, taux marginal, declaration revenus, bareme impot, calcul IR",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quelles sont les tranches d'imposition en 2026 ?",
+    a: "Le bareme progressif 2026 (revenus 2025) comporte 5 tranches : 0 % jusqu'a 11 497 EUR, 11 % de 11 497 a 29 315 EUR, 30 % de 29 315 a 83 823 EUR, 41 % de 83 823 a 180 294 EUR, et 45 % au-dela. Elles s'appliquent au quotient familial.",
+  },
+  {
+    q: "Comment fonctionne le quotient familial ?",
+    a: "Il divise le revenu imposable par un nombre de parts : 1 pour un celibataire, 2 pour un couple, +0,5 par enfant (1er et 2e), +1 a partir du 3e. Le bareme est applique au quotient, puis le resultat est multiplie par le nombre de parts.",
+  },
+  {
+    q: "Quelle difference entre taux marginal et taux moyen ?",
+    a: "Le taux marginal est celui de votre tranche la plus elevee (ex : 30 %). Le taux moyen est le rapport entre l'impot paye et le revenu total, toujours plus bas. Avec un marginal a 30 %, le taux moyen peut n'etre que de 12 %.",
+  },
+  {
+    q: "A partir de quel revenu devient-on imposable ?",
+    a: "Cela depend du nombre de parts et de la decote. Pour un celibataire, l'impot reste nul ou tres faible jusqu'a un revenu net imposable d'environ 16 000 a 17 000 EUR par an, grace a la premiere tranche a 0 % et a la decote.",
+  },
+  {
+    q: "C'est quoi la decote ?",
+    a: "Un mecanisme qui reduit l'impot des contribuables modestes. En 2026, si l'impot brut est inferieur a 1 929 EUR (celibataire) ou 3 191 EUR (couple), la decote diminue le montant a payer, pour une transition douce vers l'imposition.",
+  },
+  {
+    q: "Le prelevement a la source remplace-t-il la declaration ?",
+    a: "Non. L'impot est preleve chaque mois sur le salaire, mais la declaration annuelle reste obligatoire : elle regularise le montant final et met a jour votre taux.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Simulateur Impot sur le Revenu" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quelles sont les tranches d'imposition en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le bareme progressif 2026 (revenus 2025) comporte 5 tranches : 0% jusqu'a 11 497 EUR, 11% de 11 497 a 29 315 EUR, 30% de 29 315 a 83 823 EUR, 41% de 83 823 a 180 294 EUR, et 45% au-dela de 180 294 EUR. Ces tranches s'appliquent au quotient familial."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Comment fonctionne le quotient familial ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le quotient familial divise le revenu imposable par un nombre de parts : 1 part pour un celibataire, 2 parts pour un couple, +0,5 part par enfant (1er et 2e), +1 part par enfant a partir du 3e. Le bareme est applique au quotient, puis le resultat est multiplie par le nombre de parts."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la difference entre taux marginal et taux moyen ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le taux marginal est le taux de la tranche la plus elevee de votre revenu (ex: 30%). Le taux moyen (ou effectif) est le rapport entre l'impot paye et le revenu total, toujours inferieur au taux marginal. Par exemple, avec un taux marginal de 30%, votre taux moyen peut n'etre que de 12%."
-                }
-              }
-            ]
-          })
-        }}
-      />
       <Breadcrumb currentPage="Simulateur Impot" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -274,6 +267,8 @@ export default function Page() {
           </li>
         </ul>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/simulateur-impot-revenu" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
