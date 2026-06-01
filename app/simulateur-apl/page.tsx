@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-apl" },
@@ -14,45 +15,33 @@ export const metadata: Metadata = {
     "simulateur APL, calcul APL, aide au logement, APL 2026, simulation aide logement CAF, aide personnalisee logement, APL locataire",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qui a droit a l'APL en 2026 ?",
+    a: "L'APL est ouverte a tout locataire (ou colocataire) d'un logement conventionnne, sous conditions de ressources. Elle concerne les locataires du parc prive et social, les residents en foyer et les sous-locataires. Les etudiants, salaries, chomeurs et retraites peuvent en beneficier.",
+  },
+  {
+    q: "Comment est calculee l'APL ?",
+    a: "L'APL est calculee selon la formule : Loyer plafonne + Forfait charges - Participation personnelle. La participation personnelle depend de vos revenus (N-2), de votre situation familiale et de votre zone geographique (1, 2 ou 3). Les baremes sont revises chaque annee.",
+  },
+  {
+    q: "Quand l'APL est-elle versee ?",
+    a: "L'APL est versee mensuellement par la CAF, generalement le 5 du mois. Elle peut etre versee directement au proprietaire (tiers payant) ou au locataire. Le premier versement intervient le mois suivant l'ouverture du droit. L'APL n'est pas versee si son montant est inferieur a 10 EUR par mois.",
+  },
+  {
+    q: "Peut-on cumuler l'APL avec d'autres aides au logement ?",
+    a: "Non, l'APL ne peut pas etre cumulee avec l'ALS (Allocation de Logement Sociale) ni avec l'ALF (Allocation de Logement Familiale). La CAF attribue automatiquement l'aide la plus avantageuse selon votre situation.",
+  },
+  {
+    q: "L'APL est-elle imposable ?",
+    a: "Non, l'APL n'est pas imposable. Elle n'entre pas dans le calcul de votre revenu imposable et n'est donc pas a declarer lors de votre declaration de revenus annuelle.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Simulateur APL" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Qui a droit a l'APL en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L'APL est ouverte a tout locataire (ou colocataire) d'un logement conventionnne, sous conditions de ressources. Elle concerne les locataires du parc prive et social, les residents en foyer et les sous-locataires. Les etudiants, salaries, chomeurs et retraites peuvent en beneficier.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment est calculee l'APL ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L'APL est calculee selon la formule : Loyer plafonne + Forfait charges - Participation personnelle. La participation personnelle depend de vos revenus (N-2), de votre situation familiale et de votre zone geographique (1, 2 ou 3). Les baremes sont revises chaque annee.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quand l'APL est-elle versee ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L'APL est versee mensuellement par la CAF, generalement le 5 du mois. Elle peut etre versee directement au proprietaire (tiers payant) ou au locataire. Le premier versement intervient le mois suivant l'ouverture du droit. L'APL n'est pas versee si son montant est inferieur a 10 EUR par mois.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Simulateur APL" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -148,6 +137,7 @@ export default function Page() {
         </ul>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/simulateur-apl" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

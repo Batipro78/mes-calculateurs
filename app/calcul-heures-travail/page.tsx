@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-heures-travail" },
@@ -15,45 +16,33 @@ export const metadata: Metadata = {
     "calcul heures travail, compteur heures, heures supplementaires, calcul temps de travail, planning horaires, heures travaillees semaine, 35 heures, majoration heures sup, calcul salaire horaire",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quelle est la duree legale du travail en France ?",
+    a: "La duree legale du travail en France est de 35 heures par semaine, soit 151,67 heures par mois. Au-dela de 35 heures, les heures travaillees sont des heures supplementaires majorees de 25% (de la 36e a la 43e heure) puis de 50% (a partir de la 44e heure).",
+  },
+  {
+    q: "Comment sont calculees les heures supplementaires ?",
+    a: "Les heures supplementaires sont majorees par rapport au taux horaire normal : +25% pour les 8 premieres heures (de la 36e a la 43e heure), puis +50% au-dela (a partir de la 44e heure). Le contingent annuel est de 220 heures par salarie, sauf accord d'entreprise.",
+  },
+  {
+    q: "Quel est le SMIC horaire en 2026 ?",
+    a: "Le SMIC horaire brut est de 11,88 EUR en 2026, soit un SMIC mensuel brut de 1 801,80 EUR pour 35 heures par semaine (151,67 heures mensualisees). Aucun salarie ne peut etre remunere en dessous de ce seuil.",
+  },
+  {
+    q: "Combien de temps de pause est obligatoire dans la journee ?",
+    a: "Le Code du travail impose une pause minimale de 20 minutes consecutives des que le temps de travail quotidien atteint 6 heures. Cette pause n'est generalement pas remuneree, sauf disposition contraire de la convention collective.",
+  },
+  {
+    q: "Quelle est la duree maximale de travail autorisee ?",
+    a: "La duree maximale journaliere est de 10 heures (12h sur derogation). La duree hebdomadaire absolue est de 48 heures, et la moyenne sur 12 semaines consecutives ne peut depasser 44 heures. Un repos quotidien de 11 heures minimum entre deux journees est obligatoire.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Heures de Travail" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quelle est la duree legale du travail en France ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La duree legale du travail en France est de 35 heures par semaine, soit 151,67 heures par mois. Au-dela de 35 heures, les heures travaillees sont des heures supplementaires majorees de 25% (de la 36e a la 43e heure) puis de 50% (a partir de la 44e heure)."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Comment sont calculees les heures supplementaires ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les heures supplementaires sont majorees par rapport au taux horaire normal : +25% pour les 8 premieres heures (de la 36e a la 43e heure), puis +50% au-dela (a partir de la 44e heure). Le contingent annuel est de 220 heures par salarie, sauf accord d'entreprise."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Quel est le SMIC horaire en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le SMIC horaire brut est de 11,88 EUR en 2026, soit un SMIC mensuel brut de 1 801,80 EUR pour 35 heures par semaine (151,67 heures mensualisees). Aucun salarie ne peut etre remunere en dessous de ce seuil."
-                }
-              }
-            ]
-          })
-        }}
-      />
       <Breadcrumb currentPage="Heures de Travail" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -255,6 +244,8 @@ export default function Page() {
           </li>
         </ul>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-heures-travail" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

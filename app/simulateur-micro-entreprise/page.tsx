@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-micro-entreprise" },
@@ -14,53 +15,37 @@ export const metadata: Metadata = {
     "simulateur micro-entreprise, auto-entrepreneur calcul, charges URSSAF, revenu net auto-entrepreneur, versement liberatoire, ACRE, cotisations sociales micro-entreprise",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quelles sont les charges d'un auto-entrepreneur en 2026 ?",
+    a: "Les charges sociales URSSAF dependent de l'activite : 12,3% pour l'achat-revente, 21,1% pour les services BNC, 21,2% pour les services BIC et professions liberales. S'ajoute la CFP (0,1% ou 0,2%). Avec l'ACRE, les charges sont reduites de 50% la premiere annee.",
+  },
+  {
+    q: "Quel est le plafond de chiffre d'affaires en micro-entreprise ?",
+    a: "Le plafond est de 188 700 EUR pour l'achat-revente de marchandises et de 77 700 EUR pour les prestations de services et professions liberales. Au-dela, vous basculez automatiquement en entreprise individuelle classique.",
+  },
+  {
+    q: "Comment fonctionne le versement liberatoire ?",
+    a: "Le versement liberatoire permet de payer l'impot sur le revenu en meme temps que les charges URSSAF, a un taux fixe : 1% pour l'achat-revente, 1,7% pour les services BIC, 2,2% pour les services BNC et professions liberales. Il est accessible sous condition de revenu fiscal (inferieur a un seuil).",
+  },
+  {
+    q: "Qu'est-ce que l'ACRE ?",
+    a: "L'ACRE (Aide a la Creation ou Reprise d'Entreprise) permet de beneficier d'une reduction de 50% des charges sociales pendant la premiere annee d'activite. Elle est accessible aux demandeurs d'emploi, beneficiaires du RSA, et jeunes de moins de 26 ans.",
+  },
+  {
+    q: "Faut-il declarer son chiffre d'affaires chaque mois ou chaque trimestre ?",
+    a: "Vous pouvez choisir la periodicite mensuelle ou trimestrielle lors de la creation de votre micro-entreprise. La declaration se fait sur autoentrepreneur.urssaf.fr. En cas de chiffre d'affaires nul, vous devez quand meme declarer 0.",
+  },
+  {
+    q: "La micro-entreprise donne-t-elle droit a la retraite et a la secu ?",
+    a: "Oui. Les cotisations URSSAF couvrent la maladie-maternite, les allocations familiales et la retraite de base. En revanche, la couverture retraite est proportionnelle aux revenus declares : un CA faible genere peu de trimestres valides.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Simulateur Micro-Entreprise" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quelles sont les charges d'un auto-entrepreneur en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les charges sociales URSSAF dependent de l'activite : 12,3% pour l'achat-revente, 21,1% pour les services BNC, 21,2% pour les services BIC et professions liberales. S'ajoute la CFP (0,1% ou 0,2%). Avec l'ACRE, les charges sont reduites de 50% la premiere annee.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel est le plafond de chiffre d'affaires en micro-entreprise ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le plafond est de 188 700 EUR pour l'achat-revente de marchandises et de 77 700 EUR pour les prestations de services et professions liberales. Au-dela, vous basculez automatiquement en entreprise individuelle classique.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment fonctionne le versement liberatoire ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le versement liberatoire permet de payer l'impot sur le revenu en meme temps que les charges URSSAF, a un taux fixe : 1% pour l'achat-revente, 1,7% pour les services BIC, 2,2% pour les services BNC et professions liberales. Il est accessible sous condition de revenu fiscal (inferieur a un seuil).",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qu'est-ce que l'ACRE ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L'ACRE (Aide a la Creation ou Reprise d'Entreprise) permet de beneficier d'une reduction de 50% des charges sociales pendant la premiere annee d'activite. Elle est accessible aux demandeurs d'emploi, beneficiaires du RSA, et jeunes de moins de 26 ans.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Simulateur Micro-Entreprise" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -207,6 +192,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/simulateur-micro-entreprise" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-indemnites-kilometriques" },
@@ -15,45 +16,33 @@ export const metadata: Metadata = {
     "indemnites kilometriques, bareme kilometrique 2026, calcul frais kilometriques, IK 2026, frais reels voiture, bareme fiscal km, indemnite deplacement professionnel, frais kilometriques impots, vehicule electrique IK",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment calculer ses indemnites kilometriques en 2026 ?",
+    a: "Appliquez le bareme fiscal en fonction de la puissance fiscale de votre vehicule (CV) et du nombre de kilometres parcourus dans l'annee. Le bareme comporte 3 tranches de distance (jusqu'a 5 000 km, 5 001 a 20 000 km, plus de 20 000 km) avec des coefficients differents.",
+  },
+  {
+    q: "Les vehicules electriques ont-ils un avantage pour les IK ?",
+    a: "Oui, les proprietaires de vehicules 100% electriques beneficient d'une majoration de 20% sur le montant calcule avec le bareme kilometrique. Les vehicules hybrides ne sont pas concernes par cette majoration.",
+  },
+  {
+    q: "Frais reels ou deduction forfaitaire de 10% : que choisir ?",
+    a: "Optez pour les frais reels si vos deplacements domicile-travail depassent generalement 30 km aller-retour ou si vous avez de nombreux deplacements professionnels. Sinon, la deduction forfaitaire de 10% (appliquee automatiquement) est souvent suffisante. Comparez les deux options avant de declarer.",
+  },
+  {
+    q: "Quels justificatifs conserver pour les indemnites kilometriques ?",
+    a: "Conservez la carte grise du vehicule (pour justifier la puissance fiscale), un carnet de bord des deplacements professionnels (dates, destinations, km), les factures de peage et de stationnement deductibles en sus, ainsi qu'une attestation de l'employeur si vous etes salarie.",
+  },
+  {
+    q: "Les motos et les velos sont-ils eligibles aux IK ?",
+    a: "Oui. Les deux-roues motorises de plus de 50 cm3 disposent de leur propre bareme kilometrique, avec 3 tranches de puissance (1-2 CV, 3-5 CV, plus de 5 CV). Les velos (classiques ou electriques) peuvent beneficier du forfait mobilites durables : 0,25 EUR/km, plafonnes a 200 EUR/an, exoneres d'impot.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Indemnites Kilometriques" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment calculer ses indemnites kilometriques en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Appliquez le bareme fiscal en fonction de la puissance fiscale de votre vehicule (CV) et du nombre de kilometres parcourus dans l'annee. Le bareme comporte 3 tranches de distance (jusqu'a 5 000 km, 5 001 a 20 000 km, plus de 20 000 km) avec des coefficients differents."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Les vehicules electriques ont-ils un avantage pour les IK ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Oui, les proprietaires de vehicules 100% electriques beneficient d'une majoration de 20% sur le montant calcule avec le bareme kilometrique. Les vehicules hybrides ne sont pas concernes par cette majoration."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Frais reels ou deduction forfaitaire de 10% : que choisir ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Optez pour les frais reels si vos deplacements domicile-travail depassent generalement 30 km aller-retour ou si vous avez de nombreux deplacements professionnels. Sinon, la deduction forfaitaire de 10% (appliquee automatiquement) est souvent suffisante. Comparez les deux options avant de declarer."
-                }
-              }
-            ]
-          })
-        }}
-      />
       <Breadcrumb currentPage="Indemnites Kilometriques" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -260,6 +249,7 @@ export default function Page() {
         </ul>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-indemnites-kilometriques" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

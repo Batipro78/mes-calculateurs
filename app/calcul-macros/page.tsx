@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-macros" },
@@ -14,45 +15,33 @@ export const metadata: Metadata = {
     "calcul macros, macronutriments, repartition proteines glucides lipides, regime cetogene, prise de masse, perte de poids macros, calcul nutrition",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qu'est-ce que les macronutriments ?",
+    a: "Les macronutriments (ou macros) sont les trois grandes categories de nutriments qui fournissent de l'energie : les proteines (4 kcal/g), les glucides (4 kcal/g) et les lipides (9 kcal/g). Chaque repas devrait contenir une combinaison equilibree de ces trois macros selon votre objectif.",
+  },
+  {
+    q: "Quelle repartition de macros pour maigrir ?",
+    a: "Pour perdre du poids, il est recommande d'augmenter les proteines pour preserver le muscle : 40% de proteines, 30% de glucides et 30% de lipides. Associe a un deficit calorique de 400 kcal, cette repartition favorise la perte de masse grasse tout en preservant la masse musculaire.",
+  },
+  {
+    q: "Comment calculer ses macros pour la prise de masse ?",
+    a: "Pour la prise de masse, privilegiez un surplus calorique de 300 kcal et une repartition de 25% de proteines, 50% de glucides et 25% de lipides. Les glucides sont essentiels pour l'energie lors de l'entrainement et la recuperation musculaire. Visez 1,6 a 2,2 g de proteines par kg de poids corporel.",
+  },
+  {
+    q: "Quelle est la difference entre regime cetogene et regime normal ?",
+    a: "Le regime cetogene reduit drastiquement les glucides a moins de 5% des apports (contre 40-50% en alimentation equilibree) et augmente les lipides a 70-75%. Cela force le corps a utiliser les graisses comme carburant principal (cetose) plutot que le glucose. Il est efficace pour certaines personnes mais contraignant et non adapte a tous.",
+  },
+  {
+    q: "Combien de proteines par jour pour un sportif ?",
+    a: "Les recommandations scientifiques pour les sportifs se situent entre 1,6 et 2,2 g de proteines par kg de poids corporel par jour. Pour quelqu'un de 75 kg, cela represente 120 a 165 g de proteines quotidiennes. En dehors du sport intense, 0,8 a 1,2 g/kg suffit pour une personne active.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Macros Nutrition" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Qu'est-ce que les macronutriments ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les macronutriments (ou macros) sont les trois grandes categories de nutriments qui fournissent de l'energie : les proteines (4 kcal/g), les glucides (4 kcal/g) et les lipides (9 kcal/g). Chaque repas devrait contenir une combinaison equilibree de ces trois macros selon votre objectif.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle repartition de macros pour maigrir ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour perdre du poids, il est recommande d'augmenter les proteines pour preserver le muscle : 40% de proteines, 30% de glucides et 30% de lipides. Associe a un deficit calorique de 400 kcal, cette repartition favorise la perte de masse grasse tout en preservant la masse musculaire.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment calculer ses macros pour la prise de masse ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour la prise de masse, privilegiez un surplus calorique de 300 kcal et une repartition de 25% de proteines, 50% de glucides et 25% de lipides. Les glucides sont essentiels pour l'energie lors de l'entrainement et la recuperation musculaire. Visez 1,6 a 2,2 g de proteines par kg de poids corporel.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Macros" lastUpdated="8 avril 2026" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -211,6 +200,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-macros" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

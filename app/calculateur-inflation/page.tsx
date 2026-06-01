@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calculateur-inflation" },
@@ -14,45 +15,33 @@ export const metadata: Metadata = {
     "calculateur inflation, perte pouvoir achat, inflation France 2026, valeur argent dans le temps, erosion monetaire, inflation salaire, cout de la vie, INSEE inflation, hausse des prix, pouvoir achat salaire",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quel est le taux d'inflation en France en 2025 ?",
+    a: "Le taux d'inflation en France est d'environ 1,5% en 2025 selon l'INSEE, après 2,0% en 2024 et 4,9% en 2023. Après le pic historique de 5,2% en 2022 (crise énergétique post-Covid), l'inflation revient progressivement vers la cible de la BCE de 2%.",
+  },
+  {
+    q: "Combien a-t-on perdu de pouvoir d'achat depuis 2020 ?",
+    a: "Entre 2020 et 2025, l'inflation cumulée en France est d'environ 15%. Cela signifie qu'un salaire de 2 000 EUR net en 2020 devrait être d'environ 2 300 EUR aujourd'hui pour maintenir le même niveau de vie. Si votre salaire n'a pas augmenté de 15%, vous avez perdu du pouvoir d'achat.",
+  },
+  {
+    q: "Comment protéger son argent contre l'inflation ?",
+    a: "Pour protéger son épargne contre l'inflation, il faut placer son argent à un taux supérieur à l'inflation : le Livret A (2,4%), le LEP (3,5%), l'assurance-vie, ou les investissements en bourse (ETF). Laisser son argent sur un compte courant (0%) garantit une perte de pouvoir d'achat chaque année.",
+  },
+  {
+    q: "Comment fonctionne le calcul de l'inflation cumulée ?",
+    a: "L'inflation cumulée sur plusieurs années se calcule en multipliant les facteurs annuels : une inflation de 2% pendant 5 ans donne (1,02)^5 - 1 ≈ 10,4%, et non 10%. Ce calcul par composition explique pourquoi l'impact réel de l'inflation est toujours légèrement supérieur à la simple addition des taux annuels.",
+  },
+  {
+    q: "Quelle différence entre inflation et pouvoir d'achat ?",
+    a: "L'inflation mesure la hausse des prix ; le pouvoir d'achat mesure ce que vous pouvez réellement acheter avec votre revenu. Si les prix augmentent de 3% et votre salaire de 1%, votre pouvoir d'achat diminue d'environ 2%. À l'inverse, si votre salaire augmente plus vite que les prix, votre pouvoir d'achat s'améliore.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calculateur Inflation" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quel est le taux d'inflation en France en 2025 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le taux d'inflation en France est d'environ 1,5% en 2025 selon l'INSEE, apres 2,0% en 2024 et 4,9% en 2023. Apres le pic historique de 5,2% en 2022 (crise energetique post-Covid), l'inflation revient progressivement vers la cible de la BCE de 2%."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Combien a-t-on perdu de pouvoir d'achat depuis 2020 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Entre 2020 et 2025, l'inflation cumulee en France est d'environ 15%. Cela signifie qu'un salaire de 2 000 EUR net en 2020 devrait etre d'environ 2 300 EUR aujourd'hui pour maintenir le meme niveau de vie. Si votre salaire n'a pas augmente de 15%, vous avez perdu du pouvoir d'achat."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Comment proteger son argent contre l'inflation ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour proteger son epargne contre l'inflation, il faut placer son argent a un taux superieur a l'inflation : le Livret A (2,4%), le LEP (3,5%), l'assurance-vie, ou les investissements en bourse (ETF). Laisser son argent sur un compte courant (0%) garantit une perte de pouvoir d'achat chaque annee."
-                }
-              }
-            ]
-          })
-        }}
-      />
       <Breadcrumb currentPage="Calculateur Inflation" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -201,6 +190,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calculateur-inflation" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-masse-grasse" },
@@ -14,45 +15,33 @@ export const metadata: Metadata = {
     "calcul masse grasse, taux de graisse corporelle, methode navy masse grasse, pourcentage masse grasse, masse grasse homme, masse grasse femme, calcul composition corporelle",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment calculer son taux de masse grasse ?",
+    a: "La methode US Navy utilise les mesures du tour de taille, du tour de cou (et du tour de hanches pour les femmes) ainsi que la taille. Pour les hommes : %MG = 86,010 × log10(taille – cou) – 70,041 × log10(taille corps) + 36,76. Pour les femmes : %MG = 163,205 × log10(taille + hanches – cou) – 97,684 × log10(taille corps) – 78,387.",
+  },
+  {
+    q: "Quel est le taux de masse grasse normal ?",
+    a: "Pour un homme, le taux de masse grasse normal se situe entre 18 % et 24 %. Pour une femme, il se situe entre 25 % et 31 %. Un taux inferieur indique une categorie athlete ou essentiel, un taux superieur indique un surpoids graisseux.",
+  },
+  {
+    q: "Quelle est la difference entre masse grasse et poids ?",
+    a: "Le poids total inclut la masse grasse (tissus adipeux) ET la masse maigre (muscles, os, organes, eau). Deux personnes avec le meme poids peuvent avoir des compositions corporelles tres differentes. Un sportif muscle peut peser plus qu'une personne sedentaire tout en ayant moins de graisse.",
+  },
+  {
+    q: "La methode US Navy est-elle precise ?",
+    a: "La methode US Navy a une marge d'erreur de ±3 a 4 % par rapport aux methodes de reference (DEXA, hydrodensitometrie). Elle est suffisamment precise pour suivre son evolution dans le temps, mais ne remplace pas une mesure medicale professionnelle.",
+  },
+  {
+    q: "Peut-on avoir une masse grasse faible avec un IMC eleve ?",
+    a: "Oui. Un sportif tres muscle peut avoir un IMC de surpoids (> 25) tout en presentant un taux de masse grasse tres bas (categorie athlete). C'est pourquoi la composition corporelle est un indicateur plus pertinent que l'IMC seul pour evaluer la sante metabolique.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Masse Grasse" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment calculer son taux de masse grasse ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La methode US Navy utilise les mesures du tour de taille, du tour de cou (et du tour de hanches pour les femmes) ainsi que la taille. Pour les hommes : %MG = 86,010 × log10(taille – cou) – 70,041 × log10(taille corps) + 36,76. Pour les femmes : %MG = 163,205 × log10(taille + hanches – cou) – 97,684 × log10(taille corps) – 78,387."
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel est le taux de masse grasse normal ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour un homme, le taux de masse grasse normal se situe entre 18 % et 24 %. Pour une femme, il se situe entre 25 % et 31 %. Un taux inferieur indique une categorie athlete ou essentiel, un taux superieur indique un surpoids graisseux."
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la difference entre masse grasse et poids ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le poids total inclut la masse grasse (tissus adipeux) ET la masse maigre (muscles, os, organes, eau). Deux personnes avec le meme poids peuvent avoir des compositions corporelles tres differentes. Un sportif muscle peut peser plus qu'une personne sedentaire tout en ayant moins de graisse."
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Masse Grasse" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -231,6 +220,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-masse-grasse" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

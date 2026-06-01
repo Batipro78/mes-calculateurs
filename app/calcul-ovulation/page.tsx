@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-ovulation" },
@@ -14,53 +15,37 @@ export const metadata: Metadata = {
     "calcul ovulation, calendrier ovulation, date ovulation, periode fertile, fenetre fertilite, cycle menstruel, calcul jour fertile, concevoir bebe, ovulation calcul, calendrier fertilite",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment calculer sa date d'ovulation ?",
+    a: "L'ovulation survient generalement 14 jours avant les prochaines regles. Pour un cycle de 28 jours, l'ovulation a lieu vers le jour 14. Pour un cycle de 30 jours, vers le jour 16. La formule est : jour d'ovulation = duree du cycle - 14.",
+  },
+  {
+    q: "Combien de jours dure la fenetre de fertilite ?",
+    a: "La fenetre de fertilite dure environ 6 jours : les 5 jours avant l'ovulation et le jour de l'ovulation lui-meme. Les spermatozoides peuvent survivre 3 a 5 jours dans l'uterus, tandis que l'ovule est fecondable pendant 12 a 24 heures apres l'ovulation.",
+  },
+  {
+    q: "Quels sont les signes de l'ovulation ?",
+    a: "Les signes de l'ovulation incluent : une glaire cervicale transparente et filante (type blanc d'oeuf), une legere douleur au bas-ventre (mittelschmerz), une hausse de la temperature basale de 0,2 a 0,5 degC, une augmentation de la libido et parfois un leger spotting.",
+  },
+  {
+    q: "Un cycle irregulier empeche-t-il de calculer l'ovulation ?",
+    a: "Un cycle irregulier rend le calcul moins precis mais pas impossible. On se base sur la duree moyenne des derniers cycles. Des outils complementaires comme les tests d'ovulation (LH), la courbe de temperature ou le suivi de la glaire cervicale permettent de mieux identifier l'ovulation.",
+  },
+  {
+    q: "Combien de temps apres l'arret de la pilule revient l'ovulation ?",
+    a: "L'ovulation revient generalement dans les 1 a 3 mois apres l'arret de la pilule contraceptive. Chez certaines femmes, le cycle peut mettre jusqu'a 6 mois pour se regulariser. Pendant cette periode de retour de couches, les cycles peuvent etre plus irreguliers qu'avant.",
+  },
+  {
+    q: "Peut-on tomber enceinte juste avant les regles ?",
+    a: "Il est tres peu probable de tomber enceinte juste avant les regles car l'ovulation a lieu au milieu du cycle. Cependant, si le cycle est court ou irregulier, les rapports en fin de cycle peuvent couvrir le debut de la fenetre fertile du cycle suivant.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Ovulation" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment calculer sa date d'ovulation ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L'ovulation survient generalement 14 jours avant les prochaines regles. Pour un cycle de 28 jours, l'ovulation a lieu vers le jour 14. Pour un cycle de 30 jours, vers le jour 16. La formule est : jour d'ovulation = duree du cycle - 14.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien de jours dure la fenetre de fertilite ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La fenetre de fertilite dure environ 6 jours : les 5 jours avant l'ovulation et le jour de l'ovulation lui-meme. Les spermatozoides peuvent survivre 3 a 5 jours dans l'uterus, tandis que l'ovule est fecondable pendant 12 a 24 heures apres l'ovulation.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quels sont les signes de l'ovulation ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les signes de l'ovulation incluent : une glaire cervicale transparente et filante (type blanc d'oeuf), une legere douleur au bas-ventre (mittelschmerz), une hausse de la temperature basale de 0,2 a 0,5 degC, une augmentation de la libido et parfois un leger spotting.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Un cycle irregulier empeche-t-il de calculer l'ovulation ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Un cycle irregulier rend le calcul moins precis mais pas impossible. On se base sur la duree moyenne des derniers cycles. Des outils complementaires comme les tests d'ovulation (LH), la courbe de temperature ou le suivi de la glaire cervicale permettent de mieux identifier l'ovulation.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Ovulation" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -287,6 +272,7 @@ export default function Page() {
         </div>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-ovulation" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-dca" },
@@ -14,45 +15,33 @@ export const metadata: Metadata = {
     "simulateur DCA, dollar cost averaging, investissement S&P 500, rendement CAC 40, investir Bitcoin, calcul investissement mensuel, performance bourse, si j'avais investi, rendement historique, investissement progressif",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qu'est-ce que le DCA (Dollar Cost Averaging) ?",
+    a: "Le DCA (Dollar Cost Averaging) ou investissement programme consiste a investir une somme fixe a intervalles reguliers (chaque mois par exemple), quel que soit le prix de l'actif. Cette strategie permet de lisser le prix d'achat moyen et de reduire l'impact de la volatilite des marches. C'est l'une des strategies les plus recommandees pour les investisseurs particuliers.",
+  },
+  {
+    q: "Quel est le rendement historique du S&P 500 ?",
+    a: "Le S&P 500 a offert un rendement annuel moyen d'environ 10% sur les 50 dernieres annees (environ 7% apres inflation). Avec une strategie DCA de 150 EUR par mois depuis 2010, un investisseur aurait plus que double son capital investi. Les performances passees ne garantissent toutefois pas les resultats futurs.",
+  },
+  {
+    q: "Est-ce risque d'investir en DCA sur le Bitcoin ?",
+    a: "Le Bitcoin est un actif tres volatil : son prix peut varier de 50% ou plus en quelques mois. Cependant, le DCA reduit ce risque en lissant le prix d'achat. Historiquement, un DCA sur le Bitcoin depuis 2015 ou 2016 a ete extremement rentable, mais les pertes peuvent etre importantes sur des periodes courtes. N'investissez que ce que vous pouvez vous permettre de perdre.",
+  },
+  {
+    q: "Quelle somme investir chaque mois en DCA ?",
+    a: "Il n'existe pas de montant ideal : l'important est la regularite. Meme 50 EUR par mois font la difference sur 10 ou 20 ans grace aux interets composes. La regle generale est de n'investir que l'argent dont vous n'avez pas besoin a court terme, en conservant une epargne de precaution de 3 a 6 mois de depenses.",
+  },
+  {
+    q: "DCA vs investissement en une seule fois : lequel choisir ?",
+    a: "Statistiquement, investir en une seule fois (lump sum) surperforme le DCA environ 2 fois sur 3, car les marches montent sur le long terme. Mais le DCA reduit le risque psychologique et le regret si le marche baisse juste apres votre investissement. Pour un investisseur debutant ou avec une aversion au risque, le DCA reste la strategie la plus sage.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Simulateur DCA" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Qu'est-ce que le DCA (Dollar Cost Averaging) ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le DCA (Dollar Cost Averaging) ou investissement programme consiste a investir une somme fixe a intervalles reguliers (chaque mois par exemple), quel que soit le prix de l'actif. Cette strategie permet de lisser le prix d'achat moyen et de reduire l'impact de la volatilite des marches. C'est l'une des strategies les plus recommandees pour les investisseurs particuliers."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Quel est le rendement historique du S&P 500 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le S&P 500 a offert un rendement annuel moyen d'environ 10% sur les 50 dernieres annees (environ 7% apres inflation). Avec une strategie DCA de 150 EUR par mois depuis 2010, un investisseur aurait plus que double son capital investi. Les performances passees ne garantissent toutefois pas les resultats futurs."
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Est-ce risque d'investir en DCA sur le Bitcoin ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le Bitcoin est un actif tres volatil : son prix peut varier de 50% ou plus en quelques mois. Cependant, le DCA reduit ce risque en lissant le prix d'achat. Historiquement, un DCA sur le Bitcoin depuis 2015 ou 2016 a ete extremement rentable, mais les pertes peuvent etre importantes sur des periodes courtes. N'investissez que ce que vous pouvez vous permettre de perdre."
-                }
-              }
-            ]
-          })
-        }}
-      />
       <Breadcrumb currentPage="Simulateur DCA" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -183,6 +172,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/simulateur-dca" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
