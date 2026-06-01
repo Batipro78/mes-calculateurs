@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import ConditionalScripts from "./components/ConditionalScripts";
 import ConditionalChrome from "./components/ConditionalChrome";
 import SearchBar from "./components/SearchBar";
@@ -186,6 +187,7 @@ export default function RootLayout({
           {children}
         </ConditionalChrome>
         <CookieBanner />
+        <Analytics />
       </body>
     </html>
   );
