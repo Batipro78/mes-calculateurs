@@ -15,6 +15,7 @@ type LeadPayload = {
   message?: string;
   consentement?: boolean;
   source?: string;
+  website?: string; // honeypot : doit rester vide
 };
 
 function isValidEmail(e: string) {
@@ -26,12 +27,72 @@ function isValidPhone(p: string) {
   return /^[+0-9][0-9\s.\-]{7,18}$/.test(p);
 }
 
+// Echappement HTML : empeche l'injection de balises/liens dans l'email de notification.
+function esc(s: string): string {
+  return s.replace(/[&<>"']/g, (c) =>
+    c === "&" ? "&amp;"
+      : c === "<" ? "&lt;"
+        : c === ">" ? "&gt;"
+          : c === '"' ? "&quot;"
+            : "&#39;"
+  );
+}
+
+// Rate-limit en memoire (best-effort, par instance serverless). Premier rempart
+// anti-flood ; pour une protection forte multi-instances il faudrait un store
+// partage (ex: Upstash). Suffisant ici combine au honeypot.
+const RL_WINDOW_MS = 10 * 60 * 1000;
+const RL_MAX = 5;
+const rlHits = new Map<string, number[]>();
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const arr = (rlHits.get(ip) ?? []).filter((t) => now - t < RL_WINDOW_MS);
+  arr.push(now);
+  rlHits.set(ip, arr);
+  if (rlHits.size > 5000) {
+    for (const [k, v] of rlHits) {
+      if (v.every((t) => now - t >= RL_WINDOW_MS)) rlHits.delete(k);
+    }
+  }
+  return arr.length > RL_MAX;
+}
+
+const MAX = {
+  nom: 100,
+  email: 150,
+  telephone: 30,
+  codePostal: 10,
+  projet: 200,
+  message: 2000,
+  ville: 100,
+  departement: 100,
+  source: 200,
+  nicheId: 50,
+};
+
 export async function POST(req: Request) {
+  const ip =
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+    req.headers.get("x-real-ip") ||
+    "unknown";
+
+  if (isRateLimited(ip)) {
+    return NextResponse.json(
+      { error: "Trop de demandes, reessayez dans quelques minutes." },
+      { status: 429 }
+    );
+  }
+
   let body: LeadPayload;
   try {
     body = (await req.json()) as LeadPayload;
   } catch {
     return NextResponse.json({ error: "JSON invalide" }, { status: 400 });
+  }
+
+  // Honeypot : un bot remplit ce champ cache, un humain non. On simule un succes.
+  if ((body.website ?? "").trim() !== "") {
+    return NextResponse.json({ ok: true });
   }
 
   const nom = (body.nom ?? "").trim();
@@ -40,10 +101,31 @@ export async function POST(req: Request) {
   const codePostal = (body.codePostal ?? "").trim();
   const projet = (body.projet ?? "").trim();
   const nicheId = (body.nicheId ?? "").trim();
+  const ville = (body.ville ?? "").trim();
+  const departement = (body.departement ?? "").trim();
+  const message = (body.message ?? "").trim();
+  const source = (body.source ?? "").trim();
 
   if (!nom || !email || !telephone || !codePostal || !projet || !nicheId) {
     return NextResponse.json({ error: "Champs obligatoires manquants" }, { status: 400 });
   }
+
+  // Limites de longueur (anti-abus / anti-payload geant).
+  if (
+    nom.length > MAX.nom ||
+    email.length > MAX.email ||
+    telephone.length > MAX.telephone ||
+    codePostal.length > MAX.codePostal ||
+    projet.length > MAX.projet ||
+    message.length > MAX.message ||
+    ville.length > MAX.ville ||
+    departement.length > MAX.departement ||
+    source.length > MAX.source ||
+    nicheId.length > MAX.nicheId
+  ) {
+    return NextResponse.json({ error: "Champ trop long" }, { status: 400 });
+  }
+
   if (!isValidEmail(email)) {
     return NextResponse.json({ error: "Email invalide" }, { status: 400 });
   }
@@ -64,20 +146,20 @@ export async function POST(req: Request) {
   const notifyEmail = process.env.LEADS_NOTIFY_EMAIL ?? "ameur.fethi78@gmail.com";
 
   if (brevoKey) {
-    const subject = `[Lead ${nicheLabel}] ${nom} - ${body.ville || codePostal}`;
+    const subject = `[Lead ${nicheLabel}] ${nom} - ${ville || codePostal}`;
     const html = `
-      <h2>Nouveau lead - ${nicheLabel}</h2>
-      <p><strong>Source :</strong> ${body.source || "n/a"}</p>
-      <p><strong>Ville :</strong> ${body.ville || "n/a"} (${body.departement || ""}) - CP ${codePostal}</p>
+      <h2>Nouveau lead - ${esc(nicheLabel)}</h2>
+      <p><strong>Source :</strong> ${esc(source || "n/a")}</p>
+      <p><strong>Ville :</strong> ${esc(ville || "n/a")} (${esc(departement)}) - CP ${esc(codePostal)}</p>
       <hr/>
-      <p><strong>Nom :</strong> ${nom}</p>
-      <p><strong>Email :</strong> <a href="mailto:${email}">${email}</a></p>
-      <p><strong>Telephone :</strong> <a href="tel:${telephone}">${telephone}</a></p>
-      <p><strong>Projet :</strong> ${projet}</p>
-      ${body.message ? `<p><strong>Message :</strong> ${body.message}</p>` : ""}
+      <p><strong>Nom :</strong> ${esc(nom)}</p>
+      <p><strong>Email :</strong> <a href="mailto:${esc(email)}">${esc(email)}</a></p>
+      <p><strong>Telephone :</strong> <a href="tel:${esc(telephone)}">${esc(telephone)}</a></p>
+      <p><strong>Projet :</strong> ${esc(projet)}</p>
+      ${message ? `<p><strong>Message :</strong> ${esc(message)}</p>` : ""}
       <hr/>
-      <p><em>CPL marche estime : ${cplEstime}</em></p>
-      <p><em>Partenaires cibles : ${partenaires}</em></p>
+      <p><em>CPL marche estime : ${esc(cplEstime)}</em></p>
+      <p><em>Partenaires cibles : ${esc(partenaires)}</em></p>
     `.trim();
 
     try {
@@ -106,9 +188,8 @@ export async function POST(req: Request) {
       console.error("[leads] Brevo fetch failed:", err);
     }
   } else {
-    console.warn("[leads] BREVO_API_KEY absent, lead non envoye par email :", {
-      nicheId, nom, email, telephone, ville: body.ville, codePostal, projet,
-    });
+    // Pas de cle Brevo : on log SANS donnees personnelles (RGPD).
+    console.warn(`[leads] BREVO_API_KEY absent, lead non envoye (niche=${nicheId})`);
   }
 
   return NextResponse.json({ ok: true });

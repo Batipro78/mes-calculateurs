@@ -40,6 +40,7 @@ export default function LeadCaptureForm({ nicheId, ville, departement, titreOver
       message: String(formData.get("message") || "").trim(),
       consentement: formData.get("consentement") === "on",
       source: typeof window !== "undefined" ? window.location.pathname : "",
+      website: String(formData.get("website") || ""), // honeypot anti-spam
     };
 
     if (!payload.nom || !payload.email || !payload.telephone) {
@@ -120,6 +121,16 @@ export default function LeadCaptureForm({ nicheId, ville, departement, titreOver
           </p>
         </div>
       </div>
+
+      {/* Honeypot anti-spam : invisible pour les humains, doit rester vide. */}
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0 }}
+      />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
         <input
