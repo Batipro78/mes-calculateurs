@@ -5,7 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
-import { genererTableauBER, STADES_LABELS, ACTIVITE_LABELS } from "./caloriesAnimauxCalc";
+import { genererTableauBER } from "./caloriesAnimauxCalc";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-calories-chien-chat" },
