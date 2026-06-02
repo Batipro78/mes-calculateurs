@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 import {
   formatAllureNatation,
   predireTempsNatation,
@@ -20,6 +21,29 @@ export const metadata: Metadata = {
   keywords:
     "allure natation, calcul vitesse nageur, swolf score, prediction ironman, allure 100m piscine, triathlon natation, eau libre, temps 1500m",
 };
+
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qu'est-ce que l'allure en natation ?",
+    a: "L'allure en natation est le temps nécessaire pour parcourir 100 mètres, exprimé en minutes:secondes. Par exemple, une allure de 1:45/100m signifie que vous nagez 100 mètres en 1 minute 45 secondes.",
+  },
+  {
+    q: "C'est quoi le SWOLF score ?",
+    a: "Le SWOLF (Swimming + Golf) est la somme du temps pour nager 25 mètres (en secondes) et du nombre de coups de bras. Par exemple : temps 25m = 30s + 16 coups = SWOLF de 46. Plus bas est mieux !",
+  },
+  {
+    q: "Quelle allure pour l'Ironman 3800m ?",
+    a: "Selon votre niveau : Elite (≤1:00/100m = ≤57min), Avancé (1:15 = 72min), Amateur (1:30 = 87min), Débutant (1:45 = 102min). Voir le tableau pour toutes les estimations.",
+  },
+  {
+    q: "Différence eau libre vs piscine ?",
+    a: "En eau libre (lac, mer), les vagues et le courant ralentissent généralement de 10-15%. Une allure de 1:30 en piscine peut devenir 1:45-2:00 en eau libre. Commencez par des allures plus conservatrices.",
+  },
+  {
+    q: "Comment améliorer son allure en natation ?",
+    a: "Pour progresser, travaillez d'abord la technique (allongement des bras, rotation du corps, battements réguliers) plutôt que la force brute. Un SWOLF bas indique une nage efficace. Des séances avec un coach FFN certifié permettent d'identifier rapidement les défauts techniques.",
+  },
+];
 
 export default function Page() {
   // Tableau allures de référence
@@ -68,49 +92,6 @@ export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Allure Natation + SWOLF" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Qu&apos;est-ce que l&apos;allure en natation ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L&apos;allure en natation est le temps nécessaire pour parcourir 100 mètres, exprimé en minutes:secondes. Par exemple, une allure de 1:45/100m signifie que vous nagez 100 mètres en 1 minute 45 secondes.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "C&apos;est quoi le SWOLF score ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le SWOLF (Swimming + Golf) est la somme du temps pour nager 25 mètres (en secondes) et du nombre de coups de bras. Par exemple : temps 25m = 30s + 16 coups = SWOLF de 46. Plus bas est mieux !",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle allure pour l&apos;Ironman 3800m ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Selon votre niveau : Elite (≤1:00/100m = ≤57min), Avancé (1:15 = 72min), Amateur (1:30 = 87min), Débutant (1:45 = 102min). Voir le tableau pour toutes les estimations.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Différence eau libre vs piscine ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "En eau libre (lac, mer), les vagues et le courant ralentissent généralement de 10-15%. Une allure de 1:30 en piscine peut devenir 1:45-2:00 en eau libre. Commencez par des allures plus conservatrices.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Allure Natation + SWOLF" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -314,6 +295,8 @@ export default function Page() {
           certifié.
         </p>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-allure-natation" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

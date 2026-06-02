@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-cout-kilometrique" },
@@ -14,19 +15,25 @@ export const metadata: Metadata = {
     "cout kilometrique, bareme kilometrique 2026, indemnite kilometrique, calcul IK, frais kilometriques, bareme fiscal voiture, cout km vehicule",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment fonctionne le bareme kilometrique ?",
+    a: "Le bareme kilometrique fiscal permet de deduire les frais de deplacement professionnel de ses impots. Il prend en compte la puissance fiscale du vehicule et la distance annuelle parcourue. Il couvre le carburant, l'assurance, l'entretien et la depreciation.",
+  },
+  {
+    q: "Les vehicules electriques ont-ils un avantage ?",
+    a: "Oui, les vehicules electriques beneficient d'une majoration de 20% sur le bareme kilometrique. Cela encourage l'utilisation de vehicules propres pour les trajets professionnels.",
+  },
+  {
+    q: "Peut-on cumuler les indemnites kilometriques et les frais reels ?",
+    a: "Non, les indemnites kilometriques font partie de la deduction des frais reels. Vous devez choisir entre la deduction forfaitaire (10%) et les frais reels (incluant les IK). Les frais reels sont avantageux si vos depenses depassent 10% de votre revenu imposable.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Cout Kilometrique" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org", "@type": "FAQPage",
-        mainEntity: [
-          { "@type": "Question", name: "Comment fonctionne le bareme kilometrique ?",
-            acceptedAnswer: { "@type": "Answer", text: "Le bareme kilometrique fiscal permet de deduire les frais de deplacement professionnel de ses impots. Il prend en compte la puissance fiscale du vehicule et la distance annuelle parcourue. Il couvre le carburant, l'assurance, l'entretien et la depreciation." } },
-          { "@type": "Question", name: "Les vehicules electriques ont-ils un avantage ?",
-            acceptedAnswer: { "@type": "Answer", text: "Oui, les vehicules electriques beneficient d'une majoration de 20% sur le bareme kilometrique. Cela encourage l'utilisation de vehicules propres pour les trajets professionnels." } },
-        ]
-      }) }} />
       <Breadcrumb currentPage="Cout Kilometrique" />
       <div className="flex items-center gap-3 mb-2">
         <div className="w-10 h-10 bg-gradient-to-br from-sky-500 to-blue-600 rounded-xl flex items-center justify-center text-xl shadow-sm">🚙</div>
@@ -64,6 +71,7 @@ export default function Page() {
           </table>
         </div>
       </section>
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-cout-kilometrique" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

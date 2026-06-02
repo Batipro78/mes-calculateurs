@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/convertisseur-cote-probabilite" },
@@ -14,53 +15,29 @@ export const metadata: Metadata = {
     "convertisseur cote probabilite, cote decimale, cote fractionnelle, cote americaine, marge bookmaker, conversion cote",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment convertir une cote en probabilite ?",
+    a: "Pour convertir une cote decimale en probabilite : Probabilite (%) = (1 / cote) × 100. Par exemple, une cote de 2.00 = (1 / 2.00) × 100 = 50%. Une cote de 5.00 = (1 / 5.00) × 100 = 20%.",
+  },
+  {
+    q: "Comment convertir une probabilite en cote ?",
+    a: "Pour convertir une probabilite en cote decimale : Cote = 100 / Probabilite (%). Par exemple, une probabilite de 50% = 100 / 50 = 2.00. Une probabilite de 25% = 100 / 25 = 4.00.",
+  },
+  {
+    q: "Quelle est la difference entre cote decimale, fractionnelle et americaine ?",
+    a: "Cote decimale (1.50, 2.00) = format europeen, montant total pour 1 EUR mise. Cote fractionnelle (5/2, 2/1) = format britannique, benefice net par rapport a la mise. Cote americaine (+250, -150) = format US, pour une mise de 100 USD : positive = gain, negative = mise requise pour gagner 100.",
+  },
+  {
+    q: "Qu'est-ce que la marge bookmaker ?",
+    a: "La marge bookmaker est la difference entre la somme des probabilites de tous les resultats (100%) et ce que le bookmaker offre reellement. Si la somme est 105%, le bookmaker a une marge de 5%. Une marge > 0% favore le bookmaker, < 0% peut indiquer une value bet pour le pariant.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Convertisseur Cote ↔ Probabilite" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment convertir une cote en probabilite ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour convertir une cote decimale en probabilite : Probabilite (%) = (1 / cote) × 100. Par exemple, une cote de 2.00 = (1 / 2.00) × 100 = 50%. Une cote de 5.00 = (1 / 5.00) × 100 = 20%.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment convertir une probabilite en cote ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour convertir une probabilite en cote decimale : Cote = 100 / Probabilite (%). Par exemple, une probabilite de 50% = 100 / 50 = 2.00. Une probabilite de 25% = 100 / 25 = 4.00.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la difference entre cote decimale, fractionnelle et americaine ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Cote decimale (1.50, 2.00) = format europeen, montant total pour 1 EUR mise. Cote fractionnelle (5/2, 2/1) = format britannique, benefice net par rapport a la mise. Cote americaine (+250, -150) = format US, pour une mise de 100 USD : positive = gain, negative = mise requise pour gagner 100.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qu&apos;est-ce que la marge bookmaker ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La marge bookmaker est la difference entre la somme des probabilites de tous les resultats (100%) et ce que le bookmaker offre reellement. Si la somme est 105%, le bookmaker a une marge de 5%. Une marge > 0% favore le bookmaker, < 0% peut indiquer une value bet pour le pariant.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Convertisseur Cote ↔ Probabilite" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -234,6 +211,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/convertisseur-cote-probabilite" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

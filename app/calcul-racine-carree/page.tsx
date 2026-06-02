@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-racine-carree" },
@@ -14,19 +15,25 @@ export const metadata: Metadata = {
     "racine carree, calcul racine carree, racine carree en ligne, carre parfait, racine cubique, calculer racine, racine carree de, tableau racines carrees",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment calculer une racine carree ?",
+    a: "La racine carree de n est le nombre qui, multiplie par lui-meme, donne n. Exemple : √144 = 12 car 12 × 12 = 144. Pour les nombres non parfaits, le resultat est decimal : √2 ≈ 1,414213.",
+  },
+  {
+    q: "Qu'est-ce qu'un carre parfait ?",
+    a: "Un carre parfait est un entier dont la racine carree est aussi un entier. Les premiers carres parfaits sont : 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256...",
+  },
+  {
+    q: "Quelle est la difference entre racine carree et racine cubique ?",
+    a: "La racine carree d'un nombre n est le nombre x tel que x² = n. La racine cubique est le nombre x tel que x³ = n. Exemple : la racine cubique de 27 est 3 (car 3³ = 27). La notation est ³√n. La racine cubique existe pour les nombres negatifs (³√-8 = -2), contrairement a la racine carree.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Racine Carree" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org", "@type": "FAQPage",
-        mainEntity: [
-          { "@type": "Question", name: "Comment calculer une racine carree ?",
-            acceptedAnswer: { "@type": "Answer", text: "La racine carree de n est le nombre qui, multiplie par lui-meme, donne n. Exemple : \u221a144 = 12 car 12 \u00d7 12 = 144. Pour les nombres non parfaits, le resultat est decimal : \u221a2 \u2248 1,414213." } },
-          { "@type": "Question", name: "Qu'est-ce qu'un carre parfait ?",
-            acceptedAnswer: { "@type": "Answer", text: "Un carre parfait est un entier dont la racine carree est aussi un entier. Les premiers carres parfaits sont : 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256..." } },
-        ]
-      }) }} />
       <Breadcrumb currentPage="Racine Carree" />
       <div className="flex items-center gap-3 mb-2">
         <div className="w-10 h-10 bg-gradient-to-br from-amber-500 to-orange-600 rounded-xl flex items-center justify-center text-xl shadow-sm">&radic;</div>
@@ -64,6 +71,9 @@ export default function Page() {
           ))}
         </div>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
+
       <RelatedCalculators currentSlug="/calcul-racine-carree" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

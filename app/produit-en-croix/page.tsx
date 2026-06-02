@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/produit-en-croix" },
@@ -14,45 +15,25 @@ export const metadata: Metadata = {
     "produit en croix, regle de trois, calcul proportionnalite, 4e proportionnelle, tableau de proportionnalite, produit en croix en ligne, calculer produit en croix",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment faire un produit en croix ?",
+    a: "Le produit en croix permet de trouver une valeur inconnue dans une proportion. Si A/B = C/D et que D est inconnu, alors D = (B x C) / A. On \"croise\" les valeurs en diagonale : on multiplie les deux valeurs connues en diagonale et on divise par la troisieme valeur connue.",
+  },
+  {
+    q: "Quelle est la difference entre produit en croix et regle de trois ?",
+    a: "C'est la meme chose. Le \"produit en croix\" est le nom mathematique de l'operation, la \"regle de trois\" est le nom courant. Les deux permettent de trouver une 4e valeur proportionnelle a partir de 3 valeurs connues.",
+  },
+  {
+    q: "Quand utiliser le produit en croix ?",
+    a: "Le produit en croix s'utilise dans tous les cas de proportionnalite : conversions d'unites, calculs de prix, recettes de cuisine, pourcentages, taux de change, dilutions chimiques, echelles de cartes, etc.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Produit en Croix" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment faire un produit en croix ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le produit en croix permet de trouver une valeur inconnue dans une proportion. Si A/B = C/D et que D est inconnu, alors D = (B x C) / A. On \"croise\" les valeurs en diagonale : on multiplie les deux valeurs connues en diagonale et on divise par la troisieme valeur connue.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la difference entre produit en croix et regle de trois ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "C'est la meme chose. Le \"produit en croix\" est le nom mathematique de l'operation, la \"regle de trois\" est le nom courant. Les deux permettent de trouver une 4e valeur proportionnelle a partir de 3 valeurs connues.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quand utiliser le produit en croix ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le produit en croix s'utilise dans tous les cas de proportionnalite : conversions d'unites, calculs de prix, recettes de cuisine, pourcentages, taux de change, dilutions chimiques, echelles de cartes, etc.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Produit en Croix" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -120,6 +101,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/produit-en-croix" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

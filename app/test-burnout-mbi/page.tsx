@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/test-burnout-mbi" },
@@ -14,6 +15,25 @@ export const metadata: Metadata = {
     "test burnout, mbi, maslach burnout inventory, epuisement professionnel, test mbi gratuit, syndrome epuisement, burnout test francais, mbi-hss, depersonnalisation, accomplissement",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qu'est-ce que le test MBI (Maslach Burnout Inventory) ?",
+    a: "Le MBI est le questionnaire de reference mondiale pour evaluer le burnout, cree par Christina Maslach et Susan Jackson en 1981. Il mesure 3 dimensions sur 22 questions : l'epuisement emotionnel (9 items), la depersonnalisation (5 items) et l'accomplissement personnel (8 items). Valide en francais par Dion & Tessier en 1994.",
+  },
+  {
+    q: "Comment est calcule le score MBI ?",
+    a: "Chaque question est notee de 0 (Jamais) a 6 (Chaque jour). On additionne les scores par dimension. Epuisement emotionnel sur 54 (seuil eleve : 27+), Depersonnalisation sur 30 (seuil eleve : 13+), Accomplissement personnel sur 48 (attention : score BAS de 33 ou moins indique un burnout). Le burnout est avere si au moins 2 dimensions sont au niveau eleve simultanement.",
+  },
+  {
+    q: "Le test MBI remplace-t-il un diagnostic medical ?",
+    a: "Non. Le MBI est un outil d'auto-evaluation qui aide a identifier des signes de burnout, mais seul un medecin ou psychologue peut poser un diagnostic clinique. En cas de resultats eleves, consultez votre medecin du travail ou votre medecin traitant. Le burnout est reconnu par l'OMS comme phenomene lie au travail (CIM-11) depuis 2019.",
+  },
+  {
+    q: "Quels sont les 3 piliers du burnout selon Maslach ?",
+    a: "1) L'epuisement emotionnel : sentiment d'etre vide, fatigue chronique liee au travail. 2) La depersonnalisation : cynisme, distance, deshumanisation des relations avec les collegues ou clients. 3) La reduction de l'accomplissement personnel : sentiment d'inefficacite et de perte de sens. Le burnout n'est pas un simple stress, c'est la conjonction de ces 3 dimensions.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
@@ -21,49 +41,6 @@ export default function Page() {
         name="Test Burnout MBI"
         description="Test officiel Maslach Burnout Inventory en 22 questions"
         category="HealthApplication"
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Qu'est-ce que le test MBI (Maslach Burnout Inventory) ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le MBI est le questionnaire de référence mondiale pour évaluer le burnout, créé par Christina Maslach et Susan Jackson en 1981. Il mesure 3 dimensions sur 22 questions : l'épuisement émotionnel (9 items), la dépersonnalisation (5 items) et l'accomplissement personnel (8 items). Validé en français par Dion & Tessier en 1994.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment est calculé le score MBI ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Chaque question est notée de 0 (Jamais) à 6 (Chaque jour). On additionne les scores par dimension. Épuisement émotionnel sur 54 (seuil élevé : 27+), Dépersonnalisation sur 30 (seuil élevé : 13+), Accomplissement personnel sur 48 (attention : score BAS de 33 ou moins indique un burnout). Le burnout est avéré si au moins 2 dimensions sont au niveau élevé simultanément.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Le test MBI remplace-t-il un diagnostic médical ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Non. Le MBI est un outil d'auto-évaluation qui aide à identifier des signes de burnout, mais seul un médecin ou psychologue peut poser un diagnostic clinique. En cas de résultats élevés, consultez votre médecin du travail ou votre médecin traitant. Le burnout est reconnu par l'OMS comme phénomène lié au travail (CIM-11) depuis 2019.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quels sont les 3 piliers du burnout selon Maslach ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "1) L'épuisement émotionnel : sentiment d'être vidé, fatigue chronique liée au travail. 2) La dépersonnalisation : cynisme, distance, déshumanisation des relations avec les collègues ou clients. 3) La réduction de l'accomplissement personnel : sentiment d'inefficacité et de perte de sens. Le burnout n'est pas un simple stress, c'est la conjonction de ces 3 dimensions.",
-                },
-              },
-            ],
-          }),
-        }}
       />
       <Breadcrumb currentPage="Test Burnout MBI" />
 
@@ -255,6 +232,8 @@ export default function Page() {
           24h/24, 7j/7.
         </p>
       </div>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/test-burnout-mbi" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

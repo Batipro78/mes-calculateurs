@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 import { ALIMENTS } from "./indiceGlycemiqueCalc";
 
 export const metadata: Metadata = {
@@ -15,36 +16,20 @@ export const metadata: Metadata = {
     "indice glycemique, tableau IG aliments, charge glycemique, IG bas moyen eleve, aliments diabete, indice glycemique fruits, feculents IG, IG riz pain pates",
 };
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Qu'est-ce que l'indice glycemique (IG) ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "L'indice glycemique (IG) est une mesure de 0 a 100 qui indique la rapidite avec laquelle un aliment fait monter la glycemie (taux de sucre dans le sang) apres ingestion. Un IG bas (<=55) provoque une montee lente et progressive, favorable au controle du poids et de la glycemie. Un IG eleve (>=70) entraine un pic glycemique rapide suivi d'une hypoglycemie reactive.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Quelle est la difference entre indice glycemique et charge glycemique ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "L'indice glycemique (IG) mesure la qualite des glucides d'un aliment, independamment de la quantite. La charge glycemique (CG) = (IG x glucides par portion) / 100 tient compte a la fois de la qualite ET de la quantite. Par exemple, la carotte a un IG de 47 mais sa CG par portion est seulement de 4, car elle contient peu de glucides. La CG est un indicateur plus pertinent pour la pratique alimentaire.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Comment utiliser le tableau de l'indice glycemique pour mieux manger ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Pour controler votre glycemie et votre energie, privilegiez les aliments a IG bas (<= 55) : legumineuses, la plupart des fruits, legumes, cereales completes. Associez les aliments a IG eleve avec des proteines et des fibres pour reduire leur impact glycemique. La charge glycemique de la journee entiere devrait rester inferieure a 80-100 pour maintenir une glycemie stable.",
-      },
-    },
-  ],
-};
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qu'est-ce que l'indice glycemique (IG) ?",
+    a: "L'indice glycemique (IG) est une mesure de 0 a 100 qui indique la rapidite avec laquelle un aliment fait monter la glycemie (taux de sucre dans le sang) apres ingestion. Un IG bas (<=55) provoque une montee lente et progressive, favorable au controle du poids et de la glycemie. Un IG eleve (>=70) entraine un pic glycemique rapide suivi d'une hypoglycemie reactive.",
+  },
+  {
+    q: "Quelle est la difference entre indice glycemique et charge glycemique ?",
+    a: "L'indice glycemique (IG) mesure la qualite des glucides d'un aliment, independamment de la quantite. La charge glycemique (CG) = (IG x glucides par portion) / 100 tient compte a la fois de la qualite ET de la quantite. Par exemple, la carotte a un IG de 47 mais sa CG par portion est seulement de 4, car elle contient peu de glucides. La CG est un indicateur plus pertinent pour la pratique alimentaire.",
+  },
+  {
+    q: "Comment utiliser le tableau de l'indice glycemique pour mieux manger ?",
+    a: "Pour controler votre glycemie et votre energie, privilegiez les aliments a IG bas (<= 55) : legumineuses, la plupart des fruits, legumes, cereales completes. Associez les aliments a IG eleve avec des proteines et des fibres pour reduire leur impact glycemique. La charge glycemique de la journee entiere devrait rester inferieure a 80-100 pour maintenir une glycemie stable.",
+  },
+];
 
 // Summary table data
 const IG_SUMMARY = [
@@ -65,10 +50,6 @@ export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Tableau Indice Glycemique des Aliments" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
       <Breadcrumb currentPage="Indice Glycemique des Aliments" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -216,6 +197,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-indice-glycemique" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

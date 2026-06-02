@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/verificateur-devis" },
@@ -14,45 +15,25 @@ export const metadata: Metadata = {
     "verificateur devis, conformite devis, mentions obligatoires devis, devis conforme 2026, verifier devis artisan, 16 mentions devis, controle devis BTP",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quelles sont les mentions obligatoires sur un devis en 2026 ?",
+    a: "Un devis en 2026 doit comporter 16 mentions obligatoires : date, numero, identite entreprise (nom, adresse, SIRET, forme juridique), identite client, description detaillee, prix unitaires HT, taux TVA, total HT et TTC, duree de validite, conditions de paiement, assurance decennale (BTP), gestion des dechets (travaux), date de debut/duree, et signature du client.",
+  },
+  {
+    q: "Comment verifier si un devis est conforme ?",
+    a: "Deposez votre devis (PDF ou photo) sur notre outil. L'intelligence artificielle analyse automatiquement le document et verifie la presence des 16 mentions obligatoires. Vous obtenez un score de conformite et la liste des mentions presentes, partielles ou manquantes.",
+  },
+  {
+    q: "Quelles sont les sanctions pour un devis non conforme ?",
+    a: "Un devis non conforme peut entrainer une amende de 3 000 euros pour une personne physique et 15 000 euros pour une personne morale (article L441-1 du Code de commerce). De plus, un devis incomplet peut etre conteste par le client et compliquer le recouvrement en cas de litige.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Verificateur de Devis" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quelles sont les mentions obligatoires sur un devis en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Un devis en 2026 doit comporter 16 mentions obligatoires : date, numero, identite entreprise (nom, adresse, SIRET, forme juridique), identite client, description detaillee, prix unitaires HT, taux TVA, total HT et TTC, duree de validite, conditions de paiement, assurance decennale (BTP), gestion des dechets (travaux), date de debut/duree, et signature du client.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment verifier si un devis est conforme ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Deposez votre devis (PDF ou photo) sur notre outil. L'intelligence artificielle analyse automatiquement le document et verifie la presence des 16 mentions obligatoires. Vous obtenez un score de conformite et la liste des mentions presentes, partielles ou manquantes.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelles sont les sanctions pour un devis non conforme ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Un devis non conforme peut entrainer une amende de 3 000 euros pour une personne physique et 15 000 euros pour une personne morale (article L441-1 du Code de commerce). De plus, un devis incomplet peut etre conteste par le client et compliquer le recouvrement en cas de litige.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Verificateur de Devis" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -127,6 +108,8 @@ export default function Page() {
           Les PME et micro-entreprises suivront en <strong>septembre 2027</strong>. Les devis papier restent legaux si toutes les mentions sont presentes.
         </p>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/verificateur-devis" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

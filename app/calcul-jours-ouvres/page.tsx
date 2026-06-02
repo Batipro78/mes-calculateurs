@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-jours-ouvres" },
@@ -14,45 +15,29 @@ export const metadata: Metadata = {
     "calcul jours ouvres, jours ouvres 2026, nombre jours travailles, jours ouvres entre deux dates, calendrier jours ouvres, jours feries 2026, jours ouvrables",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Combien de jours ouvres en 2026 ?",
+    a: "L'annee 2026 compte environ 253 jours ouvres (lundi-vendredi hors jours feries). Ce nombre peut varier legerement selon les conventions collectives qui peuvent ajouter des jours feries locaux.",
+  },
+  {
+    q: "Quelle difference entre jour ouvre et jour ouvrable ?",
+    a: "Un jour ouvre = lundi a vendredi (5 jours). Un jour ouvrable = lundi a samedi (6 jours). Les conges payes se comptent en jours ouvrables (30/an) ou ouvres (25/an). Les delais legaux utilisent souvent les jours ouvrables.",
+  },
+  {
+    q: "Combien de jours feries en 2026 en France ?",
+    a: "La France compte 11 jours feries legaux en 2026. Certains tombent un week-end et ne reduisent donc pas les jours ouvres.",
+  },
+  {
+    q: "Comment calculer un preavis en jours ouvres ?",
+    a: "Pour calculer un delai de preavis en jours ouvres, comptez uniquement les jours du lundi au vendredi en excluant les jours feries legaux. Par exemple, un preavis de 5 jours ouvres notifie un vendredi se terminera le vendredi suivant (en excluant le week-end et tout jour ferie intercalaire).",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Jours Ouvres" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Combien de jours ouvres en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L'annee 2026 compte environ 253 jours ouvres (lundi-vendredi hors jours feries). Ce nombre peut varier legerement selon les conventions collectives qui peuvent ajouter des jours feries locaux.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle difference entre jour ouvre et jour ouvrable ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Un jour ouvre = lundi a vendredi (5 jours). Un jour ouvrable = lundi a samedi (6 jours). Les conges payes se comptent en jours ouvrables (30/an) ou ouvres (25/an). Les delais legaux utilisent souvent les jours ouvrables.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien de jours feries en 2026 en France ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La France compte 11 jours feries legaux en 2026. Certains tombent un week-end et ne reduisent donc pas les jours ouvres.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Jours Ouvres" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -133,6 +118,7 @@ export default function Page() {
         </div>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-jours-ouvres" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

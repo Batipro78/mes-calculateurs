@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-blackout" },
@@ -19,61 +20,33 @@ export const metadata: Metadata = {
   },
 };
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Combien de temps dure une coupure d'electricite en France ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "La duree moyenne d'une coupure en France est de 1 a 4 heures pour une panne locale. Les evenements meteorologiques (tempete, inondation) peuvent provoquer des coupures de 24 a 72 heures. Un blackout national majeur pourrait durer 1 a 2 semaines selon le scenario RTE.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Que faire en premier lors d'une panne d'electricite ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "1) Verifier si la panne est locale (disjoncteur) ou generale (voisins). 2) Allumer une lampe torche. 3) Ne pas ouvrir le congelateur/frigo. 4) Debrancher les appareils sensibles. 5) Ecouter la radio pour les consignes officielles.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Combien coute un kit de survie pour une panne electrique ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Un kit essentiel coute environ 100 EUR (lampes, radio, powerbank, reserves eau et nourriture 3 jours). Un kit confort avec rechaud et station solaire revient a 500 EUR. L'autonomie complete avec groupe electrogene monte a 1 500 EUR environ.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Un logement tout-electrique est-il dangereux en cas de blackout ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Un logement tout-electrique perd immediatement le chauffage, la cuisine et l'eau chaude lors d'une coupure. C'est la configuration la plus vulnerable. Un chauffage au gaz ou au bois et une plaque gaz apportent une autonomie significative sans electricite.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Station solaire portable ou groupe electrogene : que choisir ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "La station solaire (500-1500 EUR) est silencieuse, sans carburant et ideale pour recharger appareils et alimenter un frigo quelques heures. Le groupe electrogene (300-1200 EUR) offre plus de puissance et d'autonomie mais necessite du carburant, fait du bruit et ne peut pas etre utilise en interieur.",
-      },
-    },
-  ],
-};
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Combien de temps dure une coupure d'electricite en France ?",
+    a: "La duree moyenne d'une coupure en France est de 1 a 4 heures pour une panne locale. Les evenements meteorologiques (tempete, inondation) peuvent provoquer des coupures de 24 a 72 heures. Un blackout national majeur pourrait durer 1 a 2 semaines selon le scenario RTE.",
+  },
+  {
+    q: "Que faire en premier lors d'une panne d'electricite ?",
+    a: "1) Verifier si la panne est locale (disjoncteur) ou generale (voisins). 2) Allumer une lampe torche. 3) Ne pas ouvrir le congelateur/frigo. 4) Debrancher les appareils sensibles. 5) Ecouter la radio pour les consignes officielles.",
+  },
+  {
+    q: "Combien coute un kit de survie pour une panne electrique ?",
+    a: "Un kit essentiel coute environ 100 EUR (lampes, radio, powerbank, reserves eau et nourriture 3 jours). Un kit confort avec rechaud et station solaire revient a 500 EUR. L'autonomie complete avec groupe electrogene monte a 1 500 EUR environ.",
+  },
+  {
+    q: "Un logement tout-electrique est-il dangereux en cas de blackout ?",
+    a: "Un logement tout-electrique perd immediatement le chauffage, la cuisine et l'eau chaude lors d'une coupure. C'est la configuration la plus vulnerable. Un chauffage au gaz ou au bois et une plaque gaz apportent une autonomie significative sans electricite.",
+  },
+  {
+    q: "Station solaire portable ou groupe electrogene : que choisir ?",
+    a: "La station solaire (500-1500 EUR) est silencieuse, sans carburant et ideale pour recharger appareils et alimenter un frigo quelques heures. Le groupe electrogene (300-1200 EUR) offre plus de puissance et d'autonomie mais necessite du carburant, fait du bruit et ne peut pas etre utilise en interieur.",
+  },
+];
 
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Simulateur Blackout" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
       <Breadcrumb currentPage="Simulateur Blackout" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -237,52 +210,7 @@ export default function Page() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
-        <h2 className="text-xl font-bold text-slate-800 mb-6">Questions frequentes</h2>
-        <div className="space-y-6">
-          <div>
-            <h3 className="font-semibold text-slate-700 mb-1">Combien de temps dure une coupure en moyenne ?</h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              La majorite des coupures durent 1 a 4 heures. Les evenements meteorologiques majeurs
-              (tempetes, verglas) peuvent provoquer des coupures de plusieurs jours. Le record recent
-              en France : 5 jours apres la tempete Ciaran en Bretagne (novembre 2023).
-            </p>
-          </div>
-          <div>
-            <h3 className="font-semibold text-slate-700 mb-1">Mon logement tout-electrique est-il a risque ?</h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              Oui, c&apos;est la configuration la plus vulnerable. Vous perdez simultanement le chauffage,
-              la cuisine et l&apos;eau chaude. Investir dans un rechaud gaz de camping et des couvertures
-              de survie est le minimum recommande (moins de 50 EUR).
-            </p>
-          </div>
-          <div>
-            <h3 className="font-semibold text-slate-700 mb-1">Combien de temps le frigo reste-t-il froid ?</h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              Un frigo ferme conserve le froid environ 4 heures. Un congelateur plein peut tenir
-              jusqu&apos;a 48 heures, 24 heures s&apos;il est a moitie plein. Regle d&apos;or : ne pas ouvrir la porte.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-semibold text-slate-700 mb-1">L&apos;eau courante fonctionne-t-elle pendant un blackout ?</h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              En general oui, car le reseau d&apos;eau est sous pression gravitaire. Mais en cas de blackout
-              prolonge, les stations de pompage peuvent s&apos;arreter. En immeuble, la pression peut baisser
-              aux etages eleves. Avoir une reserve de 6L par personne et par jour est recommande.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-semibold text-slate-700 mb-1">Quel est le minimum a avoir chez soi ?</h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              Le kit essentiel (~100 EUR) : lampes torche, radio a piles, powerbank, 3 jours de reserves
-              d&apos;eau (6L/pers/jour) et de nourriture seche (conserves, barres energetiques), couvertures
-              de survie. Ce kit couvre 90% des coupures courantes.
-            </p>
-          </div>
-        </div>
-      </section>
-
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/simulateur-blackout" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

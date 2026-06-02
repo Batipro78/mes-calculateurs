@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-surface-cercle" },
@@ -14,19 +15,25 @@ export const metadata: Metadata = {
     "calcul surface cercle, aire cercle, surface cercle formule, pi r carre, perimetre cercle, calcul aire disque, surface disque",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment calculer la surface d'un cercle ?",
+    a: "La surface (aire) d'un cercle = pi x rayon au carre (pi x r\u00b2). Si le rayon est de 5 cm, la surface = 3,14159 x 25 = 78,54 cm\u00b2. Si vous connaissez le diametre, divisez-le par 2 pour obtenir le rayon.",
+  },
+  {
+    q: "Comment calculer le perimetre d'un cercle ?",
+    a: "Le perimetre (circonference) d'un cercle = 2 x pi x rayon, ou pi x diametre. Si le rayon est de 5 cm, le perimetre = 2 x 3,14159 x 5 = 31,42 cm.",
+  },
+  {
+    q: "Quelle est la difference entre rayon et diametre ?",
+    a: "Le rayon est la distance du centre au bord du cercle. Le diametre est la distance d'un bord a l'autre en passant par le centre. Le diametre est donc egal a 2 fois le rayon. Dans les formules, on utilise toujours le rayon.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Surface Cercle" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org", "@type": "FAQPage",
-        mainEntity: [
-          { "@type": "Question", name: "Comment calculer la surface d'un cercle ?",
-            acceptedAnswer: { "@type": "Answer", text: "La surface (aire) d'un cercle = pi x rayon au carre (pi x r\u00b2). Si le rayon est de 5 cm, la surface = 3,14159 x 25 = 78,54 cm\u00b2. Si vous connaissez le diametre, divisez-le par 2 pour obtenir le rayon." } },
-          { "@type": "Question", name: "Comment calculer le perimetre d'un cercle ?",
-            acceptedAnswer: { "@type": "Answer", text: "Le perimetre (circonference) d'un cercle = 2 x pi x rayon, ou pi x diametre. Si le rayon est de 5 cm, le perimetre = 2 x 3,14159 x 5 = 31,42 cm." } },
-        ]
-      }) }} />
       <Breadcrumb currentPage="Surface Cercle" />
       <div className="flex items-center gap-3 mb-2">
         <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center text-xl shadow-sm">⭕</div>
@@ -58,6 +65,7 @@ export default function Page() {
           </table>
         </div>
       </section>
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-surface-cercle" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

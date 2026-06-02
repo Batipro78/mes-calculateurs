@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-volume-cylindre" },
@@ -14,19 +15,21 @@ export const metadata: Metadata = {
     "calcul volume cylindre, volume cylindre formule, pi r2 h, surface cylindre, volume en litres, cylindre calcul, calculer volume cylindre",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment calculer le volume d'un cylindre ?",
+    a: "Volume = pi x rayon\u00b2 x hauteur. Si le rayon est de 5 cm et la hauteur de 10 cm : V = 3,14159 x 25 x 10 = 785,40 cm\u00b3 (soit 0,785 litres).",
+  },
+  {
+    q: "Comment convertir un volume en litres ?",
+    a: "1 litre = 1 000 cm\u00b3 = 1 dm\u00b3. Divisez le volume en cm\u00b3 par 1 000 pour obtenir des litres. Exemple : 5 000 cm\u00b3 = 5 litres.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Volume Cylindre" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org", "@type": "FAQPage",
-        mainEntity: [
-          { "@type": "Question", name: "Comment calculer le volume d'un cylindre ?",
-            acceptedAnswer: { "@type": "Answer", text: "Volume = pi x rayon\u00b2 x hauteur. Si le rayon est de 5 cm et la hauteur de 10 cm : V = 3,14159 x 25 x 10 = 785,40 cm\u00b3 (soit 0,785 litres)." } },
-          { "@type": "Question", name: "Comment convertir un volume en litres ?",
-            acceptedAnswer: { "@type": "Answer", text: "1 litre = 1 000 cm\u00b3 = 1 dm\u00b3. Divisez le volume en cm\u00b3 par 1 000 pour obtenir des litres. Exemple : 5 000 cm\u00b3 = 5 litres." } },
-        ]
-      }) }} />
       <Breadcrumb currentPage="Volume Cylindre" />
       <div className="flex items-center gap-3 mb-2">
         <div className="w-10 h-10 bg-gradient-to-br from-teal-500 to-emerald-600 rounded-xl flex items-center justify-center text-xl shadow-sm">🛢️</div>
@@ -61,6 +64,7 @@ export default function Page() {
           </table>
         </div>
       </section>
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-volume-cylindre" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

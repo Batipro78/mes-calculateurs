@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-rente-viagere" },
@@ -14,49 +15,28 @@ export const metadata: Metadata = {
     "rente viagere, simulateur rente, conversion capital rente, rente assurance-vie, rente PER, fiscalite rente viagere, abattement age rente",
 };
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Comment est calculee une rente viagere ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "La rente viagere est calculee en multipliant le capital par un taux de conversion fixe par l'assureur. Ce taux depend de votre age au 1er versement (plus on est age, plus le taux est eleve car l'esperance de vie est plus courte), du taux technique du contrat (~1% en 2026) et des options (reversion conjoint, annuites garanties). Exemples : 60 ans = ~4,3%, 65 ans = ~4,9%, 70 ans = ~5,7%.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Quelle est la fiscalite d'une rente viagere en 2026 ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Pour une rente viagere a titre onereux (issue d'une assurance-vie), seule une fraction est imposable selon l'age au 1er versement (art. 158-6 CGI) : 70% imposable avant 50 ans, 50% entre 50-59 ans, 40% entre 60-69 ans, 30% apres 70 ans. Cette fraction est soumise a la TMI + 17,2% de prelevements sociaux. Pour un PER, la rente est integralement imposable comme une pension de retraite.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Vaut-il mieux sortir en rente ou en capital ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "La sortie en capital offre plus de flexibilite (vous gardez le contrôle du capital et pouvez le transmettre) mais n'apporte aucune garantie a vie. La rente viagere garantit un revenu a vie (securite maximale) mais vous perdez le capital au deces (sauf option annuites garanties ou reversion). La rente est pertinente si vous vivez longtemps (80+ ans). Le breakeven se situe souvent vers 18-22 ans de rente. Une solution hybride : sortir 50% en capital et 50% en rente.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Qu'est-ce que la reversion au conjoint pour une rente ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "L'option reversion permet que votre conjoint continue a percevoir la rente (60%, 80% ou 100%) apres votre deces, a vie. En contrepartie, votre propre rente est reduite d'environ 15-20% (car l'esperance de duree de versement est plus longue). Option recommandee pour les couples maries sans autres ressources.",
-      },
-    },
-  ],
-};
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment est calculee une rente viagere ?",
+    a: "La rente viagere est calculee en multipliant le capital par un taux de conversion fixe par l'assureur. Ce taux depend de votre age au 1er versement (plus on est age, plus le taux est eleve car l'esperance de vie est plus courte), du taux technique du contrat (~1% en 2026) et des options (reversion conjoint, annuites garanties). Exemples : 60 ans = ~4,3%, 65 ans = ~4,9%, 70 ans = ~5,7%.",
+  },
+  {
+    q: "Quelle est la fiscalite d'une rente viagere en 2026 ?",
+    a: "Pour une rente viagere a titre onereux (issue d'une assurance-vie), seule une fraction est imposable selon l'age au 1er versement (art. 158-6 CGI) : 70% imposable avant 50 ans, 50% entre 50-59 ans, 40% entre 60-69 ans, 30% apres 70 ans. Cette fraction est soumise a la TMI + 17,2% de prelevements sociaux. Pour un PER, la rente est integralement imposable comme une pension de retraite.",
+  },
+  {
+    q: "Vaut-il mieux sortir en rente ou en capital ?",
+    a: "La sortie en capital offre plus de flexibilite (vous gardez le controle du capital et pouvez le transmettre) mais n'apporte aucune garantie a vie. La rente viagere garantit un revenu a vie (securite maximale) mais vous perdez le capital au deces (sauf option annuites garanties ou reversion). La rente est pertinente si vous vivez longtemps (80+ ans). Le breakeven se situe souvent vers 18-22 ans de rente. Une solution hybride : sortir 50% en capital et 50% en rente.",
+  },
+  {
+    q: "Qu'est-ce que la reversion au conjoint pour une rente ?",
+    a: "L'option reversion permet que votre conjoint continue a percevoir la rente (60%, 80% ou 100%) apres votre deces, a vie. En contrepartie, votre propre rente est reduite d'environ 15-20% (car l'esperance de duree de versement est plus longue). Option recommandee pour les couples maries sans autres ressources.",
+  },
+];
 
 export default function Page() {
   return (
     <div>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <WebAppJsonLd name="Simulateur Rente Viagere" description="Conversion capital en rente viagere" category="FinanceApplication" />
       <Breadcrumb currentPage="Simulateur Rente Viagere" />
 
@@ -115,6 +95,8 @@ export default function Page() {
           (70%) et booste le taux de conversion (~5,7%).
         </p>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/simulateur-rente-viagere" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-risque-cardiovasculaire" },
@@ -14,45 +15,29 @@ export const metadata: Metadata = {
     "calcul risque cardiovasculaire, score Framingham, risque cardiaque, facteurs risque cardiovasculaire, prevention cardiovasculaire, cholesterol HDL, hypertension, infarctus risque",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment calculer son risque cardiovasculaire ?",
+    a: "Le risque cardiovasculaire se calcule a partir de plusieurs facteurs : age, sexe, cholesterol total et HDL, tension arterielle systolique, tabagisme, diabete et antecedents familiaux. Le score de Framingham, developpe par la Framingham Heart Study, est l'outil de reference pour estimer le risque d'evenement cardiovasculaire majeur (infarctus, AVC) sur 10 ans.",
+  },
+  {
+    q: "Quels sont les principaux facteurs de risque cardiovasculaire ?",
+    a: "Les principaux facteurs de risque cardiovasculaire modifiables sont : le tabagisme (double le risque), l'hypertension arterielle (tension > 140 mmHg), un cholesterol LDL eleve (> 1,6 g/L), un HDL bas (< 0,4 g/L), le diabete de type 2, la sedentarite, l'obesite et le stress chronique. Les facteurs non modifiables incluent l'age, le sexe masculin et les antecedents familiaux.",
+  },
+  {
+    q: "Quand consulter un medecin pour son risque cardiovasculaire ?",
+    a: "Il est recommande de consulter un medecin si votre risque cardiovasculaire a 10 ans depasse 10%, si vous avez plusieurs facteurs de risque, si votre tension est superieure a 140/90 mmHg, si votre cholesterol total depasse 2,5 g/L, ou si vous etes fumeur avec d'autres facteurs de risque. Apres 50 ans, un bilan cardiovasculaire tous les 5 ans est recommande meme sans symptomes.",
+  },
+  {
+    q: "Le score de Framingham est-il fiable pour tous ?",
+    a: "Le score de Framingham a ete developpe sur une population americaine d'origine europeenne et peut sous-estimer le risque chez certaines populations (Asiatiques, Africains). Il reste l'outil de reference en prevention primaire mais doit etre interprete par un medecin qui tiendra compte de votre profil complet.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Risque Cardiovasculaire" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment calculer son risque cardiovasculaire ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le risque cardiovasculaire se calcule a partir de plusieurs facteurs : age, sexe, cholesterol total et HDL, tension arterielle systolique, tabagisme, diabete et antecedents familiaux. Le score de Framingham, developpe par la Framingham Heart Study, est l'outil de reference pour estimer le risque d'evenement cardiovasculaire majeur (infarctus, AVC) sur 10 ans.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quels sont les principaux facteurs de risque cardiovasculaire ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les principaux facteurs de risque cardiovasculaire modifiables sont : le tabagisme (double le risque), l'hypertension arterielle (tension > 140 mmHg), un cholesterol LDL eleve (> 1,6 g/L), un HDL bas (< 0,4 g/L), le diabete de type 2, la sedentarite, l'obesite et le stress chronique. Les facteurs non modifiables incluent l'age, le sexe masculin et les antecedents familiaux.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quand consulter un medecin pour son risque cardiovasculaire ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Il est recommande de consulter un medecin si votre risque cardiovasculaire a 10 ans depasse 10%, si vous avez plusieurs facteurs de risque, si votre tension est superieure a 140/90 mmHg, si votre cholesterol total depasse 2,5 g/L, ou si vous etes fumeur avec d'autres facteurs de risque. Apres 50 ans, un bilan cardiovasculaire tous les 5 ans est recommande meme sans symptomes.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Risque Cardiovasculaire" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -183,6 +168,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-risque-cardiovasculaire" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

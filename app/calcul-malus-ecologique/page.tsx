@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-malus-ecologique" },
@@ -14,21 +15,17 @@ export const metadata: Metadata = {
     "malus ecologique 2026, calcul malus co2, malus poids voiture, bareme malus 2026, simulateur malus ecologique, taxe co2 voiture 2026, malus automobile",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  { q: "A partir de combien de CO2 paye-t-on le malus en 2026 ?", a: "En 2026, le malus CO2 s'applique a partir de 114 g/km de CO2 (seuil abaisse par rapport a 2025). Le montant demarre a 50 euros et peut atteindre 70 000 euros pour les vehicules les plus polluants." },
+  { q: "Comment fonctionne le malus au poids ?", a: "Le malus au poids s'applique aux vehicules de plus de 1 600 kg. Le tarif est de 10 euros par kg au-dessus de ce seuil. Les vehicules electriques et hybrides rechargeables en sont exoneres." },
+  { q: "Le malus CO2 et le malus poids se cumulent-ils ?", a: "Non, on retient le montant le plus eleve entre le malus CO2 et le malus au poids. Ils ne se cumulent pas." },
+  { q: "Un vehicule hybride rechargeable est-il exonere du malus ?", a: "Oui, les vehicules hybrides rechargeables dont les emissions de CO2 sont inferieures a 50 g/km sont exoneres a la fois du malus CO2 et du malus au poids, quel que soit leur poids." },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Malus Ecologique" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org", "@type": "FAQPage",
-        mainEntity: [
-          { "@type": "Question", name: "A partir de combien de CO2 paye-t-on le malus en 2026 ?",
-            acceptedAnswer: { "@type": "Answer", text: "En 2026, le malus CO2 s'applique a partir de 114 g/km de CO2 (seuil abaisse par rapport a 2025). Le montant demarre a 50 euros et peut atteindre 70 000 euros pour les vehicules les plus polluants." } },
-          { "@type": "Question", name: "Comment fonctionne le malus au poids ?",
-            acceptedAnswer: { "@type": "Answer", text: "Le malus au poids s'applique aux vehicules de plus de 1 600 kg. Le tarif est de 10 euros par kg au-dessus de ce seuil. Les vehicules electriques et hybrides rechargeables en sont exoneres." } },
-          { "@type": "Question", name: "Le malus CO2 et le malus poids se cumulent-ils ?",
-            acceptedAnswer: { "@type": "Answer", text: "Non, on retient le montant le plus eleve entre le malus CO2 et le malus au poids. Ils ne se cumulent pas." } },
-        ]
-      }) }} />
       <Breadcrumb currentPage="Malus Ecologique" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -89,6 +86,7 @@ export default function Page() {
         </div>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-malus-ecologique" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

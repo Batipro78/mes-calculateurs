@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/conversion-temperature" },
@@ -14,45 +15,29 @@ export const metadata: Metadata = {
     "conversion celsius fahrenheit, convertir temperature, celsius en fahrenheit, fahrenheit en celsius, kelvin celsius, convertisseur temperature, tableau conversion temperature",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment convertir des Celsius en Fahrenheit ?",
+    a: "Pour convertir des Celsius en Fahrenheit, multipliez la temperature en Celsius par 9/5 (ou 1,8) puis ajoutez 32. Formule : F = C x 9/5 + 32. Exemple : 20 C = 20 x 1,8 + 32 = 68 F.",
+  },
+  {
+    q: "Comment convertir des Fahrenheit en Celsius ?",
+    a: "Pour convertir des Fahrenheit en Celsius, soustrayez 32 puis multipliez par 5/9. Formule : C = (F - 32) x 5/9. Exemple : 68 F = (68 - 32) x 5/9 = 20 C.",
+  },
+  {
+    q: "Quelle temperature est la meme en Celsius et Fahrenheit ?",
+    a: "La temperature de -40 est identique dans les deux echelles : -40 C = -40 F. C'est le seul point de croisement des deux echelles.",
+  },
+  {
+    q: "A quoi sert le Kelvin ?",
+    a: "Le Kelvin est l'unite de temperature du Systeme international, utilise en sciences et en physique. Le zero absolu (0 K = -273,15 C) est la temperature la plus basse theoriquement possible. La conversion est simple : K = C + 273,15.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Conversion Temperature" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment convertir des Celsius en Fahrenheit ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour convertir des Celsius en Fahrenheit, multipliez la temperature en Celsius par 9/5 (ou 1,8) puis ajoutez 32. Formule : \u00b0F = \u00b0C \u00d7 9/5 + 32. Exemple : 20\u00b0C = 20 \u00d7 1,8 + 32 = 68\u00b0F.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment convertir des Fahrenheit en Celsius ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour convertir des Fahrenheit en Celsius, soustrayez 32 puis multipliez par 5/9. Formule : \u00b0C = (\u00b0F \u2212 32) \u00d7 5/9. Exemple : 68\u00b0F = (68 \u2212 32) \u00d7 5/9 = 20\u00b0C.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle temperature est la meme en Celsius et Fahrenheit ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La temperature de \u221240 est identique dans les deux echelles : \u221240\u00b0C = \u221240\u00b0F. C'est le seul point de croisement des deux echelles.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Conversion Temperature" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -145,6 +130,8 @@ export default function Page() {
           Exemple : 20&deg;C &asymp; 20 &times; 2 + 30 = 70&deg;F (valeur exacte : 68&deg;F). Cette methode est precise a &plusmn;3&deg;F pour les temperatures courantes (0 a 40&deg;C).
         </p>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/conversion-temperature" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

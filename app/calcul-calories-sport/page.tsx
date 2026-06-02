@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 import { getTopSports, SPORTS } from "./caloriesSportCalc";
 
 export const metadata: Metadata = {
@@ -15,55 +16,31 @@ export const metadata: Metadata = {
     "calories brulees sport, calcul calories sport, METs, depense calorique, course calories, velo calories, natation calories, musculation calories, perte de poids",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qu'est-ce qu'un MET ?",
+    a: "Un MET (Metabolic Equivalent of Task) est une unité qui mesure l'intensite d'une activite physique. 1 MET = depense calorique au repos. Par exemple, 5 METs signifie que vous consommez 5 fois plus d'energie qu'au repos. Les METs permettent de comparer l'intensite de differents sports de maniere objective.",
+  },
+  {
+    q: "Quel sport brule le plus de calories ?",
+    a: "Le sprint brule le plus de calories avec 23 METs, suivi du papillon en natation (13.8 METs), de l'aviron intense (12 METs), et du velo route 30 km/h (12 METs). Cependant, la durabilite compte aussi : un sport de 60 minutes a intensite moderee peut bruler autant ou plus qu'un effort court et intense.",
+  },
+  {
+    q: "Combien de calories pour 1 km de course ?",
+    a: "Pour 1 km de course a 10 km/h (6 minutes), une personne de 70 kg brule environ 70 kcal. Pour une course plus rapide (15 km/h), ce nombre augmente a 95 kcal/km. La depense calorique par km augmente avec la vitesse et le poids corporel.",
+  },
+  {
+    q: "Comment maigrir avec le sport ?",
+    a: "Pour maigrir, vous devez creer un deficit calorique : bruler plus que vous ne consommez. Les sports a intensite moderee-elevee (course, velo, natation, CrossFit) brulent beaucoup de calories. Combinez l'exercice avec une alimentation saine et equilibree. Un deficit de 500 kcal/jour permet de perdre ~500g par semaine.",
+  },
+];
+
 export default function Page() {
   const topSports = getTopSports(70, 60); // Top 10 pour 70kg, 1h
 
   return (
     <div>
       <WebAppJsonLd name="Calcul calories brûlées par sport" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Qu&apos;est-ce qu&apos;un MET ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Un MET (Metabolic Equivalent of Task) est une unité qui mesure l&apos;intensite d&apos;une activite physique. 1 MET = depense calorique au repos. Par exemple, 5 METs signifie que vous consommez 5 fois plus d&apos;energie qu&apos;au repos. Les METs permettent de comparer l&apos;intensite de differents sports de maniere objective.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel sport brule le plus de calories ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le sprint brule le plus de calories avec 23 METs, suivi du papillon en natation (13.8 METs), de l&apos;aviron intense (12 METs), et du velo route 30 km/h (12 METs). Cependant, la durabilite compte aussi : un sport de 60 minutes a intensite moderee peut bruler autant ou plus qu&apos;un effort court et intense.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien de calories pour 1 km de course ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour 1 km de course a 10 km/h (6 minutes), une personne de 70 kg brule environ 70 kcal. Pour une course plus rapide (15 km/h), ce nombre augmente a 95 kcal/km. La depense calorique par km augmente avec la vitesse et le poids corporel.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment maigrir avec le sport ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour maigrir, vous devez creer un deficit calorique : bruler plus que vous ne consommez. Les sports a intensite moderee-elevee (course, velo, natation, CrossFit) brulent beaucoup de calories. Combinez l&apos;exercice avec une alimentation saine et equilibree. Un deficit de 500 kcal/jour permet de perdre ~500g par semaine.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul calories brûlées par sport" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -234,6 +211,8 @@ export default function Page() {
           </table>
         </div>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-calories-sport" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

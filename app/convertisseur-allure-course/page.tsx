@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 import { formatAllure, predireTempsCourse } from "./allureCourseCalc";
 
 export const metadata: Metadata = {
@@ -15,6 +16,25 @@ export const metadata: Metadata = {
   keywords:
     "allure course, convertisseur min/km, calcul vitesse course, temps marathon, prediction course a pied, allure jogging, tempo running",
 };
+
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment convertir l'allure min/km en km/h ?",
+    a: "Pour convertir une allure en vitesse : Vitesse (km/h) = 60 / Allure (min/km). Par exemple, une allure de 5 min/km = 60 / 5 = 12 km/h. Une allure de 6 min/km = 60 / 6 = 10 km/h.",
+  },
+  {
+    q: "Quel temps pour courir un marathon a 5 min/km ?",
+    a: "A une allure de 5 min/km sur une distance de 42.195 km (marathon), le temps total est : 5 min/km × 42.195 km ≈ 3 heures 31 minutes. Cela correspond a une vitesse moyenne de 12 km/h.",
+  },
+  {
+    q: "Quelle est la difference entre allure et vitesse ?",
+    a: "L'allure est le temps necessaire pour parcourir 1 km (exprime en minutes:secondes). La vitesse est la distance parcourue en 1 heure (exprimee en km/h). Ce sont deux facons inverses de mesurer la meme chose. Une allure rapide = une vitesse elevee.",
+  },
+  {
+    q: "Quelle allure pour un coureur debutant ?",
+    a: "Pour les debutants en course a pied, une allure typique est entre 7 et 8 min/km (7.5 a 8.5 km/h). Les coureurs amateurs experimentees se situent entre 5 et 6 min/km (10 a 12 km/h). Les coureurs confirmes et athletes visent des allures de 4 a 5 min/km (12 a 15 km/h).",
+  },
+];
 
 export default function Page() {
   // Allures courantes pour le tableau de reference
@@ -39,49 +59,6 @@ export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Convertisseur Allure Course a Pied" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment convertir l&apos;allure min/km en km/h ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour convertir une allure en vitesse : Vitesse (km/h) = 60 / Allure (min/km). Par exemple, une allure de 5 min/km = 60 / 5 = 12 km/h. Une allure de 6 min/km = 60 / 6 = 10 km/h.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel temps pour courir un marathon a 5 min/km ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "A une allure de 5 min/km sur une distance de 42.195 km (marathon), le temps total est : 5 min/km × 42.195 km ≈ 3 heures 31 minutes. Cela correspond a une vitesse moyenne de 12 km/h.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la difference entre allure et vitesse ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L&apos;allure est le temps necessaire pour parcourir 1 km (exprime en minutes:secondes). La vitesse est la distance parcourue en 1 heure (exprimee en km/h). Ce sont deux facons inverses de mesurer la meme chose. Une allure rapide = une vitesse elevee.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle allure pour un coureur debutant ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour les debutants en course a pied, une allure typique est entre 7 et 8 min/km (7.5 a 8.5 km/h). Les coureurs amateurs experimentees se situent entre 5 et 6 min/km (10 a 12 km/h). Les coureurs confirmes et athletes visent des allures de 4 a 5 min/km (12 a 15 km/h).",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Convertisseur Allure Course" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -205,6 +182,7 @@ export default function Page() {
         </div>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/convertisseur-allure-course" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

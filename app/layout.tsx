@@ -174,6 +174,8 @@ export default function RootLayout({
                     droits reserves.
                   </p>
                   <div className="flex flex-wrap gap-4 text-sm text-slate-400">
+                    <a href="/a-propos" className="hover:text-slate-600 transition-colors">A propos</a>
+                    <a href="/aide" className="hover:text-slate-600 transition-colors">Aide</a>
                     <a href="/embed" className="hover:text-slate-600 transition-colors">Widgets</a>
                     <a href="/mentions-legales" className="hover:text-slate-600 transition-colors">Mentions legales</a>
                     <a href="/confidentialite" className="hover:text-slate-600 transition-colors">Confidentialite</a>

@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-prise-poids-grossesse" },
@@ -14,49 +15,28 @@ export const metadata: Metadata = {
     "prise de poids grossesse, calcul poids grossesse, IMC grossesse, kilos grossesse, prise poids enceinte, courbe poids grossesse",
 };
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Combien de kilos doit-on prendre pendant la grossesse ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Les recommandations de l'Institute of Medicine (IOM) 2009, reconnues internationalement, dependent de l'IMC avant grossesse : IMC < 18,5 (maigreur) : 12,5 a 18 kg ; IMC 18,5-25 (corpulence normale) : 11,5 a 16 kg ; IMC 25-30 (surpoids) : 7 a 11,5 kg ; IMC >= 30 (obesite) : 5 a 9 kg. Pour une grossesse gemellaire, ajouter environ 5 kg aux valeurs ci-dessus.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Comment se repartit la prise de poids au fil des semaines ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Repartition typique : 1er trimestre (0-14 SA) : 1-2 kg (souvent peu voire perte due aux nausees). 2e trimestre (14-28 SA) : 4-6 kg. 3e trimestre (28 SA a l'accouchement) : 4-6 kg. La prise de poids s'accelere surtout a partir de 20 SA. Regle simple : environ 350-400 g par semaine au 2e et 3e trimestre.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Que faire si je prends trop de poids pendant ma grossesse ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Si la prise de poids depasse les recommandations : consultez votre sage-femme ou gynecologue pour ecarter un diabete gestationnel ou une retention d'eau. Ne faites JAMAIS de regime restrictif pendant la grossesse. Conseils : manger 3 repas + 2 collations equilibrees, privilegier legumes/proteines, eviter sucres rapides et plats transformes, marcher 30 min/jour, bien s'hydrater. L'excedent de poids augmente le risque de diabete gestationnel, hypertension et accouchement difficile.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Pourquoi une prise de poids trop faible est-elle problematique ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Une prise de poids insuffisante (surtout avec un IMC initialement bas) augmente le risque de retard de croissance intra-uterin, de bebe de petit poids a la naissance (< 2,5 kg), d'accouchement premature et de difficultes d'allaitement. Si vous prenez peu de poids malgre une alimentation normale, consultez rapidement. Des nausees severes et persistantes (hyperemesis gravidarum) peuvent necessiter un traitement.",
-      },
-    },
-  ],
-};
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Combien de kilos doit-on prendre pendant la grossesse ?",
+    a: "Les recommandations de l'Institute of Medicine (IOM) 2009, reconnues internationalement, dependent de l'IMC avant grossesse : IMC < 18,5 (maigreur) : 12,5 a 18 kg ; IMC 18,5-25 (corpulence normale) : 11,5 a 16 kg ; IMC 25-30 (surpoids) : 7 a 11,5 kg ; IMC >= 30 (obesite) : 5 a 9 kg. Pour une grossesse gemellaire, ajouter environ 5 kg aux valeurs ci-dessus.",
+  },
+  {
+    q: "Comment se repartit la prise de poids au fil des semaines ?",
+    a: "Repartition typique : 1er trimestre (0-14 SA) : 1-2 kg (souvent peu voire perte due aux nausees). 2e trimestre (14-28 SA) : 4-6 kg. 3e trimestre (28 SA a l'accouchement) : 4-6 kg. La prise de poids s'accelere surtout a partir de 20 SA. Regle simple : environ 350-400 g par semaine au 2e et 3e trimestre.",
+  },
+  {
+    q: "Que faire si je prends trop de poids pendant ma grossesse ?",
+    a: "Si la prise de poids depasse les recommandations : consultez votre sage-femme ou gynecologue pour ecarter un diabete gestationnel ou une retention d'eau. Ne faites JAMAIS de regime restrictif pendant la grossesse. Conseils : manger 3 repas + 2 collations equilibrees, privilegier legumes/proteines, eviter sucres rapides et plats transformes, marcher 30 min/jour, bien s'hydrater. L'excedent de poids augmente le risque de diabete gestationnel, hypertension et accouchement difficile.",
+  },
+  {
+    q: "Pourquoi une prise de poids trop faible est-elle problematique ?",
+    a: "Une prise de poids insuffisante (surtout avec un IMC initialement bas) augmente le risque de retard de croissance intra-uterin, de bebe de petit poids a la naissance (< 2,5 kg), d'accouchement premature et de difficultes d'allaitement. Si vous prenez peu de poids malgre une alimentation normale, consultez rapidement. Des nausees severes et persistantes (hyperemesis gravidarum) peuvent necessiter un traitement.",
+  },
+];
 
 export default function Page() {
   return (
     <div>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <WebAppJsonLd name="Calcul Prise de Poids Grossesse" description="Calculateur poids grossesse IOM" category="HealthApplication" />
       <Breadcrumb currentPage="Calcul Prise de Poids Grossesse" />
 
@@ -119,6 +99,8 @@ export default function Page() {
           <li><strong>Gonflements</strong> brutaux (pieds, mains, visage) + prise rapide : suspicion de preeclampsie, URGENCE</li>
         </ul>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-prise-poids-grossesse" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

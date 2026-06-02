@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-consommation-eau" },
@@ -14,45 +15,29 @@ export const metadata: Metadata = {
     "calcul consommation eau, besoin hydratation, eau par jour, combien boire eau, litre eau journalier, hydratation quotidienne, besoin eau corporel, eau poids kg",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Combien de litres d'eau faut-il boire par jour ?",
+    a: "Le besoin en eau varie selon le poids, l'activite physique et le climat. La formule de base est de 33 ml par kg de poids corporel. Pour une personne de 70 kg avec une activite moderee en climat tempere, le besoin est d'environ 2,8 litres par jour, soit environ 11 verres de 250 ml. Les femmes enceintes doivent ajouter 300 ml et les femmes qui allaitent 700 ml supplementaires.",
+  },
+  {
+    q: "La regle des 8 verres d'eau par jour est-elle valable ?",
+    a: "La regle des 8 verres (2 litres) est une approximation valable pour une personne de 60 kg sedentaire en climat tempere. En realite, le besoin en eau depend du poids corporel (33 ml/kg), du niveau d'activite physique (jusqu'a +1,2 L pour un athlete), du climat (+0,5 a +1 L par forte chaleur) et de la grossesse ou l'allaitement. Un homme de 90 kg pratiquant un sport intensif aura besoin de 3,5 a 4 litres par jour.",
+  },
+  {
+    q: "Quels sont les signes d'une mauvaise hydratation ?",
+    a: "Les principaux signes de deshydratation sont : urine foncee (jaune fonce ou ambre), sensation de soif intense, maux de tete, fatigue et baisse de concentration, bouche seche, vertiges. Une baisse de seulement 1% de l'eau corporelle reduit les performances physiques de 10%. Une deshydratation de 2% affecte significativement les fonctions cognitives. Il est recommande de boire avant d'avoir soif, car la soif est un signal tardif.",
+  },
+  {
+    q: "Faut-il compter l'eau contenue dans les aliments ?",
+    a: "Oui. Les aliments representent environ 20 % de nos apports hydriques quotidiens. Les fruits et legumes (concombre, tomate, pastèque) contiennent 90 a 95 % d'eau. Les soupes et bouillons comptent aussi. En pratique, les recommandations en ml/kg s'entendent pour les boissons ; les apports alimentaires viennent en complement naturel.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Consommation Eau" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Combien de litres d'eau faut-il boire par jour ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le besoin en eau varie selon le poids, l'activite physique et le climat. La formule de base est de 33 ml par kg de poids corporel. Pour une personne de 70 kg avec une activite moderee en climat tempere, le besoin est d'environ 2,8 litres par jour, soit environ 11 verres de 250 ml. Les femmes enceintes doivent ajouter 300 ml et les femmes qui allaitent 700 ml supplementaires.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "La regle des 8 verres d'eau par jour est-elle valable ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La regle des 8 verres (2 litres) est une approximation valable pour une personne de 60 kg sedentaire en climat tempere. En realite, le besoin en eau depend du poids corporel (33 ml/kg), du niveau d'activite physique (jusqu'a +1,2 L pour un athlete), du climat (+0,5 a +1 L par forte chaleur) et de la grossesse ou l'allaitement. Un homme de 90 kg pratiquant un sport intensif aura besoin de 3,5 a 4 litres par jour.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quels sont les signes d'une mauvaise hydratation ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les principaux signes de deshydratation sont : urine foncee (jaune fonce ou ambre), sensation de soif intense, maux de tete, fatigue et baisse de concentration, bouche seche, vertiges. Une baisse de seulement 1% de l'eau corporelle reduit les performances physiques de 10%. Une deshydratation de 2% affecte significativement les fonctions cognitives. Il est recommande de boire avant d'avoir soif, car la soif est un signal tardif.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Consommation Eau" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -198,6 +183,8 @@ export default function Page() {
           Mis a jour le 8 avril 2026
         </p>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-consommation-eau" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

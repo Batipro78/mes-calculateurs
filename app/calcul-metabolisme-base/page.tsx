@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-metabolisme-base" },
@@ -14,45 +15,17 @@ export const metadata: Metadata = {
     "calcul metabolisme de base, BMR, metabolisme basal, Mifflin-St Jeor, Harris-Benedict, depense energetique repos, DER, TDEE, calories repos, besoins energetiques",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  { q: "Comment calculer son metabolisme de base ?", a: "Le metabolisme de base (BMR) se calcule avec la formule Mifflin-St Jeor : pour un homme, BMR = 10 x poids(kg) + 6,25 x taille(cm) - 5 x age + 5. Pour une femme, BMR = 10 x poids(kg) + 6,25 x taille(cm) - 5 x age - 161. C'est la formule la plus precise selon l'Academy of Nutrition and Dietetics." },
+  { q: "Quelle est la difference entre metabolisme de base et TDEE ?", a: "Le metabolisme de base (BMR) represente les calories brulees au repos pour maintenir les fonctions vitales (respiration, circulation, temperature). Le TDEE (Total Daily Energy Expenditure) est le BMR multiplie par un coefficient d'activite physique. Par exemple, une personne sedentaire multiplie son BMR par 1,2." },
+  { q: "Quel est le metabolisme de base normal pour un homme et une femme ?", a: "En moyenne, le metabolisme de base est de 1 600 a 2 000 kcal/jour pour un homme adulte et de 1 200 a 1 600 kcal/jour pour une femme adulte. Ces valeurs varient selon le poids, la taille, l'age et la composition corporelle. Les sportifs ont generalement un BMR plus eleve grace a leur masse musculaire." },
+  { q: "Le metabolisme de base diminue-t-il avec l'age ?", a: "Oui, le BMR diminue d'environ 1 a 2 % par decennie apres 30 ans. Cette baisse est principalement due a la perte progressive de masse musculaire (sarcopenie). La musculation reguliere permet de limiter ce declin en preservant la masse maigre." },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Metabolisme de Base" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment calculer son metabolisme de base ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le metabolisme de base (BMR) se calcule avec la formule Mifflin-St Jeor : pour un homme, BMR = 10 x poids(kg) + 6,25 x taille(cm) - 5 x age + 5. Pour une femme, BMR = 10 x poids(kg) + 6,25 x taille(cm) - 5 x age - 161. C'est la formule la plus precise selon l'Academy of Nutrition and Dietetics.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la difference entre metabolisme de base et TDEE ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le metabolisme de base (BMR) represente les calories brulees au repos pour maintenir les fonctions vitales (respiration, circulation, temperature). Le TDEE (Total Daily Energy Expenditure) est le BMR multiplie par un coefficient d'activite physique. Par exemple, une personne sedentaire multiplie son BMR par 1,2.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel est le metabolisme de base normal pour un homme et une femme ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "En moyenne, le metabolisme de base est de 1 600 a 2 000 kcal/jour pour un homme adulte et de 1 200 a 1 600 kcal/jour pour une femme adulte. Ces valeurs varient selon le poids, la taille, l'age et la composition corporelle. Les sportifs ont generalement un BMR plus eleve grace a leur masse musculaire.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Metabolisme de Base" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -253,6 +226,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-metabolisme-base" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

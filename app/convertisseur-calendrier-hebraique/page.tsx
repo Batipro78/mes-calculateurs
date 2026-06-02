@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 import { MOIS_HEBRAIQUES } from "./hebraiqueCalc";
 
 export const metadata: Metadata = {
@@ -16,53 +17,29 @@ export const metadata: Metadata = {
     "calendrier hébraïque, calendrier juif, convertisseur date juive, calendrier hébreu, age hebraique, mois hebraiques, cycle meton, annee embolismique",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qu'est-ce que le calendrier hébraïque ?",
+    a: "Le calendrier hébraïque (ou calendrier juif) est un calendrier luni-solaire utilisé depuis l'Antiquité pour déterminer les dates des fêtes religieuses juives (Rosh Hashanah, Yom Kippour, Pessah, Chavouot, etc.). Il compte 12 mois en année commune et 13 mois en année embolismique (Adar II). L'année hébraïque commence avec Tichri (septembre-octobre). L'année 1 correspondrait à la création du monde selon la tradition juive.",
+  },
+  {
+    q: "Qu'est-ce qu'une année embolismique ?",
+    a: "Une année embolismique (ou année intercalaire) est une année hébraïque qui contient 13 mois au lieu de 12. Elle comprend deux mois d'Adar : Adar I et Adar II. Cela se produit 7 fois tous les 19 ans (cycle Meton) pour synchroniser le calendrier lunaire avec les saisons. L'année hébraïque courante est 5786, qui est une année embolismique.",
+  },
+  {
+    q: "Comment fonctionne le cycle Meton de 19 ans ?",
+    a: "Le cycle Meton est un cycle astronomique de 19 ans qui synchronise les calendriers lunaires et solaires. Sur 19 années hébraïques, 7 années sont embolismiques (ont 13 mois) et 12 sont communes (12 mois). Cela assure que Pessah (Pâque juive) tombe toujours au printemps et que les fêtes restent alignées avec les saisons. Les années embolismiques du cycle sont : 3, 6, 8, 11, 14, 17, et 19.",
+  },
+  {
+    q: "Quelle est la différence entre le calendrier hébraïque et le grégorien ?",
+    a: "Le calendrier hébraïque est luni-solaire (combine la Lune et le Soleil) avec un cycle de 19 ans. Le calendrier grégorien est purement solaire avec un cycle de 400 ans. Une année hébraïque moyenne = 365,2422 jours (très proche du grégorien), mais l'année est composée de mois lunaires de 29-30 jours. Le début de l'année hébraïque (Rosh Hashanah) tombe entre le 5 septembre et le 25 octobre en grégorien.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Convertisseur Calendrier Hébraïque ↔ Grégorien" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Qu&apos;est-ce que le calendrier hébraïque ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le calendrier hébraïque (ou calendrier juif) est un calendrier luni-solaire utilisé depuis l&apos;Antiquité pour déterminer les dates des fêtes religieuses juives (Rosh Hashanah, Yom Kippour, Pessah, Chavouot, etc.). Il compte 12 mois en année commune et 13 mois en année embolismique (Adar II). L&apos;année hébraïque commence avec Tichri (septembre-octobre). L&apos;année 1 correspondrait à la création du monde selon la tradition juive.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qu&apos;est-ce qu&apos;une année embolismique ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Une année embolismique (ou année intercalaire) est une année hébraïque qui contient 13 mois au lieu de 12. Elle comprend deux mois d&apos;Adar : Adar I et Adar II. Cela se produit 7 fois tous les 19 ans (cycle Meton) pour synchroniser le calendrier lunaire avec les saisons. L&apos;année hébraïque courante est 5786, qui est une année embolismique.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment fonctionne le cycle Meton de 19 ans ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le cycle Meton est un cycle astronomique de 19 ans qui synchronise les calendriers lunaires et solaires. Sur 19 années hébraïques, 7 années sont embolismiques (ont 13 mois) et 12 sont communes (12 mois). Cela assure que Pessah (Pâque juive) tombe toujours au printemps et que les fêtes restent alignées avec les saisons. Les années embolismiques du cycle sont : 3, 6, 8, 11, 14, 17, et 19.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la différence entre le calendrier hébraïque et le grégorien ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le calendrier hébraïque est luni-solaire (combine la Lune et le Soleil) avec un cycle de 19 ans. Le calendrier grégorien est purement solaire avec un cycle de 400 ans. Une année hébraïque moyenne = 365,2422 jours (très proche du grégorien), mais l&apos;année est composée de mois lunaires de 29-30 jours. Le début de l&apos;année hébraïque (Rosh Hashanah) tombe entre le 5 septembre et le 25 octobre en grégorien.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Convertisseur Calendrier Hébraïque ↔ Grégorien" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -244,6 +221,7 @@ export default function Page() {
         </ul>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/convertisseur-calendrier-hebraique" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-rendement-scpi" },
@@ -14,49 +15,28 @@ export const metadata: Metadata = {
     "rendement SCPI, calcul SCPI, simulateur SCPI, TDVM SCPI 2026, fiscalite SCPI, revenu SCPI, rendement net SCPI",
 };
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Quel est le rendement moyen d'une SCPI en 2026 ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Le TDVM (Taux de Distribution sur Valeur de Marche) moyen des SCPI en 2025-2026 est d'environ 4,52% selon l'ASPIM, avec les meilleures SCPI autour de 5,5-6,5%. Ce rendement ne tient pas compte des frais d'entree (8-12%) ni de la fiscalite (TMI + 17,2% de prelevements sociaux sur les revenus fonciers). Le rendement NET pour un contribuable TMI 30% tourne donc autour de 2,3-3,5%.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Quelle est la fiscalite des revenus SCPI ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Les revenus distribues par une SCPI sont imposes comme des revenus fonciers : ils s'ajoutent a votre revenu imposable dans la tranche marginale d'imposition (TMI) et sont egalement soumis a 17,2% de prelevements sociaux. Pour un TMI 30%, cela fait un taux global de 47,2% sur les revenus bruts. Le regime micro-foncier (abattement 30%) n'est possible que si les revenus fonciers totaux sont inferieurs a 15 000 EUR/an.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Les SCPI sont-elles un bon investissement en 2026 ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Les SCPI offrent un rendement regulier sans gestion directe, mais avec plusieurs risques : frais d'entree eleves (8-12% pouvant necessiter 2-3 ans pour etre amortis), liquidite limitee (delai de revente 1-6 mois), risque de baisse de la valeur des parts (cas 2023-2024 avec -10 a -17% pour certaines SCPI de bureaux), fiscalite lourde pour les hauts TMI. Elles restent interessantes pour diversifier un patrimoine sans contrainte de gestion, mais a detenir 10+ ans.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Peut-on investir en SCPI via une assurance-vie ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Oui, de nombreuses SCPI sont accessibles en unite de compte dans une assurance-vie. L'avantage majeur : la fiscalite bien plus douce (pas de TMI sur les revenus generes a l'interieur du contrat, abattement 4 600 EUR / 9 200 EUR apres 8 ans a la sortie). Inconvenient : seul environ 85% du TDVM est reverse (l'assureur prend 12-15%), et il faut payer les frais de gestion du contrat (0,5-1%/an).",
-      },
-    },
-  ],
-};
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quel est le rendement moyen d'une SCPI en 2026 ?",
+    a: "Le TDVM (Taux de Distribution sur Valeur de Marche) moyen des SCPI en 2025-2026 est d'environ 4,52% selon l'ASPIM, avec les meilleures SCPI autour de 5,5-6,5%. Ce rendement ne tient pas compte des frais d'entree (8-12%) ni de la fiscalite (TMI + 17,2% de prelevements sociaux sur les revenus fonciers). Le rendement NET pour un contribuable TMI 30% tourne donc autour de 2,3-3,5%.",
+  },
+  {
+    q: "Quelle est la fiscalite des revenus SCPI ?",
+    a: "Les revenus distribues par une SCPI sont imposes comme des revenus fonciers : ils s'ajoutent a votre revenu imposable dans la tranche marginale d'imposition (TMI) et sont egalement soumis a 17,2% de prelevements sociaux. Pour un TMI 30%, cela fait un taux global de 47,2% sur les revenus bruts. Le regime micro-foncier (abattement 30%) n'est possible que si les revenus fonciers totaux sont inferieurs a 15 000 EUR/an.",
+  },
+  {
+    q: "Les SCPI sont-elles un bon investissement en 2026 ?",
+    a: "Les SCPI offrent un rendement regulier sans gestion directe, mais avec plusieurs risques : frais d'entree eleves (8-12% pouvant necessiter 2-3 ans pour etre amortis), liquidite limitee (delai de revente 1-6 mois), risque de baisse de la valeur des parts (cas 2023-2024 avec -10 a -17% pour certaines SCPI de bureaux), fiscalite lourde pour les hauts TMI. Elles restent interessantes pour diversifier un patrimoine sans contrainte de gestion, mais a detenir 10+ ans.",
+  },
+  {
+    q: "Peut-on investir en SCPI via une assurance-vie ?",
+    a: "Oui, de nombreuses SCPI sont accessibles en unite de compte dans une assurance-vie. L'avantage majeur : la fiscalite bien plus douce (pas de TMI sur les revenus generes a l'interieur du contrat, abattement 4 600 EUR / 9 200 EUR apres 8 ans a la sortie). Inconvenient : seul environ 85% du TDVM est reverse (l'assureur prend 12-15%), et il faut payer les frais de gestion du contrat (0,5-1%/an).",
+  },
+];
 
 export default function Page() {
   return (
     <div>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <WebAppJsonLd name="Simulateur Rendement SCPI" description="Calculateur du rendement net des SCPI" category="FinanceApplication" />
       <Breadcrumb currentPage="Simulateur Rendement SCPI" />
 
@@ -110,6 +90,8 @@ export default function Page() {
           <li><strong>SCPI de plus-value</strong> : pari sur la revalorisation des parts (pas de dividendes)</li>
         </ul>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/simulateur-rendement-scpi" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

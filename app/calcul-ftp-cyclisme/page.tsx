@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-ftp-cyclisme" },
@@ -14,6 +15,29 @@ export const metadata: Metadata = {
   keywords:
     "calcul ftp cyclisme, watts par kilo, test 20 minutes, ftp watts, vam cyclisme, niveau cycliste pro, functional threshold power, w/kg strava, ffc catégorie",
 };
+
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qu'est-ce que le FTP (Functional Threshold Power) ?",
+    a: "Le FTP est la puissance maximale (en watts) qu'un cycliste peut maintenir pendant 1 heure. Il se calcule à partir d'un test de 20 minutes : FTP = puissance moyenne test 20 min × 0,95. Le FTP est la métrique clé pour calibrer les zones d'entraînement avec un capteur de puissance.",
+  },
+  {
+    q: "Comment faire le test FTP 20 minutes ?",
+    a: "Échauffement : 15 min progressif. Sortie : 2 séries de 2 min max (récupération 2 min entre). Puis 20 min à puissance maximale soutenable (effort homogène). Cool-down : 5 min endurance. Enregistrez la puissance moyenne des 20 min et appliquez la formule FTP = puissance × 0,95.",
+  },
+  {
+    q: "Qu'est-ce que le W/kg (watts par kilo) ?",
+    a: "Le W/kg est le FTP divisé par le poids corporel. C'est l'indicateur de puissance relative en montée. Plus le W/kg est élevé, plus le grimpeur est puissant. Un grimpeur Cat 1 FFC produit typiquement 4,5-5,0 W/kg, un pro World Tour 6,2+. Le W/kg est indépendant du poids, d'où son utilité pour comparer les cyclistes.",
+  },
+  {
+    q: "Qu'est-ce que la VAM (Vitesse Ascensionnelle Moyenne) ?",
+    a: "La VAM mesure la vitesse de montée en mètres par heure : VAM = (dénivelé m × 60) / temps minutes. Une VAM de 1200 m/h signifie que le cycliste gagne 1200 mètres d'altitude par heure de montée. C'est un bon indicateur sur Strava pour évaluer les performances en col.",
+  },
+  {
+    q: "À quelle fréquence faire un test FTP ?",
+    a: "Il est recommandé de faire un test FTP tous les 8 à 12 semaines. Un test trop fréquent est fatiguant et peu pertinent (les adaptations sont progressives). Un test tous les 2-3 mois permet de recalibrer les zones d'entraînement et de mesurer la progression.",
+  },
+];
 
 export default function Page() {
   // Tableau W/kg homme
@@ -55,49 +79,6 @@ export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul FTP Cyclisme et W/kg" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Qu&apos;est-ce que le FTP (Functional Threshold Power) ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le FTP est la puissance maximale (en watts) qu&apos;un cycliste peut maintenir pendant 1 heure. Il se calcule à partir d&apos;un test de 20 minutes : FTP = puissance moyenne test 20 min × 0,95. Le FTP est la métrique clé pour calibrer les zones d&apos;entraînement avec un capteur de puissance.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment faire le test FTP 20 minutes ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Échauffement : 15 min progressif. Sortie : 2 séries de 2 min max (récupération 2 min entre). Puis 20 min à puissance maximale soutenable (effort homogène). Cool-down : 5 min endurance. Enregistrez la puissance moyenne des 20 min et appliquez la formule FTP = puissance × 0,95.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qu&apos;est-ce que le W/kg (watts par kilo) ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le W/kg est le FTP divisé par le poids corporel. C&apos;est l&apos;indicateur de puissance relative en montée. Plus le W/kg est élevé, plus le grimpeur est puissant. Un grimpeur Cat 1 FFC produit typiquement 4,5-5,0 W/kg, un pro World Tour 6,2+. Le W/kg est indépendant du poids, d&apos;où son utilité pour comparer les cyclistes.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qu&apos;est-ce que la VAM (Vitesse Ascensionnelle Moyenne) ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La VAM mesure la vitesse de montée en mètres par heure : VAM = (dénivelé m × 60) / temps minutes. Une VAM de 1200 m/h signifie que le cycliste gagne 1200 mètres d&apos;altitude par heure de montée. C&apos;est un bon indicateur sur Strava pour évaluer les performances en col.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul FTP Cyclisme" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -315,6 +296,7 @@ export default function Page() {
         </div>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-ftp-cyclisme" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
 

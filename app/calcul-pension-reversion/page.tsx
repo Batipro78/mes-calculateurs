@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-pension-reversion" },
@@ -14,19 +15,17 @@ export const metadata: Metadata = {
     "pension de reversion, calcul pension reversion, montant pension reversion, reversion conjoint, reversion regime general, reversion agirc arrco, pension veuf veuve",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  { q: "Quel est le montant de la pension de reversion ?", a: "La pension de reversion du regime general represente 54% de la retraite du conjoint decede. La complementaire AGIRC-ARRCO represente 60%. Ces montants sont soumis a des conditions de ressources." },
+  { q: "A quel age peut-on toucher la pension de reversion ?", a: "L'age minimum est de 55 ans pour le regime general. Pour l'AGIRC-ARRCO, l'age minimum est egalement de 55 ans, mais sans condition de ressources a partir de 55 ans." },
+  { q: "Le remariage supprime-t-il la pension de reversion ?", a: "Pour le regime general (Securite Sociale), le remariage, la vie en concubinage ou le PACS supprime la pension de reversion. Pour l'AGIRC-ARRCO (complementaire), la pension de reversion est maintenue meme en cas de remariage depuis 2017." },
+  { q: "La pension de reversion est-elle soumise a conditions de ressources ?", a: "Oui, pour le regime general. Les ressources annuelles du conjoint survivant ne doivent pas depasser un plafond fixe chaque annee (environ 23 441 euros en 2026 pour une personne seule). Pour l'AGIRC-ARRCO, il n'y a pas de condition de ressources." },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Pension Reversion" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org", "@type": "FAQPage",
-        mainEntity: [
-          { "@type": "Question", name: "Quel est le montant de la pension de reversion ?",
-            acceptedAnswer: { "@type": "Answer", text: "La pension de reversion du regime general represente 54% de la retraite du conjoint decede. La complementaire AGIRC-ARRCO represente 60%. Ces montants sont soumis a des conditions de ressources." } },
-          { "@type": "Question", name: "A quel age peut-on toucher la pension de reversion ?",
-            acceptedAnswer: { "@type": "Answer", text: "L'age minimum est de 55 ans pour le regime general. Pour l'AGIRC-ARRCO, l'age minimum est egalement de 55 ans, mais sans condition de ressources a partir de 55 ans." } },
-        ]
-      }) }} />
       <Breadcrumb currentPage="Pension de Reversion" />
       <div className="flex items-center gap-3 mb-2">
         <div className="w-10 h-10 bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl flex items-center justify-center text-xl shadow-sm">💜</div>
@@ -68,6 +67,7 @@ export default function Page() {
           </table>
         </div>
       </section>
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-pension-reversion" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

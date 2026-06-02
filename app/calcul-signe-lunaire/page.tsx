@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-signe-lunaire" },
@@ -14,23 +15,29 @@ export const metadata: Metadata = {
     "signe lunaire, lune en astrologie, calculer signe lunaire, lune naissance, emotions astrologie, signe lune, inconscient astrologie, lune zodiaque",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment calculer son signe lunaire ?",
+    a: "Le signe lunaire depend de votre date ET heure de naissance. La Lune parcourt le zodiaque en environ 27,3 jours, soit un signe tous les 2,3 jours. Notre calculateur determine votre signe lunaire en calculant la position de la Lune au moment exact de votre naissance.",
+  },
+  {
+    q: "Quelle est la difference entre Soleil, Lune et Ascendant ?",
+    a: "Le Soleil represente votre identite profonde et consciente. La Lune represente vos emotions, votre inconscient et votre intimite. L'Ascendant est votre apparence et la premiere impression que vous donnez aux autres. Ces trois elements forment la trinite astrologique complete.",
+  },
+  {
+    q: "Pourquoi l'heure de naissance est-elle importante pour la Lune ?",
+    a: "Parce que la Lune se deplace rapidement dans le zodiaque (un signe tous les 2,3 jours). Sans l'heure, on ne peut pas determiner precisement la position lunaire. Deux personnes nees le meme jour mais a des heures differentes peuvent avoir des signes lunaires differents.",
+  },
+  {
+    q: "Que signifie avoir une Lune en Cancer ?",
+    a: "Cancer est le signe de domicile de la Lune, son emplacement favori. Une Lune en Cancer indique une nature emotionnelle tres developpee, une grande intuition, une forte attache familiale et un besoin de securite affective et emotionnelle.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Signe Lunaire" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org", "@type": "FAQPage",
-        mainEntity: [
-          { "@type": "Question", name: "Comment calculer son signe lunaire ?",
-            acceptedAnswer: { "@type": "Answer", text: "Le signe lunaire dépend de votre date ET heure de naissance. La Lune parcourt le zodiaque en environ 27,3 jours, soit un signe tous les 2,3 jours. Notre calculateur détermine votre signe lunaire en calculant la position de la Lune au moment exact de votre naissance." } },
-          { "@type": "Question", name: "Quelle est la différence entre Soleil, Lune et Ascendant ?",
-            acceptedAnswer: { "@type": "Answer", text: "Le Soleil représente votre identité profonde et consciente. La Lune représente vos émotions, votre inconscient et votre intimité. L'Ascendant est votre apparence et la première impression que vous donnez aux autres. Ces trois éléments forment la trinité astrologique complète." } },
-          { "@type": "Question", name: "Pourquoi l'heure de naissance est-elle importante pour la Lune ?",
-            acceptedAnswer: { "@type": "Answer", text: "Parce que la Lune se déplace rapidement dans le zodiaque (un signe tous les 2,3 jours). Sans l'heure, on ne peut pas déterminer précisément la position lunaire. Deux personnes nées le même jour mais à des heures différentes peuvent avoir des signes lunaires différents." } },
-          { "@type": "Question", name: "Que signifie avoir une Lune en Cancer ?",
-            acceptedAnswer: { "@type": "Answer", text: "Cancer est le signe de domicile de la Lune, son emplacement favori. Une Lune en Cancer indique une nature émotionnelle très développée, une grande intuition, une forte attache familiale et un besoin de sécurité affective et émotionnelle." } },
-        ]
-      }) }} />
       <Breadcrumb currentPage="Signe Lunaire" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -135,6 +142,7 @@ export default function Page() {
         </div>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-signe-lunaire" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

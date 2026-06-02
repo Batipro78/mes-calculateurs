@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/compatibilite-signes-astrologiques" },
@@ -14,53 +15,29 @@ export const metadata: Metadata = {
     "compatibilité signes astrologiques, couple astrologie, amour signe, bélier scorpion compatibilité, lion sagittaire, zodiaque occidental, amour astrologie",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment fonctionne la compatibilite astrologique ?",
+    a: "La compatibilite astrologique occidentale se base sur les elements (Feu, Terre, Air, Eau). Les signes du meme element ou d'elements complementaires (Feu-Air, Terre-Eau) ont une meilleure affinite. Les elements opposes (Feu-Eau, Terre-Air) creent des tensions naturelles.",
+  },
+  {
+    q: "Quels couples de signes sont les plus compatibles ?",
+    a: "Les couples les plus compatibles sont entre signes de meme element : Belier-Lion-Sagittaire (Feu), Taureau-Vierge-Capricorne (Terre), Gemeaux-Balance-Verseau (Air), Cancer-Scorpion-Poissons (Eau). Le Belier-Lion, Lion-Sagittaire, et Scorpion-Poissons figurent parmi les meilleurs couples.",
+  },
+  {
+    q: "Dois-je comparer uniquement mon signe solaire ?",
+    a: "Non, pour une analyse plus precise, comparez aussi vos signes lunaires (emotions) et vos ascendants (apparence). La compatibilite globale depend de toute la carte du ciel (synastrie), pas seulement des signes solaires.",
+  },
+  {
+    q: "Qu'est-ce que la synastrie astrologique ?",
+    a: "La synastrie est la comparaison detaillee de deux cartes du ciel pour analyser la compatibilite d'un couple. Elle examine les aspects entre toutes les planetes, pas seulement les signes solaires, pour une vision globale de la relation.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Compatibilité Signes Astrologiques - Amour et Couples" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment fonctionne la compatibilité astrologique ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La compatibilité astrologique occidentale se base sur les éléments (Feu, Terre, Air, Eau). Les signes du même élément ou d&apos;éléments complémentaires (Feu-Air, Terre-Eau) ont une meilleure affinité. Les éléments opposés (Feu-Eau, Terre-Air) créent des tensions naturelles.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quels couples de signes sont les plus compatibles ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les couples les plus compatibles sont entre signes de même élément : Bélier-Lion-Sagittaire (Feu), Taureau-Vierge-Capricorne (Terre), Gémeaux-Balance-Verseau (Air), Cancer-Scorpion-Poissons (Eau). Le Bélier-Lion, Lion-Sagittaire, et Scorpion-Poissons figurent parmi les meilleurs couples.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Dois-je comparer uniquement mon signe solaire ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Non, pour une analyse plus précise, comparez aussi vos signes lunaires (émotions) et vos ascendants (apparence). La compatibilité globale dépend de toute la carte du ciel (synastrie), pas seulement des signes solaires.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qu&apos;est-ce que la synastrie astrologique ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La synastrie est la comparaison détaillée de deux cartes du ciel pour analyser la compatibilité d&apos;un couple. Elle examine les aspects entre tous les planètes, pas seulement les signes solaires, pour une vision globale de la relation.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Compatibilité Signes Astrologiques" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -342,6 +319,8 @@ export default function Page() {
           est tout à fait possible !
         </p>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/compatibilite-signes-astrologiques" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

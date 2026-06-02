@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-dette-sommeil" },
@@ -19,63 +20,39 @@ export const metadata: Metadata = {
   },
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment calculer ma dette de sommeil ?",
+    a: "La dette de sommeil se calcule en soustrayant le total des heures dormies sur une période (7 à 14 jours) du total des heures idéales (besoin par nuit × nombre de jours). Exemple : besoin de 8h/nuit sur 7 jours = 56h idéales. Si vous avez dormi 49h au total, la dette est de 7h.",
+  },
+  {
+    q: "Combien de temps faut-il pour récupérer une dette de sommeil ?",
+    a: "Selon l'American Academy of Sleep Medicine (AASM), une dette légère (moins de 5h) se rattrape en 1 à 2 nuits prolongées ou avec des siestes de 20 minutes. Une dette modérée (5 à 10h) demande 1 à 2 semaines de récupération. Une dette sévère (plus de 10h) peut nécessiter plusieurs semaines et un avis médical.",
+  },
+  {
+    q: "La sieste aide-t-elle à rattraper la dette de sommeil ?",
+    a: "Oui. Une sieste courte de 20 minutes (avant 15h) améliore la vigilance et réduit partiellement la dette de sommeil sans perturber le sommeil nocturne. Les siestes longues (plus de 30 min) sont moins recommandées car elles provoquent une inertie du sommeil et désynchronisent l'horloge biologique.",
+  },
+  {
+    q: "Peut-on rattraper le sommeil le week-end ?",
+    a: "Partiellement. Dormir 1 à 2 heures de plus le week-end aide à réduire la dette accumulée en semaine, mais ne compense pas totalement les effets à long terme (immunité, mémoire, métabolisme). L'INSERM recommande surtout une régularité du coucher plutôt que des compensations massives le week-end.",
+  },
+  {
+    q: "Quels sont les risques d'une dette de sommeil sévère ?",
+    a: "Une dette de sommeil sévère (plus de 10h cumulées) augmente le risque d'accidents (multiplié par 4 en voiture en cas de somnolence), affaiblit le système immunitaire, dérègle le métabolisme du glucose, augmente le risque cardiovasculaire et perturbe l'humeur. Une consultation médicale est recommandée si la dette persiste.",
+  },
+  {
+    q: "Quel est le besoin de sommeil selon l'âge ?",
+    a: "Selon l'AASM : nourrissons (4-12 mois) 12-16h, enfants (6-12 ans) 9-12h, adolescents (13-18 ans) 8-10h, adultes (18-60 ans) 7-9h, seniors (+65 ans) 7-8h. Ces besoins varient selon les individus : certains adultes fonctionnent bien avec 6h, d'autres ont besoin de 9h.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd
         name="Calcul Dette de Sommeil"
         category="HealthApplication"
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment calculer ma dette de sommeil ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La dette de sommeil se calcule en soustrayant le total des heures dormies sur une période (7 à 14 jours) du total des heures idéales (besoin par nuit × nombre de jours). Exemple : besoin de 8h/nuit sur 7 jours = 56h idéales. Si vous avez dormi 49h au total, la dette est de 7h.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien de temps faut-il pour récupérer une dette de sommeil ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Selon l'American Academy of Sleep Medicine (AASM), une dette légère (moins de 5h) se rattrape en 1 à 2 nuits prolongées ou avec des siestes de 20 minutes. Une dette modérée (5 à 10h) demande 1 à 2 semaines de récupération. Une dette sévère (plus de 10h) peut nécessiter plusieurs semaines et un avis médical.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "La sieste aide-t-elle à rattraper la dette de sommeil ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Oui. Une sieste courte de 20 minutes (avant 15h) améliore la vigilance et réduit partiellement la dette de sommeil sans perturber le sommeil nocturne. Les siestes longues (plus de 30 min) sont moins recommandées car elles provoquent une inertie du sommeil et désynchronisent l'horloge biologique.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Peut-on rattraper le sommeil le week-end ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Partiellement. Dormir 1 à 2 heures de plus le week-end aide à réduire la dette accumulée en semaine, mais ne compense pas totalement les effets à long terme (immunité, mémoire, métabolisme). L'INSERM recommande surtout une régularité du coucher plutôt que des compensations massives le week-end.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quels sont les risques d'une dette de sommeil sévère ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Une dette de sommeil sévère (plus de 10h cumulées) augmente le risque d'accidents (multiplié par 4 en voiture en cas de somnolence), affaiblit le système immunitaire, dérègle le métabolisme du glucose, augmente le risque cardiovasculaire et perturbe l'humeur. Une consultation médicale est recommandée si la dette persiste.",
-                },
-              },
-            ],
-          }),
-        }}
       />
       <Breadcrumb currentPage="Dette de Sommeil" />
 
@@ -220,6 +197,7 @@ export default function Page() {
         </p>
       </div>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-dette-sommeil" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

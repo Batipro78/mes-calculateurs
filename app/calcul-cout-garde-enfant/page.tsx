@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-cout-garde-enfant" },
@@ -14,53 +15,29 @@ export const metadata: Metadata = {
     "cout garde enfant, tarif creche, assistante maternelle prix, garde a domicile cout, micro-creche tarif, CMG CAF, credit impot garde enfant, PAJE 2026",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Combien coute une creche en 2026 ?",
+    a: "Le tarif d'une creche municipale varie de 0,50 € a 5,26 € par heure selon vos revenus et le nombre d'enfants a charge. Il est calcule avec un taux d'effort : 0,0619% des revenus annuels divise par 12 pour 1 enfant. Pour un foyer gagnant 36 000 €/an avec 1 enfant, le tarif est d'environ 1,86 €/h soit ~340 €/mois pour 40h/semaine.",
+  },
+  {
+    q: "Quel est le prix d'une assistante maternelle en 2026 ?",
+    a: "Le tarif de reference d'une assistante maternelle est de 4,91 €/h en 2026 (minimum 3,79 €/h brut). Pour 40h/semaine, cela represente environ 850 €/mois avant aides. Avec le CMG (Complement de libre choix du Mode de Garde) et le credit d'impot 50%, le cout net peut descendre a 300-500 €/mois selon vos revenus.",
+  },
+  {
+    q: "Quelles aides pour la garde d'enfant en 2026 ?",
+    a: "Les principales aides sont : 1) Le CMG (jusqu'a 517 €/mois de prise en charge des cotisations pour enfant 0-3 ans), 2) Le credit d'impot de 50% (plafond 3 500 €/enfant/an hors domicile, soit 1 750 € max de credit), 3) La PAJE allocation de base (~198 €/mois sous conditions de revenus). Ces aides sont cumulables.",
+  },
+  {
+    q: "Quel mode de garde est le moins cher ?",
+    a: "La creche municipale est generalement la moins chere grace au bareme CAF progressif (tarif selon revenus). Pour les revenus modestes, elle coute 50-150 €/mois. L'assistante maternelle est intermediaire (300-500 €/mois net apres aides). La garde a domicile est la plus chere (800-1 500 €/mois net) mais peut etre rentable si vous faites garder 2+ enfants simultanement.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Cout Garde Enfant" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Combien coute une creche en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le tarif d'une creche municipale varie de 0,50 € a 5,26 € par heure selon vos revenus et le nombre d'enfants a charge. Il est calcule avec un taux d'effort : 0,0619% des revenus annuels divise par 12 pour 1 enfant. Pour un foyer gagnant 36 000 €/an avec 1 enfant, le tarif est d'environ 1,86 €/h soit ~340 €/mois pour 40h/semaine.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel est le prix d'une assistante maternelle en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le tarif de reference d'une assistante maternelle est de 4,91 €/h en 2026 (minimum 3,79 €/h brut). Pour 40h/semaine, cela represente environ 850 €/mois avant aides. Avec le CMG (Complement de libre choix du Mode de Garde) et le credit d'impot 50%, le cout net peut descendre a 300-500 €/mois selon vos revenus.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelles aides pour la garde d'enfant en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les principales aides sont : 1) Le CMG (jusqu'a 517 €/mois de prise en charge des cotisations pour enfant 0-3 ans), 2) Le credit d'impot de 50% (plafond 3 500 €/enfant/an hors domicile, soit 1 750 € max de credit), 3) La PAJE allocation de base (~198 €/mois sous conditions de revenus). Ces aides sont cumulables.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel mode de garde est le moins cher ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La creche municipale est generalement la moins chere grace au bareme CAF progressif (tarif selon revenus). Pour les revenus modestes, elle coute 50-150 €/mois. L'assistante maternelle est intermediaire (300-500 €/mois net apres aides). La garde a domicile est la plus chere (800-1 500 €/mois net) mais peut etre rentable si vous faites garder 2+ enfants simultanement.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Cout Garde Enfant" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -209,6 +186,7 @@ export default function Page() {
 
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-cout-garde-enfant" />
     </div>
   );

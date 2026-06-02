@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-temps-telechargement" },
@@ -15,53 +16,29 @@ export const metadata: Metadata = {
     "temps telechargement, calcul vitesse internet, mb/s en mo/s, fibre 1gb, fortnite, cyberpunk, call of duty, vitesse download, debits internet",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quelle est la différence entre Mb/s et Mo/s ?",
+    a: "Mb/s (mégabit par seconde) est une unité de débit, utilisée par les FAI. Mo/s (mégaoctet par seconde) est une unité de taille/vitesse. 1 octet = 8 bits, donc 1 Mb/s = 0.125 Mo/s. Un FAI qui annonce 100 Mb/s = 12.5 Mo/s maximum.",
+  },
+  {
+    q: "Pourquoi mon téléchargement est plus lent que le débit annoncé ?",
+    a: "Plusieurs facteurs ralentissent les téléchargements réels : overhead TCP/IP, retransmissions, pertes réseau, partage de la bande passante, saturations du serveur source. En général, compter un overhead de 10-15% par rapport au débit théorique. Notre calculateur inclut cet overhead.",
+  },
+  {
+    q: "Combien de temps pour télécharger Cyberpunk 2077 en 100 Mb/s ?",
+    a: "Cyberpunk 2077 fait environ 70 Go. À 100 Mb/s (soit 12.5 Mo/s théorique), le temps théorique est ~5600 secondes = 1h 33min. Avec overhead réseau, comptez environ 1h 45min en réalité.",
+  },
+  {
+    q: "Comment accélérer les téléchargements ?",
+    a: "Utilisez une connexion filaire Ethernet plutôt que WiFi. Fermez les autres applications/téléchargements. Réduisez la distance au routeur. Contactez votre FAI si vous payez pour 100 Mb/s mais n'obtenez que 30 Mb/s. Vérifiez votre vitesse réelle sur speedtest.net. Passez à la fibre si disponible.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Temps Telechargement" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quelle est la différence entre Mb/s et Mo/s ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Mb/s (mégabit par seconde) est une unité de débit, utilisée par les FAI. Mo/s (mégaoctet par seconde) est une unité de taille/vitesse. 1 octet = 8 bits, donc 1 Mb/s = 0.125 Mo/s. Un FAI qui annonce 100 Mb/s = 12.5 Mo/s maximum.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Pourquoi mon téléchargement est plus lent que le débit annoncé ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Plusieurs facteurs ralentissent les téléchargements réels : overhead TCP/IP, retransmissions, pertes réseau, partage de la bande passante, saturations du serveur source. En général, compter un overhead de 10-15% par rapport au débit théorique. Notre calculateur inclut cet overhead.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien de temps pour télécharger Cyberpunk 2077 en 100 Mb/s ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Cyberpunk 2077 fait environ 70 Go. À 100 Mb/s (soit 12.5 Mo/s théorique), le temps théorique est ~5600 secondes = 1h 33min. Avec overhead réseau, comptez environ 1h 45min en réalité.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment accélérer les téléchargements ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Utilisez une connexion filaire Ethernet plutôt que WiFi. Fermez les autres applications/téléchargements. Réduisez la distance au routeur. Contactez votre FAI si vous payez pour 100 Mb/s mais n&apos;obtenez que 30 Mb/s. Vérifiez votre vitesse réelle sur speedtest.net. Passez à la fibre si disponible.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Temps Telechargement" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -360,6 +337,7 @@ export default function Page() {
         </div>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-temps-telechargement" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

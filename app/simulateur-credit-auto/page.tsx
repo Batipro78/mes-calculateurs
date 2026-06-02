@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-credit-auto" },
@@ -14,45 +15,25 @@ export const metadata: Metadata = {
     "simulateur credit auto, credit voiture mensualite, calculateur pret automobile, taux credit auto 2026, mensualite voiture, cout credit automobile, simulation pret vehicule",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quel est le taux moyen d'un credit auto en 2026 ?",
+    a: "En 2026, les taux moyens d'un credit auto varient selon la duree : 3,5% sur 12 mois, 3,9% sur 24 mois, 4,2% sur 36 mois, 4,5% sur 48 mois, 4,9% sur 60 mois, 5,5% sur 72 mois et 6,0% sur 84 mois. Ces taux sont des moyennes constatees aupres des concessionnaires et etablissements financiers. Votre taux reel depend de votre profil emprunteur, de votre apport et du vehicule finance.",
+  },
+  {
+    q: "Comment calculer la mensualite d'un credit auto ?",
+    a: "La mensualite d'un credit auto se calcule avec la formule : M = C x (t/12) / (1 - (1 + t/12)^(-n)), ou C est le capital emprunte (prix - apport), t le taux annuel divise par 100, et n le nombre de mensualites. Par exemple, pour 17 000 € empruntes sur 48 mois a 4,5%, la mensualite est d'environ 387 €.",
+  },
+  {
+    q: "Vaut-il mieux choisir un credit auto classique ou une LOA ?",
+    a: "Le credit auto classique (financement personnel) est preferable si vous souhaitez etre proprietaire du vehicule et obtenir les meilleurs taux. La LOA (Location avec Option d'Achat) propose des mensualites souvent plus basses, mais vous n'etes pas proprietaire pendant le contrat et le cout global est generalement plus eleve. Le credit auto est recommande pour un usage long terme (plus de 5 ans), la LOA pour changer regulierement de vehicule. Dans les deux cas, comparez plusieurs offres avant de signer.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Simulateur Credit Auto" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quel est le taux moyen d'un credit auto en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "En 2026, les taux moyens d'un credit auto varient selon la duree : 3,5% sur 12 mois, 3,9% sur 24 mois, 4,2% sur 36 mois, 4,5% sur 48 mois, 4,9% sur 60 mois, 5,5% sur 72 mois et 6,0% sur 84 mois. Ces taux sont des moyennes constatees aupres des concessionnaires et etablissements financiers. Votre taux reel depend de votre profil emprunteur, de votre apport et du vehicule finance.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment calculer la mensualite d'un credit auto ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La mensualite d'un credit auto se calcule avec la formule : M = C x (t/12) / (1 - (1 + t/12)^(-n)), ou C est le capital emprunte (prix - apport), t le taux annuel divise par 100, et n le nombre de mensualites. Par exemple, pour 17 000 € empruntes sur 48 mois a 4,5%, la mensualite est d'environ 387 €.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Vaut-il mieux choisir un credit auto classique ou une LOA ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le credit auto classique (financement personnel) est preferable si vous souhaitez etre proprietaire du vehicule et obtenir les meilleurs taux. La LOA (Location avec Option d'Achat) propose des mensualites souvent plus basses, mais vous n'etes pas proprietaire pendant le contrat et le cout global est generalement plus eleve. Le credit auto est recommande pour un usage long terme (plus de 5 ans), la LOA pour changer regulierement de vehicule. Dans les deux cas, comparez plusieurs offres avant de signer.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Simulateur Credit Auto" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -242,6 +223,7 @@ export default function Page() {
         <p className="text-xs text-slate-400 mt-6">Mis a jour le 8 avril 2026</p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/simulateur-credit-auto" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

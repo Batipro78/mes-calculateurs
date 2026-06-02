@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-impot-societe" },
@@ -14,41 +15,24 @@ export const metadata: Metadata = {
     "impot societe, IS 2026, simulateur IS, taux reduit PME 15%, impot entreprise, calcul IS, article 219 CGI",
 };
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Quel est le taux de l'IS en 2026 ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "En 2026, le taux normal de l'Impot sur les Societes est de 25% sur l'ensemble du benefice imposable. Les PME eligibles beneficient d'un taux reduit de 15% sur les 42 500 premiers euros de benefice, puis 25% au-dela. Exemple : pour 100 000 EUR de benefice, une PME paie 15% × 42 500 + 25% × 57 500 = 20 750 EUR, contre 25 000 EUR pour une grande entreprise.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Qui peut beneficier du taux reduit PME a 15% ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Pour beneficier du taux reduit d'IS a 15%, la societe doit remplir 3 conditions cumulatives : chiffre d'affaires inferieur a 10 000 000 EUR HT, capital entierement libere, et au moins 75% du capital detenu de maniere continue par des personnes physiques (ou par des PME eligibles au meme regime). Cette reduction s'applique sur les 42 500 premiers euros de benefice imposable.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Comment est calcule le benefice imposable a l'IS ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Le benefice imposable a l'IS correspond au resultat comptable apres retraitements fiscaux : on ajoute les charges non deductibles (amendes, cadeaux >69 EUR, etc.) et on deduit les produits non imposables. Les amortissements, provisions et remuneration du dirigeant sont deductibles dans les limites legales. Le deficit fiscal peut etre reporte en avant (sans limite) ou en arriere (1 an, dans la limite d'1 M EUR).",
-      },
-    },
-  ],
-};
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quel est le taux de l'IS en 2026 ?",
+    a: "En 2026, le taux normal de l'Impot sur les Societes est de 25% sur l'ensemble du benefice imposable. Les PME eligibles beneficient d'un taux reduit de 15% sur les 42 500 premiers euros de benefice, puis 25% au-dela. Exemple : pour 100 000 EUR de benefice, une PME paie 15% x 42 500 + 25% x 57 500 = 20 750 EUR, contre 25 000 EUR pour une grande entreprise.",
+  },
+  {
+    q: "Qui peut beneficier du taux reduit PME a 15% ?",
+    a: "Pour beneficier du taux reduit d'IS a 15%, la societe doit remplir 3 conditions cumulatives : chiffre d'affaires inferieur a 10 000 000 EUR HT, capital entierement libere, et au moins 75% du capital detenu de maniere continue par des personnes physiques (ou par des PME eligibles au meme regime). Cette reduction s'applique sur les 42 500 premiers euros de benefice imposable.",
+  },
+  {
+    q: "Comment est calcule le benefice imposable a l'IS ?",
+    a: "Le benefice imposable a l'IS correspond au resultat comptable apres retraitements fiscaux : on ajoute les charges non deductibles (amendes, cadeaux >69 EUR, etc.) et on deduit les produits non imposables. Les amortissements, provisions et remuneration du dirigeant sont deductibles dans les limites legales. Le deficit fiscal peut etre reporte en avant (sans limite) ou en arriere (1 an, dans la limite d'1 M EUR).",
+  },
+];
 
 export default function Page() {
   return (
     <div>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <WebAppJsonLd name="Simulateur IS" description="Simulateur Impot sur les Societes 2026" category="FinanceApplication" />
       <Breadcrumb currentPage="Simulateur IS" />
 
@@ -112,6 +96,8 @@ export default function Page() {
           <li>Dispense d&apos;acomptes si IS N-1 &lt; 3 000 EUR</li>
         </ul>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/simulateur-impot-societe" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

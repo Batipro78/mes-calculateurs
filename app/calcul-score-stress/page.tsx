@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-score-stress" },
@@ -14,45 +15,29 @@ export const metadata: Metadata = {
     "calcul score stress, PSS-10, test stress, niveau stress, stress percu, echelle stress, evaluation stress, gestion stress, bien-etre mental, stress travail",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qu'est-ce que le score PSS-10 et comment mesure-t-il le stress ?",
+    a: "Le PSS-10 (Perceived Stress Scale) est l'echelle de reference mondiale pour mesurer le stress percu. Developpe en 1983 par Sheldon Cohen, ce questionnaire de 10 questions evalue la frequence a laquelle vous avez ressenti du stress au cours du dernier mois, sur une echelle de 0 (jamais) a 4 (tres souvent). Le score total va de 0 a 40 : 0-13 = stress faible, 14-26 = stress modere, 27-40 = stress eleve.",
+  },
+  {
+    q: "A quelle frequence faut-il evaluer son niveau de stress ?",
+    a: "Il est recommande d'evaluer son niveau de stress tous les 1 a 3 mois, ou lors de changements importants dans votre vie (nouveau travail, demenagement, evenements familiaux). Un suivi regulier permet de detecter une augmentation progressive du stress et d'agir avant qu'il ne devienne chronique.",
+  },
+  {
+    q: "Quelles sont les methodes les plus efficaces pour reduire le stress ?",
+    a: "Les methodes les plus efficaces scientifiquement prouvees sont : la coherence cardiaque (5 min, 3 fois/jour), la meditation de pleine conscience (10-20 min/jour), l'activite physique reguliere (150 min/semaine), la therapie cognitive-comportementale (TCC), et un sommeil suffisant (7-8h/nuit). La combinaison de plusieurs approches donne les meilleurs resultats.",
+  },
+  {
+    q: "Le test PSS-10 peut-il remplacer une consultation psychologique ?",
+    a: "Non. Le PSS-10 est un outil d'auto-evaluation informatif, pas un diagnostic clinique. Un score eleve (> 27) persistant est un signal d'alerte et doit conduire a consulter un medecin ou un psychologue. Le test permet de prendre conscience de son niveau de stress, mais ne remplace pas un accompagnement professionnel.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Score Stress - PSS-10" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Qu'est-ce que le score PSS-10 et comment mesure-t-il le stress ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le PSS-10 (Perceived Stress Scale) est l'echelle de reference mondiale pour mesurer le stress percu. Developpe en 1983 par Sheldon Cohen, ce questionnaire de 10 questions evalue la frequence a laquelle vous avez ressenti du stress au cours du dernier mois, sur une echelle de 0 (jamais) a 4 (tres souvent). Le score total va de 0 a 40 : 0-13 = stress faible, 14-26 = stress modere, 27-40 = stress eleve.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "A quelle frequence faut-il evaluer son niveau de stress ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Il est recommande d'evaluer son niveau de stress tous les 1 a 3 mois, ou lors de changements importants dans votre vie (nouveau travail, demenagement, evenements familiaux). Un suivi regulier permet de detecter une augmentation progressive du stress et d'agir avant qu'il ne devienne chronique.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelles sont les methodes les plus efficaces pour reduire le stress ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les methodes les plus efficaces scientifiquement prouvees sont : la coherence cardiaque (5 min, 3 fois/jour), la meditation de pleine conscience (10-20 min/jour), l'activite physique reguliere (150 min/semaine), la therapie cognitive-comportementale (TCC), et un sommeil suffisant (7-8h/nuit). La combinaison de plusieurs approches donne les meilleurs resultats.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Score Stress" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -145,6 +130,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-score-stress" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

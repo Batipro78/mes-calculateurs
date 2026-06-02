@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-bunker" },
@@ -15,61 +16,33 @@ export const metadata: Metadata = {
     "budget bunker, prix bunker, construire bunker France, abri anti-atomique prix, bunker survie cout, abri souterrain budget, bunker NRBC prix, autonomie bunker, taille bunker personnes",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Combien coute un bunker en France ?",
+    a: "Le prix d'un bunker en France varie de 30 000 euros pour un abri basique 2 personnes a plus de 500 000 euros pour un bunker NRBC familial. Le cout moyen est de 1 500 a 5 500 euros par m2 selon le niveau de protection. Les principaux postes de depense sont la construction (60-70%), les equipements (20-25%) et les provisions (5-15%).",
+  },
+  {
+    q: "Quelle taille de bunker pour une famille de 4 personnes ?",
+    a: "Pour 4 personnes, prevoyez minimum 30 a 40 m2 : 20 m2 d'espace de vie (5 m2 par personne), 10 m2 d'espaces communs (sanitaires, cuisine) et 5 a 10 m2 de stockage selon la duree d'autonomie souhaitee. Pour un confort acceptable sur plusieurs mois, 50 m2 est recommande.",
+  },
+  {
+    q: "Combien d'eau et de nourriture stocker dans un bunker ?",
+    a: "Prevoyez minimum 3 litres d'eau par personne par jour (boisson + hygiene minimale). Pour la nourriture, comptez 2 000 calories par jour par adulte. Pour 4 personnes sur 3 mois, cela represente 1 080 litres d'eau et environ 720 000 calories. Les rations militaires longue conservation (MRE) ou les aliments lyophilises sont les plus adaptes (duree de conservation 5 a 25 ans).",
+  },
+  {
+    q: "Faut-il un permis de construire pour un bunker ?",
+    a: "En France, une construction souterraine de plus de 20 m2 necessite un permis de construire. En dessous de 20 m2, une declaration prealable de travaux suffit. Il faut egalement respecter le PLU (Plan Local d'Urbanisme) de votre commune. Certaines zones (protegees, inondables) peuvent interdire ce type de construction. Consultez votre mairie avant tout projet.",
+  },
+  {
+    q: "Quels equipements sont essentiels dans un bunker ?",
+    a: "Les equipements essentiels sont : 1) Systeme de ventilation et filtration d'air (vital), 2) Porte blindee anti-souffle, 3) Reserves d'eau et systeme de filtration, 4) Source d'energie (batteries, generateur), 5) Sanitaires (WC chimiques), 6) Kit medical complet, 7) Radio pour les communications. Pour une protection NRBC, ajoutez des filtres anti-radiation et des dosimetres.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calculateur Cout Bunker" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Combien coute un bunker en France ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le prix d'un bunker en France varie de 30 000 euros pour un abri basique 2 personnes a plus de 500 000 euros pour un bunker NRBC familial. Le cout moyen est de 1 500 a 5 500 euros par m2 selon le niveau de protection. Les principaux postes de depense sont la construction (60-70%), les equipements (20-25%) et les provisions (5-15%).",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle taille de bunker pour une famille de 4 personnes ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour 4 personnes, prevoyez minimum 30 a 40 m2 : 20 m2 d'espace de vie (5 m2 par personne), 10 m2 d'espaces communs (sanitaires, cuisine) et 5 a 10 m2 de stockage selon la duree d'autonomie souhaitee. Pour un confort acceptable sur plusieurs mois, 50 m2 est recommande.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien d'eau et de nourriture stocker dans un bunker ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Prevoyez minimum 3 litres d'eau par personne par jour (boisson + hygiene minimale). Pour la nourriture, comptez 2 000 calories par jour par adulte. Pour 4 personnes sur 3 mois, cela represente 1 080 litres d'eau et environ 720 000 calories. Les rations militaires longue conservation (MRE) ou les aliments lyophilises sont les plus adaptes (duree de conservation 5 a 25 ans).",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Faut-il un permis de construire pour un bunker ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "En France, une construction souterraine de plus de 20 m2 necessite un permis de construire. En dessous de 20 m2, une declaration prealable de travaux suffit. Il faut egalement respecter le PLU (Plan Local d'Urbanisme) de votre commune. Certaines zones (protegees, inondables) peuvent interdire ce type de construction. Consultez votre mairie avant tout projet.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quels equipements sont essentiels dans un bunker ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les equipements essentiels sont : 1) Systeme de ventilation et filtration d'air (vital), 2) Porte blindee anti-souffle, 3) Reserves d'eau et systeme de filtration, 4) Source d'energie (batteries, generateur), 5) Sanitaires (WC chimiques), 6) Kit medical complet, 7) Radio pour les communications. Pour une protection NRBC, ajoutez des filtres anti-radiation et des dosimetres.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Simulateur Budget Bunker" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -195,87 +168,7 @@ export default function Page() {
         </p>
       </section>
 
-      {/* FAQ */}
-      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
-        <h2 className="text-xl font-bold text-slate-800 mb-6">
-          Questions frequentes
-        </h2>
-        <div className="space-y-5">
-          <div>
-            <h3 className="font-semibold text-slate-800 mb-1">
-              Peut-on construire un bunker dans son jardin ?
-            </h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              Oui, sous conditions. Si la surface est inferieure a 20 m², une
-              simple declaration prealable suffit. Au-dela, un permis de
-              construire est necessaire. Verifiez le PLU de votre commune, car
-              certaines zones (inondables, classees) peuvent l&apos;interdire. La
-              profondeur d&apos;excavation doit aussi etre compatible avec la nappe
-              phreatique locale.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-semibold text-slate-800 mb-1">
-              Quelle est la duree de vie d&apos;un bunker ?
-            </h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              Un bunker en beton arme bien construit a une duree de vie de{" "}
-              <strong>50 a 100 ans</strong>. Le beton se renforce avec le temps
-              (prise de ciment). Les points faibles sont la ventilation
-              (filtres a remplacer tous les 5-10 ans), l&apos;etancheite (a
-              verifier regulierement) et les batteries (duree de vie 5-15 ans
-              selon la technologie).
-            </p>
-          </div>
-          <div>
-            <h3 className="font-semibold text-slate-800 mb-1">
-              Combien de temps peut-on survivre dans un bunker ?
-            </h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              Cela depend des provisions stockees. Avec les bonnes reserves, un
-              bunker peut assurer la survie de{" "}
-              <strong>quelques semaines a plusieurs annees</strong>. Le facteur
-              limitant n&apos;est souvent pas la nourriture ou l&apos;eau, mais
-              la <strong>sante mentale</strong> : le confinement prolonge sans
-              lumiere naturelle provoque depression, anxiete et conflits
-              interpersonnels. Les bunkers de luxe integrent des solutions
-              (eclairage circadien, espaces de loisirs) pour attenuer cet
-              effet.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-semibold text-slate-800 mb-1">
-              Quelle nourriture stocker dans un bunker ?
-            </h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              Privilegiez les aliments a longue conservation :{" "}
-              <strong>rations militaires (MRE, 5-7 ans)</strong>, aliments{" "}
-              <strong>lyophilises (25 ans)</strong>, conserves (2-5 ans), riz et
-              pates sous vide (10-30 ans), miel (indefini), sucre et sel
-              (indefini). Prevoyez aussi des complements de vitamines
-              (notamment vitamine C et D). Pour les longues durees, un{" "}
-              <strong>systeme hydroponique</strong> permet de cultiver des
-              legumes frais avec de la lumiere artificielle.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-semibold text-slate-800 mb-1">
-              Un bunker protege-t-il d&apos;une bombe nucleaire ?
-            </h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              Un bunker <strong>standard</strong> protege des retombees
-              radioactives (fallout) si vous restez confine 2 a 4 semaines. Un
-              bunker <strong>NRBC</strong> offre une protection superieure grace
-              a ses filtres anti-radiation et son blindage renforce. Cependant,
-              aucun bunker civil ne resiste a un{" "}
-              <strong>impact direct</strong> d&apos;une ogive nucleaire
-              moderne. La protection porte sur les effets indirects : souffle,
-              radiation et retombees a distance de l&apos;impact.
-            </p>
-          </div>
-        </div>
-      </section>
-
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/simulateur-bunker" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

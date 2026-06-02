@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 import VillesLinks from "../components/VillesLinks";
 
 export const metadata: Metadata = {
@@ -15,53 +16,29 @@ export const metadata: Metadata = {
     "calcul taxe fonciere, simulateur taxe fonciere 2026, estimation taxe fonciere, valeur locative cadastrale, taux communal, taxe fonciere par ville, exoneration taxe fonciere neuf",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment est calculee la taxe fonciere ?",
+    a: "La taxe fonciere est calculee sur la base de la valeur locative cadastrale du bien, revalorisee chaque annee par un coefficient fixe par la loi de finances. Cette valeur est ensuite reduite d'un abattement forfaitaire de 50% pour obtenir la base imposable. Le taux d'imposition (commune + intercommunalite + taxes speciales) est applique a cette base.",
+  },
+  {
+    q: "Peut-on etre exonere de taxe fonciere ?",
+    a: "Oui, plusieurs exonerations existent. Les constructions neuves beneficient d'une exoneration de 2 ans sur demande (formulaire H1 ou H2 dans les 90 jours). Les personnes agees de plus de 75 ans sous conditions de revenus, les beneficiaires de l'AAH et de l'ASPA peuvent aussi en etre exoneres totalement.",
+  },
+  {
+    q: "Qu'est-ce que la valeur locative cadastrale ?",
+    a: "La valeur locative cadastrale est le loyer annuel theorique que pourrait produire un bien immobilier s'il etait loue dans des conditions normales. Elle est determinee par l'administration fiscale en fonction de la surface, du type de bien, du confort et de la localisation. Elle est revalorisee chaque annee.",
+  },
+  {
+    q: "Comment contester sa taxe fonciere ?",
+    a: "Vous pouvez contester votre taxe fonciere en adressant une reclamation au centre des impots fonciers avant le 31 decembre de l'annee suivant la mise en recouvrement. Les motifs frequents sont : erreur de surface, mauvaise categorie cadastrale, ou comparaison avec des biens similaires moins imposes dans le voisinage.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Taxe Fonciere 2026" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment est calculee la taxe fonciere ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La taxe fonciere est calculee sur la base de la valeur locative cadastrale du bien, revalorisee chaque annee par un coefficient fixe par la loi de finances. Cette valeur est ensuite reduite d'un abattement forfaitaire de 50% pour obtenir la base imposable. Le taux d'imposition (commune + intercommunalite + taxes speciales) est applique a cette base.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Peut-on etre exonere de taxe fonciere ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Oui, plusieurs exonerations existent. Les constructions neuves beneficient d'une exoneration de 2 ans sur demande (formulaire H1 ou H2 dans les 90 jours). Les personnes agees de plus de 75 ans sous conditions de revenus, les beneficiaires de l'AAH et de l'ASPA peuvent aussi en etre exoneres totalement.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qu'est-ce que la valeur locative cadastrale ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La valeur locative cadastrale est le loyer annuel theorique que pourrait produire un bien immobilier s'il etait loue dans des conditions normales. Elle est determinee par l'administration fiscale en fonction de la surface, du type de bien, du confort et de la localisation. Elle est revalorisee chaque annee.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment contester sa taxe fonciere ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Vous pouvez contester votre taxe fonciere en adressant une reclamation au centre des impots fonciers avant le 31 decembre de l'annee suivant la mise en recouvrement. Les motifs frequents sont : erreur de surface, mauvaise categorie cadastrale, ou comparaison avec des biens similaires moins imposes dans le voisinage.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Taxe Fonciere" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -152,6 +129,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <VillesLinks baseSlug="/calcul-taxe-fonciere" title="Taxe fonciere par ville" color="amber" />
       <RelatedCalculators currentSlug="/calcul-taxe-fonciere" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

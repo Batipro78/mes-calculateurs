@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-remboursement-mutuelle" },
@@ -14,45 +15,29 @@ export const metadata: Metadata = {
     "calcul remboursement mutuelle, simulateur mutuelle, remboursement securite sociale, reste a charge, complementaire sante 2026, 100% sante, RAC 0, base de remboursement",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment fonctionne le remboursement Securite Sociale + mutuelle ?",
+    a: "La Securite Sociale rembourse un pourcentage (60 a 80%) de la base de remboursement (BR), pas du cout reel. La mutuelle complementaire prend en charge tout ou partie du reste, selon le niveau de garantie souscrit (100%, 200%, 300% de la BR). Le reste a charge est ce qui n'est couvert ni par la SS ni par la mutuelle.",
+  },
+  {
+    q: "Qu'est-ce que le 100% Sante (RAC 0) ?",
+    a: "La reforme 100% Sante, entree en vigueur progressivement depuis 2019, permet un reste a charge zero (RAC 0) sur certains soins dentaires (couronnes, bridges, dentiers), optiques (verres et montures) et auditifs (audioprotheses). Il faut pour cela choisir des equipements du panier 100% Sante et avoir un contrat de mutuelle responsable.",
+  },
+  {
+    q: "Que signifie 200% BR ou 300% BR pour une mutuelle ?",
+    a: "Le pourcentage de la Base de Remboursement (BR) indique le plafond de prise en charge totale (SS + mutuelle). Par exemple, 200% BR pour une consultation a 26,50 € de base signifie que la prise en charge totale peut aller jusqu'a 53 €. Au-dela de ce plafond, les depassements d'honoraires restent a votre charge.",
+  },
+  {
+    q: "Quelle est la difference entre ticket moderateur et reste a charge ?",
+    a: "Le ticket moderateur est la part des soins non prise en charge par la Securite Sociale (generalement 30% pour les consultations). Le reste a charge (RAC) est ce que vous payez vraiment apres remboursement SS et mutuelle, incluant aussi les depassements d'honoraires non couverts.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Remboursement Mutuelle" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment fonctionne le remboursement Securite Sociale + mutuelle ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La Securite Sociale rembourse un pourcentage (60 a 80%) de la base de remboursement (BR), pas du cout reel. La mutuelle complementaire prend en charge tout ou partie du reste, selon le niveau de garantie souscrit (100%, 200%, 300% de la BR). Le reste a charge est ce qui n'est couvert ni par la SS ni par la mutuelle.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qu'est-ce que le 100% Sante (RAC 0) ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La reforme 100% Sante, entree en vigueur progressivement depuis 2019, permet un reste a charge zero (RAC 0) sur certains soins dentaires (couronnes, bridges, dentiers), optiques (verres et montures) et auditifs (audioprotheses). Il faut pour cela choisir des equipements du panier 100% Sante et avoir un contrat de mutuelle responsable.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Que signifie 200% BR ou 300% BR pour une mutuelle ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le pourcentage de la Base de Remboursement (BR) indique le plafond de prise en charge totale (SS + mutuelle). Par exemple, 200% BR pour une consultation a 26,50 € de base signifie que la prise en charge totale peut aller jusqu'a 53 €. Au-dela de ce plafond, les depassements d'honoraires restent a votre charge.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Remboursement Mutuelle" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -190,6 +175,7 @@ export default function Page() {
         </div>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-remboursement-mutuelle" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

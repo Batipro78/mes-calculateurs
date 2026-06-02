@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/signe-astrologique-chinois" },
@@ -14,53 +15,29 @@ export const metadata: Metadata = {
     "signe astrologique chinois, animal chinois, element wu xing, nouvel an chinois, horoscope chinois, zodiaque chinois, compatibilite astrologique",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quand change le signe astrologique chinois ?",
+    a: "Le signe astrologique chinois change au Nouvel An lunaire (entre janvier et février), pas au 1er janvier. Par exemple, si vous êtes né le 10 février 2024, vous appartenez à l'année 2023 (Lapin d'Eau), car le Nouvel An lunaire 2024 tombe le 10 février.",
+  },
+  {
+    q: "Qu'est-ce que le cycle 60 ans en astrologie chinoise ?",
+    a: "Le cycle 60 ans combine les 12 animaux du zodiaque avec les 5 éléments Wu Xing (Bois, Feu, Terre, Métal, Eau). Cette combinaison (12 × 5) crée 60 combinaisons uniques qui se répètent tous les 60 ans. Par exemple, le Rat de Métal revient tous les 60 ans.",
+  },
+  {
+    q: "Quels sont les 12 animaux du zodiaque chinois ?",
+    a: "Les 12 animaux du zodiaque chinois dans l'ordre sont : Rat, Buffle, Tigre, Lapin, Dragon, Serpent, Cheval, Chèvre, Singe, Coq, Chien et Cochon. Cet ordre est immuable depuis plus de 2000 ans.",
+  },
+  {
+    q: "Comment fonctionne la compatibilité entre signes chinois ?",
+    a: "L'astrologie chinoise repose sur les 'triades de compatibilité'. Chaque animal a une triade de 3 signes avec lesquels il s'entend naturellement. Par exemple, le Rat s'entend bien avec le Dragon et le Singe. Cette harmonie est basée sur les cycles lunaires et les éléments.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Signe Astrologique Chinois - Animal et Élément Wu Xing" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quand change le signe astrologique chinois ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le signe astrologique chinois change au Nouvel An lunaire (entre janvier et février), pas au 1er janvier. Par exemple, si vous êtes né le 10 février 2024, vous appartenez à l&apos;année 2023 (Lapin d&apos;Eau), car le Nouvel An lunaire 2024 tombe le 10 février.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qu&apos;est-ce que le cycle 60 ans en astrologie chinoise ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le cycle 60 ans combine les 12 animaux du zodiaque avec les 5 éléments Wu Xing (Bois, Feu, Terre, Métal, Eau). Cette combinaison (12 × 5) crée 60 combinaisons uniques qui se répètent tous les 60 ans. Par exemple, le Rat de Métal revient tous les 60 ans.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quels sont les 12 animaux du zodiaque chinois ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les 12 animaux du zodiaque chinois dans l&apos;ordre sont : Rat, Buffle, Tigre, Lapin, Dragon, Serpent, Cheval, Chèvre, Singe, Coq, Chien et Cochon. Cet ordre est immuable depuis plus de 2000 ans.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment fonctionne la compatibilité entre signes chinois ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L&apos;astrologie chinoise repose sur les &apos;triades de compatibilité&apos;. Chaque animal a une triade de 3 signes avec lesquels il s&apos;entend naturellement. Par exemple, le Rat s&apos;entend bien avec le Dragon et le Singe. Cette harmonie est basée sur les cycles lunaires et les éléments.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Signe Astrologique Chinois" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -256,6 +233,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/signe-astrologique-chinois" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

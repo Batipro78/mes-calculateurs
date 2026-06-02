@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-age-chien-humain" },
@@ -14,53 +15,33 @@ export const metadata: Metadata = {
     "age chien humain, convertir age chien, mon chien quel age, calcul age chien, formule AVMA, wang 2019, esperance vie chien, age chien en ans humains",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment calculer l'âge d'un chien en années humaines ?",
+    a: "La formule AVMA (American Veterinary Medical Association) est : la 1ère année du chien = 15 ans humains, la 2ème année = +9 ans (total 24), puis à partir de 3 ans, on ajoute +4 à +7 ans par année selon la taille (petit, moyen, grand ou géant). Par exemple, un chien moyen de 5 ans = 15 + 9 + 5×5 = 49 ans humains.",
+  },
+  {
+    q: "Pourquoi pas 1 an = 7 ans humains ?",
+    a: "C'est un mythe ancien. La réalité est que les chiens se développent beaucoup plus vite la première année (croissance osseuse, maturité sexuelle). L'AVMA a mis à jour cette formule en utilisant des données biologiques modernes. Un chien d'1 an = 15 ans humains (pas 7), car il atteint déjà la puberté et la majorité de sa croissance.",
+  },
+  {
+    q: "L'âge d'un chien change-t-il selon sa taille ?",
+    a: "Oui, absolument. Les petits chiens (≤10 kg) vivent plus longtemps (14-16 ans) et vieillissent plus lentement (+4 ans humains par année après 2 ans). Les chiens géants (>45 kg) vivent moins longtemps (8-10 ans) et vieillissent plus vite (+7 ans humains par année). Cela reflète les différences biologiques entre les races.",
+  },
+  {
+    q: "Quelle est l'espérance de vie moyenne d'un chien ?",
+    a: "L'espérance de vie varie selon la taille : petit chien 14-16 ans, chien moyen 12-14 ans, grand chien 10-12 ans, chien géant 8-10 ans. Ces moyennes peuvent varier selon la race, la génétique et la qualité des soins vétérinaires.",
+  },
+  {
+    q: "Qu'est-ce que l'étude Wang 2019 sur l'âge des chiens ?",
+    a: "En 2019, des chercheurs ont publié dans Cell Systems une formule basée sur la méthylation de l'ADN : âge humain = 16 × ln(âge chien) + 31. Elle modélise le vieillissement biologique plus précisément. Pour un Labrador de 5 ans, cela donne environ 56 ans humains, contre 44 ans avec la formule AVMA.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Âge Chien" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment calculer l'âge d'un chien en années humaines ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La formule AVMA (American Veterinary Medical Association) est : la 1ère année du chien = 15 ans humains, la 2ème année = +9 ans (total 24), puis à partir de 3 ans, on ajoute +4 à +7 ans par année selon la taille (petit, moyen, grand ou géant). Par exemple, un chien moyen de 5 ans = 15 + 9 + 5×5 = 49 ans humains.",
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Pourquoi pas 1 an = 7 ans humains ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "C'est un mythe ancien. La réalité est que les chiens se développent beaucoup plus vite la première année (croissance osseuse, maturité sexuelle). L'AVMA a mis à jour cette formule en utilisant des données biologiques modernes. Un chien d'1 an = 15 ans humains (pas 7), car il atteint déjà la puberté et la majorité de sa croissance.",
-                }
-              },
-              {
-                "@type": "Question",
-                name: "L'âge d'un chien change-t-il selon sa taille ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Oui, absolument. Les petits chiens (≤10 kg) vivent plus longtemps (14-16 ans) et vieillissent plus lentement (+4 ans humains par année après 2 ans). Les chiens géants (>45 kg) vivent moins longtemps (8-10 ans) et vieillissent plus vite (+7 ans humains par année). Cela reflète les différences biologiques entre les races.",
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est l'espérance de vie moyenne d'un chien ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L'espérance de vie varie selon la taille : petit chien 14-16 ans, chien moyen 12-14 ans, grand chien 10-12 ans, chien géant 8-10 ans. Ces moyennes peuvent varier selon la race, la génétique et la qualité des soins vétérinaires.",
-                }
-              }
-            ]
-          })
-        }}
-      />
       <Breadcrumb currentPage="Âge Chien" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -267,6 +248,8 @@ export default function Page() {
           santé de votre chien, consultez votre vétérinaire.
         </p>
       </div>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-age-chien-humain" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

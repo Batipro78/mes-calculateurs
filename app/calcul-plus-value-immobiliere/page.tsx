@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-plus-value-immobiliere" },
@@ -14,45 +15,17 @@ export const metadata: Metadata = {
     "calcul plus value immobiliere, simulateur plus value, impot plus value immobiliere, abattement duree detention, plus value vente maison, taxe plus value 2026",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  { q: "Comment est imposee la plus-value immobiliere ?", a: "La plus-value immobiliere est imposee a 19% d'impot sur le revenu + 17,2% de prelevements sociaux, soit 36,2% au total. Des abattements s'appliquent en fonction de la duree de detention : exoneration totale d'IR apres 22 ans et de PS apres 30 ans." },
+  { q: "La vente de ma residence principale est-elle imposee ?", a: "Non. La plus-value realisee lors de la vente de votre residence principale est totalement exoneree d'impot, quelle que soit la duree de detention ou le montant de la plus-value." },
+  { q: "Quels abattements pour duree de detention ?", a: "Pour l'IR : 6% par an de la 6e a la 21e annee, puis 4% la 22e annee (exoneration totale a 22 ans). Pour les PS : 1,65% par an de la 6e a la 21e annee, 1,6% la 22e annee, puis 9% par an de la 23e a la 30e annee (exoneration totale a 30 ans)." },
+  { q: "Peut-on deduire les travaux du calcul de la plus-value ?", a: "Oui. Les travaux d'amelioration, de construction ou d'agrandissement realisés par des entreprises sont deductibles du prix de vente pour reduire la plus-value imposable. Ils doivent etre justifies par des factures. Les travaux d'entretien courant ne sont pas deductibles. Alternativement, un forfait de 15% du prix d'achat est applicable sans justificatif si le bien est detenu depuis plus de 5 ans." },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Plus-Value Immobiliere" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment est imposee la plus-value immobiliere ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La plus-value immobiliere est imposee a 19% d'impot sur le revenu + 17,2% de prelevements sociaux, soit 36,2% au total. Des abattements s'appliquent en fonction de la duree de detention : exoneration totale d'IR apres 22 ans et de PS apres 30 ans.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "La vente de ma residence principale est-elle imposee ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Non. La plus-value realisee lors de la vente de votre residence principale est totalement exoneree d'impot, quelle que soit la duree de detention ou le montant de la plus-value.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quels abattements pour duree de detention ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour l'IR : 6% par an de la 6e a la 21e annee, puis 4% la 22e annee (exoneration totale a 22 ans). Pour les PS : 1,65% par an de la 6e a la 21e annee, 1,6% la 22e annee, puis 9% par an de la 23e a la 30e annee (exoneration totale a 30 ans).",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Plus-Value Immobiliere" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -120,6 +93,7 @@ export default function Page() {
         </div>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-plus-value-immobiliere" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

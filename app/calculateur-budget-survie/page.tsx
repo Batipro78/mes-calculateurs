@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calculateur-budget-survie" },
@@ -14,61 +15,33 @@ export const metadata: Metadata = {
     "budget minimum vivre france, cout de la vie france 2026, budget survie, combien pour vivre, budget mensuel minimum, RSA, SMIC, seuil pauvrete",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quel est le budget minimum pour vivre seul en France en 2026 ?",
+    a: "Le budget minimum pour vivre seul en France en 2026 varie de 900 EUR/mois en zone rurale a plus de 1 800 EUR/mois a Paris. En ville moyenne, comptez environ 1 100-1 200 EUR/mois (logement, alimentation, transport, energie, sante). Le RSA (647 EUR) ne couvre que la moitie de ce budget.",
+  },
+  {
+    q: "Le RSA suffit-il pour vivre ?",
+    a: "Non, le RSA de 647 EUR/mois pour une personne seule est largement insuffisant. Meme en zone rurale, le budget minimum est d'environ 900 EUR. Il manque au minimum 250 a 1 150 EUR selon la zone. Les aides complementaires (APL, CSS, prime d'activite) peuvent combler partiellement ce deficit.",
+  },
+  {
+    q: "Peut-on vivre avec le SMIC en 2026 ?",
+    a: "Le SMIC net de 1 443 EUR/mois permet de couvrir le budget minimum en zone rurale et en ville moyenne pour une personne seule. A Paris ou en grande ville, c'est tres juste. Pour un couple ou une famille, le SMIC seul est insuffisant sans aides complementaires.",
+  },
+  {
+    q: "Quel est le seuil de pauvrete en France ?",
+    a: "Le seuil de pauvrete en France est d'environ 1 288 EUR/mois pour une personne seule (60% du revenu median). En 2023, 15,4% de la population (9,8 millions de personnes) vivait sous ce seuil. Ce montant couvre a peine le budget minimum en ville moyenne.",
+  },
+  {
+    q: "Quel est le poste de depense le plus important ?",
+    a: "Le logement est le poste le plus lourd : il represente 40 a 55% du budget total. A Paris, un studio coute en moyenne 1 050 EUR/mois. En zone rurale, comptez 380 EUR. L'alimentation arrive en 2eme position (15-25%), suivie du transport.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calculateur Budget Survie" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quel est le budget minimum pour vivre seul en France en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le budget minimum pour vivre seul en France en 2026 varie de 900 EUR/mois en zone rurale a plus de 1 800 EUR/mois a Paris. En ville moyenne, comptez environ 1 100-1 200 EUR/mois (logement, alimentation, transport, energie, sante). Le RSA (647 EUR) ne couvre que la moitie de ce budget.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Le RSA suffit-il pour vivre ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Non, le RSA de 647 EUR/mois pour une personne seule est largement insuffisant. Meme en zone rurale, le budget minimum est d'environ 900 EUR. Il manque au minimum 250 a 1 150 EUR selon la zone. Les aides complementaires (APL, CSS, prime d'activite) peuvent combler partiellement ce deficit.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Peut-on vivre avec le SMIC en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le SMIC net de 1 443 EUR/mois permet de couvrir le budget minimum en zone rurale et en ville moyenne pour une personne seule. A Paris ou en grande ville, c'est tres juste. Pour un couple ou une famille, le SMIC seul est insuffisant sans aides complementaires.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel est le seuil de pauvrete en France ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le seuil de pauvrete en France est d'environ 1 288 EUR/mois pour une personne seule (60% du revenu median). En 2023, 15,4% de la population (9,8 millions de personnes) vivait sous ce seuil. Ce montant couvre a peine le budget minimum en ville moyenne.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel est le poste de depense le plus important ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le logement est le poste le plus lourd : il represente 40 a 55% du budget total. A Paris, un studio coute en moyenne 1 050 EUR/mois. En zone rurale, comptez 380 EUR. L'alimentation arrive en 2eme position (15-25%), suivie du transport.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calculateur Budget Survie" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -217,6 +190,8 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calculateur-budget-survie" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

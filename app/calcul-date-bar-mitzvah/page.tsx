@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-date-bar-mitzvah" },
@@ -14,53 +15,29 @@ export const metadata: Metadata = {
     "date bar mitzvah, date bat mitzvah, 13 ans hébraïque, 12 ans hébraïque, majorité religieuse juive, calendrier hébraïque, bar mitzvah garçon, bat mitzvah fille",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quelle est la différence entre Bar Mitzvah et Bat Mitzvah ?",
+    a: "Bar Mitzvah (garçon) marque la majorité religieuse à 13 ans révolus en années hébraïques. Bat Mitzvah (fille) la marque à 12 ans révolus. Cette distinction est commune à toutes les obédiences juives (orthodoxe, libérale, massorti, réformée). Le mot hébreu « bar » signifie « fils de » et « bat » signifie « fille de ».",
+  },
+  {
+    q: "Pourquoi les Bar/Bat Mitzvah sont calculés en années hébraïques ?",
+    a: "Le calendrier hébraïque est luni-solaire et est utilisé par la Torah et la tradition juive depuis l'Antiquité. L'âge religieux juif se compte en années hébraïques, pas grégoriennes. C'est pourquoi la date de Bar/Bat Mitzvah ne coïncide généralement pas avec l'anniversaire grégorien (décalage de 1-2 mois).",
+  },
+  {
+    q: "Comment la date de Bar/Bat Mitzvah est-elle calculée ?",
+    a: "On convertit la date de naissance grégorienne en calendrier hébraïque, on ajoute 13 ans (garçon) ou 12 ans (fille) à l'année hébraïque, puis on convertit cette nouvelle date hébraïque en calendrier grégorien. Le jour et le mois hébraïques restent identiques.",
+  },
+  {
+    q: "Toutes les obédiences juives sont-elles d'accord sur ces âges ?",
+    a: "Oui, le consensus est universel : 13 ans pour les garçons, 12 ans pour les filles. Cela s'applique pour l'orthodoxie, le courant libéral/réforme, le massorti et toutes les autres obédiences. C'est une majorité religieuse selon la Torah et reconnue par tous. Pour les cas particuliers (Adar I/II, conversion), consultez un rabbin.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Date Bar/Bat Mitzvah - Majorité Religieuse Juive" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quelle est la différence entre Bar Mitzvah et Bat Mitzvah ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Bar Mitzvah (garçon) marque la majorité religieuse à 13 ans révolus en années hébraïques. Bat Mitzvah (fille) la marque à 12 ans révolus. Cette distinction est commune à toutes les obédiences juives (orthodoxe, libérale, massorti, réformée). Le mot hébreu « bar » signifie « fils de » et « bat » signifie « fille de ».",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Pourquoi les Bar/Bat Mitzvah sont calculés en années hébraïques ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le calendrier hébraïque est luni-solaire et est utilisé par la Torah et la tradition juive depuis l'Antiquité. L'âge religieux juif se compte en années hébraïques, pas grégoriennes. C'est pourquoi la date de Bar/Bat Mitzvah ne coïncide généralement pas avec l'anniversaire grégorien (décalage de 1-2 mois).",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment la date de Bar/Bat Mitzvah est-elle calculée ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "On convertit la date de naissance grégorienne en calendrier hébraïque, on ajoute 13 ans (garçon) ou 12 ans (fille) à l'année hébraïque, puis on convertit cette nouvelle date hébraïque en calendrier grégorien. Le jour et le mois hébraïques restent identiques.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Toutes les obédiences juives sont-elles d'accord sur ces âges ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Oui, le consensus est universel : 13 ans pour les garçons, 12 ans pour les filles. Cela s'applique pour l'orthodoxie, le courant libéral/réforme, le massorti et toutes les autres obédiences. C'est une majorité religieuse selon la Torah et reconnue par tous. Pour les cas particuliers (Adar I/II, conversion), consultez un rabbin.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Date Bar/Bat Mitzvah" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -264,6 +241,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-date-bar-mitzvah" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

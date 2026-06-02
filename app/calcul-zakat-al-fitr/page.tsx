@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-zakat-al-fitr" },
@@ -14,53 +15,29 @@ export const metadata: Metadata = {
     "zakat al fitr 2026, aumone fin ramadan, mosquee paris cfcm, aid al fitr, zakat fitr montant, obligation religieuse",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qu'est-ce que la Zakat al-Fitr ?",
+    a: "La Zakat al-Fitr est une aumône obligatoire (Zakat) que doit verser tout musulman ayant les moyens avant la prière de l'Aïd al-Fitr (fête marquant la fin du Ramadan). Elle purifie le jeûne et aide les personnes nécessiteuses. Contrairement à la Zakat annuelle, la Zakat al-Fitr est due par chaque membre du foyer.",
+  },
+  {
+    q: "Pourquoi 7 € ou 9 € selon la source ?",
+    a: "La Zakat al-Fitr se calcule traditionnellement en sa' (~2.5-3 kg) de denrée de base. Les montants officiels 2026 varient selon l'interprétation : la Mosquée de Paris retient 7 € par personne, tandis que le CFCM (Conseil Français du Culte Musulman) retient 9 €. Les deux sont considérés comme valides selon les écoles juridiques islamiques. Vérifiez avec votre mosquée locale le montant retenu.",
+  },
+  {
+    q: "Qui doit payer la Zakat al-Fitr ?",
+    a: "Le chef de famille paie la Zakat al-Fitr pour tous les membres du foyer à sa charge, y compris les enfants (même nourrissons), les parents âgés et les personnes dépendantes. Chaque personne à charge = 1 part de Zakat al-Fitr.",
+  },
+  {
+    q: "Quand faut-il verser la Zakat al-Fitr ?",
+    a: "La Zakat al-Fitr doit être versée avant la prière de l'Aïd al-Fitr. Elle peut être versée dès le début du Ramadan, quelques jours avant l'Aïd est courant. Il est recommandé de verser quelques jours avant plutôt que le jour même, pour assurer que l'argent parvient aux nécessiteux à temps.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Zakat al-Fitr - Aumône fin Ramadan" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Qu&apos;est-ce que la Zakat al-Fitr ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La Zakat al-Fitr est une aumône obligatoire (Zakat) que doit verser tout musulman ayant les moyens avant la prière de l&apos;Aïd al-Fitr (fête marquant la fin du Ramadan). Elle purifie le jeûne et aide les personnes nécessiteuses. Contrairement à la Zakat annuelle, la Zakat al-Fitr est due par chaque membre du foyer.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Pourquoi 7 € ou 9 € selon la source ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La Zakat al-Fitr se calcule traditionnellement en sa&apos; (~2.5-3 kg) de denrée de base. Les montants officiels 2026 varient selon l&apos;interprétation : la Mosquée de Paris retient 7 € par personne, tandis que le CFCM (Conseil Français du Culte Musulman) retient 9 €. Les deux sont considérés comme valides selon les écoles juridiques islamiques. Vérifiez avec votre mosquée locale le montant retenu.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qui doit payer la Zakat al-Fitr ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le chef de famille paie la Zakat al-Fitr pour tous les membres du foyer à sa charge, y compris les enfants (même nourrissons), les parents âgés et les personnes dépendantes. Chaque personne à charge = 1 part de Zakat al-Fitr.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quand faut-il verser la Zakat al-Fitr ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La Zakat al-Fitr doit être versée avant la prière de l&apos;Aïd al-Fitr. Elle peut être versée dès le début du Ramadan, quelques jours avant l&apos;Aïd est courant. Il est recommandé de verser quelques jours avant plutôt que le jour même, pour assurer que l&apos;argent parvient aux nécessiteux à temps.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Zakat al-Fitr - Aumône fin Ramadan" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -214,6 +191,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-zakat-al-fitr" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

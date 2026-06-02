@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 import { MOIS_HIJRI } from "./hijriCalc";
 
 export const metadata: Metadata = {
@@ -16,53 +17,29 @@ export const metadata: Metadata = {
     "calendrier hijri, convertisseur hegire, date musulmane, age hijri, umm al qura, calendrier islamique, hijri gregorien, calendrier lunaire",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qu'est-ce que le calendrier hijri ?",
+    a: "Le calendrier hijri (ou calendrier islamique/hégirien) est un calendrier lunaire utilisé par les musulmans pour déterminer les dates des fêtes religieuses (Ramadan, Aïd al-Fitr, Aïd al-Adha, Hajj). Il compte 12 mois lunaires de 29 ou 30 jours, pour un total de 354 ou 355 jours par année. L'année 1 AH correspond à l'Hégire (émigration du Prophète Muhammad de La Mecque à Médine) en 622 EC.",
+  },
+  {
+    q: "Quelle est la différence entre TIC (tabulaire) et Umm al-Qura ?",
+    a: "TIC (Tabular Islamic Calendar) est une méthode mathématique tabulaire, régulière et immuable. Umm al-Qura est la méthode officielle de l'Arabie Saoudite, basée sur des observations et des tables officielles. Les deux peuvent différer de ±1 jour selon la date. Pour les dates religieuses officielles, consultez votre mosquée ou l'autorité religieuse locale.",
+  },
+  {
+    q: "Comment calculer mon âge en années hijri (lunaires) ?",
+    a: "Saisissez votre date de naissance dans le convertisseur, puis sélectionnez \"Calculer mon âge hijri\". L'outil convertit votre date de naissance en hijri et calcule la différence avec la date hijri actuelle. Vous obtiendrez votre âge en années, mois et jours lunaires. Par exemple, quelqu'un né en 1990 aura ~33 ans grégoririen mais ~34 ans hijri car l'année lunaire est 11 jours plus courte.",
+  },
+  {
+    q: "Pourquoi l'année hijri a-t-elle 354 jours au lieu de 365 ?",
+    a: "Le calendrier hijri est lunaire : il suit les phases de la Lune, avec 12 mois de 29-30 jours. Une année lunaire complète = 354-355 jours environ. C'est 11 jours de moins qu'une année grégorienne (solaire). Cette différence fait que les dates hijri avancent d'~11 jours chaque année grégorienne. Par exemple, Ramadan 1447 commence fin avril/début mai 2026, mais Ramadan 1448 commence début avril 2027.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Convertisseur Calendrier Hijri ↔ Grégorien" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Qu&apos;est-ce que le calendrier hijri ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le calendrier hijri (ou calendrier islamique/hégirien) est un calendrier lunaire utilisé par les musulmans pour déterminer les dates des fêtes religieuses (Ramadan, Aïd al-Fitr, Aïd al-Adha, Hajj). Il compte 12 mois lunaires de 29 ou 30 jours, pour un total de 354 ou 355 jours par année. L&apos;année 1 AH correspond à l&apos;Hégire (émigration du Prophète Muhammad de La Mecque à Médine) en 622 EC.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la différence entre TIC (tabulaire) et Umm al-Qura ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "TIC (Tabular Islamic Calendar) est une méthode mathématique tabulaire, régulière et immuable. Umm al-Qura est la méthode officielle de l&apos;Arabie Saoudite, basée sur des observations et des tables officielles. Les deux peuvent différer de ±1 jour selon la date. Pour les dates religieuses officielles, consultez votre mosquée ou l&apos;autorité religieuse locale.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment calculer mon âge en années hijri (lunaires) ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Saisissez votre date de naissance dans le convertisseur, puis sélectionnez &quot;Calculer mon âge hijri&quot;. L&apos;outil convertit votre date de naissance en hijri et calcule la différence avec la date hijri actuelle. Vous obtiendrez votre âge en années, mois et jours lunaires. Par exemple, quelqu&apos;un né en 1990 aura ~33 ans grégoririen mais ~34 ans hijri car l&apos;année lunaire est 11 jours plus courte.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Pourquoi l&apos;année hijri a-t-elle 354 jours au lieu de 365 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le calendrier hijri est lunaire : il suit les phases de la Lune, avec 12 mois de 29-30 jours. Une année lunaire complète = 354-355 jours environ. C&apos;est 11 jours de moins qu&apos;une année grégorienne (solaire). Cette différence fait que les dates hijri avancent d&apos;~11 jours chaque année grégorienne. Par exemple, Ramadan 1447 commence fin avril/début mai 2026, mais Ramadan 1448 commence début avril 2027.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Convertisseur Calendrier Hijri ↔ Grégorien" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -240,6 +217,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/convertisseur-calendrier-hijri" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

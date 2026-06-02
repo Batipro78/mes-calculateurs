@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-age-metabolique" },
@@ -14,45 +15,29 @@ export const metadata: Metadata = {
     "calcul age metabolique, age biologique, age metabolique, metabolisme de base, vieillissement metabolique, BMR age, metabolisme age, calculateur age metabolique, test age metabolique",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qu'est-ce que l'age metabolique ?",
+    a: "L'age metabolique est une estimation de l'age de votre corps base sur votre metabolisme de base (BMR). Si votre BMR est egal a celui d'une personne plus jeune que vous, votre age metabolique est inferieur a votre age reel — votre corps fonctionne de maniere plus efficace. A l'inverse, un BMR plus bas que la reference indique un vieillissement metabolique accelere.",
+  },
+  {
+    q: "Comment reduire son age metabolique ?",
+    a: "Pour reduire son age metabolique, il faut augmenter son metabolisme de base : pratiquer de la musculation pour developper la masse musculaire, adopter une alimentation riche en proteines, faire de l'exercice regulier (objectif 150 min/semaine), reduire la graisse abdominale, arreter le tabac, limiter l'alcool et dormir 7 a 9 heures par nuit.",
+  },
+  {
+    q: "Quel est un bon age metabolique ?",
+    a: "Un age metabolique inferieur de 5 ans ou plus a votre age reel est considere comme excellent. Entre -4 et -1 an, c'est bon. Un ecart de 0 a 2 ans est normal. Au-dela de 3 ans de plus que votre age reel, des ajustements du mode de vie sont recommandes. Au-dela de 7 ans, une consultation medicale est conseillee.",
+  },
+  {
+    q: "L'age metabolique et l'IMC sont-ils la meme chose ?",
+    a: "Non, ce sont deux indicateurs differents. L'IMC mesure uniquement le rapport poids/taille sans distinguer masse musculaire et graisse. L'age metabolique est base sur le metabolisme de base (BMR) et reflète la composition corporelle réelle. Une personne musclée peut avoir un IMC élevé mais un excellent age metabolique.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Age Metabolique" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Qu'est-ce que l'age metabolique ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L'age metabolique est une estimation de l'age de votre corps base sur votre metabolisme de base (BMR). Si votre BMR est egal a celui d'une personne plus jeune que vous, votre age metabolique est inferieur a votre age reel — votre corps fonctionne de maniere plus efficace. A l'inverse, un BMR plus bas que la reference indique un vieillissement metabolique accelere.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment reduire son age metabolique ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour reduire son age metabolique, il faut augmenter son metabolisme de base : pratiquer de la musculation pour developper la masse musculaire, adopter une alimentation riche en proteines, faire de l'exercice regulier (objectif 150 min/semaine), reduire la graisse abdominale, arreter le tabac, limiter l'alcool et dormir 7 a 9 heures par nuit.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel est un bon age metabolique ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Un age metabolique inferieur de 5 ans ou plus a votre age reel est considere comme excellent. Entre -4 et -1 an, c'est bon. Un ecart de 0 a 2 ans est normal. Au-dela de 3 ans de plus que votre age reel, des ajustements du mode de vie sont recommandes. Au-dela de 7 ans, une consultation medicale est conseillee.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Age Metabolique" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -208,6 +193,8 @@ export default function Page() {
           Mis a jour le 8 avril 2026
         </p>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-age-metabolique" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

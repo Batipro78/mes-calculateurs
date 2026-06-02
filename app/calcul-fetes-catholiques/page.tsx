@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-fetes-catholiques" },
@@ -14,53 +15,33 @@ export const metadata: Metadata = {
     "fetes catholiques 2026, calendrier fetes religieuses, paques pentecote ascension, fetes fixes catholiques, toussaint assomption, calendrier liturgique",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qu'est-ce qu'une fête mobile en calendrier catholique ?",
+    a: "Une fête mobile est une célébration dont la date change chaque année car elle dépend de la date de Pâques. Pâques est calculée selon le Concile de Nicée : premier dimanche après la pleine lune de printemps. Les fêtes mobiles incluent Mercredi des Cendres, Pentecôte, Ascension, etc.",
+  },
+  {
+    q: "Quelles sont les fêtes catholiques obligatoires en France ?",
+    a: "En France, les jours fériés religieux sont : Noël (25 décembre), Pâques (dimanche mobile), Ascension (jeudi 39 jours après Pâques), Pentecôte (dimanche 49 jours après Pâques), Toussaint (1er novembre), Assomption (15 août), Sainte Marie Mère de Dieu (1er janvier), Épiphanie (6 janvier).",
+  },
+  {
+    q: "Pourquoi Pâques est-elle une fête mobile ?",
+    a: "Pâques commémore la Résurrection du Christ, un événement basé sur le calendrier lunaire juif. Au Concile de Nicée (325), l'Église a fixé Pâques au premier dimanche après la première pleine lune de printemps. Cette règle produit des dates différentes selon les années.",
+  },
+  {
+    q: "Quelle est la différence entre les fêtes mobiles et les fêtes fixes ?",
+    a: "Les fêtes fixes ont toujours la même date (Noël le 25 décembre, Toussaint le 1er novembre). Les fêtes mobiles changent chaque année car elles dépendent de Pâques. Par exemple, Pâques peut tomber entre le 22 mars et le 25 avril.",
+  },
+  {
+    q: "Quelle est la date de Pâques 2026 ?",
+    a: "Pâques 2026 tombe le dimanche 5 avril 2026. Le lundi de Pâques (jour férié) est donc le 6 avril. L'Ascension sera le 14 mai et la Pentecôte le 24 mai (lundi de Pentecôte férié le 25 mai).",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calendrier Fêtes Catholiques - Pâques, Pentecôte, Ascension" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Qu&apos;est-ce qu&apos;une fête mobile en calendrier catholique ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Une fête mobile est une célébration dont la date change chaque année car elle dépend de la date de Pâques. Pâques est calculée selon le Concile de Nicée : premier dimanche après la pleine lune de printemps. Les fêtes mobiles incluent Mercredi des Cendres, Pentecôte, Ascension, etc.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelles sont les fêtes catholiques obligatoires en France ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "En France, les jours fériés religieux sont : Noël (25 décembre), Pâques (dimanche mobile), Ascension (jeudi 39 jours après Pâques), Pentecôte (dimanche 49 jours après Pâques), Toussaint (1er novembre), Assomption (15 août), Sainte Marie Mère de Dieu (1er janvier), Épiphanie (6 janvier).",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Pourquoi Pâques est-elle une fête mobile ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pâques commémore la Résurrection du Christ, un événement basé sur le calendrier lunaire juif. Au Concile de Nicée (325), l&apos;Église a fixé Pâques au premier dimanche après la première pleine lune de printemps. Cette règle produit des dates différentes selon les années.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la différence entre les fêtes mobiles et les fêtes fixes ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les fêtes fixes ont toujours la même date (Noël le 25 décembre, Toussaint le 1er novembre). Les fêtes mobiles changent chaque année car elles dépendent de Pâques. Par exemple, Pâques peut tomber entre le 22 mars et le 25 avril.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calendrier Fêtes Catholiques" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -224,6 +205,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-fetes-catholiques" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

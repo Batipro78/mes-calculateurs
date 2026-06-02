@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-pgcd-ppcm" },
@@ -14,21 +15,17 @@ export const metadata: Metadata = {
     "calcul pgcd, calcul ppcm, pgcd ppcm en ligne, algorithme euclide, plus grand commun diviseur, plus petit commun multiple, facteurs premiers, pgcd ppcm calculatrice",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  { q: "Comment calculer le PGCD de deux nombres ?", a: "Le PGCD (Plus Grand Commun Diviseur) se calcule avec l'algorithme d'Euclide : on divise le plus grand nombre par le plus petit, puis on recommence avec le diviseur et le reste, jusqu'a obtenir un reste de 0. Le dernier diviseur non nul est le PGCD." },
+  { q: "Comment calculer le PPCM ?", a: "Le PPCM (Plus Petit Commun Multiple) se calcule avec la formule : PPCM(a, b) = (a x b) / PGCD(a, b). Il suffit donc de connaitre le PGCD pour calculer le PPCM." },
+  { q: "A quoi servent le PGCD et le PPCM ?", a: "Le PGCD sert a simplifier les fractions, trouver des mesures communes. Le PPCM sert a trouver un denominateur commun pour additionner des fractions, synchroniser des cycles ou calculer des periodicites." },
+  { q: "Qu'est-ce que deux nombres premiers entre eux ?", a: "Deux nombres sont premiers entre eux (ou copremiers) si leur PGCD est egal a 1. Cela ne signifie pas qu'ils sont des nombres premiers individuellement : par exemple, 8 et 9 sont premiers entre eux (PGCD = 1) mais ni l'un ni l'autre n'est un nombre premier." },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul PGCD PPCM" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org", "@type": "FAQPage",
-        mainEntity: [
-          { "@type": "Question", name: "Comment calculer le PGCD de deux nombres ?",
-            acceptedAnswer: { "@type": "Answer", text: "Le PGCD (Plus Grand Commun Diviseur) se calcule avec l'algorithme d'Euclide : on divise le plus grand nombre par le plus petit, puis on recommence avec le diviseur et le reste, jusqu'a obtenir un reste de 0. Le dernier diviseur non nul est le PGCD." } },
-          { "@type": "Question", name: "Comment calculer le PPCM ?",
-            acceptedAnswer: { "@type": "Answer", text: "Le PPCM (Plus Petit Commun Multiple) se calcule avec la formule : PPCM(a, b) = (a x b) / PGCD(a, b). Il suffit donc de connaitre le PGCD pour calculer le PPCM." } },
-          { "@type": "Question", name: "A quoi servent le PGCD et le PPCM ?",
-            acceptedAnswer: { "@type": "Answer", text: "Le PGCD sert a simplifier les fractions, trouver des mesures communes. Le PPCM sert a trouver un denominateur commun pour additionner des fractions, synchroniser des cycles ou calculer des periodicites." } },
-        ]
-      }) }} />
       <Breadcrumb currentPage="PGCD / PPCM" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -80,6 +77,7 @@ export default function Page() {
         </div>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-pgcd-ppcm" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

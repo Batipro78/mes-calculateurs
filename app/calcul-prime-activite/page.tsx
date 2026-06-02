@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-prime-activite" },
@@ -14,53 +15,29 @@ export const metadata: Metadata = {
     "prime activite, calcul prime activite, simulateur prime activite, CAF, montant prime activite, bareme 2026, bonification, forfait logement",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment est calculee la prime d'activite ?",
+    a: "La prime d'activite = Montant forfaitaire + 61% des revenus professionnels + Bonification individuelle - Ressources du foyer - Forfait logement. Le montant forfaitaire de base est de 633,21 EUR pour une personne seule en 2025.",
+  },
+  {
+    q: "Qui a droit a la prime d'activite ?",
+    a: "Toute personne de 18 ans ou plus, residant en France, exercant une activite professionnelle (salariee ou independante) avec des revenus modestes. Les etudiants et apprentis doivent gagner au moins 1 117 EUR net/mois pendant 3 mois consecutifs.",
+  },
+  {
+    q: "Quel est le plafond de revenus pour la prime d'activite ?",
+    a: "Pour une personne seule sans enfant, le plafond est d'environ 2 000 EUR net/mois. Pour un couple avec 2 enfants (mono-actif), il peut atteindre 3 450 EUR. Le montant diminue progressivement a mesure que les revenus augmentent.",
+  },
+  {
+    q: "Qu'est-ce que la bonification individuelle ?",
+    a: "La bonification est un bonus accorde a chaque membre du foyer dont les revenus depassent 709 EUR/mois. Elle augmente progressivement jusqu'a un maximum de 173,22 EUR/mois pour un revenu egal ou superieur au SMIC net (1 442 EUR).",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Simulateur Prime d'Activite" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment est calculee la prime d'activite ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La prime d'activite = Montant forfaitaire + 61% des revenus professionnels + Bonification individuelle - Ressources du foyer - Forfait logement. Le montant forfaitaire de base est de 633,21 EUR pour une personne seule en 2025.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qui a droit a la prime d'activite ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Toute personne de 18 ans ou plus, residant en France, exercant une activite professionnelle (salariee ou independante) avec des revenus modestes. Les etudiants et apprentis doivent gagner au moins 1 117 EUR net/mois pendant 3 mois consecutifs.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel est le plafond de revenus pour la prime d'activite ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour une personne seule sans enfant, le plafond est d'environ 2 000 EUR net/mois. Pour un couple avec 2 enfants (mono-actif), il peut atteindre 3 450 EUR. Le montant diminue progressivement a mesure que les revenus augmentent.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qu'est-ce que la bonification individuelle ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La bonification est un bonus accorde a chaque membre du foyer dont les revenus depassent 709 EUR/mois. Elle augmente progressivement jusqu'a un maximum de 173,22 EUR/mois pour un revenu egal ou superieur au SMIC net (1 442 EUR).",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Prime d'Activite" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -229,6 +206,8 @@ export default function Page() {
       </div>
 
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-prime-activite" />
     </div>

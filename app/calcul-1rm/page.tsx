@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-1rm" },
@@ -14,53 +15,33 @@ export const metadata: Metadata = {
     "calcul 1rm, one rep max, brzycki, epley, lander, lombardi, oconnor, charge maximale musculation, powerlifting, pourcentage 1rm, tableau charges",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qu'est-ce que le 1RM ?",
+    a: "Le 1RM (1 Rep Max) est la charge maximale qu'une personne peut soulever correctement en une seule répétition. C'est la référence absolue en musculation et powerlifting pour mesurer la force. Le 1RM ne doit généralement pas être testé régulièrement pour des raisons de sécurité et de récupération.",
+  },
+  {
+    q: "Quelle formule de 1RM est la plus précise ?",
+    a: "La formule de Brzycki est la plus utilisée et généralement considérée comme la plus fiable pour la musculation et le powerlifting. Elle donne souvent les meilleurs résultats. Cependant, chaque formule a ses variantes : Epley est aussi populaire, tandis que Lander et Lombardi sont plus spécialisées. La moyenne des 5 formules offre une estimation plus robuste.",
+  },
+  {
+    q: "Comment utiliser le 1RM pour programmer l'entraînement ?",
+    a: "Une fois votre 1RM connu ou estimé, vous pouvez déterminer les charges de travail selon vos objectifs : Force (85-100% 1RM), Hypertrophie (65-85% 1RM), Endurance (40-65% 1RM). Cet outil génère les charges pour 1-20 répétitions et leurs pourcentages correspondants. N'augmentez pas d'un coup les charges sans progressivité.",
+  },
+  {
+    q: "Faut-il tester son 1RM réel en salle ?",
+    a: "Tester son vrai 1RM comporte des risques de blessure et de surmenage. Il est préférable de l'estimer via ce calculateur à partir de charges plus légères et plus de répétitions. Si vous testez votre 1RM, faites-le avec un partenaire, correctement échauffé, et en fin de bloc d'entraînement. Les tests ne sont pas nécessaires fréquemment.",
+  },
+  {
+    q: "Combien de répétitions utiliser pour estimer son 1RM ?",
+    a: "Les formules de 1RM sont les plus fiables entre 2 et 10 répétitions. Au-delà de 10 reps, la fatigue musculaire fausse l'estimation. Pour une estimation précise, utilisez une charge que vous pouvez soulever 3 à 6 fois avec une technique parfaite.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul 1RM - One Rep Max" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Qu&apos;est-ce que le 1RM ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le 1RM (1 Rep Max) est la charge maximale qu&apos;une personne peut soulever correctement en une seule répétition. C&apos;est la référence absolue en musculation et powerlifting pour mesurer la force. Le 1RM ne doit généralement pas être testé régulièrement pour des raisons de sécurité et de récupération.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle formule de 1RM est la plus précise ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La formule de Brzycki est la plus utilisée et généralement considérée comme la plus fiable pour la musculation et le powerlifting. Elle donne souvent les meilleurs résultats. Cependant, chaque formule a ses variantes : Epley est aussi populaire, tandis que Lander et Lombardi sont plus spécialisées. La moyenne des 5 formules offre une estimation plus robuste.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment utiliser le 1RM pour programmer l&apos;entraînement ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Une fois votre 1RM connu ou estimé, vous pouvez déterminer les charges de travail selon vos objectifs : Force (85-100% 1RM), Hypertrophie (65-85% 1RM), Endurance (40-65% 1RM). Cet outil génère les charges pour 1-20 répétitions et leurs pourcentages correspondants. N&apos;augmentez pas d&apos;un coup les charges sans progressivité.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Faut-il tester son 1RM réel en salle ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Tester son vrai 1RM comporte des risques de blessure et de surmenage. Il est préférable de l&apos;estimer via ce calculateur à partir de charges plus légères et plus de répétitions. Si vous testez votre 1RM, faites-le avec un partenaire, correctement échauffé, et en fin de bloc d&apos;entraînement. Les tests ne sont pas nécessaires fréquemment.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul 1RM - One Rep Max" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -202,6 +183,8 @@ export default function Page() {
       </section>
 
       <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-1rm" />
     </div>

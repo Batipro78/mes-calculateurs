@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-poids-ideal" },
@@ -14,45 +15,29 @@ export const metadata: Metadata = {
     "calcul poids ideal, poids ideal homme, poids ideal femme, formule lorentz, formule devine, formule creff, poids sain, IMC ideal",
 };
 
-export default function Page() {
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Quelle est la formule la plus fiable pour calculer le poids ideal ?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Il n'existe pas de formule universelle. La formule de Lorentz est la plus connue et simple a utiliser. La formule de Devine est utilisee en milieu medical. La formule de Creff integre l'age et la morphologie, ce qui la rend plus personnalisee. La moyenne des 3 formules donne une estimation equilibree.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Quel est le poids ideal pour une femme de 165 cm ?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Pour une femme de 165 cm, le poids ideal selon la formule de Lorentz est d'environ 58 kg. La fourchette saine (IMC entre 18,5 et 24,9) se situe entre 50,3 kg et 67,8 kg. La formule de Devine donne environ 55,2 kg et la formule de Creff (morphologie normale, 30 ans) donne environ 59,6 kg.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "L'age influence-t-il le poids ideal ?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Oui, mais uniquement dans la formule de Creff. Cette formule integre l'age car la masse musculaire et la densite osseuse evoluent avec l'age. Les formules de Lorentz et Devine ne prennent pas l'age en compte. En general, un leger surplus de poids apres 60 ans est considere comme protecteur.",
-        },
-      },
-    ],
-  };
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quelle est la formule la plus fiable pour calculer le poids ideal ?",
+    a: "Il n'existe pas de formule universelle. La formule de Lorentz est la plus connue et simple a utiliser. La formule de Devine est utilisee en milieu medical. La formule de Creff integre l'age et la morphologie, ce qui la rend plus personnalisee. La moyenne des 3 formules donne une estimation equilibree.",
+  },
+  {
+    q: "Quel est le poids ideal pour une femme de 165 cm ?",
+    a: "Pour une femme de 165 cm, le poids ideal selon la formule de Lorentz est d'environ 58 kg. La fourchette saine (IMC entre 18,5 et 24,9) se situe entre 50,3 kg et 67,8 kg. La formule de Devine donne environ 55,2 kg et la formule de Creff (morphologie normale, 30 ans) donne environ 59,6 kg.",
+  },
+  {
+    q: "L'age influence-t-il le poids ideal ?",
+    a: "Oui, mais uniquement dans la formule de Creff. Cette formule integre l'age car la masse musculaire et la densite osseuse evoluent avec l'age. Les formules de Lorentz et Devine ne prennent pas l'age en compte. En general, un leger surplus de poids apres 60 ans est considere comme protecteur.",
+  },
+  {
+    q: "Le poids ideal est-il le meme pour un homme et une femme de meme taille ?",
+    a: "Non. Les formules de Lorentz et Devine appliquent des coefficients differents selon le sexe. Par exemple pour 170 cm, Lorentz donne ~70 kg pour un homme et ~64 kg pour une femme. Cette difference reflete la composition corporelle distincte : les hommes ont en moyenne plus de masse musculaire.",
+  },
+];
 
+export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Poids Ideal" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
       <Breadcrumb currentPage="Calcul Poids Ideal" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -224,6 +209,8 @@ export default function Page() {
           Mis a jour le 8 avril 2026
         </p>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-poids-ideal" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

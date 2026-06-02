@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-prestation-compensatoire" },
@@ -14,49 +15,32 @@ export const metadata: Metadata = {
     "prestation compensatoire, calcul prestation compensatoire, divorce prestation, bareme Depondt, article 271 code civil, simulateur prestation divorce",
 };
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Qu'est-ce que la prestation compensatoire ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "La prestation compensatoire (art. 270 et 271 du Code civil) est une somme versee par un conjoint a l'autre lors d'un divorce, destinee a compenser la disparite creee dans les conditions de vie respectives par la rupture du mariage. Elle prend generalement la forme d'un capital (versement unique ou echelonne sur 8 ans max), ou plus rarement d'une rente viagere. Elle est distincte de la pension alimentaire (qui concerne les enfants).",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Qui paye la prestation compensatoire ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "La prestation compensatoire est versee par le conjoint aux revenus/patrimoine plus eleves au conjoint aux revenus plus faibles, quel que soit son sexe ou le type de divorce (consentement mutuel, faute, alteration lien conjugal, acceptation). Elle est due meme en cas de divorce par consentement mutuel si les parties l'ont prevue dans leur convention. Le juge est libre de determiner le montant, meme si les epoux en avaient convenu un different.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Comment le juge calcule-t-il la prestation compensatoire ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "L'article 271 du Code civil liste les criteres : duree du mariage, age et etat de sante des conjoints, qualification et situation professionnelle, consequences du choix professionnel fait pour l'education des enfants, patrimoine estime ou previsible, droits existants et previsibles (retraite notamment), situation respective en matiere de pensions de retraite. Il n'existe PAS de formule legale unique : le juge apprecie librement. Les avocats utilisent des baremes indicatifs (methode Depondt de la CA Paris, methodes ponderees) pour faire des propositions.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Combien coute en moyenne une prestation compensatoire en France ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Selon les statistiques du ministere de la Justice, le montant median d'une prestation compensatoire en France se situe autour de 30 000 EUR, mais la fourchette est tres large : de quelques milliers d'euros pour un mariage court avec revenus similaires, jusqu'a 500 000 EUR+ pour de longs mariages avec forte disparite. Les prestations superieures a 200 000 EUR representent environ 15% des cas. Dans 70% des cas, la prestation est versee sous forme de capital (pas de rente).",
-      },
-    },
-  ],
-};
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qu'est-ce que la prestation compensatoire ?",
+    a: "La prestation compensatoire (art. 270 et 271 du Code civil) est une somme versee par un conjoint a l'autre lors d'un divorce, destinee a compenser la disparite creee dans les conditions de vie respectives par la rupture du mariage. Elle prend generalement la forme d'un capital (versement unique ou echelonne sur 8 ans max), ou plus rarement d'une rente viagere. Elle est distincte de la pension alimentaire (qui concerne les enfants).",
+  },
+  {
+    q: "Qui paye la prestation compensatoire ?",
+    a: "La prestation compensatoire est versee par le conjoint aux revenus/patrimoine plus eleves au conjoint aux revenus plus faibles, quel que soit son sexe ou le type de divorce (consentement mutuel, faute, alteration lien conjugal, acceptation). Elle est due meme en cas de divorce par consentement mutuel si les parties l'ont prevue dans leur convention. Le juge est libre de determiner le montant, meme si les epoux en avaient convenu un different.",
+  },
+  {
+    q: "Comment le juge calcule-t-il la prestation compensatoire ?",
+    a: "L'article 271 du Code civil liste les criteres : duree du mariage, age et etat de sante des conjoints, qualification et situation professionnelle, consequences du choix professionnel fait pour l'education des enfants, patrimoine estime ou previsible, droits existants et previsibles (retraite notamment), situation respective en matiere de pensions de retraite. Il n'existe PAS de formule legale unique : le juge apprecie librement. Les avocats utilisent des baremes indicatifs (methode Depondt de la CA Paris, methodes ponderees) pour faire des propositions.",
+  },
+  {
+    q: "Combien coute en moyenne une prestation compensatoire en France ?",
+    a: "Selon les statistiques du ministere de la Justice, le montant median d'une prestation compensatoire en France se situe autour de 30 000 EUR, mais la fourchette est tres large : de quelques milliers d'euros pour un mariage court avec revenus similaires, jusqu'a 500 000 EUR+ pour de longs mariages avec forte disparite. Les prestations superieures a 200 000 EUR representent environ 15% des cas. Dans 70% des cas, la prestation est versee sous forme de capital (pas de rente).",
+  },
+  {
+    q: "La prestation compensatoire est-elle imposable ?",
+    a: "Oui, partiellement. Le versant qui paye beneficie d'une reduction d'impot de 25% sur les versements effectues dans les 12 mois suivant le jugement de divorce, dans la limite de 30 500 EUR. Au-dela, les versements sont deductibles du revenu imposable. Le beneficiaire doit declarer les sommes recues comme revenus (si rente) ou n'a rien a declarer si c'est un capital verse en une fois.",
+  },
+];
 
 export default function Page() {
   return (
     <div>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <WebAppJsonLd name="Calcul Prestation Compensatoire" description="Simulateur prestation compensatoire divorce" category="LegalApplication" />
       <Breadcrumb currentPage="Calcul Prestation Compensatoire" />
 
@@ -116,6 +100,8 @@ export default function Page() {
           <li><strong>Rente viagere (rare)</strong> : uniquement si le creancier ne peut subvenir a ses besoins en raison de son age ou de son etat de sante</li>
         </ul>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-prestation-compensatoire" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

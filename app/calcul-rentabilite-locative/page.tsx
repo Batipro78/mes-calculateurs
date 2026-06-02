@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-rentabilite-locative" },
@@ -14,45 +15,29 @@ export const metadata: Metadata = {
     "calcul rentabilite locative, rentabilite brute nette, rendement locatif, investissement immobilier rentabilite, simulateur rentabilite locative, rendement immobilier 2026",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment calculer la rentabilite locative brute ?",
+    a: "Rentabilite brute = (loyer annuel / prix d'achat total) x 100. Exemple : loyer 800 €/mois, achat 200 000 € => (9 600 / 200 000) x 100 = 4,8%. C'est un indicateur rapide mais ne tient pas compte des charges.",
+  },
+  {
+    q: "Comment calculer la rentabilite locative nette ?",
+    a: "Rentabilite nette = ((loyer annuel - charges - taxe fonciere) / investissement total) x 100. L'investissement total inclut le prix d'achat, les frais de notaire et les travaux. C'est l'indicateur le plus fiable.",
+  },
+  {
+    q: "Quelle est une bonne rentabilite locative ?",
+    a: "En France, la rentabilite nette moyenne se situe entre 3% et 5%. Au-dessus de 5% net, c'est considere comme bon. Au-dessus de 7%, c'est excellent. En dessous de 3%, c'est faible sauf si la plus-value attendue compense.",
+  },
+  {
+    q: "Faut-il inclure les frais de notaire dans le calcul ?",
+    a: "Oui. Pour obtenir une rentabilite nette realiste, l'investissement total doit inclure le prix d'achat, les frais de notaire (7 a 8% dans l'ancien, 2 a 3% dans le neuf) et les travaux eventuels. Ne pas les inclure surestime la rentabilite.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Rentabilite Locative" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment calculer la rentabilite locative brute ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Rentabilite brute = (loyer annuel / prix d'achat total) x 100. Exemple : loyer 800\u20ac/mois, achat 200 000\u20ac → (9 600 / 200 000) x 100 = 4,8%. C'est un indicateur rapide mais ne tient pas compte des charges.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment calculer la rentabilite locative nette ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Rentabilite nette = ((loyer annuel - charges - taxe fonciere) / investissement total) x 100. L'investissement total inclut le prix d'achat, les frais de notaire et les travaux. C'est l'indicateur le plus fiable.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est une bonne rentabilite locative ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "En France, la rentabilite nette moyenne se situe entre 3% et 5%. Au-dessus de 5% net, c'est considere comme bon. Au-dessus de 7%, c'est excellent. En dessous de 3%, c'est faible sauf si la plus-value attendue compense.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Rentabilite Locative" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -124,6 +109,7 @@ export default function Page() {
         </div>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-rentabilite-locative" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

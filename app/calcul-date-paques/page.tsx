@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-date-paques" },
@@ -14,53 +15,29 @@ export const metadata: Metadata = {
     "date paques 2026, calcul paques meeus, paques orthodoxe, ascension pentecote, mercredi cendres, fetes chretiennes mobiles, paques catholique",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Pourquoi la date de Pâques change-t-elle chaque année ?",
+    a: "Pâques est une fête mobile basée sur le calendrier lunaire. Selon le Concile de Nicée (325 ap. J.-C.), Pâques est fixée au premier dimanche après la pleine lune qui suit l'équinoxe de printemps (21 mars). Cette règle produit des dates différentes selon les années.",
+  },
+  {
+    q: "Quelle est la différence entre Pâques catholique et Pâques orthodoxe ?",
+    a: "Pâques catholique suit le calendrier grégorien (algorithme Meeus), tandis que Pâques orthodoxe suit le calendrier julien (13 jours de décalage en 1900-2099). Cette différence explique pourquoi les deux traditions ne célèbrent pas toujours Pâques à la même date. Par exemple, en 2028, elles coïncident.",
+  },
+  {
+    q: "Comment fonctionne l'algorithme Meeus pour calculer Pâques ?",
+    a: "L'algorithme Meeus/Jones/Butcher utilise des opérations modulo sur l'année pour déterminer la pleine lune pascale, puis trouve le premier dimanche après. C'est une formule purement calculatoire (sans tables) valable de 1583 à 4099 pour le calendrier grégorien. Elle remplace les anciennes tables lunaires des églises médiévales.",
+  },
+  {
+    q: "En quelles années Pâques catholique et Pâques orthodoxe coïncident-elles ?",
+    a: "Pâques coïncide certaines années, comme 2025 et 2028. C'est une coïncidence rare due aux décalages entre calendriers grégorien et julien. En 2026, Pâques catholique est le 5 avril, tandis que Pâques orthodoxe est le 12 avril.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Date de Pâques - Cendres, Ascension, Pentecôte" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Pourquoi la date de Pâques change-t-elle chaque année ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pâques est une fête mobile basée sur le calendrier lunaire. Selon le Concile de Nicée (325 ap. J.-C.), Pâques est fixée au premier dimanche après la pleine lune qui suit l&apos;équinoxe de printemps (21 mars). Cette règle produit des dates différentes selon les années.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la différence entre Pâques catholique et Pâques orthodoxe ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pâques catholique suit le calendrier grégorien (algorithme Meeus), tandis que Pâques orthodoxe suit le calendrier julien (13 jours de décalage en 1900-2099). Cette différence explique pourquoi les deux traditions ne célèbrent pas toujours Pâques à la même date. Par exemple, en 2028, elles coïncident.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment fonctionne l'algorithme Meeus pour calculer Pâques ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L&apos;algorithme Meeus/Jones/Butcher utilise des opérations modulo sur l&apos;année pour déterminer la pleine lune pascale, puis trouve le premier dimanche après. C&apos;est une formule purement calculatoire (sans tables) valable de 1583 à 4099 pour le calendrier grégorien. Elle remplace les anciennes tables lunaires des églises médiévales.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "En quelles années Pâques catholique et Pâques orthodoxe coïncident-elles ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pâques coïncide certaines années, comme 2025 et 2028. C&apos;est une coïncidence rare due aux décalages entre calendriers grégorien et julien. En 2026, Pâques catholique est le 5 avril, tandis que Pâques orthodoxe est le 12 avril.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Date de Pâques - Cendres, Ascension, Pentecôte" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -293,6 +270,7 @@ jour = (h + l - 7 * m + 114) % 31 + 1
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-date-paques" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

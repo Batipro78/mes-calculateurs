@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-zakat" },
@@ -14,53 +15,29 @@ export const metadata: Metadata = {
     "calcul zakat, zakat al mal, aumone musulmane, nisab or argent, hanafite majoritaire, ecfr cfcm, coran 9:60",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qu'est-ce que la Zakat al-Mal ?",
+    a: "La Zakat al-Mal est l'aumone legale dans l'Islam. Elle consiste a donner 2,5% de son patrimoine net annuel aux personnes eligibles (pauvres, endettes, voyageurs, etc.). Fondee sur le Coran 9:60 et les hadiths Boukhari/Mouslim.",
+  },
+  {
+    q: "Quel nisab choisir : or ou argent ?",
+    a: "Deux ecoles : Majoritaire (Maliki, Chafii, Hanbali, ECFR) utilise le nisab or (85g), plus eleve. Hanafite utilise le nisab argent (595g), seuil bas. Le choix depend de votre ecole de reference ou de votre ijtihad personnel. Consultez la Mosquee de Paris ou l'ECFR pour votre situation.",
+  },
+  {
+    q: "Les bijoux portes sont-ils zakatables ?",
+    a: "Avis divergents : Hanafite disent oui (toujours). Maliki, Chafii, Hanbali disent non si portes a usage habituel (mariage, fete). Consultez votre imam ou le calculateur propose cette flexibilite.",
+  },
+  {
+    q: "Comment calculer les dettes dans la Zakat ?",
+    a: "SEULEMENT les dettes court terme (payables dans 12 prochains mois) : factures, loyers, impots dus, mensualites credit, salaires d'employes. PAS les prets immobiliers long terme ni hypotheques. Deductibles du patrimoine brut avant calcul.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Zakat al-Mal" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Qu&apos;est-ce que la Zakat al-Mal ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La Zakat al-Mal est l&apos;aumone legale dans l&apos;Islam. Elle consiste a donner 2,5% de son patrimoine net annuel aux personnes eligibles (pauvres, endettes, voyageurs, etc.). Fondee sur le Coran 9:60 et les hadiths Boukhari/Mouslim.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel nisab choisir : or ou argent ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Deux ecoles : Majoritaire (Maliki, Chafii, Hanbali, ECFR) utilise le nisab or (85g), plus eleve. Hanafite utilise le nisab argent (595g), seuil bas. Le choix depend de votre ecole de reference ou de votre ijtihad personnel. Consultez la Mosquee de Paris ou l&apos;ECFR pour votre situation.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Les bijoux portes sont-ils zakatables ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Avis divergents : Hanafite disent oui (toujours). Maliki, Chafii, Hanbali disent non si portes a usage habituel (mariage, fete). Consultez votre imam ou le calculateur propose cette flexibilite.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment calculer les dettes dans la Zakat ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "SEULEMENT les dettes court terme (payables dans 12 prochains mois) : factures, loyers, impots dus, mensualites credit, salaires d&apos;employes. PAS les prets immobiliers long terme ni hypotheques. Deductibles du patrimoine brut avant calcul.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Zakat al-Mal" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -241,6 +218,7 @@ export default function Page() {
 
       <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-zakat" />
     </div>
   );

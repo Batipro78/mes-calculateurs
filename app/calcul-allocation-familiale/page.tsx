@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-allocation-familiale" },
@@ -14,45 +15,29 @@ export const metadata: Metadata = {
     "allocation familiale, calcul allocation familiale, simulateur CAF, allocations familiales 2026, ARS, complement familial, bareme CAF, allocation rentree scolaire",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "A partir de combien d'enfants touche-t-on les allocations familiales ?",
+    a: "Les allocations familiales sont versees a partir de 2 enfants a charge de moins de 20 ans. Le montant depend de vos revenus et du nombre d'enfants. Pour 2 enfants en tranche 1 (revenus < 74 966 EUR), le montant est d'environ 141,99 EUR par mois en 2026.",
+  },
+  {
+    q: "Quel est le montant de l'allocation de rentree scolaire (ARS) en 2026 ?",
+    a: "L'ARS est versee en aout pour chaque enfant scolarise de 6 a 18 ans, sous conditions de ressources. Les montants 2026 sont : 416,40 EUR pour les 6-10 ans, 439,38 EUR pour les 11-14 ans, et 454,60 EUR pour les 15-18 ans.",
+  },
+  {
+    q: "Comment sont calculees les allocations familiales selon les revenus ?",
+    a: "Les allocations familiales sont modulees selon 3 tranches de revenus. Pour 2 enfants : tranche 1 (< 74 966 EUR) = 141,99 EUR/mois, tranche 2 (74 966 - 99 922 EUR) = 71 EUR/mois, tranche 3 (> 99 922 EUR) = 35,50 EUR/mois. Les plafonds augmentent de 6 631 EUR par enfant supplementaire au-dela de 2.",
+  },
+  {
+    q: "Qu'est-ce que le complement familial CAF ?",
+    a: "Le complement familial est une aide versee aux familles ayant au moins 3 enfants ages de 3 a 21 ans, sous conditions de ressources. Son montant est d'environ 172,77 EUR par mois en 2026. Il ne se cumule pas avec l'allocation de base de la PAJE (prestation d'accueil du jeune enfant).",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Simulateur Allocations Familiales CAF" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "A partir de combien d'enfants touche-t-on les allocations familiales ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les allocations familiales sont versees a partir de 2 enfants a charge de moins de 20 ans. Le montant depend de vos revenus et du nombre d'enfants. Pour 2 enfants en tranche 1 (revenus < 74 966 EUR), le montant est d'environ 141,99 EUR par mois en 2026.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel est le montant de l'allocation de rentree scolaire (ARS) en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L'ARS est versee en aout pour chaque enfant scolarise de 6 a 18 ans, sous conditions de ressources. Les montants 2026 sont : 416,40 EUR pour les 6-10 ans, 439,38 EUR pour les 11-14 ans, et 454,60 EUR pour les 15-18 ans.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment sont calculees les allocations familiales selon les revenus ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les allocations familiales sont modulees selon 3 tranches de revenus. Pour 2 enfants : tranche 1 (< 74 966 EUR) = 141,99 EUR/mois, tranche 2 (74 966 - 99 922 EUR) = 71 EUR/mois, tranche 3 (> 99 922 EUR) = 35,50 EUR/mois. Les plafonds augmentent de 6 631 EUR par enfant supplementaire au-dela de 2.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Allocation Familiale CAF" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -302,6 +287,8 @@ export default function Page() {
       </div>
 
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-allocation-familiale" />
     </div>

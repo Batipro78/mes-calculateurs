@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/convertisseur-monnaie-jeu" },
@@ -15,53 +16,29 @@ export const metadata: Metadata = {
     "v-bucks euros, rp lol euros, apex coins euros, robux euros, prix monnaie jeu, convertisseur jeu video, fortnite, league of legends, cod points, fifa points",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Combien coûte 1000 V-bucks en euros ?",
+    a: "1000 V-bucks (Fortnite) coûtent environ 7.99 EUR selon le pack officiel. Cela représente un ratio de 125 V-bucks par euro.",
+  },
+  {
+    q: "Comment convertir les RP en euros ?",
+    a: "Utilisez notre convertisseur pour transformer les Riot Points (RP) de League of Legends en euros. 1380 RP = 10 EUR environ, soit un ratio de 138 RP par euro.",
+  },
+  {
+    q: "Quel est le prix officiel des Apex Coins ?",
+    a: "1000 Apex Coins (Apex Legends) coûtent 9.99 EUR, avec un ratio de 100 AC pour 1 EUR.",
+  },
+  {
+    q: "Pourquoi le prix des monnaies jeux varie selon les packs ?",
+    a: "Les éditeurs proposent des bonus de monnaie à l'achat de gros packs. Par exemple, acheter 13500 V-bucks coûte moins que 13.5 fois le prix de 1000 V-bucks. Notre outil utilise les tarifs officiels des packs de base.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Convertisseur Monnaie Jeux Video" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Combien coûte 1000 V-bucks en euros ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "1000 V-bucks (Fortnite) coûtent environ 7.99 EUR selon le pack officiel. Cela représente un ratio de 125 V-bucks par euro.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment convertir les RP en euros ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Utilisez notre convertisseur pour transformer les Riot Points (RP) de League of Legends en euros. 1380 RP = 10 EUR environ, soit un ratio de 138 RP par euro.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel est le prix officiel des Apex Coins ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "1000 Apex Coins (Apex Legends) coûtent 9.99 EUR, avec un ratio de 100 AC pour 1 EUR.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Pourquoi le prix des monnaies jeux varie selon les packs ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les éditeurs proposent des bonus de monnaie à l&apos;achat de gros packs. Par exemple, acheter 13500 V-bucks coûte moins que 13.5 fois le prix de 1000 V-bucks. Notre outil utilise les tarifs officiels des packs de base.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Convertisseur Monnaie Jeux Video" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -255,6 +232,7 @@ export default function Page() {
         </div>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/convertisseur-monnaie-jeu" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

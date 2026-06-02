@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-classement-tennis-fft" },
@@ -14,53 +15,29 @@ export const metadata: Metadata = {
     "calcul classement tennis fft, classement 30/3 15/5, bilan tennis, progression amateur, systeme fft, v-e-2i-5g",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment fonctionne le classement tennis FFT ?",
+    a: "Le classement FFT (Fédération Française de Tennis) utilise un système de points appelé V-E-2I-5G. V = victoires, E = égalités, 2I = 2 items (points perdus pour défaites contre joueur moins bien classé), 5G = bonus pour les 5 meilleures victoires d'or contre joueurs mieux classés. Le bilan annuel determine la progression ou regression du classement.",
+  },
+  {
+    q: "Qu'est-ce que le système V-E-2I-5G ?",
+    a: "C'est la formule officielle FFT : V = victoires (points positifs), E = egalites (moins courant en moderne), 2I = moins 2 points par defaite contre joueur moins bien classé (penalite de regression), 5G = bonus pour les 5 meilleures victoires contre joueurs mieux classes (gold wins). Cette formule encourage les victoires contre plus fort.",
+  },
+  {
+    q: "Combien de victoires faut-il pour progresser en tennis ?",
+    a: "Cela depend du classement actuel et des adversaires affrontes. Pour passer de NC a 40 : 2-3 victoires suffisent. Pour passer de 40 a 30/5 : environ 5 victoires. Pour passer de 30/2 a 15/5 : 5-7 victoires. Les victoires contre plus fort classement comptent beaucoup plus.",
+  },
+  {
+    q: "Est-ce que les defaites font diminuer le classement ?",
+    a: "Oui. Les defaites contre des joueurs moins bien classes coutent 2 points chacune. Les defaites contre plus fort comptent peu ou pas. Ce systeme encourage la coherence : si vous perdez contre moins bon, votre bilan se degrade et la progression stagne.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Classement Tennis FFT - Estimer sa progression" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment fonctionne le classement tennis FFT ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le classement FFT (Fédération Française de Tennis) utilise un système de points appelé V-E-2I-5G. V = victoires, E = égalités, 2I = 2 items (points perdus pour défaites contre joueur moins bien classé), 5G = 5 G (bonus victoires d&apos;or contre joueurs mieux classés). Le bilan annuel determine la progression ou regression du classement.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qu&apos;est-ce que le système V-E-2I-5G ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "C&apos;est la formule officielle FFT : V = victoires (points positifs), E = egalites (moins courant en moderne), 2I = moins 2 points par defaite contre joueur moins bien classé (penalite de regression), 5G = bonus pour les 5 meilleures victoires contre joueurs mieux classes (gold wins). Cette formule encourage les victoires contre plus fort.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien de victoires faut-il pour progresser en tennis ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Cela depend du classement actuel et des adversaires affrontes. Pour passer de NC a 40 : 2-3 victoires suffisent. Pour passer de 40 a 30/5 : environ 5 victoires. Pour passer de 30/2 a 15/5 : 5-7 victoires. Les victoires contre plus fort classement comptent beaucoup plus.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Est-ce que les defaites font diminuer le classement ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Oui. Les defaites contre des joueurs moins bien classes coutent 2 points chacune. Les defaites contre plus fort count peu ou pas. Ce systeme encourage la coherence : si vous perdez contre moins bon, votre bilan se degrade et progression stagne.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Classement Tennis FFT" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -257,6 +234,8 @@ export default function Page() {
           Ce calculateur est <strong>indicatif uniquement</strong> et basé sur les règles publiques du système FFT (V-E-2I-5G). La Fédération Française de Tennis applique des paramètres internes non publics (nombre minimum de matchs, saisonnalité, réévaluations par secteur, etc.) qui peuvent influencer la progression réelle. Pour un classement <strong>officiel exact</strong>, consultez votre espace licencié sur le site de la FFT.
         </p>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-classement-tennis-fft" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-facture-gaz" },
@@ -19,45 +20,25 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Comment est calculee une facture de gaz naturel en France ?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "La facture de gaz comprend : l'abonnement (part fixe selon l'usage), la consommation (kWh x prix unitaire), la CTA (Contribution Tarifaire d'Acheminement), la TVA a 5,5% sur l'abonnement et la CTA, la TVA a 20% sur la consommation, et la TICGN (Taxe Interieure de Consommation sur le Gaz Naturel). Le prix du kWh varie selon la zone tarifaire GRDF (1 a 6).",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Quelles sont les zones tarifaires du gaz en France ?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "GRDF divise la France en 6 zones tarifaires. La zone 1 (Paris, Nord) est la moins chere avec environ 0,1284 EUR/kWh, tandis que la zone 6 (Clermont-Ferrand, Limoges) atteint 0,1488 EUR/kWh. La zone est determinee par votre reseau de distribution local et influe directement sur le prix du kWh de votre contrat.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Vaut-il mieux rester au tarif reglemente ou passer a une offre de marche ?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Le tarif reglemente GRDF sert de reference. Les offres de marche (EDF, Engie, TotalEnergies, Eni...) peuvent etre plus avantageuses, notamment en periode de stabilite des prix du gaz. Il est conseille de comparer les offres tous les ans via les comparateurs officiels (energie-info.fr). Attention aux contrats indexes sur le marche qui peuvent etre volatils.",
-        },
-      },
-    ],
-  };
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment est calculee une facture de gaz naturel en France ?",
+    a: "La facture de gaz comprend : l'abonnement (part fixe selon l'usage), la consommation (kWh x prix unitaire), la CTA (Contribution Tarifaire d'Acheminement), la TVA a 5,5% sur l'abonnement et la CTA, la TVA a 20% sur la consommation, et la TICGN (Taxe Interieure de Consommation sur le Gaz Naturel). Le prix du kWh varie selon la zone tarifaire GRDF (1 a 6).",
+  },
+  {
+    q: "Quelles sont les zones tarifaires du gaz en France ?",
+    a: "GRDF divise la France en 6 zones tarifaires. La zone 1 (Paris, Nord) est la moins chere avec environ 0,1284 EUR/kWh, tandis que la zone 6 (Clermont-Ferrand, Limoges) atteint 0,1488 EUR/kWh. La zone est determinee par votre reseau de distribution local et influe directement sur le prix du kWh de votre contrat.",
+  },
+  {
+    q: "Vaut-il mieux rester au tarif reglemente ou passer a une offre de marche ?",
+    a: "Le tarif reglemente GRDF sert de reference. Les offres de marche (EDF, Engie, TotalEnergies, Eni...) peuvent etre plus avantageuses, notamment en periode de stabilite des prix du gaz. Il est conseille de comparer les offres tous les ans via les comparateurs officiels (energie-info.fr). Attention aux contrats indexes sur le marche qui peuvent etre volatils.",
+  },
+];
 
+export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Simulateur Facture Gaz" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
       <Breadcrumb
         currentPage="Simulateur Facture Gaz"
         lastUpdated="8 avril 2026"
@@ -157,6 +138,8 @@ export default function Page() {
           </li>
         </ul>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/simulateur-facture-gaz" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

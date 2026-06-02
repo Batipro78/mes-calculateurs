@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/audit-frais-bancaires" },
@@ -14,61 +15,37 @@ export const metadata: Metadata = {
     "frais bancaires, audit frais bancaires, frais caches banque 2026, commission intervention, agios, banque moins chere, comparateur banque, frais abusifs, mediateur bancaire",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quel est le montant moyen des frais bancaires en France en 2026 ?",
+    a: "En 2026, les Francais paient en moyenne 215 € par an de frais bancaires en banque traditionnelle, contre seulement 35 € par an en banque en ligne. La difference s'explique principalement par les frais de tenue de compte, de carte et les commissions d'intervention.",
+  },
+  {
+    q: "Quels sont les nouveaux frais caches 2026 ?",
+    a: "Depuis 2026, 15 nouveaux types de frais sont apparus : frais de gestion digitale (2-5 €/mois pour l'application), virements instantanes 'premium' (illegaux depuis le 9 janvier 2025 selon la loi UE), assurances liees aux moyens de paiement souvent inutiles, et frais de desolidarisation pouvant atteindre 100 €.",
+  },
+  {
+    q: "Quel est le plafond legal des commissions d'intervention ?",
+    a: "La commission d'intervention est plafonnee a 8 € par operation et 80 € par mois (soit 960 €/an maximum). Pour les clients en situation de fragilite financiere, le plafond est reduit a 4 € par operation et 20 € par mois (240 €/an).",
+  },
+  {
+    q: "Comment contester des frais bancaires abusifs ?",
+    a: "Envoyez d'abord une lettre recommandee avec accuse de reception au service client de votre banque. Elle a 2 mois pour repondre. En cas de refus, saisissez gratuitement le mediateur bancaire de l'etablissement. En dernier recours, vous pouvez signaler a la DGCCRF ou saisir le tribunal judiciaire.",
+  },
+  {
+    q: "Combien peut-on economiser en changeant de banque ?",
+    a: "En passant d'une banque traditionnelle a une banque en ligne, l'economie moyenne est de 180 €/an, soit 900 € sur 5 ans et 1 800 € sur 10 ans. Boursobank, Fortuneo, Hello Bank et Monabanq proposent en plus des primes d'ouverture allant de 80 a 220 €.",
+  },
+  {
+    q: "Qu'est-ce que le droit a la mobilite bancaire ?",
+    a: "Depuis la loi Macron de 2017, changer de banque est gratuit et automatise. La nouvelle banque se charge de transférer tous vos virements et prelevements en 22 jours ouvres maximum. Vous n'avez qu'a signer un mandat de mobilite bancaire dans votre nouvelle banque.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Audit Frais Bancaires" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quel est le montant moyen des frais bancaires en France en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "En 2026, les Francais paient en moyenne 215 € par an de frais bancaires en banque traditionnelle, contre seulement 35 € par an en banque en ligne. La difference s'explique principalement par les frais de tenue de compte, de carte et les commissions d'intervention.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quels sont les nouveaux frais caches 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Depuis 2026, 15 nouveaux types de frais sont apparus : frais de gestion digitale (2-5 €/mois pour l'application), virements instantanes 'premium' (illegaux depuis le 9 janvier 2025 selon la loi UE), assurances liees aux moyens de paiement souvent inutiles, et frais de desolidarisation pouvant atteindre 100 €.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel est le plafond legal des commissions d'intervention ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La commission d'intervention est plafonnee a 8 € par operation et 80 € par mois (soit 960 €/an maximum). Pour les clients en situation de fragilite financiere, le plafond est reduit a 4 € par operation et 20 € par mois (240 €/an).",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment contester des frais bancaires abusifs ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Envoyez d'abord une lettre recommandee avec accuse de reception au service client de votre banque. Elle a 2 mois pour repondre. En cas de refus, saisissez gratuitement le mediateur bancaire de l'etablissement. En dernier recours, vous pouvez signaler a la DGCCRF ou saisir le tribunal judiciaire.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien peut-on economiser en changeant de banque ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "En passant d'une banque traditionnelle a une banque en ligne, l'economie moyenne est de 180 €/an, soit 900 € sur 5 ans et 1 800 € sur 10 ans. Boursobank, Fortuneo, Hello Bank et Monabanq proposent en plus des primes d'ouverture allant de 80 a 220 €.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Audit Frais Bancaires" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -313,6 +290,8 @@ export default function Page() {
       </div>
 
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/audit-frais-bancaires" />
     </div>

@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-bonus-ecologique" },
@@ -14,53 +15,29 @@ export const metadata: Metadata = {
     "bonus ecologique, bonus ecologique 2026, voiture electrique, aide achat voiture electrique, prime ecologique, surbonus batterie, CEE automobile",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quel est le montant du bonus ecologique en 2026 ?",
+    a: "Le bonus ecologique 2026 varie selon vos revenus : 5 700 € pour les revenus modestes (RFR ≤ 16 300 €/part), 4 700 € pour les revenus intermediaires (16 301 - 26 300 €/part), et 3 500 € pour les autres. Un surbonus de 1 200 a 2 000 € s'ajoute si la batterie est fabriquee en Europe. Maximum total : 7 700 €.",
+  },
+  {
+    q: "Quelles voitures sont eligibles au bonus ecologique 2026 ?",
+    a: "Seuls les vehicules 100% electriques ou hydrogene neufs sont eligibles. Le prix doit etre inferieur a 47 000 € TTC, le poids inferieur a 2 400 kg, et le score environnemental ADEME doit etre superieur ou egal a 60/80. Les hybrides (rechargeables ou non), les vehicules thermiques et les occasions sont exclus.",
+  },
+  {
+    q: "La prime a la conversion existe-t-elle encore en 2026 ?",
+    a: "Non, la prime a la conversion a ete definitivement supprimee fin 2024. Les derniers dossiers ont ete acceptes le 2 decembre 2024. En 2026, seul le bonus ecologique (finance par les CEE) reste disponible.",
+  },
+  {
+    q: "Comment est finance le bonus ecologique en 2026 ?",
+    a: "Depuis juillet 2025, le bonus ecologique est finance par les Certificats d'Economie d'Energie (CEE), et non plus par le budget de l'Etat. Ce sont les fournisseurs d'energie (EDF, TotalEnergies, Engie...) qui financent le dispositif. La demande se fait chez le concessionnaire au moment de l'achat.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Simulateur Bonus Ecologique" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quel est le montant du bonus ecologique en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le bonus ecologique 2026 varie selon vos revenus : 5 700 € pour les revenus modestes (RFR ≤ 16 300 €/part), 4 700 € pour les revenus intermediaires (16 301 - 26 300 €/part), et 3 500 € pour les autres. Un surbonus de 1 200 a 2 000 € s'ajoute si la batterie est fabriquee en Europe. Maximum total : 7 700 €.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelles voitures sont eligibles au bonus ecologique 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Seuls les vehicules 100% electriques ou hydrogene neufs sont eligibles. Le prix doit etre inferieur a 47 000 € TTC, le poids inferieur a 2 400 kg, et le score environnemental ADEME doit etre superieur ou egal a 60/80. Les hybrides (rechargeables ou non), les vehicules thermiques et les occasions sont exclus.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "La prime a la conversion existe-t-elle encore en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Non, la prime a la conversion a ete definitivement supprimee fin 2024. Les derniers dossiers ont ete acceptes le 2 decembre 2024. En 2026, seul le bonus ecologique (finance par les CEE) reste disponible.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment est finance le bonus ecologique en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Depuis juillet 2025, le bonus ecologique est finance par les Certificats d'Economie d'Energie (CEE), et non plus par le budget de l'Etat. Ce sont les fournisseurs d'energie (EDF, TotalEnergies, Engie...) qui financent le dispositif. La demande se fait chez le concessionnaire au moment de l'achat.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Simulateur Bonus Ecologique Auto" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -241,6 +218,7 @@ export default function Page() {
 
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/simulateur-bonus-ecologique" />
     </div>
   );

@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-ascendant-astrologique" },
@@ -14,21 +15,29 @@ export const metadata: Metadata = {
     "calcul ascendant, ascendant astrologique, signe astrologique, calculer son ascendant, personnalite signe, profil astral, horoscope signe ascendant, quel est mon ascendant",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment calculer son ascendant astrologique ?",
+    a: "L'ascendant depend de votre heure et lieu de naissance. Il correspond au signe du zodiaque qui se levait a l'horizon est au moment exact de votre naissance. L'ascendant change environ toutes les 2 heures, c'est pourquoi l'heure de naissance est essentielle pour le calculer.",
+  },
+  {
+    q: "Quelle est la difference entre signe solaire et ascendant ?",
+    a: "Le signe solaire (votre signe habituel) est determine par votre date de naissance et represente votre identite profonde. L'ascendant est determine par votre heure de naissance et represente votre apparence, la premiere impression que vous donnez aux autres.",
+  },
+  {
+    q: "Pourquoi l'heure de naissance est-elle importante ?",
+    a: "L'heure de naissance determine votre ascendant, qui change toutes les 2 heures environ. Deux personnes nees le meme jour mais a des heures differentes auront le meme signe solaire mais des ascendants differents, ce qui modifie significativement leur profil astrologique.",
+  },
+  {
+    q: "Peut-on avoir un ascendant different de son signe solaire ?",
+    a: "Oui, c'est meme la situation la plus courante. Le signe solaire est fixe pour toute personne nee le meme jour, tandis que l'ascendant depend de l'heure exacte de naissance. Un Belier peut tres bien avoir un ascendant Scorpion ou Verseau, ce qui nuance considerablement son profil astrologique.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Ascendant Astrologique" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org", "@type": "FAQPage",
-        mainEntity: [
-          { "@type": "Question", name: "Comment calculer son ascendant astrologique ?",
-            acceptedAnswer: { "@type": "Answer", text: "L'ascendant depend de votre heure et lieu de naissance. Il correspond au signe du zodiaque qui se levait a l'horizon est au moment exact de votre naissance. L'ascendant change environ toutes les 2 heures, c'est pourquoi l'heure de naissance est essentielle pour le calculer." } },
-          { "@type": "Question", name: "Quelle est la difference entre signe solaire et ascendant ?",
-            acceptedAnswer: { "@type": "Answer", text: "Le signe solaire (votre signe habituel) est determine par votre date de naissance et represente votre identite profonde. L'ascendant est determine par votre heure de naissance et represente votre apparence, la premiere impression que vous donnez aux autres." } },
-          { "@type": "Question", name: "Pourquoi l'heure de naissance est-elle importante ?",
-            acceptedAnswer: { "@type": "Answer", text: "L'heure de naissance determine votre ascendant, qui change toutes les 2 heures environ. Deux personnes nees le meme jour mais a des heures differentes auront le meme signe solaire mais des ascendants differents, ce qui modifie significativement leur profil astrologique." } },
-        ]
-      }) }} />
       <Breadcrumb currentPage="Ascendant Astrologique" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -91,6 +100,8 @@ export default function Page() {
           ))}
         </div>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-ascendant-astrologique" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-interet-compose" },
@@ -14,21 +15,29 @@ export const metadata: Metadata = {
     "calcul interet compose, interets composes simulateur, interet compose formule, simulateur placement, calculer interet compose, epargne interets composes",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment fonctionnent les interets composes ?",
+    a: "Les interets composes generent des interets sur les interets deja gagnes. Contrairement aux interets simples, le capital grandit de facon exponentielle. Formule : Capital final = Capital initial x (1 + taux)^duree. Einstein aurait qualifie les interets composes de \"8e merveille du monde\".",
+  },
+  {
+    q: "Combien rapportent 10 000 euros places a 5% pendant 20 ans ?",
+    a: "10 000 euros places a 5% par an pendant 20 ans deviennent 26 533 euros grace aux interets composes (sans versement additionnel). Avec 200 euros de versement mensuel en plus, le capital atteint 108 065 euros.",
+  },
+  {
+    q: "Quelle est la difference entre interet simple et compose ?",
+    a: "Interet simple : les interets sont calcules uniquement sur le capital initial. Interet compose : les interets sont calcules sur le capital + les interets deja acquis. Sur 20 ans a 5%, 10 000 euros donnent 20 000 euros en simple mais 26 533 euros en compose.",
+  },
+  {
+    q: "Qu'est-ce que la regle des 72 ?",
+    a: "La regle des 72 permet d'estimer en combien d'annees un capital double : il suffit de diviser 72 par le taux annuel. Exemple : a 6% par an, votre capital double en 72 / 6 = 12 ans. A 4%, il double en 18 ans. C'est une approximation tres pratique pour comparer des placements.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Interet Compose" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org", "@type": "FAQPage",
-        mainEntity: [
-          { "@type": "Question", name: "Comment fonctionnent les interets composes ?",
-            acceptedAnswer: { "@type": "Answer", text: "Les interets composes generent des interets sur les interets deja gagnes. Contrairement aux interets simples, le capital grandit de facon exponentielle. Formule : Capital final = Capital initial x (1 + taux)^duree. Einstein aurait qualifie les interets composes de \"8e merveille du monde\"." } },
-          { "@type": "Question", name: "Combien rapportent 10 000 euros places a 5% pendant 20 ans ?",
-            acceptedAnswer: { "@type": "Answer", text: "10 000 euros places a 5% par an pendant 20 ans deviennent 26 533 euros grace aux interets composes (sans versement additionnel). Avec 200 euros de versement mensuel en plus, le capital atteint 108 065 euros." } },
-          { "@type": "Question", name: "Quelle est la difference entre interet simple et compose ?",
-            acceptedAnswer: { "@type": "Answer", text: "Interet simple : les interets sont calcules uniquement sur le capital initial. Interet compose : les interets sont calcules sur le capital + les interets deja acquis. Sur 20 ans a 5%, 10 000 euros donnent 20 000 euros en simple mais 26 533 euros en compose." } },
-        ]
-      }) }} />
       <Breadcrumb currentPage="Interet Compose" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -77,6 +86,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-interet-compose" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

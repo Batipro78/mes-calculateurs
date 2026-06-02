@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-mention-bac" },
@@ -14,53 +15,18 @@ export const metadata: Metadata = {
     "mention bac, calcul mention baccalaureat, mention assez bien, mention bien, mention tres bien, felicitations jury bac, moyenne bac, parcoursup mention",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  { q: "Quel est le barème des mentions au baccalauréat ?", a: "Le barème officiel du Ministère de l'Education Nationale (article D334-4 du code de l'éducation) est : Passable de 10 à 11,99/20, Assez Bien de 12 à 13,99, Bien de 14 à 15,99, Très Bien de 16 à 17,99, et Très Bien avec Félicitations du jury à partir de 18/20." },
+  { q: "À partir de quelle moyenne obtient-on la mention Très Bien ?", a: "La mention Très Bien est attribuée à partir d'une moyenne de 16/20 au baccalauréat. À partir de 18/20, on obtient la mention Très Bien avec Félicitations du jury, qui est la distinction maximale." },
+  { q: "Quels sont les avantages d'avoir une mention au bac ?", a: "Les mentions valorisent le dossier Parcoursup et le CV. À partir de 16/20 (mention Très Bien), certaines formations sélectives attribuent 1 point bonus. Les mentions Très Bien peuvent aussi ouvrir droit à la bourse au mérite. Une mention Bien ou Très Bien est un atout pour intégrer une classe préparatoire ou une grande école." },
+  { q: "Qu'est-ce que les Félicitations du jury au bac ?", a: "Les Félicitations du jury sont décernées à partir d'une moyenne de 18/20. C'est la distinction la plus haute du baccalauréat, qui s'ajoute à la mention Très Bien. Elles ne sont pas systématiques mais sont attribuées par le jury en reconnaissance d'excellents résultats." },
+  { q: "Peut-on obtenir une mention après le rattrapage ?", a: "Non. Si le bac est obtenu grâce au rattrapage (oral de contrôle), la mention attribuée est uniquement 'Passable', quelle que soit la note obtenue à l'oral. Pour prétendre à une mention Assez Bien ou supérieure, il faut obtenir au moins 12/20 dès les épreuves du premier groupe." },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Mention Bac" category="EducationalApplication" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quel est le barème des mentions au baccalauréat ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le barème officiel du Ministère de l'Éducation Nationale (article D334-4 du code de l'éducation) est : Passable de 10 à 11,99/20, Assez Bien de 12 à 13,99, Bien de 14 à 15,99, Très Bien de 16 à 17,99, et Très Bien avec Félicitations du jury à partir de 18/20.",
-                }
-              },
-              {
-                "@type": "Question",
-                name: "À partir de quelle moyenne obtient-on la mention Très Bien ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La mention Très Bien est attribuée à partir d'une moyenne de 16/20 au baccalauréat. À partir de 18/20, on obtient la mention Très Bien avec Félicitations du jury, qui est la distinction maximale.",
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Quels sont les avantages d'avoir une mention au bac ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les mentions valorisent le dossier Parcoursup et le CV. À partir de 16/20 (mention Très Bien), certaines formations sélectives attribuent 1 point bonus. Les mentions Très Bien peuvent aussi ouvrir droit à la bourse au mérite. Une mention Bien ou Très Bien est un atout pour intégrer une classe préparatoire ou une grande école.",
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Qu'est-ce que les Félicitations du jury au bac ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les Félicitations du jury sont décernées à partir d'une moyenne de 18/20. C'est la distinction la plus haute du baccalauréat, qui s'ajoute à la mention Très Bien. Elles ne sont pas systématiques mais sont attribuées par le jury en reconnaissance d'excellents résultats.",
-                }
-              }
-            ]
-          })
-        }}
-      />
       <Breadcrumb currentPage="Calcul Mention Bac" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -196,6 +162,7 @@ export default function Page() {
         </p>
       </div>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-mention-bac" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

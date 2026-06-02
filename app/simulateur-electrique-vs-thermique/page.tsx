@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-electrique-vs-thermique" },
@@ -30,45 +31,25 @@ export const metadata: Metadata = {
   },
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Est-ce qu'une voiture electrique revient vraiment moins cher qu'une thermique ?",
+    a: "Oui, dans la majorite des cas. Malgre un prix d'achat plus eleve, la voiture electrique est moins chere a l'usage : electricite 3 a 4 fois moins chere que l'essence, entretien reduit de 30 a 50%, et bonus ecologique jusqu'a 7 700 EUR. Sur 5 ans et 15 000 km/an, l'economie depasse souvent 5 000 EUR par rapport a un vehicule thermique equivalent.",
+  },
+  {
+    q: "A partir de combien de kilometres par an la voiture electrique est-elle rentable ?",
+    a: "Le seuil de rentabilite depend du surcout a l'achat et du prix de l'electricite. Pour une citadine (Clio vs Renault 5), l'electrique devient rentable des 8 000-10 000 km/an. Pour un SUV (3008 vs e-3008), il faut compter 12 000-15 000 km/an. Plus vous roulez, plus l'electrique est avantageux.",
+  },
+  {
+    q: "Quels sont les vrais couts d'entretien d'une voiture electrique ?",
+    a: "L'entretien d'une voiture electrique coute en moyenne 400 a 500 EUR/an contre 800 a 1 100 EUR/an pour un thermique. Il n'y a pas de vidange, pas de courroie de distribution, pas d'embrayage, et les plaquettes de frein durent plus longtemps grace au freinage regeneratif. Les postes principaux sont les pneus, le liquide de frein et la climatisation.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Simulateur Voiture Electrique vs Thermique" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Est-ce qu'une voiture electrique revient vraiment moins cher qu'une thermique ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Oui, dans la majorite des cas. Malgre un prix d'achat plus eleve, la voiture electrique est moins chere a l'usage : electricite 3 a 4 fois moins chere que l'essence, entretien reduit de 30 a 50%, et bonus ecologique jusqu'a 7 700 €. Sur 5 ans et 15 000 km/an, l'economie depasse souvent 5 000 € par rapport a un vehicule thermique equivalent.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "A partir de combien de kilometres par an la voiture electrique est-elle rentable ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le seuil de rentabilite depend du surcoat a l'achat et du prix de l'electricite. Pour une citadine (Clio vs Renault 5), l'electrique devient rentable des 8 000-10 000 km/an. Pour un SUV (3008 vs e-3008), il faut compter 12 000-15 000 km/an. Plus vous roulez, plus l'electrique est avantageux.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quels sont les vrais couts d'entretien d'une voiture electrique ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L'entretien d'une voiture electrique coute en moyenne 400 a 500 €/an contre 800 a 1 100 €/an pour un thermique. Il n'y a pas de vidange, pas de courroie de distribution, pas d'embrayage, et les plaquettes de frein durent plus longtemps grace au freinage regeneratif. Les postes principaux sont les pneus, le liquide de frein et la climatisation.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Simulateur Electrique vs Thermique" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -270,6 +251,8 @@ export default function Page() {
       </div>
 
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/simulateur-electrique-vs-thermique" />
     </div>

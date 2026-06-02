@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-salaire-alternant" },
@@ -14,61 +15,33 @@ export const metadata: Metadata = {
     "salaire alternant, salaire apprenti 2026, simulateur alternance, grille remuneration apprentissage, contrat professionnalisation salaire, SMIC apprenti",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quel est le salaire d'un apprenti en 2026 ?",
+    a: "Le salaire d'un apprenti en 2026 depend de son age et de son annee de contrat. Il varie de 27% du SMIC (492 EUR brut/mois pour un moins de 18 ans en 1ere annee) a 78% du SMIC (1 422 EUR brut pour un 21-25 ans en 3eme annee). Les 26 ans et plus touchent 100% du SMIC soit 1 823 EUR brut.",
+  },
+  {
+    q: "Quelle est la difference entre apprentissage et professionnalisation ?",
+    a: "Le contrat d'apprentissage concerne les 16-29 ans et mene a un diplome (CAP, BTS, licence, master). Le contrat de professionnalisation est ouvert a tous ages et vise une qualification professionnelle (CQP, titre RNCP). Les grilles de remuneration different : l'apprentissage depend de l'age et de l'annee, la professionnalisation de l'age et du niveau de diplome.",
+  },
+  {
+    q: "Le salaire d'un alternant est-il net ou brut ?",
+    a: "Les grilles officielles indiquent le salaire brut. Depuis mars 2025, les apprentis dont le salaire depasse 50% du SMIC (912 EUR) paient des cotisations (CSG, CRDS). En dessous de ce seuil, le brut est egal au net. Au-dessus, comptez environ 78% du brut en net.",
+  },
+  {
+    q: "Qu'est-ce qui a change pour les alternants en mars 2025 ?",
+    a: "Depuis le 1er mars 2025, le seuil d'exoneration de cotisations salariales est passe de 79% a 50% du SMIC pour les nouveaux contrats. Cela signifie que les apprentis gagnant plus de 912 EUR brut/mois paient desormais des charges (CSG 9,2% + CRDS 0,5% + cotisations). Impact : jusqu'a 115 EUR/mois de moins en net.",
+  },
+  {
+    q: "Quelles aides complementaires pour les alternants ?",
+    a: "Les alternants peuvent beneficier de : l'aide au logement (APL/ALS), la prime d'activite (si plus de 18 ans et revenus suffisants), l'aide mobili-jeune (jusqu'a 100 EUR/mois pour le logement), le remboursement transport 50%, et le forfait repas CROUS. Certaines regions proposent aussi des aides au permis de conduire.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Simulateur Salaire Alternant" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quel est le salaire d'un apprenti en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le salaire d'un apprenti en 2026 depend de son age et de son annee de contrat. Il varie de 27% du SMIC (492 EUR brut/mois pour un moins de 18 ans en 1ere annee) a 78% du SMIC (1 422 EUR brut pour un 21-25 ans en 3eme annee). Les 26 ans et plus touchent 100% du SMIC soit 1 823 EUR brut.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la difference entre apprentissage et professionnalisation ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le contrat d'apprentissage concerne les 16-29 ans et mene a un diplome (CAP, BTS, licence, master). Le contrat de professionnalisation est ouvert a tous ages et vise une qualification professionnelle (CQP, titre RNCP). Les grilles de remuneration different : l'apprentissage depend de l'age et de l'annee, la professionnalisation de l'age et du niveau de diplome.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Le salaire d'un alternant est-il net ou brut ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les grilles officielles indiquent le salaire brut. Depuis mars 2025, les apprentis dont le salaire depasse 50% du SMIC (912 EUR) paient des cotisations (CSG, CRDS). En dessous de ce seuil, le brut est egal au net. Au-dessus, comptez environ 78% du brut en net.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qu'est-ce qui a change pour les alternants en mars 2025 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Depuis le 1er mars 2025, le seuil d'exoneration de cotisations salariales est passe de 79% a 50% du SMIC pour les nouveaux contrats. Cela signifie que les apprentis gagnant plus de 912 EUR brut/mois paient desormais des charges (CSG 9,2% + CRDS 0,5% + cotisations). Impact : jusqu'a 115 EUR/mois de moins en net.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelles aides complementaires pour les alternants ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les alternants peuvent beneficier de : l'aide au logement (APL/ALS), la prime d'activite (si plus de 18 ans et revenus suffisants), l'aide mobili-jeune (jusqu'a 100 EUR/mois pour le logement), le remboursement transport 50%, et le forfait repas CROUS. Certaines regions proposent aussi des aides au permis de conduire.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Simulateur Salaire Alternant" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -288,6 +261,8 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/simulateur-salaire-alternant" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

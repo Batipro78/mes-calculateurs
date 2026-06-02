@@ -3,6 +3,7 @@ import CalculateurPariCombine from "./CalculateurPariCombine";
 import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: {
@@ -16,55 +17,31 @@ export const metadata: Metadata = {
     "pari combiné, accumulator, calcul cote, gain pari, probabilité pari, calcul gain combiné",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment calculer la cote totale d'un pari combine ?",
+    a: "La cote totale d'un pari combine est le produit de toutes les cotes individuelles. Exemple : 3 selections a cotes 1.40, 1.55 et 1.30 donnent une cote totale de 1.40 x 1.55 x 1.30 = 2.821. Le gain total est ensuite mise x cote totale.",
+  },
+  {
+    q: "Pourquoi la probabilite chute avec plus de selections ?",
+    a: "La probabilite implicite combinee est 1 / cote totale. Plus on ajoute de selections, plus la cote totale augmente (multiplication), donc plus la probabilite diminue exponentiellement. Un combine de 5 selections a une probabilite bien plus faible qu'une simple selection.",
+  },
+  {
+    q: "Que se passe-t-il si un match du combine est annule ?",
+    a: "Selon les regles des operateurs agrees (France, Belgique), un match annule dans un combine voit sa cote remplacee par 1.00. Le combine reste actif avec les autres selections, mais le gain est reduit puisque la cote totale est divisee par la cote annulee.",
+  },
+  {
+    q: "Quelle est la difference entre pari simple et pari combine ?",
+    a: "Un pari simple = une seule selection avec une cote. Un pari combine = plusieurs selections dependantes : il faut que TOUTES les selections gagnent pour toucher le gain. Le gain est plus eleve (multiplication des cotes) mais le risque aussi.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd
         name="Calculateur Pari Combiné"
         description="Calcul de cote totale, gain et probabilité pour paris combinés"
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment calculer la cote totale d&apos;un pari combiné ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La cote totale d&apos;un pari combiné est le produit de toutes les cotes individuelles. Exemple : 3 sélections à cotes 1.40, 1.55 et 1.30 donnent une cote totale de 1.40 × 1.55 × 1.30 = 2.821. Le gain total est ensuite mise × cote totale.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Pourquoi la probabilité chute avec plus de sélections ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La probabilité implicite combinée est 1 / cote totale. Plus on ajoute de sélections, plus la cote totale augmente (multiplication), donc plus la probabilité diminue exponentiellement. Un combiné de 5 sélections a une probabilité bien plus faible qu&apos;une simple sélection.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Que se passe-t-il si un match du combiné est annulé ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Selon les règles des opérateurs agréés (France, Belgique), un match annulé dans un combiné voit sa cote remplacée par 1.00. Le combiné reste actif avec les autres sélections, mais le gain est réduit puisque la cote totale est divisée par la cote annulée.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la différence entre pari simple et pari combiné ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Un pari simple = une seule sélection avec une cote. Un pari combiné = plusieurs sélections dépendantes : il faut que TOUTES les sélections gagnent pour toucher le gain. Le gain est plus élevé (multiplication des cotes) mais le risque aussi.",
-                },
-              },
-            ],
-          }),
-        }}
       />
       <Breadcrumb
         currentPage="Calculateur Pari Combiné"
@@ -203,6 +180,8 @@ export default function Page() {
           </table>
         </div>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <div className="mt-8 rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 text-xs text-amber-800 leading-relaxed">
         <strong>Avertissement :</strong> Cet outil est un convertisseur mathématique

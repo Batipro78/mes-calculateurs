@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-loa-lld" },
@@ -14,49 +15,28 @@ export const metadata: Metadata = {
     "LOA vs LLD, location voiture, simulateur leasing auto, location avec option achat, location longue duree, comparateur LOA LLD",
 };
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Quelle difference entre LOA et LLD ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "La LOA (Location avec Option d'Achat) permet d'acheter le vehicule a la fin du contrat en payant la valeur residuelle (l'option d'achat, fixee au depart). La LLD (Location Longue Duree) ne le permet pas : le vehicule est restitue a la fin, sans possibilite de rachat. La LLD inclut souvent l'entretien et l'assurance dans le loyer, ce qui simplifie la gestion mais augmente le cout mensuel. Les loyers LLD sont generalement 10-20% plus eleves que la LOA a prestations equivalentes.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Est-ce que la LOA est interessante financierement ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "La LOA est interessante si vous souhaitez changer de voiture regulierement (tous les 3-5 ans) sans vous engager sur un achat definitif. Elle permet de tester le vehicule puis de decider de l'acheter ou non. Financierement, sur la duree : LOA + rachat coute souvent 10-25% plus cher qu'un achat comptant ou un pret auto classique. Si vous gardez la voiture plus de 7 ans, l'achat direct reste le plus economique.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Peut-on resilier un contrat LOA ou LLD ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Oui, mais avec penalites. LOA : vous pouvez anticiper le rachat (en payant le capital restant du + valeur residuelle), ou restituer le vehicule en cas de force majeure (deces, invalidite, perte d'emploi pour certains contrats) sans frais. LLD : resiliation possible mais souvent avec penalite de 6-12 loyers + frais de restitution. Toujours lire attentivement les clauses de sortie avant de signer.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Faut-il declarer LOA/LLD en micro-entreprise ou profession liberale ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Oui, les loyers LOA/LLD sont deductibles du resultat imposable pour les professionnels (regime reel). En micro-entreprise, l'abattement forfaitaire est applique : pas de deduction reelle possible. Attention : seule la fraction professionnelle des loyers est deductible (si utilisation mixte, appliquer un pourcentage d'utilisation pro). Pour les vehicules de societe (M1), le plafond de deduction des amortissements s'applique (9 900-30 000 EUR selon CO2).",
-      },
-    },
-  ],
-};
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quelle difference entre LOA et LLD ?",
+    a: "La LOA (Location avec Option d'Achat) permet d'acheter le vehicule a la fin du contrat en payant la valeur residuelle (l'option d'achat, fixee au depart). La LLD (Location Longue Duree) ne le permet pas : le vehicule est restitue a la fin, sans possibilite de rachat. La LLD inclut souvent l'entretien et l'assurance dans le loyer, ce qui simplifie la gestion mais augmente le cout mensuel. Les loyers LLD sont generalement 10-20% plus eleves que la LOA a prestations equivalentes.",
+  },
+  {
+    q: "Est-ce que la LOA est interessante financierement ?",
+    a: "La LOA est interessante si vous souhaitez changer de voiture regulierement (tous les 3-5 ans) sans vous engager sur un achat definitif. Elle permet de tester le vehicule puis de decider de l'acheter ou non. Financierement, sur la duree : LOA + rachat coute souvent 10-25% plus cher qu'un achat comptant ou un pret auto classique. Si vous gardez la voiture plus de 7 ans, l'achat direct reste le plus economique.",
+  },
+  {
+    q: "Peut-on resilier un contrat LOA ou LLD ?",
+    a: "Oui, mais avec penalites. LOA : vous pouvez anticiper le rachat (en payant le capital restant du + valeur residuelle), ou restituer le vehicule en cas de force majeure (deces, invalidite, perte d'emploi pour certains contrats) sans frais. LLD : resiliation possible mais souvent avec penalite de 6-12 loyers + frais de restitution. Toujours lire attentivement les clauses de sortie avant de signer.",
+  },
+  {
+    q: "Faut-il declarer LOA/LLD en micro-entreprise ou profession liberale ?",
+    a: "Oui, les loyers LOA/LLD sont deductibles du resultat imposable pour les professionnels (regime reel). En micro-entreprise, l'abattement forfaitaire est applique : pas de deduction reelle possible. Attention : seule la fraction professionnelle des loyers est deductible (si utilisation mixte, appliquer un pourcentage d'utilisation pro). Pour les vehicules de societe (M1), le plafond de deduction des amortissements s'applique (9 900-30 000 EUR selon CO2).",
+  },
+];
 
 export default function Page() {
   return (
     <div>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <WebAppJsonLd name="Simulateur LOA vs LLD" description="Comparateur location voiture 2026" category="FinanceApplication" />
       <Breadcrumb currentPage="Simulateur LOA vs LLD" />
 
@@ -117,6 +97,8 @@ export default function Page() {
           <li><strong>Assurance tous risques</strong> : obligatoire en LOA/LLD, plus chere que tiers</li>
         </ul>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/simulateur-loa-lld" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

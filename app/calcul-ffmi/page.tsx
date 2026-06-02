@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-ffmi" },
@@ -14,53 +15,33 @@ export const metadata: Metadata = {
     "ffmi, calcul ffmi, indice masse maigre, limite naturelle musculation, kouri, fat free mass index, musculation naturel",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qu'est-ce que le FFMI ?",
+    a: "Le FFMI (Fat-Free Mass Index) est un indice qui mesure votre masse musculaire relative à votre taille, indépendamment de votre poids. Contrairement à l'IMC, il ne compte que la masse maigre (muscle, os, organes). La formule normalisée de Kouri est FFMI = FFMI brut + 6,1 × (1,8 - Taille). Cet indice permet d'évaluer le potentiel musculaire naturel.",
+  },
+  {
+    q: "Quelle est la limite naturelle du FFMI ?",
+    a: "Selon le chercheur Eric Kouri, la limite naturelle du FFMI pour les hommes est environ 25 points. Au-delà, la probabilité de prise de stéroïdes anabolisants augmente considérablement. Pour les femmes, la limite est décalée vers le bas (environ 19-20 points). Ces limites sont des estimations basées sur des études scientifiques.",
+  },
+  {
+    q: "Quelle est la différence entre FFMI et IMC ?",
+    a: "L'IMC (Indice de Masse Corporelle) utilise le poids total et ne distingue pas le muscle de la graisse. Deux personnes avec le même IMC peuvent avoir des compositions corporelles très différentes. Le FFMI, lui, ne mesure que la masse maigre, ce qui le rend beaucoup plus pertinent pour évaluer le développement musculaire et le potentiel naturel.",
+  },
+  {
+    q: "Un FFMI de 25, c'est naturel ?",
+    a: "Un FFMI de 25 est à la limite. Selon les études de Kouri, ~25 est considéré comme la limite supérieure pour la majorité des athlètes naturels. Au-delà, le FFMI entre dans une zone très rare où la probabilité d'assistance (stéroïdes) augmente fortement. Quelques individus exceptionnels peuvent naturellement dépasser 25, mais c'est rare.",
+  },
+  {
+    q: "Comment mesurer son taux de masse grasse pour calculer le FFMI ?",
+    a: "Le taux de masse grasse peut être estimé par plusieurs méthodes : impédancemétrie (balance connectée), pince à plis cutanés (méthode Durnin-Womersley), DEXA scan (gold standard médical) ou formule de calcul basée sur l'IMC. Pour un FFMI précis, une mesure par impédancemétrie (±2-3 %) est suffisante.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul FFMI - Indice de masse maigre" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Qu&apos;est-ce que le FFMI ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le FFMI (Fat-Free Mass Index) est un indice qui mesure votre masse musculaire relative a votre taille, independamment de votre poids. Contrairement a l&apos;IMC, il ne compte que la masse maigre (muscle, os, organes). La formule normalisee de Kouri est FFMI = FFMI brut + 6.1 × (1.8 - Taille). Cet indice permet d&apos;evaluer le potentiel musculaire naturel.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la limite naturelle du FFMI ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Selon le chercheur Eric Kouri, la limite naturelle du FFMI pour les hommes est environ 25 points. Au-dela, la probabilite de prise de steroides anabolisants augmente considerablement. Pour les femmes, la limite est decalee vers le bas (environ 19-20 points). Ces limites sont des estimations basees sur des etudes scientifiques.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la difference entre FFMI et IMC ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L&apos;IMC (Indice de Masse Corporelle) utilise le poids total et ne distingue pas le muscle de la graisse. Deux personnes avec le meme IMC peuvent avoir des compositions corporelles tres differentes. Le FFMI, lui, ne mesure que la masse maigre, ce qui le rend beaucoup plus pertinent pour evaluer le developpement musculaire et le potentiel naturel.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Un FFMI de 25 c&apos;est naturel ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Un FFMI de 25 est a la limite. Selon les etudes de Kouri, ~25 est considere comme la limite superieure pour la majorite des athletes naturels. Au-dela, le FFMI entre dans une zone tres rare ou la probabilite d&apos;assistance (steroides) augmente fortement. Quelques individus exceptionnels peuvent naturellement depasser 25, mais c&apos;est rare.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul FFMI - Indice de masse maigre" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -319,6 +300,7 @@ export default function Page() {
         </div>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-ffmi" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

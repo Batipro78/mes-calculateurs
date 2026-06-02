@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-pension-alimentaire" },
@@ -14,53 +15,29 @@ export const metadata: Metadata = {
     "pension alimentaire, calcul pension alimentaire, simulateur pension alimentaire, bareme justice, garde alternee, garde classique, divorce, separation",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment est calculee la pension alimentaire ?",
+    a: "La pension alimentaire est calculee selon la table de reference du Ministere de la Justice : Pension par enfant = (Revenu net - 648 EUR de minimum vital) x Pourcentage selon le nombre d'enfants et le type de garde. Par exemple, pour 1 enfant en garde classique : 13,5% du revenu disponible.",
+  },
+  {
+    q: "Quel est le bareme de la pension alimentaire en 2026 ?",
+    a: "Pour 1 enfant : 18% (garde reduite), 13,5% (garde classique), 9% (garde alternee). Pour 2 enfants : 15,5%, 11,5%, 7,8%. Pour 3 enfants : 13,3%, 10%, 6,7%. Le pourcentage s'applique au revenu net moins 648 EUR de minimum vital.",
+  },
+  {
+    q: "Qu'est-ce que le minimum vital de 648 EUR ?",
+    a: "Le minimum vital correspond au montant du RSA socle pour une personne seule (648 EUR en 2025). Il est deduit du revenu net du debiteur avant d'appliquer le pourcentage, pour garantir un reste a vivre minimum.",
+  },
+  {
+    q: "La pension alimentaire est-elle obligatoire ?",
+    a: "Oui, la pension alimentaire est une obligation legale prevue par l'article 371-2 du Code civil. Chaque parent doit contribuer a l'entretien et l'education des enfants a proportion de ses ressources. Elle est fixee par le juge aux affaires familiales ou par accord amiable.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Simulateur Pension Alimentaire" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment est calculee la pension alimentaire ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La pension alimentaire est calculee selon la table de reference du Ministere de la Justice : Pension par enfant = (Revenu net - 648 EUR de minimum vital) x Pourcentage selon le nombre d'enfants et le type de garde. Par exemple, pour 1 enfant en garde classique : 13,5% du revenu disponible.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel est le bareme de la pension alimentaire en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour 1 enfant : 18% (garde reduite), 13,5% (garde classique), 9% (garde alternee). Pour 2 enfants : 15,5%, 11,5%, 7,8%. Pour 3 enfants : 13,3%, 10%, 6,7%. Le pourcentage s'applique au revenu net moins 648 EUR de minimum vital.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qu'est-ce que le minimum vital de 648 EUR ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le minimum vital correspond au montant du RSA socle pour une personne seule (648 EUR en 2025). Il est deduit du revenu net du debiteur avant d'appliquer le pourcentage, pour garantir un reste a vivre minimum.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "La pension alimentaire est-elle obligatoire ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Oui, la pension alimentaire est une obligation legale prevue par l'article 371-2 du Code civil. Chaque parent doit contribuer a l'entretien et l'education des enfants a proportion de ses ressources. Elle est fixee par le juge aux affaires familiales ou par accord amiable.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Simulateur Pension Alimentaire" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -226,6 +203,8 @@ export default function Page() {
       </div>
 
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/simulateur-pension-alimentaire" />
     </div>

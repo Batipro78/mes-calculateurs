@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-handicap-golf-whs" },
@@ -14,53 +15,29 @@ export const metadata: Metadata = {
     "calcul handicap golf, index whs, world handicap system, ffgolf, slope, sss, handicap de jeu, différentiel golf, handicap officiel",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qu'est-ce que le système WHS (World Handicap System) ?",
+    a: "Le WHS est le système officiel de handicap de golf adopté par la FFGolf depuis 2021. L'Index WHS est basé sur la moyenne des 8 meilleurs différentiels parmi vos 20 dernières cartes officielles. Le différentiel d'une carte = (Score brut − SSS) × 113 / Slope. Si vous avez moins de 20 cartes, un ajustement s'applique (ex: 3 cartes → meilleur − 2.0).",
+  },
+  {
+    q: "Quel est le nombre minimum de cartes pour calculer un Index WHS ?",
+    a: "Vous avez besoin d'au minimum 3 cartes officielles pour calculer un Index WHS. Avec 3 cartes, seule la meilleure est utilisée avec un ajustement de −2.0. À partir de 20 cartes, vous utilisez la moyenne des 8 meilleurs différentiels sans ajustement.",
+  },
+  {
+    q: "Quelle est la différence entre SSS, Slope et Par ?",
+    a: "Le SSS (Slope Style Score ou USGA Course Rating) est le score théorique du parcours en conditions standards (ex: 72). Le Slope (95−155) mesure la difficulté relative du parcours pour un golfeur moyen (113 = standard). Le Par est le nombre de coups théoriques pour le parcours (ex: 72).",
+  },
+  {
+    q: "Comment calculer le Handicap de jeu depuis l'Index WHS ?",
+    a: "Handicap de jeu = Index WHS × (Slope / 113) + (SSS − Par). Par exemple, Index 18 sur un parcours Slope 125, SSS 73, Par 72 = 18 × (125/113) + (73−72) ≈ 21.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Handicap Golf WHS - Index Officiel" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Qu&apos;est-ce que le système WHS (World Handicap System) ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le WHS est le système officiel de handicap de golf adopté par la FFGolf depuis 2021. L&apos;Index WHS est basé sur la moyenne des 8 meilleurs différentiels parmi vos 20 dernières cartes officielles. Le différentiel d&apos;une carte = (Score brut − SSS) × 113 / Slope. Si vous avez moins de 20 cartes, un ajustement s&apos;applique (ex: 3 cartes → meilleur − 2.0).",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel est le nombre minimum de cartes pour calculer un Index WHS ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Vous avez besoin d&apos;au minimum 3 cartes officielles pour calculer un Index WHS. Avec 3 cartes, seule la meilleure est utilisée avec un ajustement de −2.0. À partir de 20 cartes, vous utilisez la moyenne des 8 meilleurs différentiels sans ajustement.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la différence entre SSS, Slope et Par ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le SSS (Slope Style Score ou USGA Course Rating) est le score théorique du parcours en conditions standards (ex: 72). Le Slope (95−155) mesure la difficulté relative du parcours pour un golfeur moyen (113 = standard). Le Par est le nombre de coups théoriques pour le parcours (ex: 72).",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment calculer le Handicap de jeu depuis l&apos;Index WHS ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Handicap de jeu = Index WHS × (Slope / 113) + (SSS − Par). Par exemple, Index 18 sur un parcours Slope 125, SSS 73, Par 72 = 18 × (125/113) + (73−72) ≈ 21.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Handicap Golf WHS - Index Officiel" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -298,6 +275,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-handicap-golf-whs" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-indice-inflammation" },
@@ -14,49 +15,28 @@ export const metadata: Metadata = {
     "indice inflammation, DII, Dietary Inflammatory Index, alimentation anti inflammatoire, score inflammation, regime anti inflammatoire",
 };
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Qu'est-ce que l'inflammation chronique liee a l'alimentation ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "L'inflammation chronique de bas grade est une reponse immunitaire prolongee qui, contrairement a l'inflammation aigue (utile pour lutter contre une infection), persiste pendant des mois ou des annees. Elle est favorisee par une alimentation riche en sucres raffines, graisses trans, viandes transformees et ultra-transformes. Elle est associee a un risque accru de maladies cardiovasculaires, diabete type 2, arthrite, depression et certains cancers.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Quels sont les aliments les plus anti-inflammatoires ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Les meilleurs aliments anti-inflammatoires sont : poissons gras (saumon, sardines, maquereau) riches en omega-3 EPA/DHA, legumes verts (epinards, brocolis, kale), fruits rouges (myrtilles, framboises, grenades), huile d'olive extra vierge, noix et graines (noix, amandes, chia, lin), curcuma et gingembre, the vert, legumineuses (lentilles, pois chiches), ail et oignon, chocolat noir 70%+.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Quels aliments favorisent l'inflammation ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Les principaux aliments pro-inflammatoires sont : sucres raffines (bonbons, sodas, patisseries industrielles), viandes transformees (saucisson, jambon blanc industriel, bacon), fritures, plats ultra-transformes et fast-food, graisses trans (margarines, viennoiseries industrielles), alcool en exces, pain blanc et cereales raffinees. L'accumulation de ces aliments dans l'alimentation quotidienne est particulierement problematique.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Comment adopter un regime anti-inflammatoire ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Principes cles : 1) 5-7 portions de legumes et fruits par jour (dont legumes verts et fruits rouges), 2) Poissons gras 2-3 fois/semaine, 3) Remplacer les viandes rouges/charcuterie par volailles, legumineuses ou oeufs, 4) Huile d'olive comme principale source de matiere grasse, 5) Noix et graines en collation (30g/jour), 6) Limiter sucres ajoutes et produits transformes, 7) The vert et infusions a la place des sodas, 8) Epices anti-inflammatoires (curcuma, gingembre, cannelle). Le regime mediterraneen est le modele de reference.",
-      },
-    },
-  ],
-};
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qu'est-ce que l'inflammation chronique liee a l'alimentation ?",
+    a: "L'inflammation chronique de bas grade est une reponse immunitaire prolongee qui, contrairement a l'inflammation aigue (utile pour lutter contre une infection), persiste pendant des mois ou des annees. Elle est favorisee par une alimentation riche en sucres raffines, graisses trans, viandes transformees et ultra-transformes. Elle est associee a un risque accru de maladies cardiovasculaires, diabete type 2, arthrite, depression et certains cancers.",
+  },
+  {
+    q: "Quels sont les aliments les plus anti-inflammatoires ?",
+    a: "Les meilleurs aliments anti-inflammatoires sont : poissons gras (saumon, sardines, maquereau) riches en omega-3 EPA/DHA, legumes verts (epinards, brocolis, kale), fruits rouges (myrtilles, framboises, grenades), huile d'olive extra vierge, noix et graines (noix, amandes, chia, lin), curcuma et gingembre, the vert, legumineuses (lentilles, pois chiches), ail et oignon, chocolat noir 70%+.",
+  },
+  {
+    q: "Quels aliments favorisent l'inflammation ?",
+    a: "Les principaux aliments pro-inflammatoires sont : sucres raffines (bonbons, sodas, patisseries industrielles), viandes transformees (saucisson, jambon blanc industriel, bacon), fritures, plats ultra-transformes et fast-food, graisses trans (margarines, viennoiseries industrielles), alcool en exces, pain blanc et cereales raffinees. L'accumulation de ces aliments dans l'alimentation quotidienne est particulierement problematique.",
+  },
+  {
+    q: "Comment adopter un regime anti-inflammatoire ?",
+    a: "Principes cles : 1) 5-7 portions de legumes et fruits par jour (dont legumes verts et fruits rouges), 2) Poissons gras 2-3 fois/semaine, 3) Remplacer les viandes rouges/charcuterie par volailles, legumineuses ou oeufs, 4) Huile d'olive comme principale source de matiere grasse, 5) Noix et graines en collation (30g/jour), 6) Limiter sucres ajoutes et produits transformes, 7) The vert et infusions a la place des sodas, 8) Epices anti-inflammatoires (curcuma, gingembre, cannelle). Le regime mediterraneen est le modele de reference.",
+  },
+];
 
 export default function Page() {
   return (
     <div>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <WebAppJsonLd name="Calcul Indice Inflammation" description="Dietary Inflammatory Index questionnaire" category="HealthApplication" />
       <Breadcrumb currentPage="Calcul Indice Inflammation" />
 
@@ -111,6 +91,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-indice-inflammation" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

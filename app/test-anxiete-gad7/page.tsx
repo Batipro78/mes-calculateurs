@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/test-anxiete-gad7" },
@@ -19,63 +20,35 @@ export const metadata: Metadata = {
   },
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qu'est-ce que le test GAD-7 ?",
+    a: "Le GAD-7 (Generalized Anxiety Disorder 7) est une echelle d'auto-evaluation composee de 7 questions, developpee par Spitzer et collegues en 2006. Chaque question est notee de 0 a 3, pour un score total de 0 a 21. C'est l'un des outils de depistage de l'anxiete les plus utilises dans le monde, recommande par la HAS en France.",
+  },
+  {
+    q: "Comment interpreter mon score GAD-7 ?",
+    a: "Les seuils valides sont : 0-4 anxiete minimale, 5-9 anxiete legere, 10-14 anxiete moderee, 15-21 anxiete severe. Un score superieur ou egal a 10 a une sensibilite de 89% et une specificite de 82% pour le trouble anxieux generalise.",
+  },
+  {
+    q: "Le test GAD-7 est-il fiable ?",
+    a: "Oui. Valide scientifiquement en 2006 par Spitzer et al. dans Archives of Internal Medicine sur plus de 2700 patients, le GAD-7 est utilise par l'Organisation mondiale de la sante et recommande par la Haute Autorite de Sante francaise. Sa version francaise a ete validee. Toutefois, il s'agit d'un outil de depistage et non d'un outil diagnostique.",
+  },
+  {
+    q: "Que faire si mon score est eleve ?",
+    a: "Un score superieur a 10 doit conduire a consulter un medecin generaliste ou un psychologue. Une prise en charge peut etre proposee : therapie cognitivo-comportementale (TCC), suivi psychologique, parfois traitement medicamenteux. En cas de souffrance importante, contactez le 3114 (prevention suicide) ou le 15.",
+  },
+  {
+    q: "GAD-7 ou PHQ-9 : quelle difference ?",
+    a: "Le GAD-7 evalue l'anxiete generalisee, tandis que le PHQ-9 (Patient Health Questionnaire 9) evalue la depression. Les deux echelles ont ete developpees par la meme equipe (Spitzer, Kroenke, Williams) et sont souvent utilisees en complement dans les soins primaires.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd
         name="Test GAD-7 anxiete"
         category="HealthApplication"
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Qu'est-ce que le test GAD-7 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le GAD-7 (Generalized Anxiety Disorder 7) est une echelle d'auto-evaluation composee de 7 questions, developpee par Spitzer et collegues en 2006. Chaque question est notee de 0 a 3, pour un score total de 0 a 21. C'est l'un des outils de depistage de l'anxiete les plus utilises dans le monde, recommande par la HAS en France.",
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Comment interpreter mon score GAD-7 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les seuils valides sont : 0-4 anxiete minimale, 5-9 anxiete legere, 10-14 anxiete moderee, 15-21 anxiete severe. Un score superieur ou egal a 10 a une sensibilite de 89% et une specificite de 82% pour le trouble anxieux generalise.",
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Le test GAD-7 est-il fiable ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Oui. Valide scientifiquement en 2006 par Spitzer et al. dans Archives of Internal Medicine sur plus de 2700 patients, le GAD-7 est utilise par l'Organisation mondiale de la sante et recommande par la Haute Autorite de Sante francaise. Sa version francaise a ete validee. Toutefois, il s'agit d'un outil de depistage et non d'un outil diagnostique.",
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Que faire si mon score est eleve ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Un score superieur a 10 doit conduire a consulter un medecin generaliste ou un psychologue. Une prise en charge peut etre proposee : therapie cognitivo-comportementale (TCC), suivi psychologique, parfois traitement medicamenteux. En cas de souffrance importante, contactez le 3114 (prevention suicide) ou le 15.",
-                }
-              },
-              {
-                "@type": "Question",
-                name: "GAD-7 ou PHQ-9 : quelle difference ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le GAD-7 evalue l'anxiete generalisee, tandis que le PHQ-9 (Patient Health Questionnaire 9) evalue la depression. Les deux echelles ont ete developpees par la meme equipe (Spitzer, Kroenke, Williams) et sont souvent utilisees en complement dans les soins primaires.",
-                }
-              }
-            ]
-          })
-        }}
       />
       <Breadcrumb currentPage="Test Anxiete GAD-7" />
 
@@ -249,6 +222,8 @@ export default function Page() {
           souffrance, contactez votre medecin ou les numeros d&apos;urgence.
         </p>
       </div>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/test-anxiete-gad7" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

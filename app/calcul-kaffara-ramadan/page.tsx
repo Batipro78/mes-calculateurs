@@ -1,9 +1,10 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import CalculKaffaraRamadan from "./CalculKaffaraRamadan";
 import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-kaffara-ramadan" },
@@ -14,53 +15,29 @@ export const metadata: Metadata = {
     "kaffara ramadan, fidya, compensation jeûne rompu, rupture volontaire, personnes âgées, malades chroniques, 4 écoles sunnites",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qu'est-ce que la Kaffara ?",
+    a: "La Kaffara est une compensation obligatoire pour la rupture volontaire du jeûne Ramadan (par relation conjugale ou consommation intentionnelle). Elle consiste à nourrir 60 pauvres par jour rompu, ou à jeûner 60 jours consécutifs, ou à affranchir un esclave (caduc). Aujourd'hui, l'option pratiquée est de nourrir 60 pauvres (~540 € à 9 €/repas par jour).",
+  },
+  {
+    q: "Quelle est la différence entre Kaffara et Fidya ?",
+    a: "Kaffara = compensation pour rupture VOLONTAIRE du jeûne (60 repas/jour). Fidya = aide pour personnes âgées ou malades CHRONIQUES incapables de jeûner ET de rattraper les jours (1 repas/jour manqué). La Fidya est moins stricte que la Kaffara.",
+  },
+  {
+    q: "Combien coûte la Kaffara en France 2026 ?",
+    a: "Pour 1 jour rompu : 60 repas × 9 € (moyenne) = 540 €. Secours Islamique France, Islamic Relief France retiennent 7–10 €/repas. Pour 3 jours : 180 repas = ~1 620 €. Les montants varient selon les sources caritatives locales.",
+  },
+  {
+    q: "À qui verser Kaffara et Fidya ?",
+    a: "Aux pauvres et nécessiteux directement, ou via une mosquée, une association caritative musulmane (Secours Islamique, Human Appeal, etc.) ou des organismes humanitaires locaux. L'important est que l'argent serve à nourrir les plus pauvres.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Kaffara et Fidya - Compensation Ramadan" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Qu&apos;est-ce que la Kaffara ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La Kaffara est une compensation obligatoire pour la rupture volontaire du jeûne Ramadan (par relation conjugale ou consommation intentionnelle). Elle consiste à nourrir 60 pauvres par jour rompu, ou à jeûner 60 jours consécutifs, ou à affranchir un esclave (caduc). Aujourd&apos;hui, l&apos;option pratiquée est de nourrir 60 pauvres (~540 € à 9 €/repas par jour).",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la différence entre Kaffara et Fidya ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Kaffara = compensation pour rupture VOLONTAIRE du jeûne (60 repas/jour). Fidya = aide pour personnes âgées ou malades CHRONIQUES incapables de jeûner ET de rattraper les jours (1 repas/jour manqué). La Fidya est moins stricte que la Kaffara.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien coûte la Kaffara en France 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour 1 jour rompu : 60 repas × 9 € (moyenne) = 540 €. Secours Islamique France, Islamic Relief France retiennent 7–10 €/repas. Pour 3 jours : 180 repas = ~1 620 €. Les montants varient selon les sources caritatives locales.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "À qui verser Kaffara et Fidya ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Aux pauvres et nécessiteux directement, ou via une mosquée, une association caritative musulmane (Secours Islamique, Human Appeal, etc.) ou des organismes humanitaires locaux. L&apos;important est que l&apos;argent serve à nourrir les plus pauvres.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Kaffara et Fidya - Compensation Ramadan" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -262,6 +239,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-kaffara-ramadan" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

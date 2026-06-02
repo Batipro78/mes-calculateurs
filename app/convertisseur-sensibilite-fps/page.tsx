@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/convertisseur-sensibilite-fps" },
@@ -21,53 +22,29 @@ export const metadata: Metadata = {
   },
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment convertir sa sensibilite entre deux jeux FPS ?",
+    a: "Utilisez le cm/360° (distance pour faire un tour complet) comme reference. C'est le meme geste physique dans tous les jeux. Notre convertisseur calcule automatiquement la sensibilite equivalente en preservant ce cm/360°.",
+  },
+  {
+    q: "Qu'est-ce que l'eDPI ?",
+    a: "eDPI (effective DPI) = DPI de votre souris × Sensibilite du jeu. Par exemple : 800 DPI × 1.0 sens = 800 eDPI. C'est une metrique pour comparer la vitesse de visee entre joueurs.",
+  },
+  {
+    q: "Quelle sensibilite utilise les joueurs professionnels ?",
+    a: "La plupart des pros jouent entre 30-40 cm/360°. En CS2 : 32 cm/360. En Valorant : 35 cm/360. En Apex : 28 cm/360. Cherchez votre confort personnel plutot que de copier les pros.",
+  },
+  {
+    q: "Pourquoi le cm/360° est-il important ?",
+    a: "Le cm/360° represente la distance physique de votre geste pour faire un tour complet. Preserver cette valeur garantit que votre geste physique reste identique en changeant de jeu ou de sensibilite. C'est la base du muscle memory.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Convertisseur Sensibilite FPS" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment convertir sa sensibilite entre deux jeux FPS ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Utilisez le cm/360° (distance pour faire un tour complet) comme reference. C&apos;est le meme geste physique dans tous les jeux. Notre convertisseur calcule automatiquement la sensibilite equivalente en preservant ce cm/360°.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qu&apos;est-ce que l&apos;eDPI ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "eDPI (effective DPI) = DPI de votre souris × Sensibilite du jeu. Par exemple : 800 DPI × 1.0 sens = 800 eDPI. C&apos;est une metrique pour comparer la vitesse de visee entre joueurs.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle sensibilite utilise les joueurs professionnels ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La plupart des pros jouent entre 30-40 cm/360°. En CS2 : 32 cm/360. En Valorant : 35 cm/360. En Apex : 28 cm/360. Cherchez votre confort personnel plutot que de copier les pros.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Pourquoi le cm/360° est-il important ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le cm/360° represente la distance physique de votre geste pour faire un tour complet. Preserver cette valeur garantit que votre geste physique reste identique en changeant de jeu ou de sensibilite. C&apos;est la base du muscle memory.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Convertisseur Sensibilite FPS" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -228,6 +205,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/convertisseur-sensibilite-fps" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

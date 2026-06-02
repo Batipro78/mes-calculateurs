@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-vignette-critair" },
@@ -27,53 +28,29 @@ export const metadata: Metadata = {
   },
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment connaitre sa vignette Crit'Air ?",
+    a: "La vignette Crit'Air depend du type de carburant et de la date de premiere immatriculation de votre vehicule. Les vehicules electriques obtiennent Crit'Air 0, les essence recents Crit'Air 1, et les diesel anciens Crit'Air 4 ou 5. Utilisez notre simulateur pour connaitre votre classe exacte.",
+  },
+  {
+    q: "Combien coute la vignette Crit'Air ?",
+    a: "La vignette Crit'Air coute 3,72 euros (3,70 euros + 0,02 euro de frais d'affranchissement). Elle se commande uniquement sur le site officiel certificat-air.gouv.fr. Attention aux sites frauduleux qui facturent beaucoup plus cher.",
+  },
+  {
+    q: "La vignette Crit'Air est-elle obligatoire ?",
+    a: "La vignette Crit'Air est obligatoire pour circuler dans les Zones a Faibles Emissions (ZFE). En 2026, plus de 40 agglomerations francaises sont concernees. Sans vignette en ZFE, l'amende est de 68 euros pour les voitures et 135 euros pour les poids lourds.",
+  },
+  {
+    q: "Quelle est la duree de validite de la vignette Crit'Air ?",
+    a: "La vignette Crit'Air est valable pour toute la duree de vie du vehicule, tant que celui-ci n'est pas modifie (changement de motorisation). Il n'est pas necessaire de la renouveler. Si elle est deterioree, vous pouvez en commander une nouvelle sur le site officiel.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Vignette Crit'Air" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment connaitre sa vignette Crit'Air ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La vignette Crit'Air depend du type de carburant et de la date de premiere immatriculation de votre vehicule. Les vehicules electriques obtiennent Crit'Air 0, les essence recents Crit'Air 1, et les diesel anciens Crit'Air 4 ou 5. Utilisez notre simulateur pour connaitre votre classe exacte.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien coute la vignette Crit'Air ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La vignette Crit'Air coute 3,72 euros (3,70 euros + 0,02 euro de frais d'affranchissement). Elle se commande uniquement sur le site officiel certificat-air.gouv.fr. Attention aux sites frauduleux qui facturent beaucoup plus cher.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "La vignette Crit'Air est-elle obligatoire ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La vignette Crit'Air est obligatoire pour circuler dans les Zones a Faibles Emissions (ZFE). En 2026, plus de 40 agglomerations francaises sont concernees. Sans vignette en ZFE, l'amende est de 68 euros pour les voitures et 135 euros pour les poids lourds.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la duree de validite de la vignette Crit'Air ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La vignette Crit'Air est valable pour toute la duree de vie du vehicule, tant que celui-ci n'est pas modifie (changement de motorisation). Il n'est pas necessaire de la renouveler. Si elle est deterioree, vous pouvez en commander une nouvelle sur le site officiel.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Vignette Crit'Air" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -282,6 +259,7 @@ export default function Page() {
 
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-vignette-critair" />
     </div>
   );

@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-consommation-essence" },
@@ -14,37 +15,25 @@ export const metadata: Metadata = {
     "calcul consommation essence, cout trajet voiture, prix carburant calcul, litres pour trajet, consommation carburant, cout km voiture, calculer essence trajet",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment calculer le cout d'un trajet en voiture ?",
+    a: "Cout = (consommation en L/100km / 100) x distance en km x prix du litre. Exemple : 7 L/100km, 500 km, 1,75 €/L → (7/100) x 500 x 1,75 = 61,25 €.",
+  },
+  {
+    q: "Quelle est la consommation moyenne d'une voiture ?",
+    a: "En France, la consommation moyenne est d'environ 6-7 L/100km pour une voiture essence et 5-6 L/100km pour un diesel. Les citadines consomment 4-5 L, les SUV 8-10 L.",
+  },
+  {
+    q: "Quelle difference entre consommation officielle et reelle ?",
+    a: "La consommation officielle (cycle WLTP) est mesuree en laboratoire. En conditions reelles (autoroute, climatisation, charge), on observe generalement 10 a 25% de plus. Utilisez votre propre releve de consommation pour un calcul precis.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Consommation Essence" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment calculer le cout d'un trajet en voiture ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Cout = (consommation en L/100km / 100) x distance en km x prix du litre. Exemple : 7 L/100km, 500 km, 1,75\u20ac/L → (7/100) x 500 x 1,75 = 61,25\u20ac.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la consommation moyenne d'une voiture ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "En France, la consommation moyenne est d'environ 6-7 L/100km pour une voiture essence et 5-6 L/100km pour un diesel. Les citadines consomment 4-5 L, les SUV 8-10 L.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Consommation Essence" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -100,6 +89,7 @@ export default function Page() {
         </div>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-consommation-essence" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

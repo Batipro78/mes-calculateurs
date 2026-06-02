@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-fov-jeu" },
@@ -21,53 +22,33 @@ export const metadata: Metadata = {
   },
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quelle est la différence entre HFOV et VFOV ?",
+    a: "HFOV (horizontal FOV) est l'angle de vue horizontal. VFOV (vertical FOV) est l'angle vertical. Ils sont liés par le ratio d'écran de votre moniteur. Par exemple, sur 16:9, HFOV=90° donne VFOV≈56,25°. Utilisez notre convertisseur pour les conversions automatiques.",
+  },
+  {
+    q: "Quel FOV utiliser sur un écran 16:9 vs 21:9 ?",
+    a: "Avec Hor+ scaling (le plus courant), si vous jouez à 90° FOV sur 16:9, le FOV sur 21:9 sera ~110°. Cela augmente la vision périphérique sur ultra-wide sans perdre la précision au centre. Pour Vert- scaling, seul le VFOV change et le HFOV diminue.",
+  },
+  {
+    q: "Quel FOV est optimal pour le jeu compétitif ?",
+    a: "En compétitif, la plupart des joueurs préfèrent 90-110° HFOV sur 16:9, ce qui équilibre vision périphérique et taille des ennemis. Pour ultra-wide (21:9), 100-120° HFOV est normal grâce à Hor+ scaling. Testez ce qui vous convient et restez cohérent sur tous vos jeux.",
+  },
+  {
+    q: "Pourquoi Fortnite verrouille-t-il le FOV ?",
+    a: "Fortnite verrouille VFOV à 80° (vertical-) pour tous les ratios d'écran. Cela signifie que HFOV augmente automatiquement sur les écrans plus larges (16:9 → 21:9 → 32:9). C'est un choix de game design pour éviter les avantages des ultra-wide monitors en multijoueur compétitif.",
+  },
+  {
+    q: "Comment convertir un FOV entre CS2 et Valorant ?",
+    a: "CS2 utilise HFOV (90° par défaut sur 16:9). Valorant utilise VFOV (103° par défaut, soit ~74° VFOV sur 16:9). Entrez votre HFOV CS2 dans le convertisseur, sélectionnez votre ratio d'écran, et obtenez l'équivalent VFOV pour Valorant ou tout autre jeu.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Convertisseur FOV Jeux Video" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quelle est la difference entre HFOV et VFOV ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "HFOV (horizontal FOV) est l&apos;angle de vue horizontal. VFOV (vertical FOV) est l&apos;angle vertical. Ils sont lies par le ratio d&apos;écran de votre moniteur. Par exemple, sur 16:9, HFOV=90° donne VFOV≈56.25°. Utilisez notre convertisseur pour les conversions automatiques.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel FOV utiliser sur un ecran 16:9 vs 21:9 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Avec Hor+ scaling (le plus courant), si vous jouez a 90° FOV sur 16:9, le FOV sur 21:9 sera ~110°. Cela augmente la vision peripherique sur ultra-wide sans perdre la precision au centre. Pour Vert- scaling, seul le VFOV change et le HFOV diminue.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel FOV est optimal pour le jeu competitif ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "En competitif, la plupart des joueurs preferent 90-110° HFOV sur 16:9, ce qui balance vision peripherique et taille des ennemis. Pour ultra-wide (21:9), 100-120° HFOV est normal grace a Hor+ scaling. Testez ce qui vous convient et restez coherent sur tous vos jeux (utilisez cm/360 ou ce convertisseur).",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Pourquoi Fortnite verrouille-t-il le FOV ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Fortnite verrouille VFOV a 80° (vertical-) pour tous les ratios d&apos;écran. Cela signifie que HFOV augmente automatiquement sur les ecrans plus larges (16:9 → 21:9 → 32:9). C&apos;est un choix de game design pour eviter les avantages des ultra-wide monitors en multijoueur competitif.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Convertisseur FOV Jeux Video" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -303,6 +284,7 @@ export default function Page() {
         </div>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-fov-jeu" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/conversion-longueur" },
@@ -14,45 +15,29 @@ export const metadata: Metadata = {
     "conversion cm en pouces, cm en inches, pouces en cm, pieds en cm, conversion longueur, taille en pieds, convertisseur taille, tableau conversion cm pouces",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Combien de cm dans un pouce ?",
+    a: "1 pouce (inch) = 2,54 centimetres exactement. C'est une definition officielle depuis 1959. Pour convertir des pouces en cm, multipliez par 2,54.",
+  },
+  {
+    q: "Combien de cm dans un pied ?",
+    a: "1 pied (foot) = 30,48 centimetres = 12 pouces. Pour convertir des pieds en cm, multipliez par 30,48. Exemple : 6 pieds = 182,88 cm.",
+  },
+  {
+    q: "Comment convertir sa taille en pieds et pouces ?",
+    a: "Divisez votre taille en cm par 2,54 pour obtenir le total en pouces. Divisez ensuite par 12 : le quotient = pieds, le reste = pouces. Exemple : 175 cm = 68,9 pouces = 5 pieds 8,9 pouces (5'9\").",
+  },
+  {
+    q: "A quoi servent les pouces dans la vie courante ?",
+    a: "Les pouces sont utilises pour mesurer les diagonales d'ecrans (TV, smartphones, moniteurs), les tuyaux et visseries en bricolage, et les tailles de vetements aux Etats-Unis et au Royaume-Uni. Un ecran de 55 pouces fait 139,7 cm de diagonale.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Conversion Longueur" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Combien de cm dans un pouce ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "1 pouce (inch) = 2,54 centimetres exactement. C'est une definition officielle depuis 1959. Pour convertir des pouces en cm, multipliez par 2,54.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien de cm dans un pied ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "1 pied (foot) = 30,48 centimetres = 12 pouces. Pour convertir des pieds en cm, multipliez par 30,48. Exemple : 6 pieds = 182,88 cm.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment convertir sa taille en pieds et pouces ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Divisez votre taille en cm par 2,54 pour obtenir le total en pouces. Divisez ensuite par 12 : le quotient = pieds, le reste = pouces. Exemple : 175 cm = 68,9 pouces = 5 pieds 8,9 pouces (5'9\").",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Conversion Longueur" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -137,6 +122,8 @@ export default function Page() {
           Un ecran de <strong>27 pouces</strong> fait 68,6 cm. Un smartphone de <strong>6,5 pouces</strong> fait 16,5 cm.
         </p>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/conversion-longueur" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

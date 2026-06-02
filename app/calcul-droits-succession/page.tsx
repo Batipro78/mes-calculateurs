@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-droits-succession" },
@@ -14,19 +15,29 @@ export const metadata: Metadata = {
     "calcul droits succession, droits de succession 2026, bareme succession, abattement succession, simulateur succession, heritage impot, droits mutation",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Le conjoint paye-t-il des droits de succession ?",
+    a: "Non. Le conjoint survivant et le partenaire de PACS sont totalement exon\u00e9r\u00e9s de droits de succession, quel que soit le montant h\u00e9rit\u00e9.",
+  },
+  {
+    q: "Quel est l'abattement pour les enfants ?",
+    a: "Chaque enfant b\u00e9n\u00e9ficie d'un abattement de 100 000 \u20ac sur sa part d'h\u00e9ritage. Au-del\u00e0, les droits sont calcul\u00e9s selon un bar\u00e8me progressif de 5 % \u00e0 45 %.",
+  },
+  {
+    q: "Quels sont les droits de succession entre fr\u00e8res et s\u0153urs ?",
+    a: "Entre fr\u00e8res et s\u0153urs, l'abattement est de 15 932 \u20ac. Au-del\u00e0, le taux est de 35 % jusqu'\u00e0 24 430 \u20ac puis 45 %. Une exon\u00e9ration totale existe si le fr\u00e8re ou la s\u0153ur est c\u00e9libataire, veuf ou divorc\u00e9, \u00e2g\u00e9 de plus de 50 ans et domicili\u00e9 chez le d\u00e9funt depuis 5 ans.",
+  },
+  {
+    q: "Comment sont calcul\u00e9s les droits de succession en ligne directe ?",
+    a: "Les droits de succession en ligne directe (parents-enfants) s'appliquent apr\u00e8s d\u00e9duction de l'abattement de 100 000 \u20ac. La part taxable est ensuite soumise \u00e0 un bar\u00e8me progressif : 5 % jusqu'\u00e0 8 072 \u20ac, 10 % de 8 072 \u20ac \u00e0 12 109 \u20ac, 15 % jusqu'\u00e0 15 932 \u20ac, 20 % jusqu'\u00e0 552 324 \u20ac, 30 % puis 40 % et 45 % pour les parts tr\u00e8s \u00e9lev\u00e9es.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Droits Succession" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org", "@type": "FAQPage",
-        mainEntity: [
-          { "@type": "Question", name: "Le conjoint paye-t-il des droits de succession ?",
-            acceptedAnswer: { "@type": "Answer", text: "Non. Le conjoint survivant et le partenaire de PACS sont totalement exoneres de droits de succession, quel que soit le montant herite." } },
-          { "@type": "Question", name: "Quel est l'abattement pour les enfants ?",
-            acceptedAnswer: { "@type": "Answer", text: "Chaque enfant beneficie d'un abattement de 100 000\u20ac sur sa part d'heritage. Au-dela, les droits sont calcules selon un bareme progressif de 5% a 45%." } },
-        ]
-      }) }} />
       <Breadcrumb currentPage="Droits de Succession" />
       <div className="flex items-center gap-3 mb-2">
         <div className="w-10 h-10 bg-gradient-to-br from-slate-700 to-slate-900 rounded-xl flex items-center justify-center text-xl shadow-sm">⚖️</div>
@@ -69,6 +80,7 @@ export default function Page() {
           regime matrimonial et de la nature des biens.
         </p>
       </section>
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-droits-succession" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

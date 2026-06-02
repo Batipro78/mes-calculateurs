@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-besoin-sommeil" },
@@ -14,45 +15,29 @@ export const metadata: Metadata = {
     "calcul besoin sommeil, heures de sommeil par age, besoin sommeil adulte, cycle sommeil 90 minutes, heure coucher ideal, sommeil paradoxal, sommeil profond, NSF guidelines, dette sommeil",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Combien d'heures de sommeil faut-il par nuit selon l'age ?",
+    a: "Selon la National Sleep Foundation (NSF), les besoins varient selon l'age : nouveau-nes (0-3 mois) : 14-17h ; nourrissons (4-11 mois) : 12-15h ; tout-petits (1-2 ans) : 11-14h ; enfants (3-5 ans) : 10-13h ; enfants d'age scolaire (6-13 ans) : 9-11h ; adolescents (14-17 ans) : 8-10h ; jeunes adultes et adultes (18-64 ans) : 7-9h ; seniors (65+) : 7-8h.",
+  },
+  {
+    q: "Qu'est-ce qu'un cycle de sommeil et combien en faut-il ?",
+    a: "Un cycle de sommeil dure environ 90 minutes et comprend 4 phases : N1 (sommeil leger), N2 (sommeil leger consolide), N3 (sommeil profond) et REM (sommeil paradoxal ou reves). Un adulte enchaine 4 a 6 cycles par nuit. Il est conseille de programmer son reveil apres un cycle complet pour eviter la sensation de fatigue au reveil (inertie du sommeil).",
+  },
+  {
+    q: "Comment ameliorer la qualite de son sommeil ?",
+    a: "Pour ameliorer la qualite du sommeil : maintenir des horaires reguliers (meme le week-end), eviter les ecrans 1h avant le coucher, garder la chambre fraiche (18-20 degres), eviter la cafeine apres 14h, pratiquer une activite physique reguliere (mais pas en soiree), ne pas manger trop lourd le soir, et s'exposer a la lumiere naturelle le matin pour regler son horloge biologique.",
+  },
+  {
+    q: "Qu'est-ce que l'inertie du sommeil et comment l'eviter ?",
+    a: "L'inertie du sommeil est cette sensation de brouillard et de fatigue intense juste apres le reveil. Elle survient quand on se reveille en plein milieu d'un cycle (sommeil profond N3). Pour l'eviter, programmez votre reveil apres un nombre entier de cycles de 90 minutes : 6h, 7h30 ou 9h de sommeil sont des durees optimales pour un adulte.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Besoin Sommeil" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Combien d'heures de sommeil faut-il par nuit selon l'age ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Selon la National Sleep Foundation (NSF), les besoins varient selon l'age : nouveau-nes (0-3 mois) : 14-17h ; nourrissons (4-11 mois) : 12-15h ; tout-petits (1-2 ans) : 11-14h ; enfants (3-5 ans) : 10-13h ; enfants d'age scolaire (6-13 ans) : 9-11h ; adolescents (14-17 ans) : 8-10h ; jeunes adultes et adultes (18-64 ans) : 7-9h ; seniors (65+) : 7-8h.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qu'est-ce qu'un cycle de sommeil et combien en faut-il ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Un cycle de sommeil dure environ 90 minutes et comprend 4 phases : N1 (sommeil leger), N2 (sommeil leger consolide), N3 (sommeil profond) et REM (sommeil paradoxal ou reves). Un adulte enchai­ne 4 a 6 cycles par nuit. Il est conseille de programmer son reveil apres un cycle complet pour eviter la sensation de fatigue au reveil (inertie du sommeil).",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment ameliorer la qualite de son sommeil ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour ameliorer la qualite du sommeil : maintenir des horaires reguliers (meme le week-end), eviter les ecrans 1h avant le coucher, garder la chambre fraiche (18-20 degres), eviter la cafeine apres 14h, pratiquer une activite physique reguliere (mais pas en soiree), ne pas manger trop lourd le soir, et s'exposer a la lumiere naturelle le matin pour regler son horloge biologique.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Besoin Sommeil" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -213,6 +198,8 @@ export default function Page() {
           Mis a jour le 8 avril 2026
         </p>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-besoin-sommeil" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

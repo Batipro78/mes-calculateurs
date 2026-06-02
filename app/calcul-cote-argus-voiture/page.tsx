@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-cote-argus-voiture" },
@@ -14,53 +15,33 @@ export const metadata: Metadata = {
     "cote voiture occasion, estimation prix voiture, calcul decote voiture, valeur voiture occasion, prix revente auto, decote auto, cote voiture indicative",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Ce calculateur donne-t-il la vraie cote Argus officielle ?",
+    a: "NON. Ce calculateur fournit uniquement une estimation indicative à but informatif, basée sur des règles de décote moyennes du marché. Pour obtenir la cote Argus officielle (marque déposée), consultez le site largus.fr qui propose ce service payant.",
+  },
+  {
+    q: "Comment est calculée la décote d'une voiture ?",
+    a: "La règle généralement admise sur le marché français : la 1ère année, la voiture perd environ 25% de sa valeur (sortie du concessionnaire). Les années 2 à 5, la décote est d'environ 15% par an. À partir de la 6ème année, environ 10% par an. La décote totale est plafonnée et la voiture conserve au minimum 10% de sa valeur neuve.",
+  },
+  {
+    q: "Quel est le kilométrage moyen d'une voiture en France ?",
+    a: "Le kilométrage moyen annuel d'un véhicule en France est d'environ 15 000 km/an (source : SDES, Ministère de la Transition écologique). Un véhicule au kilométrage inférieur à cette moyenne sera mieux valorisé à la revente, et inversement.",
+  },
+  {
+    q: "Le type de carburant influence-t-il la décote ?",
+    a: "Oui. Depuis l'instauration des ZFE (Zones à Faibles Émissions) et les restrictions Crit'Air, le diesel se déprécie plus rapidement que l'essence. Les hybrides bénéficient d'une demande soutenue. Les électriques ont une décote initiale forte due à l'évolution rapide de la technologie batterie, mais cela tend à se stabiliser.",
+  },
+  {
+    q: "Quels autres facteurs influencent le prix de revente ?",
+    a: "Au-delà de l'âge et du kilométrage, le prix de revente dépend de : l'état général (carrosserie, intérieur), la complétude du carnet d'entretien, les options présentes (GPS, toit ouvrant, sièges chauffants), la marque et le modèle (certains conservent mieux leur valeur), et la région (offre/demande locale).",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Estimation Cote Voiture Occasion" category="UtilitiesApplication" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Ce calculateur donne-t-il la vraie cote Argus officielle ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "NON. Ce calculateur fournit uniquement une estimation indicative à but informatif, basée sur des règles de décote moyennes du marché. Pour obtenir la cote Argus officielle (marque déposée), consultez le site largus.fr qui propose ce service payant.",
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Comment est calculée la décote d'une voiture ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La règle généralement admise sur le marché français : la 1ère année, la voiture perd environ 25% de sa valeur (sortie du concessionnaire). Les années 2 à 5, la décote est d'environ 15% par an. À partir de la 6ème année, environ 10% par an. La décote totale est plafonnée et la voiture conserve au minimum 10% de sa valeur neuve.",
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Quel est le kilométrage moyen d'une voiture en France ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le kilométrage moyen annuel d'un véhicule en France est d'environ 15 000 km/an (source : SDES, Ministère de la Transition écologique). Un véhicule au kilométrage inférieur à cette moyenne sera mieux valorisé à la revente, et inversement.",
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Le type de carburant influence-t-il la décote ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Oui. Depuis l'instauration des ZFE (Zones à Faibles Émissions) et les restrictions Crit'Air, le diesel se déprécie plus rapidement que l'essence. Les hybrides bénéficient d'une demande soutenue. Les électriques ont une décote initiale forte due à l'évolution rapide de la technologie batterie, mais cela tend à se stabiliser.",
-                }
-              }
-            ]
-          })
-        }}
-      />
       <Breadcrumb currentPage="Cote Voiture Occasion" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -213,6 +194,7 @@ export default function Page() {
         </p>
       </div>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-cote-argus-voiture" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

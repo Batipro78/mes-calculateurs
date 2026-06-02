@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-date-ramadan" },
@@ -14,53 +15,33 @@ export const metadata: Metadata = {
     "date ramadan 2026, aid al fitr 2026, aid al adha, calendrier musulman france, ramadan 2027 2028 2029 2030, cfcm",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quelle est la date du Ramadan 2026 en France ?",
+    a: "Le Ramadan 2026 commence le mercredi 18 février 2026 en France, selon la confirmation de la CFCM et de la Mosquée de Paris. C'est la date officielle pour le début du jeûne. L'Aïd al-Fitr (Fête de la Rupture) sera célébré le vendredi 20 mars 2026.",
+  },
+  {
+    q: "Quelle est la différence entre Aïd al-Fitr et Aïd al-Adha ?",
+    a: "Aïd al-Fitr marque la fin du Ramadan (jeûne d'un mois). Aïd al-Adha, 70 jours plus tard, commémore le sacrifice d'Abraham et dure 3-4 jours. Les deux sont les fêtes les plus importantes de l'Islam. En 2026, Aïd al-Fitr est le 20 mars et Aïd al-Adha le 27 mai.",
+  },
+  {
+    q: "Pourquoi la date du Ramadan change chaque année ?",
+    a: "Le calendrier musulman lunaire (Hijri) contient 354-355 jours, soit 11 jours de moins que l'année solaire. Le Ramadan avance donc d'environ 11 jours chaque année. Par exemple, Ramadan 2026 commence le 18 février, mais en 2027 ce sera le 8 février. C'est pourquoi les dates varient.",
+  },
+  {
+    q: "Comment la CFCM et les mosquées déterminent-elles la date du Ramadan ?",
+    a: "La date officielle du Ramadan en France est annoncée par la CFCM (Conseil Français du Culte Musulman) et la Mosquée de Paris, basée sur l'observation du croissant lunaire ou des calculs astronomiques (tables Umm al-Qura). L'annonce officielle se fait la veille du premier jour de Ramadan après confirmation par les autorités musulmanes.",
+  },
+  {
+    q: "Le Ramadan est-il férié en France ?",
+    a: "Non, le Ramadan et l'Aïd al-Fitr ne sont pas des jours fériés officiels en France. Cependant, certains employeurs accordent une journée de congé pour l'Aïd. Le droit du travail français permet de poser des congés payés ou RTT à ces dates.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calendrier Ramadan - Date Aïd" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quelle est la date du Ramadan 2026 en France ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le Ramadan 2026 commence le mercredi 18 février 2026 en France, selon la confirmation de la CFCM et de la Mosquée de Paris. C&apos;est la date officielle pour le début du jeûne. L&apos;Aïd al-Fitr (Fête de la Rupture) sera célébré le vendredi 20 mars 2026.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la différence entre Aïd al-Fitr et Aïd al-Adha ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Aïd al-Fitr marque la fin du Ramadan (jeûne d&apos;un mois). Aïd al-Adha, 70 jours plus tard, commémore le sacrifice d&apos;Abraham et dure 3-4 jours. Les deux sont les fêtes les plus importantes de l&apos;Islam. En 2026, Aïd al-Fitr est le 20 mars et Aïd al-Adha le 27 mai.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Pourquoi la date du Ramadan change chaque année ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le calendrier musulman lunaire (Hijri) contient 354-355 jours, soit 11 jours de moins que l&apos;année solaire. Le Ramadan avance donc d&apos;environ 11 jours chaque année. Par exemple, Ramadan 2026 commence le 18 février, mais en 2027 ce sera le 8 février. C&apos;est pourquoi les dates varient.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment la CFCM et les mosquées déterminent-elles la date du Ramadan ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La date officielle du Ramadan en France est annoncée par la CFCM (Conseil Français du Culte Musulman) et la Mosquée de Paris, basée sur l&apos;observation du croissant lunaire ou des calculs astronomiques (tables Umm al-Qura). L&apos;annonce officielle se fait la veille du premier jour de Ramadan après confirmation par les autorités musulmanes.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calendrier Ramadan 2026-2030" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -219,6 +200,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-date-ramadan" />
     </div>
   );

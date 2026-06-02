@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-bombe-nucleaire" },
@@ -15,53 +16,29 @@ export const metadata: Metadata = {
     "simulateur bombe nucleaire, impact bombe atomique, carte explosion nucleaire, zone destruction nucleaire, Hiroshima, Tsar Bomba, bombe atomique Paris, guerre nucleaire France",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quel serait l'impact d'une bombe nucleaire sur Paris ?",
+    a: "L'impact depend de la puissance de la bombe. Une ogive strategique moderne (300 kT, type TN75 francaise) provoquerait une boule de feu de 600 m, une zone de destruction totale de 2 km, des batiments effondres dans un rayon de 4,8 km et des vitres brisees jusqu'a 15 km. Une bombe de type Hiroshima (15 kT) causerait des degats bien moindres, avec une destruction totale sur 700 m.",
+  },
+  {
+    q: "Quelle est la bombe nucleaire la plus puissante ?",
+    a: "La Tsar Bomba, testee par l'URSS le 30 octobre 1961, est la bombe la plus puissante jamais detonee : 50 megatonnes (50 000 kilotonnes), soit 3 333 fois la puissance de Hiroshima. Son souffle a brise des vitres a 900 km et la boule de feu mesurait 3,5 km de diametre.",
+  },
+  {
+    q: "Combien de bombes nucleaires possede la France ?",
+    a: "La France possede environ 290 ogives nucleaires, ce qui en fait la 3e puissance nucleaire mondiale derriere les Etats-Unis (~5 500) et la Russie (~6 200). L'arsenal francais est compose d'ogives TN75 (300 kT) deployees sur sous-marins nucleaires lanceurs d'engins (SNLE) et de missiles ASMPA lances depuis des avions Rafale.",
+  },
+  {
+    q: "Comment se proteger d'une bombe nucleaire ?",
+    a: "En cas d'alerte nucleaire : 1) Se mettre a l'abri dans un batiment en dur (sous-sol, cave, parking souterrain), 2) S'eloigner des fenetres et se coucher au sol, 3) Rester confine au moins 24h pour eviter les retombees radioactives, 4) Ne pas regarder l'explosion (risque de cecite), 5) Ecouter les consignes officielles a la radio. A plus de 10-15 km de l'impact d'une bombe de 300 kT, les chances de survie sont bonnes si l'on se met rapidement a l'abri.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Simulateur Bombe Nucleaire" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quel serait l'impact d'une bombe nucleaire sur Paris ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L'impact depend de la puissance de la bombe. Une ogive strategique moderne (300 kT, type TN75 francaise) provoquerait une boule de feu de 600 m, une zone de destruction totale de 2 km, des batiments effondres dans un rayon de 4,8 km et des vitres brisees jusqu'a 15 km. Une bombe de type Hiroshima (15 kT) causerait des degats bien moindres, avec une destruction totale sur 700 m.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la bombe nucleaire la plus puissante ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La Tsar Bomba, testee par l'URSS le 30 octobre 1961, est la bombe la plus puissante jamais detonee : 50 megatonnes (50 000 kilotonnes), soit 3 333 fois la puissance de Hiroshima. Son souffle a brise des vitres a 900 km et la boule de feu mesurait 3,5 km de diametre.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien de bombes nucleaires possede la France ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La France possede environ 290 ogives nucleaires, ce qui en fait la 3e puissance nucleaire mondiale derriere les Etats-Unis (~5 500) et la Russie (~6 200). L'arsenal francais est compose d'ogives TN75 (300 kT) deployees sur sous-marins nucleaires lanceurs d'engins (SNLE) et de missiles ASMPA lances depuis des avions Rafale.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment se proteger d'une bombe nucleaire ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "En cas d'alerte nucleaire : 1) Se mettre a l'abri dans un batiment en dur (sous-sol, cave, parking souterrain), 2) S'eloigner des fenetres et se coucher au sol, 3) Rester confine au moins 24h pour eviter les retombees radioactives, 4) Ne pas regarder l'explosion (risque de cecite), 5) Ecouter les consignes officielles a la radio. A plus de 10-15 km de l'impact d'une bombe de 300 kT, les chances de survie sont bonnes si l'on se met rapidement a l'abri.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Simulateur Bombe Nucleaire" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -246,79 +223,7 @@ export default function Page() {
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
-        <h2 className="text-xl font-bold text-slate-800 mb-6">
-          Questions frequentes
-        </h2>
-        <div className="space-y-5">
-          <div>
-            <h3 className="font-semibold text-slate-800 mb-1">
-              Quelle difference entre kilotonnes et megatonnes ?
-            </h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              La <strong>kilotonne (kT)</strong> vaut 1 000 tonnes de TNT. La{" "}
-              <strong>megatonne (Mt)</strong> vaut 1 million de tonnes de TNT, soit
-              1 000 kT. Hiroshima (15 kT) etait une petite bombe comparee aux ogives
-              modernes (100-300 kT) ou a la Tsar Bomba (50 000 kT = 50 Mt).
-            </p>
-          </div>
-          <div>
-            <h3 className="font-semibold text-slate-800 mb-1">
-              A quelle distance est-on en securite ?
-            </h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              Pour une bombe de 300 kT (ogive strategique standard), les degats
-              graves s&apos;etendent sur environ 5 km et les vitres brisees sur 15 km.
-              Au-dela de 20 km, les effets directs du souffle sont negligeables.
-              Cependant, les retombees radioactives (fallout) peuvent contaminer des
-              zones a plus de 100 km selon le vent et la meteo.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-semibold text-slate-800 mb-1">
-              Pourquoi ce simulateur ne montre pas les retombees radioactives ?
-            </h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              Les retombees (fallout) dependent de facteurs tres variables :
-              direction et force du vent, humidite, altitude de detonation,
-              nature du sol. Les modeliser necessiterait des donnees
-              meteorologiques en temps reel. Ce simulateur se concentre sur les
-              effets immediats (souffle, chaleur, radiation initiale) qui sont
-              calculables avec les formules de physique.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-semibold text-slate-800 mb-1">
-              La France serait-elle une cible nucleaire ?
-            </h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              La France est protegee par sa propre dissuasion nucleaire
-              (&laquo;&nbsp;frappe en second&nbsp;&raquo;). Ses sous-marins
-              nucleaires (SNLE) sont indetectables et peuvent riposter meme si
-              le territoire est frappe. Cette capacite de represailles rend
-              theoriquement toute attaque nucleaire contre la France
-              &laquo;&nbsp;suicidaire&nbsp;&raquo; pour l&apos;attaquant. C&apos;est le
-              principe de la dissuasion.
-            </p>
-          </div>
-          <div>
-            <h3 className="font-semibold text-slate-800 mb-1">
-              Quels gestes adopter en cas d&apos;alerte nucleaire ?
-            </h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              1) Se mettre immediatement a l&apos;abri dans un batiment en dur
-              (sous-sol, cave). 2) Fermer portes et fenetres, couper la
-              ventilation. 3) S&apos;eloigner des fenetres et se coucher au sol.
-              4) Ne jamais regarder l&apos;explosion. 5) Rester confine au moins
-              24h. 6) Ecouter la radio (France Info) pour les consignes
-              officielles. 7) Ne pas sortir tant que les autorites ne l&apos;ont
-              pas autorise.
-            </p>
-          </div>
-        </div>
-      </section>
-
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/simulateur-bombe-nucleaire" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

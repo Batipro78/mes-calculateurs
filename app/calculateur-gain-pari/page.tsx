@@ -3,6 +3,7 @@ import CalculateurGainPari from "./CalculateurGainPari";
 import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: {
@@ -15,55 +16,31 @@ export const metadata: Metadata = {
     "pari sportif, calculateur gain, cote décimale, cote fractionnelle, cote américaine, probabilité pari",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment calculer le gain d'un pari sportif avec cote decimale ?",
+    a: "Le calcul est simple : Gain total = Mise x Cote. Par exemple, une mise de 10 EUR avec une cote de 3.50 donne un gain total de 35 EUR. Le benefice net est la difference : 35 - 10 = 25 EUR de benefice.",
+  },
+  {
+    q: "Quelle est la difference entre cote decimale, fractionnelle et americaine ?",
+    a: "La cote decimale (3.50) est le format europeen. La cote fractionnelle (5/2) est le format britannique et affiche le benefice par rapport a la mise. La cote americaine (+350 ou -200) est utilisee aux Etats-Unis et indique le montant a parier ou a gagner pour 100 USD. Ces trois formats representent la meme probabilite, juste presentee differemment.",
+  },
+  {
+    q: "Comment convertir une cote decimale en probabilite implicite ?",
+    a: "La probabilite implicite est calculee comme : (1 / Cote decimale) x 100. Par exemple, une cote de 2.00 donne une probabilite implicite de 50 %, une cote de 3.00 donne 33,33 %, et une cote de 1.50 donne 66,67 %. Cette probabilite inclut la marge du bookmaker.",
+  },
+  {
+    q: "Qu'est-ce que la marge du bookmaker dans les cotes ?",
+    a: "La marge du bookmaker (appelee aussi 'overround' ou 'vig') est l'avantage integre dans les cotes. Lorsque vous additionnez les probabilites implicites de tous les resultats possibles d'un evenement, le total depasse 100 %. Cette difference est le profit du bookmaker. Par exemple, si un match a deux resultats avec 55 % et 50 % de probabilite implicite, le total est 105 %, et la marge est 5 %.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd
         name="Calculateur Gain Pari Sportif"
         description="Calculateur de gain pour paris sportifs avec conversion de cotes"
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment calculer le gain d&apos;un pari sportif avec cote décimale ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le calcul est simple : Gain total = Mise × Cote. Par exemple, une mise de 10 EUR avec une cote de 3.50 donne un gain total de 35 EUR. Le bénéfice net est la différence : 35 - 10 = 25 EUR de bénéfice.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la différence entre cote décimale, fractionnelle et américaine ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La cote décimale (3.50) est le format européen. La cote fractionnelle (5/2) est le format britannique et affiche le bénéfice par rapport à la mise. La cote américaine (+350 ou -200) est utilisée aux États-Unis et indique le montant à parier ou à gagner pour 100 USD. Ces trois formats représentent la même probabilité, juste présentée différemment.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment convertir une cote décimale en probabilité implicite ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La probabilité implicite est calculée comme : (1 / Cote décimale) × 100. Par exemple, une cote de 2.00 donne une probabilité implicite de 50 %, une cote de 3.00 donne 33,33 %, et une cote de 1.50 donne 66,67 %. Cette probabilité inclut la marge du bookmaker.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qu&apos;est-ce que la marge du bookmaker dans les cotes ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La marge du bookmaker (appelée aussi &apos;overround&apos; ou &apos;vig&apos;) est l&apos;avantage intégré dans les cotes. Lorsque vous additionnez les probabilités implicites de tous les résultats possibles d&apos;un événement, le total dépasse 100 %. Cette différence est le profit du bookmaker. Par exemple, si un match a deux résultats avec 55 % et 50 % de probabilité implicite, le total est 105 %, et la marge est 5 %.",
-                },
-              },
-            ],
-          }),
-        }}
       />
       <Breadcrumb currentPage="Calculateur Gain Pari Sportif" />
 
@@ -150,6 +127,8 @@ export default function Page() {
           Cet outil est une calculatrice mathématique pour comprendre les cotes de paris. Il n&apos;offre aucun conseil de pari ni prédiction. Les paris sportifs comportent un risque financier réel.
         </p>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
     </div>
   );
 }

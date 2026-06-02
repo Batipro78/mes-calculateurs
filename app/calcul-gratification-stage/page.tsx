@@ -4,29 +4,36 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-gratification-stage" },
   title: "Calcul Gratification Stage 2026 - Montant Minimum et Total",
   description:
-    "Calculez la gratification de stage 2026 : montant mensuel, total, minimum legal (4,35\u20ac/h). Stage obligatoire ou facultatif, exoneration charges.",
+    "Calculez la gratification de stage 2026 : montant mensuel, total, minimum legal (4,35€/h). Stage obligatoire ou facultatif, exoneration charges.",
   keywords:
     "gratification stage 2026, calcul gratification stage, montant minimum stage, indemnite stage, stage remuneration, gratification obligatoire stage",
 };
+
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quel est le montant minimum de la gratification de stage en 2026 ?",
+    a: "En 2026, la gratification minimale est de 4,35€ par heure de presence effective (15% du plafond horaire de la Securite sociale). Pour un stage a temps plein (35h/semaine), cela represente environ 600€ par mois.",
+  },
+  {
+    q: "A partir de quelle duree la gratification est-elle obligatoire ?",
+    a: "La gratification est obligatoire des que le stage depasse 2 mois consecutifs (soit plus de 44 jours de presence effective, ou 308 heures). En dessous de cette duree, elle est facultative.",
+  },
+  {
+    q: "La gratification de stage est-elle soumise a des cotisations sociales ?",
+    a: "La gratification de stage est exoneree de cotisations sociales dans la limite du montant minimum legal (4,35€/h en 2026). Au-dela de ce seuil, la partie excedentaire est soumise aux cotisations patronales et salariales dans les conditions de droit commun.",
+  },
+];
 
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Gratification Stage" />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-        "@context": "https://schema.org", "@type": "FAQPage",
-        mainEntity: [
-          { "@type": "Question", name: "Quel est le montant minimum de la gratification de stage en 2026 ?",
-            acceptedAnswer: { "@type": "Answer", text: "En 2026, la gratification minimale est de 4,35\u20ac par heure de presence effective (15% du plafond horaire de la Securite sociale). Pour un stage a temps plein (35h/semaine), cela represente environ 600\u20ac par mois." } },
-          { "@type": "Question", name: "A partir de quelle duree la gratification est-elle obligatoire ?",
-            acceptedAnswer: { "@type": "Answer", text: "La gratification est obligatoire des que le stage depasse 2 mois consecutifs (soit plus de 44 jours de presence effective, ou 308 heures). En dessous de cette duree, elle est facultative." } },
-        ]
-      }) }} />
       <Breadcrumb currentPage="Gratification Stage" />
       <div className="flex items-center gap-3 mb-2">
         <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-blue-600 rounded-xl flex items-center justify-center text-xl shadow-sm">🎓</div>
@@ -71,6 +78,7 @@ export default function Page() {
           </table>
         </div>
       </section>
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-gratification-stage" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

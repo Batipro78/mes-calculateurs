@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-conges-payes" },
@@ -14,45 +15,29 @@ export const metadata: Metadata = {
     "calcul conges payes, jours conges payes, indemnite conges payes, conges payes 2026, 2.5 jours par mois, methode dixieme, calcul cp, solde conges payes",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Combien de jours de conges payes par mois ?",
+    a: "Un salarie acquiert 2,5 jours ouvrables de conges payes par mois de travail effectif, soit 30 jours ouvrables (5 semaines) pour une annee complete. En jours ouvres, cela correspond a environ 2,08 jours/mois soit 25 jours par an.",
+  },
+  {
+    q: "Comment est calculee l'indemnite de conges payes ?",
+    a: "L'employeur doit comparer deux methodes et retenir la plus favorable au salarie : 1) La methode du 1/10e : 1/10e de la remuneration brute totale percue pendant la periode de reference. 2) La methode du maintien de salaire : le salaire que le salarie aurait percu s'il avait continue a travailler.",
+  },
+  {
+    q: "Quelle est la periode de reference des conges payes ?",
+    a: "La periode de reference legale va du 1er juin de l'annee precedente au 31 mai de l'annee en cours. Certaines conventions collectives peuvent prevoir une periode differente (ex: annee civile du 1er janvier au 31 decembre).",
+  },
+  {
+    q: "Les conges payes sont-ils les memes en CDD et en CDI ?",
+    a: "Les droits a conges payes sont identiques : 2,5 jours ouvrables par mois travaille. La difference est qu'en fin de CDD, l'employeur verse une indemnite compensatrice de conges payes equivalente a 10 % du salaire brut total si les conges n'ont pas ete pris. En CDI, les conges sont pris pendant la relation de travail.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Conges Payes" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Combien de jours de conges payes par mois ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Un salarie acquiert 2,5 jours ouvrables de conges payes par mois de travail effectif, soit 30 jours ouvrables (5 semaines) pour une annee complete. En jours ouvres, cela correspond a environ 2,08 jours/mois soit 25 jours par an.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment est calculee l'indemnite de conges payes ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L'employeur doit comparer deux methodes et retenir la plus favorable au salarie : 1) La methode du 1/10e : 1/10e de la remuneration brute totale percue pendant la periode de reference. 2) La methode du maintien de salaire : le salaire que le salarie aurait percu s'il avait continue a travailler.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la periode de reference des conges payes ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La periode de reference legale va du 1er juin de l'annee precedente au 31 mai de l'annee en cours. Certaines conventions collectives peuvent prevoir une periode differente (ex: annee civile du 1er janvier au 31 decembre).",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Conges Payes" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -144,6 +129,8 @@ export default function Page() {
           ))}
         </div>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-conges-payes" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

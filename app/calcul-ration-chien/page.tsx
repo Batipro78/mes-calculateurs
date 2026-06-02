@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-ration-chien" },
@@ -14,53 +15,29 @@ export const metadata: Metadata = {
     "ration chien, barf chien, croquettes chien, dose croquettes chien, alimentation chien poids, ration journaliere chien, calories chien, pâtée chien, chien surpoids",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Combien de grammes de croquettes par jour pour un chien ?",
+    a: "La ration de croquettes dépend du poids, de l'activité et du stade de vie. Pour un chien adulte de 20 kg à activité normale, comptez environ 280 g/jour selon la table Royal Canin. Utilisez le calculateur ci-dessus en fonction de votre chien.",
+  },
+  {
+    q: "Qu'est-ce que le régime BARF pour chiens ?",
+    a: "BARF (Biologically Appropriate Raw Food) est un régime à base d'aliments crus : 70% viande, 10% os charnus, 10% légumes, 5% fruits, 5% suppléments. Pour un chien adulte sédentaire de 20 kg, cela correspond à environ 400 g de BARF par jour.",
+  },
+  {
+    q: "Comment calculer la ration pour un chiot ?",
+    a: "Les chiots ont besoin de plus de calories (5% du poids corporel en BARF vs 2.5% pour un adulte). La fréquence des repas varie avec l'âge : 4 repas jusqu'à 4 mois, 3 repas de 4 à 6 mois, 2 repas après 6 mois. Utilisez le calculateur en sélectionnant l'âge du chiot.",
+  },
+  {
+    q: "Combien de repas par jour pour un chien ?",
+    a: "Les chiens adultes mangent généralement 2 repas par jour (petit-déjeuner et dîner). Les chiots : 4 repas (< 4 mois), 3 repas (4-6 mois), 2 repas (> 6 mois). Les chiens séniors : 2 repas adaptés à un métabolisme plus lent.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Ration Alimentaire Chien" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Combien de grammes de croquettes par jour pour un chien ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La ration de croquettes dépend du poids, de l'activité et du stade de vie. Pour un chien adulte de 20 kg à activité normale, comptez environ 280 g/jour selon la table Royal Canin. Utilisez le calculateur ci-dessus en fonction de votre chien.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qu&apos;est-ce que le régime BARF pour chiens ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "BARF (Biologically Appropriate Raw Food) est un régime à base d&apos;aliments crus : 70% viande, 10% os charnus, 10% légumes, 5% fruits, 5% suppléments. Pour un chien adulte sédentaire de 20 kg, cela correspond à environ 400 g de BARF par jour.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment calculer la ration pour un chiot ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les chiots ont besoin de plus de calories (5% du poids corporel en BARF vs 2.5% pour un adulte). La fréquence des repas varie avec l&apos;âge : 4 repas jusqu&apos;à 4 mois, 3 repas de 4 à 6 mois, 2 repas après 6 mois. Utilisez le calculateur en sélectionnant l&apos;âge du chiot.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien de repas par jour pour un chien ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les chiens adultes mangent généralement 2 repas par jour (petit-déjeuner et dîner). Les chiots : 4 repas (< 4 mois), 3 repas (4-6 mois), 2 repas (> 6 mois). Les chiens séniors : 2 repas adaptés à un métabolisme plus lent.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Ration Chien" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -151,7 +128,7 @@ export default function Page() {
             <strong>5% fruits</strong> : pomme, banane, pastèque (vitamines)
           </li>
           <li>
-            <strong>5% suppléments</strong> : œuf, huile de poisson, levure de bière (oméga-3,
+            <strong>5% suppléments</strong> : oeuf, huile de poisson, levure de bière (oméga-3,
             santé peau)
           </li>
         </ul>
@@ -231,6 +208,8 @@ export default function Page() {
           vétérinaire</strong> avant tout changement alimentaire.
         </p>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-ration-chien" />
     </div>

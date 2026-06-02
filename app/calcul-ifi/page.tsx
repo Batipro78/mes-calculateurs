@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-ifi" },
@@ -14,49 +15,28 @@ export const metadata: Metadata = {
     "calcul IFI, impot fortune immobiliere, simulateur IFI 2026, bareme IFI, abattement residence principale IFI, decote IFI",
 };
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "A partir de quel patrimoine faut-il payer l'IFI ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "L'IFI (Impot sur la Fortune Immobiliere) concerne les foyers fiscaux dont le patrimoine immobilier net au 1er janvier depasse 1 300 000 EUR. Le patrimoine net = valeur venale des biens - dettes (emprunts) - abattement 30% sur la residence principale - autres exonerations. Les biens professionnels immobiliers et les SCPI en assurance-vie beneficient d'exonerations.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Quel est le bareme de l'IFI en 2026 ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Bareme IFI 2026 (identique depuis 2018) : 0% jusqu'a 800 000 EUR, 0,5% de 800K a 1,3M, 0,7% de 1,3M a 2,57M, 1,0% de 2,57M a 5M, 1,25% de 5M a 10M, 1,5% au-dela de 10M. Il existe une decote pour les patrimoines entre 1,3M et 1,4M (degressive). La residence principale beneficie d'un abattement de 30%.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Comment reduire son IFI legalement ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Plusieurs leviers legaux : 1) Investir dans des biens professionnels (exoneres), 2) Donation temporaire d'usufruit a un enfant majeur (le nu-proprietaire n'est pas redevable), 3) Reduction IFI-PME (50% du montant investi, plafond 50 000 EUR), 4) Dons a des organismes d'interet general (75% deductibles, plafond 50 000 EUR), 5) Detention via SCI a l'IS (la valeur des parts est prise mais l'IS allegera la valorisation), 6) Assurance-vie avec SCPI (les UC SCPI en assurance-vie ne sont que partiellement taxables).",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Qu'est-ce que la decote IFI ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "La decote (article 977-II CGI) s'applique aux patrimoines entre 1 300 000 EUR et 1 400 000 EUR pour lisser l'entree dans l'IFI. Formule : decote = 17 500 - (1,25% × patrimoine net). A 1,3M : decote ~1 250 EUR. A 1,35M : decote ~625 EUR. A 1,4M : decote = 0. Elle se deduit directement de l'IFI calcule.",
-      },
-    },
-  ],
-};
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "A partir de quel patrimoine faut-il payer l'IFI ?",
+    a: "L'IFI (Impot sur la Fortune Immobiliere) concerne les foyers fiscaux dont le patrimoine immobilier net au 1er janvier depasse 1 300 000 EUR. Le patrimoine net = valeur venale des biens - dettes (emprunts) - abattement 30% sur la residence principale - autres exonerations. Les biens professionnels immobiliers et les SCPI en assurance-vie beneficient d'exonerations.",
+  },
+  {
+    q: "Quel est le bareme de l'IFI en 2026 ?",
+    a: "Bareme IFI 2026 (identique depuis 2018) : 0% jusqu'a 800 000 EUR, 0,5% de 800K a 1,3M, 0,7% de 1,3M a 2,57M, 1,0% de 2,57M a 5M, 1,25% de 5M a 10M, 1,5% au-dela de 10M. Il existe une decote pour les patrimoines entre 1,3M et 1,4M (degressive). La residence principale beneficie d'un abattement de 30%.",
+  },
+  {
+    q: "Comment reduire son IFI legalement ?",
+    a: "Plusieurs leviers legaux : 1) Investir dans des biens professionnels (exoneres), 2) Donation temporaire d'usufruit a un enfant majeur (le nu-proprietaire n'est pas redevable), 3) Reduction IFI-PME (50% du montant investi, plafond 50 000 EUR), 4) Dons a des organismes d'interet general (75% deductibles, plafond 50 000 EUR), 5) Detention via SCI a l'IS (la valeur des parts est prise mais l'IS allegera la valorisation), 6) Assurance-vie avec SCPI (les UC SCPI en assurance-vie ne sont que partiellement taxables).",
+  },
+  {
+    q: "Qu'est-ce que la decote IFI ?",
+    a: "La decote (article 977-II CGI) s'applique aux patrimoines entre 1 300 000 EUR et 1 400 000 EUR pour lisser l'entree dans l'IFI. Formule : decote = 17 500 - (1,25% x patrimoine net). A 1,3M : decote ~1 250 EUR. A 1,35M : decote ~625 EUR. A 1,4M : decote = 0. Elle se deduit directement de l'IFI calcule.",
+  },
+];
 
 export default function Page() {
   return (
     <div>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <WebAppJsonLd name="Calcul IFI" description="Simulateur Impot Fortune Immobiliere 2026" category="FinanceApplication" />
       <Breadcrumb currentPage="Calcul IFI" />
 
@@ -132,6 +112,8 @@ export default function Page() {
           IFI reelle, consultez un conseiller fiscal ou un avocat fiscaliste.
         </p>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-ifi" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

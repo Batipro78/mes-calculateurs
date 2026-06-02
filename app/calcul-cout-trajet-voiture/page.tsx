@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-cout-trajet-voiture" },
@@ -14,53 +15,29 @@ export const metadata: Metadata = {
     "cout trajet voiture, prix essence trajet, calcul cout carburant, comparaison train voiture, prix kilometre voiture, cout km auto, empreinte CO2 trajet",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment calculer le cout d'un trajet en voiture ?",
+    a: "Formule : Cout = (distance x consommation / 100) x prix carburant + peages. Exemple : 500 km x 7 L/100 x 1.80 € + 40 € de peages = 63 + 40 = 103 €. Le calcul integre aussi les peages pour un total realiste, et permet de comparer avec le train ou l'avion.",
+  },
+  {
+    q: "Quels sont les prix moyens des carburants en France en 2026 ?",
+    a: "Prix moyens France 2026 : Essence (SP95/SP98) 1.80 €/L, Diesel (Gazole) 1.72 €/L, Electrique 0.30 €/kWh a domicile (jusqu'a 0.59 €/kWh en borne rapide), GPL 1.00 €/L. Source : Ministere de la Transition Ecologique.",
+  },
+  {
+    q: "Voiture electrique vraiment moins chere a l'usage ?",
+    a: "Oui en general : pour 500 km, une electrique consommant 17 kWh/100 a domicile coute ~25 €, contre ~63 € pour une essence (7 L/100). Soit 60% d'economie. Attention : en borne rapide autoroute (0.50-0.59 €/kWh), l'avantage se reduit a 30-40%.",
+  },
+  {
+    q: "Quand le train est-il moins cher que la voiture ?",
+    a: "Le train est generalement moins cher pour les longs trajets en solo, surtout en reservant a l'avance (Ouigo, TGV InOui early-bird). Pour 1 personne, le train bat la voiture des 200-300 km. Pour 2+ personnes, la voiture redevient competitive. Avec une voiture electrique, l'ecart se reduit fortement.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Cout Trajet Voiture" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment calculer le cout d'un trajet en voiture ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Formule : Cout = (distance × consommation / 100) × prix carburant + peages. Exemple : 500 km × 7 L/100 × 1.80 € + 40 € de peages = 63 + 40 = 103 €. Le calcul integre aussi les peages pour un total realiste, et permet de comparer avec le train ou l'avion.",
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Quels sont les prix moyens des carburants en France en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Prix moyens France 2026 : Essence (SP95/SP98) 1.80 €/L, Diesel (Gazole) 1.72 €/L, Electrique 0.30 €/kWh a domicile (jusqu'a 0.59 €/kWh en borne rapide), GPL 1.00 €/L. Source : Ministere de la Transition Ecologique.",
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Voiture electrique vraiment moins chere a l'usage ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Oui en general : pour 500 km, une electrique consommant 17 kWh/100 a domicile coute ~25 €, contre ~63 € pour une essence (7 L/100). Soit 60% d'economie. Attention : en borne rapide autoroute (0.50-0.59 €/kWh), l'avantage se reduit a 30-40%.",
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Quand le train est-il moins cher que la voiture ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le train est generalement moins cher pour les longs trajets en solo, surtout en reservant a l'avance (Ouigo, TGV InOui early-bird). Pour 1 personne, le train bat la voiture des 200-300 km. Pour 2+ personnes, la voiture redevient competitive. Avec une voiture electrique, l'ecart se reduit fortement.",
-                }
-              }
-            ]
-          })
-        }}
-      />
       <Breadcrumb currentPage="Cout Trajet Voiture" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -261,6 +238,7 @@ export default function Page() {
         </p>
       </div>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-cout-trajet-voiture" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

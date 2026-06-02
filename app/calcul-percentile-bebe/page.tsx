@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-percentile-bebe" },
@@ -19,63 +20,20 @@ export const metadata: Metadata = {
   },
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  { q: "Comment est calculé le percentile d'un bébé ?", a: "Le percentile est calculé selon la méthode LMS (Lambda Mu Sigma) recommandée par l'OMS. À partir de l'âge et du sexe du bébé, on calcule un Z-score (écart à la médiane), puis on le convertit en percentile via la loi normale. Le P50 correspond à la médiane, P3 et P97 aux limites basse et haute de la normalité." },
+  { q: "Que signifie le percentile P50 ?", a: "Le P50 (50e percentile) correspond à la médiane : 50% des bébés du même âge et sexe ont une valeur inférieure, 50% une valeur supérieure. C'est le repère central des courbes OMS. Être au P50 ne signifie pas être 'meilleur' ou 'normal' — la normale s'étend du P3 au P97." },
+  { q: "Mon bébé est en P10, faut-il s'inquiéter ?", a: "Non, le P10 reste dans la normale selon les courbes OMS (la normale = P3 à P97). Ce qui importe le plus est la régularité de la courbe individuelle : un bébé qui suit son percentile dans le temps est en bonne santé, même s'il est à P10 ou P90. Une cassure brutale de courbe doit en revanche être évaluée par un pédiatre." },
+  { q: "Quelles sont les sources de ces courbes ?", a: "Ces percentiles utilisent les courbes OMS 2006 (Multicentre Growth Reference Study), construites sur plus de 8500 enfants en bonne santé, allaités, dans 6 pays. Elles sont la référence internationale pour le suivi des nourrissons de 0 à 5 ans et sont utilisées dans le carnet de santé français depuis 2018." },
+  { q: "Pourquoi l'IMC bébé est différent de l'IMC adulte ?", a: "L'IMC bébé (poids/taille²) se lit toujours sur une courbe OMS adaptée à l'âge et au sexe, jamais comme une valeur fixe. Les seuils adultes (18.5, 25, 30) ne s'appliquent pas. Pour un bébé, c'est le percentile d'IMC qui compte (P3 à P97)." },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd
         name="Calcul Percentile Bébé"
         category="HealthApplication"
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment est calculé le percentile d'un bébé ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le percentile est calculé selon la méthode LMS (Lambda Mu Sigma) recommandée par l'OMS. À partir de l'âge et du sexe du bébé, on calcule un Z-score (écart à la médiane), puis on le convertit en percentile via la loi normale. Le P50 correspond à la médiane, P3 et P97 aux limites basse et haute de la normalité.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Que signifie le percentile P50 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le P50 (50e percentile) correspond à la médiane : 50% des bébés du même âge et sexe ont une valeur inférieure, 50% une valeur supérieure. C'est le repère central des courbes OMS. Être au P50 ne signifie pas être 'meilleur' ou 'normal' — la normale s'étend du P3 au P97.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Mon bébé est en P10, faut-il s'inquiéter ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Non, le P10 reste dans la normale selon les courbes OMS (la normale = P3 à P97). Ce qui importe le plus est la régularité de la courbe individuelle : un bébé qui suit son percentile dans le temps est en bonne santé, même s'il est à P10 ou P90. Une cassure brutale de courbe doit en revanche être évaluée par un pédiatre.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelles sont les sources de ces courbes ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Ces percentiles utilisent les courbes OMS 2006 (Multicentre Growth Reference Study), construites sur plus de 8500 enfants en bonne santé, allaités, dans 6 pays. Elles sont la référence internationale pour le suivi des nourrissons de 0 à 5 ans et sont utilisées dans le carnet de santé français depuis 2018.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Pourquoi l'IMC bébé est différent de l'IMC adulte ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L'IMC bébé (poids/taille²) se lit toujours sur une courbe OMS adaptée à l'âge et au sexe, jamais comme une valeur fixe. Les seuils adultes (18.5, 25, 30) ne s'appliquent pas. Pour un bébé, c'est le percentile d'IMC qui compte (P3 à P97).",
-                },
-              },
-            ],
-          }),
-        }}
       />
       <Breadcrumb currentPage="Percentile Bébé" />
 
@@ -216,6 +174,7 @@ export default function Page() {
         </p>
       </div>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-percentile-bebe" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

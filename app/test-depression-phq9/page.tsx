@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/test-depression-phq9" },
@@ -14,6 +15,25 @@ export const metadata: Metadata = {
     "test depression, phq-9, phq9, patient health questionnaire, test depression en ligne, test depression gratuit, depression majeure, kroenke 2001, depression scale, dépistage dépression",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qu'est-ce que le test PHQ-9 ?",
+    a: "Le PHQ-9 (Patient Health Questionnaire-9) est un test de depistage de la depression en 9 questions, developpe par Kroenke, Spitzer et Williams en 2001. Il est utilise dans le monde entier en medecine generale et reconnu par l'OMS. Chaque question est notee de 0 a 3, le score total varie de 0 a 27. Plus le score est eleve, plus la depression est severe.",
+  },
+  {
+    q: "Comment interpreter mon score PHQ-9 ?",
+    a: "Les seuils officiels Kroenke 2001 sont : 0-4 depression minimale ou absente, 5-9 depression legere, 10-14 depression moderee, 15-19 depression moderement severe, 20-27 depression severe. Un score de 10 ou plus a une sensibilite de 88% et une specificite de 88% pour le diagnostic de depression majeure.",
+  },
+  {
+    q: "Le PHQ-9 remplace-t-il un diagnostic medical ?",
+    a: "Non. Le PHQ-9 est un outil de depistage et d'auto-evaluation, pas un outil de diagnostic. Seul un medecin (generaliste, psychiatre) ou un psychologue peut poser un diagnostic clinique de depression majeure. Cependant, le PHQ-9 aide a objectiver vos symptomes et oriente vers la necessite ou non d'une consultation.",
+  },
+  {
+    q: "Que faire si la question 9 (pensees suicidaires) est positive ?",
+    a: "Si vous avez repondu autre chose que 'Jamais' a la question 9 (pensees de mort ou d'auto-agression), c'est un signal d'alarme important. Appelez immediatement le 3114 (numero national de prevention du suicide, gratuit, 24h/24) ou consultez votre medecin ou les urgences. Ces pensees sont serieuses et meritent une aide professionnelle.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
@@ -21,49 +41,6 @@ export default function Page() {
         name="Test Depression PHQ-9"
         description="Patient Health Questionnaire-9 en français, test de dépression validé"
         category="HealthApplication"
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Qu'est-ce que le test PHQ-9 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le PHQ-9 (Patient Health Questionnaire-9) est un test de dépistage de la dépression en 9 questions, développé par Kroenke, Spitzer et Williams en 2001. Il est utilisé dans le monde entier en médecine générale et reconnu par l'OMS. Chaque question est notée de 0 à 3, le score total varie de 0 à 27. Plus le score est élevé, plus la dépression est sévère.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment interpréter mon score PHQ-9 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les seuils officiels Kroenke 2001 sont : 0-4 dépression minimale ou absente, 5-9 dépression légère, 10-14 dépression modérée, 15-19 dépression modérément sévère, 20-27 dépression sévère. Un score de 10 ou plus a une sensibilité de 88% et une spécificité de 88% pour le diagnostic de dépression majeure.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Le PHQ-9 remplace-t-il un diagnostic médical ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Non. Le PHQ-9 est un outil de dépistage et d'auto-évaluation, pas un outil de diagnostic. Seul un médecin (généraliste, psychiatre) ou un psychologue peut poser un diagnostic clinique de dépression majeure. Cependant, le PHQ-9 aide à objectiver vos symptômes et oriente vers la nécessité ou non d'une consultation.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Que faire si la question 9 (pensées suicidaires) est positive ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Si vous avez répondu autre chose que 'Jamais' à la question 9 (pensées de mort ou d'auto-agression), c'est un signal d'alarme important. Appelez immédiatement le 3114 (numéro national de prévention du suicide, gratuit, 24h/24) ou consultez votre médecin ou les urgences. Ces pensées sont sérieuses et méritent une aide professionnelle.",
-                },
-              },
-            ],
-          }),
-        }}
       />
       <Breadcrumb currentPage="Test Depression PHQ-9" />
 
@@ -292,6 +269,8 @@ export default function Page() {
           détresse aiguë, appelez le 3114.
         </p>
       </div>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/test-depression-phq9" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

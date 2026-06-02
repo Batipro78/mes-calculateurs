@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-retraite" },
@@ -14,53 +15,29 @@ export const metadata: Metadata = {
     "simulateur retraite, calcul pension retraite, age legal retraite 2026, reforme retraite, decote retraite, surcote, AGIRC-ARRCO, taux remplacement, trimestres retraite",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quel est l'age legal de la retraite en 2026 ?",
+    a: "Depuis la reforme de 2023, l'age legal passe progressivement de 62 a 64 ans. En 2026, il depend de votre annee de naissance : 62 ans (nes avant 1961), 62 ans et 3 mois (1961), jusqu'a 64 ans (nes en 1968 et apres). L'age du taux plein automatique reste fixe a 67 ans.",
+  },
+  {
+    q: "Comment est calculee la pension de retraite ?",
+    a: "La pension de base = Salaire Annuel Moyen (25 meilleures annees) x Taux de liquidation (50% au taux plein) x (Trimestres cotises / Trimestres requis). A cela s'ajoute la retraite complementaire AGIRC-ARRCO basee sur les points accumules.",
+  },
+  {
+    q: "Qu'est-ce que la decote et la surcote ?",
+    a: "La decote reduit votre pension de 0,625% par trimestre manquant (max 20 trimestres = 12,5%). La surcote augmente votre pension de 1,25% par trimestre supplementaire travaille au-dela du taux plein. Attendre 67 ans supprime automatiquement toute decote.",
+  },
+  {
+    q: "Combien de trimestres faut-il pour le taux plein ?",
+    a: "Le nombre de trimestres requis depend de votre annee de naissance : 166 (1955-1957), 167 (1958-1960), 169 (1961-1962), 170 (1963), 171 (1964) et 172 trimestres (1965 et apres), soit 43 ans de cotisation.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Simulateur Retraite" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quel est l'age legal de la retraite en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Depuis la reforme de 2023, l'age legal passe progressivement de 62 a 64 ans. En 2026, il depend de votre annee de naissance : 62 ans (nes avant 1961), 62 ans et 3 mois (1961), jusqu'a 64 ans (nes en 1968 et apres). L'age du taux plein automatique reste fixe a 67 ans.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment est calculee la pension de retraite ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La pension de base = Salaire Annuel Moyen (25 meilleures annees) x Taux de liquidation (50% au taux plein) x (Trimestres cotises / Trimestres requis). A cela s'ajoute la retraite complementaire AGIRC-ARRCO basee sur les points accumules.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qu'est-ce que la decote et la surcote ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La decote reduit votre pension de 0,625% par trimestre manquant (max 20 trimestres = 12,5%). La surcote augmente votre pension de 1,25% par trimestre supplementaire travaille au-dela du taux plein. Attendre 67 ans supprime automatiquement toute decote.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien de trimestres faut-il pour le taux plein ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le nombre de trimestres requis depend de votre annee de naissance : 166 (1955-1957), 167 (1958-1960), 169 (1961-1962), 170 (1963), 171 (1964) et 172 trimestres (1965 et apres), soit 43 ans de cotisation.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Simulateur Retraite" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -233,6 +210,8 @@ export default function Page() {
           Globale (EIG)</strong> a 55 et 60 ans.
         </p>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/simulateur-retraite" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

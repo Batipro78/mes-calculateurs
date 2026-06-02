@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-amortissement-lmnp" },
@@ -14,49 +15,32 @@ export const metadata: Metadata = {
     "amortissement LMNP, calcul LMNP reel, LMNP micro-BIC, regime reel LMNP, fiscalite LMNP, amortissement meuble non professionnel",
 };
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Qu'est-ce que l'amortissement en LMNP ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "En LMNP (Location Meublee Non Professionnelle) regime reel, l'amortissement consiste a deduire chaque annee une fraction de la valeur du bien et du mobilier de vos revenus locatifs, comme le ferait une entreprise. Le bien immobilier (hors terrain) s'amortit typiquement sur 25 a 40 ans, le mobilier sur 5 a 10 ans. Cet amortissement est une charge non decaissable qui reduit le resultat fiscal et donc l'impot, tout en preservant votre tresorerie reelle.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "LMNP micro-BIC ou reel : lequel choisir ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Micro-BIC : abattement forfaitaire de 50% sur les loyers (71% si meuble de tourisme classe), simple mais souvent moins avantageux. Regime reel : vous deduisez les charges reelles + l'amortissement, ce qui efface souvent totalement l'impot sur les loyers. Regle simple : le reel est quasi TOUJOURS plus avantageux des que vos charges reelles (taxes, copro, interets, amortissement) depassent 50% des loyers (soit quasi tous les cas). Obligation de comptabilite en reel (logiciel ou expert-comptable).",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Quelle duree d'amortissement pour un bien LMNP ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Duree d'amortissement indicative LMNP (usage comptable francais) : Bien immobilier (hors terrain, non amortissable) : 25-40 ans (30 ans standard). Mobilier : 5-10 ans (lit, canape, table). Electromenager : 5-7 ans. Decoration/Linge : 5 ans. Gros oeuvre de renovation : 15-25 ans. Chaque composant peut etre amorti separement (methode dite 'par composants'). Un expert-comptable optimise la decomposition pour maximiser l'amortissement.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "L'amortissement peut-il creer un deficit fiscal en LMNP ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Non, en LMNP, l'amortissement ne peut PAS creer de deficit : il est plafonne au montant du resultat imposable (apres deduction des charges). La fraction non utilisee d'amortissement est reportable sans limite de temps, ce qui est tres avantageux : elle s'applique sur les benefices futurs. Contrairement au LMP (Loueur Meuble Professionnel), le deficit LMNP ne peut pas etre impute sur le revenu global.",
-      },
-    },
-  ],
-};
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qu'est-ce que l'amortissement en LMNP ?",
+    a: "En LMNP (Location Meublee Non Professionnelle) regime reel, l'amortissement consiste a deduire chaque annee une fraction de la valeur du bien et du mobilier de vos revenus locatifs, comme le ferait une entreprise. Le bien immobilier (hors terrain) s'amortit typiquement sur 25 a 40 ans, le mobilier sur 5 a 10 ans. Cet amortissement est une charge non decaissable qui reduit le resultat fiscal et donc l'impot, tout en preservant votre tresorerie reelle.",
+  },
+  {
+    q: "LMNP micro-BIC ou reel : lequel choisir ?",
+    a: "Micro-BIC : abattement forfaitaire de 50% sur les loyers (71% si meuble de tourisme classe), simple mais souvent moins avantageux. Regime reel : vous deduisez les charges reelles + l'amortissement, ce qui efface souvent totalement l'impot sur les loyers. Regle simple : le reel est quasi TOUJOURS plus avantageux des que vos charges reelles (taxes, copro, interets, amortissement) depassent 50% des loyers (soit quasi tous les cas). Obligation de comptabilite en reel (logiciel ou expert-comptable).",
+  },
+  {
+    q: "Quelle duree d'amortissement pour un bien LMNP ?",
+    a: "Duree d'amortissement indicative LMNP (usage comptable francais) : Bien immobilier (hors terrain, non amortissable) : 25-40 ans (30 ans standard). Mobilier : 5-10 ans (lit, canape, table). Electromenager : 5-7 ans. Decoration/Linge : 5 ans. Gros oeuvre de renovation : 15-25 ans. Chaque composant peut etre amorti separement (methode dite 'par composants'). Un expert-comptable optimise la decomposition pour maximiser l'amortissement.",
+  },
+  {
+    q: "L'amortissement peut-il creer un deficit fiscal en LMNP ?",
+    a: "Non, en LMNP, l'amortissement ne peut PAS creer de deficit : il est plafonne au montant du resultat imposable (apres deduction des charges). La fraction non utilisee d'amortissement est reportable sans limite de temps, ce qui est tres avantageux : elle s'applique sur les benefices futurs. Contrairement au LMP (Loueur Meuble Professionnel), le deficit LMNP ne peut pas etre impute sur le revenu global.",
+  },
+  {
+    q: "Quel est l'impact de l'amortissement LMNP sur la plus-value a la revente ?",
+    a: "En LMNP, les amortissements deduits ne sont pas reintegres dans le calcul de la plus-value (contrairement au LMP). La plus-value est calculee sur la difference entre le prix de vente et le prix d'achat initial, ce qui est un avantage fiscal majeur du statut LMNP par rapport au LMP.",
+  },
+];
 
 export default function Page() {
   return (
     <div>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <WebAppJsonLd name="Calcul Amortissement LMNP" description="Simulateur LMNP regime reel" category="FinanceApplication" />
       <Breadcrumb currentPage="Calcul Amortissement LMNP" />
 
@@ -126,6 +110,8 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-amortissement-lmnp" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

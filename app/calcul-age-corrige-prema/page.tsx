@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-age-corrige-prema" },
@@ -14,53 +15,33 @@ export const metadata: Metadata = {
     "age corrige, bebe premature, calcul age corrige, prematurite, age corrige prematurite, suivi bebe premature, semaines amenorrhee, neonatologie",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qu'est-ce que l'age corrige d'un bebe premature ?",
+    a: "L'age corrige correspond a l'age qu'aurait le bebe s'il etait ne a terme (40 SA). Formule : Age corrige = Age reel - semaines de prematurite. Il permet d'evaluer le developpement (motricite, langage, croissance) de maniere realiste, sans comparer un bebe ne a 28 SA a un bebe ne a 40 SA.",
+  },
+  {
+    q: "Jusqu'a quel age utiliser l'age corrige ?",
+    a: "La Societe Francaise de Neonatologie et l'American Academy of Pediatrics recommandent d'utiliser l'age corrige jusqu'a 24 mois pour les grands et extremes prematures, jusqu'a 18 mois pour la prematurite moyenne, et 12 mois pour la prematurite tardive. Au-dela, l'age reel suffit pour evaluer le developpement.",
+  },
+  {
+    q: "Comment calculer les semaines de prematurite ?",
+    a: "Les semaines de prematurite correspondent au nombre de semaines entre la date de naissance reelle et la date du terme prevu (DPA, soit 40 SA). Par exemple, un bebe ne 8 semaines avant la DPA est ne a 32 SA (40 - 8 = 32) et a 8 semaines de prematurite.",
+  },
+  {
+    q: "Quelles sont les categories de prematurite ?",
+    a: "Prematurite tardive (34-36 SA), prematurite moyenne (32-33 SA), grande prematurite (28-31 SA), extreme prematurite (avant 28 SA). Chaque categorie implique un suivi medical specifique. Plus le bebe est ne tot, plus l'age corrige doit etre utilise longtemps.",
+  },
+  {
+    q: "Les vaccins suivent-ils l'age reel ou l'age corrige ?",
+    a: "Les vaccins se font selon l'age reel (chronologique), pas l'age corrige. Le systeme immunitaire mature selon le calendrier de naissance. Seuls les bilans de developpement (motricite, langage, courbes de croissance) utilisent l'age corrige.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Age Corrige Bebe Premature" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Qu'est-ce que l'age corrige d'un bebe premature ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L'age corrige correspond a l'age qu'aurait le bebe s'il etait ne a terme (40 SA). Formule : Age corrige = Age reel - semaines de prematurite. Il permet d'evaluer le developpement (motricite, langage, croissance) de maniere realiste, sans comparer un bebe ne a 28 SA a un bebe ne a 40 SA.",
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Jusqu'a quel age utiliser l'age corrige ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La Societe Francaise de Neonatologie et l'American Academy of Pediatrics recommandent d'utiliser l'age corrige jusqu'a 24 mois pour les grands et extremes prematures, jusqu'a 18 mois pour la prematurite moyenne, et 12 mois pour la prematurite tardive. Au-dela, l'age reel suffit pour evaluer le developpement.",
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Comment calculer les semaines de prematurite ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les semaines de prematurite correspondent au nombre de semaines entre la date de naissance reelle et la date du terme prevu (DPA, soit 40 SA). Par exemple, un bebe ne 8 semaines avant la DPA est ne a 32 SA (40 - 8 = 32) et a 8 semaines de prematurite.",
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Quelles sont les categories de prematurite ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Prematurite tardive (34-36 SA), prematurite moyenne (32-33 SA), grande prematurite (28-31 SA), extreme prematurite (avant 28 SA). Chaque categorie implique un suivi medical specifique. Plus le bebe est ne tot, plus l'age corrige doit etre utilise longtemps.",
-                }
-              }
-            ]
-          })
-        }}
-      />
       <Breadcrumb currentPage="Age Corrige Premature" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -255,6 +236,8 @@ export default function Page() {
           systematiquement votre pediatre ou neonatologue.
         </p>
       </div>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-age-corrige-prema" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

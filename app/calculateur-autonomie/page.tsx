@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calculateur-autonomie" },
@@ -14,53 +15,33 @@ export const metadata: Metadata = {
     "autonomie financiere, combien de temps avec mon epargne, calculateur autonomie, vivre sans travailler, duree epargne, budget survie autonomie, independance financiere",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Combien de temps puis-je vivre avec 10 000 EUR d'epargne ?",
+    a: "Avec 10 000 EUR d'epargne et un budget minimum de survie, vous pouvez tenir entre 5 mois (a Paris, seul) et 11 mois (en zone rurale). Ce calcul depend de votre zone, situation familiale et mode de transport. Les aides sociales (RSA, APL) peuvent allonger significativement cette duree.",
+  },
+  {
+    q: "Combien faut-il pour vivre 1 an sans travailler ?",
+    a: "Pour vivre 1 an sans revenu en France, il faut entre 11 000 EUR (zone rurale, seul, budget minimum) et 24 000 EUR (Paris, seul). En couple, comptez 15 000 a 33 000 EUR. Ces montants correspondent au strict minimum (loyer, alimentation, charges). Ajoutez 20-30% pour un budget plus confortable.",
+  },
+  {
+    q: "Les aides sociales sont-elles incluses dans le calcul ?",
+    a: "Le calculateur permet d'ajouter des revenus complementaires (RSA, ARE, APL, freelance, etc.) qui reduisent le budget a financer par l'epargne. Sans revenu, seule l'epargne est utilisee. Avec le RSA (647 EUR/mois), l'autonomie peut etre doublee voire triplee.",
+  },
+  {
+    q: "Comment allonger sa duree d'autonomie ?",
+    a: "Pour etirer votre epargne : 1) Demenagez en zone moins chere (rural = -50% vs Paris). 2) Utilisez les transports en commun ou le velo. 3) Demandez les aides (RSA, APL, CSS). 4) Reduisez l'alimentation (epiceries solidaires, cuisine maison). 5) Sous-louez une chambre ou passez en colocation.",
+  },
+  {
+    q: "Faut-il un fonds d'urgence ?",
+    a: "Oui, les experts recommandent 3 a 6 mois de depenses en epargne de precaution. C'est le minimum pour absorber un imprevivu (perte d'emploi, panne, sante) sans s'endetter.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calculateur Autonomie Financiere" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Combien de temps puis-je vivre avec 10 000 EUR d'epargne ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Avec 10 000 EUR d'epargne et un budget minimum de survie, vous pouvez tenir entre 5 mois (a Paris, seul) et 11 mois (en zone rurale). Ce calcul depend de votre zone, situation familiale et mode de transport. Les aides sociales (RSA, APL) peuvent allonger significativement cette duree.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien faut-il pour vivre 1 an sans travailler ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour vivre 1 an sans revenu en France, il faut entre 11 000 EUR (zone rurale, seul, budget minimum) et 24 000 EUR (Paris, seul). En couple, comptez 15 000 a 33 000 EUR. Ces montants correspondent au strict minimum (loyer, alimentation, charges). Ajoutez 20-30% pour un budget plus confortable.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Les aides sociales sont-elles incluses dans le calcul ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le calculateur permet d'ajouter des revenus complementaires (RSA, ARE, APL, freelance, etc.) qui reduisent le budget a financer par l'epargne. Sans revenu, seule l'epargne est utilisee. Avec le RSA (647 EUR/mois), l'autonomie peut etre doublee voire triplee.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment allonger sa duree d'autonomie ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour etirer votre epargne : 1) Demenagez en zone moins chere (rural = -50% vs Paris). 2) Utilisez les transports en commun ou le velo. 3) Demandez les aides (RSA, APL, CSS). 4) Reduisez l'alimentation (epiceries solidaires, cuisine maison). 5) Sous-louez une chambre ou passez en colocation.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calculateur Autonomie" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -179,6 +160,8 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calculateur-autonomie" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

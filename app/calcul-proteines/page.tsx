@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-proteines" },
@@ -14,45 +15,29 @@ export const metadata: Metadata = {
     "calcul proteines, besoin en proteines, apport protidique journalier, proteines par jour, proteines musculation, proteines perte de poids, g par kg, calcul proteine journalier",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Combien de proteines par jour faut-il manger ?",
+    a: "Les besoins en proteines dependent du poids et de l'activite physique. Pour une personne sedentaire, 0,8g par kg de poids corporel suffit. Une personne active a besoin de 1,0 a 1,4g/kg, un sportif de 1,4 a 1,8g/kg et un pratiquant de musculation de 1,8 a 2,2g/kg.",
+  },
+  {
+    q: "Les proteines font-elles grossir ?",
+    a: "Non, les proteines ne font pas grossir si elles ne creent pas de surplus calorique. Chaque gramme de proteine apporte 4 kcal, soit autant que les glucides. Elles sont meme benefiques pour la perte de poids car elles augmentent la satiete, preservent la masse musculaire et ont un fort effet thermique (le corps brule plus de calories pour les digerer).",
+  },
+  {
+    q: "Quels aliments sont les meilleures sources de proteines ?",
+    a: "Les meilleures sources de proteines sont : le blanc de poulet (31g/100g), le thon (26g/100g), les amandes (21g/100g), le saumon (20g/100g), les oeufs (13g/100g), les lentilles (9g/100g), le tofu (8g/100g) et le fromage blanc 0% (8g/100g). La viande, le poisson, les oeufs et les produits laitiers sont des proteines completes (tous les acides amines essentiels).",
+  },
+  {
+    q: "Peut-on consommer trop de proteines ?",
+    a: "Un exces important de proteines (> 3 g/kg/jour de maniere prolongee) peut solliciter les reins, surtout en cas d'insuffisance renale preexistante. Pour une personne en bonne sante, un apport jusqu'a 2,2 g/kg est considere sans risque. Au-dela, l'exces est simplement oxyde comme energie. En pratique, la plupart des gens ne depassent pas les besoins recommandes.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Apport Proteines Journalier" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Combien de proteines par jour faut-il manger ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les besoins en proteines dependent du poids et de l'activite physique. Pour une personne sedentaire, 0,8g par kg de poids corporel suffit. Une personne active a besoin de 1,0 a 1,4g/kg, un sportif de 1,4 a 1,8g/kg et un pratiquant de musculation de 1,8 a 2,2g/kg.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Les proteines font-elles grossir ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Non, les proteines ne font pas grossir si elles ne creent pas de surplus calorique. Chaque gramme de proteine apporte 4 kcal, soit autant que les glucides. Elles sont meme benefiques pour la perte de poids car elles augmentent la satiete, preservent la masse musculaire et ont un fort effet thermique (le corps brule plus de calories pour les digerer).",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quels aliments sont les meilleures sources de proteines ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les meilleures sources de proteines sont : le blanc de poulet (31g/100g), le thon (26g/100g), les amandes (21g/100g), le saumon (20g/100g), les oeufs (13g/100g), les lentilles (9g/100g), le tofu (8g/100g) et le fromage blanc 0% (8g/100g). La viande, le poisson, les oeufs et les produits laitiers sont des proteines completes (tous les acides amines essentiels).",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Proteines" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -201,6 +186,8 @@ export default function Page() {
 
         <p className="text-xs text-slate-400 mt-6">Mis a jour le 8 avril 2026</p>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-proteines" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

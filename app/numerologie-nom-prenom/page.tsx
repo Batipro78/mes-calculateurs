@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/numerologie-nom-prenom" },
@@ -14,53 +15,29 @@ export const metadata: Metadata = {
     "numerologie nom prenom, nombre expression, nombre coeur, nombre personnalite, numerologie pythagore, calcul numerologie, numerologie gratuit, destinee numerologie",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment calculer la numerologie de mon nom et prenom ?",
+    a: "La numerologie pythagoricienne assigne une valeur numerique a chaque lettre (A=1, B=2, etc.). Pour calculer votre nombre d'expression, additionnez toutes les lettres de votre nom et prenom, puis reduisez le resultat a un chiffre (sauf 11, 22, 33 qui sont des nombres maitres). Le nombre du coeur provient des voyelles uniquement, et le nombre de personnalite des consonnes.",
+  },
+  {
+    q: "Quelle est la difference entre expression, coeur et personnalite en numerologie ?",
+    a: "Le nombre d'expression (ou destinee) represente votre potentiel global et votre chemin de vie. Le nombre du coeur reflète vos desirs intimes, passions et motivations profondes. Le nombre de personnalite revele comment les autres vous percevez et l'image que vous projetez au monde.",
+  },
+  {
+    q: "Qu'est-ce qu'un nombre maitre en numerologie ?",
+    a: "Les nombres maitres sont 11, 22 et 33. Ils possedent une puissance vibratoire superieure aux autres nombres. Le 11 represente l'intuition et la vision (maitre intuitif), le 22 la manifestation et la construction (maitre bâtisseur), et le 33 l'enseignement et le service (maitre enseignant).",
+  },
+  {
+    q: "Pourquoi la numerologie pythagoricienne utilise-t-elle ce tableau de lettres ?",
+    a: "Le systeme pythagoricien associe chaque lettre a un nombre de 1 a 9 selon un ordre precis (A=1, J=1, S=1, etc.). Ce systeme remonte a la tradition grecque antique et suppose que les nombres et les lettres contiennent des vibrations energetiques specifiques qui influencent notre personnalite et notre destinee.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Numerologie Nom et Prenom" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment calculer la numerologie de mon nom et prenom ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La numerologie pythagoricienne assigne une valeur numerique a chaque lettre (A=1, B=2, etc.). Pour calculer votre nombre d'expression, additionnez toutes les lettres de votre nom et prenom, puis reduisez le resultat a un chiffre (sauf 11, 22, 33 qui sont des nombres maitres). Le nombre du cœur provient des voyelles uniquement, et le nombre de personnalite des consonnes.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la difference entre expression, cœur et personnalite en numerologie ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le nombre d'expression (ou destinee) represente votre potentiel global et votre chemin de vie. Le nombre du cœur reflète vos desirs intimes, passions et motivations profondes. Le nombre de personnalite revele comment les autres vous percevez et l'image que vous projetez au monde.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qu'est-ce qu'un nombre maitre en numerologie ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les nombres maitres sont 11, 22 et 33. Ils possedent une puissance vibratoire superieure aux autres nombres. Le 11 represente l'intuition et la vision (maitre intuitif), le 22 la manifestation et la construction (maitre bâtisseur), et le 33 l'enseignement et le service (maitre enseignant).",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Pourquoi la numerologie pythagoricienne utilise-t-elle ce tableau de lettres ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le systeme pythagoricien associe chaque lettre a un nombre de 1 a 9 selon un ordre precis (A=1, J=1, S=1, etc.). Ce systeme remonte a la tradition grecque antique et suppose que les nombres et les lettres contiennent des vibrations energetiques specifiques qui influencent notre personnalite et notre destinee.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Numerologie Nom et Prenom" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -220,6 +197,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/numerologie-nom-prenom" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

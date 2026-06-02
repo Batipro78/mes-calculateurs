@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-cycles-sommeil" },
@@ -19,63 +20,35 @@ export const metadata: Metadata = {
   },
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Combien de temps dure un cycle de sommeil ?",
+    a: "Un cycle de sommeil dure en moyenne 90 minutes (entre 80 et 110 minutes selon les individus). Il enchaine 4 phases : sommeil leger N1, sommeil leger N2, sommeil profond N3, puis sommeil paradoxal (REM). Une nuit complete enchaine generalement 4 a 6 cycles.",
+  },
+  {
+    q: "Combien de cycles faut-il par nuit ?",
+    a: "La National Sleep Foundation recommande 7 a 9 heures de sommeil pour un adulte, soit environ 5 cycles (7h30) en moyenne. 4 cycles (6h) est le minimum, 6 cycles (9h) convient bien aux jeunes adultes et adolescents. Moins de 4 cycles cree une dette de sommeil.",
+  },
+  {
+    q: "Pourquoi viser un multiple de 90 minutes ?",
+    a: "Se reveiller en fin de cycle, lorsque le sommeil est leger, est beaucoup moins desagreable que se reveiller en plein sommeil profond. C'est ce qu'on appelle l'inertie du sommeil. En calant son reveil sur un multiple de 90 minutes, on augmente la probabilite de se reveiller en phase de transition.",
+  },
+  {
+    q: "Combien de temps pour s'endormir en moyenne ?",
+    a: "Le temps moyen d'endormissement (latence) chez un adulte est de 14 minutes selon l'INSERM. En dessous de 5 minutes, cela peut indiquer une dette de sommeil. Au-dela de 30 minutes, cela peut etre un signe d'insomnie. Le calculateur prend cette latence en compte par defaut.",
+  },
+  {
+    q: "Cycle de 90 minutes : est-ce universel ?",
+    a: "Non. La duree d'un cycle varie de 80 a 110 minutes selon les individus, l'age et meme la nuit. Les 90 minutes sont une moyenne statistique. Pour determiner votre cycle personnel, un test polysomnographique en laboratoire de sommeil est necessaire.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd
         name="Calcul Cycles de Sommeil"
         category="HealthApplication"
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Combien de temps dure un cycle de sommeil ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Un cycle de sommeil dure en moyenne 90 minutes (entre 80 et 110 minutes selon les individus). Il enchaine 4 phases : sommeil leger N1, sommeil leger N2, sommeil profond N3, puis sommeil paradoxal (REM). Une nuit complete enchaine generalement 4 a 6 cycles.",
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Combien de cycles faut-il par nuit ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La National Sleep Foundation recommande 7 a 9 heures de sommeil pour un adulte, soit environ 5 cycles (7h30) en moyenne. 4 cycles (6h) est le minimum, 6 cycles (9h) convient bien aux jeunes adultes et adolescents. Moins de 4 cycles cree une dette de sommeil.",
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Pourquoi viser un multiple de 90 minutes ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Se reveiller en fin de cycle, lorsque le sommeil est leger, est beaucoup moins desagreable que se reveiller en plein sommeil profond. C'est ce qu'on appelle l'inertie du sommeil. En calant son reveil sur un multiple de 90 minutes, on augmente la probabilite de se reveiller en phase de transition.",
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Combien de temps pour s'endormir en moyenne ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le temps moyen d'endormissement (latence) chez un adulte est de 14 minutes selon l'INSERM. En dessous de 5 minutes, cela peut indiquer une dette de sommeil. Au-dela de 30 minutes, cela peut etre un signe d'insomnie. Le calculateur prend cette latence en compte par defaut.",
-                }
-              },
-              {
-                "@type": "Question",
-                name: "Cycle de 90 minutes : est-ce universel ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Non. La duree d'un cycle varie de 80 a 110 minutes selon les individus, l'age et meme la nuit. Les 90 minutes sont une moyenne statistique. Pour determiner votre cycle personnel, un test polysomnographique en laboratoire de sommeil est necessaire.",
-                }
-              }
-            ]
-          })
-        }}
       />
       <Breadcrumb currentPage="Cycles de Sommeil" />
 
@@ -299,6 +272,7 @@ export default function Page() {
         </p>
       </div>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-cycles-sommeil" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

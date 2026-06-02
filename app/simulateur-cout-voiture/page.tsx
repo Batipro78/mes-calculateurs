@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-cout-voiture" },
@@ -26,47 +27,27 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Quel est le cout total moyen d'une voiture par an en France ?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Le cout annuel moyen d'une voiture en France varie entre 3 000 € et 8 000 € selon le type de vehicule. Une citadine coute environ 3 500 €/an (carburant + assurance + entretien + depreciation), une berline autour de 5 000 €/an, et un SUV peut depasser 7 000 €/an. Ces chiffres incluent toutes les charges : carburant, assurance, entretien, controles techniques et depreciation.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Une voiture electrique est-elle vraiment moins chere qu'une voiture thermique ?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Sur le cout total de possession, une voiture electrique peut etre moins chere qu'une thermique sur 5 ans ou plus, malgre un prix d'achat plus eleve. L'electricite coute environ 2-3 fois moins cher que l'essence au kilometre, et l'entretien est reduit (pas de vidange, moins de pieces d'usure). La difference se creuse avec un kilométrage annuel eleve (plus de 15 000 km/an).",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Comment reduire le cout total de sa voiture ?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Pour reduire le cout total de votre voiture : 1) Privilegier une citadine recente plutot qu'un gros vehicule d'occasion (moins d'entretien), 2) Comparer les assurances chaque annee (economie possible de 200-400 €/an), 3) Respecter les revisions pour eviter les pannes coteuses, 4) Conduire de facon eco (moins de consommation), 5) Envisager le vehicule electrique si vous roulez plus de 15 000 km/an, 6) Garder votre vehicule plus longtemps (la depreciation est plus forte les premieres annees).",
-        },
-      },
-    ],
-  };
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quel est le cout total moyen d'une voiture par an en France ?",
+    a: "Le cout annuel moyen d'une voiture en France varie entre 3 000 € et 8 000 € selon le type de vehicule. Une citadine coute environ 3 500 €/an (carburant + assurance + entretien + depreciation), une berline autour de 5 000 €/an, et un SUV peut depasser 7 000 €/an. Ces chiffres incluent toutes les charges : carburant, assurance, entretien, controles techniques et depreciation.",
+  },
+  {
+    q: "Une voiture electrique est-elle vraiment moins chere qu'une voiture thermique ?",
+    a: "Sur le cout total de possession, une voiture electrique peut etre moins chere qu'une thermique sur 5 ans ou plus, malgre un prix d'achat plus eleve. L'electricite coute environ 2-3 fois moins cher que l'essence au kilometre, et l'entretien est reduit (pas de vidange, moins de pieces d'usure). La difference se creuse avec un kilometrage annuel eleve (plus de 15 000 km/an).",
+  },
+  {
+    q: "Comment reduire le cout total de sa voiture ?",
+    a: "Pour reduire le cout total de votre voiture : 1) Privilegier une citadine recente plutot qu'un gros vehicule d'occasion (moins d'entretien), 2) Comparer les assurances chaque annee (economie possible de 200-400 €/an), 3) Respecter les revisions pour eviter les pannes coteuses, 4) Conduire de facon eco (moins de consommation), 5) Envisager le vehicule electrique si vous roulez plus de 15 000 km/an, 6) Garder votre vehicule plus longtemps (la depreciation est plus forte les premieres annees).",
+  },
+];
 
+export default function Page() {
   return (
     <div>
       <WebAppJsonLd
         name="Simulateur Cout Total Voiture 2026"
         description="Calculez le cout total de possession de votre voiture sur toute la duree de detention"
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <Breadcrumb
         currentPage="Simulateur Cout Voiture"
@@ -171,6 +152,7 @@ export default function Page() {
         </div>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/simulateur-cout-voiture" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

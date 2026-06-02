@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-moyenne" },
@@ -14,45 +15,17 @@ export const metadata: Metadata = {
     "calcul moyenne, moyenne ponderee, calculer sa moyenne, notes coefficients, moyenne scolaire, calcul moyenne bac, moyenne avec coefficient, calculatrice moyenne",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  { q: "Comment calculer une moyenne ponderee ?", a: "Pour calculer une moyenne ponderee, multipliez chaque note par son coefficient, additionnez les resultats, puis divisez par la somme des coefficients. Formule : Moyenne = (note1 x coef1 + note2 x coef2 + ...) / (coef1 + coef2 + ...)." },
+  { q: "Quelle est la difference entre moyenne simple et moyenne ponderee ?", a: "Une moyenne simple additionne toutes les notes et divise par leur nombre (chaque note a le meme poids). Une moyenne ponderee attribue un coefficient a chaque note, donnant plus de poids aux matieres importantes. Au bac, par exemple, les matieres de specialite ont un coefficient plus eleve." },
+  { q: "Comment calculer sa moyenne du bac ?", a: "La moyenne du bac se calcule en multipliant chaque note par son coefficient officiel, puis en divisant par la somme des coefficients (total = 100). Les specialites comptent coefficient 16, la philosophie coefficient 8, le grand oral coefficient 10." },
+  { q: "Comment arrondir une moyenne scolaire ?", a: "Par convention scolaire, les moyennes sont generalement arrondies au centieme (ex : 13,64/20). Certains etablissements arondissent au dixieme (13,6) ou a l'entier inferieur (13). Pour les concours et le bac, l'arrondi officiel se fait au centieme." },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Moyenne" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment calculer une moyenne ponderee ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour calculer une moyenne ponderee, multipliez chaque note par son coefficient, additionnez les resultats, puis divisez par la somme des coefficients. Formule : Moyenne = (note1 x coef1 + note2 x coef2 + ...) / (coef1 + coef2 + ...).",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la difference entre moyenne simple et moyenne ponderee ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Une moyenne simple additionne toutes les notes et divise par leur nombre (chaque note a le meme poids). Une moyenne ponderee attribue un coefficient a chaque note, donnant plus de poids aux matieres importantes. Au bac, par exemple, les matieres de specialite ont un coefficient plus eleve.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment calculer sa moyenne du bac ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La moyenne du bac se calcule en multipliant chaque note par son coefficient officiel, puis en divisant par la somme des coefficients (total = 100). Les specialites comptent coefficient 16, la philosophie coefficient 8, le grand oral coefficient 10.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Moyenne" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -154,6 +127,7 @@ export default function Page() {
         </div>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-moyenne" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

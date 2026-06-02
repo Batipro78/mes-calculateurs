@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-revenus-fonciers" },
@@ -14,45 +15,29 @@ export const metadata: Metadata = {
     "calcul revenus fonciers, simulateur impot location, micro foncier regime reel, deficit foncier, charges deductibles location, impot loyer 2026, prelevements sociaux revenus fonciers",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quelle difference entre micro-foncier et regime reel ?",
+    a: "Le micro-foncier applique un abattement forfaitaire de 30% sur les loyers bruts (accessible si loyers < 15 000 €/an). Le regime reel deduit les charges reelles : taxe fonciere, assurance, interets d'emprunt, travaux, frais de gestion. Le reel est plus avantageux quand les charges reelles depassent 30% des loyers.",
+  },
+  {
+    q: "Qu'est-ce que le deficit foncier ?",
+    a: "En regime reel, si vos charges deductibles depassent vos loyers, vous creez un deficit foncier. Celui-ci est imputable sur votre revenu global dans la limite de 10 700 €/an, ce qui reduit directement votre impot sur le revenu. L'exces est reportable sur les revenus fonciers des 10 annees suivantes.",
+  },
+  {
+    q: "Quelles charges sont deductibles en regime reel ?",
+    a: "En regime reel, vous pouvez deduire : la taxe fonciere, les primes d'assurance, les interets et frais d'emprunt, les depenses de travaux (entretien, reparation, amelioration), les frais de gestion locative, les charges de copropriete non recuperables, et les frais de diagnostics. Les travaux de construction ou d'agrandissement ne sont pas deductibles.",
+  },
+  {
+    q: "Peut-on passer du micro-foncier au regime reel ?",
+    a: "Oui. Le passage au regime reel est possible a tout moment. En revanche, une fois opte pour le reel, vous y etes engage pendant 3 ans minimum. Il est conseille de faire les calculs pour comparer les deux regimes avant de choisir, surtout si vous avez des travaux importants ou un emprunt en cours.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Revenus Fonciers" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quelle difference entre micro-foncier et regime reel ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le micro-foncier applique un abattement forfaitaire de 30% sur les loyers bruts (accessible si loyers < 15 000 €/an). Le regime reel deduit les charges reelles : taxe fonciere, assurance, interets d'emprunt, travaux, frais de gestion. Le reel est plus avantageux quand les charges reelles depassent 30% des loyers.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qu'est-ce que le deficit foncier ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "En regime reel, si vos charges deductibles depassent vos loyers, vous creez un deficit foncier. Celui-ci est imputable sur votre revenu global dans la limite de 10 700 €/an, ce qui reduit directement votre impot sur le revenu. L'exces est reportable sur les revenus fonciers des 10 annees suivantes.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelles charges sont deductibles en regime reel ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "En regime reel, vous pouvez deduire : la taxe fonciere, les primes d'assurance, les interets et frais d'emprunt, les depenses de travaux (entretien, reparation, amelioration), les frais de gestion locative, les charges de copropriete non recuperables, et les frais de diagnostics. Les travaux de construction ou d'agrandissement ne sont pas deductibles.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Revenus Fonciers" lastUpdated="8 avril 2026" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -145,6 +130,7 @@ export default function Page() {
         <p className="text-xs text-slate-400 mt-2">* Taux effectif micro = (TMI + PS) x 70% (apres abattement 30%)</p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-revenus-fonciers" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 import {
   calculerVMACooper,
   calculerAllureSelonPourcentVMA,
@@ -57,52 +58,28 @@ export default function Page() {
     },
   ];
 
+  const FAQ_ITEMS: FaqItem[] = [
+    {
+      q: "Qu'est-ce que la VMA (Vitesse Maximale Aérobie) ?",
+      a: "La VMA est la vitesse minimale à laquelle le VO2max est atteint. Elle s'exprime en km/h et est la vitesse maximale qu'un coureur peut maintenir en utilisant 100% de sa capacité aérobie. Elle est fondamentale pour calibrer ses entraînements et zones d'intensité.",
+    },
+    {
+      q: "Comment faire le test Cooper pour calculer sa VMA ?",
+      a: "Le test Cooper consiste à courir 12 minutes à allure maximale sur une piste ou une zone de distance connue. La distance parcourue (en mètres) est divisée par 200 pour obtenir votre VMA en km/h. Formule : VMA = distance(m) / 200. Conseil : effectuer un échauffement de 10 min avant le test.",
+    },
+    {
+      q: "Quelle est la différence entre la formule FC max de Tanaka et Astrand ?",
+      a: "Formule Astrand : FC max = 220 - âge (classique). Formule Tanaka : FC max = 208 - 0.7 × âge (plus précise, basée sur 43 études). La formule de Tanaka est recommandée pour les athlètes, celle d'Astrand pour le grand public.",
+    },
+    {
+      q: "Comment utiliser les zones cardiaques Karvonen ?",
+      a: "Les zones de Karvonen prennent en compte la FC repos pour un calcul plus personnel. Formule : FC zone = FC repos + (FC max - FC repos) × intensité%. Les 5 zones vont de la récupération (Z1 50-60%) au VO2max (Z5 90-100%). Utilisez une montre cardio pour suivre vos séances.",
+    },
+  ];
+
   return (
     <div>
       <WebAppJsonLd name="Calcul VMA et Zones Cardiaques" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Qu&apos;est-ce que la VMA (Vitesse Maximale Aérobie) ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La VMA est la vitesse minimale à laquelle le VO2max est atteint. Elle s&apos;exprime en km/h et est la vitesse maximale qu&apos;un coureur peut maintenir en utilisant 100% de sa capacité aérobie. Elle est fondamentale pour calibrer ses entraînements et zones d&apos;intensité.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment faire le test Cooper pour calculer sa VMA ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le test Cooper consiste à courir 12 minutes à allure maximale sur une piste ou une zone de distance connue. La distance parcourue (en mètres) est divisée par 200 pour obtenir votre VMA en km/h. Formule : VMA = distance(m) / 200. Conseil : effectuer un échauffement de 10 min avant le test.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la différence entre la formule FC max de Tanaka et Astrand ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Formule Astrand : FC max = 220 - âge (classique). Formule Tanaka : FC max = 208 - 0.7 × âge (plus précise, basée sur 43 études). La formule de Tanaka est recommandée pour les athlètes, celle d&apos;Astrand pour le grand public.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment utiliser les zones cardiaques Karvonen ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les zones de Karvonen prennent en compte la FC repos pour un calcul plus personnel. Formule : FC zone = FC repos + (FC max - FC repos) × intensité%. Les 5 zones vont de la récupération (Z1 50-60%) au VO2max (Z5 90-100%). Utilisez une montre cardio pour suivre vos séances.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul VMA" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -285,6 +262,7 @@ export default function Page() {
         </div>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-vma" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

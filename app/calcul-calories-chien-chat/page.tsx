@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 import { genererTableauBER, STADES_LABELS, ACTIVITE_LABELS } from "./caloriesAnimauxCalc";
 
 export const metadata: Metadata = {
@@ -40,52 +41,28 @@ export default function Page() {
     { stade: "Allaitement", sedentaire: 2.0, normal: 3.5, actif: 5.0, travail: 6.0 },
   ];
 
+  const FAQ_ITEMS: FaqItem[] = [
+    {
+      q: "Combien de calories par jour pour un chien ?",
+      a: "Le besoin calorique journalier (DER) d'un chien se calcule avec la formule BER = 70 × (poids en kg)^0.75, puis multiplié par un facteur d'activité selon l'âge, l'état (stérilisé ou non) et le niveau d'activité. Un chien adulte moyen de 25 kg non stérilisé a besoin d'environ 900-1000 kcal/jour.",
+    },
+    {
+      q: "Combien de calories par jour pour un chat ?",
+      a: "Un chat adulte moyen de 4-5 kg a besoin d'environ 180-250 kcal/jour selon son activité et son état (stérilisé réduit les besoins). La formule BER = 70 × (poids en kg)^0.75 s'applique, puis multiplication par le facteur d'activité adapté à l'espèce féline.",
+    },
+    {
+      q: "Quelle est la différence entre BER et DER ?",
+      a: "Le BER (Besoin Énergétique de Repos) est l'énergie minimale pour maintenir les fonctions vitales au repos. Le DER (Besoin Énergétique Quotidien) = BER × facteur d'activité. Il représente le total calorique réel qu'un animal dépense en fonction de son activité.",
+    },
+    {
+      q: "Comment gérer la perte de poids chez un chien ou un chat ?",
+      a: "Pour une perte de poids graduelle et saine, réduisez les apports caloriques de 10-15% du DER calculé. Combinez avec de l'exercice modéré et suivez l'évolution du poids chaque 2-4 semaines. Un vétérinaire nutritionniste peut ajuster le régime selon la réponse de l'animal.",
+    },
+  ];
+
   return (
     <div>
       <WebAppJsonLd name="Calcul Calories Chien Chat - Besoin Énergétique" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Combien de calories par jour pour un chien ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le besoin calorique journalier (DER) d&apos;un chien se calcule avec la formule BER = 70 × (poids en kg)^0.75, puis multiplié par un facteur d&apos;activité selon l&apos;âge, l&apos;état (stérilisé ou non) et le niveau d&apos;activité. Un chien adulte moyen de 25 kg non stérilisé a besoin d&apos;environ 900-1000 kcal/jour.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien de calories par jour pour un chat ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Un chat adulte moyen de 4-5 kg a besoin d&apos;environ 180-250 kcal/jour selon son activité et son état (stérilisé réduit les besoins). La formule BER = 70 × (poids en kg)^0.75 s&apos;applique, puis multiplication par le facteur d&apos;activité adapté à l&apos;espèce féline.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la différence entre BER et DER ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le BER (Besoin Énergétique de Repos) est l&apos;énergie minimale pour maintenir les fonctions vitales au repos. Le DER (Besoin Énergétique Quotidien) = BER × facteur d&apos;activité. Il représente le total calorique réel qu&apos;un animal dépense en fonction de son activité.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment gérer la perte de poids chez un chien ou un chat ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour une perte de poids graduelle et saine, réduisez les apports caloriques de 10-15% du DER calculé. Combinez avec de l&apos;exercice modéré et suivez l&apos;évolution du poids chaque 2-4 semaines. Un vétérinaire nutritionniste peut ajuster le régime selon la réponse de l&apos;animal.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
 
       <Breadcrumb currentPage="Calcul Calories Chien Chat" />
 
@@ -324,6 +301,8 @@ export default function Page() {
 
         <AdSlot adSlot="1234567890" />
       </div>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-calories-chien-chat" />
     </div>

@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-chemin-de-vie" },
@@ -15,53 +16,29 @@ export const metadata: Metadata = {
     "chemin de vie, numérologie, nombre chemin de vie, numérologie pythagoricienne, nombre destinée, maître 11 22 33, calcul nombre vie, personnalité numérologie",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment calculer mon chemin de vie en numérologie ?",
+    a: "Le chemin de vie se calcule en additionnant tous les chiffres de votre date de naissance (jour, mois, année) jusqu'à obtenir un chiffre unique entre 1 et 9, ou un nombre maître (11, 22, 33). Par exemple : 15 octobre 1990 = 1+5+1+0+1+9+9+0 = 26 = 2+6 = 8.",
+  },
+  {
+    q: "Qu'est-ce qu'un nombre maître en numérologie ?",
+    a: "Les nombres maîtres (11, 22, 33) ne sont pas réduits à un chiffre unique en numérologie pythagoricienne. Ils représentent des niveaux de conscience et de spiritualité élevés. Le 11 est l'inspiration spirituelle, le 22 est la manifestation concrète, et le 33 est le service à l'humanité.",
+  },
+  {
+    q: "Que signifie chaque chemin de vie ?",
+    a: "Chaque chemin de vie (1-9 + maîtres) révèle votre destinée, vos forces, vos faiblesses, et votre mission de vie. Le 1 est le pionnier, le 2 le médiateur, le 3 l'artiste, etc. Les maîtres apportent une dimension spirituelle supplémentaire.",
+  },
+  {
+    q: "Comment utiliser mon chemin de vie au quotidien ?",
+    a: "Votre chemin de vie peut vous aider à mieux comprendre votre personnalité, à identifier vos talents naturels, à choisir des carrières alignées avec votre destinée, et à surmonter vos défis. C'est un outil d'introspection et de développement personnel.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Chemin de Vie Numérologie" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment calculer mon chemin de vie en numérologie ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le chemin de vie se calcule en additionnant tous les chiffres de votre date de naissance (jour, mois, année) jusqu'à obtenir un chiffre unique entre 1 et 9, ou un nombre maître (11, 22, 33). Par exemple : 15 octobre 1990 = 1+5+1+0+1+9+9+0 = 26 = 2+6 = 8.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qu'est-ce qu'un nombre maître en numérologie ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les nombres maîtres (11, 22, 33) ne sont pas réduits à un chiffre unique en numérologie pythagoricienne. Ils représentent des niveaux de conscience et de spiritualité élevés. Le 11 est l'inspiration spirituelle, le 22 est la manifestation concrète, et le 33 est le service à l'humanité.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Que signifie chaque chemin de vie ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Chaque chemin de vie (1-9 + maîtres) révèle votre destinée, vos forces, vos faiblesses, et votre mission de vie. Le 1 est le pionnier, le 2 le médiateur, le 3 l'artiste, etc. Les maîtres apportent une dimension spirituelle supplémentaire.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment utiliser mon chemin de vie au quotidien ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Votre chemin de vie peut vous aider à mieux comprendre votre personnalité, à identifier vos talents naturels, à choisir des carrières alignées avec votre destinée, et à surmonter vos défis. C'est un outil d'introspection et de développement personnel.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Chemin de Vie" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -230,6 +207,8 @@ export default function Page() {
           (médical, juridique, financier).
         </p>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-chemin-de-vie" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-credit-conso" },
@@ -14,53 +15,29 @@ export const metadata: Metadata = {
     "credit consommation, simulateur credit conso, calcul mensualite, pret personnel, taux credit conso 2026, tableau amortissement, taux endettement",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quel est le taux moyen d'un credit conso en 2026 ?",
+    a: "En Q1 2026, les taux moyens TAEG pour un pret personnel sont : 3,9% sur 12 mois, 4,3% sur 36 mois, 4,7% sur 60 mois et 6% sur 84 mois. Ces taux varient selon la duree, le montant et votre profil emprunteur.",
+  },
+  {
+    q: "Quel est le taux d'usure pour un credit conso en 2026 ?",
+    a: "Au Q1 2026, les taux d'usure (maximum legal) sont : 23,56% pour les credits <= 3 000 EUR, 15,87% pour les credits de 3 001 a 6 000 EUR, et 8,67% pour les credits > 6 000 EUR. Un taux depassant ces seuils est illegal.",
+  },
+  {
+    q: "Quel taux d'endettement maximum pour un credit conso ?",
+    a: "Le taux d'endettement maximum recommande est de 33 a 35% de vos revenus nets mensuels. Au-dela, les banques refusent generalement le credit. Ce taux inclut tous vos credits en cours (immobilier, conso, etc.) et votre loyer.",
+  },
+  {
+    q: "Comment calculer la mensualite d'un credit conso ?",
+    a: "La formule est : Mensualite = Capital x (Taux mensuel x (1 + Taux mensuel)^n) / ((1 + Taux mensuel)^n - 1), ou n = nombre de mois et Taux mensuel = Taux annuel / 12. Exemple : 10 000 EUR a 4,5% sur 60 mois = 186,43 EUR/mois.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Simulateur Credit Conso" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quel est le taux moyen d'un credit conso en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "En Q1 2026, les taux moyens TAEG pour un pret personnel sont : 3,9% sur 12 mois, 4,3% sur 36 mois, 4,7% sur 60 mois et 6% sur 84 mois. Ces taux varient selon la duree, le montant et votre profil emprunteur.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel est le taux d'usure pour un credit conso en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Au Q1 2026, les taux d'usure (maximum legal) sont : 23,56% pour les credits ≤ 3 000 €, 15,87% pour les credits de 3 001 a 6 000 €, et 8,67% pour les credits > 6 000 €. Un taux depassant ces seuils est illegal.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel taux d'endettement maximum pour un credit conso ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le taux d'endettement maximum recommande est de 33 a 35% de vos revenus nets mensuels. Au-dela, les banques refusent generalement le credit. Ce taux inclut tous vos credits en cours (immobilier, conso, etc.) et votre loyer.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment calculer la mensualite d'un credit conso ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La formule est : Mensualite = Capital x (Taux mensuel x (1 + Taux mensuel)^n) / ((1 + Taux mensuel)^n - 1), ou n = nombre de mois et Taux mensuel = Taux annuel / 12. Exemple : 10 000 € a 4,5% sur 60 mois = 186,43 €/mois.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Simulateur Credit Conso" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -219,6 +196,8 @@ export default function Page() {
       </div>
 
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/simulateur-credit-conso" />
     </div>

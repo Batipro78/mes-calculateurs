@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-rapport-taille-tour-de-taille" },
@@ -14,53 +15,29 @@ export const metadata: Metadata = {
     "WtHR, rapport taille tour de taille, waist to height ratio, graisse viscérale, risque cardiovasculaire, règle d'or OMS 0.5, alternative IMC, santé",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Qu'est-ce que le WtHR (Waist-to-Height Ratio) ?",
+    a: "Le WtHR (rapport taille/tour de taille) est un indicateur de santé qui divise le tour de taille (en cm) par la taille (en cm). Il mesure la graisse viscérale (la plus dangereuse pour le coeur), contrairement à l'IMC qui ne distingue pas la masse grasse de la masse musculaire.",
+  },
+  {
+    q: "Quelle est la différence entre WtHR et IMC ?",
+    a: "L'IMC se base sur le poids total (sans distinguer muscle et graisse), tandis que le WtHR mesure spécifiquement la distribution des graisses, en particulier la graisse viscérale qui entoure les organes. Le WtHR est plus précis pour évaluer le risque cardiovasculaire chez tous les morphotypes.",
+  },
+  {
+    q: "Comment bien mesurer son tour de taille ?",
+    a: "Mesurez à mi-distance entre le bas de vos côtes et le haut de vos hanches, sans rentrer le ventre, en fin d'expiration normale. Utilisez un mètre souple et assurez-vous qu'il est bien horizontal. Cette mesure est plus fiable que le poids pour évaluer la santé.",
+  },
+  {
+    q: "Pourquoi la règle d'or OMS est-elle 0.5 ?",
+    a: "L'Organisation Mondiale de la Santé recommande un WtHR ≤ 0.5 (tour de taille ≤ moitié de la taille). Cette règle simple est universelle pour tous les âges et morphotypes. Un ratio > 0.5 signale un risque augmenté de maladie cardiovasculaire et de diabète type 2.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul WtHR" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Qu'est-ce que le WtHR (Waist-to-Height Ratio) ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le WtHR (rapport taille/tour de taille) est un indicateur de santé qui divise le tour de taille (en cm) par la taille (en cm). Il mesure la graisse viscérale (la plus dangereuse pour le cœur), contrairement à l'IMC qui ne distingue pas la masse grasse de la masse musculaire.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la différence entre WtHR et IMC ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L'IMC se base sur le poids total (sans distinguer muscle et graisse), tandis que le WtHR mesure spécifiquement la distribution des graisses, en particulier la graisse viscérale qui entoure les organes. Le WtHR est plus précis pour évaluer le risque cardiovasculaire chez tous les morphotypes.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Comment bien mesurer son tour de taille ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Mesurez à mi-distance entre le bas de vos côtes et le haut de vos hanches, sans rentrer le ventre, en fin d'expiration normale. Utilisez un mètre souple et assurez-vous qu'il est bien horizontal. Cette mesure est plus fiable que le poids pour évaluer la santé.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Pourquoi la règle d'or OMS est-elle 0.5 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L'Organisation Mondiale de la Santé recommande un WtHR ≤ 0.5 (tour de taille ≤ moitié de la taille). Cette règle simple est universelle pour tous les âges et morphotypes. Un ratio > 0.5 signale un risque augmenté de maladie cardiovasculaire et de diabète type 2.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul WtHR" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -295,6 +272,8 @@ export default function Page() {
           évaluation personnalisée de votre risque cardiovasculaire.
         </p>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-rapport-taille-tour-de-taille" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

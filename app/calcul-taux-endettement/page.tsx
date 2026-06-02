@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-taux-endettement" },
@@ -14,53 +15,29 @@ export const metadata: Metadata = {
     "calcul taux endettement, taux endettement 33%, simulateur endettement, capacite emprunt, reste a vivre, credit immobilier taux endettement, seuil endettement banque",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment calculer son taux d'endettement ?",
+    a: "Le taux d'endettement se calcule en divisant le total de vos charges mensuelles (credits, loyer) par le total de vos revenus mensuels nets, puis en multipliant par 100. Formule : (charges / revenus) x 100. Par exemple, avec 2 500 EUR de revenus et 800 EUR de charges, le taux est de 32%.",
+  },
+  {
+    q: "Quel est le taux d'endettement maximum pour un credit immobilier ?",
+    a: "Depuis janvier 2022, le Haut Conseil de Stabilite Financiere (HCSF) a fixe le taux d'endettement maximum a 35% (assurance emprunteur comprise). En pratique, les banques visent souvent un taux de 33% hors assurance. Un depassement est possible dans 20% des dossiers, principalement pour les primo-accedants et les hauts revenus.",
+  },
+  {
+    q: "Quels revenus sont pris en compte pour le taux d'endettement ?",
+    a: "Les banques prennent en compte : les salaires nets (fixes), les revenus fonciers (a 70%), les pensions de retraite, les allocations familiales, les revenus d'activite non salariee (moyenne sur 3 ans). Les primes exceptionnelles, les heures supplementaires variables et les revenus de placements ne sont generalement pas retenus.",
+  },
+  {
+    q: "Peut-on emprunter avec un taux d'endettement superieur a 33% ?",
+    a: "Oui, c'est possible dans certains cas. Les banques peuvent accorder un credit avec un taux jusqu'a 35% (regles HCSF) si le reste a vivre est suffisant (en general > 1 000 EUR par personne). Les hauts revenus, les primo-accedants et les fonctionnaires beneficient souvent de plus de souplesse.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Taux Endettement" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Comment calculer son taux d'endettement ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le taux d'endettement se calcule en divisant le total de vos charges mensuelles (credits, loyer) par le total de vos revenus mensuels nets, puis en multipliant par 100. Formule : (charges / revenus) x 100. Par exemple, avec 2 500 EUR de revenus et 800 EUR de charges, le taux est de 32%.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel est le taux d'endettement maximum pour un credit immobilier ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Depuis janvier 2022, le Haut Conseil de Stabilite Financiere (HCSF) a fixe le taux d'endettement maximum a 35% (assurance emprunteur comprise). En pratique, les banques visent souvent un taux de 33% hors assurance. Un depassement est possible dans 20% des dossiers, principalement pour les primo-accedants et les hauts revenus.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quels revenus sont pris en compte pour le taux d'endettement ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les banques prennent en compte : les salaires nets (fixes), les revenus fonciers (a 70%), les pensions de retraite, les allocations familiales, les revenus d'activite non salariee (moyenne sur 3 ans). Les primes exceptionnelles, les heures supplementaires variables et les revenus de placements ne sont generalement pas retenus.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Peut-on emprunter avec un taux d'endettement superieur a 33% ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Oui, c'est possible dans certains cas. Les banques peuvent accorder un credit avec un taux jusqu'a 35% (regles HCSF) si le reste a vivre est suffisant (en general > 1 000 EUR par personne). Les hauts revenus, les primo-accedants et les fonctionnaires beneficient souvent de plus de souplesse.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Taux d'Endettement" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -301,6 +278,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-taux-endettement" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

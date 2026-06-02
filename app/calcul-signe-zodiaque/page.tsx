@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 import { SIGNES, ELEMENTS_INFO, MODES_INFO } from "./signeZodiaqueCalc";
 
 export const metadata: Metadata = {
@@ -15,6 +16,25 @@ export const metadata: Metadata = {
     "signe zodiaque, signe astrologique, belier taureau gemeaux cancer lion vierge balance scorpion sagittaire capricorne verseau poissons, element feu terre air eau, planete signe, astrologie occidentale, horoscope",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quand change le signe zodiaque ?",
+    a: "Le signe zodiaque change entre le 19 et le 23 de chaque mois selon l'astrologie occidentale tropicale. Les dates varient legerement chaque annee. Par exemple, le Belier va du 21 mars au 19 avril environ.",
+  },
+  {
+    q: "Quels sont les 4 elements du zodiaque ?",
+    a: "L'astrologie occidentale classe les 12 signes en 4 elements : Feu (Belier, Lion, Sagittaire), Terre (Taureau, Vierge, Capricorne), Air (Gemeaux, Balance, Verseau) et Eau (Cancer, Scorpion, Poissons). Chaque element apporte des traits de caractere distincts.",
+  },
+  {
+    q: "Qu'est-ce que le mode en astrologie (Cardinal, Fixe, Mutable) ?",
+    a: "Le mode decrit la dynamique d'un signe. Cardinal (Belier, Cancer, Balance, Capricorne) = initiative. Fixe (Taureau, Lion, Scorpion, Verseau) = stabilite. Mutable (Gemeaux, Vierge, Sagittaire, Poissons) = adaptabilite.",
+  },
+  {
+    q: "Quelle est la difference entre signe solaire et ascendant ?",
+    a: "Le signe solaire (base sur la date de naissance) decrit votre essence et identite. L'ascendant (signe levant a votre naissance) decrit comment vous etes percu par les autres. Pour connaitre votre ascendant, il faut l'heure et le lieu exacts de naissance.",
+  },
+];
+
 export default function Page() {
   const signesArray = Object.values(SIGNES);
   const elementsArray = Object.entries(ELEMENTS_INFO);
@@ -23,49 +43,6 @@ export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Calcul Signe Zodiaque - Astrologie Occidentale" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quand change le signe zodiaque ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le signe zodiaque change entre le 19 et le 23 de chaque mois selon l&apos;astrologie occidentale tropicale. Les dates varient légèrement chaque année. Par exemple, le Bélier va du 21 mars au 19 avril environ.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quels sont les 4 éléments du zodiaque ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L&apos;astrologie occidentale classe les 12 signes en 4 éléments : Feu (Bélier, Lion, Sagittaire), Terre (Taureau, Vierge, Capricorne), Air (Gémeaux, Balance, Verseau) et Eau (Cancer, Scorpion, Poissons). Chaque élément apporte des traits de caractère distincts.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Qu&apos;est-ce que le mode en astrologie (Cardinal, Fixe, Mutable) ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le mode décrit la dynamique d&apos;un signe. Cardinal (Bélier, Cancer, Balance, Capricorne) = initiative. Fixe (Taureau, Lion, Scorpion, Verseau) = stabilité. Mutable (Gémeaux, Vierge, Sagittaire, Poissons) = adaptabilité.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la différence entre signe solaire et levant (ascendant) ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le signe solaire (basé sur la date de naissance) décrit votre essence et identité. L&apos;ascendant (signe levant à votre naissance) décrit comment vous êtes perçu par les autres. Pour connaître votre ascendant, il faut l&apos;heure et le lieu exacts de naissance.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Calcul Signe Zodiaque" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -239,6 +216,7 @@ export default function Page() {
         </p>
       </section>
 
+      <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-signe-zodiaque" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/conversion-poids" },
@@ -14,45 +15,29 @@ export const metadata: Metadata = {
     "conversion kg en livres, kg en lbs, livres en kg, conversion poids, onces en grammes, stones en kg, convertisseur poids, tableau conversion poids",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Combien de livres dans un kilogramme ?",
+    a: "1 kilogramme = 2,20462 livres (lbs). Pour convertir des kg en livres, multipliez par 2,20462. Exemple : 70 kg = 154,32 lbs.",
+  },
+  {
+    q: "Combien de kg dans une livre ?",
+    a: "1 livre (lb) = 0,45359 kg. Pour convertir des livres en kg, multipliez par 0,45359. Exemple : 150 lbs = 68,04 kg.",
+  },
+  {
+    q: "Quelle est la difference entre une livre et une once ?",
+    a: "1 livre = 16 onces. La livre (pound/lb) est une unite de poids du systeme imperial. 1 once (oz) = 28,35 grammes.",
+  },
+  {
+    q: "Qu'est-ce que le stone utilise au Royaume-Uni ?",
+    a: "Le stone est une unite de poids britannique valant 14 livres, soit 6,35 kg. Il est couramment utilise pour exprimer le poids corporel au Royaume-Uni. Exemple : 70 kg = 11 stones.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Conversion Poids" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Combien de livres dans un kilogramme ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "1 kilogramme = 2,20462 livres (lbs). Pour convertir des kg en livres, multipliez par 2,20462. Exemple : 70 kg = 154,32 lbs.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien de kg dans une livre ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "1 livre (lb) = 0,45359 kg. Pour convertir des livres en kg, multipliez par 0,45359. Exemple : 150 lbs = 68,04 kg.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle est la difference entre une livre et une once ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "1 livre = 16 onces. La livre (pound/lb) est une unite de poids du systeme imperial. 1 once (oz) = 28,35 grammes.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Conversion Poids" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -130,6 +115,8 @@ export default function Page() {
           Exemple : 70 kg &asymp; 70 &times; 2 + 7 = 147 lbs (valeur exacte : 154,3 lbs). Moins precis mais utile en voyage.
         </p>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/conversion-poids" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
