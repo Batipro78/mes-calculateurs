@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-prestation-compensatoire" },
@@ -102,6 +103,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`La prestation compensatoire vise a compenser la disparite de niveau de vie creee par le divorce. Le juge l'apprecie selon la duree du mariage, l'age, les revenus et le patrimoine des epoux. Le simulateur donne une estimation a partir des methodes indicatives usuelles.`}
+        sources={[
+          { label: "Service-Public.fr - Prestation compensatoire", url: "https://www.service-public.fr/particuliers/vosdroits/F981" },
+          { label: "Justice.fr - Ministere de la Justice", url: "https://www.justice.fr" },
+        ]}
+      />
+
 
       <RelatedCalculators currentSlug="/calcul-prestation-compensatoire" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

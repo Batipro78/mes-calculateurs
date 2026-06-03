@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-heures-travail" },
@@ -246,6 +247,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`La duree legale du travail est de 35 heures par semaine. Les heures supplementaires sont majorees (25 % de la 36e a la 43e heure, 50 % au-dela, sauf accord). Le simulateur calcule la remuneration en appliquant ces majorations.`}
+        sources={[
+          { label: "Service-Public.fr - Heures supplementaires", url: "https://www.service-public.fr/particuliers/vosdroits/F2363" },
+          { label: "Legifrance - Code du travail", url: "https://www.legifrance.gouv.fr" },
+        ]}
+      />
+
 
       <RelatedCalculators currentSlug="/calcul-heures-travail" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

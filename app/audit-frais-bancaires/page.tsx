@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/audit-frais-bancaires" },
@@ -292,6 +293,15 @@ export default function Page() {
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`L'outil compare vos frais bancaires (tenue de compte, incidents, commissions d'intervention) aux plafonds legaux et aux moyennes du marche. Les commissions d'intervention sont plafonnees par la reglementation.`}
+        sources={[
+          { label: "Service-Public.fr - Frais bancaires", url: "https://www.service-public.fr/particuliers/vosdroits/F2818" },
+          { label: "Banque de France - Tarifs bancaires", url: "https://www.banque-france.fr" },
+        ]}
+      />
+
 
       <RelatedCalculators currentSlug="/audit-frais-bancaires" />
     </div>

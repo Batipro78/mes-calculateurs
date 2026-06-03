@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-remboursement-mutuelle" },
@@ -176,6 +177,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`Le remboursement se decompose en base de remboursement (BR), part Securite sociale (RO), part mutuelle (RC selon le contrat) et reste a charge. Le simulateur estime ces postes a partir des taux de l'Assurance maladie et de la garantie saisie.`}
+        sources={[
+          { label: "Ameli.fr - Taux de remboursement", url: "https://www.ameli.fr" },
+          { label: "Service-Public.fr - Complementaire sante", url: "https://www.service-public.fr/particuliers/vosdroits/F20210" },
+        ]}
+      />
+
       <RelatedCalculators currentSlug="/calcul-remboursement-mutuelle" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

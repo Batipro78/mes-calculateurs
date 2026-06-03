@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-ifi" },
@@ -114,6 +115,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`L'impot sur la fortune immobiliere (IFI) est du par les foyers dont le patrimoine immobilier net taxable depasse 1,3 million d'euros. Il se calcule en appliquant le bareme progressif a la valeur nette des biens immobiliers, apres deduction des dettes.`}
+        sources={[
+          { label: "Impots.gouv.fr - Impot sur la fortune immobiliere", url: "https://www.impots.gouv.fr/particulier/limpot-sur-la-fortune-immobiliere-ifi" },
+          { label: "Service-Public.fr - IFI", url: "https://www.service-public.fr/particuliers/vosdroits/F563" },
+        ]}
+      />
+
       <RelatedCalculators currentSlug="/calcul-ifi" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

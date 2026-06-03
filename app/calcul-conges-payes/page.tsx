@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-conges-payes" },
@@ -131,6 +132,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`Le salarie acquiert 2,5 jours ouvrables de conges payes par mois travaille (30 jours par an). L'indemnite retient le plus favorable entre la regle du dixieme de la remuneration annuelle et le maintien de salaire. Le simulateur applique ces regles.`}
+        sources={[
+          { label: "Service-Public.fr - Conges payes", url: "https://www.service-public.fr/particuliers/vosdroits/F2258" },
+          { label: "Legifrance - Code du travail", url: "https://www.legifrance.gouv.fr" },
+        ]}
+      />
+
 
       <RelatedCalculators currentSlug="/calcul-conges-payes" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

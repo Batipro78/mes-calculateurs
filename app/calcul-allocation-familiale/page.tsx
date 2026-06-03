@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-allocation-familiale" },
@@ -289,6 +290,15 @@ export default function Page() {
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`Les allocations familiales sont versees par la CAF a partir de 2 enfants a charge. Le montant depend du nombre d'enfants et des ressources du foyer (modulation par tranches). Le simulateur applique les baremes CAF en vigueur.`}
+        sources={[
+          { label: "CAF - Allocations familiales", url: "https://www.caf.fr" },
+          { label: "Service-Public.fr - Allocations familiales", url: "https://www.service-public.fr/particuliers/vosdroits/F13213" },
+        ]}
+      />
+
 
       <RelatedCalculators currentSlug="/calcul-allocation-familiale" />
     </div>

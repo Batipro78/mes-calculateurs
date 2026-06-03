@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-pension-alimentaire" },
@@ -205,6 +206,15 @@ export default function Page() {
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`La pension alimentaire pour enfant est estimee a partir du bareme indicatif du ministere de la Justice : revenu du parent debiteur, nombre d'enfants et type de droit de visite et d'hebergement. Le juge reste libre de fixer un autre montant.`}
+        sources={[
+          { label: "Justice.fr - Bareme des pensions alimentaires", url: "https://www.justice.fr/simulateurs/pensions" },
+          { label: "Service-Public.fr - Pension alimentaire", url: "https://www.service-public.fr/particuliers/vosdroits/F938" },
+        ]}
+      />
+
 
       <RelatedCalculators currentSlug="/simulateur-pension-alimentaire" />
     </div>

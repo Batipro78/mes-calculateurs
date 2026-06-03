@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-micro-entreprise" },
@@ -193,6 +194,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`Le simulateur applique les taux de cotisations sociales URSSAF du micro-entrepreneur selon l'activite (vente, prestations BIC, BNC), l'eventuel versement liberatoire de l'impot et l'ACRE la premiere annee, sur le chiffre d'affaires declare.`}
+        sources={[
+          { label: "URSSAF - Auto-entrepreneur, taux de cotisations", url: "https://www.autoentrepreneur.urssaf.fr" },
+          { label: "Service-Public.fr - Micro-entrepreneur", url: "https://www.service-public.fr/particuliers/vosdroits/F23961" },
+        ]}
+      />
+
       <RelatedCalculators currentSlug="/simulateur-micro-entreprise" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

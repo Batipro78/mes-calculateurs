@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-indemnites-kilometriques" },
@@ -250,6 +251,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`Les indemnites kilometriques se calculent avec le bareme fiscal annuel publie par l'administration, selon la puissance fiscale du vehicule et la distance parcourue a titre professionnel. Le simulateur applique le bareme en vigueur.`}
+        sources={[
+          { label: "Impots.gouv.fr - Frais de deplacement et bareme kilometrique", url: "https://www.impots.gouv.fr/particulier/les-frais-de-deplacement" },
+          { label: "Service-Public.fr - Frais kilometriques", url: "https://www.service-public.fr/particuliers/vosdroits/F1991" },
+        ]}
+      />
+
       <RelatedCalculators currentSlug="/calcul-indemnites-kilometriques" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

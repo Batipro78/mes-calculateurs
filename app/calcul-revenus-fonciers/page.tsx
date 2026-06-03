@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-revenus-fonciers" },
@@ -131,6 +132,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`Les revenus fonciers (location nue) sont imposes au micro-foncier (abattement de 30 %) en dessous de 15 000 euros de loyers annuels, ou au regime reel (deduction des charges reelles) au-dela ou sur option. Le simulateur compare les deux regimes.`}
+        sources={[
+          { label: "Impots.gouv.fr - Revenus fonciers", url: "https://www.impots.gouv.fr/particulier/les-revenus-fonciers" },
+          { label: "Service-Public.fr - Revenus fonciers", url: "https://www.service-public.fr/particuliers/vosdroits/F1989" },
+        ]}
+      />
+
       <RelatedCalculators currentSlug="/calcul-revenus-fonciers" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

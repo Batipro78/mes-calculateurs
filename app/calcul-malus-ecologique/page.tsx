@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-malus-ecologique" },
@@ -87,6 +88,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`Le malus ecologique est une taxe a l'immatriculation assise sur les emissions de CO2 (norme WLTP) du vehicule neuf, selon un bareme annuel progressif, complete par un malus au poids. Le simulateur applique le bareme en vigueur.`}
+        sources={[
+          { label: "Service-Public.fr - Malus ecologique", url: "https://www.service-public.fr/particuliers/vosdroits/F35041" },
+          { label: "Economie.gouv.fr - Malus automobile", url: "https://www.economie.gouv.fr" },
+        ]}
+      />
+
       <RelatedCalculators currentSlug="/calcul-malus-ecologique" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

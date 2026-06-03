@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-impot-societe" },
@@ -98,6 +99,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`L'impot sur les societes (IS) s'applique au benefice fiscal : taux reduit de 15 % jusqu'a 42 500 euros de benefice sous conditions, 25 % au-dela. Le simulateur applique ces taux au resultat imposable saisi.`}
+        sources={[
+          { label: "Impots.gouv.fr - Impot sur les societes", url: "https://www.impots.gouv.fr/professionnel/impot-sur-les-societes-is" },
+          { label: "Service-Public.fr - Impot sur les societes", url: "https://entreprendre.service-public.fr/vosdroits/F23575" },
+        ]}
+      />
+
 
       <RelatedCalculators currentSlug="/simulateur-impot-societe" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

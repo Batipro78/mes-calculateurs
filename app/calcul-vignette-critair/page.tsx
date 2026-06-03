@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-vignette-critair" },
@@ -260,6 +261,15 @@ export default function Page() {
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`La vignette Crit'Air classe les vehicules de 0 (electrique) a 5 selon la motorisation et la date de premiere immatriculation. Le simulateur determine la classe a partir de ces criteres officiels.`}
+        sources={[
+          { label: "Certificat-air.gouv.fr - Vignette Crit'Air", url: "https://www.certificat-air.gouv.fr" },
+          { label: "Service-Public.fr - Crit'Air", url: "https://www.service-public.fr/particuliers/vosdroits/F35057" },
+        ]}
+      />
+
       <RelatedCalculators currentSlug="/calcul-vignette-critair" />
     </div>
   );

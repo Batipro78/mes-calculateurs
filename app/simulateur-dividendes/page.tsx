@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-dividendes" },
@@ -109,6 +110,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`Les dividendes sont par defaut soumis au prelevement forfaitaire unique (PFU ou flat tax) de 30 % : 12,8 % d'impot et 17,2 % de prelevements sociaux. Une option pour le bareme progressif avec abattement de 40 % est possible. Le simulateur compare les deux.`}
+        sources={[
+          { label: "Impots.gouv.fr - Imposition des dividendes", url: "https://www.impots.gouv.fr/particulier/questions/comment-sont-imposes-les-dividendes" },
+          { label: "Service-Public.fr - Revenus de capitaux mobiliers", url: "https://www.service-public.fr/particuliers/vosdroits/F32963" },
+        ]}
+      />
+
 
       <RelatedCalculators currentSlug="/simulateur-dividendes" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
