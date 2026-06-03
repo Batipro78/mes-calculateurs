@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-bonus-ecologique" },
@@ -219,6 +220,15 @@ export default function Page() {
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`Le bonus ecologique est une aide a l'achat d'un vehicule electrique neuf, dont le montant depend du prix, des revenus et du type de vehicule, selon le bareme fixe par l'Etat. Le simulateur applique le bareme en vigueur.`}
+        sources={[
+          { label: "Service-Public.fr - Bonus ecologique", url: "https://www.service-public.fr/particuliers/vosdroits/F34014" },
+          { label: "Ecologie.gouv.fr - Aides a l'achat de vehicules", url: "https://www.ecologie.gouv.fr" },
+        ]}
+      />
+
       <RelatedCalculators currentSlug="/simulateur-bonus-ecologique" />
     </div>
   );

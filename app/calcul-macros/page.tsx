@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-macros" },
@@ -201,6 +202,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`La repartition des macronutriments (proteines, glucides, lipides) est calculee a partir du besoin calorique et de l'objectif, selon des fourchettes recommandees. Les references sont celles de l'ANSES.`}
+        sources={[
+          { label: "ANSES - Apports nutritionnels conseilles", url: "https://www.anses.fr" },
+          { label: "Manger-Bouger (Sante publique France)", url: "https://www.mangerbouger.fr" },
+        ]}
+      />
+
       <RelatedCalculators currentSlug="/calcul-macros" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

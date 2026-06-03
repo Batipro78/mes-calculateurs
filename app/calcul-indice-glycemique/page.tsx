@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 import { ALIMENTS } from "./indiceGlycemiqueCalc";
 
 export const metadata: Metadata = {
@@ -198,6 +199,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`L'indice glycemique (IG) classe les aliments selon leur effet sur la glycemie par rapport au glucose. Le simulateur s'appuie sur des valeurs d'IG de reference. Les recommandations alimentaires suivent l'ANSES.`}
+        sources={[
+          { label: "ANSES - Glucides et index glycemique", url: "https://www.anses.fr" },
+          { label: "Manger-Bouger (Sante publique France)", url: "https://www.mangerbouger.fr" },
+        ]}
+      />
+
       <RelatedCalculators currentSlug="/calcul-indice-glycemique" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

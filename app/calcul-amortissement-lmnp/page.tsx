@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-amortissement-lmnp" },
@@ -112,6 +113,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`En location meublee non professionnelle (LMNP) au regime reel, l'amortissement du bien et du mobilier se deduit des loyers, ce qui reduit fortement l'imposition. Le simulateur estime l'amortissement deductible et l'impact fiscal selon les composants amortis.`}
+        sources={[
+          { label: "Impots.gouv.fr - Location meublee (BIC)", url: "https://www.impots.gouv.fr/particulier/location-meublee" },
+          { label: "Service-Public.fr - Location meublee", url: "https://www.service-public.fr/particuliers/vosdroits/F32744" },
+        ]}
+      />
+
 
       <RelatedCalculators currentSlug="/calcul-amortissement-lmnp" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

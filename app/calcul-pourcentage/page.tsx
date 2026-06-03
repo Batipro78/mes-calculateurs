@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-pourcentage" },
@@ -169,6 +170,15 @@ export default function Page() {
           </div>
         </section>
       ))}
+
+      <HowToJsonLd
+        name="Calculer un pourcentage"
+        steps={[
+          { name: "Pourcentage d'un nombre", text: "Pour calculer X pour cent d'un nombre, multiplier le nombre par X puis diviser par 100." },
+          { name: "Hausse ou baisse", text: "Pour une augmentation de X pour cent, multiplier par (1 plus X/100) ; pour une reduction, multiplier par (1 moins X/100)." },
+          { name: "Part en pourcentage", text: "Pour savoir quel pourcentage represente une part, diviser la part par le total puis multiplier par 100." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

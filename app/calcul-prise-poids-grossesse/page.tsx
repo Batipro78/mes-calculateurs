@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-prise-poids-grossesse" },
@@ -101,6 +102,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`La prise de poids recommandee pendant la grossesse depend de l'IMC de depart, selon les reperes des autorites de sante. Le simulateur donne une fourchette indicative, a valider avec le suivi medical.`}
+        sources={[
+          { label: "Ameli.fr - Grossesse et prise de poids", url: "https://www.ameli.fr" },
+          { label: "HAS - Suivi de la grossesse", url: "https://www.has-sante.fr" },
+        ]}
+      />
+
 
       <RelatedCalculators currentSlug="/calcul-prise-poids-grossesse" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

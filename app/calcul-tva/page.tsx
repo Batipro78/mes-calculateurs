@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-tva" },
@@ -176,6 +177,15 @@ export default function Page() {
           </div>
         </section>
       ))}
+
+      <HowToJsonLd
+        name="Calculer la TVA"
+        steps={[
+          { name: "Choisir le taux", text: "Choisir le taux de TVA applicable : 20 %, 10 %, 5,5 % ou 2,1 %." },
+          { name: "Calculer la TVA", text: "Pour obtenir la TVA a partir d'un prix HT, multiplier le montant HT par le taux (par exemple HT multiplie par 0,20)." },
+          { name: "Obtenir le TTC", text: "Ajouter la TVA au montant HT pour obtenir le prix TTC, ou diviser le TTC par (1 plus le taux) pour retrouver le HT." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

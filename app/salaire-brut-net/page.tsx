@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import VillesLinks from "../components/VillesLinks";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
@@ -136,6 +137,15 @@ export default function Page() {
           </div>
         </section>
       ))}
+
+      <HowToJsonLd
+        name="Convertir un salaire brut en net"
+        steps={[
+          { name: "Partir du brut", text: "Partir du salaire brut, mensuel ou annuel." },
+          { name: "Deduire les cotisations", text: "Deduire les cotisations sociales salariales : environ 22 pour cent pour un non-cadre, 25 pour cent pour un cadre." },
+          { name: "Net a payer", text: "Le resultat est le salaire net ; soustraire le prelevement a la source pour obtenir le net a payer." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

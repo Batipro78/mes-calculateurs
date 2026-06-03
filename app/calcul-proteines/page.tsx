@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-proteines" },
@@ -188,6 +189,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`Le besoin en proteines est estime en grammes par kilo de poids corporel selon le niveau d'activite, dans les fourchettes des references nutritionnelles de l'ANSES.`}
+        sources={[
+          { label: "ANSES - Proteines et references nutritionnelles", url: "https://www.anses.fr" },
+          { label: "Manger-Bouger (Sante publique France)", url: "https://www.mangerbouger.fr" },
+        ]}
+      />
+
 
       <RelatedCalculators currentSlug="/calcul-proteines" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calculateur-inflation" },
@@ -191,6 +192,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`L'inflation est mesuree par l'indice des prix a la consommation (IPC) publie par l'INSEE. Le simulateur convertit un montant d'une annee a une autre en appliquant l'evolution de cet indice officiel.`}
+        sources={[
+          { label: "INSEE - Indice des prix a la consommation", url: "https://www.insee.fr/fr/statistiques/serie/000436391" },
+          { label: "INSEE - Pouvoir d'achat de l'euro", url: "https://www.insee.fr" },
+        ]}
+      />
+
       <RelatedCalculators currentSlug="/calculateur-inflation" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

@@ -6,6 +6,7 @@ import WebAppJsonLd from "../components/WebAppJsonLd";
 import VillesLinks from "../components/VillesLinks";
 import LeadCaptureForm from "../components/LeadCaptureForm";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
@@ -169,6 +170,15 @@ export default function Page() {
           <a href="/prix-macon" className="text-violet-600 underline hover:text-violet-800">prix macon</a>.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer la mensualite d'un pret immobilier"
+        steps={[
+          { name: "Saisir les parametres", text: "Saisir le capital emprunte, le taux d'interet annuel et la duree en annees." },
+          { name: "Convertir", text: "Convertir le taux annuel en taux mensuel et la duree en nombre de mensualites." },
+          { name: "Calculer", text: "Appliquer la formule d'amortissement pour obtenir la mensualite, puis multiplier par le nombre de mensualites pour le cout total." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

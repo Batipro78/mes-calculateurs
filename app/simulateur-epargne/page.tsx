@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-epargne" },
@@ -221,6 +222,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`Le simulateur projette la valeur d'une epargne (Livret A, LDDS, LEP, PEL, assurance-vie) selon le capital, les versements et le taux. Les taux des livrets reglementes sont fixes par l'Etat sur proposition de la Banque de France.`}
+        sources={[
+          { label: "Service-Public.fr - Epargne et livrets", url: "https://www.service-public.fr/particuliers/vosdroits/N67" },
+          { label: "Banque de France - Taux du Livret A", url: "https://www.banque-france.fr" },
+        ]}
+      />
+
       <RelatedCalculators currentSlug="/simulateur-epargne" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

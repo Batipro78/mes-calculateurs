@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import VillesLinks from "../components/VillesLinks";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
@@ -125,6 +126,15 @@ export default function Page() {
           Si vous achetez un bien a renover, anticipez le <strong>budget travaux</strong> en complement des frais de notaire. Consultez nos estimateurs : <a href="/prix-electricien" className="text-cyan-600 underline hover:text-cyan-800">prix electricien</a>, <a href="/prix-plombier" className="text-cyan-600 underline hover:text-cyan-800">prix plombier</a>, <a href="/prix-chauffagiste" className="text-cyan-600 underline hover:text-cyan-800">prix chauffagiste</a>, <a href="/prix-macon" className="text-cyan-600 underline hover:text-cyan-800">prix macon</a>, <a href="/prix-peintre" className="text-cyan-600 underline hover:text-cyan-800">prix peintre</a> et <a href="/prix-couvreur" className="text-cyan-600 underline hover:text-cyan-800">prix couvreur</a>. Pour le financement, simulez vos <a href="/simulateur-pret-immobilier" className="text-cyan-600 underline hover:text-cyan-800">mensualites de pret</a> et verifiez votre <a href="/calcul-taux-endettement" className="text-cyan-600 underline hover:text-cyan-800">taux d&apos;endettement</a>.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Estimer les frais de notaire"
+        steps={[
+          { name: "Renseigner le bien", text: "Indiquer le prix d'achat et le type de bien : ancien, neuf ou terrain." },
+          { name: "Droits de mutation", text: "Appliquer les droits de mutation (environ 5,80 pour cent dans l'ancien) selon le departement." },
+          { name: "Total des frais", text: "Ajouter les emoluments du notaire (bareme reglemente) et les debours pour obtenir le total." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
@@ -180,6 +181,15 @@ export default function Page() {
           physique.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer son IMC"
+        steps={[
+          { name: "Mesurer", text: "Mesurer son poids en kilogrammes et sa taille en metres." },
+          { name: "Calculer", text: "Diviser le poids par la taille au carre, soit poids divise par (taille multipliee par taille)." },
+          { name: "Interpreter", text: "Comparer le resultat a la classification de l'OMS : maigreur, corpulence normale, surpoids, obesite." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

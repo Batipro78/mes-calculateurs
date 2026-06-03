@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-credit-conso" },
@@ -198,6 +199,15 @@ export default function Page() {
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`Le simulateur calcule la mensualite et le cout total d'un credit a la consommation a partir du capital, du taux (TAEG) et de la duree, dans la limite des taux d'usure publies chaque trimestre par la Banque de France.`}
+        sources={[
+          { label: "Service-Public.fr - Credit a la consommation", url: "https://www.service-public.fr/particuliers/vosdroits/F2456" },
+          { label: "Banque de France - Taux d'usure", url: "https://www.banque-france.fr/fr/statistiques/taux-et-cours/taux-dusure" },
+        ]}
+      />
+
 
       <RelatedCalculators currentSlug="/simulateur-credit-conso" />
     </div>

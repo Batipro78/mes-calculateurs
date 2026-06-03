@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-rendement-scpi" },
@@ -92,6 +93,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`Le rendement d'une SCPI (taux de distribution) rapporte les revenus distribues au prix de la part. Le simulateur estime les revenus nets selon le montant investi, le taux de distribution et la fiscalite des revenus fonciers.`}
+        sources={[
+          { label: "AMF - Investir en SCPI", url: "https://www.amf-france.org" },
+          { label: "Service-Public.fr - Revenus fonciers", url: "https://www.service-public.fr/particuliers/vosdroits/F1989" },
+        ]}
+      />
+
 
       <RelatedCalculators currentSlug="/simulateur-rendement-scpi" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

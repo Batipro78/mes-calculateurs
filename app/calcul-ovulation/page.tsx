@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-ovulation" },
@@ -273,6 +274,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`La periode de fertilite est estimee a partir de la date des dernieres regles et de la duree du cycle, l'ovulation survenant en moyenne 14 jours avant les regles suivantes. C'est une estimation indicative.`}
+        sources={[
+          { label: "Ameli.fr - Cycle menstruel et fertilite", url: "https://www.ameli.fr" },
+          { label: "Sante publique France", url: "https://www.santepubliquefrance.fr" },
+        ]}
+      />
+
       <RelatedCalculators currentSlug="/calcul-ovulation" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

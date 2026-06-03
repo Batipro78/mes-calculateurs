@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-cout-garde-enfant" },
@@ -187,6 +188,15 @@ export default function Page() {
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`Le cout net de garde depend du mode (creche, assistante maternelle, garde a domicile), du complement de libre choix du mode de garde (CMG) verse par la CAF et du credit d'impot pour frais de garde. Le simulateur estime le reste a charge.`}
+        sources={[
+          { label: "CAF - Complement de mode de garde (CMG)", url: "https://www.caf.fr" },
+          { label: "Impots.gouv.fr - Credit d'impot frais de garde", url: "https://www.impots.gouv.fr" },
+        ]}
+      />
+
       <RelatedCalculators currentSlug="/calcul-cout-garde-enfant" />
     </div>
   );

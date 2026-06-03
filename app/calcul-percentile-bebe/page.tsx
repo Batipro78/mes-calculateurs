@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-percentile-bebe" },
@@ -175,6 +176,15 @@ export default function Page() {
       </div>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`Les percentiles de croissance situent le poids, la taille et le perimetre cranien de l'enfant par rapport aux courbes de reference (OMS et carnet de sante francais). C'est un indicateur de suivi, a interpreter par un professionnel de sante.`}
+        sources={[
+          { label: "OMS - Courbes de croissance de l'enfant", url: "https://www.who.int/fr" },
+          { label: "Sante.gouv.fr - Carnet de sante de l'enfant", url: "https://sante.gouv.fr" },
+        ]}
+      />
+
       <RelatedCalculators currentSlug="/calcul-percentile-bebe" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-credit-auto" },
@@ -224,6 +225,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`Le simulateur estime la mensualite et le cout total d'un credit auto (pret affecte ou personnel) selon le capital, le TAEG et la duree. La LOA suit une logique distincte de loyers et d'option d'achat.`}
+        sources={[
+          { label: "Service-Public.fr - Credit a la consommation", url: "https://www.service-public.fr/particuliers/vosdroits/F2456" },
+          { label: "Banque de France - Taux d'usure", url: "https://www.banque-france.fr/fr/statistiques/taux-et-cours/taux-dusure" },
+        ]}
+      />
+
       <RelatedCalculators currentSlug="/simulateur-credit-auto" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-date-accouchement" },
@@ -309,6 +310,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`La date presumee d'accouchement est estimee a partir de la date des dernieres regles (ou de conception) en ajoutant la duree moyenne de grossesse, exprimee en semaines d'amenorrhee. C'est une estimation, l'accouchement reel pouvant varier.`}
+        sources={[
+          { label: "Ameli.fr - Grossesse", url: "https://www.ameli.fr" },
+          { label: "Service-Public.fr - Conge maternite", url: "https://www.service-public.fr/particuliers/vosdroits/F2550" },
+        ]}
+      />
+
       <RelatedCalculators currentSlug="/calcul-date-accouchement" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>
