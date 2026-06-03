@@ -6,6 +6,7 @@ import WebAppJsonLd from "../components/WebAppJsonLd";
 import VillesLinks from "../components/VillesLinks";
 import LeadCaptureForm from "../components/LeadCaptureForm";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-pret-immobilier" },
@@ -170,6 +171,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode="Le simulateur calcule la mensualite a partir de la formule d'amortissement classique : M = C x t / (1 - (1 + t)^-n), ou C est le capital emprunte, t le taux d'interet mensuel et n le nombre de mensualites. Le cout total et le tableau d'amortissement en decoulent. Le taux d'endettement maximal de 35 % suit la recommandation du HCSF."
+        sources={[
+          { label: "Service-Public.fr - Le credit immobilier", url: "https://www.service-public.fr/particuliers/vosdroits/F1397" },
+          { label: "Banque de France - Taux d'usure en vigueur", url: "https://www.banque-france.fr/fr/statistiques/taux-et-cours/taux-dusure" },
+          { label: "HCSF - Conditions d'octroi des credits immobiliers (35 %)", url: "https://www.economie.gouv.fr/hcsf" },
+        ]}
+      />
 
       <VillesLinks baseSlug="/simulateur-pret-immobilier" title="Pret immobilier par ville" color="blue" />
       <RelatedCalculators currentSlug="/simulateur-pret-immobilier" />

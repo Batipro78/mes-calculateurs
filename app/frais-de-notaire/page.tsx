@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import VillesLinks from "../components/VillesLinks";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/frais-de-notaire" },
@@ -126,6 +127,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode="Les frais de notaire sont calcules a partir du prix d'achat : droits de mutation (DMTO, environ 5,80 % dans l'ancien, fixes par departement), emoluments du notaire (bareme reglemente par decret) et debours. Notre simulateur applique ces baremes officiels selon le type de bien (ancien, neuf, terrain)."
+        sources={[
+          { label: "Service-Public.fr - Frais d'acquisition (frais de notaire)", url: "https://www.service-public.fr/particuliers/vosdroits/F2761" },
+          { label: "Notaires de France - Bareme des emoluments", url: "https://www.notaires.fr/fr/donation-succession/frais-de-notaire" },
+          { label: "Impots.gouv.fr - Droits de mutation a titre onereux", url: "https://www.impots.gouv.fr" },
+        ]}
+      />
 
       <VillesLinks baseSlug="/frais-de-notaire" title="Frais de notaire par ville" color="cyan" />
       <RelatedCalculators currentSlug="/frais-de-notaire" />

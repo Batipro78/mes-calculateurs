@@ -1,3 +1,5 @@
+import { SITE_LAST_UPDATED } from "../lib/site-meta";
+
 interface BreadcrumbProps {
   currentPage: string;
   parentPage?: string;
@@ -5,7 +7,7 @@ interface BreadcrumbProps {
   lastUpdated?: string;
 }
 
-export default function Breadcrumb({ currentPage, parentPage, parentHref, lastUpdated = "avril 2026" }: BreadcrumbProps) {
+export default function Breadcrumb({ currentPage, parentPage, parentHref, lastUpdated = SITE_LAST_UPDATED }: BreadcrumbProps) {
   const items = [
     {
       "@type": "ListItem" as const,

@@ -51,17 +51,42 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "Mes Calculateurs",
-  url: "https://mescalculateurs.fr",
-  description:
-    "Calculateurs gratuits en ligne : salaire brut/net, TVA, pret immobilier, pourcentage, IMC et plus.",
-  inLanguage: "fr-FR",
-  potentialAction: {
-    "@type": "SearchAction",
-    target: "https://mescalculateurs.fr/?q={search_term_string}",
-    "query-input": "required name=search_term_string",
-  },
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://mescalculateurs.fr/#organization",
+      name: "Mes Calculateurs",
+      url: "https://mescalculateurs.fr",
+      logo: "https://mescalculateurs.fr/opengraph-image",
+      description:
+        "Editeur de calculateurs et simulateurs gratuits en francais (finance, immobilier, salaire, fiscalite, sante). Calculs deterministes bases sur les baremes officiels francais.",
+      knowsAbout: [
+        "fiscalite francaise",
+        "credit immobilier",
+        "salaire brut net",
+        "frais de notaire",
+        "impot sur le revenu",
+        "prestations sociales CAF",
+        "calcul de TVA",
+        "sante et nutrition",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mescalculateurs.fr/#website",
+      name: "Mes Calculateurs",
+      url: "https://mescalculateurs.fr",
+      description:
+        "Calculateurs gratuits en ligne : salaire brut/net, TVA, pret immobilier, pourcentage, IMC et plus.",
+      inLanguage: "fr-FR",
+      publisher: { "@id": "https://mescalculateurs.fr/#organization" },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: "https://mescalculateurs.fr/?q={search_term_string}",
+        "query-input": "required name=search_term_string",
+      },
+    },
+  ],
 };
 
 export default function RootLayout({

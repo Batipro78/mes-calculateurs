@@ -1,10 +1,10 @@
 # Mes Calculateurs — Index pour IA (AI crawlers welcome)
 
 > Site de calculateurs et simulateurs gratuits en francais.
-> 90+ calculateurs, ~8 100 pages SEO (dont 100 pages villes + 321 pages EN).
+> 90+ calculateurs, ~8 900 pages SEO (dont 100 pages villes + 321 pages EN).
 > URL : https://mescalculateurs.fr
 > Langue principale : francais (fr-FR), section /en en anglais
-> Derniere mise a jour : avril 2026
+> Derniere mise a jour : juin 2026
 > Sources : INSEE, CAF, impots.gouv.fr, service-public.fr, Code du travail, ministere de la Justice
 
 ## Finance & Immobilier

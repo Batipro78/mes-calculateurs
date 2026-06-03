@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import VillesLinks from "../components/VillesLinks";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/salaire-brut-net" },
@@ -137,6 +138,15 @@ export default function Page() {
       ))}
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode="Le salaire net est obtenu en deduisant du salaire brut les cotisations sociales salariales (Securite sociale, retraite, chomage, CSG/CRDS), soit environ 22 % pour un non-cadre et 25 % pour un cadre. Le net avant impot devient le net a payer apres prelevement a la source. Les taux appliques sont ceux en vigueur fixes par l'URSSAF."
+        sources={[
+          { label: "URSSAF - Taux de cotisations sociales", url: "https://www.urssaf.fr/accueil/taux-baremes.html" },
+          { label: "Service-Public.fr - Bulletin de paie et salaire", url: "https://www.service-public.fr/particuliers/vosdroits/F559" },
+          { label: "Impots.gouv.fr - Prelevement a la source", url: "https://www.impots.gouv.fr/particulier/le-prelevement-la-source" },
+        ]}
+      />
 
       <VillesLinks baseSlug="/salaire-brut-net" title="Salaire brut/net par ville" color="emerald" />
       <RelatedCalculators currentSlug="/salaire-brut-net" />
