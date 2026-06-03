@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-impot-revenu" },
@@ -269,6 +270,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`L'impot sur le revenu est calcule en appliquant le bareme progressif par tranches au revenu net imposable, apres prise en compte du quotient familial (nombre de parts). Le simulateur applique les tranches et le plafonnement du quotient familial en vigueur.`}
+        sources={[
+          { label: "Impots.gouv.fr - Calcul de l'impot sur le revenu", url: "https://www.impots.gouv.fr/particulier/questions/comment-calculer-mon-quotient-familial" },
+          { label: "Service-Public.fr - Impot sur le revenu", url: "https://www.service-public.fr/particuliers/vosdroits/F1419" },
+        ]}
+      />
+
 
       <RelatedCalculators currentSlug="/simulateur-impot-revenu" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

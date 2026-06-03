@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-taux-endettement" },
@@ -279,6 +280,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`Le taux d'endettement correspond aux charges de credit mensuelles divisees par les revenus mensuels nets, multiplie par 100. La limite recommandee par le HCSF pour l'octroi d'un credit immobilier est de 35 % assurance comprise.`}
+        sources={[
+          { label: "HCSF - Conditions d'octroi des credits immobiliers", url: "https://www.economie.gouv.fr/hcsf" },
+          { label: "Service-Public.fr - Credit immobilier", url: "https://www.service-public.fr/particuliers/vosdroits/F1397" },
+        ]}
+      />
+
       <RelatedCalculators currentSlug="/calcul-taux-endettement" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

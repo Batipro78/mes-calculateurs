@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 import VillesLinks from "../components/VillesLinks";
 
 export const metadata: Metadata = {
@@ -130,6 +131,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`La taxe fonciere est calculee en appliquant les taux votes par les collectivites a la base d'imposition, egale a 50 % de la valeur locative cadastrale revalorisee. Le simulateur estime le montant a partir de ces elements.`}
+        sources={[
+          { label: "Service-Public.fr - Taxe fonciere", url: "https://www.service-public.fr/particuliers/vosdroits/F59" },
+          { label: "Impots.gouv.fr - Taxe fonciere", url: "https://www.impots.gouv.fr/particulier/la-taxe-fonciere" },
+        ]}
+      />
+
       <VillesLinks baseSlug="/calcul-taxe-fonciere" title="Taxe fonciere par ville" color="amber" />
       <RelatedCalculators currentSlug="/calcul-taxe-fonciere" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

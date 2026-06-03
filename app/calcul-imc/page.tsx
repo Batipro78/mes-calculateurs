@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-imc" },
@@ -181,6 +182,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`L'IMC correspond au poids en kilogrammes divise par la taille en metres au carre. L'interpretation suit la classification de l'Organisation mondiale de la sante (maigreur, corpulence normale, surpoids, obesite). C'est un indicateur indicatif, a completer par d'autres mesures.`}
+        sources={[
+          { label: "OMS - Indice de masse corporelle", url: "https://www.who.int/fr" },
+          { label: "Ameli.fr - Surpoids et obesite", url: "https://www.ameli.fr" },
+        ]}
+      />
+
 
       <RelatedCalculators currentSlug="/calcul-imc" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

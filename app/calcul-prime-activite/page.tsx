@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-prime-activite" },
@@ -208,6 +209,15 @@ export default function Page() {
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`La prime d'activite est calculee par la CAF a partir des revenus d'activite du foyer, d'un montant forfaitaire selon la composition familiale et d'une bonification individuelle. Le simulateur applique les baremes CAF en vigueur.`}
+        sources={[
+          { label: "CAF - Prime d'activite", url: "https://www.caf.fr" },
+          { label: "Service-Public.fr - Prime d'activite", url: "https://www.service-public.fr/particuliers/vosdroits/F2882" },
+        ]}
+      />
+
 
       <RelatedCalculators currentSlug="/calcul-prime-activite" />
     </div>

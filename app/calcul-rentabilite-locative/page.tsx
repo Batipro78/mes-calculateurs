@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-rentabilite-locative" },
@@ -110,6 +111,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`La rentabilite brute correspond au loyer annuel divise par le prix d'achat, multiplie par 100. La rentabilite nette deduit charges, taxe fonciere et frais ; la nette-nette integre la fiscalite. Le simulateur calcule ces trois niveaux.`}
+        sources={[
+          { label: "Service-Public.fr - Imposition des revenus locatifs", url: "https://www.service-public.fr/particuliers/vosdroits/F1989" },
+          { label: "ANIL - Information sur le logement", url: "https://www.anil.org" },
+        ]}
+      />
+
       <RelatedCalculators currentSlug="/calcul-rentabilite-locative" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

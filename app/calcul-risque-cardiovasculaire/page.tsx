@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-risque-cardiovasculaire" },
@@ -169,6 +170,15 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`Le risque cardiovasculaire est estime a partir de plusieurs facteurs (age, sexe, tension, cholesterol, tabac, diabete) selon des scores valides de type Framingham ou SCORE2. C'est une estimation indicative qui ne remplace pas un avis medical.`}
+        sources={[
+          { label: "HAS - Evaluation du risque cardiovasculaire", url: "https://www.has-sante.fr" },
+          { label: "Ameli.fr - Risque cardiovasculaire", url: "https://www.ameli.fr" },
+        ]}
+      />
+
       <RelatedCalculators currentSlug="/calcul-risque-cardiovasculaire" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
     </div>

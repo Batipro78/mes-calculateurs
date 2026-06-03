@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-retraite" },
@@ -212,6 +213,16 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`La pension de retraite de base se calcule a partir du salaire annuel moyen, du taux (lie a la duree d'assurance) et de la duree validee, completee par la retraite AGIRC-ARRCO (points). La reforme 2023 (age et duree) est prise en compte.`}
+        sources={[
+          { label: "Info-retraite.fr - Service public des retraites", url: "https://www.info-retraite.fr" },
+          { label: "L'Assurance retraite - Calcul de la pension", url: "https://www.lassuranceretraite.fr" },
+          { label: "Service-Public.fr - Retraite", url: "https://www.service-public.fr/particuliers/vosdroits/N379" },
+        ]}
+      />
+
 
       <RelatedCalculators currentSlug="/simulateur-retraite" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

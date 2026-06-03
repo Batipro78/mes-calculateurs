@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-chomage" },
@@ -191,6 +192,16 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <SourcesMethodo
+        methode={`L'allocation d'aide au retour a l'emploi (ARE) se calcule a partir du salaire journalier de reference. Le simulateur applique les regles Unedic en vigueur (montant, duree d'indemnisation, degressivite pour les hauts salaires).`}
+        sources={[
+          { label: "France Travail - Montant de l'allocation chomage", url: "https://www.francetravail.fr" },
+          { label: "Unedic - Reglementation de l'assurance chomage", url: "https://www.unedic.org" },
+          { label: "Service-Public.fr - Allocation chomage (ARE)", url: "https://www.service-public.fr/particuliers/vosdroits/F14860" },
+        ]}
+      />
+
 
       <RelatedCalculators currentSlug="/simulateur-chomage" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
