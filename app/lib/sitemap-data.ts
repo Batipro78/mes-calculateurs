@@ -922,6 +922,36 @@ function generateAllUrls(): SitemapEntry[] {
       priority: 0.9,
     },
     {
+      url: `${BASE_URL}/simulateur-girardin-industriel`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-octroi-de-mer`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-exoneration-lodeom`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/simulateur-denormandie`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
+      url: `${BASE_URL}/calcul-reduction-impot-dom`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: `${BASE_URL}/calcul-pension-reversion`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -3018,6 +3048,46 @@ function generateAllUrls(): SitemapEntry[] {
     }
   }
 
+  // Batch DOM-TOM (Girardin, octroi de mer, LODEOM, Denormandie, refaction DOM)
+  const GIRARDIN_SLUGS = ["impot-5000-euros", "impot-8000-euros", "impot-10000-euros", "impot-15000-euros", "impot-20000-euros", "impot-30000-euros", "impot-50000-euros"];
+  const girardinPages: SitemapEntry[] = [];
+  for (const s of GIRARDIN_SLUGS) {
+    girardinPages.push({ url: `${BASE_URL}/simulateur-girardin-industriel/${s}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
+  const OCTROI_TERRITOIRES = ["guadeloupe", "martinique", "guyane", "la-reunion", "mayotte"];
+  const OCTROI_MONTANTS = [500, 1000, 2000];
+  const octroiMerPages: SitemapEntry[] = [];
+  for (const t of OCTROI_TERRITOIRES) {
+    for (const m of OCTROI_MONTANTS) {
+      octroiMerPages.push({ url: `${BASE_URL}/calcul-octroi-de-mer/${t}-${m}-euros`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  const LODEOM_BAREMES = ["competitivite", "competitivite-renforcee", "innovation-croissance"];
+  const LODEOM_SALAIRES = [2000, 2500, 3000, 3500];
+  const lodeomPages: SitemapEntry[] = [];
+  for (const b of LODEOM_BAREMES) {
+    for (const s of LODEOM_SALAIRES) {
+      lodeomPages.push({ url: `${BASE_URL}/calcul-exoneration-lodeom/${b}-${s}-euros`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
+  const DENORMANDIE_SLUGS = ["metropole-100000-euros-6-ans", "metropole-100000-euros-9-ans", "metropole-150000-euros-6-ans", "metropole-150000-euros-9-ans", "metropole-150000-euros-12-ans", "metropole-200000-euros-6-ans", "metropole-200000-euros-9-ans", "outre-mer-100000-euros-6-ans", "outre-mer-150000-euros-6-ans", "outre-mer-150000-euros-9-ans", "outre-mer-150000-euros-12-ans", "outre-mer-200000-euros-9-ans"];
+  const denormandiePages: SitemapEntry[] = [];
+  for (const s of DENORMANDIE_SLUGS) {
+    denormandiePages.push({ url: `${BASE_URL}/simulateur-denormandie/${s}`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+  }
+
+  const REFACTION_TERRITOIRES = ["reunion", "guadeloupe", "guyane", "mayotte"];
+  const REFACTION_IMPOTS = [3000, 6000, 12000];
+  const reductionDomPages: SitemapEntry[] = [];
+  for (const t of REFACTION_TERRITOIRES) {
+    for (const i of REFACTION_IMPOTS) {
+      reductionDomPages.push({ url: `${BASE_URL}/calcul-reduction-impot-dom/${t}-impot-${i}-euros`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 });
+    }
+  }
+
   // Pages dynamiques Metabolisme de Base
   const metabolismePages: SitemapEntry[] = [];
   for (const s of MB_SEXES) {
@@ -3497,5 +3567,10 @@ function generateAllUrls(): SitemapEntry[] {
     ...mbiPages,
     ...argusPages,
     ...trajetPages,
+    ...girardinPages,
+    ...octroiMerPages,
+    ...lodeomPages,
+    ...denormandiePages,
+    ...reductionDomPages,
   ];
 }

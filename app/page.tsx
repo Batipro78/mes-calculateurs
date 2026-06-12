@@ -909,6 +909,51 @@ const outils = [
     tag: "Nouveau",
   },
   {
+    titre: "Simulateur Girardin Industriel",
+    description:
+      "Reduction d'impot outre-mer superieure a votre apport : gain net, plafond 18 000 EUR, risques. Jusqu'en 2029.",
+    href: "/simulateur-girardin-industriel",
+    icone: "🏝️",
+    couleur: "from-cyan-500 to-blue-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Calcul Octroi de Mer",
+    description:
+      "Taxes a l'import dans les DOM : octroi de mer + OMR + TVA locale. Cout rendu et majoration en %.",
+    href: "/calcul-octroi-de-mer",
+    icone: "🚢",
+    couleur: "from-sky-500 to-cyan-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Exoneration LODEOM",
+    description:
+      "Exoneration de cotisations patronales outre-mer 2026 : 3 baremes, coefficient degressif, economie annuelle.",
+    href: "/calcul-exoneration-lodeom",
+    icone: "🏭",
+    couleur: "from-emerald-500 to-teal-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Simulateur Denormandie",
+    description:
+      "Reduction d'impot dans l'ancien avec travaux : 12 a 21% en metropole, 23 a 32% en outre-mer. Jusqu'a fin 2027.",
+    href: "/simulateur-denormandie",
+    icone: "🏘️",
+    couleur: "from-amber-500 to-orange-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Reduction d'Impot DOM",
+    description:
+      "Refaction DOM automatique : 30% (Antilles, Reunion) ou 40% (Guyane, Mayotte) de l'impot, plafonds 2026.",
+    href: "/calcul-reduction-impot-dom",
+    icone: "🌴",
+    couleur: "from-lime-500 to-green-600",
+    tag: "Nouveau",
+  },
+  {
     titre: "Calculateur Gain Pari Sportif",
     description:
       "Calcul mathematique du gain potentiel selon la cote (decimale/fractionnelle/americaine). Outil neutre.",
