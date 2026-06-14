@@ -52,21 +52,21 @@ export default function Page() {
             sont pas transmis a un serveur.
           </p>
           <p className="text-slate-600 leading-relaxed mb-3">
-            En revanche, deux services tiers sont utilises et peuvent
-            collecter des donnees apres votre consentement :
+            Pour la mesure d&apos;audience, le site utilise{" "}
+            <strong>Vercel Web Analytics</strong>, un outil respectueux de la
+            vie privee qui <strong>ne depose aucun cookie</strong> et ne
+            collecte aucune donnee personnelle identifiante. Seules des
+            statistiques agregees et anonymes sont mesurees (pages consultees,
+            pays, type d&apos;appareil, source du trafic).
           </p>
-          <ul className="list-disc list-inside text-slate-600 space-y-1">
-            <li>
-              <strong>Google Analytics 4</strong> : adresse IP tronquee,
-              identifiants de session, pages consultees, source du trafic,
-              type d&apos;appareil, navigateur, duree de visite.
-            </li>
-            <li>
-              <strong>Google AdSense</strong> : identifiants publicitaires,
-              historique de navigation a des fins de personnalisation des
-              publicites, donnees techniques (resolution, langue, fuseau).
-            </li>
-          </ul>
+          <p className="text-slate-600 leading-relaxed">
+            Si vous remplissez un <strong>formulaire de demande de devis</strong>,
+            les informations que vous saisissez (nom, e-mail, telephone,
+            description du projet) sont transmises a notre prestataire
+            d&apos;envoi d&apos;e-mails ainsi qu&apos;au partenaire
+            professionnel concerne par votre demande, dans le seul but d&apos;y
+            repondre.
+          </p>
         </section>
 
         <section>
@@ -75,20 +75,20 @@ export default function Page() {
           </h2>
           <ul className="list-disc list-inside text-slate-600 space-y-1">
             <li>
-              <strong>Consentement</strong> (article 6.1.a RGPD) pour
-              l&apos;ensemble des cookies de mesure d&apos;audience et de
-              publicite. Aucun cookie tiers n&apos;est depose tant que vous
-              n&apos;avez pas valide votre choix dans le bandeau.
+              <strong>Interet legitime</strong> de l&apos;editeur (article
+              6.1.f RGPD) pour la mesure d&apos;audience anonyme et sans cookie
+              (Vercel Web Analytics) et pour les logs techniques
+              d&apos;hebergement (anti-abus, securite).
             </li>
             <li>
-              <strong>Interet legitime</strong> de l&apos;editeur (article
-              6.1.f RGPD) pour les seuls logs techniques d&apos;hebergement
-              (anti-abus, securite), conserves au maximum 12 mois.
+              <strong>Consentement</strong> (article 6.1.a RGPD) lorsque vous
+              envoyez volontairement un formulaire de demande de devis.
             </li>
           </ul>
           <p className="text-slate-600 leading-relaxed mt-2">
-            Finalites : mesurer l&apos;audience, ameliorer le contenu, financer
-            le site gratuit par l&apos;affichage de publicites.
+            Finalites : mesurer l&apos;audience de maniere anonyme, ameliorer le
+            contenu et, le cas echeant, mettre en relation avec un partenaire
+            professionnel a votre demande.
           </p>
         </section>
 
@@ -98,19 +98,14 @@ export default function Page() {
           </h2>
           <ul className="list-disc list-inside text-slate-600 space-y-1">
             <li>
-              <strong>Google Analytics 4</strong> : 14 mois (parametrage par
-              defaut Google).
+              <strong>Statistiques d&apos;audience</strong> (Vercel Web
+              Analytics) : donnees agregees et anonymes, sans identification
+              individuelle.
             </li>
             <li>
-              <strong>Google AdSense</strong> : jusqu&apos;a 13 mois pour les
-              cookies publicitaires, selon politique Google.
-            </li>
-            <li>
-              <strong>Cookie de consentement</strong> :{" "}
-              <code className="bg-slate-100 px-1 py-0.5 rounded text-xs">
-                mc_cookie_consent_v1
-              </code>{" "}
-              conserve 13 mois dans votre navigateur (recommandation CNIL).
+              <strong>Donnees de formulaire de devis</strong> : conservees le
+              temps necessaire au traitement de votre demande, puis archivees
+              ou supprimees.
             </li>
             <li>
               <strong>Logs serveur Vercel</strong> : maximum 12 mois.
@@ -123,13 +118,14 @@ export default function Page() {
             5. Destinataires et transferts hors UE
           </h2>
           <p className="text-slate-600 leading-relaxed">
-            Les donnees sont transmises a Google LLC (siege aux Etats-Unis)
-            pour les services Analytics et AdSense, et a Vercel Inc. (siege
-            aux Etats-Unis) pour l&apos;hebergement. Ces deux entreprises sont{" "}
-            <strong>signataires du Data Privacy Framework</strong> UE-USA
+            L&apos;hebergement et la mesure d&apos;audience sont assures par
+            Vercel Inc. (siege aux Etats-Unis),{" "}
+            <strong>signataire du Data Privacy Framework</strong> UE-USA
             (decision d&apos;adequation de la Commission europeenne du 10
-            juillet 2023) et appliquent les Clauses Contractuelles Types pour
-            tout transfert eventuel hors de ce cadre.
+            juillet 2023). Les donnees des formulaires de devis sont traitees
+            via Brevo (Sendinblue SAS, societe francaise, donnees hebergees
+            dans l&apos;Union europeenne). Des Clauses Contractuelles Types
+            s&apos;appliquent pour tout transfert eventuel hors UE.
           </p>
         </section>
 
@@ -177,21 +173,14 @@ export default function Page() {
 
         <section>
           <h2 className="text-xl font-bold text-slate-800 mb-3">
-            7. Gestion de votre consentement
+            7. Cookies
           </h2>
           <p className="text-slate-600 leading-relaxed">
-            Lors de votre premiere visite, un bandeau vous permet
-            d&apos;accepter ou de refuser le depot des cookies de mesure
-            d&apos;audience et de publicite. Vous pouvez modifier votre choix
-            a tout moment via le lien{" "}
-            <strong>&laquo;&nbsp;Gerer les cookies&nbsp;&raquo;</strong> en
-            bas de chaque page, ou en effaçant les cookies de votre
-            navigateur.
-          </p>
-          <p className="text-slate-600 leading-relaxed mt-2">
-            Tant que vous n&apos;avez pas donne votre consentement, aucun
-            cookie de mesure d&apos;audience ni de publicite n&apos;est
-            depose (mecanisme Google Consent Mode v2).
+            Ce site <strong>ne depose aucun cookie de mesure d&apos;audience
+            ni de publicite</strong> sur votre appareil. La mesure
+            d&apos;audience (Vercel Web Analytics) fonctionne sans cookie et
+            sans donnee personnelle identifiante. Aucun bandeau de
+            consentement n&apos;est donc necessaire pour naviguer sur le site.
           </p>
         </section>
 
@@ -207,7 +196,7 @@ export default function Page() {
         </section>
 
         <p className="text-sm text-slate-400 pt-4 border-t border-slate-100">
-          Derniere mise a jour : 22 mai 2026
+          Derniere mise a jour : 15 juin 2026
         </p>
       </div>
     </div>

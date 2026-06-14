@@ -129,13 +129,12 @@ export default function Page() {
             5. Donnees personnelles et cookies
           </h2>
           <p className="text-slate-600 leading-relaxed">
-            Le site utilise <strong>Google Analytics</strong> pour la mesure
-            d&apos;audience et <strong>Google AdSense</strong> pour
-            l&apos;affichage de publicites. Ces services peuvent deposer des
-            cookies et collecter des donnees (adresse IP, identifiants
-            techniques, comportement de navigation) uniquement apres votre
-            consentement, exprime via le bandeau de cookies affiche a votre
-            premiere visite.
+            Le site utilise <strong>Vercel Web Analytics</strong> pour la
+            mesure d&apos;audience. Cet outil fonctionne{" "}
+            <strong>sans cookie</strong> et ne collecte aucune donnee
+            personnelle identifiante : seules des statistiques agregees et
+            anonymes sont mesurees. Aucun bandeau de consentement n&apos;est
+            donc necessaire.
           </p>
           <p className="text-slate-600 leading-relaxed mt-2">
             Pour le detail des donnees collectees, des bases legales, des
@@ -146,9 +145,7 @@ export default function Page() {
             >
               politique de confidentialite
             </a>
-            . Vous pouvez modifier vos choix a tout moment via le lien{" "}
-            <strong>&laquo;&nbsp;Gerer les cookies&nbsp;&raquo;</strong> en bas
-            de chaque page.
+            .
           </p>
         </section>
 

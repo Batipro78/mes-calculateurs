@@ -27,14 +27,14 @@ const SECTIONS: { title: string; paras: string[] }[] = [
   {
     title: "Gratuit, et comment c'est finance",
     paras: [
-      "Le site est et reste 100 % gratuit, sans inscription. Il est finance par des publicites discretes et, sur certaines pages, par la mise en relation avec des professionnels partenaires.",
+      "Le site est et reste 100 % gratuit, sans inscription. Il est finance, sur certaines pages, par la mise en relation avec des professionnels partenaires.",
       "Cela nous permet de developper de nouveaux calculateurs et de maintenir les existants a jour, sans jamais facturer l'utilisateur.",
     ],
   },
   {
     title: "Respect de votre vie privee",
     paras: [
-      "Nous respectons le RGPD. La mesure d'audience et la publicite ne sont activees qu'apres votre consentement via le bandeau cookies, que vous pouvez modifier a tout moment.",
+      "Nous respectons le RGPD. La mesure d'audience est anonyme et sans cookie : aucune donnee personnelle identifiante n'est collectee lors de votre navigation.",
       "Pour le detail des donnees traitees, consultez notre politique de confidentialite.",
     ],
   },

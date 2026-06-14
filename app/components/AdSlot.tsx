@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import EzoicAd from "./EzoicAd";
 
 interface AdSlotProps {
   adSlot: string;
@@ -11,6 +12,19 @@ interface AdSlotProps {
 // Identifiant editeur AdSense (public). Surchargeable via env si besoin.
 const AD_CLIENT =
   process.env.NEXT_PUBLIC_ADSENSE_CLIENT || "ca-pub-7951968617097687";
+
+// Bascule Ezoic : si NEXT_PUBLIC_EZOIC_ENABLED === "true", tous les <AdSlot>
+// affichent un encart Ezoic a la place d'AdSense (le script header est charge
+// par ConditionalScripts). NEXT_PUBLIC_ est inline au build -> redeploy requis.
+const EZOIC_ENABLED = process.env.NEXT_PUBLIC_EZOIC_ENABLED === "true";
+
+// Mapping des 2 emplacements du site vers les IDs de placeholders Ezoic.
+// A AJUSTER avec les vrais IDs crees dans le dashboard Ezoic.
+//   1234567890 = encart dans le contenu  ;  0987654321 = encart bas de page
+const EZOIC_PLACEHOLDER_MAP: Record<string, number> = {
+  "1234567890": 101, // in-content
+  "0987654321": 102, // footer
+};
 
 // Les deux placeholders historiques sont mappes vers les VRAIS emplacements
 // definis en variables d'environnement Vercel :
@@ -39,7 +53,7 @@ export default function AdSlot({
   const adRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!slot) return;
+    if (EZOIC_ENABLED || !slot) return;
     try {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
@@ -49,6 +63,12 @@ export default function AdSlot({
       // AdSense pas encore charge
     }
   }, [slot]);
+
+  // Mode Ezoic : on rend un encart Ezoic au lieu d'AdSense.
+  if (EZOIC_ENABLED) {
+    const placeholderId = EZOIC_PLACEHOLDER_MAP[adSlot] ?? 101;
+    return <EzoicAd placeholderId={placeholderId} className={className} />;
+  }
 
   // Aucun vrai emplacement configure -> on n'affiche rien.
   if (!slot) return null;

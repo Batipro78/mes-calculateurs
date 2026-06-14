@@ -2,40 +2,30 @@
 
 import { usePathname } from "next/navigation";
 import Script from "next/script";
-import GoogleAnalytics from "./GoogleAnalytics";
 
-export default function ConditionalScripts({ gaId }: { gaId: string | undefined }) {
+// Si Ezoic est actif, on charge son script standalone a la place d'AdSense.
+const EZOIC_ENABLED = process.env.NEXT_PUBLIC_EZOIC_ENABLED === "true";
+
+export default function ConditionalScripts() {
   const pathname = usePathname();
   const isEmbed = pathname?.startsWith("/embed/") ?? false;
 
   if (isEmbed) return null;
 
+  // Aucun script pub par defaut (AdSense abandonne). Le script Ezoic ne se
+  // charge que si NEXT_PUBLIC_EZOIC_ENABLED === "true" (dormant pour l'instant).
+  if (!EZOIC_ENABLED) return null;
+
   return (
     <>
-      <Script id="consent-default" strategy="beforeInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('set', 'url_passthrough', true);
-          gtag('set', 'ads_data_redaction', true);
-          gtag('consent', 'default', {
-            ad_storage: 'denied',
-            analytics_storage: 'denied',
-            ad_user_data: 'denied',
-            ad_personalization: 'denied',
-            wait_for_update: 2000
-          });
-        `}
-      </Script>
-      {gaId && <GoogleAnalytics gaId={gaId} />}
-      <Script id="ms-clarity" strategy="afterInteractive">
-        {`(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "wv9xuz01uo");`}
-      </Script>
       <Script
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7951968617097687"
+        id="ezoic-sa"
+        src="//www.ezojs.com/ezoic/sa.min.js"
         strategy="afterInteractive"
-        crossOrigin="anonymous"
       />
+      <Script id="ezoic-init" strategy="afterInteractive">
+        {`window.ezstandalone = window.ezstandalone || {}; ezstandalone.cmd = ezstandalone.cmd || [];`}
+      </Script>
     </>
   );
 }

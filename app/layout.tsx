@@ -3,11 +3,7 @@ import { Analytics } from "@vercel/analytics/next";
 import ConditionalScripts from "./components/ConditionalScripts";
 import ConditionalChrome from "./components/ConditionalChrome";
 import SearchBar from "./components/SearchBar";
-import CookieBanner from "./components/CookieBanner";
-import CookieSettingsButton from "./components/CookieSettingsButton";
 import "./globals.css";
-
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://mescalculateurs.fr"),
@@ -104,7 +100,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 text-gray-900 antialiased">
-        <ConditionalScripts gaId={GA_ID} />
+        <ConditionalScripts />
         <ConditionalChrome
           header={
             <header className="bg-white/80 backdrop-blur-sm border-b border-slate-200 sticky top-0 z-50">
@@ -204,7 +200,6 @@ export default function RootLayout({
                     <a href="/embed" className="hover:text-slate-600 transition-colors">Widgets</a>
                     <a href="/mentions-legales" className="hover:text-slate-600 transition-colors">Mentions legales</a>
                     <a href="/confidentialite" className="hover:text-slate-600 transition-colors">Confidentialite</a>
-                    <CookieSettingsButton />
                   </div>
                 </div>
               </div>
@@ -213,7 +208,6 @@ export default function RootLayout({
         >
           {children}
         </ConditionalChrome>
-        <CookieBanner />
         <Analytics />
       </body>
     </html>
