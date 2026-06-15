@@ -15,11 +15,40 @@ export const metadata: Metadata = {
     "calcul pgcd, calcul ppcm, pgcd ppcm en ligne, algorithme euclide, plus grand commun diviseur, plus petit commun multiple, facteurs premiers, pgcd ppcm calculatrice",
 };
 
+// Prose en chaines JS (guillemets doubles) pour eviter les soucis d'apostrophe.
+const SECTIONS: { title: string; paras: string[] }[] = [
+  {
+    title: "L'algorithme d'Euclide, étape par étape",
+    paras: [
+      "L'algorithme d'Euclide est la méthode la plus rapide pour trouver le PGCD. On divise le plus grand nombre par le plus petit, puis on remplace le grand par le petit et le petit par le reste, et on recommence jusqu'à obtenir un reste nul.",
+      "Exemple avec 48 et 36 : 48 = 36 × 1 + 12 (reste 12). On continue avec 36 et 12 : 36 = 12 × 3 + 0 (reste 0). Le dernier reste non nul est 12 : c'est le PGCD de 48 et 36.",
+      "L'avantage de cette méthode est qu'elle fonctionne même avec de très grands nombres, en quelques étapes seulement.",
+    ],
+  },
+  {
+    title: "La méthode par décomposition en facteurs premiers",
+    paras: [
+      "Autre approche : décomposer chaque nombre en produit de facteurs premiers. Par exemple, 36 = 2² × 3² et 48 = 2⁴ × 3.",
+      "Le PGCD est le produit des facteurs communs, chacun à son plus petit exposant : ici 2² × 3 = 12. Le PPCM est le produit de tous les facteurs présents, chacun à son plus grand exposant : ici 2⁴ × 3² = 144.",
+      "On vérifie avec la relation fondamentale : PGCD × PPCM = 12 × 144 = 1 728, et 48 × 36 = 1 728. Les deux résultats coïncident.",
+    ],
+  },
+  {
+    title: "À quoi servent le PGCD et le PPCM au quotidien ?",
+    paras: [
+      "Le PGCD sert surtout à simplifier les fractions : pour réduire 36/48, on divise haut et bas par leur PGCD (12), ce qui donne 3/4. Il aide aussi à partager des quantités en parts égales les plus grandes possibles.",
+      "Le PPCM sert à trouver un dénominateur commun pour additionner des fractions, ou à résoudre des problèmes de cycles : deux feux qui clignotent à des rythmes différents, deux engrenages, ou la pose d'un carrelage sans découpe se calculent souvent avec un PPCM.",
+    ],
+  },
+];
+
 const FAQ_ITEMS: FaqItem[] = [
-  { q: "Comment calculer le PGCD de deux nombres ?", a: "Le PGCD (Plus Grand Commun Diviseur) se calcule avec l'algorithme d'Euclide : on divise le plus grand nombre par le plus petit, puis on recommence avec le diviseur et le reste, jusqu'a obtenir un reste de 0. Le dernier diviseur non nul est le PGCD." },
-  { q: "Comment calculer le PPCM ?", a: "Le PPCM (Plus Petit Commun Multiple) se calcule avec la formule : PPCM(a, b) = (a x b) / PGCD(a, b). Il suffit donc de connaitre le PGCD pour calculer le PPCM." },
-  { q: "A quoi servent le PGCD et le PPCM ?", a: "Le PGCD sert a simplifier les fractions, trouver des mesures communes. Le PPCM sert a trouver un denominateur commun pour additionner des fractions, synchroniser des cycles ou calculer des periodicites." },
-  { q: "Qu'est-ce que deux nombres premiers entre eux ?", a: "Deux nombres sont premiers entre eux (ou copremiers) si leur PGCD est egal a 1. Cela ne signifie pas qu'ils sont des nombres premiers individuellement : par exemple, 8 et 9 sont premiers entre eux (PGCD = 1) mais ni l'un ni l'autre n'est un nombre premier." },
+  { q: "Comment calculer le PGCD de deux nombres ?", a: "Le PGCD (Plus Grand Commun Diviseur) se calcule avec l'algorithme d'Euclide : on divise le plus grand nombre par le plus petit, puis on recommence avec le diviseur et le reste, jusqu'à obtenir un reste de 0. Le dernier diviseur non nul est le PGCD." },
+  { q: "Comment calculer le PPCM ?", a: "Le PPCM (Plus Petit Commun Multiple) se calcule avec la formule : PPCM(a, b) = (a × b) ÷ PGCD(a, b). Il suffit donc de connaître le PGCD pour calculer le PPCM." },
+  { q: "Comment calculer le PGCD avec la décomposition en facteurs premiers ?", a: "On décompose chaque nombre en facteurs premiers, puis on multiplie les facteurs communs à leur plus petit exposant. Exemple : 36 = 2² × 3² et 48 = 2⁴ × 3, donc PGCD = 2² × 3 = 12." },
+  { q: "À quoi servent le PGCD et le PPCM ?", a: "Le PGCD sert à simplifier les fractions et à trouver des mesures communes. Le PPCM sert à trouver un dénominateur commun pour additionner des fractions, synchroniser des cycles ou calculer des périodicités." },
+  { q: "Le PGCD peut-il être plus grand que les nombres ?", a: "Non. Le PGCD est toujours inférieur ou égal au plus petit des deux nombres, puisqu'il doit les diviser tous les deux. À l'inverse, le PPCM est toujours supérieur ou égal au plus grand des deux." },
+  { q: "Qu'est-ce que deux nombres premiers entre eux ?", a: "Deux nombres sont premiers entre eux (ou copremiers) si leur PGCD est égal à 1. Cela ne signifie pas qu'ils sont des nombres premiers individuellement : par exemple, 8 et 9 sont premiers entre eux (PGCD = 1) mais ni l'un ni l'autre n'est un nombre premier." },
 ];
 
 export default function Page() {
@@ -76,6 +105,25 @@ export default function Page() {
           </table>
         </div>
       </section>
+
+      {/* Sections de contenu detaille (prose en chaines JS) */}
+      {SECTIONS.map((section) => (
+        <section
+          key={section.title}
+          className="mt-8 bg-white rounded-2xl border border-slate-200 p-8"
+        >
+          <h2 className="text-xl font-bold text-slate-800 mb-4">
+            {section.title}
+          </h2>
+          <div className="space-y-3">
+            {section.paras.map((p, i) => (
+              <p key={i} className="text-slate-600 leading-relaxed">
+                {p}
+              </p>
+            ))}
+          </div>
+        </section>
+      ))}
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-pgcd-ppcm" />

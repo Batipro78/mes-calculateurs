@@ -15,18 +15,52 @@ export const metadata: Metadata = {
     "produit en croix, regle de trois, calcul proportionnalite, 4e proportionnelle, tableau de proportionnalite, produit en croix en ligne, calculer produit en croix",
 };
 
+// Prose en chaines JS (guillemets doubles) pour eviter les soucis d'apostrophe.
+const SECTIONS: { title: string; paras: string[] }[] = [
+  {
+    title: "Attention : proportionnalité directe ou inverse ?",
+    paras: [
+      "Le produit en croix ne fonctionne que pour des grandeurs directement proportionnelles : quand l'une augmente, l'autre augmente dans le même rapport (plus de kilos, plus de prix). C'est le cas le plus fréquent.",
+      "Mais certaines situations sont inversement proportionnelles : plus il y a d'ouvriers, moins le travail prend de temps. Là, le produit en croix classique donne un résultat faux. Exemple : si 2 ouvriers montent un mur en 6 h, 3 ouvriers ne mettront pas 9 h mais moins. On écrit 2 × 6 = 3 × t, donc t = 12 ÷ 3 = 4 h.",
+      "Avant d'appliquer un produit en croix, posez-vous donc toujours la question : si je double une quantité, l'autre double-t-elle aussi (direct) ou est-elle divisée par deux (inverse) ?",
+    ],
+  },
+  {
+    title: "Le produit en croix pour calculer un pourcentage",
+    paras: [
+      "Un pourcentage est une proportion sur 100, donc le produit en croix s'y prête parfaitement. Pour trouver 15 % de 80 : on pose x / 80 = 15 / 100, d'où x = (80 × 15) ÷ 100 = 12.",
+      "Dans l'autre sens, pour savoir quel pourcentage représente 12 sur 80 : on pose 12 / 80 = x / 100, d'où x = (12 × 100) ÷ 80 = 15 %.",
+    ],
+  },
+  {
+    title: "Méthode alternative : passer par l'unité",
+    paras: [
+      "On peut aussi raisonner sans croiser, en passant par une seule unité. Si 3 kg coûtent 12 €, alors 1 kg coûte 12 ÷ 3 = 4 €, et 5 kg coûtent donc 4 × 5 = 20 €.",
+      "Cette méthode « par l'unité » donne le même résultat que le produit en croix. Elle est souvent plus intuitive pour vérifier un calcul ou l'expliquer à un enfant.",
+    ],
+  },
+];
+
 const FAQ_ITEMS: FaqItem[] = [
   {
     q: "Comment faire un produit en croix ?",
-    a: "Le produit en croix permet de trouver une valeur inconnue dans une proportion. Si A/B = C/D et que D est inconnu, alors D = (B x C) / A. On \"croise\" les valeurs en diagonale : on multiplie les deux valeurs connues en diagonale et on divise par la troisieme valeur connue.",
+    a: "Le produit en croix permet de trouver une valeur inconnue dans une proportion. Si A/B = C/D et que D est inconnu, alors D = (B × C) ÷ A. On « croise » les valeurs en diagonale : on multiplie les deux valeurs connues en diagonale et on divise par la troisième valeur connue.",
   },
   {
-    q: "Quelle est la difference entre produit en croix et regle de trois ?",
-    a: "C'est la meme chose. Le \"produit en croix\" est le nom mathematique de l'operation, la \"regle de trois\" est le nom courant. Les deux permettent de trouver une 4e valeur proportionnelle a partir de 3 valeurs connues.",
+    q: "Quelle est la différence entre produit en croix et règle de trois ?",
+    a: "C'est la même chose. Le « produit en croix » est le nom mathématique de l'opération, la « règle de trois » est le nom courant. Les deux permettent de trouver une 4e valeur proportionnelle à partir de 3 valeurs connues.",
+  },
+  {
+    q: "Le produit en croix marche-t-il pour les proportions inverses ?",
+    a: "Non, pas directement. Le produit en croix suppose une proportionnalité directe. Pour une situation inversement proportionnelle (plus d'ouvriers = moins de temps), il faut poser l'égalité des produits : a × b = c × d. Exemple : 2 ouvriers en 6 h donnent 3 ouvriers en 4 h (2 × 6 = 3 × 4).",
+  },
+  {
+    q: "Comment calculer un pourcentage avec un produit en croix ?",
+    a: "Un pourcentage est une proportion sur 100. Pour 15 % de 80 : x / 80 = 15 / 100, donc x = (80 × 15) ÷ 100 = 12. Pour savoir quel pourcentage fait 12 sur 80 : 12 / 80 = x / 100, donc x = 15 %.",
   },
   {
     q: "Quand utiliser le produit en croix ?",
-    a: "Le produit en croix s'utilise dans tous les cas de proportionnalite : conversions d'unites, calculs de prix, recettes de cuisine, pourcentages, taux de change, dilutions chimiques, echelles de cartes, etc.",
+    a: "Le produit en croix s'utilise dans tous les cas de proportionnalité directe : conversions d'unités, calculs de prix, recettes de cuisine, pourcentages, taux de change, dilutions chimiques, échelles de cartes, etc.",
   },
 ];
 
@@ -100,6 +134,25 @@ export default function Page() {
           Si ce n&apos;est pas le cas, il y a une erreur dans les valeurs.
         </p>
       </section>
+
+      {/* Sections de contenu detaille (prose en chaines JS) */}
+      {SECTIONS.map((section) => (
+        <section
+          key={section.title}
+          className="mt-8 bg-white rounded-2xl border border-slate-200 p-8"
+        >
+          <h2 className="text-xl font-bold text-slate-800 mb-4">
+            {section.title}
+          </h2>
+          <div className="space-y-3">
+            {section.paras.map((p, i) => (
+              <p key={i} className="text-slate-600 leading-relaxed">
+                {p}
+              </p>
+            ))}
+          </div>
+        </section>
+      ))}
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/produit-en-croix" />

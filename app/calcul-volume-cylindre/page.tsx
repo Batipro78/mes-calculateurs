@@ -10,19 +10,77 @@ export const metadata: Metadata = {
   alternates: { canonical: "/calcul-volume-cylindre" },
   title: "Calcul Volume Cylindre - Formule, Surface, Litres",
   description:
-    "Calculez le volume d'un cylindre a partir du rayon et de la hauteur. Formule pi r2 h, surface laterale et totale, conversion en litres. Gratuit.",
+    "Calculez le volume d'un cylindre \u00e0 partir du rayon et de la hauteur. Formule \u03c0 r\u00b2 h, surface lat\u00e9rale et totale, conversion en litres. Avec exemples. Gratuit.",
   keywords:
     "calcul volume cylindre, volume cylindre formule, pi r2 h, surface cylindre, volume en litres, cylindre calcul, calculer volume cylindre",
 };
 
+// Prose en chaines JS (guillemets doubles) pour eviter les soucis d'apostrophe.
+const SECTIONS: { title: string; paras: string[] }[] = [
+  {
+    title: "La formule du volume d'un cylindre",
+    paras: [
+      "Le volume d'un cylindre se calcule avec la formule V = \u03c0 \u00d7 r\u00b2 \u00d7 h, o\u00f9 r est le rayon de la base circulaire et h la hauteur. Le nombre \u03c0 (pi) vaut environ 3,14159.",
+      "Le principe est simple : on calcule d'abord l'aire du disque de base (\u03c0 \u00d7 r\u00b2), puis on la multiplie par la hauteur. Le r\u00e9sultat s'exprime dans l'unit\u00e9 de longueur \u00e9lev\u00e9e au cube (cm\u00b3, m\u00b3, etc.).",
+      "Point de vigilance : si l'\u00e9nonc\u00e9 donne le diam\u00e8tre et non le rayon, le rayon en est la moiti\u00e9 (r = d \u00f7 2). Une erreur sur ce point fausse tout le calcul.",
+    ],
+  },
+  {
+    title: "Un exemple concret, \u00e9tape par \u00e9tape",
+    paras: [
+      "Prenons un cylindre de 5 cm de rayon et 10 cm de hauteur. \u00c9tape 1 : l'aire de la base = \u03c0 \u00d7 5\u00b2 = \u03c0 \u00d7 25 \u2248 78,54 cm\u00b2. \u00c9tape 2 : le volume = 78,54 \u00d7 10 = 785,4 cm\u00b3. \u00c9tape 3 : en litres, 785,4 \u00f7 1 000 \u2248 0,785 L.",
+      "Si l'on ne conna\u00eet que le diam\u00e8tre (10 cm dans cet exemple), on prend r = 5 cm et on applique exactement la m\u00eame formule. Le r\u00e9sultat est identique.",
+    ],
+  },
+  {
+    title: "Surface lat\u00e9rale et surface totale",
+    paras: [
+      "La surface lat\u00e9rale (le \u00ab tour \u00bb du cylindre, sans les deux disques) vaut 2 \u00d7 \u03c0 \u00d7 r \u00d7 h. Pour notre exemple : 2 \u00d7 \u03c0 \u00d7 5 \u00d7 10 \u2248 314,16 cm\u00b2.",
+      "La surface totale ajoute les deux disques de base : 2 \u00d7 \u03c0 \u00d7 r\u00b2 + 2 \u00d7 \u03c0 \u00d7 r \u00d7 h. Soit ici 2 \u00d7 \u03c0 \u00d7 25 + 314,16 \u2248 157,08 + 314,16 = 471,24 cm\u00b2. Ce calcul est utile pour estimer la quantit\u00e9 de peinture, d'\u00e9tiquette ou de t\u00f4le n\u00e9cessaire pour recouvrir l'objet.",
+    ],
+  },
+  {
+    title: "\u00c0 quoi sert le calcul du volume d'un cylindre ?",
+    paras: [
+      "Ce calcul est tr\u00e8s courant dans la vie quotidienne et le bricolage : conna\u00eetre la capacit\u00e9 d'une cuve, d'une citerne ou d'un r\u00e9servoir d'eau ; estimer le volume d'une piscine ronde ; mesurer la contenance d'un verre, d'une casserole ou d'un seau.",
+      "Il sert aussi \u00e0 calculer le volume d'eau contenu dans un tuyau, la quantit\u00e9 de b\u00e9ton n\u00e9cessaire pour couler un poteau cylindrique, ou encore la contenance d'un f\u00fbt ou d'un silo.",
+    ],
+  },
+  {
+    title: "Erreurs fr\u00e9quentes \u00e0 \u00e9viter",
+    paras: [
+      "Confondre le rayon et le diam\u00e8tre : le rayon est la moiti\u00e9 du diam\u00e8tre. Utiliser le diam\u00e8tre \u00e0 la place du rayon multiplie le volume par quatre.",
+      "Oublier d'\u00e9lever le rayon au carr\u00e9 : la formule contient r\u00b2, pas r.",
+      "M\u00e9langer les unit\u00e9s : si le rayon est en centim\u00e8tres, la hauteur doit l'\u00eatre aussi. Convertissez tout dans la m\u00eame unit\u00e9 avant de calculer.",
+      "Pour convertir en litres, retenez que 1 litre = 1 dm\u00b3 = 1 000 cm\u00b3. Un volume en cm\u00b3 se divise donc par 1 000 pour obtenir des litres.",
+    ],
+  },
+];
+
 const FAQ_ITEMS: FaqItem[] = [
   {
     q: "Comment calculer le volume d'un cylindre ?",
-    a: "Volume = pi x rayon\u00b2 x hauteur. Si le rayon est de 5 cm et la hauteur de 10 cm : V = 3,14159 x 25 x 10 = 785,40 cm\u00b3 (soit 0,785 litres).",
+    a: "Volume = \u03c0 \u00d7 rayon\u00b2 \u00d7 hauteur. Si le rayon est de 5 cm et la hauteur de 10 cm : V = 3,14159 \u00d7 25 \u00d7 10 = 785,40 cm\u00b3 (soit 0,785 litre).",
+  },
+  {
+    q: "Quelle est la formule du volume d'un cylindre ?",
+    a: "La formule est V = \u03c0 \u00d7 r\u00b2 \u00d7 h, o\u00f9 r est le rayon de la base et h la hauteur. On calcule l'aire du disque de base (\u03c0 \u00d7 r\u00b2) puis on la multiplie par la hauteur.",
+  },
+  {
+    q: "Comment calculer le volume d'un cylindre \u00e0 partir du diam\u00e8tre ?",
+    a: "Divisez d'abord le diam\u00e8tre par 2 pour obtenir le rayon (r = d \u00f7 2), puis appliquez la formule V = \u03c0 \u00d7 r\u00b2 \u00d7 h. Exemple avec un diam\u00e8tre de 10 cm et une hauteur de 10 cm : r = 5 cm, donc V = \u03c0 \u00d7 25 \u00d7 10 \u2248 785,4 cm\u00b3.",
+  },
+  {
+    q: "Comment calculer la capacit\u00e9 d'une cuve cylindrique en litres ?",
+    a: "Calculez le volume en d\u00e9cim\u00e8tres cubes (dm\u00b3) : exprimez le rayon et la hauteur en dm, puis appliquez V = \u03c0 \u00d7 r\u00b2 \u00d7 h. Le r\u00e9sultat est directement en litres, car 1 dm\u00b3 = 1 litre. Vous pouvez aussi calculer en cm\u00b3 puis diviser par 1 000.",
   },
   {
     q: "Comment convertir un volume en litres ?",
     a: "1 litre = 1 000 cm\u00b3 = 1 dm\u00b3. Divisez le volume en cm\u00b3 par 1 000 pour obtenir des litres. Exemple : 5 000 cm\u00b3 = 5 litres.",
+  },
+  {
+    q: "Comment calculer la surface totale d'un cylindre ?",
+    a: "La surface totale vaut 2 \u00d7 \u03c0 \u00d7 r\u00b2 + 2 \u00d7 \u03c0 \u00d7 r \u00d7 h : les deux disques de base plus la surface lat\u00e9rale. Pour un rayon de 5 cm et une hauteur de 10 cm : 157,08 + 314,16 \u2248 471,24 cm\u00b2.",
   },
 ];
 
@@ -64,6 +122,25 @@ export default function Page() {
           </table>
         </div>
       </section>
+      {/* Sections de contenu detaille (prose en chaines JS) */}
+      {SECTIONS.map((section) => (
+        <section
+          key={section.title}
+          className="mt-8 bg-white rounded-2xl border border-slate-200 p-8"
+        >
+          <h2 className="text-xl font-bold text-slate-800 mb-4">
+            {section.title}
+          </h2>
+          <div className="space-y-3">
+            {section.paras.map((p, i) => (
+              <p key={i} className="text-slate-600 leading-relaxed">
+                {p}
+              </p>
+            ))}
+          </div>
+        </section>
+      ))}
+
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-volume-cylindre" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
