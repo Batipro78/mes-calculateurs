@@ -15,22 +15,51 @@ export const metadata: Metadata = {
     "calcul jours ouvres, jours ouvres 2026, nombre jours travailles, jours ouvres entre deux dates, calendrier jours ouvres, jours feries 2026, jours ouvrables",
 };
 
+// Prose en chaines JS (guillemets doubles) pour eviter les soucis d'apostrophe.
+const SECTIONS: { title: string; paras: string[] }[] = [
+  {
+    title: "Comment compter les jours ouvrés entre deux dates ?",
+    paras: [
+      "Le principe est simple : on part du nombre total de jours calendaires entre les deux dates, puis on retire tous les samedis et dimanches, ainsi que les jours fériés qui tombent en semaine.",
+      "À la main, c'est vite fastidieux dès que la période dépasse quelques semaines. C'est tout l'intérêt de ce calculateur, qui exclut automatiquement week-ends et jours fériés français pour vous donner le décompte exact.",
+    ],
+  },
+  {
+    title: "Jours ouvrés, jours ouvrables et congés payés",
+    paras: [
+      "La distinction est importante pour les congés. Un salarié acquiert 2,5 jours ouvrables de congés par mois, soit 30 jours ouvrables par an (du lundi au samedi). Exprimé en jours ouvrés (du lundi au vendredi), cela correspond à 25 jours.",
+      "Le mode de décompte dépend de l'entreprise, mais le résultat doit être équivalent : 5 semaines de congés dans les deux cas. La vigilance porte sur la façon dont le samedi est compté lorsqu'on pose une semaine entière.",
+    ],
+  },
+  {
+    title: "Jours fériés et week-ends en 2026",
+    paras: [
+      "Tous les jours fériés ne réduisent pas le nombre de jours ouvrés : ceux qui tombent un samedi ou un dimanche n'ont aucun effet sur le calendrier de travail (sauf accord d'entreprise prévoyant un jour de récupération).",
+      "En 2026, deux jours fériés tombent le week-end : l'Assomption (15 août, un samedi) et la Toussaint (1er novembre, un dimanche). Il ne reste donc que 9 jours fériés qui réduisent réellement le nombre de jours travaillés sur l'année.",
+    ],
+  },
+];
+
 const FAQ_ITEMS: FaqItem[] = [
   {
-    q: "Combien de jours ouvres en 2026 ?",
-    a: "L'annee 2026 compte environ 253 jours ouvres (lundi-vendredi hors jours feries). Ce nombre peut varier legerement selon les conventions collectives qui peuvent ajouter des jours feries locaux.",
+    q: "Combien de jours ouvrés en 2026 ?",
+    a: "L'année 2026 compte environ 253 jours ouvrés (lundi-vendredi hors jours fériés). Ce nombre peut varier légèrement selon les conventions collectives qui peuvent ajouter des jours fériés locaux.",
   },
   {
-    q: "Quelle difference entre jour ouvre et jour ouvrable ?",
-    a: "Un jour ouvre = lundi a vendredi (5 jours). Un jour ouvrable = lundi a samedi (6 jours). Les conges payes se comptent en jours ouvrables (30/an) ou ouvres (25/an). Les delais legaux utilisent souvent les jours ouvrables.",
+    q: "Quelle différence entre jour ouvré et jour ouvrable ?",
+    a: "Un jour ouvré = lundi à vendredi (5 jours). Un jour ouvrable = lundi à samedi (6 jours). Les congés payés se comptent en jours ouvrables (30/an) ou ouvrés (25/an). Les délais légaux utilisent souvent les jours ouvrables.",
   },
   {
-    q: "Combien de jours feries en 2026 en France ?",
-    a: "La France compte 11 jours feries legaux en 2026. Certains tombent un week-end et ne reduisent donc pas les jours ouvres.",
+    q: "Combien de jours fériés en 2026 en France ?",
+    a: "La France compte 11 jours fériés légaux en 2026. Certains tombent un week-end et ne réduisent donc pas les jours ouvrés.",
   },
   {
-    q: "Comment calculer un preavis en jours ouvres ?",
-    a: "Pour calculer un delai de preavis en jours ouvres, comptez uniquement les jours du lundi au vendredi en excluant les jours feries legaux. Par exemple, un preavis de 5 jours ouvres notifie un vendredi se terminera le vendredi suivant (en excluant le week-end et tout jour ferie intercalaire).",
+    q: "Combien de jours fériés tombent un week-end en 2026 ?",
+    a: "Deux : l'Assomption (15 août) tombe un samedi et la Toussaint (1er novembre) un dimanche. Ces deux jours n'augmentent donc pas le nombre de jours de repos pour la plupart des salariés.",
+  },
+  {
+    q: "Comment calculer un préavis en jours ouvrés ?",
+    a: "Pour calculer un délai de préavis en jours ouvrés, comptez uniquement les jours du lundi au vendredi en excluant les jours fériés légaux. Par exemple, un préavis de 5 jours ouvrés notifié un vendredi se terminera le vendredi suivant (en excluant le week-end et tout jour férié intercalaire).",
   },
 ];
 
@@ -117,6 +146,25 @@ export default function Page() {
           </table>
         </div>
       </section>
+
+      {/* Sections de contenu detaille (prose en chaines JS) */}
+      {SECTIONS.map((section) => (
+        <section
+          key={section.title}
+          className="mt-8 bg-white rounded-2xl border border-slate-200 p-8"
+        >
+          <h2 className="text-xl font-bold text-slate-800 mb-4">
+            {section.title}
+          </h2>
+          <div className="space-y-3">
+            {section.paras.map((p, i) => (
+              <p key={i} className="text-slate-600 leading-relaxed">
+                {p}
+              </p>
+            ))}
+          </div>
+        </section>
+      ))}
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-jours-ouvres" />

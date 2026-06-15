@@ -10,23 +10,68 @@ export const metadata: Metadata = {
   alternates: { canonical: "/calcul-cout-kilometrique" },
   title: "Calcul Cout Kilometrique 2026 - Bareme Fiscal IK",
   description:
-    "Calculez votre cout kilometrique avec le bareme fiscal 2026. Indemnites km par puissance fiscale, distance, vehicule electrique (+20%). Bareme officiel.",
+    "Calculez votre coût kilométrique avec le barème fiscal 2026. Indemnités km par puissance fiscale, distance, véhicule électrique (+20 %). Barème officiel.",
   keywords:
     "cout kilometrique, bareme kilometrique 2026, indemnite kilometrique, calcul IK, frais kilometriques, bareme fiscal voiture, cout km vehicule",
 };
 
+// Prose en chaines JS (guillemets doubles) pour eviter les soucis d'apostrophe.
+const SECTIONS: { title: string; paras: string[] }[] = [
+  {
+    title: "Comment utiliser le barème kilométrique ?",
+    paras: [
+      "Le barème se lit en croisant deux informations : la puissance fiscale de votre véhicule (en CV, indiquée sur la carte grise au repère P.6) et le nombre de kilomètres parcourus à titre professionnel dans l'année.",
+      "On choisit la ligne correspondant aux CV et la colonne correspondant à la distance annuelle, puis on applique la formule, où « d » est la distance professionnelle en kilomètres.",
+      "Exemple : pour un véhicule de 5 CV ayant parcouru 8 000 km professionnels, on utilise la colonne 5 001–20 000 km : 8 000 × 0,357 + 1 395 = 4 251 € d'indemnités déductibles.",
+    ],
+  },
+  {
+    title: "Ce que couvre (et ne couvre pas) le barème",
+    paras: [
+      "Le barème est forfaitaire : il intègre déjà le carburant, l'assurance, l'entretien et les réparations, les pneumatiques et la dépréciation du véhicule. Vous n'avez donc pas à additionner ces dépenses séparément.",
+      "En revanche, certains frais ne sont pas couverts et restent déductibles en plus, sur justificatifs : les péages d'autoroute, les frais de stationnement (parking), et les intérêts d'emprunt si le véhicule a été acheté à crédit.",
+    ],
+  },
+  {
+    title: "Qui peut utiliser le barème kilométrique ?",
+    paras: [
+      "Les salariés qui choisissent de déduire leurs frais réels au lieu de l'abattement forfaitaire de 10 % peuvent l'utiliser pour leurs trajets domicile-travail et leurs déplacements professionnels.",
+      "Les professionnels imposés dans la catégorie des bénéfices non commerciaux (BNC) peuvent aussi l'appliquer. À noter : la déduction forfaitaire de 10 % et les frais réels ne se cumulent pas, il faut choisir l'option la plus avantageuse.",
+    ],
+  },
+  {
+    title: "Voiture électrique : une majoration de 20 %",
+    paras: [
+      "Pour encourager les véhicules propres, le montant obtenu avec le barème est majoré de 20 % lorsque le véhicule est 100 % électrique. Notre calculateur applique automatiquement cette majoration si vous l'indiquez.",
+      "Les barèmes évoluant chaque année avec la loi de finances, vérifiez toujours les coefficients en vigueur sur impots.gouv.fr avant votre déclaration.",
+    ],
+  },
+];
+
 const FAQ_ITEMS: FaqItem[] = [
   {
-    q: "Comment fonctionne le bareme kilometrique ?",
-    a: "Le bareme kilometrique fiscal permet de deduire les frais de deplacement professionnel de ses impots. Il prend en compte la puissance fiscale du vehicule et la distance annuelle parcourue. Il couvre le carburant, l'assurance, l'entretien et la depreciation.",
+    q: "Comment fonctionne le barème kilométrique ?",
+    a: "Le barème kilométrique fiscal permet de déduire les frais de déplacement professionnel de ses impôts. Il prend en compte la puissance fiscale du véhicule et la distance annuelle parcourue. Il couvre le carburant, l'assurance, l'entretien et la dépréciation.",
   },
   {
-    q: "Les vehicules electriques ont-ils un avantage ?",
-    a: "Oui, les vehicules electriques beneficient d'une majoration de 20% sur le bareme kilometrique. Cela encourage l'utilisation de vehicules propres pour les trajets professionnels.",
+    q: "Comment calculer ses indemnités kilométriques ?",
+    a: "Repérez la ligne de votre puissance fiscale (CV) et la colonne de votre distance annuelle, puis appliquez la formule en remplaçant « d » par vos kilomètres professionnels. Exemple : 5 CV et 8 000 km donnent 8 000 × 0,357 + 1 395 = 4 251 €.",
   },
   {
-    q: "Peut-on cumuler les indemnites kilometriques et les frais reels ?",
-    a: "Non, les indemnites kilometriques font partie de la deduction des frais reels. Vous devez choisir entre la deduction forfaitaire (10%) et les frais reels (incluant les IK). Les frais reels sont avantageux si vos depenses depassent 10% de votre revenu imposable.",
+    q: "Le barème couvre-t-il les péages et le parking ?",
+    a: "Non. Le barème couvre le carburant, l'assurance, l'entretien et la dépréciation, mais pas les péages ni le stationnement. Ces frais peuvent être déduits en plus, sur justificatifs.",
+  },
+  {
+    q: "Les véhicules électriques ont-ils un avantage ?",
+    a: "Oui, les véhicules électriques bénéficient d'une majoration de 20 % sur le barème kilométrique. Cela encourage l'utilisation de véhicules propres pour les trajets professionnels.",
+  },
+  {
+    q: "Faut-il des justificatifs pour les frais kilométriques ?",
+    a: "Oui. En cas de contrôle, vous devez pouvoir justifier la réalité et le caractère professionnel des trajets : motif, destination, fréquence et distance. Conservez un relevé de vos déplacements et la carte grise du véhicule.",
+  },
+  {
+    q: "Peut-on cumuler les indemnités kilométriques et les frais réels ?",
+    a: "Les indemnités kilométriques font partie de la déduction des frais réels. Vous devez choisir entre la déduction forfaitaire (10 %) et les frais réels (incluant les IK). Les frais réels sont avantageux si vos dépenses dépassent 10 % de votre revenu imposable.",
   },
 ];
 
@@ -71,6 +116,25 @@ export default function Page() {
           </table>
         </div>
       </section>
+      {/* Sections de contenu detaille (prose en chaines JS) */}
+      {SECTIONS.map((section) => (
+        <section
+          key={section.title}
+          className="mt-8 bg-white rounded-2xl border border-slate-200 p-8"
+        >
+          <h2 className="text-xl font-bold text-slate-800 mb-4">
+            {section.title}
+          </h2>
+          <div className="space-y-3">
+            {section.paras.map((p, i) => (
+              <p key={i} className="text-slate-600 leading-relaxed">
+                {p}
+              </p>
+            ))}
+          </div>
+        </section>
+      ))}
+
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-cout-kilometrique" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

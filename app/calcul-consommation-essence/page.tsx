@@ -15,18 +15,51 @@ export const metadata: Metadata = {
     "calcul consommation essence, cout trajet voiture, prix carburant calcul, litres pour trajet, consommation carburant, cout km voiture, calculer essence trajet",
 };
 
+// Prose en chaines JS (guillemets doubles) pour eviter les soucis d'apostrophe.
+const SECTIONS: { title: string; paras: string[] }[] = [
+  {
+    title: "La formule du coût d'un trajet",
+    paras: [
+      "Le coût d'un trajet en carburant se calcule en trois temps. D'abord les litres consommés : litres = consommation (L/100 km) × distance ÷ 100. Ensuite le coût : litres × prix du litre.",
+      "En une seule formule : coût = (consommation ÷ 100) × distance × prix du litre. Exemple pour un trajet de 500 km avec une voiture à 7 L/100 km et un carburant à 1,75 €/L : (7 ÷ 100) × 500 × 1,75 = 61,25 €.",
+    ],
+  },
+  {
+    title: "Comment mesurer sa consommation réelle ?",
+    paras: [
+      "La méthode la plus fiable est celle du « plein à plein ». Faites le plein complet, remettez le compteur kilométrique journalier à zéro, roulez normalement, puis refaites le plein.",
+      "Notez le nombre de litres qu'il a fallu pour refaire le plein et la distance parcourue. La consommation réelle = litres × 100 ÷ kilomètres. Par exemple, 42 litres pour 600 km donnent 7 L/100 km. C'est bien plus précis que la valeur officielle du constructeur.",
+    ],
+  },
+  {
+    title: "Estimer son budget carburant annuel",
+    paras: [
+      "Pour connaître votre budget sur l'année : budget = (kilomètres annuels ÷ 100) × consommation × prix du litre.",
+      "Exemple pour 15 000 km par an, une consommation de 7 L/100 km et un prix de 1,90 €/L : (15 000 ÷ 100) × 7 × 1,90 ≈ 1 995 € par an, soit environ 166 € par mois. Surveiller le prix à la pompe et comparer les stations peut faire économiser plusieurs centaines d'euros par an.",
+    ],
+  },
+];
+
 const FAQ_ITEMS: FaqItem[] = [
   {
-    q: "Comment calculer le cout d'un trajet en voiture ?",
-    a: "Cout = (consommation en L/100km / 100) x distance en km x prix du litre. Exemple : 7 L/100km, 500 km, 1,75 €/L → (7/100) x 500 x 1,75 = 61,25 €.",
+    q: "Comment calculer le coût d'un trajet en voiture ?",
+    a: "Coût = (consommation en L/100 km ÷ 100) × distance en km × prix du litre. Exemple : 7 L/100 km, 500 km, 1,75 €/L → (7 ÷ 100) × 500 × 1,75 = 61,25 €.",
+  },
+  {
+    q: "Combien coûte 100 km en voiture ?",
+    a: "Multipliez la consommation aux 100 km par le prix du litre. Par exemple, une voiture à 7 L/100 km avec un carburant à 1,90 €/L revient à 7 × 1,90 = 13,30 € aux 100 km. Une citadine à 5 L coûtera environ 9,50 € aux 100 km.",
   },
   {
     q: "Quelle est la consommation moyenne d'une voiture ?",
-    a: "En France, la consommation moyenne est d'environ 6-7 L/100km pour une voiture essence et 5-6 L/100km pour un diesel. Les citadines consomment 4-5 L, les SUV 8-10 L.",
+    a: "En France, la consommation moyenne est d'environ 6-7 L/100 km pour une voiture essence et 5-6 L/100 km pour un diesel. Les citadines consomment 4-5 L, les SUV 8-10 L.",
   },
   {
-    q: "Quelle difference entre consommation officielle et reelle ?",
-    a: "La consommation officielle (cycle WLTP) est mesuree en laboratoire. En conditions reelles (autoroute, climatisation, charge), on observe generalement 10 a 25% de plus. Utilisez votre propre releve de consommation pour un calcul precis.",
+    q: "Comment connaître la consommation réelle de ma voiture ?",
+    a: "Utilisez la méthode du plein à plein : faites le plein, remettez le compteur journalier à zéro, roulez, puis refaites le plein. Divisez les litres ajoutés par les kilomètres parcourus et multipliez par 100. Exemple : 42 L pour 600 km = 7 L/100 km.",
+  },
+  {
+    q: "Quelle différence entre consommation officielle et réelle ?",
+    a: "La consommation officielle (cycle WLTP) est mesurée en laboratoire. En conditions réelles (autoroute, climatisation, charge), on observe généralement 10 à 25 % de plus. Utilisez votre propre relevé de consommation pour un calcul précis.",
   },
 ];
 
@@ -88,6 +121,25 @@ export default function Page() {
           ))}
         </div>
       </section>
+
+      {/* Sections de contenu detaille (prose en chaines JS) */}
+      {SECTIONS.map((section) => (
+        <section
+          key={section.title}
+          className="mt-8 bg-white rounded-2xl border border-slate-200 p-8"
+        >
+          <h2 className="text-xl font-bold text-slate-800 mb-4">
+            {section.title}
+          </h2>
+          <div className="space-y-3">
+            {section.paras.map((p, i) => (
+              <p key={i} className="text-slate-600 leading-relaxed">
+                {p}
+              </p>
+            ))}
+          </div>
+        </section>
+      ))}
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-consommation-essence" />

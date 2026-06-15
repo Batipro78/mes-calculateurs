@@ -16,18 +16,58 @@ export const metadata: Metadata = {
     "gratification stage 2026, calcul gratification stage, montant minimum stage, indemnite stage, stage remuneration, gratification obligatoire stage",
 };
 
+// Prose en chaines JS (guillemets doubles) pour eviter les soucis d'apostrophe.
+const SECTIONS: { title: string; paras: string[] }[] = [
+  {
+    title: "Comment se calcule la gratification minimale ?",
+    paras: [
+      "Le minimum légal correspond à 15 % du plafond horaire de la Sécurité sociale, multiplié par le nombre d'heures de présence effective du stagiaire. En 2026, cela représente 4,35 € par heure. Ce taux est revalorisé chaque année avec le plafond de la Sécurité sociale.",
+      "Deux méthodes de versement existent. Au réel : on multiplie 4,35 € par le nombre exact d'heures effectuées dans le mois (qui varie selon les mois). Au lissé : on calcule une mensualité moyenne constante sur la base de 151,67 heures par mois pour un temps plein, soit environ 660 € par mois.",
+    ],
+  },
+  {
+    title: "Stage obligatoire ou facultatif : la règle des 2 mois",
+    paras: [
+      "La gratification devient obligatoire dès que la durée du stage dépasse 2 mois, consécutifs ou non, au cours d'une même année d'enseignement. En pratique, ce seuil correspond à plus de 44 jours de présence (sur une base de 7 heures par jour) ou plus de 308 heures.",
+      "En dessous de ce seuil, l'organisme d'accueil n'est pas tenu de verser une gratification, mais il peut le faire volontairement. Le décompte se fait en heures de présence réelle, pas en jours calendaires.",
+    ],
+  },
+  {
+    title: "Les avantages en plus de la gratification",
+    paras: [
+      "Le stagiaire n'est pas un salarié, mais il bénéficie de plusieurs droits proches. L'organisme d'accueil doit prendre en charge 50 % de ses frais de transport en commun domicile-lieu de stage, comme pour les salariés.",
+      "Le stagiaire a aussi accès au restaurant d'entreprise ou aux titres-restaurant dans les mêmes conditions que le personnel. Pour les stages de plus de 2 mois, la convention doit prévoir des autorisations d'absence ou des congés.",
+    ],
+  },
+  {
+    title: "La gratification est-elle imposable ?",
+    paras: [
+      "Bonne nouvelle pour les étudiants : la gratification de stage est exonérée d'impôt sur le revenu dans la limite du montant annuel du SMIC. Tant que le total perçu sur l'année reste sous ce plafond, il n'y a rien à déclarer.",
+      "Cette exonération s'applique automatiquement. Seule la part éventuellement supérieure au SMIC annuel serait imposable, ce qui reste très rare pour un stage.",
+    ],
+  },
+];
+
 const FAQ_ITEMS: FaqItem[] = [
   {
     q: "Quel est le montant minimum de la gratification de stage en 2026 ?",
-    a: "En 2026, la gratification minimale est de 4,35€ par heure de presence effective (15% du plafond horaire de la Securite sociale). Pour un stage a temps plein (35h/semaine), cela represente environ 600€ par mois.",
+    a: "En 2026, la gratification minimale est de 4,35 € par heure de présence effective (15 % du plafond horaire de la Sécurité sociale). Pour un stage à temps plein (35 h/semaine, soit 151,67 h/mois), cela représente environ 660 € par mois.",
   },
   {
-    q: "A partir de quelle duree la gratification est-elle obligatoire ?",
-    a: "La gratification est obligatoire des que le stage depasse 2 mois consecutifs (soit plus de 44 jours de presence effective, ou 308 heures). En dessous de cette duree, elle est facultative.",
+    q: "À partir de quelle durée la gratification est-elle obligatoire ?",
+    a: "La gratification est obligatoire dès que le stage dépasse 2 mois consécutifs ou non sur une même année d'enseignement (soit plus de 44 jours de présence effective, ou 308 heures). En dessous de cette durée, elle est facultative.",
   },
   {
-    q: "La gratification de stage est-elle soumise a des cotisations sociales ?",
-    a: "La gratification de stage est exoneree de cotisations sociales dans la limite du montant minimum legal (4,35€/h en 2026). Au-dela de ce seuil, la partie excedentaire est soumise aux cotisations patronales et salariales dans les conditions de droit commun.",
+    q: "La gratification de stage est-elle imposable ?",
+    a: "Non, dans la grande majorité des cas. La gratification de stage est exonérée d'impôt sur le revenu dans la limite du montant annuel du SMIC. Seule la part dépassant ce plafond serait imposable, ce qui est rare.",
+  },
+  {
+    q: "Le stagiaire a-t-il droit aux transports et aux tickets restaurant ?",
+    a: "Oui. L'organisme d'accueil doit rembourser 50 % des frais de transport en commun, comme pour un salarié. Le stagiaire accède aussi au restaurant d'entreprise ou aux titres-restaurant dans les mêmes conditions que le personnel.",
+  },
+  {
+    q: "La gratification de stage est-elle soumise à des cotisations sociales ?",
+    a: "La gratification de stage est exonérée de cotisations sociales dans la limite du montant minimum légal (4,35 €/h en 2026). Au-delà de ce seuil, la partie excédentaire est soumise aux cotisations patronales et salariales dans les conditions de droit commun.",
   },
 ];
 
@@ -79,6 +119,25 @@ export default function Page() {
           </table>
         </div>
       </section>
+      {/* Sections de contenu detaille (prose en chaines JS) */}
+      {SECTIONS.map((section) => (
+        <section
+          key={section.title}
+          className="mt-8 bg-white rounded-2xl border border-slate-200 p-8"
+        >
+          <h2 className="text-xl font-bold text-slate-800 mb-4">
+            {section.title}
+          </h2>
+          <div className="space-y-3">
+            {section.paras.map((p, i) => (
+              <p key={i} className="text-slate-600 leading-relaxed">
+                {p}
+              </p>
+            ))}
+          </div>
+        </section>
+      ))}
+
       <Faq items={FAQ_ITEMS} />
 
       <SourcesMethodo

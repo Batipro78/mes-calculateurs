@@ -6,6 +6,31 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 
+// Prose en chaines JS (guillemets doubles) pour eviter les soucis d'apostrophe.
+const SECTIONS: { title: string; paras: string[] }[] = [
+  {
+    title: "Faut-il compter le premier et le dernier jour ?",
+    paras: [
+      "C'est la question qui crée le plus de confusion. Entre le 1er et le 2 d'un mois, faut-il compter 1 jour ou 2 ? Par convention de calcul, la durée est « exclusive » : on retire la date de début de la date de fin, ce qui donne 1 jour.",
+      "Mais beaucoup de délais (préavis, rétractation, procédures) se comptent de façon « inclusive », c'est-à-dire en comptant le premier jour, voire le dernier. Avant d'appliquer une durée à une situation officielle, vérifiez toujours la règle de décompte prévue par votre contrat ou par la loi.",
+    ],
+  },
+  {
+    title: "Le piège des années bissextiles",
+    paras: [
+      "Une année normale compte 365 jours, mais une année bissextile en compte 366 grâce au 29 février. Cela peut décaler un calcul d'un jour sur les longues périodes.",
+      "La règle : une année est bissextile si elle est divisible par 4, sauf les années de siècle qui doivent être divisibles par 400. 2024 et 2028 sont bissextiles, 2026 ne l'est pas. Notre calculateur tient compte automatiquement de ces années.",
+    ],
+  },
+  {
+    title: "Pourquoi le calcul en mois est approximatif",
+    paras: [
+      "Contrairement aux jours, les mois n'ont pas tous la même longueur (de 28 à 31 jours). Dire qu'il s'écoule « 2 mois » entre deux dates est donc une approximation : 2 mois peuvent valoir 59, 60, 61 ou 62 jours selon les mois concernés.",
+      "Pour un résultat précis (échéance de contrat, calcul d'âge, délai exact), il vaut toujours mieux raisonner en jours. C'est ce que fait ce calculateur, qui donne à la fois le total en jours et son équivalent approché en mois et années.",
+    ],
+  },
+];
+
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-duree-entre-dates" },
   title: "Calcul Duree Entre Deux Dates - Jours, Semaines, Mois",
@@ -31,6 +56,14 @@ const FAQ_ITEMS: FaqItem[] = [
   {
     q: "Comment calculer une date d'échéance à partir d'aujourd'hui ?",
     a: "Entrez la date du jour comme date de début et ajoutez le nombre de jours souhaités. Par exemple, pour un préavis de 30 jours à compter du 1er juin 2026, la date d'échéance est le 1er juillet 2026 (ou le 3 juillet si on exclut les week-ends).",
+  },
+  {
+    q: "Doit-on compter le jour de départ dans une durée ?",
+    a: "Cela dépend de la convention. Par défaut, la différence entre deux dates est « exclusive » : du 1er au 2 du mois, il s'écoule 1 jour. Mais certains délais juridiques se comptent de façon « inclusive » (on compte le premier jour). Vérifiez la règle applicable à votre situation, notamment pour les délais de préavis ou de rétractation.",
+  },
+  {
+    q: "Une année bissextile, comment la reconnaître ?",
+    a: "Une année est bissextile (366 jours, avec un 29 février) si elle est divisible par 4, sauf les années de siècle qui doivent être divisibles par 400. Ainsi 2024 et 2028 sont bissextiles, 2026 ne l'est pas, 1900 ne l'était pas mais 2000 l'était.",
   },
 ];
 
@@ -85,6 +118,25 @@ export default function Page() {
           ))}
         </div>
       </section>
+
+      {/* Sections de contenu detaille (prose en chaines JS) */}
+      {SECTIONS.map((section) => (
+        <section
+          key={section.title}
+          className="mt-8 bg-white rounded-2xl border border-slate-200 p-8"
+        >
+          <h2 className="text-xl font-bold text-slate-800 mb-4">
+            {section.title}
+          </h2>
+          <div className="space-y-3">
+            {section.paras.map((p, i) => (
+              <p key={i} className="text-slate-600 leading-relaxed">
+                {p}
+              </p>
+            ))}
+          </div>
+        </section>
+      ))}
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-duree-entre-dates" />
