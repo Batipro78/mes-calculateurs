@@ -15,14 +15,42 @@ export const metadata: Metadata = {
     "fetes catholiques 2026, calendrier fetes religieuses, paques pentecote ascension, fetes fixes catholiques, toussaint assomption, calendrier liturgique",
 };
 
+// Prose en chaines JS (guillemets doubles) pour eviter les soucis d'apostrophe.
+const SECTIONS: { title: string; paras: string[] }[] = [
+  {
+    title: "Comment calcule-t-on la date de Pâques ?",
+    paras: [
+      "Tout le calendrier mobile dépend de Pâques, et Pâques obéit à une règle fixée au concile de Nicée en 325 : c'est le premier dimanche qui suit la première pleine lune du printemps (la pleine lune tombant le ou après l'équinoxe du 21 mars).",
+      "Concrètement, la date peut donc osciller entre le 22 mars au plus tôt et le 25 avril au plus tard. Le calcul précis, appelé comput ecclésiastique, combine le cycle lunaire (le « nombre d'or ») et le cycle solaire pour déterminer cette pleine lune dite pascale.",
+      "Une fois Pâques connue, tout s'enchaîne : le Mercredi des Cendres tombe 46 jours avant, l'Ascension 39 jours après, la Pentecôte 49 jours après. C'est pour cela qu'on parle de fêtes mobiles : elles se déduisent toutes de la date de Pâques.",
+    ],
+  },
+  {
+    title: "La signification des grandes fêtes",
+    paras: [
+      "Noël (25 décembre) célèbre la naissance de Jésus. L'Épiphanie (6 janvier) commémore la visite des Rois mages et la manifestation du Christ aux nations.",
+      "Pâques est le sommet de l'année chrétienne : la Résurrection du Christ, le troisième jour après sa mort sur la croix. Elle est précédée du Carême (40 jours de préparation) et de la Semaine sainte. L'Ascension marque la montée du Christ au ciel, et la Pentecôte la descente de l'Esprit Saint sur les apôtres, considérée comme la naissance de l'Église.",
+      "L'Assomption (15 août) fête l'élévation de la Vierge Marie au ciel. La Toussaint (1er novembre) honore tous les saints, et précède le jour des défunts (2 novembre).",
+    ],
+  },
+  {
+    title: "Les temps forts de l'année liturgique",
+    paras: [
+      "L'année liturgique catholique ne suit pas l'année civile : elle commence quatre dimanches avant Noël, avec l'Avent, temps d'attente et de préparation.",
+      "Vient ensuite le temps de Noël, puis une première période de Temps ordinaire. Le Carême ouvre la marche vers Pâques, suivi du Temps pascal qui s'étend jusqu'à la Pentecôte.",
+      "Le reste de l'année forme le Temps ordinaire, qui se conclut par la fête du Christ Roi, juste avant le retour de l'Avent. Chaque temps a sa couleur liturgique : violet pour l'Avent et le Carême, blanc pour Noël et Pâques, vert pour le Temps ordinaire, rouge pour la Pentecôte.",
+    ],
+  },
+];
+
 const FAQ_ITEMS: FaqItem[] = [
   {
     q: "Qu'est-ce qu'une fête mobile en calendrier catholique ?",
     a: "Une fête mobile est une célébration dont la date change chaque année car elle dépend de la date de Pâques. Pâques est calculée selon le Concile de Nicée : premier dimanche après la pleine lune de printemps. Les fêtes mobiles incluent Mercredi des Cendres, Pentecôte, Ascension, etc.",
   },
   {
-    q: "Quelles sont les fêtes catholiques obligatoires en France ?",
-    a: "En France, les jours fériés religieux sont : Noël (25 décembre), Pâques (dimanche mobile), Ascension (jeudi 39 jours après Pâques), Pentecôte (dimanche 49 jours après Pâques), Toussaint (1er novembre), Assomption (15 août), Sainte Marie Mère de Dieu (1er janvier), Épiphanie (6 janvier).",
+    q: "Quelles fêtes catholiques sont des jours fériés en France ?",
+    a: "Six fêtes catholiques sont des jours fériés légaux en France : le lundi de Pâques, l'Ascension, le lundi de Pentecôte, l'Assomption (15 août), la Toussaint (1er novembre) et Noël (25 décembre). Attention : le 1er janvier est férié au titre du Jour de l'An civil, pas de la fête de Sainte Marie. L'Épiphanie (6 janvier) et l'Immaculée Conception (8 décembre) sont des solennités liturgiques importantes, mais ne sont pas des jours fériés. L'Alsace-Moselle bénéficie de deux fériés supplémentaires, le Vendredi saint et la Saint-Étienne (26 décembre).",
   },
   {
     q: "Pourquoi Pâques est-elle une fête mobile ?",
@@ -35,6 +63,10 @@ const FAQ_ITEMS: FaqItem[] = [
   {
     q: "Quelle est la date de Pâques 2026 ?",
     a: "Pâques 2026 tombe le dimanche 5 avril 2026. Le lundi de Pâques (jour férié) est donc le 6 avril. L'Ascension sera le 14 mai et la Pentecôte le 24 mai (lundi de Pentecôte férié le 25 mai).",
+  },
+  {
+    q: "Pourquoi Pâques catholique et Pâque orthodoxe ne tombent-elles pas le même jour ?",
+    a: "Les deux suivent la même règle de Nicée, mais pas le même calendrier. L'Église catholique utilise le calendrier grégorien, tandis que les Églises orthodoxes calculent la pleine lune pascale sur l'ancien calendrier julien. L'écart entre les deux calendriers (13 jours aujourd'hui) décale souvent la date, parfois d'une à cinq semaines.",
   },
 ];
 
@@ -197,6 +229,25 @@ export default function Page() {
           </table>
         </div>
       </section>
+
+      {/* Sections de contenu detaille (prose en chaines JS) */}
+      {SECTIONS.map((section) => (
+        <section
+          key={section.title}
+          className="mt-8 bg-white rounded-2xl border border-slate-200 p-8"
+        >
+          <h2 className="text-xl font-bold text-slate-800 mb-4">
+            {section.title}
+          </h2>
+          <div className="space-y-3">
+            {section.paras.map((p, i) => (
+              <p key={i} className="text-slate-600 leading-relaxed">
+                {p}
+              </p>
+            ))}
+          </div>
+        </section>
+      ))}
 
       <section className="mt-8 bg-blue-50 rounded-2xl border border-blue-200 p-8">
         <h3 className="text-lg font-bold text-blue-900 mb-3">Disclaimer</h3>

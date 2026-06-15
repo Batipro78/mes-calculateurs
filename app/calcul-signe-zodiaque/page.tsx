@@ -16,6 +16,33 @@ export const metadata: Metadata = {
     "signe zodiaque, signe astrologique, belier taureau gemeaux cancer lion vierge balance scorpion sagittaire capricorne verseau poissons, element feu terre air eau, planete signe, astrologie occidentale, horoscope",
 };
 
+// Prose en chaines JS (guillemets doubles) pour eviter les soucis d'apostrophe.
+const SECTIONS: { title: string; paras: string[] }[] = [
+  {
+    title: "Quels signes sont compatibles entre eux ?",
+    paras: [
+      "En astrologie occidentale, la compatibilité se lit d'abord par les éléments. Les signes de Feu (Bélier, Lion, Sagittaire) et d'Air (Gémeaux, Balance, Verseau) s'accordent bien : l'Air attise le Feu, comme l'oxygène nourrit la flamme. De leur côté, les signes de Terre (Taureau, Vierge, Capricorne) et d'Eau (Cancer, Scorpion, Poissons) forment des duos stables : l'Eau féconde la Terre.",
+      "Deux signes du même élément se comprennent instinctivement, mais peuvent manquer de complémentarité. À l'inverse, Feu et Eau ou Terre et Air sont des combinaisons plus contrastées, qui demandent des ajustements.",
+      "Les signes opposés sur la roue (Bélier-Balance, Taureau-Scorpion, Gémeaux-Sagittaire, etc.) exercent une forte attraction : ils sont à la fois très différents et profondément complémentaires, d'où des relations intenses.",
+    ],
+  },
+  {
+    title: "Soleil, Lune et Ascendant : votre trio astrologique",
+    paras: [
+      "Réduire l'astrologie à son seul signe solaire est trompeur. Un thème complet repose sur trois piliers. Le Soleil (votre signe usuel, calculé sur la date) décrit votre identité profonde et votre volonté.",
+      "La Lune représente votre monde émotionnel, vos besoins intimes et vos réactions spontanées. L'Ascendant est le signe qui se levait à l'horizon à l'heure exacte de votre naissance : il décrit votre attitude extérieure et la première impression que vous donnez.",
+      "C'est pourquoi deux personnes du même signe solaire peuvent sembler très différentes : leurs Lune et Ascendant diffèrent. Pour les connaître, il faut votre heure et votre lieu de naissance, en plus de la date.",
+    ],
+  },
+  {
+    title: "Pourquoi les dates des signes changent-elles d'une année à l'autre ?",
+    paras: [
+      "Les bornes des signes ne tombent pas toujours le même jour : le Bélier peut commencer le 20 ou le 21 mars selon les années. La raison est astronomique. Le zodiaque tropical est calé sur les saisons, et le Soleil entre dans chaque signe au moment où il atteint une position précise sur l'écliptique.",
+      "Or l'année solaire dure environ 365,25 jours, d'où le décalage rattrapé par les années bissextiles. Le moment exact où le Soleil change de signe glisse donc de quelques heures chaque année. Si vous êtes né un jour de transition (un « cuspide »), seul le calcul à partir de l'année précise tranche votre signe.",
+    ],
+  },
+];
+
 const FAQ_ITEMS: FaqItem[] = [
   {
     q: "Quand change le signe zodiaque ?",
@@ -32,6 +59,14 @@ const FAQ_ITEMS: FaqItem[] = [
   {
     q: "Quelle est la difference entre signe solaire et ascendant ?",
     a: "Le signe solaire (base sur la date de naissance) decrit votre essence et identite. L'ascendant (signe levant a votre naissance) decrit comment vous etes percu par les autres. Pour connaitre votre ascendant, il faut l'heure et le lieu exacts de naissance.",
+  },
+  {
+    q: "Quels sont les signes les plus compatibles ?",
+    a: "Les meilleures affinités se trouvent généralement entre signes du même élément ou entre éléments amis : Feu avec Air, et Terre avec Eau. Par exemple, Bélier (Feu) s'entend bien avec Gémeaux ou Verseau (Air), et Taureau (Terre) avec Cancer ou Poissons (Eau). Ce ne sont que des tendances : un thème complet (Lune, Ascendant) nuance beaucoup la compatibilité réelle.",
+  },
+  {
+    q: "Mon signe ne correspond pas à ma personnalité, pourquoi ?",
+    a: "C'est fréquent et normal. Le signe solaire n'est qu'une partie du tableau. Votre Lune (émotions) et votre Ascendant (attitude extérieure) peuvent appartenir à des signes très différents et prendre le dessus dans votre comportement. Un thème astral complet, basé sur l'heure et le lieu de naissance, explique souvent ces écarts.",
   },
 ];
 
@@ -206,6 +241,25 @@ export default function Page() {
           </p>
         </div>
       </section>
+
+      {/* Sections de contenu detaille (prose en chaines JS) */}
+      {SECTIONS.map((section) => (
+        <section
+          key={section.title}
+          className="mt-8 bg-white rounded-2xl border border-slate-200 p-8"
+        >
+          <h2 className="text-xl font-bold text-slate-800 mb-4">
+            {section.title}
+          </h2>
+          <div className="space-y-3">
+            {section.paras.map((p, i) => (
+              <p key={i} className="text-slate-600 leading-relaxed">
+                {p}
+              </p>
+            ))}
+          </div>
+        </section>
+      ))}
 
       <section className="mt-8 bg-violet-50 rounded-2xl border border-violet-200 p-8">
         <h3 className="text-lg font-bold text-violet-900 mb-3">Disclaimer</h3>

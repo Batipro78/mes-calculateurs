@@ -15,6 +15,33 @@ export const metadata: Metadata = {
     "signe lunaire, lune en astrologie, calculer signe lunaire, lune naissance, emotions astrologie, signe lune, inconscient astrologie, lune zodiaque",
 };
 
+// Prose en chaines JS (guillemets doubles) pour eviter les soucis d'apostrophe.
+const SECTIONS: { title: string; paras: string[] }[] = [
+  {
+    title: "La Lune selon les quatre éléments",
+    paras: [
+      "Lune en Feu (Bélier, Lion, Sagittaire) : des émotions vives, spontanées et démonstratives. Ces personnes ressentent fort et vite, ont besoin d'enthousiasme et supportent mal l'ennui affectif. Elles se rassurent par l'action.",
+      "Lune en Terre (Taureau, Vierge, Capricorne) : des émotions stables et concrètes. Le réconfort passe par la sécurité matérielle, les habitudes et le toucher. Pudiques, ces personnes montrent leur affection par des gestes plus que par des mots.",
+      "Lune en Air (Gémeaux, Balance, Verseau) : des émotions analysées et verbalisées. Elles ont besoin d'échanger, de comprendre ce qu'elles ressentent et prennent parfois de la distance pour rationaliser. Le dialogue est leur principal apaisement.",
+      "Lune en Eau (Cancer, Scorpion, Poissons) : des émotions profondes et intuitives. Très réceptives, ces personnes absorbent les ambiances et ont un grand besoin d'intimité et de fusion. Leur sensibilité est leur force comme leur vulnérabilité.",
+    ],
+  },
+  {
+    title: "Pourquoi votre Lune compte autant que votre Soleil",
+    paras: [
+      "Le Soleil dit qui vous voulez être ; la Lune dit comment vous vous sentez en privé. C'est elle qui se manifeste quand vous êtes fatigué, stressé ou en sécurité chez vous, loin du regard des autres.",
+      "Beaucoup de gens se reconnaissent davantage dans leur signe lunaire que dans leur signe solaire, surtout dans l'intimité. C'est aussi la Lune qui décrit votre lien à l'enfance, à la mère et à vos mécanismes de réconfort.",
+    ],
+  },
+  {
+    title: "Lune et compatibilité émotionnelle",
+    paras: [
+      "En couple, l'accord des Lunes pèse souvent plus lourd que celui des Soleils, car il touche à la façon de se réconforter et de se sentir aimé au quotidien.",
+      "Deux Lunes du même élément (par exemple deux Lunes d'Eau) se comprennent sans mots. Des éléments amis (Feu et Air, Terre et Eau) se complètent bien. Des Lunes en éléments opposés (Feu et Eau, Terre et Air) peuvent vivre les émotions sur des rythmes très différents, ce qui demande de la patience et de l'explication mutuelle.",
+    ],
+  },
+];
+
 const FAQ_ITEMS: FaqItem[] = [
   {
     q: "Comment calculer son signe lunaire ?",
@@ -31,6 +58,14 @@ const FAQ_ITEMS: FaqItem[] = [
   {
     q: "Que signifie avoir une Lune en Cancer ?",
     a: "Cancer est le signe de domicile de la Lune, son emplacement favori. Une Lune en Cancer indique une nature emotionnelle tres developpee, une grande intuition, une forte attache familiale et un besoin de securite affective et emotionnelle.",
+  },
+  {
+    q: "Que signifie une Lune en exil en Capricorne ?",
+    a: "Le Capricorne est le signe opposé au Cancer, donc le moins à l'aise pour la Lune (on parle d'exil). Une Lune en Capricorne ne supprime pas les émotions : elle les contient et les rationalise. Ces personnes paraissent réservées, mûres très tôt, et expriment leur affection par le sens des responsabilités plutôt que par l'épanchement.",
+  },
+  {
+    q: "Peut-on connaître son signe lunaire sans l'heure de naissance ?",
+    a: "En partie seulement. La Lune changeant de signe tous les 2,3 jours environ, l'heure permet de trancher les jours de transition. Sans elle, le calcul reste fiable la plupart du temps, mais avec une marge d'environ un signe si vous êtes né un jour de changement. Pour une certitude totale, l'heure exacte est nécessaire.",
   },
 ];
 
@@ -106,7 +141,7 @@ export default function Page() {
           <div>
             <h3 className="font-bold text-slate-800 mb-2">Domicile et exaltation lunaire</h3>
             <p>
-              La Lune est domiciliée en Cancer, son signe favori. Une Lune en Cancer amplifie les qualités lunaires : sensibilité, intuition, protection, attachement familial. À l&apos;inverse, la Lune est en exil en Capricorne, ce qui peut rendre les émotions plus difficiles à exprimer et plus contrôlées.
+              La Lune est domiciliée en Cancer, son signe favori. Une Lune en Cancer amplifie les qualités lunaires : sensibilité, intuition, protection, attachement familial. Elle est exaltée (à son meilleur) en Taureau, où les émotions deviennent stables et apaisantes. À l&apos;inverse, la Lune est en exil en Capricorne et en chute en Scorpion, ce qui peut rendre les émotions plus difficiles à exprimer et plus contrôlées.
             </p>
           </div>
           <div>
@@ -141,6 +176,25 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      {/* Sections de contenu detaille (prose en chaines JS) */}
+      {SECTIONS.map((section) => (
+        <section
+          key={section.title}
+          className="mt-8 bg-white rounded-2xl border border-slate-200 p-8"
+        >
+          <h2 className="text-xl font-bold text-slate-800 mb-4">
+            {section.title}
+          </h2>
+          <div className="space-y-3">
+            {section.paras.map((p, i) => (
+              <p key={i} className="text-slate-600 leading-relaxed">
+                {p}
+              </p>
+            ))}
+          </div>
+        </section>
+      ))}
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-signe-lunaire" />
