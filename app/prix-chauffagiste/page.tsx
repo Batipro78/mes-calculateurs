@@ -4,6 +4,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import VillesLinks from "../components/VillesLinks";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/prix-chauffagiste" },
@@ -14,53 +15,37 @@ export const metadata: Metadata = {
     "prix chauffagiste, tarif chauffagiste 2026, cout pompe a chaleur, prix chaudiere gaz, prix plancher chauffant, entretien chaudiere, devis chauffagiste",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quel est le tarif horaire moyen d'un chauffagiste en 2026 ?",
+    a: "Le tarif horaire d'un chauffagiste varie de 40 à 80 € HT en province et de 50 à 130 € HT en Île-de-France. Les frais de déplacement (20-40 €) s'ajoutent en supplément. Les interventions en urgence (soir, weekend) sont majorées de 25 à 50 %.",
+  },
+  {
+    q: "Combien coûte l'installation d'une pompe à chaleur air-eau ?",
+    a: "L'installation d'une pompe à chaleur air-eau coûte entre 10 000 et 18 000 € TTC en 2026, fournitures et pose comprises. Ce prix varie selon la puissance, la marque et la complexité de l'installation. Des aides (MaPrimeRénov', CEE) peuvent réduire le coût de 3 000 à 5 000 €.",
+  },
+  {
+    q: "Quel est le prix de l'entretien annuel d'une chaudière ?",
+    a: "L'entretien annuel obligatoire d'une chaudière (gaz, fioul) coûte entre 100 et 180 € TTC en 2026. Un contrat d'entretien annuel est souvent plus avantageux (120-200 €/an) et inclut généralement un dépannage gratuit.",
+  },
+  {
+    q: "Quelles aides pour l'installation d'un chauffage en 2026 ?",
+    a: "Les pompes à chaleur et chauffe-eau thermodynamiques sont éligibles à MaPrimeRénov' (jusqu'à 5 000 €), aux CEE (500-4 000 €), à l'éco-prêt à taux zéro (jusqu'à 50 000 €) et à une TVA à 5,5 %. L'artisan doit être certifié RGE pour débloquer ces aides.",
+  },
+  {
+    q: "Comment bien comparer les devis de chauffagiste ?",
+    a: "Demandez au moins trois devis détaillés et comparez-les ligne par ligne : vérifiez qu'ils portent sur le même équipement et la même puissance, distinguent la main d'œuvre des fournitures, incluent la dépose de l'ancien matériel et la mise en service, et précisent les garanties. Un devis anormalement bas cache souvent des postes oubliés.",
+  },
+  {
+    q: "Comment réduire le coût de son installation de chauffage ?",
+    a: "Trois leviers : comparer plusieurs devis, choisir un équipement adapté à la taille du logement, et surtout vérifier votre éligibilité aux aides. Le remplacement d'un chauffage par un système performant (pompe à chaleur, chaudière biomasse) bénéficie souvent de la TVA à 5,5 % et d'aides comme MaPrimeRénov', sous conditions et avec un installateur RGE.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Prix Chauffagiste 2026" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quel est le tarif horaire moyen d'un chauffagiste en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le tarif horaire d'un chauffagiste varie de 40 a 80 \u20ac HT en province et de 50 a 130 \u20ac HT en Ile-de-France. Les frais de deplacement (20-40 \u20ac) s'ajoutent en supplement. Les interventions en urgence (soir, weekend) sont majorees de 25 a 50%.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien coute l'installation d'une pompe a chaleur air-eau ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L'installation d'une pompe a chaleur air-eau coute entre 10 000 et 18 000 \u20ac TTC en 2026, fournitures et pose comprises. Ce prix varie selon la puissance, la marque et la complexite de l'installation. Des aides (MaPrimeRenov', CEE) peuvent reduire le cout de 3 000 a 5 000 \u20ac.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel est le prix de l'entretien annuel d'une chaudiere ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L'entretien annuel obligatoire d'une chaudiere (gaz, fioul) coute entre 100 et 180 \u20ac TTC en 2026. Un contrat d'entretien annuel est souvent plus avantageux (120-200 \u20ac/an) et inclut generalement un depannage gratuit.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelles aides pour l'installation d'un chauffage en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Les pompes a chaleur et chauffe-eau thermodynamiques sont eligibles a MaPrimeRenov' (jusqu'a 5 000 \u20ac), aux CEE (500-4 000 \u20ac), a l'eco-pret a taux zero (jusqu'a 50 000 \u20ac) et a une TVA a 5,5%. L'artisan doit etre certifie RGE pour debloquer ces aides.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Prix Chauffagiste" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -138,6 +123,38 @@ export default function Page() {
       </section>
 
       <VillesLinks metierSlug="/prix-chauffagiste" />
+
+      <Faq items={FAQ_ITEMS} />
+
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
+        <h2 className="text-base font-bold text-slate-800 mb-2">
+          Méthode et sources
+        </h2>
+        <p className="text-sm text-slate-500 leading-relaxed">
+          Les montants affichés sont des fourchettes indicatives, basées sur les
+          tarifs couramment observés sur le marché français en 2026 ; le prix
+          réel dépend de chaque chantier et ne remplace pas un devis. Aides et
+          TVA des travaux de chauffage sur{" "}
+          <a
+            href="https://www.service-public.fr"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="text-blue-600 hover:underline"
+          >
+            service-public.fr
+          </a>{" "}
+          et{" "}
+          <a
+            href="https://www.maprimerenov.gouv.fr"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="text-blue-600 hover:underline"
+          >
+            maprimerenov.gouv.fr
+          </a>
+          .
+        </p>
+      </section>
 
       <RelatedCalculators currentSlug="/prix-chauffagiste" />
     </div>

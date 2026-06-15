@@ -4,6 +4,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import VillesLinks from "../components/VillesLinks";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/prix-couvreur" },
@@ -14,53 +15,37 @@ export const metadata: Metadata = {
     "prix couvreur, tarif couvreur 2026, cout toiture, prix renovation toiture, prix demoussage toiture, prix isolation sarking, prix velux, devis couvreur",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quel est le tarif horaire moyen d'un couvreur en 2026 ?",
+    a: "Le tarif horaire d'un couvreur varie de 40 \u00e0 60 \u20ac HT en province et de 50 \u00e0 90 \u20ac HT en \u00cele-de-France. Le prix de l'\u00e9chafaudage (10-15 \u20ac/m\u00b2) s'ajoute en suppl\u00e9ment. Les interventions en urgence (temp\u00eate, fuite) sont major\u00e9es de 30 \u00e0 100 %.",
+  },
+  {
+    q: "Combien co\u00fbte une r\u00e9novation de toiture compl\u00e8te ?",
+    a: "La r\u00e9novation d'une toiture compl\u00e8te co\u00fbte entre 130 et 300 \u20ac/m\u00b2 TTC en 2026, soit 13 000 \u00e0 30 000 \u20ac pour 100 m\u00b2. Ce prix inclut la d\u00e9pose de l'ancienne couverture, la fourniture des mat\u00e9riaux (tuiles, ardoise) et la main d'\u0153uvre de pose.",
+  },
+  {
+    q: "Quel est le prix du d\u00e9moussage de toiture ?",
+    a: "Le d\u00e9moussage de toiture co\u00fbte entre 10 et 40 \u20ac/m\u00b2 TTC en 2026. Pour une toiture de 100 m\u00b2, comptez 1 000 \u00e0 4 000 \u20ac. Le prix varie selon le produit utilis\u00e9 (anti-mousse, hydrofuge) et l'accessibilit\u00e9 du toit.",
+  },
+  {
+    q: "Quelles aides pour la r\u00e9novation de toiture en 2026 ?",
+    a: "L'isolation de toiture (sarking, combles) b\u00e9n\u00e9ficie de MaPrimeR\u00e9nov' (jusqu'\u00e0 75 \u20ac/m\u00b2 selon revenus), d'une TVA \u00e0 5,5 % et de l'\u00e9co-pr\u00eat \u00e0 taux z\u00e9ro. La r\u00e9novation simple (hors isolation) b\u00e9n\u00e9ficie d'une TVA \u00e0 10 % pour les logements de plus de 2 ans.",
+  },
+  {
+    q: "Comment bien comparer les devis de couvreur ?",
+    a: "Demandez au moins trois devis d\u00e9taill\u00e9s et comparez-les ligne par ligne : v\u00e9rifiez qu'ils portent sur la m\u00eame surface de toiture et les m\u00eames mat\u00e9riaux, distinguent la main d'\u0153uvre des fournitures, incluent l'\u00e9chafaudage et l'\u00e9vacuation des gravats, et pr\u00e9cisent les garanties. Un devis anormalement bas cache souvent des postes oubli\u00e9s.",
+  },
+  {
+    q: "Comment r\u00e9duire le co\u00fbt de ses travaux de toiture ?",
+    a: "Trois leviers : regrouper les travaux (couverture, isolation, zinguerie) en une seule intervention, comparer plusieurs devis, et v\u00e9rifier votre \u00e9ligibilit\u00e9 \u00e0 la TVA r\u00e9duite (10 % en r\u00e9novation d'un logement de plus de 2 ans, voire 5,5 % pour l'isolation de toiture). Planifier le chantier hors p\u00e9riode de forte demande peut aussi faire baisser le prix.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Prix Couvreur 2026" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quel est le tarif horaire moyen d'un couvreur en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le tarif horaire d'un couvreur varie de 40 a 60 \u20ac HT en province et de 50 a 90 \u20ac HT en Ile-de-France. Le prix de l'echafaudage (10-15 \u20ac/m\u00b2) s'ajoute en supplement. Les interventions en urgence (tempete, fuite) sont majorees de 30 a 100%.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien coute une renovation de toiture complete ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La renovation d'une toiture complete coute entre 130 et 300 \u20ac/m\u00b2 TTC en 2026, soit 13 000 a 30 000 \u20ac pour 100 m\u00b2. Ce prix inclut la depose de l'ancienne couverture, la fourniture des materiaux (tuiles, ardoise) et la main d'oeuvre de pose.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel est le prix du demoussage de toiture ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le demoussage de toiture coute entre 10 et 40 \u20ac/m\u00b2 TTC en 2026. Pour une toiture de 100 m\u00b2, comptez 1 000 a 4 000 \u20ac. Le prix varie selon le produit utilise (anti-mousse, hydrofuge) et l'accessibilite du toit.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelles aides pour la renovation de toiture en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L'isolation de toiture (sarking, combles) beneficie de MaPrimeRenov' (jusqu'a 75 \u20ac/m\u00b2 selon revenus), d'une TVA a 5,5% et de l'eco-pret a taux zero. La renovation simple (hors isolation) beneficie d'une TVA a 10% pour les logements de plus de 2 ans.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Prix Couvreur" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -138,6 +123,29 @@ export default function Page() {
       </section>
 
       <VillesLinks metierSlug="/prix-couvreur" />
+
+      <Faq items={FAQ_ITEMS} />
+
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
+        <h2 className="text-base font-bold text-slate-800 mb-2">
+          Méthode et sources
+        </h2>
+        <p className="text-sm text-slate-500 leading-relaxed">
+          Les montants affichés sont des fourchettes indicatives, basées sur les
+          tarifs couramment observés sur le marché français en 2026 ; le prix
+          réel dépend de chaque chantier et ne remplace pas un devis. Règles de
+          TVA des travaux sur{" "}
+          <a
+            href="https://www.service-public.fr"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="text-blue-600 hover:underline"
+          >
+            service-public.fr
+          </a>
+          .
+        </p>
+      </section>
 
       <RelatedCalculators currentSlug="/prix-couvreur" />
     </div>

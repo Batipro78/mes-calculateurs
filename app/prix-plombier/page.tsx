@@ -4,6 +4,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import VillesLinks from "../components/VillesLinks";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/prix-plombier" },
@@ -14,53 +15,37 @@ export const metadata: Metadata = {
     "prix plombier, tarif plombier 2026, cout plombier, prix installation salle de bain, prix chauffe-eau, prix debouchage, prix chaudiere gaz, devis plombier",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quel est le tarif horaire moyen d'un plombier en 2026 ?",
+    a: "Le tarif horaire d'un plombier varie de 40 à 80 € HT en province et de 70 à 140 € HT en Île-de-France. Le déplacement est facturé entre 15 et 45 € en supplément. Les interventions en urgence (soir, week-end) sont majorées de 20 à 100 %.",
+  },
+  {
+    q: "Combien coûte la création d'une salle de bain complète ?",
+    a: "La création d'une salle de bain complète coûte entre 900 et 2 500 €/m² en 2026. Pour une salle de bain de 6 m², le budget se situe entre 5 400 € et 15 000 € TTC selon le niveau de gamme (standard, confort ou premium).",
+  },
+  {
+    q: "Combien coûte un débouchage de canalisation ?",
+    a: "Un débouchage de canalisation coûte entre 100 € et 450 € TTC selon la méthode : ventouse/siphon (50-180 €), furet motorisé (100-250 €), hydrocurage haute pression (200-450 €). L'inspection caméra supplémentaire coûte 150 à 300 €.",
+  },
+  {
+    q: "Quel est le prix d'installation d'un chauffe-eau électrique ?",
+    a: "L'installation d'un chauffe-eau électrique (cumulus) coûte entre 500 € et 1 400 € TTC, fourniture incluse. Le prix varie selon la capacité (100 à 300 litres), le type de résistance (blindée ou stéatite) et la région.",
+  },
+  {
+    q: "Comment bien comparer les devis de plombier ?",
+    a: "Demandez au moins trois devis détaillés et comparez-les ligne par ligne : vérifiez qu'ils portent sur les mêmes prestations, distinguent la main d'œuvre des fournitures, indiquent les quantités et le taux de TVA, et précisent délais et garanties. Un devis anormalement bas cache souvent des prestations manquantes.",
+  },
+  {
+    q: "Comment réduire le coût de ses travaux de plomberie ?",
+    a: "Trois leviers : regrouper plusieurs interventions en une seule pour limiter les déplacements, comparer plusieurs devis, et vérifier votre éligibilité à la TVA réduite (10 % en rénovation d'un logement de plus de 2 ans, voire 5,5 % pour les travaux d'amélioration énergétique). Fournir vous-même certains équipements peut aussi alléger la facture.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Prix Plombier 2026" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quel est le tarif horaire moyen d'un plombier en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le tarif horaire d'un plombier varie de 40 a 80 € HT en province et de 70 a 140 € HT en Ile-de-France. Le deplacement est facture entre 15 et 45 € en supplement. Les interventions en urgence (soir, week-end) sont majorees de 20 a 100%.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien coute la creation d'une salle de bain complete ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La creation d'une salle de bain complete coute entre 900 et 2 500 €/m² en 2026. Pour une salle de bain de 6 m², le budget se situe entre 5 400 € et 15 000 € TTC selon le niveau de gamme (standard, confort ou premium).",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien coute un debouchage de canalisation ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Un debouchage de canalisation coute entre 100 € et 450 € TTC selon la methode : ventouse/siphon (50-180 €), furet motorise (100-250 €), hydrocurage haute pression (200-450 €). L'inspection camera supplementaire coute 150 a 300 €.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel est le prix d'installation d'un chauffe-eau electrique ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L'installation d'un chauffe-eau electrique (cumulus) coute entre 500 € et 1 400 € TTC, fourniture incluse. Le prix varie selon la capacite (100 a 300 litres), le type de resistance (blindee ou steatite) et la region.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Prix Plombier" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -134,6 +119,29 @@ export default function Page() {
         </h3>
         <p className="text-slate-600 leading-relaxed">
           Pour planifier vos travaux de plomberie, pensez a estimer le <strong>budget global</strong> : utilisez notre <a href="/simulateur-pret-immobilier" className="text-cyan-600 underline hover:text-cyan-800">simulateur de pret immobilier</a> pour calculer vos mensualites, verifiez votre <a href="/calcul-capacite-emprunt" className="text-cyan-600 underline hover:text-cyan-800">capacite d&apos;emprunt</a> et estimez les <a href="/frais-de-notaire" className="text-cyan-600 underline hover:text-cyan-800">frais de notaire</a> si vous achetez un bien a renover. Si vous prevoyez d&apos;autres travaux, consultez aussi nos estimateurs <a href="/prix-chauffagiste" className="text-cyan-600 underline hover:text-cyan-800">prix chauffagiste</a>, <a href="/prix-electricien" className="text-cyan-600 underline hover:text-cyan-800">prix electricien</a> et <a href="/prix-macon" className="text-cyan-600 underline hover:text-cyan-800">prix macon</a>.
+        </p>
+      </section>
+
+      <Faq items={FAQ_ITEMS} />
+
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
+        <h2 className="text-base font-bold text-slate-800 mb-2">
+          Méthode et sources
+        </h2>
+        <p className="text-sm text-slate-500 leading-relaxed">
+          Les montants affichés sont des fourchettes indicatives, basées sur les
+          tarifs couramment observés sur le marché français en 2026 ; le prix
+          réel dépend de chaque chantier et ne remplace pas un devis. Règles de
+          TVA des travaux sur{" "}
+          <a
+            href="https://www.service-public.fr"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="text-blue-600 hover:underline"
+          >
+            service-public.fr
+          </a>
+          .
         </p>
       </section>
 

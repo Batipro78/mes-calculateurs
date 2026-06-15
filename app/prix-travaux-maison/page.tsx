@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/prix-travaux-maison" },
@@ -8,6 +9,29 @@ export const metadata: Metadata = {
   keywords:
     "prix travaux maison, cout artisan, prix macon, prix peintre, prix electricien, prix plombier, prix couvreur, prix chauffagiste, devis travaux 2026, tarif artisan",
 };
+
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Comment estimer le prix de ses travaux ?",
+    a: "Nos estimateurs utilisent les prix moyens constatés en 2026, ajustés par région (Île-de-France x1.25, grandes villes x1.10, province x1.00, rural x0.90). Sélectionnez la prestation, la surface/quantité et votre région pour obtenir une fourchette de prix réaliste.",
+  },
+  {
+    q: "Quelles aides pour réduire le coût des travaux ?",
+    a: "Selon les travaux, vous pouvez bénéficier de : MaPrimeRénov' (rénovation énergétique), TVA à 5,5 % ou 10 % (travaux dans un logement de plus de 2 ans), éco-PTZ (prêt à taux zéro), CEE (certificats d'économie d'énergie). Nos estimateurs mentionnent les aides applicables.",
+  },
+  {
+    q: "Faut-il demander plusieurs devis ?",
+    a: "Oui, il est recommandé de demander au moins 3 devis pour comparer. Nos estimateurs vous donnent une fourchette de prix pour mieux évaluer les devis reçus. Vérifiez aussi que l'artisan est assuré (décennale) et, pour les travaux énergétiques, qu'il est certifié RGE.",
+  },
+  {
+    q: "Comment bien comparer les devis de travaux ?",
+    a: "Demandez au moins trois devis détaillés et comparez-les ligne par ligne : assurez-vous qu'ils portent sur les mêmes prestations, distinguent la main d'œuvre des fournitures, indiquent les quantités et le taux de TVA, et précisent délais et garanties. Un devis anormalement bas cache souvent des prestations manquantes.",
+  },
+  {
+    q: "Comment réduire le coût global de ses travaux de rénovation ?",
+    a: "Trois leviers : regrouper les corps de métier sur une même période pour limiter les déplacements et coordonner le chantier, comparer plusieurs devis, et vérifier votre éligibilité à la TVA réduite (10 % en rénovation d'un logement de plus de 2 ans, 5,5 % pour les travaux d'amélioration énergétique) ainsi qu'aux aides comme MaPrimeRénov'.",
+  },
+];
 
 const metiers = [
   { slug: "/prix-macon", titre: "Prix Macon 2026", emoji: "🧱", desc: "Mur parpaings, dalle beton, terrasse, ravalement facade, ouverture mur porteur et plus.", gradient: "from-amber-400 to-orange-500", prestations: "10 prestations" },
@@ -23,26 +47,9 @@ const villes = [
   "Rennes", "Toulon", "Reims", "Saint-Etienne", "Le Havre", "Dijon", "Grenoble", "Angers", "Aix-en-Provence", "Brest",
 ];
 
-const faqData = [
-  { question: "Comment estimer le prix de ses travaux ?", answer: "Nos estimateurs utilisent les prix moyens constates en 2026, ajustes par region (Ile-de-France x1.25, grandes villes x1.10, province x1.00, rural x0.90). Selectionnez la prestation, la surface/quantite et votre region pour obtenir une fourchette de prix realiste." },
-  { question: "Quelles aides pour reduire le cout des travaux ?", answer: "Selon les travaux, vous pouvez beneficier de : MaPrimeRenov' (renovation energetique), TVA a 5.5% ou 10% (travaux dans un logement de plus de 2 ans), eco-PTZ (pret a taux zero), CEE (certificats d'economie d'energie). Nos estimateurs mentionnent les aides applicables." },
-  { question: "Faut-il demander plusieurs devis ?", answer: "Oui, il est recommande de demander au moins 3 devis pour comparer. Nos estimateurs vous donnent une fourchette de prix pour mieux evaluer les devis recus. Verifiez aussi que l'artisan est assure (decennale) et, pour les travaux energetiques, qu'il est certifie RGE." },
-];
-
 export default function PrixTravauxMaison() {
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqData.map((f) => ({
-      "@type": "Question",
-      name: f.question,
-      acceptedAnswer: { "@type": "Answer", text: f.answer },
-    })),
-  };
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <section className="mb-10">
         <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-3">Prix Travaux & Artisans 2026</h1>
         <p className="text-lg text-slate-600 max-w-2xl">
@@ -97,16 +104,36 @@ export default function PrixTravauxMaison() {
         </ul>
       </section>
 
-      <section className="mb-8">
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">Questions frequentes</h2>
-        <div className="space-y-4">
-          {faqData.map((f, i) => (
-            <details key={i} className="bg-white rounded-xl border border-slate-200 p-5 group">
-              <summary className="font-semibold text-slate-800 cursor-pointer group-open:mb-3">{f.question}</summary>
-              <p className="text-slate-600 text-sm">{f.answer}</p>
-            </details>
-          ))}
-        </div>
+      <Faq items={FAQ_ITEMS} />
+
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
+        <h2 className="text-base font-bold text-slate-800 mb-2">
+          Méthode et sources
+        </h2>
+        <p className="text-sm text-slate-500 leading-relaxed">
+          Les montants affichés sont des fourchettes indicatives, basées sur les
+          tarifs couramment observés sur le marché français en 2026 ; le prix
+          réel dépend de chaque chantier et ne remplace pas un devis. Aides et
+          TVA des travaux sur{" "}
+          <a
+            href="https://www.service-public.fr"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="text-blue-600 hover:underline"
+          >
+            service-public.fr
+          </a>{" "}
+          et{" "}
+          <a
+            href="https://www.maprimerenov.gouv.fr"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="text-blue-600 hover:underline"
+          >
+            maprimerenov.gouv.fr
+          </a>
+          .
+        </p>
       </section>
     </>
   );

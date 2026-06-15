@@ -4,6 +4,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import VillesLinks from "../components/VillesLinks";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/prix-peintre" },
@@ -14,45 +15,33 @@ export const metadata: Metadata = {
     "prix peintre, tarif peintre 2026, cout peinture m2, prix peinture mur, prix peinture plafond, prix peinture facade, devis peintre",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quel est le prix moyen d'un peintre au m² en 2026 ?",
+    a: "Le prix d'un peintre varie de 15 €/m² (lessivage + peinture) à 70 €/m² (peinture décorative). Peindre un mur intérieur coûte en moyenne 20 à 40 €/m² fournitures et main d'œuvre comprises. En Île-de-France, comptez 25 % de plus.",
+  },
+  {
+    q: "Combien coûte la peinture d'une pièce de 20 m² ?",
+    a: "Pour une pièce complète de 20 m² (murs + plafond), comptez entre 500 € et 1 000 € en province, fournitures et main d'œuvre incluses. Ce prix comprend la préparation des surfaces, la sous-couche et 2 couches de peinture.",
+  },
+  {
+    q: "Faut-il fournir la peinture au peintre ?",
+    a: "Non, le peintre fournit généralement la peinture et les fournitures. C'est d'ailleurs recommandé car il choisira des produits adaptés au support. De plus, vous bénéficiez de la TVA à 10 % sur les fournitures si le peintre les fournit (logement de + de 2 ans).",
+  },
+  {
+    q: "Comment bien comparer les devis de peintre ?",
+    a: "Demandez au moins trois devis détaillés et comparez-les ligne par ligne : vérifiez qu'ils portent sur les mêmes surfaces et le même nombre de couches, distinguent la main d'œuvre des fournitures, indiquent la qualité de la peinture et le taux de TVA, et précisent la préparation des supports. Un devis anormalement bas cache souvent une étape de préparation manquante.",
+  },
+  {
+    q: "Comment réduire le coût de ses travaux de peinture ?",
+    a: "Trois leviers : regrouper plusieurs pièces en une seule intervention, comparer plusieurs devis, et vérifier votre éligibilité à la TVA réduite à 10 % en rénovation d'un logement de plus de 2 ans. Préparer vous-même les murs (rebouchage, ponçage) ou fournir la peinture peut aussi alléger la facture.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Prix Peintre 2026" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quel est le prix moyen d'un peintre au m\u00b2 en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le prix d'un peintre varie de 15 \u20ac/m\u00b2 (lessivage + peinture) a 70 \u20ac/m\u00b2 (peinture decorative). Peindre un mur interieur coute en moyenne 20 a 40 \u20ac/m\u00b2 fournitures et main d'oeuvre comprises. En Ile-de-France, comptez 25% de plus.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien coute la peinture d'une piece de 20 m\u00b2 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Pour une piece complete de 20 m\u00b2 (murs + plafond), comptez entre 500 \u20ac et 1 000 \u20ac en province, fournitures et main d'oeuvre incluses. Ce prix comprend la preparation des surfaces, la sous-couche et 2 couches de peinture.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Faut-il fournir la peinture au peintre ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Non, le peintre fournit generalement la peinture et les fournitures. C'est d'ailleurs recommande car il choisira des produits adaptes au support. De plus, vous beneficiez de la TVA a 10% sur les fournitures si le peintre les fournit (logement de + de 2 ans).",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Prix Peintre" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -123,6 +112,29 @@ export default function Page() {
       </section>
 
       <VillesLinks metierSlug="/prix-peintre" />
+      <Faq items={FAQ_ITEMS} />
+
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
+        <h2 className="text-base font-bold text-slate-800 mb-2">
+          Méthode et sources
+        </h2>
+        <p className="text-sm text-slate-500 leading-relaxed">
+          Les montants affichés sont des fourchettes indicatives, basées sur les
+          tarifs couramment observés sur le marché français en 2026 ; le prix
+          réel dépend de chaque chantier et ne remplace pas un devis. Règles de
+          TVA des travaux sur{" "}
+          <a
+            href="https://www.service-public.fr"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="text-blue-600 hover:underline"
+          >
+            service-public.fr
+          </a>
+          .
+        </p>
+      </section>
+
       <RelatedCalculators currentSlug="/prix-peintre" />
     </div>
   );

@@ -4,6 +4,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import VillesLinks from "../components/VillesLinks";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/prix-electricien" },
@@ -14,53 +15,37 @@ export const metadata: Metadata = {
     "prix electricien, tarif electricien 2026, cout electricien, prix installation electrique, prix tableau electrique, prix prise electrique, prix borne recharge, devis electricien",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quel est le tarif horaire moyen d'un électricien en 2026 ?",
+    a: "Le tarif horaire d'un électricien varie de 35 à 80 € TTC selon la région et la complexité. En Île-de-France, comptez 70 à 80 €/h contre 35 à 65 €/h en province. Les interventions le week-end ou en urgence coûtent 10 à 15 € de plus par heure.",
+  },
+  {
+    q: "Combien coûte une rénovation électrique complète ?",
+    a: "Une rénovation électrique complète coûte entre 90 et 200 €/m² en 2026. Pour une maison de 100 m², le budget se situe entre 9 000 € et 20 000 € TTC, selon l'état de l'installation existante et le niveau de prestation souhaité.",
+  },
+  {
+    q: "Quel est le prix d'installation d'une borne de recharge IRVE ?",
+    a: "L'installation d'une borne de recharge IRVE (7,4 kW) coûte entre 1 500 € et 2 500 € TTC, installation comprise. La TVA est réduite à 5,5 % pour les logements de plus de 2 ans, et la prime Advenir peut couvrir une partie du coût. L'installation doit être réalisée par un électricien certifié IRVE.",
+  },
+  {
+    q: "Quelle TVA pour les travaux d'électricité ?",
+    a: "La TVA est de 10 % pour les travaux de rénovation électrique dans un logement de plus de 2 ans. Pour l'installation d'une borne IRVE, la TVA est réduite à 5,5 %. Pour une construction neuve, la TVA reste à 20 %.",
+  },
+  {
+    q: "Faut-il faire appel à un électricien certifié ?",
+    a: "Pour la plupart des travaux, une qualification reconnue (comme Qualifelec) est un gage de sérieux. Elle devient indispensable dans certains cas : la pose d'une borne de recharge de plus de 3,7 kW exige un électricien certifié IRVE, et toute nouvelle installation doit recevoir l'attestation de conformité Consuel avant la mise sous tension.",
+  },
+  {
+    q: "Comment réduire le coût de ses travaux électriques ?",
+    a: "Trois leviers principaux : demandez au moins trois devis détaillés pour comparer, regroupez vos travaux en une seule intervention pour limiter les déplacements, et vérifiez votre éligibilité aux aides (TVA réduite à 10 % ou 5,5 %, prime Advenir pour une borne, MaPrimeRénov' pour la VMC). Fournir vous-même certaines fournitures peut aussi faire baisser la facture.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Prix Electricien 2026" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quel est le tarif horaire moyen d'un electricien en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le tarif horaire d'un electricien varie de 35 a 80 € TTC selon la region et la complexite. En Ile-de-France, comptez 70 a 80 €/h contre 35 a 65 €/h en province. Les interventions le week-end ou en urgence coutent 10 a 15 € de plus par heure.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien coute une renovation electrique complete ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Une renovation electrique complete coute entre 90 et 200 €/m² en 2026. Pour une maison de 100 m², le budget se situe entre 9 000 € et 20 000 € TTC, selon l'etat de l'installation existante et le niveau de prestation souhaite.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quel est le prix d'installation d'une borne de recharge IRVE ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "L'installation d'une borne de recharge IRVE (7,4 kW) coute entre 1 500 € et 2 500 € TTC, installation comprise. La TVA est reduite a 5,5% pour les logements de plus de 2 ans. Un credit d'impot de 300 € est disponible. L'installation doit etre realisee par un electricien certifie IRVE.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle TVA pour les travaux d'electricite ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La TVA est de 10% pour les travaux de renovation electrique dans un logement de plus de 2 ans. Pour l'installation d'une borne IRVE, la TVA est reduite a 5,5%. Pour une construction neuve, la TVA reste a 20%.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Prix Electricien" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -134,6 +119,47 @@ export default function Page() {
         </h3>
         <p className="text-slate-600 leading-relaxed">
           Pour planifier vos travaux electriques, pensez a estimer le <strong>budget global</strong> : utilisez notre <a href="/simulateur-pret-immobilier" className="text-blue-600 underline hover:text-blue-800">simulateur de pret immobilier</a> pour calculer vos mensualites, verifiez votre <a href="/calcul-capacite-emprunt" className="text-blue-600 underline hover:text-blue-800">capacite d&apos;emprunt</a> et estimez les <a href="/frais-de-notaire" className="text-blue-600 underline hover:text-blue-800">frais de notaire</a> si vous achetez un bien a renover. Si vous prevoyez d&apos;autres travaux, consultez aussi nos estimateurs <a href="/prix-chauffagiste" className="text-blue-600 underline hover:text-blue-800">prix chauffagiste</a>, <a href="/prix-plombier" className="text-blue-600 underline hover:text-blue-800">prix plombier</a> et <a href="/prix-peintre" className="text-blue-600 underline hover:text-blue-800">prix peintre</a>.
+        </p>
+      </section>
+
+      <Faq items={FAQ_ITEMS} />
+
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
+        <h2 className="text-base font-bold text-slate-800 mb-2">
+          Méthode et sources
+        </h2>
+        <p className="text-sm text-slate-500 leading-relaxed">
+          Les montants affichés sont des fourchettes indicatives, basées sur les
+          tarifs couramment observés sur le marché français en 2026 ; le prix
+          réel dépend de chaque chantier et ne remplace pas un devis. Règles de
+          TVA sur{" "}
+          <a
+            href="https://www.service-public.fr"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="text-blue-600 hover:underline"
+          >
+            service-public.fr
+          </a>
+          , prime borne de recharge sur{" "}
+          <a
+            href="https://advenir.mobi"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="text-blue-600 hover:underline"
+          >
+            advenir.mobi
+          </a>{" "}
+          et aides à la rénovation sur{" "}
+          <a
+            href="https://www.maprimerenov.gouv.fr"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="text-blue-600 hover:underline"
+          >
+            maprimerenov.gouv.fr
+          </a>
+          .
         </p>
       </section>
 

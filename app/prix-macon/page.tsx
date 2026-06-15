@@ -4,6 +4,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import VillesLinks from "../components/VillesLinks";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/prix-macon" },
@@ -14,45 +15,33 @@ export const metadata: Metadata = {
     "prix macon, tarif macon 2026, cout macon m2, prix mur parpaings, prix dalle beton, prix terrasse beton, prix ravalement facade, devis macon",
 };
 
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Quel est le prix moyen d'un maçon au m² en 2026 ?",
+    a: "Le prix d'un maçon varie de 25 €/m² (chape béton) à 150 €/m² (terrasse béton) selon la prestation. Un mur en parpaings coûte en moyenne 50 à 80 €/m² fournitures et main d'œuvre comprises. En Île-de-France, comptez 25 % de plus.",
+  },
+  {
+    q: "Combien coûte une ouverture dans un mur porteur ?",
+    a: "Une ouverture dans un mur porteur coûte entre 1 500 € et 4 000 € en forfait, incluant l'étude de structure, la pose d'un IPN et la finition. Ce prix varie selon l'épaisseur du mur et la taille de l'ouverture.",
+  },
+  {
+    q: "Quelle TVA pour les travaux de maçonnerie ?",
+    a: "La TVA est de 10 % pour les travaux de rénovation dans un logement de plus de 2 ans (au lieu de 20 %). Pour une construction neuve ou un agrandissement, la TVA reste à 20 %.",
+  },
+  {
+    q: "Comment bien comparer les devis de maçon ?",
+    a: "Demandez au moins trois devis détaillés et comparez-les ligne par ligne : vérifiez qu'ils portent sur les mêmes prestations, distinguent la main d'œuvre des fournitures, indiquent les quantités et le taux de TVA, et précisent délais et garanties. Un devis anormalement bas cache souvent des prestations manquantes.",
+  },
+  {
+    q: "Comment réduire le coût de ses travaux de maçonnerie ?",
+    a: "Trois leviers : regrouper plusieurs travaux en une seule intervention pour limiter les déplacements, comparer plusieurs devis, et vérifier votre éligibilité à la TVA réduite (10 % en rénovation d'un logement de plus de 2 ans, voire 5,5 % pour les travaux d'amélioration énergétique). Anticiper le chantier hors saison de forte demande peut aussi jouer sur le prix.",
+  },
+];
+
 export default function Page() {
   return (
     <div>
       <WebAppJsonLd name="Prix Macon 2026" />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: [
-              {
-                "@type": "Question",
-                name: "Quel est le prix moyen d'un macon au m\u00b2 en 2026 ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Le prix d'un macon varie de 25 \u20ac/m\u00b2 (chape beton) a 150 \u20ac/m\u00b2 (terrasse beton) selon la prestation. Un mur en parpaings coute en moyenne 50 a 80 \u20ac/m\u00b2 fournitures et main d'oeuvre comprises. En Ile-de-France, comptez 25% de plus.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Combien coute une ouverture dans un mur porteur ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "Une ouverture dans un mur porteur coute entre 1 500 \u20ac et 4 000 \u20ac en forfait, incluant l'etude de structure, la pose d'un IPN et la finition. Ce prix varie selon l'epaisseur du mur et la taille de l'ouverture.",
-                },
-              },
-              {
-                "@type": "Question",
-                name: "Quelle TVA pour les travaux de maconnerie ?",
-                acceptedAnswer: {
-                  "@type": "Answer",
-                  text: "La TVA est de 10% pour les travaux de renovation dans un logement de plus de 2 ans (au lieu de 20%). Pour une construction neuve ou un agrandissement, la TVA reste a 20%.",
-                },
-              },
-            ],
-          }),
-        }}
-      />
       <Breadcrumb currentPage="Prix Macon" />
 
       <div className="flex items-center gap-3 mb-2">
@@ -130,6 +119,29 @@ export default function Page() {
       </section>
 
       <VillesLinks metierSlug="/prix-macon" />
+      <Faq items={FAQ_ITEMS} />
+
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
+        <h2 className="text-base font-bold text-slate-800 mb-2">
+          Méthode et sources
+        </h2>
+        <p className="text-sm text-slate-500 leading-relaxed">
+          Les montants affichés sont des fourchettes indicatives, basées sur les
+          tarifs couramment observés sur le marché français en 2026 ; le prix
+          réel dépend de chaque chantier et ne remplace pas un devis. Règles de
+          TVA des travaux sur{" "}
+          <a
+            href="https://www.service-public.fr"
+            target="_blank"
+            rel="noopener noreferrer nofollow"
+            className="text-blue-600 hover:underline"
+          >
+            service-public.fr
+          </a>
+          .
+        </p>
+      </section>
+
       <RelatedCalculators currentSlug="/prix-macon" />
     </div>
   );
