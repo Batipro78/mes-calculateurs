@@ -111,8 +111,8 @@ export default function Page() {
 
         <h3 className="font-bold text-slate-800 mt-6 mb-3">Astuce de calcul mental</h3>
         <p className="text-slate-600 leading-relaxed">
-          Pour estimer rapidement des kg en livres : <strong>doublez le nombre et ajoutez 10%</strong>.
-          Exemple : 70 kg &asymp; 70 &times; 2 + 7 = 147 lbs (valeur exacte : 154,3 lbs). Moins precis mais utile en voyage.
+          Pour estimer rapidement des kg en livres : <strong>doublez le nombre, puis ajoutez 10 % du résultat</strong>.
+          Exemple : 70 kg &rarr; 70 &times; 2 = 140, puis +10 % (soit 14) = 154 lbs (valeur exacte : 154,3 lbs). Rapide et très proche de la réalité.
         </p>
       </section>
 

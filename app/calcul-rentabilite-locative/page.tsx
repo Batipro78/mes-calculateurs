@@ -16,6 +16,39 @@ export const metadata: Metadata = {
     "calcul rentabilite locative, rentabilite brute nette, rendement locatif, investissement immobilier rentabilite, simulateur rentabilite locative, rendement immobilier 2026",
 };
 
+// Prose en chaines JS (guillemets doubles) pour eviter les soucis d'apostrophe.
+const SECTIONS: { title: string; paras: string[] }[] = [
+  {
+    title: "Rentabilité brute, nette et nette-nette : trois niveaux",
+    paras: [
+      "La rentabilité brute est la plus simple : loyer annuel divisé par le prix d'achat. C'est un indicateur rapide pour comparer des biens, mais il est optimiste car il ignore toutes les dépenses.",
+      "La rentabilité nette déduit les charges réelles : taxe foncière, charges de copropriété non récupérables, assurance propriétaire non occupant, frais de gestion et vacance locative. Elle reflète le rendement avant impôt.",
+      "La rentabilité nette-nette va plus loin en déduisant la fiscalité : impôt sur les revenus fonciers et prélèvements sociaux de 17,2 %. C'est le chiffre le plus honnête, celui qui correspond à ce qui reste réellement dans votre poche.",
+    ],
+  },
+  {
+    title: "Le cash-flow : l'indicateur qui compte au quotidien",
+    paras: [
+      "Au-delà du pourcentage, c'est le cash-flow qui détermine si un investissement vous coûte ou vous rapporte chaque mois. Cash-flow = loyers encaissés − (mensualité de crédit + charges + impôts).",
+      "Un cash-flow positif signifie que le bien s'autofinance et génère un revenu complémentaire. Un cash-flow négatif impose un effort d'épargne mensuel : ce n'est pas forcément un mauvais choix si la plus-value à la revente est attendue, mais il faut pouvoir l'assumer.",
+    ],
+  },
+  {
+    title: "Ce qui réduit la rentabilité réelle",
+    paras: [
+      "Une rentabilité brute affichée à 6 % peut facilement tomber à 3 % net-net une fois tout pris en compte. Les principaux postes qui grignotent le rendement sont la vacance locative (un mois sans locataire représente déjà plus de 8 % du loyer annuel), les charges non récupérables et les frais de gestion si vous passez par une agence (souvent 6 à 8 % des loyers).",
+      "S'ajoutent l'entretien et les travaux, la taxe foncière, et surtout la fiscalité : les revenus fonciers s'ajoutent à votre revenu imposable et subissent 17,2 % de prélèvements sociaux. Toujours raisonner en net-net avant d'investir.",
+    ],
+  },
+  {
+    title: "Comment améliorer sa rentabilité locative",
+    paras: [
+      "Plusieurs leviers existent. Le premier est le prix d'achat : chaque euro négocié améliore mécaniquement le rendement. Le choix de la ville compte aussi, certaines offrant un bien meilleur rapport prix/loyer que les grandes métropoles tendues.",
+      "Côté exploitation, la location meublée (statut LMNP) offre une fiscalité souvent plus avantageuse grâce à l'amortissement du bien. La colocation ou la location de courte durée peuvent augmenter les loyers, au prix d'une gestion plus active. Enfin, un bon emplacement limite la vacance, qui est l'ennemie n°1 de la rentabilité.",
+    ],
+  },
+];
+
 const FAQ_ITEMS: FaqItem[] = [
   {
     q: "Comment calculer la rentabilite locative brute ?",
@@ -32,6 +65,18 @@ const FAQ_ITEMS: FaqItem[] = [
   {
     q: "Faut-il inclure les frais de notaire dans le calcul ?",
     a: "Oui. Pour obtenir une rentabilite nette realiste, l'investissement total doit inclure le prix d'achat, les frais de notaire (7 a 8% dans l'ancien, 2 a 3% dans le neuf) et les travaux eventuels. Ne pas les inclure surestime la rentabilite.",
+  },
+  {
+    q: "Qu'est-ce que la rentabilité nette-nette ?",
+    a: "C'est la rentabilité après impôts. On part de la rentabilité nette de charges, puis on déduit l'impôt sur les revenus fonciers et les prélèvements sociaux de 17,2 %. C'est l'indicateur le plus réaliste, car il correspond à ce qui reste vraiment après toutes les dépenses et la fiscalité.",
+  },
+  {
+    q: "Qu'est-ce que le cash-flow d'un investissement locatif ?",
+    a: "Le cash-flow est la somme qui reste chaque mois après avoir payé la mensualité de crédit, les charges et les impôts avec les loyers encaissés. S'il est positif, le bien s'autofinance et rapporte. S'il est négatif, il demande un effort d'épargne mensuel.",
+  },
+  {
+    q: "La location meublée est-elle plus rentable ?",
+    a: "Souvent oui, principalement grâce à la fiscalité. En meublé non professionnel (LMNP) au régime réel, l'amortissement du bien et du mobilier permet de réduire fortement, voire d'annuler, l'impôt sur les loyers pendant plusieurs années. Les loyers d'un meublé sont aussi généralement plus élevés, au prix d'une gestion plus active.",
   },
 ];
 
@@ -109,6 +154,25 @@ export default function Page() {
           </table>
         </div>
       </section>
+
+      {/* Sections de contenu detaille (prose en chaines JS) */}
+      {SECTIONS.map((section) => (
+        <section
+          key={section.title}
+          className="mt-8 bg-white rounded-2xl border border-slate-200 p-8"
+        >
+          <h2 className="text-xl font-bold text-slate-800 mb-4">
+            {section.title}
+          </h2>
+          <div className="space-y-3">
+            {section.paras.map((p, i) => (
+              <p key={i} className="text-slate-600 leading-relaxed">
+                {p}
+              </p>
+            ))}
+          </div>
+        </section>
+      ))}
 
       <Faq items={FAQ_ITEMS} />
 

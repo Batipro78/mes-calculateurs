@@ -4,6 +4,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import LeadCaptureForm from "../components/LeadCaptureForm";
+import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-assurance-emprunteur" },
@@ -14,52 +15,32 @@ export const metadata: Metadata = {
     "assurance emprunteur, simulateur assurance pret immobilier, cout assurance pret, delegation assurance emprunteur, loi Lemoine, economie assurance pret",
 };
 
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: [
-    {
-      "@type": "Question",
-      name: "Combien coute une assurance de pret immobilier en 2026 ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Le taux moyen d'une assurance emprunteur souscrite chez la banque se situe entre 0,30% et 0,60% par an du capital initial en 2026, selon l'age et le profil (fumeur/non-fumeur). En delegation (assurance externe), les taux tombent a 0,10%-0,30%. Pour un emprunt de 200 000 EUR sur 20 ans, cela represente environ 12 000-24 000 EUR chez la banque contre 4 000-12 000 EUR en delegation.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Puis-je changer d'assurance emprunteur a tout moment ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Oui, depuis la loi Lemoine du 1er juin 2022, vous pouvez resilier votre assurance emprunteur a tout moment, sans frais et sans attendre une date anniversaire. La nouvelle assurance doit offrir des garanties equivalentes a l'ancienne. L'economie moyenne constatee est de 5 000 a 20 000 EUR sur la duree du pret.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Comment fonctionne la quotite d'assurance emprunteur ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "La quotite represente le pourcentage du capital assure par personne. Pour un emprunteur seul : 100% (le pret est couvert a 100% en cas de deces/invalidite). Pour un couple : 100% chacun (total 200%) pour une protection maximale, ou 50/50 (total 100%) pour reduire le cout. La quotite 200% double le cout mais offre une securite totale : le survivant n'a plus de mensualites a payer.",
-      },
-    },
-    {
-      "@type": "Question",
-      name: "Quelles garanties sont obligatoires dans une assurance emprunteur ?",
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: "Les banques exigent generalement : deces (DC), perte totale et irreversible d'autonomie (PTIA), invalidite permanente totale (IPT). L'incapacite temporaire de travail (ITT) est optionnelle pour les residences secondaires mais obligatoire pour la residence principale. La garantie perte d'emploi est optionnelle et peu recommandee (couteuse avec de nombreuses exclusions).",
-      },
-    },
-  ],
-};
+const FAQ_ITEMS: FaqItem[] = [
+  {
+    q: "Combien coûte une assurance de prêt immobilier en 2026 ?",
+    a: "Le taux moyen d'une assurance emprunteur souscrite chez la banque se situe entre 0,30 % et 0,60 % par an du capital initial en 2026, selon l'âge et le profil (fumeur/non-fumeur). En délégation (assurance externe), les taux tombent à 0,10 %-0,30 %. Pour un emprunt de 200 000 € sur 20 ans, cela représente environ 12 000-24 000 € chez la banque contre 4 000-12 000 € en délégation.",
+  },
+  {
+    q: "Puis-je changer d'assurance emprunteur à tout moment ?",
+    a: "Oui, depuis la loi Lemoine du 1er juin 2022, vous pouvez résilier votre assurance emprunteur à tout moment, sans frais et sans attendre une date anniversaire. La nouvelle assurance doit offrir des garanties équivalentes à l'ancienne. L'économie moyenne constatée est de 5 000 à 20 000 € sur la durée du prêt.",
+  },
+  {
+    q: "L'assurance emprunteur est-elle obligatoire ?",
+    a: "Légalement, non : aucune loi ne l'impose. En pratique, les banques l'exigent presque toujours pour accorder un prêt immobilier. Vous êtes en revanche libre de choisir l'assureur (délégation) : la banque ne peut pas vous imposer son contrat dès lors que les garanties sont équivalentes.",
+  },
+  {
+    q: "Comment fonctionne la quotité d'assurance emprunteur ?",
+    a: "La quotité représente le pourcentage du capital assuré par personne. Pour un emprunteur seul : 100 % (le prêt est couvert à 100 % en cas de décès/invalidité). Pour un couple : 100 % chacun (total 200 %) pour une protection maximale, ou 50/50 (total 100 %) pour réduire le coût. La quotité 200 % double le coût mais offre une sécurité totale : le survivant n'a plus de mensualités à payer.",
+  },
+  {
+    q: "Quelles garanties sont obligatoires dans une assurance emprunteur ?",
+    a: "Les banques exigent généralement : décès (DC), perte totale et irréversible d'autonomie (PTIA), invalidité permanente totale (IPT). L'incapacité temporaire de travail (ITT) est optionnelle pour les résidences secondaires mais obligatoire pour la résidence principale. La garantie perte d'emploi est optionnelle et peu recommandée (coûteuse avec de nombreuses exclusions).",
+  },
+];
 
 export default function Page() {
   return (
     <div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
       <WebAppJsonLd name="Simulateur Assurance Emprunteur" description="Simulateur gratuit du cout de l'assurance de pret immobilier" category="FinanceApplication" />
       <Breadcrumb currentPage="Simulateur Assurance Emprunteur" />
 
@@ -147,6 +128,8 @@ export default function Page() {
           <li><strong>Arreter de fumer</strong> 2 ans avant souscription peut diviser le taux par 2</li>
         </ul>
       </section>
+
+      <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/simulateur-assurance-emprunteur" />
     </div>
