@@ -1,3 +1,4 @@
+import { fmtEUR_BE as fmt, fmtIntBE as fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurCongesBE from "../CalculateurCongesBE";
@@ -7,17 +8,6 @@ import { type StatutTravailleur, calculerConges } from "../congesPayesBeCalc";
 const BRUTS = [2000, 2500, 3000, 3500, 4000, 5000];
 const STATUTS: StatutTravailleur[] = ["employe", "ouvrier"];
 const MOIS = [6, 9, 12];
-
-function fmt(n: number): string {
-  return n.toLocaleString("fr-BE", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-}
-
-function fmtInt(n: number): string {
-  return Math.round(n).toLocaleString("fr-BE");
-}
 
 interface ParsedSlug {
   brut: number;
@@ -300,7 +290,6 @@ export default async function Page({
         Calculateur interactif
       </h2>
       <CalculateurCongesBE />
-
 
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">

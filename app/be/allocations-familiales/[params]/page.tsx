@@ -1,3 +1,4 @@
+import { fmtEUR_BE as fmt, fmtIntBE as fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurAllocationsBE from "../CalculateurAllocationsBE";
@@ -6,17 +7,6 @@ import {
   calculerAllocationsBE,
   RegionBE,
 } from "../allocationsFamilialesBeCalc";
-
-function fmt(n: number): string {
-  return n.toLocaleString("fr-BE", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-}
-
-function fmtInt(n: number): string {
-  return Math.round(n).toLocaleString("fr-BE");
-}
 
 function parseSlug(slug: string): {
   region: RegionBE;
@@ -212,7 +202,6 @@ export default async function Page({
         Calculateur interactif
       </h2>
       <CalculateurAllocationsBE />
-
 
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">

@@ -1,17 +1,11 @@
 "use client";
+import { fmtEUR_BE as fmt } from "@/app/lib/fmt";
 
 import { useState } from "react";
 import {
   calculerIndemniteKm,
   REGIMES_INDEMNITE,
 } from "./indemniteKmBeCalc";
-
-function fmt(montant: number): string {
-  return montant.toLocaleString("fr-BE", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-}
 
 export default function CalculateurIndemniteKmBE() {
   const [distance, setDistance] = useState<string>("1000");

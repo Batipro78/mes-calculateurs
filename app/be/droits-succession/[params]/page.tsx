@@ -1,3 +1,4 @@
+import { fmtIntBE as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurSuccessionBE from "../CalculateurSuccessionBE";
@@ -11,10 +12,6 @@ const REGIONS: { slug: string; value: RegionBE; label: string }[] = [
   { slug: "bruxelles", value: "bruxelles", label: "Bruxelles" },
 ];
 const HERITIERS_VALS = [1, 2, 3];
-
-function fmt(n: number): string {
-  return Math.round(n).toLocaleString("fr-BE");
-}
 
 type Parsed = { patrimoine: number; region: typeof REGIONS[number]; heritiers: number };
 
@@ -148,7 +145,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
 
       <h2 className="text-xl font-bold text-slate-800 mb-4">Calculateur interactif</h2>
       <CalculateurSuccessionBE />
-
 
       <div className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
         <h3 className="font-bold text-slate-800 mb-3">

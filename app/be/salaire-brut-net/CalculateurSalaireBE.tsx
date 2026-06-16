@@ -1,4 +1,5 @@
 "use client";
+import { fmtEUR_BE as fmt, fmtIntBE as fmtInt } from "@/app/lib/fmt";
 
 import { useState } from "react";
 import {
@@ -15,17 +16,6 @@ const SITUATIONS: { value: SituationFamiliale; label: string; desc: string }[] =
   { value: "marie-1-revenu", label: "Marie 1 revenu", desc: "Conjoint sans revenu" },
   { value: "marie-2-revenus", label: "Marie 2 revenus", desc: "Conjoint salarie" },
 ];
-
-function fmt(montant: number): string {
-  return montant.toLocaleString("fr-BE", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-}
-
-function fmtInt(montant: number): string {
-  return Math.round(montant).toLocaleString("fr-BE");
-}
 
 export default function CalculateurSalaireBE() {
   const [montant, setMontant] = useState<string>("3000");

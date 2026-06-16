@@ -1,3 +1,4 @@
+import { fmtEUR_BE as fmt, fmtIntBE as fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurTVABE from "../CalculateurTVABE";
@@ -9,17 +10,6 @@ const TAUX = [
   { slug: "12", valeur: 0.12, label: "12 %", desc: "intermediaire" },
   { slug: "6", valeur: 0.06, label: "6 %", desc: "reduit" },
 ];
-
-function fmt(n: number): string {
-  return n.toLocaleString("fr-BE", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-}
-
-function fmtInt(n: number): string {
-  return Math.round(n).toLocaleString("fr-BE");
-}
 
 function parseSlug(slug: string): { montant: number; taux: typeof TAUX[number] } | null {
   const m = slug.match(/^(\d+)-euros-(\d+)-pourcent$/);
@@ -178,7 +168,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         Calculateur interactif
       </h2>
       <CalculateurTVABE />
-
 
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">

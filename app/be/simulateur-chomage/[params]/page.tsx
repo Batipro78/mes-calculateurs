@@ -1,3 +1,4 @@
+import { fmtIntBE as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import SimulateurChomageBE from "../SimulateurChomageBE";
@@ -14,10 +15,6 @@ const SITUATIONS: { slug: string; value: SituationFamilialeChomage; label: strin
   { slug: "cohabitant", value: "cohabitant-sans-charge", label: "Cohabitant simple" },
 ];
 const MOIS_VALEURS = [3, 6, 12, 18, 24];
-
-function fmt(n: number): string {
-  return Math.round(n).toLocaleString("fr-BE");
-}
 
 type Parsed = { brut: number; situation: typeof SITUATIONS[number]; mois: number };
 
@@ -182,7 +179,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         Calculateur interactif
       </h2>
       <SimulateurChomageBE />
-
 
       <div className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
         <h3 className="font-bold text-slate-800 mb-3">

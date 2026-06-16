@@ -1,4 +1,5 @@
 "use client";
+import { fmtIntBE as fmt } from "@/app/lib/fmt";
 
 import { useState } from "react";
 import {
@@ -12,10 +13,6 @@ const SITUATIONS: { value: SituationFamilialeChomage; label: string; desc: strin
   { value: "cohabitant-charge-famille", label: "Chef de famille", desc: "Charge de famille" },
   { value: "cohabitant-sans-charge", label: "Cohabitant simple", desc: "Sans charge de famille" },
 ];
-
-function fmt(n: number): string {
-  return Math.round(n).toLocaleString("fr-BE");
-}
 
 export default function SimulateurChomageBE() {
   const [brut, setBrut] = useState<string>("3000");

@@ -1,14 +1,8 @@
 "use client";
+import { fmtEUR_BE as fmt } from "@/app/lib/fmt";
 
 import { useState } from "react";
 import { calculerPlusValueBE, type TypeBien } from "./plusValueImmoBeCalc";
-
-function fmt(montant: number): string {
-  return montant.toLocaleString("fr-BE", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-}
 
 export default function CalculateurPlusValueBE() {
   const [prixAchat, setPrixAchat] = useState<string>("200000");

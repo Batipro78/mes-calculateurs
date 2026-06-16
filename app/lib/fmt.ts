@@ -32,3 +32,26 @@ export function fmtDec(n: number, digits = 2): string {
     maximumFractionDigits: digits,
   });
 }
+
+/* --- Variantes belges (locale fr-BE) pour les calculateurs /be --- */
+
+/** 2 décimales fixes, format belge — ex: 1.234,50. */
+export function fmtEUR_BE(n: number): string {
+  return n.toLocaleString("fr-BE", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+}
+
+/** Entier arrondi, format belge — ex: 1.235. */
+export function fmtIntBE(n: number): string {
+  return Math.round(n).toLocaleString("fr-BE");
+}
+
+/** Pourcentage (ratio × 100) à 2 décimales, format belge — ex: 0,21 -> 21,00. */
+export function fmtPctBE(n: number): string {
+  return (n * 100).toLocaleString("fr-BE", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+}

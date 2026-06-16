@@ -1,4 +1,5 @@
 "use client";
+import { fmtIntBE as fmt } from "@/app/lib/fmt";
 
 import { useState } from "react";
 import {
@@ -8,10 +9,6 @@ import {
 } from "./capaciteEmpruntBeCalc";
 
 const DUREES = [15, 20, 25, 30];
-
-function fmt(n: number): string {
-  return Math.round(n).toLocaleString("fr-BE");
-}
 
 export default function CalculateurCapaciteBE() {
   const [revenu, setRevenu] = useState<string>("2500");

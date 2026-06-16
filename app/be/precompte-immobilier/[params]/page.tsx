@@ -1,3 +1,4 @@
+import { fmtIntBE as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurPrecompteImmobilier from "../CalculateurPrecompteImmobilier";
@@ -18,10 +19,6 @@ const REGIONS: {
   { slug: "flandre", value: "flandre", label: "Flandre", centimesDefaut: 1100 },
   { slug: "bruxelles", value: "bruxelles", label: "Bruxelles", centimesDefaut: 2750 },
 ];
-
-function fmt(n: number): string {
-  return Math.round(n).toLocaleString("fr-BE");
-}
 
 type Parsed = {
   rc: number;
@@ -259,7 +256,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         Calculateur interactif (avec votre commune)
       </h2>
       <CalculateurPrecompteImmobilier />
-
 
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">

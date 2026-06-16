@@ -1,17 +1,11 @@
 "use client";
+import { fmtEUR_BE as fmt } from "@/app/lib/fmt";
 
 import { useState } from "react";
 import {
   calculerAllocationsBE,
   RegionBE,
 } from "./allocationsFamilialesBeCalc";
-
-function fmt(montant: number): string {
-  return montant.toLocaleString("fr-BE", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-}
 
 export default function CalculateurAllocationsBE() {
   const [region, setRegion] = useState<RegionBE>("wallonie");

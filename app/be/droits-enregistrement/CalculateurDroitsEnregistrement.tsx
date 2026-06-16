@@ -1,4 +1,5 @@
 "use client";
+import { fmtIntBE as fmt } from "@/app/lib/fmt";
 
 import { useState } from "react";
 import {
@@ -11,10 +12,6 @@ const REGIONS: { value: RegionBE; label: string; flag: string; couleur: string }
   { value: "flandre", label: "Flandre", flag: "🦁", couleur: "from-yellow-400 to-amber-500" },
   { value: "bruxelles", label: "Bruxelles", flag: "🌸", couleur: "from-blue-500 to-indigo-500" },
 ];
-
-function fmt(montant: number): string {
-  return Math.round(montant).toLocaleString("fr-BE");
-}
 
 export default function CalculateurDroitsEnregistrement() {
   const [prix, setPrix] = useState<string>("300000");

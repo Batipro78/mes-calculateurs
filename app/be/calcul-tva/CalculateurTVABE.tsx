@@ -1,4 +1,5 @@
 "use client";
+import { fmtEUR_BE as fmt } from "@/app/lib/fmt";
 
 import { useState } from "react";
 
@@ -10,13 +11,6 @@ const TAUX_TVA_BE = [
   { valeur: 0.06, label: "6 %", desc: "Reduit" },
   { valeur: 0, label: "0 %", desc: "Exonere" },
 ];
-
-function fmt(montant: number): string {
-  return montant.toLocaleString("fr-BE", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-}
 
 export default function CalculateurTVABE() {
   const [montant, setMontant] = useState<string>("1000");

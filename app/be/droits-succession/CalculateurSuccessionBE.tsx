@@ -1,4 +1,5 @@
 "use client";
+import { fmtIntBE as fmt } from "@/app/lib/fmt";
 
 import { useState } from "react";
 import {
@@ -12,10 +13,6 @@ const REGIONS: { value: RegionBE; label: string; flag: string }[] = [
   { value: "flandre", label: "Flandre", flag: "🦁" },
   { value: "bruxelles", label: "Bruxelles", flag: "🌸" },
 ];
-
-function fmt(n: number): string {
-  return Math.round(n).toLocaleString("fr-BE");
-}
 
 export default function CalculateurSuccessionBE() {
   const [patrimoine, setPatrimoine] = useState<string>("300000");

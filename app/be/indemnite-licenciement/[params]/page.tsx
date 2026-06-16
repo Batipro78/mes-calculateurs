@@ -1,3 +1,4 @@
+import { fmtIntBE as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurIndemniteBE from "../CalculateurIndemniteBE";
@@ -9,10 +10,6 @@ import {
 
 const BRUTS = [2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000];
 const ANNEES = [1, 2, 5, 10, 15, 20, 25, 30];
-
-function fmt(n: number): string {
-  return Math.round(n).toLocaleString("fr-BE");
-}
 
 type Parsed = { brut: number; annees: number };
 
@@ -169,7 +166,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         Calculateur interactif
       </h2>
       <CalculateurIndemniteBE />
-
 
       <div className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
         <h3 className="font-bold text-slate-800 mb-3">

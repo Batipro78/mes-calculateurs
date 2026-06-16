@@ -1,3 +1,4 @@
+import { fmtIntBE as fmt, fmtEUR_BE as fmt2 } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import SimulateurPretBE from "../SimulateurPretBE";
@@ -6,17 +7,6 @@ import { calculerPretBE, TAUX_MOYENS_BE } from "../pretImmoBeCalc";
 
 const MONTANTS = [100000, 150000, 200000, 250000, 300000, 350000, 400000, 500000, 600000];
 const DUREES = [15, 20, 25, 30];
-
-function fmt(n: number): string {
-  return Math.round(n).toLocaleString("fr-BE");
-}
-
-function fmt2(n: number): string {
-  return n.toLocaleString("fr-BE", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-}
 
 type Parsed = { montant: number; duree: number };
 
@@ -165,7 +155,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
 
       <h2 className="text-xl font-bold text-slate-800 mb-4">Calculateur interactif (taux personnalise)</h2>
       <SimulateurPretBE />
-
 
       <div className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
         <h3 className="font-bold text-slate-800 mb-3">Autres montants sur {parsed.duree} ans</h3>

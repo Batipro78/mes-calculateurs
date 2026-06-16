@@ -1,3 +1,4 @@
+import { fmtIntBE as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurSalaireBE from "../CalculateurSalaireBE";
@@ -15,10 +16,6 @@ const SITUATIONS: { slug: string; value: SituationFamiliale; label: string }[] =
   { slug: "marie-1-revenu", value: "marie-1-revenu", label: "Marie 1 revenu" },
   { slug: "marie-2-revenus", value: "marie-2-revenus", label: "Marie 2 revenus" },
 ];
-
-function fmt(n: number): string {
-  return Math.round(n).toLocaleString("fr-BE");
-}
 
 type Parsed =
   | { kind: "brut"; brut: number; situation: typeof SITUATIONS[number] }
@@ -276,7 +273,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         Calculateur interactif (ajustez enfants & situation)
       </h2>
       <CalculateurSalaireBE />
-
 
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">

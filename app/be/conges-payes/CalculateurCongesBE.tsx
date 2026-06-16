@@ -1,14 +1,8 @@
 "use client";
+import { fmtEUR_BE as fmt } from "@/app/lib/fmt";
 
 import { useState } from "react";
 import { calculerConges, type StatutTravailleur } from "./congesPayesBeCalc";
-
-function fmt(montant: number): string {
-  return montant.toLocaleString("fr-BE", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-}
 
 export default function CalculateurCongesBE() {
   const [brut, setBrut] = useState<string>("2500");

@@ -1,3 +1,4 @@
+import { fmtEUR_BE as fmt, fmtIntBE as fmtInt, fmtPctBE as fmtPct } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import SimulateurISOCBE from "../SimulateurISOCBE";
@@ -9,24 +10,6 @@ const STATUTS = [
   { slug: "pme", label: "PME", estPME: true },
   { slug: "non-pme", label: "Non-PME", estPME: false },
 ];
-
-function fmt(n: number): string {
-  return n.toLocaleString("fr-BE", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-}
-
-function fmtInt(n: number): string {
-  return Math.round(n).toLocaleString("fr-BE");
-}
-
-function fmtPct(pct: number): string {
-  return (pct * 100).toLocaleString("fr-BE", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-}
 
 function parseSlug(slug: string): {
   benefice: number;
@@ -211,7 +194,6 @@ export default async function Page({
         Calculateur interactif
       </h2>
       <SimulateurISOCBE />
-
 
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">

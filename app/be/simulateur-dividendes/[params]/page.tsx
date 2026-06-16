@@ -1,3 +1,4 @@
+import { fmtEUR_BE as fmt, fmtIntBE as fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import SimulateurDividendesBE from "../SimulateurDividendesBE";
@@ -5,17 +6,6 @@ import { REGIMES_FISCAUX, calculerDividendesBE } from "../dividendesBeCalc";
 import Breadcrumb from "../../../components/Breadcrumb";
 
 const MONTANTS = [500, 1000, 2500, 5000, 10000, 25000, 50000, 100000];
-
-function fmt(n: number): string {
-  return n.toLocaleString("fr-BE", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-}
-
-function fmtInt(n: number): string {
-  return Math.round(n).toLocaleString("fr-BE");
-}
 
 function parseSlug(
   slug: string
@@ -183,7 +173,6 @@ export default async function Page({
         Calculateur interactif
       </h2>
       <SimulateurDividendesBE />
-
 
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">

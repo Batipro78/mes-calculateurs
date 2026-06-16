@@ -1,3 +1,4 @@
+import { fmtEUR_BE as fmt, fmtIntBE as fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurIndemniteKmBE from "../CalculateurIndemniteKmBE";
@@ -8,17 +9,6 @@ import {
 } from "../indemniteKmBeCalc";
 
 const DISTANCES = [1000, 3000, 5000, 8000, 10000, 15000, 20000, 25000, 30000];
-
-function fmt(n: number): string {
-  return n.toLocaleString("fr-BE", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-}
-
-function fmtInt(n: number): string {
-  return Math.round(n).toLocaleString("fr-BE");
-}
 
 function parseSlug(slug: string): { distance: number; regime: typeof REGIMES_INDEMNITE[number] } | null {
   const m = slug.match(/^(\d+)-km-(.+)$/);
@@ -186,7 +176,6 @@ export default async function Page({
         Calculateur interactif
       </h2>
       <CalculateurIndemniteKmBE />
-
 
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">

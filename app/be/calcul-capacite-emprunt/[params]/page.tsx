@@ -1,3 +1,4 @@
+import { fmtIntBE as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurCapaciteBE from "../CalculateurCapaciteBE";
@@ -9,10 +10,6 @@ import {
 
 const REVENUS = [1800, 2000, 2500, 3000, 3500, 4000, 5000, 6000, 8000];
 const DUREES = [15, 20, 25, 30];
-
-function fmt(n: number): string {
-  return Math.round(n).toLocaleString("fr-BE");
-}
 
 type Parsed = { revenu: number; duree: number };
 
@@ -146,7 +143,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
 
       <h2 className="text-xl font-bold text-slate-800 mb-4">Calculateur interactif (avec apport)</h2>
       <CalculateurCapaciteBE />
-
 
       <div className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
         <h3 className="font-bold text-slate-800 mb-3">Autres revenus sur {parsed.duree} ans</h3>

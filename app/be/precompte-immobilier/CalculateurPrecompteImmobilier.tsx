@@ -1,4 +1,5 @@
 "use client";
+import { fmtIntBE as fmt } from "@/app/lib/fmt";
 
 import { useState } from "react";
 import {
@@ -13,10 +14,6 @@ const REGIONS: { value: RegionBE; label: string; flag: string }[] = [
   { value: "flandre", label: "Flandre", flag: "🦁" },
   { value: "bruxelles", label: "Bruxelles", flag: "🌸" },
 ];
-
-function fmt(montant: number): string {
-  return Math.round(montant).toLocaleString("fr-BE");
-}
 
 export default function CalculateurPrecompteImmobilier() {
   const [rc, setRc] = useState<string>("1200");

@@ -1,4 +1,5 @@
 "use client";
+import { fmtEUR_BE as fmt } from "@/app/lib/fmt";
 
 import { useState } from "react";
 import {
@@ -6,13 +7,6 @@ import {
   TypeCarburant,
   REFERENCES_CO2,
 } from "./atnVoitureBeCalc";
-
-function fmt(montant: number): string {
-  return montant.toLocaleString("fr-BE", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-}
 
 const CARBURANTS: Array<{ value: TypeCarburant; label: string; icon: string }> =
   [

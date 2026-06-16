@@ -1,3 +1,4 @@
+import { fmtIntBE as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurDroitsEnregistrement from "../CalculateurDroitsEnregistrement";
@@ -17,10 +18,6 @@ const STATUTS: { slug: string; unique: boolean; label: string }[] = [
   { slug: "habitation-unique", unique: true, label: "Habitation propre & unique" },
   { slug: "investissement", unique: false, label: "Investissement / 2e bien" },
 ];
-
-function fmt(n: number): string {
-  return Math.round(n).toLocaleString("fr-BE");
-}
 
 type Parsed = {
   prix: number;
@@ -235,7 +232,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         Calculateur interactif
       </h2>
       <CalculateurDroitsEnregistrement />
-
 
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">

@@ -1,21 +1,11 @@
 "use client";
+import { fmtIntBE as fmt, fmtEUR_BE as fmt2 } from "@/app/lib/fmt";
 
 import { useState } from "react";
 import {
   calculerIndemniteLicenciementBE,
   preavisSemainesBE,
 } from "./indemniteLicenciementBeCalc";
-
-function fmt(n: number): string {
-  return Math.round(n).toLocaleString("fr-BE");
-}
-
-function fmt2(n: number): string {
-  return n.toLocaleString("fr-BE", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-}
 
 export default function CalculateurIndemniteBE() {
   const [brut, setBrut] = useState<string>("3000");

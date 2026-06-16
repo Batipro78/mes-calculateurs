@@ -1,3 +1,4 @@
+import { fmtEUR_BE as fmt } from "@/app/lib/fmt";
 export type RegionBE = "wallonie" | "flandre" | "bruxelles";
 
 export const PRIME_NAISSANCE: Record<RegionBE, number> = {
@@ -15,13 +16,6 @@ export interface ResultatAllocations {
   montantAnnuel: number;
   primeNaissance: number;
   primeNaissanceTotal: number;
-}
-
-function fmt(n: number): string {
-  return n.toLocaleString("fr-BE", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
 }
 
 export function calculerAllocationsBE(

@@ -1,4 +1,5 @@
 "use client";
+import { fmtEUR_BE as fmt, fmtIntBE as fmtInt, fmtPctBE as fmtPct } from "@/app/lib/fmt";
 
 import { useState } from "react";
 import {
@@ -6,24 +7,6 @@ import {
   REMUNERATION_MIN_DIRIGEANT,
   SEUIL_TAUX_REDUIT,
 } from "./isocBeCalc";
-
-function fmt(montant: number): string {
-  return montant.toLocaleString("fr-BE", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-}
-
-function fmtInt(montant: number): string {
-  return Math.round(montant).toLocaleString("fr-BE");
-}
-
-function fmtPct(pct: number): string {
-  return (pct * 100).toLocaleString("fr-BE", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-}
 
 export default function SimulateurISOCBE() {
   const [benefice, setBenefice] = useState<string>("100000");
