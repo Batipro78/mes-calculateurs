@@ -1,4 +1,4 @@
-import { fmtEUR_BE as fmt, fmtIntBE as fmtInt } from "@/app/lib/fmt";
+import { fmtEUR_BE as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurAllocationsBE from "../CalculateurAllocationsBE";

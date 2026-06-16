@@ -1,4 +1,3 @@
-import { fmtEUR_BE as fmt } from "@/app/lib/fmt";
 export type RegionBE = "wallonie" | "flandre" | "bruxelles";
 
 export const PRIME_NAISSANCE: Record<RegionBE, number> = {
