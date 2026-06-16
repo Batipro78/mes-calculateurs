@@ -51,14 +51,20 @@ export default function SearchBar() {
   function loadIndex() {
     if (index || loadingRef.current) return;
     loadingRef.current = true;
-    import("../lib/calculators-list").then((m) => {
-      setIndex(
-        m.ALL_CALCULATORS.map((c) => ({
-          calc: c,
-          haystack: normalize(c.title + " " + c.slug),
-        }))
-      );
-    });
+    import("../lib/calculators-list")
+      .then((m) => {
+        setIndex(
+          m.ALL_CALCULATORS.map((c) => ({
+            calc: c,
+            haystack: normalize(c.title + " " + c.slug),
+          }))
+        );
+      })
+      .catch(() => {
+        // Echec de chargement du chunk (reseau) : on reautorise un essai au
+        // prochain focus plutot que de rester muet definitivement.
+        loadingRef.current = false;
+      });
   }
 
   const results = useMemo(
