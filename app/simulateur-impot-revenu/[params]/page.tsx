@@ -4,20 +4,12 @@ import SimulateurImpot from "../SimulateurImpot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
+import { TRANCHES } from "../constants";
 
 const REVENUS = [
   15000, 18000, 20000, 22000, 25000, 28000, 30000, 32000, 35000, 38000,
   40000, 42000, 45000, 48000, 50000, 55000, 60000, 65000, 70000, 75000,
   80000, 90000, 100000, 120000, 150000,
-];
-
-// Tranches d'imposition 2026 (revenus 2025)
-const TRANCHES = [
-  { min: 0, max: 11497, taux: 0 },
-  { min: 11497, max: 29315, taux: 0.11 },
-  { min: 29315, max: 83823, taux: 0.3 },
-  { min: 83823, max: 180294, taux: 0.41 },
-  { min: 180294, max: Infinity, taux: 0.45 },
 ];
 
 

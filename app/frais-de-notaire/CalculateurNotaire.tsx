@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { TAUX_DROITS, TRANCHES_EMOLUMENTS } from "./constants";
 
 type TypeBien = "ancien" | "neuf" | "terrain";
 
@@ -16,20 +17,6 @@ const TYPE_DESC: Record<TypeBien, string> = {
   terrain: "Terrain a batir",
 };
 
-// Taux droits de mutation (departement + commune + Etat)
-const TAUX_DROITS: Record<TypeBien, number> = {
-  ancien: 0.05807, // ~5.81% (taux plein majorite departements)
-  neuf: 0.0071, // ~0.71% (taxe publicite fonciere)
-  terrain: 0.05807,
-};
-
-// Bareme emoluments notaire 2026 (proportionnels, par tranches)
-const TRANCHES_EMOLUMENTS = [
-  { limite: 6500, taux: 0.03870 },
-  { limite: 17000, taux: 0.01596 },
-  { limite: 60000, taux: 0.01064 },
-  { limite: Infinity, taux: 0.00799 },
-];
 
 function calculerEmoluments(prix: number): number {
   let emoluments = 0;

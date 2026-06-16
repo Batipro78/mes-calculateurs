@@ -1,17 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { TRANCHES } from "./constants";
 
 type Situation = "celibataire" | "couple" | "couple_1revenu";
-
-// Tranches d'imposition 2026 (revenus 2025)
-const TRANCHES = [
-  { min: 0, max: 11497, taux: 0 },
-  { min: 11497, max: 29315, taux: 0.11 },
-  { min: 29315, max: 83823, taux: 0.3 },
-  { min: 83823, max: 180294, taux: 0.41 },
-  { min: 180294, max: Infinity, taux: 0.45 },
-];
 
 function fmt(n: number): string {
   return n.toLocaleString("fr-FR", {

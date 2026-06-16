@@ -4,6 +4,7 @@ import CalculateurNotaire from "../CalculateurNotaire";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
+import { TAUX_DROITS, TRANCHES_EMOLUMENTS } from "../constants";
 import { VILLES, findVille, getVillesSlugs } from "../../data/villes";
 import type { Ville } from "../../data/villes";
 
@@ -24,18 +25,6 @@ const TYPE_LABELS_SHORT: Record<TypeBien, string> = {
   terrain: "Terrain",
 };
 
-const TAUX_DROITS: Record<TypeBien, number> = {
-  ancien: 0.05807,
-  neuf: 0.0071,
-  terrain: 0.05807,
-};
-
-const TRANCHES_EMOLUMENTS = [
-  { limite: 6500, taux: 0.03870 },
-  { limite: 17000, taux: 0.01596 },
-  { limite: 60000, taux: 0.01064 },
-  { limite: Infinity, taux: 0.00799 },
-];
 
 function calculerEmoluments(prix: number): number {
   let emoluments = 0;
