@@ -1,11 +1,8 @@
 "use client";
+import { fmtInt as fmt } from "@/app/lib/fmt";
 
 import { useState } from "react";
 import { calcAgeMetabolique } from "./ageMetaboliqueCalc";
-
-function fmt(n: number): string {
-  return new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(n);
-}
 
 const ACTIVITES = [
   { key: "sedentaire", label: "Sedentaire", description: "Peu ou pas d'exercice" },

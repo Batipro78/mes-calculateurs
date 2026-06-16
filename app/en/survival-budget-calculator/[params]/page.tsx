@@ -1,3 +1,4 @@
+import { fmtUSD } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import SurvivalBudgetCalculator from "../SurvivalBudgetCalculator";
 import BreadcrumbEN from "../../../components/BreadcrumbEN";
@@ -22,10 +23,6 @@ export function generateStaticParams() {
   for (const z of ZONES) for (const s of SITUATIONS) for (const t of TRANSPORTS)
     params.push({ params: `${z}-${s}-${t}` });
   return params;
-}
-
-function fmtUSD(n: number): string {
-  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(n);
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ params: string }> }): Promise<Metadata> {
@@ -142,7 +139,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
 
       <h2 className="text-xl font-bold text-slate-800 mb-4">Interactive Calculator</h2>
       <SurvivalBudgetCalculator />
-
 
       {/* Other zones */}
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">

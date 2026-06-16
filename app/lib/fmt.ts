@@ -55,3 +55,19 @@ export function fmtPctBE(n: number): string {
     maximumFractionDigits: 2,
   });
 }
+
+/* --- Variantes anglaises / USD (pages /en) --- */
+
+/** Montant en dollars US sans décimale — ex: $1,235. */
+export function fmtUSD(n: number): string {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  }).format(n);
+}
+
+/** Nombre au format anglais (en-US) — ex: 1,234.5. */
+export function fmtNumberUS(n: number): string {
+  return new Intl.NumberFormat("en-US").format(n);
+}

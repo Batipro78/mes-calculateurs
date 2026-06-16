@@ -1,14 +1,11 @@
 "use client";
+import { fmtInt as fmtMl } from "@/app/lib/fmt";
 
 import { useState } from "react";
 import { calcConsommationEau } from "./consommationEauCalc";
 
 function fmtL(n: number): string {
   return n.toFixed(2).replace(".", ",");
-}
-
-function fmtMl(n: number): string {
-  return new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(n);
 }
 
 const ACTIVITES = [

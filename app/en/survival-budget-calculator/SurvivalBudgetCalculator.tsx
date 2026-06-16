@@ -1,4 +1,5 @@
 "use client";
+import { fmtUSD } from "@/app/lib/fmt";
 
 import { useState, useMemo } from "react";
 import {
@@ -6,10 +7,6 @@ import {
   ZONE_LABELS, SITUATION_LABELS, TRANSPORT_LABELS,
   calcSurvivalBudget,
 } from "./survivalCalcEN";
-
-function fmtUSD(n: number): string {
-  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(n);
-}
 
 export default function SurvivalBudgetCalculator() {
   const [zone, setZone] = useState<CityZone>("large-city");

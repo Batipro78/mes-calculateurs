@@ -1,15 +1,8 @@
 "use client";
+import { fmtUSD, fmtNumberUS as fmtNumber } from "@/app/lib/fmt";
 
 import { useState, useMemo } from "react";
 import { BunkerType, DurationType, BUNKER_TYPES, DURATIONS, calcBunkerCost } from "./bunkerCalcEN";
-
-function fmtUSD(n: number): string {
-  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(n);
-}
-
-function fmtNumber(n: number): string {
-  return new Intl.NumberFormat("en-US").format(n);
-}
 
 export default function BunkerCalculator() {
   const [bunkerType, setBunkerType] = useState<BunkerType>("standard");

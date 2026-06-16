@@ -1,11 +1,8 @@
 "use client";
+import { fmtInt as fmt } from "@/app/lib/fmt";
 
 import { useState } from "react";
 import { calcMetabolisme } from "./metabolismeCalc";
-
-function fmt(n: number): string {
-  return new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(n);
-}
 
 const TDEE_ROWS = [
   { key: "sedentaire" as const, label: "Sedentaire", description: "Peu ou pas d'exercice", coeff: "x 1,2" },

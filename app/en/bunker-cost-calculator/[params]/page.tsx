@@ -1,3 +1,4 @@
+import { fmtUSD, fmtNumberUS as fmtNumber } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import BunkerCalculator from "../BunkerCalculator";
 import BreadcrumbEN from "../../../components/BreadcrumbEN";
@@ -36,14 +37,6 @@ export function generateStaticParams() {
     }
   }
   return params;
-}
-
-function fmtUSD(n: number): string {
-  return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(n);
-}
-
-function fmtNumber(n: number): string {
-  return new Intl.NumberFormat("en-US").format(n);
 }
 
 export async function generateMetadata({
@@ -197,7 +190,6 @@ export default async function Page({
 
       <h2 className="text-xl font-bold text-slate-800 mb-4">Interactive Calculator</h2>
       <BunkerCalculator />
-
 
       {/* Other types */}
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">

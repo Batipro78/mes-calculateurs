@@ -1,3 +1,4 @@
+import { fmtInt as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurAgeMetabolique from "../CalculateurAgeMetabolique";
@@ -24,10 +25,6 @@ const DEFAULTS = {
   homme: { poids: 78, taille: 178, tourTaille: 88 },
   femme: { poids: 65, taille: 165, tourTaille: 75 },
 };
-
-function fmt(n: number): string {
-  return new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(n);
-}
 
 function parseSlug(slug: string): { sexe: Sexe; age: number; activite: Activite } | null {
   const match = slug.match(/^(homme|femme)-(\d+)ans-(sedentaire|leger|modere|actif|intense)$/);
@@ -164,7 +161,6 @@ export default async function Page({
         Age metabolique estime pour un{sexe === "femme" ? "e" : ""} {sexeLabel} de {age} ans
         avec un niveau d&apos;activite {activiteLabel.toLowerCase()}.
       </p>
-
 
       {/* Resultat principal */}
       <div className="bg-gradient-to-br from-violet-500 to-purple-600 text-white rounded-2xl p-8 shadow-lg mb-8">

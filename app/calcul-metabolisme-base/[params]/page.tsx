@@ -1,3 +1,4 @@
+import { fmtInt as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurMetabolisme from "../CalculateurMetabolisme";
@@ -10,10 +11,6 @@ const AGES = [20, 25, 30, 35, 40, 45, 50, 55, 60, 65];
 const POIDS = [50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100];
 
 type Sexe = "homme" | "femme";
-
-function fmt(n: number): string {
-  return new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(n);
-}
 
 function parseSlug(slug: string): { sexe: Sexe; poids: number; age: number } | null {
   const match = slug.match(/^(homme|femme)-(\d+)kg-(\d+)ans$/);
@@ -156,7 +153,6 @@ export default async function Page({
         Metabolisme de base pour un{sexe === "femme" ? "e" : ""} {sexeLabel} de{" "}
         {poids} kg a {age} ans — formules Mifflin-St Jeor et Harris-Benedict.
       </p>
-
 
       {/* Resultat principal */}
       <div className="bg-gradient-to-br from-orange-500 to-amber-500 text-white rounded-2xl p-8 shadow-lg mb-8">

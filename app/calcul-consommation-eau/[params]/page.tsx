@@ -1,3 +1,4 @@
+import { fmtInt as fmtMl } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurConsommationEau from "../CalculateurConsommationEau";
@@ -28,10 +29,6 @@ const CLIMAT_LABELS: Record<Climat, string> = {
 
 function fmtL(n: number): string {
   return n.toFixed(2).replace(".", ",");
-}
-
-function fmtMl(n: number): string {
-  return new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(n);
 }
 
 function parseSlug(
@@ -174,7 +171,6 @@ export default async function Page({
         Besoin en eau quotidien pour {poids} kg,{" "}
         {ACTIVITE_LABELS[activite]}, {CLIMAT_LABELS[climat]}.
       </p>
-
 
       {/* Resultat principal */}
       <div className="bg-gradient-to-br from-blue-500 to-cyan-500 text-white rounded-2xl p-8 shadow-lg mb-8">
