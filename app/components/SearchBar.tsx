@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ALL_CALCULATORS, type Calculator } from "../lib/calculators-list";
+import type { Calculator } from "../lib/calculators-list";
 
 const normalize = (s: string) =>
   s
@@ -11,18 +11,15 @@ const normalize = (s: string) =>
     .replace(/[^a-z0-9]+/g, " ")
     .trim();
 
-const NORMALIZED = ALL_CALCULATORS.map((c) => ({
-  calc: c,
-  haystack: normalize(c.title + " " + c.slug),
-}));
+type Indexed = { calc: Calculator; haystack: string };
 
-function search(query: string, max = 8): Calculator[] {
+function search(query: string, index: Indexed[], max = 8): Calculator[] {
   const q = normalize(query);
   if (!q) return [];
   const tokens = q.split(" ").filter(Boolean);
 
   const scored: { calc: Calculator; score: number }[] = [];
-  for (const { calc, haystack } of NORMALIZED) {
+  for (const { calc, haystack } of index) {
     let score = 0;
     let allMatch = true;
     for (const t of tokens) {
@@ -44,10 +41,30 @@ export default function SearchBar() {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+  // La liste des calculateurs (~147 entrees) n'est chargee qu'a la 1ere
+  // interaction : elle ne pese plus sur le JS initial de chaque page.
+  const [index, setIndex] = useState<Indexed[] | null>(null);
+  const loadingRef = useRef(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const results = useMemo(() => search(query), [query]);
+  function loadIndex() {
+    if (index || loadingRef.current) return;
+    loadingRef.current = true;
+    import("../lib/calculators-list").then((m) => {
+      setIndex(
+        m.ALL_CALCULATORS.map((c) => ({
+          calc: c,
+          haystack: normalize(c.title + " " + c.slug),
+        }))
+      );
+    });
+  }
+
+  const results = useMemo(
+    () => (index ? search(query, index) : []),
+    [query, index]
+  );
 
   useEffect(() => {
     setActiveIndex(0);
@@ -89,7 +106,9 @@ export default function SearchBar() {
     }
   }
 
-  const showDropdown = open && query.length > 0;
+  // On n'affiche le menu que lorsque la liste est chargee, pour eviter un
+  // flash "aucun resultat" pendant le chargement (qui suit le focus).
+  const showDropdown = open && query.length > 0 && index !== null;
   const hasResults = results.length > 0;
 
   return (
@@ -117,8 +136,12 @@ export default function SearchBar() {
           onChange={(e) => {
             setQuery(e.target.value);
             setOpen(true);
+            loadIndex();
           }}
-          onFocus={() => setOpen(true)}
+          onFocus={() => {
+            setOpen(true);
+            loadIndex();
+          }}
           onKeyDown={onKeyDown}
           className="w-full pl-11 pr-3 py-3 text-base font-medium rounded-xl border-2 border-blue-300 bg-blue-50 text-slate-800 placeholder-slate-500 shadow-sm hover:bg-white hover:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:bg-white transition-colors"
         />
