@@ -1,4 +1,5 @@
 "use client";
+import { fmtEUR as fmt, fmtInt } from "@/app/lib/fmt";
 
 import { useState } from "react";
 import {
@@ -10,13 +11,9 @@ import {
   type TypeProjet,
 } from "./calcCreditConso";
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
 
-function fmtInt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
+
+
 
 const PROJETS_PRESETS: { type: TypeProjet; montant: number; duree: number }[] = [
   { type: "auto", montant: 15000, duree: 48 },

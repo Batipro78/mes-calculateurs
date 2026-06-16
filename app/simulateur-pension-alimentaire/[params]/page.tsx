@@ -1,3 +1,4 @@
+import { fmtEUR as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import SimulateurPensionAlimentaire from "../SimulateurPensionAlimentaire";
 import { calcPensionAlimentaire, GARDE_LABELS, type TypeGarde } from "../calcPensionAlimentaire";
@@ -9,9 +10,7 @@ const REVENUS = [1500, 2000, 2500, 3000, 3500, 4000, 5000];
 const ENFANTS_OPTIONS = [1, 2, 3, 4];
 const GARDES: TypeGarde[] = ["classique", "alternee", "reduit"];
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
+
 
 function fmtInt(n: number): string {
   return Math.round(n).toLocaleString("fr-FR");

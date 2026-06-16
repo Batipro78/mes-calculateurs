@@ -1,4 +1,5 @@
 "use client";
+import { fmtInt as fmt } from "@/app/lib/fmt";
 
 import { useState } from "react";
 import {
@@ -16,9 +17,7 @@ import {
   type Transport,
 } from "./calcBudgetSurvie";
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
+
 
 const ZONES: Zone[] = ["paris", "grande-ville", "ville-moyenne", "rural"];
 const SITUATIONS: Situation[] = ["seul", "couple", "famille"];

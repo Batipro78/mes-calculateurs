@@ -1,3 +1,4 @@
+import { fmtInt as fmt, fmtEUR as fmt2 } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import SimulateurImpot from "../SimulateurImpot";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -19,13 +20,9 @@ const TRANCHES = [
   { min: 180294, max: Infinity, taux: 0.45 },
 ];
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
 
-function fmt2(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
+
+
 
 function calculImpot(revenuNet: number, nbParts: number) {
   const abattement = Math.max(495, Math.min(revenuNet * 0.1, 14171));

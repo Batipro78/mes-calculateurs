@@ -1,3 +1,4 @@
+import { fmtEUR as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurSalaireAlternant from "../CalculateurSalaireAlternant";
@@ -25,9 +26,7 @@ const NIVEAUX: NiveauQualification[] = ["infra-bac", "bac-plus"];
 const NIVEAU_LABELS: Record<string, string> = { "infra-bac": "sans bac", "bac-plus": "bac ou plus" };
 const NIVEAU_LABELS_COURT: Record<string, string> = { "infra-bac": "niveau-infra-bac", "bac-plus": "niveau-bac" };
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
+
 
 function fmtInt(n: number): string {
   return Math.round(n).toLocaleString("fr-FR");

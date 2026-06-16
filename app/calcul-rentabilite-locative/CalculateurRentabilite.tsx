@@ -1,8 +1,9 @@
 "use client";
+import { fmtInt } from "@/app/lib/fmt";
 import { useState, useMemo } from "react";
 
 import { fmtEUR as fmt } from "@/app/lib/fmt";
-function fmtInt(n: number): string { return n.toLocaleString("fr-FR", { maximumFractionDigits: 0 }); }
+
 
 export default function CalculateurRentabilite() {
   const [prixAchat, setPrixAchat] = useState<string>("200000");

@@ -1,3 +1,4 @@
+import { fmtEUR as fmt, fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurInflation from "../CalculateurInflation";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -17,13 +18,9 @@ const CURRENT_YEAR = 2025;
 const MONTANTS = [1000, 1500, 2000, 2500, 3000, 3500, 4000, 5000];
 const ANNEES = [2000, 2005, 2010, 2015, 2018, 2020, 2022, 2023];
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
 
-function fmtInt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
+
+
 
 function calculInflation(montant: number, anneeDepart: number) {
   let multiplier = 1;

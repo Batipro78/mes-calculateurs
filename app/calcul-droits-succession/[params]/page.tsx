@@ -1,3 +1,4 @@
+import { fmtInt as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurSuccession from "../CalculateurSuccession";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -17,7 +18,7 @@ function calculerDroits(montant: number, nb: number): number {
   return droits * nb;
 }
 
-function fmt(n: number): string { return n.toLocaleString("fr-FR", { maximumFractionDigits: 0 }); }
+
 
 function parseSlug(slug: string): { montant: number; heritiers: number } | null {
   const match = slug.match(/^(\d+)-euros-(\d+)-enfants$/);

@@ -1,11 +1,10 @@
 "use client";
+import { fmtEUR as fmt } from "@/app/lib/fmt";
 
 import { useState } from "react";
 import { calcPrimeActivite, FORFAITAIRE_BASE } from "./calcPrimeActivite";
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
+
 
 function fmtInt(n: number): string {
   return Math.round(n).toLocaleString("fr-FR");

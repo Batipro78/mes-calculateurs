@@ -1,3 +1,4 @@
+import { fmtInt as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurRevenusFonciers from "../CalculateurRevenusFonciers";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -9,9 +10,7 @@ const LOYERS = [6000, 8000, 10000, 12000, 15000, 18000, 24000, 36000];
 const TMI_LIST = [11, 30, 41];
 const REGIMES = ["micro-foncier", "reel"] as const;
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { maximumFractionDigits: 0 });
-}
+
 function fmtP(n: number): string {
   return n.toLocaleString("fr-FR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 }

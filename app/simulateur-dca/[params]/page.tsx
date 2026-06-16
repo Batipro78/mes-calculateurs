@@ -1,3 +1,4 @@
+import { fmtEUR as fmt, fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import SimulateurDCA from "../SimulateurDCA";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -122,13 +123,9 @@ const ASSETS_MAP: Record<string, AssetInfo> = {
 
 const ASSET_SLUGS = Object.keys(ASSETS_MAP);
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
 
-function fmtInt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
+
+
 
 function simulerDCA(montant: number, data: Record<string, number>, anneeDepart: number = 2020) {
   const startKey = `${anneeDepart}-01`;

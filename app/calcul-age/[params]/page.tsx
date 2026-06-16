@@ -1,3 +1,4 @@
+import { fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurAge from "../CalculateurAge";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -28,9 +29,7 @@ function parseSlug(slug: string): { annee: number } | null {
   return ANNEES.includes(annee) ? { annee } : null;
 }
 
-function fmtInt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
+
 
 export function generateStaticParams() {
   return ANNEES.map((a) => ({ params: `ne-en-${a}` }));

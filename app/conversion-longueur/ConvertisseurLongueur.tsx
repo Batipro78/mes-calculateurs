@@ -1,4 +1,5 @@
 "use client";
+import { fmtEUR as fmt } from "@/app/lib/fmt";
 import { useState, useMemo } from "react";
 
 type Unite = "cm" | "pouces" | "pieds" | "m" | "mm";
@@ -34,9 +35,7 @@ function cmToFeetInches(cm: number): { feet: number; inches: number } {
   return { feet, inches };
 }
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
+
 
 export default function ConvertisseurLongueur() {
   const [valeur, setValeur] = useState<string>("170");

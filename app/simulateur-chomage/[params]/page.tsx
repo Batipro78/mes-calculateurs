@@ -1,3 +1,4 @@
+import { fmtEUR as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurChomage from "../CalculateurChomage";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -30,9 +31,7 @@ function calcARE(salaire: number, mois: number, age: number) {
   return { sjr, methode1, methode2, areJour, areMois: areJour * 30, dureeMax, dureeMaxJours: Math.round(dureeMax * 30), montantTotal: areJour * Math.round(dureeMax * 30), tauxRemplacement: salaire > 0 ? ((areJour * 30) / salaire) * 100 : 0, isDegressif, areApresDegressivite };
 }
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
+
 
 function fmtInt(n: number): string {
   return Math.round(n).toLocaleString("fr-FR");

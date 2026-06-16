@@ -1,3 +1,4 @@
+import { fmtEUR as fmt, fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import SimulateurPret from "../SimulateurPret";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -16,13 +17,9 @@ const TAUX_PAR_DUREE: Record<number, number> = {
   25: 3.55,
 };
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
 
-function fmtInt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
+
+
 
 function calculerMensualite(montant: number, tauxAnnuel: number, dureeAnnees: number): number {
   const tauxMensuel = tauxAnnuel / 100 / 12;

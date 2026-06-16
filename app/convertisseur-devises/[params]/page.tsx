@@ -1,3 +1,4 @@
+import { fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import ConvertisseurDevises from "../ConvertisseurDevises";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -37,9 +38,7 @@ function fmt(n: number, dec = 2): string {
   return n.toLocaleString("fr-FR", { minimumFractionDigits: dec, maximumFractionDigits: dec });
 }
 
-function fmtInt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
+
 
 function parseSlug(slug: string): { montant: number; deviseSlug: string } | null {
   const match = slug.match(/^(\d+)-euros-en-(.+)$/);

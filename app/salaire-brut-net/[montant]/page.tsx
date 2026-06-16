@@ -1,3 +1,4 @@
+import { fmtInt as fmt, fmtEUR as fmt2 } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurSalaire from "../CalculateurSalaire";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -11,13 +12,9 @@ const MONTANTS_NET = [1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000, 2100
 
 const TAUX = { "non-cadre": 0.22, cadre: 0.25, public: 0.15 };
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
 
-function fmt2(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
+
+
 
 function parseSlug(montant: string): { value: number; isNet: boolean } | null {
   const netMatch = montant.match(/^(\d+)-euros-net$/);

@@ -1,3 +1,4 @@
+import { fmtEUR as fmt, fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurNotaire from "../CalculateurNotaire";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -61,13 +62,9 @@ function calculerFrais(prix: number, type: TypeBien) {
   return { droitsMutation, emoluments, emolumentsTVA, debours, contributionSecu, totalFrais, pourcentage };
 }
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
 
-function fmtInt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
+
+
 
 function parseSlug(slug: string): { prix: number; type: TypeBien } | null {
   const match = slug.match(/^(\d+)-euros-(ancien|neuf|terrain)$/);

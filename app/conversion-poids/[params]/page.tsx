@@ -1,3 +1,4 @@
+import { fmtEUR as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import ConvertisseurPoids from "../ConvertisseurPoids";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -11,9 +12,7 @@ function kgToLbs(kg: number): number { return kg * 2.20462; }
 function lbsToKg(lbs: number): number { return lbs * 0.45359237; }
 function kgToOz(kg: number): number { return kg * 35.27396; }
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
+
 function fmtInt(n: number): string {
   return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
 }

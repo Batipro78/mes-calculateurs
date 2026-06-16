@@ -1,4 +1,5 @@
 "use client";
+import { fmtEUR as fmt } from "@/app/lib/fmt";
 
 import { useState } from "react";
 import {
@@ -12,9 +13,7 @@ import {
   type NiveauMutuelle,
 } from "./mutuelleCalc";
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
+
 
 const COUT_DEFAUT: Record<TypeActe, number> = {
   "consultation-generaliste": 30,

@@ -1,3 +1,4 @@
+import { fmtInt as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CalculateurEndettement from "../CalculateurEndettement";
@@ -16,9 +17,7 @@ function parseSlug(slug: string): { revenus: number; charges: number } | null {
   return { revenus, charges };
 }
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { maximumFractionDigits: 0 });
-}
+
 
 export async function generateStaticParams() {
   const params: { params: string }[] = [];

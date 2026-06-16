@@ -1,3 +1,4 @@
+import { fmtEUR as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import ConvertisseurTemperature from "../ConvertisseurTemperature";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -11,9 +12,7 @@ function celsiusToFahrenheit(c: number): number { return c * 9 / 5 + 32; }
 function fahrenheitToCelsius(f: number): number { return (f - 32) * 5 / 9; }
 function celsiusToKelvin(c: number): number { return c + 273.15; }
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
+
 function fmtInt(n: number): string {
   return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
 }

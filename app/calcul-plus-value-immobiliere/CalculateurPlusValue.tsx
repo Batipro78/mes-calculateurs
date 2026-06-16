@@ -1,9 +1,8 @@
 "use client";
+import { fmtInt as fmt } from "@/app/lib/fmt";
 import { useState, useMemo } from "react";
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
+
 function fmtP(n: number): string {
   return n.toLocaleString("fr-FR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 }

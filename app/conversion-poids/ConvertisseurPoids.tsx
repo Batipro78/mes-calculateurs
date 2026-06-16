@@ -1,4 +1,5 @@
 "use client";
+import { fmtEUR as fmt } from "@/app/lib/fmt";
 import { useState, useMemo } from "react";
 
 type Unite = "kg" | "livres" | "oz" | "g" | "stones";
@@ -28,9 +29,7 @@ function convertir(valeur: number, de: Unite, vers: Unite): number {
   return kg / 6.35029318; // stones
 }
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
+
 
 export default function ConvertisseurPoids() {
   const [valeur, setValeur] = useState<string>("70");

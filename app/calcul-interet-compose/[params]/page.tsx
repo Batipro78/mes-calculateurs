@@ -1,3 +1,4 @@
+import { fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurInteretCompose from "../CalculateurInteretCompose";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -8,7 +9,7 @@ const CAPITAUX = [1000, 5000, 10000, 20000, 50000, 100000];
 const TAUX = [3, 5, 7, 8, 10];
 const DUREES = [5, 10, 15, 20, 25, 30];
 
-function fmtInt(n: number): string { return n.toLocaleString("fr-FR", { maximumFractionDigits: 0 }); }
+
 
 function parseSlug(slug: string): { capital: number; taux: number; duree: number } | null {
   const match = slug.match(/^(\d+)-euros-(\d+)-pourcent-(\d+)-ans$/);

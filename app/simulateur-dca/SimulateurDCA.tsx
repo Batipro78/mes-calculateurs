@@ -1,4 +1,5 @@
 "use client";
+import { fmtEUR as fmt } from "@/app/lib/fmt";
 
 import { useState, useMemo } from "react";
 
@@ -115,9 +116,7 @@ const ASSETS: AssetConfig[] = [
   { label: "Bitcoin (BTC)", data: BITCOIN, devise: "USD", description: "Cryptomonnaie decentralisee" },
 ];
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
+
 
 function getAvailableYears(data: Record<string, number>): number[] {
   const years = new Set<number>();

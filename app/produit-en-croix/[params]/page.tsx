@@ -1,3 +1,4 @@
+import { fmtEUR as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurProduitEnCroix from "../CalculateurProduitEnCroix";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -12,9 +13,7 @@ const EXEMPLES = [
   { a: 25, b: 100, c: 50 }, { a: 50, b: 75, c: 100 }, { a: 100, b: 250, c: 40 }, { a: 100, b: 150, c: 200 },
 ];
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
+
 function fmtInt(n: number): string {
   return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
 }

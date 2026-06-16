@@ -1,3 +1,4 @@
+import { fmtEUR as fmt, fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurPourcentage from "../CalculateurPourcentage";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -7,13 +8,9 @@ import { notFound } from "next/navigation";
 const POURCENTAGES = [5, 10, 15, 20, 25, 30, 50, 75];
 const VALEURS = [100, 200, 500, 1000, 1500, 2000, 5000];
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
 
-function fmtInt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
+
+
 
 function parseSlug(slug: string): { pourcent: number; valeur: number } | null {
   const match = slug.match(/^(\d+)-pourcent-de-(\d+)$/);

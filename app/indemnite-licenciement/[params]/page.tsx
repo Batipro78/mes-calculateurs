@@ -1,3 +1,4 @@
+import { fmtEUR as fmt, fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurIndemnite from "../CalculateurIndemnite";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -7,13 +8,9 @@ import { notFound } from "next/navigation";
 const SALAIRES = [1500, 1800, 2000, 2200, 2500, 2800, 3000, 3500, 4000, 4500, 5000];
 const ANCIENNES = [1, 2, 3, 5, 8, 10, 12, 15, 18, 20, 25, 30];
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
 
-function fmtInt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
+
+
 
 function calculIndemnite(salaire: number, annees: number): number {
   if (annees < 0.6667) return 0;

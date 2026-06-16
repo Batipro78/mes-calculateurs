@@ -1,4 +1,5 @@
 "use client";
+import { fmtEUR as fmt } from "@/app/lib/fmt";
 
 import { useState, useMemo } from "react";
 
@@ -15,9 +16,7 @@ const INFLATION_FR: Record<number, number> = {
 const YEARS = Object.keys(INFLATION_FR).map(Number).sort((a, b) => a - b);
 const CURRENT_YEAR = YEARS[YEARS.length - 1];
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
+
 
 export default function CalculateurInflation() {
   const [montant, setMontant] = useState("2000");

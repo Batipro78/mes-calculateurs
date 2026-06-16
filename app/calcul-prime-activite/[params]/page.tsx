@@ -1,3 +1,4 @@
+import { fmtEUR as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurPrimeActivite from "../CalculateurPrimeActivite";
 import { calcPrimeActivite } from "../calcPrimeActivite";
@@ -9,9 +10,7 @@ const REVENUS = [800, 1000, 1200, 1400, 1600, 1800, 2000];
 const SITUATIONS = ["seul", "couple"];
 const ENFANTS_OPTIONS = [0, 1, 2, 3];
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
+
 
 function fmtInt(n: number): string {
   return Math.round(n).toLocaleString("fr-FR");

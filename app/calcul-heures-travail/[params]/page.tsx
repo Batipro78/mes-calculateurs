@@ -1,3 +1,4 @@
+import { fmtEUR as fmt, fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurHeuresTravail from "../CalculateurHeuresTravail";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -8,13 +9,9 @@ const HEURES = [20, 24, 28, 32, 35, 37, 39, 40, 42, 45, 48];
 const TAUX = [12, 13, 15, 18, 20, 25, 30];
 const SMIC_HORAIRE = 11.88;
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
 
-function fmtInt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
+
+
 
 function parseSlug(slug: string): { heures: number; taux: number } | null {
   const match = slug.match(/^(\d+)-heures-(\d+)-euros$/);

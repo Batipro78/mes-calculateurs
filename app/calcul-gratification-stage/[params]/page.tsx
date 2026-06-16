@@ -1,3 +1,4 @@
+import { fmtInt as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurGratificationStage from "../CalculateurGratificationStage";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -8,7 +9,7 @@ const DUREES = [1, 2, 3, 4, 5, 6];
 const HEURES = [20, 25, 28, 35];
 const GRATIF = 4.35;
 
-function fmt(n: number): string { return n.toLocaleString("fr-FR", { maximumFractionDigits: 0 }); }
+
 
 function parseSlug(slug: string): { duree: number; heures: number } | null {
   const match = slug.match(/^(\d+)-mois-(\d+)-heures$/);

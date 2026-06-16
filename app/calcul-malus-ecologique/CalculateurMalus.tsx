@@ -1,7 +1,8 @@
 "use client";
+import { fmtInt } from "@/app/lib/fmt";
 import { useState, useMemo } from "react";
 
-function fmtInt(n: number): string { return n.toLocaleString("fr-FR", { maximumFractionDigits: 0 }); }
+
 
 // Bareme malus CO2 2026 (simplifie, paliers principaux)
 function calculerMalus(co2: number): number {

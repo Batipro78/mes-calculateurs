@@ -1,3 +1,4 @@
+import { fmtInt as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import TaxeFonciere from "../TaxeFonciere";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -15,9 +16,7 @@ function tauxPourVille(ville: Ville): number {
   return TAUX_VILLES[ville.nom] ?? DEFAULT_TAUX;
 }
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
+
 
 export function generateStaticParams() {
   return getVillesSlugs().map((s) => ({ params: s }));

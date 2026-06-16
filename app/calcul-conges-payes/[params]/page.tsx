@@ -1,3 +1,4 @@
+import { fmtEUR as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurCongesPayes from "../CalculateurCongesPayes";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -7,9 +8,7 @@ import { notFound } from "next/navigation";
 const SALAIRES = [1500, 1800, 2000, 2200, 2500, 2800, 3000, 3500, 4000, 4500, 5000];
 const MOIS_LIST = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
+
 
 function parseSlug(slug: string): { salaire: number; mois: number } | null {
   const match = slug.match(/^(\d+)-euros-(\d+)-mois$/);

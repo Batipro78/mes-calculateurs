@@ -1,3 +1,4 @@
+import { fmtEUR as fmt, fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import SimulateurCreditConso from "../SimulateurCreditConso";
 import { calcCreditConso, TAUX_MOYENS, DUREES, PROJET_LABELS, PROJET_EMOJIS, type TypeProjet } from "../calcCreditConso";
@@ -8,13 +9,9 @@ import { notFound } from "next/navigation";
 const MONTANTS = [3000, 5000, 10000, 15000, 20000, 30000, 50000];
 const DUREES_SEO = [24, 36, 48, 60, 72];
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
 
-function fmtInt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
+
+
 
 export function generateStaticParams() {
   const params: { params: string }[] = [];

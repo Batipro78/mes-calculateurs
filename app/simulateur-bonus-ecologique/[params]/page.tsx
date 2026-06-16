@@ -1,3 +1,4 @@
+import { fmtInt as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import SimulateurBonusEcologique from "../SimulateurBonusEcologique";
 import {
@@ -26,9 +27,7 @@ const RFR_OPTIONS = [
   { slug: "revenu-standard", label: "revenus superieurs", rfr: 35000 },
 ];
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
+
 
 export function generateStaticParams() {
   const params: { params: string }[] = [];

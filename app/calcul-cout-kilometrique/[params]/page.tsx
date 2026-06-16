@@ -1,3 +1,4 @@
+import { fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurCoutKm from "../CalculateurCoutKm";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -22,7 +23,7 @@ function calculer(cvIdx: number, d: number): number {
   return 0;
 }
 
-function fmtInt(n: number): string { return n.toLocaleString("fr-FR", { maximumFractionDigits: 0 }); }
+
 
 function parseSlug(slug: string): { distance: number; cvIdx: number } | null {
   const match = slug.match(/^(\d+)-km-(\d+)cv$/);

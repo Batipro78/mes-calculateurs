@@ -1,3 +1,4 @@
+import { fmtInt as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurPlusValue from "../CalculateurPlusValue";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -8,7 +9,7 @@ const PRIX_ACHAT = [100000, 150000, 200000, 250000, 300000, 400000, 500000];
 const PLUS_VALUES = [25000, 50000, 75000, 100000, 150000, 200000];
 const ANNEES = [2, 5, 8, 10, 15, 20, 22, 25, 30];
 
-function fmt(n: number): string { return n.toLocaleString("fr-FR", { maximumFractionDigits: 0 }); }
+
 
 function abattementIR(a: number): number {
   if (a < 6) return 0; if (a <= 21) return (a - 5) * 6; return 100;

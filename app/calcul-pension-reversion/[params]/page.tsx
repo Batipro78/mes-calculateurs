@@ -1,3 +1,4 @@
+import { fmtInt as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurPensionReversion from "../CalculateurPensionReversion";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -6,7 +7,7 @@ import { notFound } from "next/navigation";
 
 const PENSIONS = [800, 1000, 1200, 1500, 1800, 2000, 2500, 3000];
 
-function fmt(n: number): string { return n.toLocaleString("fr-FR", { maximumFractionDigits: 0 }); }
+
 
 function parseSlug(slug: string): { pension: number } | null {
   const match = slug.match(/^(\d+)-euros$/);

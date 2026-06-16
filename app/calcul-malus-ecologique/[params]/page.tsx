@@ -1,3 +1,4 @@
+import { fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurMalus from "../CalculateurMalus";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -22,7 +23,7 @@ function calculerMalus(co2: number): number {
   return Math.min(70000, 45500 + (co2 - 210) * 1500);
 }
 
-function fmtInt(n: number): string { return n.toLocaleString("fr-FR", { maximumFractionDigits: 0 }); }
+
 
 function parseSlug(slug: string): { co2: number } | null {
   const match = slug.match(/^(\d+)-g-co2$/);

@@ -1,7 +1,8 @@
 "use client";
+import { fmtInt as fmt } from "@/app/lib/fmt";
 import { useState, useMemo } from "react";
 
-function fmt(n: number): string { return n.toLocaleString("fr-FR", { maximumFractionDigits: 0 }); }
+
 
 export default function CalculateurPensionReversion() {
   const [pensionDefunt, setPensionDefunt] = useState<string>("1500");

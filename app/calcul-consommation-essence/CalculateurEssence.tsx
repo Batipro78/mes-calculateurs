@@ -1,8 +1,9 @@
 "use client";
+import { fmtInt } from "@/app/lib/fmt";
 import { useState, useMemo } from "react";
 
 import { fmtEUR as fmt } from "@/app/lib/fmt";
-function fmtInt(n: number): string { return n.toLocaleString("fr-FR", { maximumFractionDigits: 0 }); }
+
 
 export default function CalculateurEssence() {
   const [distance, setDistance] = useState<string>("500");

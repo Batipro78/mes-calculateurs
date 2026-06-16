@@ -1,3 +1,4 @@
+import { fmtEUR as fmt, fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurIK from "../CalculateurIK";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -34,13 +35,9 @@ function calculIK(cvIdx: number, km: number, electrique: boolean = false): numbe
   return montant;
 }
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
 
-function fmtInt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
+
+
 
 function parseSlug(slug: string): { km: number; cv: string } | null {
   const match = slug.match(/^(\d+)-km-(\d+cv)$/);

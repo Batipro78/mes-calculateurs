@@ -1,3 +1,4 @@
+import { fmtEUR as fmt, fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurElectricite from "../CalculateurElectricite";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -35,13 +36,9 @@ const APPAREIL_SLUGS = APPAREILS.map((a) => a.slug);
 
 const TARIF_BASE = 0.2516;
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
 
-function fmtInt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
+
+
 
 function calculConso(puissance: number, heuresJour: number) {
   const consoJour = (puissance * heuresJour) / 1000; // kWh

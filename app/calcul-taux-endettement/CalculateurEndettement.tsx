@@ -1,10 +1,9 @@
 "use client";
+import { fmtInt as fmt } from "@/app/lib/fmt";
 
 import { useState } from "react";
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { maximumFractionDigits: 0 });
-}
+
 
 interface ResultsType {
   totalRevenus: number;

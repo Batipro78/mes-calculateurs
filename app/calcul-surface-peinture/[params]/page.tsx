@@ -1,3 +1,4 @@
+import { fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurSurfacePeinture from "../CalculateurSurfacePeinture";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -34,9 +35,7 @@ function fmt(n: number, dec = 2): string {
   return n.toLocaleString("fr-FR", { minimumFractionDigits: dec, maximumFractionDigits: dec });
 }
 
-function fmtInt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
+
 
 function getDimensions(surface: number): { longueur: number; largeur: number } {
   const largeur = Math.sqrt(surface / 1.25);

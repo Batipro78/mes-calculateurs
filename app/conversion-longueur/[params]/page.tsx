@@ -1,3 +1,4 @@
+import { fmtEUR as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import ConvertisseurLongueur from "../ConvertisseurLongueur";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -11,9 +12,7 @@ function cmToPouces(cm: number): number { return cm / 2.54; }
 function poucesToCm(pouces: number): number { return pouces * 2.54; }
 function cmToPieds(cm: number): number { return cm / 30.48; }
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
+
 function fmtInt(n: number): string {
   return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
 }

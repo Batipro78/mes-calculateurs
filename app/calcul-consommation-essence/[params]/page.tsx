@@ -1,3 +1,4 @@
+import { fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurEssence from "../CalculateurEssence";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -8,7 +9,7 @@ const DISTANCES = [50, 100, 200, 300, 400, 500, 600, 750, 1000, 1500];
 const CONSOS = [5, 6, 7, 8, 10];
 
 import { fmtEUR as fmt } from "@/app/lib/fmt";
-function fmtInt(n: number): string { return n.toLocaleString("fr-FR", { maximumFractionDigits: 0 }); }
+
 
 function parseSlug(slug: string): { distance: number; conso: number } | null {
   const match = slug.match(/^(\d+)-km-(\d+)-litres$/);

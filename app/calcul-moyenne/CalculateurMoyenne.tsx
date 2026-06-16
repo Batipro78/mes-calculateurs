@@ -1,4 +1,5 @@
 "use client";
+import { fmtEUR as fmt } from "@/app/lib/fmt";
 import { useState } from "react";
 
 interface Note {
@@ -10,9 +11,7 @@ interface Note {
 
 let nextId = 1;
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
+
 
 export default function CalculateurMoyenne() {
   const [notes, setNotes] = useState<Note[]>([

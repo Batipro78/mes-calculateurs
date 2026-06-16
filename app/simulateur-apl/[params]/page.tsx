@@ -1,3 +1,4 @@
+import { fmtEUR as fmt, fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import SimulateurAPL from "../SimulateurAPL";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -72,13 +73,9 @@ function calculerAPLMontant(loyer: number, zone: Zone, situation: Situation, nbC
   return { apl, loyerPlafond, forfaitCharges, pp };
 }
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
 
-function fmtInt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
+
+
 
 interface ParsedParams {
   zone: Zone;

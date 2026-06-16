@@ -1,4 +1,5 @@
 "use client";
+import { fmtEUR as fmt } from "@/app/lib/fmt";
 import { useState, useMemo } from "react";
 
 type Unite = "celsius" | "fahrenheit" | "kelvin";
@@ -20,9 +21,7 @@ function convertir(valeur: number, de: Unite, vers: Unite): number {
   return celsius + 273.15;
 }
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
+
 
 export default function ConvertisseurTemperature() {
   const [valeur, setValeur] = useState<string>("20");

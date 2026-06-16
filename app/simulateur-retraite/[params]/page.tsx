@@ -1,3 +1,4 @@
+import { fmtEUR as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import SimulateurRetraite from "../SimulateurRetraite";
 import { calcRetraite } from "../calcRetraite";
@@ -8,9 +9,7 @@ import { notFound } from "next/navigation";
 const ANNEES = [1960, 1962, 1964, 1965, 1968, 1970, 1975, 1980, 1985, 1990];
 const SALAIRES = [20000, 25000, 30000, 35000, 40000, 47100];
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
+
 
 function fmtInt(n: number): string {
   return Math.round(n).toLocaleString("fr-FR");

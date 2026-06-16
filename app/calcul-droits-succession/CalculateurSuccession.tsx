@@ -1,7 +1,8 @@
 "use client";
+import { fmtInt as fmt } from "@/app/lib/fmt";
 import { useState, useMemo } from "react";
 
-function fmt(n: number): string { return n.toLocaleString("fr-FR", { maximumFractionDigits: 0 }); }
+
 
 // Abattements 2026
 const ABATTEMENTS: Record<string, number> = {

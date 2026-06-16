@@ -1,3 +1,4 @@
+import { fmtEUR as fmt, fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurTVA from "../CalculateurTVA";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -11,13 +12,9 @@ const TAUX_LIST = [
   { slug: "5-5-pourcent", taux: 0.055, label: "5,5%", desc: "taux reduit" },
 ];
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
 
-function fmtInt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
+
+
 
 interface ParsedParams {
   montant: number;

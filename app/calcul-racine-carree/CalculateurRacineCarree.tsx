@@ -1,8 +1,9 @@
 "use client";
+import { fmtEUR as fmt2 } from "@/app/lib/fmt";
 import { useState, useMemo } from "react";
 
 function fmt(n: number): string { return n.toLocaleString("fr-FR", { minimumFractionDigits: 6, maximumFractionDigits: 6 }); }
-function fmt2(n: number): string { return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+
 
 function estCarreParfait(n: number): boolean {
   if (n < 0) return false;

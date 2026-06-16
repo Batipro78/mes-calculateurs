@@ -1,3 +1,4 @@
+import { fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurRentabilite from "../CalculateurRentabilite";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -8,7 +9,7 @@ const PRIX = [80000, 100000, 120000, 150000, 180000, 200000, 250000, 300000, 400
 const LOYERS = [400, 500, 600, 700, 800, 900, 1000, 1200, 1500];
 
 import { fmtEUR as fmt } from "@/app/lib/fmt";
-function fmtInt(n: number): string { return n.toLocaleString("fr-FR", { maximumFractionDigits: 0 }); }
+
 
 function parseSlug(slug: string): { prix: number; loyer: number } | null {
   const match = slug.match(/^(\d+)-euros-(\d+)-euros-mois$/);

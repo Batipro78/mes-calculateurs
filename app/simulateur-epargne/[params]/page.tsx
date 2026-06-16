@@ -1,3 +1,4 @@
+import { fmtEUR as fmt, fmtInt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import SimulateurEpargne from "../SimulateurEpargne";
 import Breadcrumb from "../../components/Breadcrumb";
@@ -16,13 +17,9 @@ const PLACEMENTS_MAP: Record<string, { label: string; taux: number; desc: string
 
 const PLACEMENT_SLUGS = Object.keys(PLACEMENTS_MAP);
 
-function fmt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-}
 
-function fmtInt(n: number): string {
-  return n.toLocaleString("fr-FR", { minimumFractionDigits: 0, maximumFractionDigits: 0 });
-}
+
+
 
 function simulerEpargne(capital: number, taux: number, dureeAnnees: number, mensuel: number = 0) {
   const tauxMensuel = taux / 100 / 12;
