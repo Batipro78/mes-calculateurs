@@ -7,7 +7,13 @@ import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/simulateur-blackout" },
+  alternates: {
+    canonical: "/simulateur-blackout",
+    languages: {
+      "fr": "/simulateur-blackout",
+      "en": "/en/blackout-simulator",
+    },
+  },
   title: "Simulateur Blackout 2026 - Etes-vous pret pour une panne electrique ?",
   description:
     "Evaluez votre autonomie en cas de coupure d'electricite. Score de preparation, duree d'autonomie estimee et budget d'equipement par niveau. Gratuit.",

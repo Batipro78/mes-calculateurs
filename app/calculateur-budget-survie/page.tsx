@@ -7,7 +7,13 @@ import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/calculateur-budget-survie" },
+  alternates: {
+    canonical: "/calculateur-budget-survie",
+    languages: {
+      "fr": "/calculateur-budget-survie",
+      "en": "/en/survival-budget-calculator",
+    },
+  },
   title: "Calculateur Budget Survie 2026 - Budget minimum pour vivre en France",
   description:
     "Calculez le budget minimum pour vivre en France en 2026. Logement, alimentation, transport par zone (Paris, grande ville, province, rural). Comparaison RSA, SMIC, seuil de pauvrete.",

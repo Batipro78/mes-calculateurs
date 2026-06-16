@@ -7,7 +7,13 @@ import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/simulateur-mobilisation" },
+  alternates: {
+    canonical: "/simulateur-mobilisation",
+    languages: {
+      "fr": "/simulateur-mobilisation",
+      "en": "/en/draft-simulator",
+    },
+  },
   title:
     "Suis-je mobilisable ? Simulateur de mobilisation 2026 - Test gratuit",
   description:

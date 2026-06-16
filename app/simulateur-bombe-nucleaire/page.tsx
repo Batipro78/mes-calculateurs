@@ -7,7 +7,13 @@ import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/simulateur-bombe-nucleaire" },
+  alternates: {
+    canonical: "/simulateur-bombe-nucleaire",
+    languages: {
+      "fr": "/simulateur-bombe-nucleaire",
+      "en": "/en/nuclear-bomb-simulator",
+    },
+  },
   title:
     "Simulateur Bombe Nucleaire 2026 - Carte d'impact et zones de destruction",
   description:

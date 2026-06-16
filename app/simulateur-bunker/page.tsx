@@ -7,7 +7,13 @@ import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/simulateur-bunker" },
+  alternates: {
+    canonical: "/simulateur-bunker",
+    languages: {
+      "fr": "/simulateur-bunker",
+      "en": "/en/bunker-cost-calculator",
+    },
+  },
   title:
     "Simulateur Budget Bunker 2026 - Prix, taille et autonomie par personne",
   description:
