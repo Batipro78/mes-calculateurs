@@ -152,4 +152,13 @@ export const ALL_CALCULATORS: Calculator[] = [
   { slug: "/test-burnout-mbi", title: "Test Burnout MBI", emoji: "🔥", color: "from-red-500 to-orange-600" },
   { slug: "/calcul-cote-argus-voiture", title: "Cote Argus Voiture", emoji: "🚗", color: "from-blue-500 to-indigo-600" },
   { slug: "/calcul-cout-trajet-voiture", title: "Cout Trajet Voiture", emoji: "🛣️", color: "from-sky-500 to-blue-600" },
+  { slug: "/calcul-octroi-de-mer", title: "Octroi de Mer", emoji: "🚢", color: "from-cyan-500 to-blue-600" },
+  { slug: "/calcul-exoneration-lodeom", title: "Exoneration LODEOM", emoji: "🏝️", color: "from-teal-500 to-emerald-600" },
+  { slug: "/calcul-reduction-impot-dom", title: "Reduction Impot DOM", emoji: "🌴", color: "from-emerald-500 to-green-600" },
+  { slug: "/simulateur-girardin-industriel", title: "Girardin Industriel", emoji: "🏭", color: "from-slate-500 to-gray-600" },
+  { slug: "/simulateur-denormandie", title: "Simulateur Denormandie", emoji: "🏘️", color: "from-amber-500 to-orange-600" },
+  { slug: "/prix-travaux-maison", title: "Prix Travaux Maison", emoji: "🏗️", color: "from-orange-500 to-amber-600" },
+  { slug: "/calculateur-gain-pari", title: "Gain de Pari", emoji: "🎰", color: "from-green-500 to-emerald-600" },
+  { slug: "/calculateur-pari-combine", title: "Pari Combine", emoji: "🎲", color: "from-violet-500 to-purple-600" },
+  { slug: "/convertisseur-cote-probabilite", title: "Cote / Probabilite", emoji: "📈", color: "from-indigo-500 to-blue-600" },
 ];
