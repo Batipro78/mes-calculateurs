@@ -1,7 +1,7 @@
 "use client";
 import { useState, useMemo } from "react";
 
-function fmt(n: number): string { return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+import { fmtEUR as fmt } from "@/app/lib/fmt";
 function fmtInt(n: number): string { return n.toLocaleString("fr-FR", { maximumFractionDigits: 0 }); }
 
 // Bareme kilometrique fiscal 2026 (voiture)

@@ -7,7 +7,7 @@ import { notFound } from "next/navigation";
 const PRIX = [80000, 100000, 120000, 150000, 180000, 200000, 250000, 300000, 400000, 500000];
 const LOYERS = [400, 500, 600, 700, 800, 900, 1000, 1200, 1500];
 
-function fmt(n: number): string { return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+import { fmtEUR as fmt } from "@/app/lib/fmt";
 function fmtInt(n: number): string { return n.toLocaleString("fr-FR", { maximumFractionDigits: 0 }); }
 
 function parseSlug(slug: string): { prix: number; loyer: number } | null {

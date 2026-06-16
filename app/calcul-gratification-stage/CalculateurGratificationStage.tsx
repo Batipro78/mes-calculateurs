@@ -1,7 +1,7 @@
 "use client";
 import { useState, useMemo } from "react";
 
-function fmt(n: number): string { return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+import { fmtEUR as fmt } from "@/app/lib/fmt";
 
 // Gratification minimale 2026 : 4,35€/heure (15% du plafond horaire SS)
 const GRATIF_HORAIRE_2026 = 4.35;

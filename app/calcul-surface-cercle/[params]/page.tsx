@@ -6,7 +6,7 @@ import { notFound } from "next/navigation";
 
 const RAYONS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20, 25, 30, 50, 100];
 
-function fmt(n: number): string { return n.toLocaleString("fr-FR", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+import { fmtEUR as fmt } from "@/app/lib/fmt";
 
 function parseSlug(slug: string): { rayon: number } | null {
   const match = slug.match(/^rayon-(\d+)$/);
