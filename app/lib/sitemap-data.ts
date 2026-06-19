@@ -808,6 +808,12 @@ function generateAllUrls(): SitemapEntry[] {
       priority: 0.9,
     },
     {
+      url: `${BASE_URL}/modele-devis-btp`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.9,
+    },
+    {
       url: `${BASE_URL}/calcul-score-stress`,
       lastModified: new Date(),
       changeFrequency: "monthly",

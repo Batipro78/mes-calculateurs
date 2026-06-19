@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import CTAMonDevisMinute from "../components/CTAMonDevisMinute";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/verificateur-devis" },
@@ -110,6 +111,8 @@ export default function Page() {
       </section>
 
       <Faq items={FAQ_ITEMS} />
+
+      <CTAMonDevisMinute campaign="verificateur-devis" variant="devis" />
 
       <RelatedCalculators currentSlug="/verificateur-devis" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

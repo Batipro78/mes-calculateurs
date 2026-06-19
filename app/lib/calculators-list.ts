@@ -69,6 +69,7 @@ export const ALL_CALCULATORS: Calculator[] = [
   { slug: "/calcul-pgcd-ppcm", title: "PGCD / PPCM", emoji: "🔢", color: "from-purple-500 to-violet-600" },
   { slug: "/calcul-duree-entre-dates", title: "Duree Entre Dates", emoji: "📆", color: "from-fuchsia-500 to-pink-600" },
   { slug: "/verificateur-devis", title: "Verificateur Devis", emoji: "📋", color: "from-blue-600 to-indigo-700" },
+  { slug: "/modele-devis-btp", title: "Modele Devis BTP", emoji: "🧾", color: "from-blue-500 to-indigo-600" },
   { slug: "/calcul-ascendant-astrologique", title: "Ascendant Astro", emoji: "♈", color: "from-purple-500 to-indigo-600" },
   { slug: "/calcul-gratification-stage", title: "Gratification Stage", emoji: "🎓", color: "from-indigo-500 to-blue-600" },
   { slug: "/calcul-droits-succession", title: "Droits Succession", emoji: "⚖️", color: "from-slate-700 to-slate-900" },

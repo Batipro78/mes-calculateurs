@@ -540,6 +540,15 @@ const outils = [
     tag: "Nouveau",
   },
   {
+    titre: "Modele de Devis BTP",
+    description:
+      "Modele de devis batiment gratuit a copier + guide de redaction : mentions, TVA, acompte. Pour artisans.",
+    href: "/modele-devis-btp",
+    icone: "🧾",
+    couleur: "from-blue-500 to-indigo-600",
+    tag: "Nouveau",
+  },
+  {
     titre: "Interet Compose",
     description:
       "Calculez les interets composes. Capital initial, versements mensuels, taux, duree. Tableau d'evolution annuel.",
