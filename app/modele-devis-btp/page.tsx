@@ -74,6 +74,40 @@ export default function Page() {
         le rediger : mentions obligatoires, TVA, acompte et erreurs a eviter.
       </p>
 
+      {/* INTRO ARTICLE */}
+      <section className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 mb-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">
+          Pourquoi le devis est l&apos;outil commercial n°1 de l&apos;artisan
+        </h2>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Dans le batiment, le devis n&apos;est pas une simple formalite : c&apos;est
+          souvent le premier document professionnel que le client a entre les
+          mains, et c&apos;est sur lui qu&apos;il vous compare aux autres
+          entreprises. Un devis clair, detaille et envoye rapidement inspire
+          confiance et remporte le chantier ; un devis flou, en retard ou
+          incomplet fait douter, meme quand le prix est juste. Apprendre a bien
+          rediger un devis, c&apos;est donc autant une question commerciale que
+          legale.
+        </p>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Un devis bien fait vous protege aussi. Une fois signe par le client avec
+          la mention « bon pour accord », il devient un contrat : il fixe le prix,
+          le perimetre des travaux et les conditions de paiement. En cas de litige
+          sur ce qui etait prevu ou non, c&apos;est ce document qui fait foi. A
+          l&apos;inverse, un travail commence sans devis signe vous expose a des
+          contestations et complique serieusement le recouvrement de vos factures.
+        </p>
+        <p className="text-slate-600 leading-relaxed">
+          Enfin, le devis est le point de depart de toute votre gestion : une fois
+          accepte, il se transforme en facture sans tout ressaisir, alimente votre
+          suivi de chantier et votre tresorerie. C&apos;est pourquoi de plus en
+          plus d&apos;artisans abandonnent le devis manuel sur traitement de texte
+          au profit d&apos;un outil dedie. Dans la suite, vous trouverez un modele
+          pret a copier, puis le guide complet pour le remplir correctement :
+          mentions obligatoires, taux de TVA, acompte et erreurs a eviter.
+        </p>
+      </section>
+
       {/* MODELE PRET A L'EMPLOI */}
       <section className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">
@@ -356,6 +390,52 @@ export default function Page() {
             </span>
           </li>
         </ul>
+      </section>
+
+      {/* ARTICLE : BIEN CHIFFRER + AUTO-ENTREPRENEUR */}
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6 sm:p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">
+          Bien chiffrer son devis pour ne pas travailler a perte
+        </h2>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          La premiere cause de difficulte chez les artisans n&apos;est pas le
+          manque de chantiers, mais des devis mal chiffres. Pour fixer un prix
+          juste, partez toujours de votre <strong>cout de revient reel</strong> :
+          le temps de main-d&apos;oeuvre (heures x taux horaire charge), le cout
+          des fournitures, mais aussi les frais souvent oublies — deplacements,
+          materiel, assurance, gestion administrative, et la part de votre temps
+          passe a etablir les devis eux-memes. Ce n&apos;est qu&apos;ensuite que
+          vous appliquez votre marge.
+        </p>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Un tarif horaire qui « parait » correct peut vous faire travailler a
+          perte si vous oubliez ces charges. Detaillez chaque poste dans le devis :
+          non seulement c&apos;est plus rentable, mais un client comprend et
+          accepte bien mieux un prix decompose qu&apos;un montant global. Pensez
+          aussi a prevoir une ligne pour les imprevus sur les chantiers de
+          renovation, ou les surprises sont frequentes une fois les travaux
+          commences.
+        </p>
+
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">
+          Le cas de l&apos;auto-entrepreneur du batiment
+        </h3>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Si vous etes auto-entrepreneur (micro-entreprise), votre devis suit les
+          memes regles, avec quelques particularites. Tant que vous restez sous les
+          seuils de la franchise en base, vous ne facturez pas la TVA : vos prix
+          sont nets et vous ajoutez la mention <strong>« TVA non applicable,
+          article 293 B du CGI »</strong>. Attention, des que vous depassez le
+          seuil, vous devez facturer la TVA — anticipez ce basculement pour ne pas
+          devoir l&apos;absorber sur vos marges.
+        </p>
+        <p className="text-slate-600 leading-relaxed">
+          Autre point essentiel : pour les travaux de batiment,
+          l&apos;<strong>assurance decennale est obligatoire</strong>, y compris
+          en micro-entreprise, et son numero doit figurer sur le devis. Verifiez
+          enfin votre <a href="/simulateur-micro-entreprise" className="text-blue-600 underline hover:text-blue-800">simulation de charges micro-entreprise</a>{" "}
+          pour fixer des prix qui tiennent compte de vos cotisations.
+        </p>
       </section>
 
       <Faq items={FAQ_ITEMS} />
