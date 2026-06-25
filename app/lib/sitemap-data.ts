@@ -538,6 +538,12 @@ function generateAllUrls(): SitemapEntry[] {
       priority: 0.8,
     },
     {
+      url: `${BASE_URL}/cout-climatisation`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${BASE_URL}/indemnite-licenciement`,
       lastModified: new Date(),
       changeFrequency: "monthly",

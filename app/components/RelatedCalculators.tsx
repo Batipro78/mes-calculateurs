@@ -8,7 +8,7 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calcul-pourcentage": ["/calcul-tva", "/salaire-brut-net", "/simulateur-epargne", "/convertisseur-devises"],
   "/calcul-imc": ["/calcul-poids-ideal", "/calcul-calories", "/calcul-age", "/calcul-date-accouchement", "/calcul-rapport-taille-tour-de-taille"],
   "/frais-de-notaire": ["/simulateur-pret-immobilier", "/simulateur-impot-revenu", "/calcul-tva", "/simulateur-epargne"],
-  "/calcul-consommation-electrique": ["/calcul-puissance-climatisation", "/calcul-surface-peinture", "/calcul-pourcentage", "/simulateur-epargne", "/simulateur-blackout"],
+  "/calcul-consommation-electrique": ["/calcul-puissance-climatisation", "/cout-climatisation", "/calcul-surface-peinture", "/simulateur-epargne", "/simulateur-blackout"],
   "/calcul-age": ["/calcul-date-accouchement", "/calcul-imc", "/calcul-heures-travail", "/simulateur-epargne"],
   "/indemnite-licenciement": ["/salaire-brut-net", "/calcul-heures-travail", "/simulateur-impot-revenu", "/calcul-indemnites-kilometriques"],
   "/convertisseur-devises": ["/calcul-tva", "/calcul-pourcentage", "/salaire-brut-net", "/simulateur-epargne"],
@@ -158,9 +158,10 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calculateur-gain-pari": ["/calculateur-pari-combine", "/convertisseur-cote-probabilite", "/calcul-pourcentage", "/convertisseur-devises"],
   "/calculateur-pari-combine": ["/calculateur-gain-pari", "/convertisseur-cote-probabilite", "/calcul-pourcentage", "/calcul-tva"],
   "/convertisseur-cote-probabilite": ["/calculateur-gain-pari", "/calculateur-pari-combine", "/calcul-pourcentage", "/convertisseur-devises"],
-  "/calcul-puissance-climatisation": ["/rafraichir-maison-sans-clim", "/calcul-consommation-electrique", "/calculateur-dpe", "/calcul-temperature-ressentie"],
+  "/calcul-puissance-climatisation": ["/cout-climatisation", "/rafraichir-maison-sans-clim", "/calcul-consommation-electrique", "/calcul-temperature-ressentie"],
   "/calcul-temperature-ressentie": ["/rafraichir-maison-sans-clim", "/calcul-puissance-climatisation", "/calcul-consommation-eau", "/conversion-temperature"],
-  "/rafraichir-maison-sans-clim": ["/calcul-puissance-climatisation", "/calcul-temperature-ressentie", "/calcul-consommation-electrique", "/calculateur-dpe"],
+  "/rafraichir-maison-sans-clim": ["/cout-climatisation", "/calcul-puissance-climatisation", "/calcul-temperature-ressentie", "/calcul-consommation-electrique"],
+  "/cout-climatisation": ["/calcul-puissance-climatisation", "/rafraichir-maison-sans-clim", "/calcul-consommation-electrique", "/calcul-temperature-ressentie"],
 };
 
 interface RelatedCalculatorsProps {

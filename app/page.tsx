@@ -36,6 +36,15 @@ const outils = [
     tag: "Guide",
   },
   {
+    titre: "Cout d'une Climatisation",
+    description:
+      "Combien coute votre clim ? Prix par jour, mois et ete selon le modele (mobile, split, reversible), la puissance et les heures d'utilisation.",
+    href: "/cout-climatisation",
+    icone: "💶",
+    couleur: "from-sky-600 to-indigo-600",
+    tag: "Nouveau",
+  },
+  {
     titre: "Prix Panneaux Solaires",
     description:
       "Estimez le prix d'une installation photovoltaique en 2026 : 3, 6 ou 9 kWc, batterie, aides MaPrimeRenov'.",
