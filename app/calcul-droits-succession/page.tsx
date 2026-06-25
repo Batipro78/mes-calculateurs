@@ -81,6 +81,35 @@ export default function Page() {
           regime matrimonial et de la nature des biens.
         </p>
       </section>
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">Reduire legalement les droits de succession</h2>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Les droits de succession peuvent etre fortement alleges en anticipant de son vivant. Plusieurs
+          dispositifs parfaitement legaux permettent de transmettre davantage a ses proches sans taxation.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Les principaux leviers</h3>
+        <ul className="list-disc list-inside text-slate-600 space-y-1 mb-4">
+          <li><strong>Donation tous les 15 ans</strong> : chaque parent peut donner jusqu&apos;a 100 000 &euro; par enfant en franchise de droits, renouvelable tous les 15 ans</li>
+          <li><strong>Don familial de somme d&apos;argent</strong> : 31 865 &euro; supplementaires exoneres par un donateur de moins de 80 ans a un enfant ou petit-enfant majeur</li>
+          <li><strong>Assurance-vie</strong> : les sommes versees avant 70 ans sont transmises hors succession, avec un abattement de 152 500 &euro; par beneficiaire</li>
+          <li><strong>Demembrement de propriete</strong> : donner la nue-propriete en gardant l&apos;usufruit reduit la base taxable, car seule la valeur de la nue-propriete est imposee</li>
+          <li><strong>Petits-enfants</strong> : un abattement specifique de 31 865 &euro; s&apos;applique aux donations grand-parent / petit-enfant</li>
+        </ul>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Delais a respecter pour la declaration</h3>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          La declaration de succession doit etre deposee dans les <strong>6 mois</strong> suivant le deces
+          (12 mois si le deces a eu lieu a l&apos;etranger). Au-dela, des interets de retard de 0,20 % par mois
+          s&apos;appliquent, majores d&apos;une penalite de 10 % apres 6 mois de retard supplementaires. Le
+          paiement peut etre fractionne ou differe sous conditions, notamment en cas de transmission
+          d&apos;entreprise.
+        </p>
+        <p className="text-slate-600 leading-relaxed">
+          En pratique, une transmission preparee 15 a 20 ans a l&apos;avance, en combinant donations successives
+          et assurance-vie, permet souvent de <strong>diviser par deux ou trois</strong> la facture fiscale
+          finale. Un notaire chiffrera la strategie la mieux adaptee a votre patrimoine.
+        </p>
+      </section>
+
       <Faq items={FAQ_ITEMS} />
 
       <SourcesMethodo

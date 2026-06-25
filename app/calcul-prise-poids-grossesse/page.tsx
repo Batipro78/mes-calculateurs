@@ -101,6 +101,40 @@ export default function Page() {
         </ul>
       </section>
 
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">Bien manger sans &quot;manger pour deux&quot;</h2>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          L&apos;idee de &quot;manger pour deux&quot; est un mythe tenace. Les besoins energetiques augmentent en
+          realite assez peu, surtout en debut de grossesse. C&apos;est la <strong>qualite</strong> de
+          l&apos;alimentation, plus que la quantite, qui compte pour le bebe et pour vous.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Les besoins reels par trimestre</h3>
+        <ul className="list-disc list-inside text-slate-600 space-y-1 mb-4">
+          <li><strong>1er trimestre</strong> : aucun apport supplementaire necessaire (vos besoins habituels suffisent)</li>
+          <li><strong>2e trimestre</strong> : environ <strong>+340 kcal/jour</strong>, l&apos;equivalent d&apos;une collation type fruit + yaourt + poignee de noix</li>
+          <li><strong>3e trimestre</strong> : environ <strong>+450 kcal/jour</strong></li>
+        </ul>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Priorite aux proteines, au fer, au calcium, a l&apos;acide folique (vitamine B9) et aux omega-3,
+          essentiels au developpement du bebe. Limitez sucres rapides et plats ultra-transformes, qui favorisent
+          une prise de poids excessive et le diabete gestationnel.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Bouger pendant la grossesse</h3>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Sauf contre-indication medicale, une activite physique douce et reguliere (marche, natation, yoga
+          prenatal) est recommandee : elle aide a controler la prise de poids, ameliore le sommeil, reduit le
+          mal de dos et prepare a l&apos;accouchement. Visez environ 30 minutes par jour, a intensite moderee.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Et apres l&apos;accouchement ?</h3>
+        <p className="text-slate-600 leading-relaxed">
+          Le retour au poids d&apos;avant grossesse prend en general <strong>6 a 12 mois</strong>.
+          L&apos;allaitement mobilise une partie des reserves graisseuses constituees pendant la grossesse
+          (d&apos;ou les 2 a 3 kg prevus a cet effet). Inutile de se precipiter : une perte progressive,
+          soutenue par une alimentation equilibree, est la plus durable. En cas de doute, parlez-en a votre
+          sage-femme.
+        </p>
+      </section>
+
       <Faq items={FAQ_ITEMS} />
 
       <SourcesMethodo

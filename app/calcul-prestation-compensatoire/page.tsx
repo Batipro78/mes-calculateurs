@@ -82,7 +82,7 @@ export default function Page() {
         <div className="grid gap-4 sm:grid-cols-3 mb-4">
           <div className="bg-violet-50 rounded-xl p-4 border border-violet-200">
             <p className="font-bold text-violet-900 mb-2">Methode Depondt</p>
-            <p className="text-sm text-slate-700">Reference CA Paris. Formule : (ecart annuel × duree × 0,4) / 2. Donne des montants modérés.</p>
+            <p className="text-sm text-slate-700">Reference CA Paris. Formule : (ecart annuel × duree × 0,4) / 2. Donne des montants moderes.</p>
           </div>
           <div className="bg-violet-50 rounded-xl p-4 border border-violet-200">
             <p className="font-bold text-violet-900 mb-2">Methode moyenne</p>
@@ -100,6 +100,40 @@ export default function Page() {
           <li><strong>Attribution de biens</strong> : transfert de propriete d&apos;un immeuble, de parts de societe, etc.</li>
           <li><strong>Rente viagere (rare)</strong> : uniquement si le creancier ne peut subvenir a ses besoins en raison de son age ou de son etat de sante</li>
         </ul>
+      </section>
+
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">Ne pas confondre avec la pension alimentaire</h2>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          La prestation compensatoire est souvent confondue avec d&apos;autres versements lies au divorce. Or
+          les regles, la duree et la fiscalite different completement.
+        </p>
+        <ul className="list-disc list-inside text-slate-600 space-y-1 mb-4">
+          <li><strong>Prestation compensatoire</strong> : compense la disparite de niveau de vie entre <strong>ex-epoux</strong>. Versee en general en capital, une fois pour toutes.</li>
+          <li><strong>Pension alimentaire</strong> : concerne l&apos;entretien des <strong>enfants</strong>, versee mensuellement, revisable et due tant que l&apos;enfant n&apos;est pas autonome.</li>
+          <li><strong>Devoir de secours</strong> : aide entre epoux <strong>pendant</strong> la procedure, qui cesse au prononce du divorce.</li>
+        </ul>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Quand faut-il la demander ?</h3>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          La prestation compensatoire doit imperativement etre demandee <strong>pendant la procedure de
+          divorce</strong>, avant que le jugement ne soit definitif. Une fois le divorce prononce, il n&apos;est
+          plus possible de la reclamer : c&apos;est un point de vigilance majeur, souvent rappele par les
+          avocats.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Peut-on la reviser ?</h3>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Versee en <strong>capital</strong>, elle est en principe definitive et non revisable (seules les
+          modalites de paiement peuvent etre amenagees). Versee en <strong>rente</strong> (cas rare), elle peut
+          etre revisee, suspendue ou supprimee en cas de changement important dans les ressources ou besoins de
+          l&apos;une des parties.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Fiscalite en bref</h3>
+        <p className="text-slate-600 leading-relaxed">
+          Capital verse sous 12 mois : <strong>reduction d&apos;impot de 25 %</strong> pour celui qui paie (dans
+          la limite de 30 500 &euro;), et somme non imposable pour celui qui la recoit. Versee sur plus de
+          12 mois ou en rente : les sommes sont deductibles pour le debiteur mais imposables pour le
+          beneficiaire. Le choix de la forme a donc un impact fiscal direct.
+        </p>
       </section>
 
       <Faq items={FAQ_ITEMS} />

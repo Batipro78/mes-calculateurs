@@ -114,6 +114,42 @@ export default function Page() {
         </p>
       </section>
 
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">Plafonnement, declaration et evaluation des biens</h2>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Trois mecanismes meritent une attention particuliere pour estimer correctement son IFI : le
+          plafonnement, les regles de declaration et la valorisation des biens.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Le plafonnement a 75 % des revenus</h3>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Le total forme par l&apos;IFI, l&apos;impot sur le revenu et les prelevements sociaux ne peut pas
+          depasser <strong>75 % des revenus</strong> de l&apos;annee precedente. Si ce plafond est franchi,
+          l&apos;exces vient en reduction de l&apos;IFI. Ce mecanisme protege les contribuables au gros
+          patrimoine immobilier mais aux revenus modestes (par exemple des retraites detenant un bien de grande
+          valeur).
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Comment et quand declarer</h3>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          L&apos;IFI se declare en meme temps que les revenus, via l&apos;annexe <strong>2042-IFI</strong> jointe
+          a la declaration annuelle, au printemps. Le patrimoine retenu est celui detenu au{" "}
+          <strong>1er janvier</strong> de l&apos;annee. L&apos;avis d&apos;imposition IFI est envoye a
+          l&apos;automne, en meme temps que celui de l&apos;impot sur le revenu.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Evaluer ses biens : les decotes admises</h3>
+        <ul className="list-disc list-inside text-slate-600 space-y-1 mb-4">
+          <li><strong>Residence principale</strong> : abattement legal de 30 % sur sa valeur venale</li>
+          <li><strong>Bien loue ou occupe</strong> : decote possible de 10 a 30 % (un bien occupe se vend moins cher)</li>
+          <li><strong>Bien detenu en indivision</strong> : decote pour difficulte de revente, souvent 10 a 20 %</li>
+          <li><strong>Parts de SCI</strong> : decote pour non-liquidite des parts</li>
+        </ul>
+        <p className="text-slate-600 leading-relaxed">
+          Ces decotes, justifiees et raisonnables, reduisent la base taxable et peuvent faire passer un
+          patrimoine juste sous le seuil de 1,3 M&euro;. Mais elles doivent rester defendables face a
+          l&apos;administration : une evaluation excessive peut etre redressee. En cas de doute, faites valider
+          votre estimation par un notaire ou un conseil fiscal.
+        </p>
+      </section>
+
       <Faq items={FAQ_ITEMS} />
 
       <SourcesMethodo

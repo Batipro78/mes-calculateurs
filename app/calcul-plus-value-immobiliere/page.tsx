@@ -20,7 +20,7 @@ const FAQ_ITEMS: FaqItem[] = [
   { q: "Comment est imposee la plus-value immobiliere ?", a: "La plus-value immobiliere est imposee a 19% d'impot sur le revenu + 17,2% de prelevements sociaux, soit 36,2% au total. Des abattements s'appliquent en fonction de la duree de detention : exoneration totale d'IR apres 22 ans et de PS apres 30 ans." },
   { q: "La vente de ma residence principale est-elle imposee ?", a: "Non. La plus-value realisee lors de la vente de votre residence principale est totalement exoneree d'impot, quelle que soit la duree de detention ou le montant de la plus-value." },
   { q: "Quels abattements pour duree de detention ?", a: "Pour l'IR : 6% par an de la 6e a la 21e annee, puis 4% la 22e annee (exoneration totale a 22 ans). Pour les PS : 1,65% par an de la 6e a la 21e annee, 1,6% la 22e annee, puis 9% par an de la 23e a la 30e annee (exoneration totale a 30 ans)." },
-  { q: "Peut-on deduire les travaux du calcul de la plus-value ?", a: "Oui. Les travaux d'amelioration, de construction ou d'agrandissement realisés par des entreprises sont deductibles du prix de vente pour reduire la plus-value imposable. Ils doivent etre justifies par des factures. Les travaux d'entretien courant ne sont pas deductibles. Alternativement, un forfait de 15% du prix d'achat est applicable sans justificatif si le bien est detenu depuis plus de 5 ans." },
+  { q: "Peut-on deduire les travaux du calcul de la plus-value ?", a: "Oui. Les travaux d'amelioration, de construction ou d'agrandissement realises par des entreprises sont deductibles du prix de vente pour reduire la plus-value imposable. Ils doivent etre justifies par des factures. Les travaux d'entretien courant ne sont pas deductibles. Alternativement, un forfait de 15% du prix d'achat est applicable sans justificatif si le bien est detenu depuis plus de 5 ans." },
 ];
 
 export default function Page() {
@@ -92,6 +92,40 @@ export default function Page() {
             </div>
           ))}
         </div>
+      </section>
+
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">Frais, travaux et surtaxe : les details qui changent le montant</h2>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Au-dela du calcul de base, plusieurs mecanismes peuvent augmenter ou alleger sensiblement la
+          plus-value imposable. Bien les connaitre permet souvent d&apos;economiser plusieurs milliers
+          d&apos;euros.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Majorer le prix d&apos;achat (pour reduire la plus-value)</h3>
+        <ul className="list-disc list-inside text-slate-600 space-y-1 mb-4">
+          <li><strong>Frais d&apos;acquisition</strong> : forfait de <strong>7,5 %</strong> du prix d&apos;achat, sans justificatif (ou frais reels si superieurs)</li>
+          <li><strong>Travaux</strong> : forfait de <strong>15 %</strong> du prix d&apos;achat si le bien est detenu depuis plus de 5 ans, sans fournir de factures (ou montant reel sur justificatifs)</li>
+        </ul>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Ces deux forfaits se cumulent : pour un bien achete 200 000 &euro;, on peut ajouter d&apos;office
+          15 000 &euro; de frais et 30 000 &euro; de travaux au prix d&apos;acquisition, soit 45 000 &euro; de
+          plus-value en moins a taxer.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">La surtaxe sur les plus-values elevees</h3>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Au-dela de <strong>50 000 &euro;</strong> de plus-value imposable (apres abattements), une taxe
+          supplementaire progressive de <strong>2 % a 6 %</strong> s&apos;ajoute aux 36,2 % deja dus. Elle ne
+          concerne ni la residence principale (exoneree) ni les terrains a batir.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Exemple chiffre</h3>
+        <p className="text-slate-600 leading-relaxed">
+          Bien locatif achete 200 000 &euro; en 2010, revendu 320 000 &euro; en 2026 (16 ans de detention).
+          Prix d&apos;achat majore : 200 000 + 15 000 (frais) + 30 000 (travaux) = 245 000 &euro;. Plus-value
+          brute : 75 000 &euro;. Apres 66 % d&apos;abattement IR (11 ans au-dela de la 5e), la base IR tombe a
+          environ 25 500 &euro;, soit ~4 845 &euro; d&apos;impot sur le revenu, auxquels s&apos;ajoutent les
+          prelevements sociaux apres leur propre abattement. Sans le forfait travaux, la facture aurait ete
+          nettement plus lourde.
+        </p>
       </section>
 
       <Faq items={FAQ_ITEMS} />

@@ -87,6 +87,38 @@ export default function Page() {
         </p>
       </section>
 
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">Commencer tot : le facteur le plus puissant</h2>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Avec les interets composes, <strong>le temps compte plus que le montant</strong>. Quelques annees
+          d&apos;avance changent radicalement le resultat final, car les premiers interets ont le plus de temps
+          pour produire eux-memes des interets.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">L&apos;exemple qui parle</h3>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Anne place 200 &euro; par mois des 25 ans et s&apos;arrete a 35 ans (10 ans d&apos;effort,
+          24 000 &euro; verses). Bruno commence a 35 ans et verse 200 &euro; par mois jusqu&apos;a 65 ans
+          (30 ans, 72 000 &euro; verses). A 65 ans, avec un rendement de 6 % par an,{" "}
+          <strong>Anne a souvent plus de capital que Bruno</strong> alors qu&apos;elle a verse trois fois moins.
+          C&apos;est toute la puissance de l&apos;anteriorite.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Sur quels supports en profiter en France</h3>
+        <ul className="list-disc list-inside text-slate-600 space-y-1 mb-4">
+          <li><strong>Livret A et LDDS</strong> : capital garanti, taux reglemente, ideal pour l&apos;epargne de precaution</li>
+          <li><strong>Assurance-vie (fonds euros)</strong> : securise, fiscalite avantageuse apres 8 ans</li>
+          <li><strong>PEA et ETF actions</strong> : plus volatils mais rendement historique de l&apos;ordre de 7 % par an sur le long terme</li>
+          <li><strong>Plan d&apos;epargne retraite (PER)</strong> : interets composes + deduction fiscale a l&apos;entree</li>
+        </ul>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Les deux ennemis : frais et inflation</h3>
+        <p className="text-slate-600 leading-relaxed">
+          Les frais agissent comme des interets composes <strong>a l&apos;envers</strong> : 1 % de frais annuels
+          peut amputer le capital final de 20 a 25 % sur 30 ans. De meme, raisonnez toujours en rendement{" "}
+          <strong>reel</strong> (rendement moins inflation) : a 5 % de rendement et 2 % d&apos;inflation, votre
+          pouvoir d&apos;achat ne progresse que de 3 % par an. Privilegier des supports a frais reduits est donc
+          aussi important que viser un bon rendement.
+        </p>
+      </section>
+
       <Faq items={FAQ_ITEMS} />
 
       <SourcesMethodo

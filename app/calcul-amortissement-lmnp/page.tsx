@@ -35,7 +35,7 @@ const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Quel est l'impact de l'amortissement LMNP sur la plus-value a la revente ?",
-    a: "En LMNP, les amortissements deduits ne sont pas reintegres dans le calcul de la plus-value (contrairement au LMP). La plus-value est calculee sur la difference entre le prix de vente et le prix d'achat initial, ce qui est un avantage fiscal majeur du statut LMNP par rapport au LMP.",
+    a: "La regle a change avec la loi de finances pour 2025 : pour les ventes realisees depuis 2025, les amortissements deduits sont desormais reintegres dans le calcul de la plus-value de revente en LMNP (comme c'etait deja le cas en LMP), ce qui augmente la base imposable. Des exceptions subsistent pour certaines residences services (etudiantes, seniors, EHPAD). Avant 2025, ces amortissements n'etaient pas reintegres, ce qui constituait un avantage majeur du statut.",
   },
 ];
 
@@ -110,6 +110,41 @@ export default function Page() {
             </ul>
           </div>
         </div>
+      </section>
+
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">Demarrer en LMNP reel : obligations et actualite 2026</h2>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Le regime reel offre de gros avantages fiscaux, mais il impose un cadre comptable plus strict que le
+          micro-BIC. Voici l&apos;essentiel pour se lancer sans erreur.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Les obligations a respecter</h3>
+        <ul className="list-disc list-inside text-slate-600 space-y-1 mb-4">
+          <li>Obtenir un numero SIRET en declarant l&apos;activite de loueur en meuble (formulaire P0i, dans les 15 jours suivant le debut de location)</li>
+          <li>Tenir une comptabilite commerciale : amortissements, immobilisations, compte de resultat</li>
+          <li>Teletransmettre chaque annee la liasse fiscale (formulaires 2031 et 2033) au service des impots</li>
+          <li>Reporter le resultat sur la declaration de revenus (regime BIC, et non revenus fonciers)</li>
+        </ul>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Le recours a un <strong>expert-comptable specialise</strong> (300 a 1 000 &euro;/an) est vivement
+          conseille ; ces honoraires sont eux-memes deductibles des loyers.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Nouveaute importante : reforme 2025</h3>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          La loi de finances pour 2025 a modifie un avantage historique du LMNP : pour les ventes realisees
+          depuis 2025, <strong>les amortissements deduits sont desormais reintegres dans le calcul de la
+          plus-value</strong> de revente (la base taxable augmente donc d&apos;autant). Certaines residences
+          services (etudiantes, seniors, EHPAD) restent exonerees de cette reintegration. L&apos;avantage annuel
+          de l&apos;amortissement reste entier ; c&apos;est surtout la fiscalite de sortie qui change.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">LMNP ou LMP : ou est la frontiere ?</h3>
+        <p className="text-slate-600 leading-relaxed">
+          Vous restez en <strong>LMNP</strong> tant que vos recettes locatives meublees sont inferieures a
+          23 000 &euro;/an, ou qu&apos;elles ne depassent pas les autres revenus d&apos;activite du foyer. Au-dela
+          de ces deux seuils, vous basculez en <strong>LMP</strong> (Loueur Meuble Professionnel), avec des
+          regles sociales et fiscales differentes (cotisations sociales, mais deficits imputables sur le revenu
+          global).
+        </p>
       </section>
 
       <Faq items={FAQ_ITEMS} />

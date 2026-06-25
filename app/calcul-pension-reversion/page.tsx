@@ -68,6 +68,40 @@ export default function Page() {
           </table>
         </div>
       </section>
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">Demander sa pension de reversion : demarches et delais</h2>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          La pension de reversion n&apos;est <strong>jamais attribuee automatiquement</strong> : le conjoint
+          survivant doit en faire la demande, regime par regime. Le plus simple est de remplir la{" "}
+          <strong>demande unique de retraite de reversion</strong> sur le site info-retraite.fr : elle est
+          transmise d&apos;un coup a l&apos;ensemble des caisses (regime general, complementaire, fonction
+          publique, regimes speciaux) aupres desquelles le defunt avait cotise.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Les etapes a suivre</h3>
+        <ol className="list-decimal list-inside text-slate-600 space-y-1 mb-4">
+          <li>Reunir les pieces : acte de deces, livret de famille, vos justificatifs de ressources, RIB</li>
+          <li>Deposer la demande en ligne sur info-retraite.fr (ou par formulaire papier Cerfa)</li>
+          <li>Indiquer tous les regimes du defunt (salarie, independant, agricole, public...)</li>
+          <li>Attendre l&apos;instruction : comptez generalement 2 a 4 mois de traitement</li>
+        </ol>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Attention au point de depart</h3>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Si la demande est deposee dans les <strong>12 mois</strong> qui suivent le deces, la reversion prend
+          effet le 1er jour du mois suivant le deces. Passe ce delai, elle ne demarre qu&apos;au 1er jour du
+          mois suivant le depot : <strong>tarder a faire sa demande fait perdre des mois de pension</strong>,
+          sans rattrapage. Mieux vaut donc lancer la demarche rapidement, meme si toutes les pieces ne sont pas
+          encore reunies.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Cumul avec ses propres revenus</h3>
+        <p className="text-slate-600 leading-relaxed">
+          Au regime general, la reversion est soumise a un plafond de ressources : vos pensions de retraite
+          personnelles, revenus d&apos;activite et certains biens sont pris en compte. Si vos ressources
+          augmentent (reprise d&apos;activite, heritage), le montant peut etre revu a la baisse. La
+          complementaire AGIRC-ARRCO, elle, n&apos;impose aucune condition de ressources : seul l&apos;age
+          minimum (55 ans) compte.
+        </p>
+      </section>
+
       <Faq items={FAQ_ITEMS} />
 
       <SourcesMethodo

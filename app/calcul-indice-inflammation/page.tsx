@@ -91,6 +91,37 @@ export default function Page() {
         </p>
       </section>
 
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">Une journee type anti-inflammatoire</h2>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Adopter une alimentation anti-inflammatoire ne demande pas de tout bouleverser : il s&apos;agit surtout
+          de remplacer progressivement les aliments pro-inflammatoires par leurs equivalents protecteurs. Voici
+          un exemple de journee equilibree.
+        </p>
+        <ul className="list-disc list-inside text-slate-600 space-y-1 mb-4">
+          <li><strong>Petit-dejeuner</strong> : flocons d&apos;avoine, fruits rouges, une poignee de noix, the vert plutot que viennoiserie et jus industriel</li>
+          <li><strong>Dejeuner</strong> : legumes verts, une portion de poisson gras ou de legumineuses, huile d&apos;olive, un fruit</li>
+          <li><strong>Collation</strong> : un carre de chocolat noir 70 %, quelques amandes</li>
+          <li><strong>Diner</strong> : soupe de legumes, oeufs ou volaille, cereales completes, curcuma et gingembre</li>
+        </ul>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">L&apos;inflammation ne se joue pas que dans l&apos;assiette</h3>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Trois facteurs de mode de vie pesent autant que l&apos;alimentation sur l&apos;inflammation chronique :
+          le <strong>sommeil</strong> (moins de 6 h par nuit augmente les marqueurs inflammatoires), le{" "}
+          <strong>stress prolonge</strong> (le cortisol entretient l&apos;inflammation) et la{" "}
+          <strong>sedentarite</strong>. Une activite physique reguliere, meme moderee comme 30 minutes de marche
+          par jour, abaisse mesurablement la proteine C-reactive (CRP), un marqueur cle de l&apos;inflammation.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">En combien de temps voit-on des effets ?</h3>
+        <p className="text-slate-600 leading-relaxed">
+          Les premiers benefices (meilleure digestion, energie plus stable) apparaissent souvent en{" "}
+          <strong>2 a 4 semaines</strong>. Les effets profonds sur les marqueurs sanguins et le risque
+          cardiovasculaire se construisent sur plusieurs mois de regularite. L&apos;anti-inflammatoire est un
+          mode de vie durable, pas une cure ponctuelle. Cet outil reste indicatif et ne remplace pas
+          l&apos;avis d&apos;un medecin ou d&apos;un dieteticien.
+        </p>
+      </section>
+
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-indice-inflammation" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

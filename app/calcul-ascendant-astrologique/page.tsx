@@ -101,6 +101,37 @@ export default function Page() {
         </div>
       </section>
 
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">Soleil, Lune et Ascendant : la trinite du theme astral</h2>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          En astrologie, votre profil ne se resume pas a votre signe solaire. Trois reperes forment le coeur de
+          votre <strong>theme astral</strong>, et c&apos;est leur combinaison qui dessine un portrait nuance.
+        </p>
+        <ul className="list-disc list-inside text-slate-600 space-y-1 mb-4">
+          <li><strong>Le Soleil</strong> (votre signe) : votre identite profonde, ce qui vous anime et vos aspirations</li>
+          <li><strong>La Lune</strong> : votre monde emotionnel, votre sensibilite et vos reactions instinctives</li>
+          <li><strong>L&apos;Ascendant</strong> : votre apparence, votre maniere d&apos;aborder le monde, la premiere impression que vous donnez</li>
+        </ul>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Pourquoi l&apos;ascendant nuance tout</h3>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Comme l&apos;ascendant change environ toutes les <strong>2 heures</strong>, deux personnes nees le meme
+          jour peuvent avoir des personnalites tres differentes. Un Belier ascendant Cancer paraitra plus doux et
+          reserve qu&apos;un Belier ascendant Lion, flamboyant et sur de lui. L&apos;ascendant agit comme un
+          filtre a travers lequel s&apos;exprime l&apos;energie du signe solaire.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Les maisons astrologiques</h3>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          L&apos;ascendant marque le debut de la <strong>premiere maison</strong> et determine la position des
+          douze maisons du theme, qui correspondent chacune a un domaine de vie (couple, travail, argent,
+          famille...). C&apos;est pourquoi l&apos;heure de naissance exacte est indispensable a une lecture
+          complete : sans elle, impossible de positionner ascendant et maisons.
+        </p>
+        <p className="text-slate-500 text-sm leading-relaxed">
+          A noter : l&apos;astrologie est un loisir et un outil d&apos;introspection, sans valeur scientifique
+          demontree. Ces interpretations sont proposees a titre de divertissement.
+        </p>
+      </section>
+
       <Faq items={FAQ_ITEMS} />
 
       <RelatedCalculators currentSlug="/calcul-ascendant-astrologique" />
