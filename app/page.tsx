@@ -9,6 +9,24 @@ export const metadata: Metadata = {
 
 const outils = [
   {
+    titre: "Puissance Climatisation",
+    description:
+      "Quelle puissance de clim (kW / BTU) pour votre piece ? Dimensionnement selon surface, isolation et exposition, plus le cout d'utilisation.",
+    href: "/calcul-puissance-climatisation",
+    icone: "❄️",
+    couleur: "from-sky-500 to-blue-600",
+    tag: "Nouveau",
+  },
+  {
+    titre: "Temperature Ressentie",
+    description:
+      "Calculez la temperature ressentie (Humidex) selon la chaleur et l'humidite. Niveau de danger canicule et effet reel d'un ventilateur.",
+    href: "/calcul-temperature-ressentie",
+    icone: "🌡️",
+    couleur: "from-orange-500 to-red-600",
+    tag: "Nouveau",
+  },
+  {
     titre: "Prix Panneaux Solaires",
     description:
       "Estimez le prix d'une installation photovoltaique en 2026 : 3, 6 ou 9 kWc, batterie, aides MaPrimeRenov'.",

@@ -520,6 +520,18 @@ function generateAllUrls(): SitemapEntry[] {
       priority: 0.9,
     },
     {
+      url: `${BASE_URL}/calcul-puissance-climatisation`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/calcul-temperature-ressentie`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${BASE_URL}/indemnite-licenciement`,
       lastModified: new Date(),
       changeFrequency: "monthly",

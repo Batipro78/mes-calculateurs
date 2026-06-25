@@ -6,6 +6,8 @@ export type Calculator = {
 };
 
 export const ALL_CALCULATORS: Calculator[] = [
+  { slug: "/calcul-puissance-climatisation", title: "Puissance Climatisation", emoji: "❄️", color: "from-sky-500 to-blue-600" },
+  { slug: "/calcul-temperature-ressentie", title: "Temperature Ressentie", emoji: "🌡️", color: "from-orange-500 to-red-600" },
   { slug: "/salaire-brut-net", title: "Salaire Brut / Net", emoji: "💰", color: "from-blue-500 to-indigo-500" },
   { slug: "/calcul-tva", title: "Calcul TVA", emoji: "🧾", color: "from-emerald-500 to-teal-500" },
   { slug: "/simulateur-pret-immobilier", title: "Pret Immobilier", emoji: "🏠", color: "from-violet-500 to-purple-500" },
