@@ -27,6 +27,15 @@ const outils = [
     tag: "Nouveau",
   },
   {
+    titre: "Rafraichir sans Clim",
+    description:
+      "Guide : garder sa maison fraiche sans climatisation. Volets, ventilation nocturne, ventilateur, plantes. Conseils ADEME et Sante publique France.",
+    href: "/rafraichir-maison-sans-clim",
+    icone: "🌬️",
+    couleur: "from-cyan-500 to-sky-600",
+    tag: "Guide",
+  },
+  {
     titre: "Prix Panneaux Solaires",
     description:
       "Estimez le prix d'une installation photovoltaique en 2026 : 3, 6 ou 9 kWc, batterie, aides MaPrimeRenov'.",

@@ -158,8 +158,9 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calculateur-gain-pari": ["/calculateur-pari-combine", "/convertisseur-cote-probabilite", "/calcul-pourcentage", "/convertisseur-devises"],
   "/calculateur-pari-combine": ["/calculateur-gain-pari", "/convertisseur-cote-probabilite", "/calcul-pourcentage", "/calcul-tva"],
   "/convertisseur-cote-probabilite": ["/calculateur-gain-pari", "/calculateur-pari-combine", "/calcul-pourcentage", "/convertisseur-devises"],
-  "/calcul-puissance-climatisation": ["/calcul-consommation-electrique", "/calculateur-dpe", "/prix-chauffagiste", "/calcul-temperature-ressentie"],
-  "/calcul-temperature-ressentie": ["/calcul-puissance-climatisation", "/calcul-consommation-eau", "/conversion-temperature", "/calcul-besoin-sommeil"],
+  "/calcul-puissance-climatisation": ["/rafraichir-maison-sans-clim", "/calcul-consommation-electrique", "/calculateur-dpe", "/calcul-temperature-ressentie"],
+  "/calcul-temperature-ressentie": ["/rafraichir-maison-sans-clim", "/calcul-puissance-climatisation", "/calcul-consommation-eau", "/conversion-temperature"],
+  "/rafraichir-maison-sans-clim": ["/calcul-puissance-climatisation", "/calcul-temperature-ressentie", "/calcul-consommation-electrique", "/calculateur-dpe"],
 };
 
 interface RelatedCalculatorsProps {
