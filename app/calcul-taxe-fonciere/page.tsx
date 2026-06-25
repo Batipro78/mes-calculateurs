@@ -130,6 +130,35 @@ export default function Page() {
         </p>
       </section>
 
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">Lire son avis et payer au mieux</h2>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Le montant affiche sur votre avis de taxe fonciere ne se resume pas a la seule taxe sur le bati :
+          plusieurs lignes s&apos;y ajoutent, et quelques reflexes permettent d&apos;etaler ou de verifier la
+          depense.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Ce que contient vraiment l&apos;avis</h3>
+        <ul className="list-disc list-inside text-slate-600 space-y-1 mb-4">
+          <li><strong>La TFPB</strong> (taxe fonciere sur les proprietes baties), le coeur de l&apos;avis</li>
+          <li><strong>La TEOM</strong> (taxe d&apos;enlevement des ordures menageres), souvent recuperable sur le locataire en cas de location</li>
+          <li>Eventuellement des <strong>taxes speciales d&apos;equipement</strong> selon la commune</li>
+        </ul>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Mensualiser pour lisser la depense</h3>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          La taxe fonciere tombe en une fois a l&apos;automne (paiement limite a la mi-octobre). Pour eviter ce
+          coup dur, vous pouvez opter pour la <strong>mensualisation</strong> sur impots.gouv.fr : le montant est
+          preleve en 10 mensualites de janvier a octobre, avec ajustement en fin d&apos;annee.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Vente en cours d&apos;annee et logement vacant</h3>
+        <p className="text-slate-600 leading-relaxed">
+          La taxe est due par le proprietaire au <strong>1er janvier</strong> : en cas de vente, l&apos;acte prevoit
+          souvent une repartition au prorata entre vendeur et acheteur, mais c&apos;est une convention privee,
+          l&apos;administration ne reclame qu&apos;au proprietaire du 1er janvier. Par ailleurs, un logement vide et
+          non meuble peut etre soumis a la <strong>taxe sur les logements vacants</strong> (TLV ou THLV) dans de
+          nombreuses communes, en plus de la taxe fonciere.
+        </p>
+      </section>
+
       <Faq items={FAQ_ITEMS} />
 
       <SourcesMethodo

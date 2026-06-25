@@ -142,6 +142,37 @@ export default function Page() {
         </p>
       </section>
 
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">Ou part votre facture d&apos;electricite ?</h2>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Connaitre la puissance d&apos;un appareil, c&apos;est utile ; savoir quels postes pesent le plus dans la
+          facture, c&apos;est ce qui permet de vraiment economiser. Voici la repartition moyenne d&apos;un foyer
+          francais (hors logement tout electrique, ou le chauffage pese encore plus).
+        </p>
+        <ul className="list-disc list-inside text-slate-600 space-y-1 mb-4">
+          <li><strong>Chauffage</strong> : jusqu&apos;a <strong>60 %</strong> de la facture dans un logement chauffe a l&apos;electricite — de loin le premier poste</li>
+          <li><strong>Eau chaude sanitaire</strong> : environ <strong>15 %</strong> (le chauffe-eau)</li>
+          <li><strong>Electromenager et froid</strong> (frigo, congelateur, lave-linge) : environ <strong>15 %</strong></li>
+          <li><strong>Eclairage, multimedia et veilles</strong> : environ <strong>10 %</strong></li>
+        </ul>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Les gestes qui reduisent vraiment la facture</h3>
+        <ul className="list-disc list-inside text-slate-600 space-y-1 mb-4">
+          <li>Baisser le chauffage de <strong>1 &deg;C</strong> = environ <strong>7 %</strong> de consommation de chauffage en moins</li>
+          <li>Chasser les <strong>veilles</strong> (box, TV, consoles) avec une multiprise a interrupteur : jusqu&apos;a 80 &euro;/an</li>
+          <li>Regler le chauffe-eau a <strong>55 &deg;C</strong> et le programmer en heures creuses</li>
+          <li>Remplacer les vieilles ampoules par des <strong>LED</strong> (jusqu&apos;a 8 fois moins gourmandes)</li>
+          <li>Degivrer le congelateur : 4 mm de givre, et la consommation grimpe de 30 %</li>
+        </ul>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Abonnement et consommation : deux lignes distinctes</h3>
+        <p className="text-slate-600 leading-relaxed">
+          Votre facture comprend une part <strong>fixe</strong> (l&apos;abonnement, lie a la puissance souscrite en
+          kVA) et une part <strong>variable</strong> (les kWh reellement consommes). Souscrire une puissance trop
+          elevee (12 kVA quand 6 kVA suffisent) fait payer un abonnement inutilement cher. A l&apos;inverse, une
+          puissance trop juste fait disjoncter. Adapter ces deux parametres a vos usages reels est souvent le
+          premier levier d&apos;economie, avant meme de traquer les appareils.
+        </p>
+      </section>
+
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-consommation-electrique" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

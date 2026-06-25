@@ -131,6 +131,40 @@ export default function Page() {
         </div>
       </section>
 
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">Poser ses conges payes : les regles a connaitre</h2>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Acquerir des conges est une chose, les poser en est une autre. Au-dela du calcul du nombre de jours,
+          plusieurs regles encadrent la prise effective des conges et peuvent meme vous faire gagner des jours
+          supplementaires.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Periode de prise et ordre des departs</h3>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Le <strong>conge principal</strong> (jusqu&apos;a 24 jours ouvrables) se prend en principe entre le
+          1er mai et le 31 octobre, avec au moins <strong>12 jours ouvrables continus</strong> sur cette periode.
+          C&apos;est l&apos;employeur qui fixe l&apos;ordre des departs (selon l&apos;anciennete, la situation
+          familiale, l&apos;activite chez d&apos;autres employeurs), mais il doit respecter un{" "}
+          <strong>delai de prevenance d&apos;un mois</strong> et ne peut plus modifier les dates moins de 30 jours
+          avant le depart, sauf circonstances exceptionnelles.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Le fractionnement peut rapporter des jours</h3>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Si vous posez une partie de votre conge principal <strong>en dehors</strong> de la periode du 1er mai au
+          31 octobre, la loi accorde des <strong>jours de fractionnement</strong> : 1 jour supplementaire pour 3 a
+          5 jours pris hors periode, et 2 jours pour 6 jours ou plus. La 5e semaine et les jours conventionnels
+          n&apos;ouvrent pas ce droit.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Que deviennent les conges non pris ?</h3>
+        <p className="text-slate-600 leading-relaxed">
+          En principe, les conges non pris au terme de la periode (souvent le 31 mai) sont <strong>perdus</strong>,
+          sauf accord de report avec l&apos;employeur ou disposition conventionnelle plus favorable. Toutefois,
+          si vous n&apos;avez pas pu les prendre a cause d&apos;un <strong>arret maladie</strong>, d&apos;un conge
+          maternite ou d&apos;un accident du travail, leur report est obligatoire. En cas de depart de
+          l&apos;entreprise, les conges acquis et non pris vous sont verses sous forme d&apos;indemnite
+          compensatrice.
+        </p>
+      </section>
+
       <Faq items={FAQ_ITEMS} />
 
       <SourcesMethodo

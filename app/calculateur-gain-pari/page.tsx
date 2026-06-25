@@ -128,6 +128,38 @@ export default function Page() {
         </p>
       </section>
 
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">Cote, probabilite et jeu responsable</h2>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Comprendre une cote, ce n&apos;est pas predire un resultat. Une cote traduit une probabilite{" "}
+          <strong>implicite</strong>, marge du bookmaker incluse, et non la vraie chance qu&apos;un evenement se
+          produise. Garder cette distinction en tete est la base d&apos;une approche lucide.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">La marge du bookmaker</h3>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Additionnez les probabilites implicites de tous les resultats d&apos;un match : le total depasse
+          toujours 100 %. Cet exces (souvent 5 a 8 %) est la <strong>marge</strong> de l&apos;operateur, son
+          benefice structurel. C&apos;est pourquoi, sur le long terme, la maison garde statistiquement
+          l&apos;avantage, quelle que soit la strategie.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Notion de value bet</h3>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          On parle de <strong>value bet</strong> (pari a valeur) lorsque vous estimez la probabilite reelle d&apos;un
+          evenement <strong>superieure</strong> a la probabilite implicite de la cote. C&apos;est theoriquement la
+          seule situation rentable a long terme, mais elle suppose une estimation plus juste que celle du
+          bookmaker, ce qui est rare et incertain.
+        </p>
+        <div className="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-xl">
+          <p className="text-sm font-semibold text-amber-800 mb-1">Jouer doit rester un plaisir, pas un risque</p>
+          <p className="text-sm text-amber-700 leading-relaxed">
+            Ne misez jamais plus que ce que vous pouvez vous permettre de perdre, fixez-vous un budget a
+            l&apos;avance et ne cherchez jamais a &laquo; vous refaire &raquo;. Les paris comportent un risque reel
+            de dependance et de pertes financieres. Besoin d&apos;aide ? Joueurs Info Service :{" "}
+            <strong>09 74 75 13 13</strong> (appel non surtaxe). Les paris sont interdits aux mineurs.
+          </p>
+        </div>
+      </section>
+
       <Faq items={FAQ_ITEMS} />
     </div>
   );

@@ -131,6 +131,35 @@ export default function Page() {
         <p className="text-xs text-slate-400 mt-2">* Taux effectif micro = (TMI + PS) x 70% (apres abattement 30%)</p>
       </section>
 
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">Le deficit foncier : l&apos;arme du regime reel</h2>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Le grand atout du regime reel, c&apos;est le <strong>deficit foncier</strong>. Quand vos charges
+          deductibles (travaux, interets, taxe fonciere...) depassent vos loyers, le surplus vient effacer une
+          partie de votre impot, et pas seulement sur vos revenus locatifs.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Comment ca fonctionne</h3>
+        <ul className="list-disc list-inside text-slate-600 space-y-1 mb-4">
+          <li>Le deficit (hors interets d&apos;emprunt) s&apos;impute sur votre <strong>revenu global</strong> jusqu&apos;a <strong>10 700 &euro;/an</strong>, ce qui reduit directement votre impot sur le revenu</li>
+          <li>Ce plafond est porte a <strong>21 400 &euro;</strong> pour les travaux de renovation energetique sortant un logement du statut de passoire thermique (depenses payees jusqu&apos;a fin 2025)</li>
+          <li>La part de deficit au-dela du plafond, ainsi que celle issue des interets d&apos;emprunt, est <strong>reportable 10 ans</strong> sur vos seuls revenus fonciers</li>
+        </ul>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">La condition a ne pas oublier</h3>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Pour conserver l&apos;avantage, vous devez continuer a <strong>louer le bien pendant 3 ans</strong> apres
+          l&apos;annee d&apos;imputation du deficit. Une revente ou une mise a disposition anticipee entraine la
+          remise en cause de l&apos;economie d&apos;impot.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">La declaration en pratique</h3>
+        <p className="text-slate-600 leading-relaxed">
+          Le regime reel impose la declaration <strong>2044</strong> (ou 2044 speciale), en complement de votre
+          declaration de revenus. Vous y detaillez loyers encaisses et charges payees dans l&apos;annee. Bien que
+          l&apos;impot soit preleve a la source via un acompte, c&apos;est cette declaration annuelle qui ajuste le
+          montant reellement du. Conservez toutes vos factures : en cas de controle, seules les depenses
+          justifiees sont admises.
+        </p>
+      </section>
+
       <Faq items={FAQ_ITEMS} />
 
       <SourcesMethodo

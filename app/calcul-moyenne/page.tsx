@@ -127,6 +127,48 @@ export default function Page() {
         </div>
       </section>
 
+      <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-8">
+        <h2 className="text-xl font-bold text-slate-800 mb-4">Convertir et interpreter sa moyenne</h2>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Une moyenne n&apos;a de sens que rapportee a son bareme. Savoir passer d&apos;une echelle a l&apos;autre
+          evite bien des erreurs, notamment quand on compare des notes ou qu&apos;on vise une mention.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Passer d&apos;un bareme a l&apos;autre</h3>
+        <ul className="list-disc list-inside text-slate-600 space-y-1 mb-4">
+          <li><strong>De /20 vers /10</strong> : divisez par 2 (14/20 = 7/10)</li>
+          <li><strong>De /20 vers un pourcentage</strong> : multipliez par 5 (14/20 = 70 %)</li>
+          <li><strong>De /20 vers /100</strong> : multipliez par 5 (14/20 = 70/100)</li>
+          <li><strong>Regle generale</strong> : note ramenee = note &times; (nouveau bareme &divide; ancien bareme)</li>
+        </ul>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Moyenne simple ou ponderee ?</h3>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          La <strong>moyenne arithmetique</strong> traite toutes les notes sur un pied d&apos;egalite : utile pour
+          un bulletin sans coefficients. La <strong>moyenne ponderee</strong> donne plus de poids aux matieres a
+          fort coefficient : c&apos;est elle qui compte au bac, aux concours et dans la plupart des examens. Une
+          tres bonne note dans une matiere a faible coefficient pese donc beaucoup moins qu&apos;une note correcte
+          dans une specialite.
+        </p>
+        <h3 className="font-bold text-slate-800 mt-6 mb-2">Les seuils de mention</h3>
+        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { m: "Passable", s: "10 a 12" },
+            { m: "Assez bien", s: "12 a 14" },
+            { m: "Bien", s: "14 a 16" },
+            { m: "Tres bien", s: "16 et +" },
+          ].map((item) => (
+            <div key={item.m} className="bg-slate-50 rounded-xl p-3">
+              <p className="text-sm font-semibold text-slate-700">{item.m}</p>
+              <p className="text-xs text-slate-500">Moyenne {item.s} / 20</p>
+            </div>
+          ))}
+        </div>
+        <p className="text-slate-600 leading-relaxed mt-4">
+          Au bac, ces seuils s&apos;appliquent a la moyenne generale ponderee par les coefficients officiels. Une
+          mention &laquo; Tres bien avec felicitations du jury &raquo; recompense en plus les moyennes
+          exceptionnelles (souvent 18/20 et plus).
+        </p>
+      </section>
+
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-moyenne" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />
