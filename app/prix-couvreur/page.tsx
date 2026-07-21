@@ -5,6 +5,8 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import VillesLinks from "../components/VillesLinks";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
+import CTAMonDevisMinute from "../components/CTAMonDevisMinute";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/prix-couvreur" },
@@ -124,6 +126,16 @@ export default function Page() {
 
       <VillesLinks metierSlug="/prix-couvreur" />
 
+      <HowToJsonLd
+        name="Estimer le prix d'une intervention de couvreur"
+        steps={[
+          { name: "Choisir la prestation", text: "Sélectionner parmi les 10 types de travaux : reparation de tuiles, rénovation complète (130-300 EUR/m2), demoussage (10-40 EUR/m2), isolation sarking, pose de Velux, gouttiere (30-95 EUR/ml), zinguerie, etc." },
+          { name: "Saisir la surface ou la longueur", text: "Indiquer la surface en m2 pour la rénovation ou le demoussage (ex : 100 m2 de toiture), ou la longueur en mètres lineaires pour les gouttieres (ex : 30 ml). L'echafaudage est inclus dans la plupart des prestations." },
+          { name: "Sélectionner la region", text: "Appliquer le coefficient : Ile-de-France (+20 %), grandes villes (+10 %), province (référence), rural (-10 %). Ex : demoussage 100 m2 en province = 1 000 à 4 000 EUR ; en Ile-de-France = 1 200 à 4 800 EUR." },
+          { name: "Identifier les aides disponibles", text: "La rénovation simple beneficie d'une TVA à 10 % pour les logements de plus de 2 ans. L'isolation de toiture (sarking, combles) beneficie d'une TVA à 5,5 % et de MaPrimeRenov' (jusqu'à 75 EUR/m2 selon les revenus)." },
+        ]}
+      />
+
       <Faq items={FAQ_ITEMS} />
 
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
@@ -146,6 +158,12 @@ export default function Page() {
           .
         </p>
       </section>
+
+      <CTAMonDevisMinute
+        campaign="prix-couvreur"
+        variant="devis"
+        guide={{ href: "/guides/devis-signe-valeur-juridique", label: "Devis signé : ce qui vous engage vraiment" }}
+      />
 
       <RelatedCalculators currentSlug="/prix-couvreur" />
     </div>

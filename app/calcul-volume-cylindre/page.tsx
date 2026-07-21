@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-volume-cylindre" },
@@ -140,6 +141,16 @@ export default function Page() {
           </div>
         </section>
       ))}
+
+      <HowToJsonLd
+        name="Calculer le volume d'un cylindre"
+        steps={[
+          { name: "Saisir le rayon et la hauteur", text: "Relever le rayon r de la base circulaire (en cm, dm ou m) et la hauteur h. Si seul le diametre d est connu, diviser par 2 pour obtenir le rayon (r = d / 2). Exprimer les deux mesures dans la même unité." },
+          { name: "Calculer l'aire de la base", text: "Aire de la base = pi x r x r. Exemple : r = 5 cm donne pi x 25 = 78,54 cm2." },
+          { name: "Calculer le volume", text: "Volume V = pi x r x r x h. Exemple : 78,54 x 10 cm = 785,4 cm3. Pour convertir en litres, diviser par 1 000 : 785,4 / 1 000 = 0,785 L." },
+          { name: "Lire la surface laterale (optionnel)", text: "Surface laterale = 2 x pi x r x h. Surface totale (avec les 2 disques) = 2 x pi x r x r + 2 x pi x r x h. Exemple r=5 cm, h=10 cm : surface totale = 157,08 + 314,16 = 471,24 cm2." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-volume-cylindre" />

@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/compatibilite-signes-astrologiques" },
@@ -319,6 +320,16 @@ export default function Page() {
           est tout à fait possible !
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer la compatibilite entre deux signes astrologiques"
+        steps={[
+          { name: "Choisir les deux signes", text: "Sélectionner le premier et le second signe parmi les 12 signes du zodiaque occidental (Belier, Taureau, Gemeaux, Cancer, Lion, Vierge, Balance, Scorpion, Sagittaire, Capricorne, Verseau, Poissons)." },
+          { name: "Identifier les éléments et modes", text: "Chaque signe appartient à un élément (Feu, Terre, Air ou Eau) et à un mode (Cardinal, Fixe ou Mutable). Les signes du même élément ou d'éléments complémentaires (Feu-Air, Terre-Eau) sont plus compatibles." },
+          { name: "Lire le score de compatibilite", text: "Le score est calcule selon l'affinite des éléments : même élément = très haute affinite (ex. Belier + Lion = 95 %), éléments complémentaires = bonne affinite, éléments opposes (Feu-Eau, Terre-Air) = tensions naturelles." },
+          { name: "Interpréter l'analyse complète", text: "Le résultat inclut un commentaire sur les forces et limites du couple selon la combinaison élément + mode. Deux signes Fixes (ex. Taureau + Lion) partagent la stabilite mais peuvent aussi manquer de souplesse." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

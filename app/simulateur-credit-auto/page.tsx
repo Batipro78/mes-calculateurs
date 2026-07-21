@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-credit-auto" },
@@ -223,6 +224,16 @@ export default function Page() {
 
         <p className="text-xs text-slate-400 mt-6">Mis a jour le 8 avril 2026</p>
       </section>
+
+      <HowToJsonLd
+        name="Simuler un credit automobile"
+        steps={[
+          { name: "Entrer le prix, l'apport et la durée", text: "Saisir le prix du véhicule et l'apport personnel ; capital emprunte = prix - apport. Choisir la durée de 12 à 84 mois avec les taux moyens 2026 integres : 3,5 % sur 12 mois à 6,0 % sur 84 mois." },
+          { name: "Calculer la mensualité", text: "Formule : M = C x (t/12) / (1 - (1 + t/12)^(-n)) ; ex. 17 000 EUR à 4,5 % sur 48 mois = environ 387 EUR/mois ; le coût total du credit = (mensualité x n) - capital emprunte." },
+          { name: "Vérifier le taux d'endettement", text: "Mensualités totales / revenu net mensuel x 100 ; ce ratio ne doit pas depasser 33 % pour que le dossier soit accepte par les banques ; un apport plus eleve reduit mecaniquement le capital et ce ratio." },
+          { name: "Lire le tableau d'amortissement", text: "Chaque ligne affiche la mensualité, la part d'intérêts (plus elevee en debut de credit), la part de capital rembourse et le capital restant du jusqu'à l'extinction du pret." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

@@ -131,8 +131,8 @@ export default function Page() {
         name="Estimer les frais de notaire"
         steps={[
           { name: "Renseigner le bien", text: "Indiquer le prix d'achat et le type de bien : ancien, neuf ou terrain." },
-          { name: "Droits de mutation", text: "Appliquer les droits de mutation (environ 5,80 pour cent dans l'ancien) selon le departement." },
-          { name: "Total des frais", text: "Ajouter les emoluments du notaire (bareme reglemente) et les debours pour obtenir le total." },
+          { name: "Droits de mutation", text: "Appliquer les droits de mutation (environ 5,80 pour cent dans l'ancien) selon le département." },
+          { name: "Total des frais", text: "Ajouter les emoluments du notaire (barème reglemente) et les debours pour obtenir le total." },
         ]}
       />
 

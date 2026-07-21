@@ -10,7 +10,17 @@ export default function EmbedCard({ embed }: { embed: EmbedDef }) {
   const [width, setWidth] = useState("100%");
   const [height, setHeight] = useState(embed.defaultHeight);
 
-  const snippet = `<iframe src="${BASE_URL}/embed/${embed.slug}" width="${width}" height="${height}" frameborder="0" style="border:0;max-width:100%;" loading="lazy" title="${embed.title}"></iframe>`;
+  // L'iframe affiche le widget, et la ligne en dessous est un credit d'auteur
+  // place dans le HTML du site partenaire.
+  //
+  // IMPORTANT : le texte cliquable est le NOM DU SITE, pas le mot-cle vise.
+  // Google range explicitement les "liens riches en mots-cles integres dans des
+  // widgets distribues sur differents sites" parmi les pratiques de spam de
+  // liens (cf. Spam Policies + billet "A reminder about widget links"), au
+  // motif que le partenaire ne choisit pas ce texte. Un lien de marque, lui,
+  // est un credit legitime. `embed.anchor` reste utilise, mais en texte simple.
+  const snippet = `<iframe src="${BASE_URL}/embed/${embed.slug}" width="${width}" height="${height}" frameborder="0" style="border:0;max-width:100%;" loading="lazy" title="${embed.title}"></iframe>
+<p style="font-size:12px;text-align:center;margin-top:4px;color:#64748b;">${embed.anchor} par <a href="${BASE_URL}${embed.sourcePath}" target="_blank" rel="noopener">Mes Calculateurs</a></p>`;
 
   const copy = async () => {
     try {

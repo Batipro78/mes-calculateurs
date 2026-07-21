@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-droits-succession" },
@@ -109,6 +110,15 @@ export default function Page() {
           finale. Un notaire chiffrera la strategie la mieux adaptee a votre patrimoine.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer les droits de succession 2026"
+        steps={[
+          { name: "Renseigner le lien de parente et la part successorale", text: "Indiquer le lien de parente avec le defunt (enfant, conjoint, frere ou soeur, neveu ou niece, tiers) et le montant de la part brute recue en heritage." },
+          { name: "Appliquer l'abattement selon le lien de parente", text: "Déduire l'abattement : 100 000 EUR par enfant, 0 EUR pour le conjoint et le partenaire de PACS (exonération totale), 15 932 EUR pour un frere ou une soeur, 7 967 EUR pour un neveu ou une niece." },
+          { name: "Calculer les droits sur la part taxable selon le barème progressif", text: "La part taxable (part brute moins abattement) est soumise au barème en ligne directe : 5% jusqu'à 8 072 EUR, 10% jusqu'à 12 109 EUR, 15% jusqu'à 15 932 EUR, 20% jusqu'à 552 324 EUR, puis 30%, 40% et 45% au-dela." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-loa-lld" },
@@ -97,6 +98,16 @@ export default function Page() {
           <li><strong>Assurance tous risques</strong> : obligatoire en LOA/LLD, plus chere que tiers</li>
         </ul>
       </section>
+
+      <HowToJsonLd
+        name="Comparer LOA et LLD pour financer sa voiture"
+        steps={[
+          { name: "Saisir les conditions de chaque formule", text: "Indiquer le premier loyer majore, le loyer mensuel et la durée du contrat (24 à 60 mois) pour la LOA et la LLD. Préciser le kilometrage annuel prévu : un depassement en LOA ou LLD entraine une penalite de 0,05 à 0,30 EUR par km." },
+          { name: "Renseigner la valeur residuelle pour la LOA", text: "En LOA, la valeur residuelle (option d'achat) est fixee dans le contrat des la signature. Elle correspond à la valeur du véhicule en fin de location et s'ajoute au coût total si le véhicule est rachete. En LLD, aucune option d'achat n'est possible." },
+          { name: "Calculer le coût total de chaque formule", text: "Coût total LOA = premier loyer + (loyer mensuel x durée) + option d'achat eventuelle. Coût total LLD = premier loyer + (loyer mensuel x durée), entretien et assurance souvent inclus. Les loyers LLD sont generalement 10-20% plus eleves que la LOA à prestations equivalentes." },
+          { name: "Lire la comparaison et choisir la formule", text: "Le simulateur affiche le coût total et le coût mensuel moyen pour les deux formules. LOA si l'on souhaite potentiellement garder le véhicule ; LLD pour un budget fixe sans gestion de l'entretien ni de la revente. Achat comptant reste le moins cher sur 7 ans et plus." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

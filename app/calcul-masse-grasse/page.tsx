@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-masse-grasse" },
@@ -219,6 +220,16 @@ export default function Page() {
           Mis a jour le 8 avril 2026
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer son taux de masse grasse corporelle"
+        steps={[
+          { name: "Prendre les mensurations avec un ruban mètre", text: "Mesurer le tour de taille à l'ombilic, le tour de cou juste sous le larynx. Pour les femmes, mesurer egalement le tour de hanches. Relever sa taille en cm. Toutes les mesures sont en centimetres." },
+          { name: "Appliquer la formule US Navy", text: "Homme : %MG = 86,010 x log10(taille - cou) - 70,041 x log10(taille) + 36,76. Femme : %MG = 163,205 x log10(taille + hanches - cou) - 97,684 x log10(taille) - 78,387. Marge d'erreur de +/- 3 à 4 %." },
+          { name: "Comparer au tableau de classification", text: "5 catégories : essentiel (homme < 6 %, femme < 14 %), athlete (6-13 % / 14-20 %), fitness (14-17 % / 21-24 %), normal (18-24 % / 25-31 %), surpoids (> 25 % / > 32 %). Un sportif très muscle peut etre en surpoids IMC mais en catégorie athlete de masse grasse." },
+          { name: "Suivre son évolution dans le temps", text: "Répéter les mesures toutes les 4 à 6 semaines dans les mêmes conditions (matin à jeun, mêmes points de mesure). La tendance sur plusieurs semaines est plus significative qu'une mesure isolee." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-masse-grasse" />

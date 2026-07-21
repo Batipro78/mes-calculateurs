@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-classement-tennis-fft" },
@@ -234,6 +235,15 @@ export default function Page() {
           Ce calculateur est <strong>indicatif uniquement</strong> et basé sur les règles publiques du système FFT (V-E-2I-5G). La Fédération Française de Tennis applique des paramètres internes non publics (nombre minimum de matchs, saisonnalité, réévaluations par secteur, etc.) qui peuvent influencer la progression réelle. Pour un classement <strong>officiel exact</strong>, consultez votre espace licencié sur le site de la FFT.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Estimer sa progression de classement tennis FFT"
+        steps={[
+          { name: "Saisir le classement actuel FFT", text: "Indiquer le classement de depart dans l'echelle FFT (NC, 40, 30/5, 30/4 ... 30, 15/5 ... 15, puis 2eme et 1ere serie). Ce classement sert de référence pour évaluer chaque match." },
+          { name: "Renseigner le bilan de victoires et defaites", text: "Entrer le nombre de victoires contre joueurs mieux classes (5G gold wins, levier majeur), contre joueurs du même niveau et contre joueurs moins bien classes. Chaque defaite contre moins bien classe penalise de 2 points (2I)." },
+          { name: "Lire le score V-E-2I-5G et le classement estime", text: "Le bilan V (victoires) - E (egalites) - 2I (penalites defaites) + 5G (bonus or) donne un score indicatif de progression ou de regression dans l'echelle FFT." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

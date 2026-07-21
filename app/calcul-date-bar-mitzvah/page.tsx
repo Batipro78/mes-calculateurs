@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-date-bar-mitzvah" },
@@ -240,6 +241,15 @@ export default function Page() {
           ou questions spécifiques : consultez un rabbin de votre communauté.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer la date de Bar ou Bat Mitzvah en calendrier gregorien"
+        steps={[
+          { name: "Saisir la date de naissance et le sexe de l'enfant", text: "Entrer la date de naissance gregorienne de l'enfant et choisir le sexe : garcon pour un Bar Mitzvah (majorite à 13 ans hebraiques), fille pour une Bat Mitzvah (majorite à 12 ans hebraiques)." },
+          { name: "Convertir la date de naissance en calendrier hebraique", text: "La date gregorienne est convertie en date hebraique (calendrier luni-solaire). Le jour et le mois hebraiques de naissance constituent la référence pour la date de majorite religieuse." },
+          { name: "Ajouter 13 ou 12 ans hebraiques et reconvertir", text: "Pour un garcon, 13 années hebraiques sont ajoutees ; pour une fille, 12 années. Le jour et le mois hebraiques restent identiques. La date resultante est reconvertie en gregorien, avec un decalage habituel de 1 à 2 mois." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-date-bar-mitzvah" />

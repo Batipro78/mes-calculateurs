@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-besoin-sommeil" },
@@ -198,6 +199,15 @@ export default function Page() {
           Mis a jour le 8 avril 2026
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer son besoin en sommeil selon l'âge et l'activité"
+        steps={[
+          { name: "Sélectionner la tranche d'âge", text: "Choisir la tranche d'âge pour appliquer les recommandations NSF : adultes 26-64 ans = 7 à 9h, adolescents 14-17 ans = 8 à 10h, seniors 65+ = 7 à 8h, enfants scolaires 6-13 ans = 9 à 11h." },
+          { name: "Indiquer le niveau d'activité et la qualite du sommeil", text: "Une activité physique intense ou une qualite de sommeil degradee augmentent le besoin de base. Le calculateur ajuste les heures recommandees en consequence." },
+          { name: "Lire les horaires de coucher optimaux bases sur les cycles de 90 min", text: "Un cycle de sommeil dure 90 minutes. Le calculateur propose des heures de coucher alignees sur 4, 5 ou 6 cycles complets (6h, 7h30 ou 9h) pour eviter l'inertie du sommeil au reveil." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

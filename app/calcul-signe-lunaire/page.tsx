@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-signe-lunaire" },
@@ -195,6 +196,15 @@ export default function Page() {
           </div>
         </section>
       ))}
+
+      <HowToJsonLd
+        name="Calculer son signe lunaire en astrologie"
+        steps={[
+          { name: "Saisir la date de naissance", text: "Entrer le jour, le mois et l'année de naissance. La Lune parcourt les 12 signes du zodiaque en 27,3 jours, soit un changement de signe environ toutes les 2,3 jours." },
+          { name: "Indiquer l'heure de naissance", text: "L'heure est determinante : deux personnes nees le même jour à des heures differentes peuvent avoir des signes lunaires distincts. Sans heure précise, le calcul peut etre incertain les jours de transition entre deux signes." },
+          { name: "Lire le signe lunaire et son élément emotionnel", text: "Le signe lunaire indique la nature emotionnelle profonde : Feu (Belier, Lion, Sagittaire) = emotions vives ; Terre (Taureau, Vierge, Capricorne) = emotions stables ; Air (Gemeaux, Balance, Verseau) = emotions analysees ; Eau (Cancer, Scorpion, Poissons) = emotions intuitives et profondes." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-signe-lunaire" />

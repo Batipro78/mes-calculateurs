@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-vignette-critair" },
@@ -259,6 +260,16 @@ export default function Page() {
       </div>
 
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
+
+      <HowToJsonLd
+        name="Déterminer sa vignette Crit'Air"
+        steps={[
+          { name: "Sélectionner le type de carburant", text: "Choisir parmi électrique/hydrogene (donne Crit'Air 0 vert, aucune restriction ZFE), essence, diesel, GPL ou GNV. Le carburant est le premier critère de classement officiel." },
+          { name: "Renseigner la date de première immatriculation", text: "La date determine la norme Euro : essence depuis janvier 2011 = Euro 5-6 (Crit'Air 1) ; diesel depuis janvier 2011 = Euro 5-6 (Crit'Air 2) ; essence 2006-2010 = Euro 4 (Crit'Air 2) ; diesel 2001-2005 = Euro 3 (Crit'Air 4) ; diesel 1997-2000 = Euro 2 (Crit'Air 5)." },
+          { name: "Lire la classe et les restrictions ZFE", text: "Classes de 0 (vert, électrique) à 5 (gris, diesel avant 2001). En 2026 : Paris interdit les classes 3, 4, 5 et non classes ; Lyon et Strasbourg interdisent les classes 3 et plus ; Marseille interdit les classes 4 et plus. Amende sans vignette en ZFE : 68 EUR pour une voiture." },
+          { name: "Commander sur le site officiel", text: "Rendez-vous sur certificat-air.gouv.fr, renseignez le numéro d'immatriculation et payez 3,72 EUR (seul prix officiel : vignette 3,70 EUR + affranchissement 0,02 EUR). Reception par courrier sous 7 à 10 jours. Eviter les sites tiers qui facturent jusqu'à 59 EUR." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

@@ -7,6 +7,7 @@ import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
 import VillesLinks from "../components/VillesLinks";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-taxe-fonciere" },
@@ -158,6 +159,16 @@ export default function Page() {
           nombreuses communes, en plus de la taxe fonciere.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Estimer sa taxe fonciere 2026"
+        steps={[
+          { name: "Saisir la valeur locative cadastrale (VLC)", text: "La VLC est le loyer annuel théorique fixe par l'administration. Elle figure sur l'avis de taxe fonciere de l'année precedente. En 2026, elle est revaloriee de +3,5% par rapport à l'année precedente (coefficient loi de finances)." },
+          { name: "Calculer la base imposable", text: "Base imposable = VLC x coefficient de revalorisation (1,035 en 2026) x 50% (abattement forfaitaire légal). Exemple : VLC 4 000 EUR x 1,035 x 50% = 2 070 EUR de base imposable." },
+          { name: "Appliquer le taux d'imposition de la commune", text: "Le taux varie fortement selon la commune : Paris 13,5%, Nice 27%, Strasbourg 34%, Lyon 30,5%, Marseille 40,5%, Toulouse 44,5%, Bordeaux 52%. Taxe = base imposable x taux global. Exemple : 2 070 EUR x 44,5% = 921 EUR." },
+          { name: "Vérifier les exonérations applicables", text: "Construction neuve : exonération 2 ans sur demande (formulaire H1 ou H2 dans les 90 jours suivant l'achevement). Personnes agees de plus de 75 ans sous conditions de revenus : exonération totale. Beneficiaires de l'AAH ou de l'ASPA : exonération totale sous conditions de cohabitation et ressources." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

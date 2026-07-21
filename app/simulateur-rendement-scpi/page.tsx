@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-rendement-scpi" },
@@ -91,6 +92,16 @@ export default function Page() {
           <li><strong>SCPI de plus-value</strong> : pari sur la revalorisation des parts (pas de dividendes)</li>
         </ul>
       </section>
+
+      <HowToJsonLd
+        name="Calculer le rendement net d'un investissement en SCPI"
+        steps={[
+          { name: "Saisir le montant investi et le TDVM", text: "Indiquer le capital investi en EUR et le taux de distribution (TDVM) de la SCPI choisie : TDVM moyen marche 4,52% en 2025-2026, meilleures SCPI 5,5-6,5% (SCPI europeennes, santé, logistique). Le TDVM est le rapport dividendes annuels divise par le prix de la part." },
+          { name: "Déduire les frais d'entree", text: "Les frais d'entree (generalement 8 à 12% du montant investi) sont preleves à l'achat et reduisent le capital productif. Exemple : 10 000 EUR investis avec 10% de frais = 9 000 EUR effectivement places, allongeant la période d'amortissement de 2 à 3 ans." },
+          { name: "Appliquer la fiscalite revenus fonciers", text: "Les revenus SCPI sont imposes comme revenus fonciers : TMI (0%, 11%, 30%, 41%, 45%) + 17,2% de prelevements sociaux. Pour un TMI 30% : taux global de 47,2% sur les revenus bruts distribues. Saisir la TMI pour obtenir le revenu net après impôt." },
+          { name: "Lire le revenu net mensuel et le rendement net sur capital", text: "Le simulateur affiche le revenu brut annuel (capital x TDVM), la fiscalite annuelle et le revenu net mensuel. Exemple : 10 000 EUR à 4,8% TDVM, TMI 30% = revenu brut 480 EUR/an, impôt 226 EUR, revenu net 254 EUR/an soit 2,5% de rendement net." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

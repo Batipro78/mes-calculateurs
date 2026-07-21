@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-credit-conso" },
@@ -197,6 +198,16 @@ export default function Page() {
       </div>
 
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
+
+      <HowToJsonLd
+        name="Simuler un credit à la consommation"
+        steps={[
+          { name: "Saisir le montant, le taux et la durée", text: "Capital de 200 à 75 000 EUR, taux TAEG moyen Q1 2026 (ex. 4,3 % sur 36 mois, 4,7 % sur 60 mois), durée de 12 à 84 mois ; le TAEG inclut intérêts, frais de dossier et assurance eventuelle." },
+          { name: "Calculer la mensualité", text: "Mensualité = capital x [i x (1+i)^n] / [(1+i)^n - 1] ou i = taux annuel / 12 et n = nombre de mois ; ex. 10 000 EUR à 4,5 % sur 60 mois = 186,43 EUR/mois, soit un coût total du credit de 1 185,80 EUR." },
+          { name: "Vérifier le taux d'usure", text: "Le TAEG ne peut pas depasser le taux d'usure fixe par la Banque de France : 23,56 % pour les credits inferieurs ou egaux à 3 000 EUR, 15,87 % pour 3 001-6 000 EUR, et 8,67 % pour les montants superieurs à 6 000 EUR." },
+          { name: "Controler le taux d'endettement", text: "(Mensualités totales + loyer) / revenu net mensuel x 100 ; le seuil recommande est 35 % maximum ; ex. 800 EUR de credits + 600 EUR de loyer sur 3 000 EUR de revenu = 46,7 %, dossier refuse." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

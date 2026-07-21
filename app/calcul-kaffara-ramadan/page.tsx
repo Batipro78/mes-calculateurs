@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-kaffara-ramadan" },
@@ -238,6 +239,16 @@ export default function Page() {
           Cette application est une aide au calcul, pas une fatwa.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer sa Kaffara ou Fidya pour le Ramadan"
+        steps={[
+          { name: "Choisir le type de compensation", text: "Sélectionner Kaffara (rupture volontaire du jeune : relation conjugale ou consommation intentionnelle) ou Fidya (incapacite permanente de jeune sans possibilite de rattrapage, ex. maladie chronique)." },
+          { name: "Saisir le nombre de jours concernes", text: "Entrer le nombre de jours rompus volontairement (Kaffara) ou le nombre de jours manques par incapacite permanente (Fidya). Chaque jour est traite independamment." },
+          { name: "Appliquer le barème", text: "Kaffara : 60 repas par jour rompu à 7-10 EUR selon la source caritative (ex. 1 jour à 9 EUR = 60 x 9 = 540 EUR). Fidya : 1 repas par jour manque (ex. 30 jours à 9 EUR = 270 EUR)." },
+          { name: "Verser à une mosquee ou association avant l'Aid al-Fitr", text: "Remettre le montant calcule à une mosquee, au Secours Islamique France, Islamic Relief France ou directement aux necessiteux, de préférence avant la fin du Ramadan." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-kaffara-ramadan" />

@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/convertisseur-monnaie-jeu" },
@@ -232,6 +233,15 @@ export default function Page() {
         </div>
       </section>
 
+      <HowToJsonLd
+        name="Convertir une monnaie de jeu video en euros"
+        steps={[
+          { name: "Choisir le jeu", text: "Sélectionner le jeu parmi Fortnite (V-bucks), League of Legends (RP), Apex Legends (Apex Coins), Roblox (Robux), Call of Duty (COD Points), EA Sports FC (FIFA Points), Valorant (VP) ou Minecraft (Minecoins)." },
+          { name: "Saisir la quantité de monnaie virtuelle", text: "Entrer le nombre d'unités de monnaie en jeu à convertir (ex. 2800 V-bucks pour un skin Fortnite Legendaire). Le convertisseur applique le ratio officiel du pack de base de l'editeur." },
+          { name: "Appliquer le ratio officiel du pack de base", text: "V-bucks Fortnite : 1000 = 7,99 EUR (ratio 125 / EUR). RP League of Legends : 1380 = 10 EUR (ratio 138 / EUR). Apex Coins : 1000 = 9,99 EUR (ratio 100 / EUR). Robux : 800 = 9,99 EUR (ratio 80 / EUR)." },
+          { name: "Lire l'équivalent en euros", text: "Le résultat donne le prix EUR approximatif selon les tarifs officiels. Les gros packs offrent un meilleur ratio : 13 500 V-bucks revient moins cher que 13,5 fois le pack de 1000." },
+        ]}
+      />
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/convertisseur-monnaie-jeu" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

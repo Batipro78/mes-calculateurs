@@ -172,11 +172,11 @@ export default function Page() {
       </section>
 
       <HowToJsonLd
-        name="Calculer la mensualite d'un pret immobilier"
+        name="Calculer la mensualité d'un pret immobilier"
         steps={[
-          { name: "Saisir les parametres", text: "Saisir le capital emprunte, le taux d'interet annuel et la duree en annees." },
-          { name: "Convertir", text: "Convertir le taux annuel en taux mensuel et la duree en nombre de mensualites." },
-          { name: "Calculer", text: "Appliquer la formule d'amortissement pour obtenir la mensualite, puis multiplier par le nombre de mensualites pour le cout total." },
+          { name: "Saisir les paramètres", text: "Saisir le capital emprunte, le taux d'intérêt annuel et la durée en années." },
+          { name: "Convertir", text: "Convertir le taux annuel en taux mensuel et la durée en nombre de mensualités." },
+          { name: "Calculer", text: "Appliquer la formule d'amortissement pour obtenir la mensualité, puis multiplier par le nombre de mensualités pour le coût total." },
         ]}
       />
 

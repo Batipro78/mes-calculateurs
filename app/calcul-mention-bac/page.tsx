@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-mention-bac" },
@@ -161,6 +162,16 @@ export default function Page() {
           mérite est gérée par le CROUS (etudiant.gouv.fr).
         </p>
       </div>
+
+      <HowToJsonLd
+        name="Calculer sa mention au baccalaureat"
+        steps={[
+          { name: "Saisir sa moyenne générale sur 20", text: "Entrer la moyenne générale obtenue au baccalaureat, calculee sur 40 % de controle continu (livret scolaire de 1ere et terminale) et 60 % d'epreuves finales (ecrites + Grand oral)." },
+          { name: "Comparer au barème officiel de l'Education Nationale", text: "Le simulateur applique les seuils de l'article D334-4 du code de l'education : Passable de 10 à 11,99 / 20, Assez Bien de 12 à 13,99, Bien de 14 à 15,99, Très Bien de 16 à 17,99." },
+          { name: "Identifier la distinction maximale", text: "À partir de 18 / 20, la mention Très Bien avec Felicitations du jury est attribuee. C'est la distinction la plus haute du baccalaureat, particulierement valorisee par les CPGE et grandes ecoles." },
+          { name: "Lire les effets sur Parcoursup et la bourse au merite", text: "La mention Très Bien ouvre droit à la bourse au merite CROUS pour les boursiers. Certaines formations selectives (CPGE, IFSI, ecoles d'ingenieurs post-bac) valorisent explicitement les mentions Bien et Très Bien dans leurs critères Parcoursup." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-mention-bac" />

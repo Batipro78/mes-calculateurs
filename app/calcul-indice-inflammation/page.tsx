@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-indice-inflammation" },
@@ -121,6 +122,16 @@ export default function Page() {
           l&apos;avis d&apos;un medecin ou d&apos;un dieteticien.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Évaluer l'indice inflammatoire de son alimentation (DII)"
+        steps={[
+          { name: "Répondre au questionnaire de fréquence alimentaire", text: "Indiquer la fréquence de consommation de chaque groupe alimentaire pour une semaine type : poissons gras, legumes verts, fruits rouges, sucres raffines, charcuterie, alcool, fast-food, huile d'olive..." },
+          { name: "Attribuer un score à chaque groupe", text: "Chaque reponse contribue positivement au score (pro-inflammatoire : sucres raffines, graisses trans, charcuterie) ou negativement (anti-inflammatoire : omega-3, fibres, polyphenols, curcuma, the vert)." },
+          { name: "Obtenir le score DII global", text: "Le Dietary Inflammatory Index (DII) additionne tous les scores partiels. Un score negatif indique une alimentation anti-inflammatoire (type mediterraneen). Un score positif eleve signale un risque de chronic inflammation." },
+          { name: "Lire les recommandations personnalisees", text: "Le calculateur propose des actions concretes : augmenter les poissons gras (omega-3 EPA/DHA), ajouter curcuma et gingembre, remplacer les sucres raffines par des cereales complètes, limiter la charcuterie et les ultra-transformes." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-indice-inflammation" />

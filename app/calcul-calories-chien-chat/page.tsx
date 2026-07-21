@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 import { genererTableauBER } from "./caloriesAnimauxCalc";
 
 export const metadata: Metadata = {
@@ -301,6 +302,15 @@ export default function Page() {
 
         <AdSlot adSlot="1234567890" />
       </div>
+
+      <HowToJsonLd
+        name="Calculer les besoins caloriques d'un chien ou d'un chat"
+        steps={[
+          { name: "Saisir le poids et choisir l'espece", text: "Entrer le poids en kg (chien ou chat). Le BER (Besoin Energetique de Repos) se calcule avec la formule WSAVA : BER = 70 x poids(kg)^0.75, valable pour les deux especes." },
+          { name: "Sélectionner le stade de vie et le niveau d'activité", text: "Choisir le stade (chiot, adulte, senior, gestation, allaitement) et le niveau d'activité. Exemple chien adulte sedentaire : facteur 1.2. Chienne en allaitement : facteur 4.0 à 8.0 selon l'activité." },
+          { name: "Lire le DER et la ration journalière", text: "DER (Besoin Energetique Quotidien) = BER x facteur d'activité. Le résultat en kcal/jour permet de calculer la quantité d'aliment à distribuer selon la densite calorique de la croquette ou patee choisie." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

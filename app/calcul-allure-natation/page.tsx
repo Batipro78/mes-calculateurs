@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 import {
   formatAllureNatation,
   predireTempsNatation,
@@ -295,6 +296,15 @@ export default function Page() {
           certifié.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer son allure natation et predire ses temps"
+        steps={[
+          { name: "Saisir l'allure ou la vitesse", text: "Entrer l'allure en min/100m (ex: 1:30) ou la vitesse en km/h. La conversion applique la formule : allure (min/100m) = 60 / (vitesse km/h x 10)." },
+          { name: "Calculer le score SWOLF", text: "Entrer le temps pour nager 25m en secondes et le nombre de coups de bras. SWOLF = temps 25m (secondes) + nombre de coups. Un score inférieur à 35 correspond au niveau elite." },
+          { name: "Lire les predictions de temps sur les distances cles", text: "Le calculateur applique la formule : temps = allure x (distance / 100) pour estimer les temps sur 200m, 400m, 1500m, Half Ironman 1900m et Ironman 3800m." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

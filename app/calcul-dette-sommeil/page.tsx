@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-dette-sommeil" },
@@ -196,6 +197,15 @@ export default function Page() {
           s&apos;accompagne de troubles, consultez un médecin du sommeil.
         </p>
       </div>
+
+      <HowToJsonLd
+        name="Calculer sa dette de sommeil cumulee sur 7 à 14 jours"
+        steps={[
+          { name: "Saisir le besoin de sommeil personnel et la période", text: "Indiquer le besoin quotidien en heures de sommeil (7 à 9h pour un adulte selon l'AASM) et choisir la période d'evaluation : 7 ou 14 jours consecutifs." },
+          { name: "Entrer les heures reellement dormies chaque nuit", text: "Renseigner pour chaque nuit le nombre d'heures dormies. Le deficit nocturne = besoin - heures dormies (nul si l'on a dormi plus que le besoin). Les deficits s'accumulent nuit après nuit." },
+          { name: "Lire la dette cumulee et le niveau de severite", text: "La dette totale est la somme des deficits nocturnes. Inférieure à 5h : dette legere, recuperation en 1 à 2 nuits. De 5 à 10h : moderee, recuperation en 1 à 2 semaines avec siestes de 20 min. Supérieure à 10h : severe, consultation medicale recommandee." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-dette-sommeil" />

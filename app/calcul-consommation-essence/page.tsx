@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-consommation-essence" },
@@ -140,6 +141,16 @@ export default function Page() {
           </div>
         </section>
       ))}
+
+      <HowToJsonLd
+        name="Calculer la consommation d'essence et le coût d'un trajet"
+        steps={[
+          { name: "Saisir la distance et la consommation", text: "Entrer la distance du trajet en km et la consommation du véhicule aux 100 km. Exemple : 500 km et 7 L/100 km." },
+          { name: "Calculer les litres nécessaires", text: "Litres = (consommation / 100) x distance. Exemple : (7 / 100) x 500 = 35 L consommes pour ce trajet." },
+          { name: "Saisir le prix du litre et calculer le coût du trajet", text: "Coût trajet = litres x prix du litre. Exemple : 35 x 1,75 EUR = 61,25 EUR. Le coût au km = consommation / 100 x prix du litre, soit 0,1225 EUR/km." },
+          { name: "Estimer le budget mensuel ou annuel", text: "Budget annuel = (km annuels / 100) x consommation x prix du litre. Exemple : 15 000 km, 7 L/100, 1,90 EUR/L = 1 995 EUR par an, soit environ 166 EUR par mois." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-consommation-essence" />

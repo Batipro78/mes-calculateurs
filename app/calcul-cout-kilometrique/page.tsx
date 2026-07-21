@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-cout-kilometrique" },
@@ -134,6 +135,16 @@ export default function Page() {
           </div>
         </section>
       ))}
+
+      <HowToJsonLd
+        name="Calculer l'indemnité kilometrique avec le barème fiscal 2026"
+        steps={[
+          { name: "Relever la puissance fiscale sur la carte grise", text: "Consulter la carte grise du véhicule au repere P.6 pour obtenir les chevaux fiscaux (CV). Ce chiffre determine la ligne du barème parmi les tranches 3 CV, 4 CV, 5 CV, 6 CV ou 7 CV et plus." },
+          { name: "Totaliser les kilomètres professionnels annuels", text: "Additionner tous les km parcourus à titre professionnel dans l'année (domicile-travail + deplacements pro). La tranche distance (inférieure à 5 000 km, 5 001 à 20 000 km ou supérieure à 20 000 km) fixe la formule." },
+          { name: "Appliquer la formule du barème", text: "Exemple pour 5 CV et 8 000 km (tranche 5 001 à 20 000 km) : 8 000 x 0,357 + 1 395 = 4 251 EUR d'indemnités deductibles. Pour la tranche inférieure à 5 000 km : 8 000 x 0,636 = 5 088 EUR." },
+          { name: "Majorer de 20% pour véhicule 100% électrique", text: "Si le véhicule est 100% électrique, multiplier le résultat du barème par 1,20. Cette majoration s'applique à toutes les tranches et puissances pour encourager les véhicules propres." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-cout-kilometrique" />

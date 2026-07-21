@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-remboursement-mutuelle" },
@@ -175,6 +176,16 @@ export default function Page() {
           ))}
         </div>
       </section>
+
+      <HowToJsonLd
+        name="Calculer le remboursement mutuelle et le reste à charge"
+        steps={[
+          { name: "Saisir le type de soin et le tarif pratique", text: "Sélectionner le type de soin (consultation generaliste, specialiste, dentaire, optique, hospitalisation) et entrer le montant facture par le praticien." },
+          { name: "Identifier le remboursement Sécurité Sociale", text: "La SS rembourse 70 % de la base de remboursement (BR) pour une consultation (BR generaliste = 26,50 EUR). Pour l'hospitalisation : 80 % de la BR. Participation forfaitaire de 1 EUR deduite par consultation." },
+          { name: "Appliquer la garantie mutuelle", text: "La mutuelle couvre le ticket moderateur et une part des depassements selon le niveau souscrit : 100 % BR (ticket moderateur seul), 200 % BR (depassements moderes), 300 % BR ou plus (dentaire et optique importants)." },
+          { name: "Lire le reste à charge", text: "Reste à charge = tarif pratique - part SS - part mutuelle. Pour les soins du panier 100 % Santé (couronnes RAC 0, verres, audioprotheses classe I), le reste à charge est nul avec une mutuelle responsable." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

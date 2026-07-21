@@ -3,6 +3,7 @@ import CalculDoseMedicamentAnimaux from "./CalculDoseMedicamentAnimaux";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-dose-medicament-animaux" },
@@ -364,6 +365,15 @@ export default function Page() {
           </li>
         </ul>
       </section>
+
+      <HowToJsonLd
+        name="Calculer la dose de vermifuge ou d'anti-puces selon le poids de l'animal"
+        steps={[
+          { name: "Sélectionner l'animal et le type de traitement", text: "Choisir entre chien ou chat, puis le type de traitement : vermifuge interne (Milbemax/milbemycine oxime, Drontal Plus) ou antiparasitaire externe (Frontline/fipronil mensuel, Bravecto/fluralaner trimestriel)." },
+          { name: "Saisir le poids de l'animal en kg", text: "Entrer le poids de l'animal. Le calculateur identifie la tranche AMM correspondante. Exemple : Bravecto chien de 2 à 4,5 kg = formule 112,5 mg ; de 4,5 à 10 kg = formule 250 mg." },
+          { name: "Lire le dosage et la fréquence selon l'AMM francaise", text: "Le résultat indique la formule exacte (comprime ou spot-on), le dosage en mg et la fréquence : mensuelle pour Frontline et Stronghold, trimestrielle pour Bravecto, Milbemax et Profender. Respecter l'âge minimum et les contre-indications (gestation, races sensibles à l'ivermectine)." },
+        ]}
+      />
 
       <RelatedCalculators currentSlug="/calcul-dose-medicament-animaux" />
     </div>

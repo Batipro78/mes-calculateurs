@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-zakat-al-fitr" },
@@ -190,6 +191,16 @@ export default function Page() {
           <strong> Vérifiez auprès de votre mosquée locale ou de votre référent religieux le montant exact retenu pour votre région en 2026.</strong> Cette application n&apos;est qu&apos;une aide au calcul.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer la Zakat al-Fitr du foyer"
+        steps={[
+          { name: "Choisir le montant de référence", text: "Sélectionner le montant officiel 2026 selon la source de référence : 7 EUR par personne (Mosquee de Paris) ou 9 EUR par personne (CFCM). Les deux montants correspondent à environ 2,5 kg de denree de base (sa') et sont reconnus par les ecoles juridiques islamiques." },
+          { name: "Compter les membres du foyer à charge", text: "Recenser toutes les personnes à charge du chef de famille : conjoint(e), enfants (y compris nourrissons), parents ou beaux-parents dependants, autres personnes dependantes. Chaque personne compte pour 1 part." },
+          { name: "Calculer le montant total à verser", text: "Montant total = nombre de membres x montant par personne. Exemple : famille de 4 personnes avec le montant CFCM : 4 x 9 EUR = 36 EUR. Avec le montant Mosquee de Paris : 4 x 7 EUR = 28 EUR." },
+          { name: "Verser avant la priere de l'Aid al-Fitr", text: "La Zakat al-Fitr doit etre versee avant la priere de l'Aid al-Fitr marquant la fin du Ramadan. Il est recommande de verser quelques jours avant l'Aid (et non après la priere) pour que l'argent parvienne aux personnes necessiteuses à temps." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-zakat-al-fitr" />

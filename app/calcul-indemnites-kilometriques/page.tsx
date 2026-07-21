@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-indemnites-kilometriques" },
@@ -249,6 +250,16 @@ export default function Page() {
           </li>
         </ul>
       </section>
+
+      <HowToJsonLd
+        name="Calculer ses indemnités kilometriques avec le barème fiscal"
+        steps={[
+          { name: "Sélectionner le véhicule et la puissance fiscale", text: "Choisir le type de véhicule (voiture, moto ou velo) et la puissance fiscale en CV pour les voitures (3 CV et moins, 4, 5, 6, 7 CV et plus), telle qu'elle figure sur la carte grise." },
+          { name: "Saisir le nombre de kilomètres professionnels", text: "Entrer le total des km parcourus à titre professionnel dans l'année civile. Le calculateur identifie la tranche : jusqu'à 5 000 km, de 5 001 à 20 000 km, ou plus de 20 000 km." },
+          { name: "Appliquer la formule du barème", text: "Exemple voiture 5 CV, 12 000 km (tranche 5 001-20 000) : (12 000 x 0,357) + 1 395 = 5 679 EUR. Pour un véhicule 100% électrique, majorer le montant obtenu de 20%." },
+          { name: "Comparer avec la deduction forfaitaire de 10%", text: "Le montant IK est deductible en frais réels dans la declaration de revenus. Comparer avec la deduction forfaitaire de 10% pour choisir l'option la plus avantageuse. Les peages et stationnements restent deductibles en sus." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

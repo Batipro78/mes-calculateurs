@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: {
@@ -173,6 +174,15 @@ export default function Page() {
           plusieurs millions d&apos;euros.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer le budget et la taille d'un bunker"
+        steps={[
+          { name: "Definir le nombre de personnes et la durée d'autonomie", text: "Entrer le nombre d'occupants (1 à 20 personnes) et la durée cible (de 2 semaines à 2 ans) ; chaque personne necessite 5 m2 minimum, 3 litres d'eau par jour et 2 000 kcal/jour en rations longue conservation." },
+          { name: "Choisir le niveau de protection", text: "Niveau basique (1 500 EUR/m2, protection tempetes/effondrements), standard (3 000 EUR/m2, explosions conventionnelles), NRBC (5 500 EUR/m2, filtration nucleaire-biologique-chimique + sas de decontamination) ou luxe (10 000 EUR/m2, culture hydroponique, osmose inverse)." },
+          { name: "Lire le budget total et la surface recommandee", text: "Le simulateur calcule la surface totale (espaces de vie + communs + stockage) et le coût de construction estime ; pour 2 personnes en basique : à partir de 30 000 EUR ; pour une famille en NRBC : 200 000 EUR et plus." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/simulateur-bunker" />

@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/produit-en-croix" },
@@ -153,6 +154,16 @@ export default function Page() {
           </div>
         </section>
       ))}
+
+      <HowToJsonLd
+        name="Calculer un produit en croix (regle de trois)"
+        steps={[
+          { name: "Identifier les 3 valeurs connues", text: "Repérer les deux valeurs de la première proportion (A et B) et la valeur connue de la seconde proportion (C). Ex : si 3 kg coutent 12 EUR et l'on cherche le prix de 5 kg, alors A=3, B=12, C=5." },
+          { name: "Vérifier la proportionnalite directe", text: "S'assurer que quand une grandeur augmente, l'autre augmente dans le même rapport (prix au kg, recette de cuisine, conversion d'unités). Si c'est l'inverse (plus d'ouvriers = moins de temps), le produit en croix classique ne s'applique pas." },
+          { name: "Appliquer la formule et lire le résultat", text: "Saisir A, B et C. La formule est D = (B x C) / A. Dans l'exemple : D = (12 x 5) / 3 = 20 EUR. Le calculateur affiche D et le détail du calcul étape par étape." },
+          { name: "Vérifier la coherence du résultat", text: "Diviser A par B et C par D : les deux quotients doivent etre identiques. Ici : 3 / 12 = 0,25 et 5 / 20 = 0,25. Un ratio different signale une erreur dans les valeurs saisies ou une proportionnalite inverse." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/produit-en-croix" />

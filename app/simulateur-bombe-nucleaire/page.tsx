@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: {
@@ -228,6 +229,15 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      <HowToJsonLd
+        name="Simuler l'impact d'une explosion nucleaire"
+        steps={[
+          { name: "Choisir l'arme et sa puissance", text: "Sélectionner l'arme nucleaire (ex. bombe type Hiroshima à 15 kt, ogive strategique francaise TN75 à 300 kt, ou Tsar Bomba à 50 Mt) ; la puissance est exprimee en kilotonnes ou megatonnes d'équivalent TNT." },
+          { name: "Placer l'epicentre sur la carte", text: "Cliquer sur la ville cible pour positionner le point d'impact ; les rayons de destruction sont calcules selon la loi de Hopkinson : R = R0 x (P / P0)^(1/3), ce qui signifie qu'une bombe 1 000 fois plus puissante n'a qu'un rayon 10 fois plus grand." },
+          { name: "Lire les 6 zones d'effet", text: "Le simulateur affiche : boule de feu (vaporisation totale), radiation letale à 500 rem, souffle violent à 20 psi (beton detruit, mortalite ~90 %), souffle modere à 5 psi (immeubles effondres), brulures au 3e degré, et souffle leger à 1 psi (vitres brisees)." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/simulateur-bombe-nucleaire" />

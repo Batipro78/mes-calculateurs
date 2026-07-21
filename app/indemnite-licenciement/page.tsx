@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/indemnite-licenciement" },
@@ -158,6 +159,16 @@ export default function Page() {
           (ex-Direccte).
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer son indemnité de licenciement"
+        steps={[
+          { name: "Saisir l'ancienneté", text: "Compter le nombre d'années complètes dans l'entreprise à la date du licenciement. Ex : entree le 01/03/2015, depart le 01/03/2025 = 10 ans d'ancienneté." },
+          { name: "Déterminer le salaire de référence", text: "Retenir le plus avantageux entre la moyenne brute des 12 derniers mois et la moyenne des 3 derniers mois (primes proratisees incluses). Ex : 2 500 EUR/mois." },
+          { name: "Appliquer le barème légal", text: "Jusqu'à 10 ans : 1/4 de mois de salaire par année. Au-dela : 1/3 de mois par année. Ex 5 ans à 2 500 EUR : 2 500 x 1/4 x 5 = 3 125 EUR. Ex 15 ans : (2 500 x 1/4 x 10) + (2 500 x 1/3 x 5) = 11 666 EUR." },
+          { name: "Vérifier la convention collective", text: "Si la convention collective prevoit une indemnité supérieure au minimum légal, c'est le montant le plus favorable qui s'applique. Saisir le taux conventionnel dans le simulateur pour comparer avec le barème légal." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

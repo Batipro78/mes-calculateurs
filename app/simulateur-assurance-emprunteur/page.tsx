@@ -5,6 +5,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import LeadCaptureForm from "../components/LeadCaptureForm";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-assurance-emprunteur" },
@@ -128,6 +129,15 @@ export default function Page() {
           <li><strong>Arreter de fumer</strong> 2 ans avant souscription peut diviser le taux par 2</li>
         </ul>
       </section>
+
+      <HowToJsonLd
+        name="Simuler le coût de l'assurance emprunteur"
+        steps={[
+          { name: "Renseigner le capital et le taux", text: "Entrer le montant du pret immobilier, la durée en années et le taux annuel d'assurance (ex. 0,34 % chez la banque pour un emprunteur de 20-35 ans non-fumeur, ou 0,10 % en delegation)." },
+          { name: "Definir la quotite", text: "Pour un emprunteur seul, la quotite est de 100 %. Pour un couple : 100 % chacun (protection totale, coût double) ou 50/50 (coût reduit de moitie mais couverture partielle) ; la quotite influence directement le montant des primes." },
+          { name: "Comparer banque et delegation et lire l'économie", text: "Le simulateur calcule le coût total sur la durée du pret pour le taux banque (0,30-0,60 %/an) et pour le taux en delegation (0,10-0,30 %/an), puis affiche l'économie realisable grace à la loi Lemoine (resiliation à tout moment sans frais)." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

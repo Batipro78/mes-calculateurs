@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-denormandie" },
@@ -180,6 +181,16 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      <HowToJsonLd
+        name="Calculer la réduction d'impôt Denormandie"
+        steps={[
+          { name: "Saisir le prix d'acquisition et le montant des travaux", text: "Entrer le prix du bien ancien et le montant des travaux ; les travaux doivent representer au moins 25 % du coût total de l'operation (prix + travaux) ; la base est plafonnee à 300 000 EUR/an et à 5 500 EUR/m2 de surface habitable." },
+          { name: "Choisir la durée de location et la zone", text: "Sélectionner 6, 9 ou 12 ans de location nue et la zone (metropole ou outre-mer) ; les taux de réduction sont 12/18/21 % en metropole et 23/29/32 % en outre-mer selon la durée choisie." },
+          { name: "Calculer la réduction annuelle et totale", text: "Réduction totale = base retenue x taux ; ex. 200 000 EUR (150 000 EUR d'achat + 50 000 EUR de travaux) x 18 % sur 9 ans = 36 000 EUR, soit 4 000 EUR/an ; en outre-mer à 29 % : 58 000 EUR, soit 6 444 EUR/an." },
+          { name: "Vérifier le plafond des niches fiscales", text: "La réduction s'impute dans la limite de 10 000 EUR/an de niches fiscales en metropole ; l'excedent au-dela de ce plafond est perdu et ne peut pas etre reporte sur les années suivantes." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

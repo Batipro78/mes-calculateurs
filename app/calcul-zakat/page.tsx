@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-zakat" },
@@ -217,6 +218,16 @@ export default function Page() {
       </section>
 
       <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
+
+      <HowToJsonLd
+        name="Calculer sa Zakat al-Mal"
+        steps={[
+          { name: "Inventorier les biens zakatables", text: "Lister les actifs zakatables : liquidites (cash, livrets), or en grammes x cours du jour, argent, actions (valeur de marche), cryptomonnaies (valeur EUR), assurance-vie (valeur de rachat), stocks commerciaux, creances recouvrables. Ne pas inclure la residence principale, la voiture personnelle, les meubles ni les vetements." },
+          { name: "Déduire les dettes court terme", text: "Soustraire uniquement les dettes exigibles dans les 12 prochains mois : factures en cours, loyers dus, impôts à payer, mensualités de credit, salaires d'employes. Ne pas déduire les prets immobiliers à long terme ni les hypotheques." },
+          { name: "Vérifier le nisab et la hawl", text: "Comparer le patrimoine net au nisab de son ecole : 85 g d'or (ecole majoritaire Maliki / Chafii / Hanbali / ECFR) ou 595 g d'argent (ecole hanafite). La Zakat est due uniquement si le patrimoine est reste supérieur au nisab pendant une année lunaire complète (hawl = 354 jours)." },
+          { name: "Appliquer le taux de 2,5 pct", text: "Zakat = patrimoine net x 2,5 / 100. Exemple : patrimoine net de 20 000 EUR (ecole or, nisab atteint) donne 20 000 x 0,025 = 500 EUR de Zakat à verser aux 8 catégories d'eligibles (Coran 9:60)." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-zakat" />

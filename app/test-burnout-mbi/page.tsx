@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/test-burnout-mbi" },
@@ -232,6 +233,16 @@ export default function Page() {
           24h/24, 7j/7.
         </p>
       </div>
+
+      <HowToJsonLd
+        name="Évaluer son risque de burnout avec le MBI"
+        steps={[
+          { name: "Répondre aux 22 questions selon la fréquence ressentie", text: "Coter chacune des 22 questions de 0 (Jamais) à 6 (Chaque jour) en se basant sur sa propre experience professionnelle. Les questions sont reparties sur 3 dimensions : epuisement emotionnel (9 items), depersonnalisation (5 items) et accomplissement personnel (8 items)." },
+          { name: "Calculer le score d'epuisement emotionnel et de depersonnalisation", text: "Additionner les 9 items d'epuisement emotionnel (score sur 54 ; seuil eleve : 27 ou plus) et les 5 items de depersonnalisation (score sur 30 ; seuil eleve : 13 ou plus). Ces deux dimensions mesurent l'aspect negatif du burnout." },
+          { name: "Calculer le score d'accomplissement personnel (echelle inversee)", text: "Additionner les 8 items d'accomplissement personnel (score sur 48). Attention : ici un score BAS (33 ou moins sur 48) signale un burnout, à l'inverse des deux autres dimensions dont les scores eleves sont critiques." },
+          { name: "Detecter le burnout et decider de la marche à suivre", text: "Le burnout est avere si au moins 2 dimensions sur 3 atteignent simultanement leur seuil critique. En cas de résultat preoccupant, consulter un medecin du travail, un medecin traitant ou un psychologue. En cas de detresse, appeler le 3114 (24h/24)." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

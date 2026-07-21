@@ -30,7 +30,11 @@ export default function HowToJsonLd({
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      dangerouslySetInnerHTML={{
+        // On echappe < : JSON.stringify ne le fait pas, et un texte contenant
+        // </script fermerait la balise et casserait silencieusement la page.
+        __html: JSON.stringify(jsonLd).replace(/</g, String.fromCharCode(92) + "u003c"),
+      }}
     />
   );
 }

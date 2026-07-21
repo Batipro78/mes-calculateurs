@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-taux-endettement" },
@@ -278,6 +279,16 @@ export default function Page() {
           Si vous achetez un bien a renover, anticipez le budget travaux : <a href="/prix-electricien" className="text-violet-600 underline hover:text-violet-800">prix electricien</a>, <a href="/prix-plombier" className="text-violet-600 underline hover:text-violet-800">prix plombier</a>, <a href="/prix-chauffagiste" className="text-violet-600 underline hover:text-violet-800">prix chauffagiste</a>, <a href="/prix-macon" className="text-violet-600 underline hover:text-violet-800">prix macon</a>, <a href="/prix-peintre" className="text-violet-600 underline hover:text-violet-800">prix peintre</a> et <a href="/prix-couvreur" className="text-violet-600 underline hover:text-violet-800">prix couvreur</a>. Estimez aussi les <a href="/frais-de-notaire" className="text-violet-600 underline hover:text-violet-800">frais de notaire</a> et votre <a href="/calcul-capacite-emprunt" className="text-violet-600 underline hover:text-violet-800">capacite d&apos;emprunt</a>.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer son taux d'endettement"
+        steps={[
+          { name: "Saisir les revenus mensuels nets", text: "Additionner tous les revenus nets mensuels : salaires (100%), loyers percus (70% selon les banques), pensions de retraite et allocations regulieres. Les primes exceptionnelles et heures supplémentaires variables ne sont generalement pas retenues par les banques." },
+          { name: "Renseigner toutes les charges mensuelles", text: "Additionner les mensualités de tous les credits en cours : credit immobilier, credit auto, credit à la consommation, loyer actuel si locataire. Ne pas inclure les charges courantes (alimentation, abonnements, factures)." },
+          { name: "Appliquer la formule et comparer au seuil HCSF", text: "Taux d'endettement = (charges / revenus) x 100. Exemple : 900 EUR de charges / 3 000 EUR de revenus = 30%. La regle HCSF 2022 fixe le plafond à 35% (assurance emprunteur incluse) pour l'octroi d'un credit immobilier." },
+          { name: "Vérifier le reste à vivre", text: "Reste à vivre = revenus - charges. Minimum recommande : 700-1 000 EUR pour une personne seule, 1 200-1 500 EUR pour un couple sans enfant, 1 500-1 800 EUR pour un couple avec un enfant. Un bon reste à vivre peut compenser un taux legerement au-dessus de 33%." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

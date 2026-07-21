@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: {
@@ -208,6 +209,16 @@ export default function Page() {
           situation de maniere informative, sur la base des textes en vigueur.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Évaluer son profil de mobilisation en cas de conflit"
+        steps={[
+          { name: "Renseigner l'âge", text: "Les moins de 18 ans et les plus de 72 ans sont exemptes de mobilisation selon le Code de la defense. Les 18-35 ans constituent la priorite de rappel en cas de mobilisation elargie (niveau 3). Les 36-55 ans sont concernes en cas de montee en puissance." },
+          { name: "Indiquer le statut militaire", text: "Les reservistes operationnels et militaires d'active sont mobilisables immédiatement (niveau 1). Les anciens militaires ayant quitte l'armee sont rappelables en priorite (niveau 2) pour leur experience. Sans historique militaire, la mobilisation intervient au niveau 3." },
+          { name: "Préciser la profession et l'état de santé", text: "Certaines professions essentielles peuvent conduire à un maintien en poste civil : santé (medecins, infirmiers, pharmaciens), sécurité interieure (policiers, gendarmes), agriculture et énergie/transport. Un handicap grave peut entrainer une exemption après commission medicale militaire." },
+          { name: "Lire la catégorie de mobilisation et les conditions d'exemption", text: "Le simulateur indique le niveau de mobilisation probable (1 à 4) base sur le Code de la defense (articles L2141-1 à L2142-1) et liste les conditions d'exemption ou de maintien en poste civil applicables au profil saisi." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

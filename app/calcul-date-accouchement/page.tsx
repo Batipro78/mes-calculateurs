@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-date-accouchement" },
@@ -308,6 +309,16 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      <HowToJsonLd
+        name="Calculer la date prévue d'accouchement et les semaines d'aménorrhée"
+        steps={[
+          { name: "Choisir la méthode de calcul", text: "Sélectionner parmi 3 méthodes : date des dernieres regles (DDR), date de conception connue (FIV, ovulation surveillee) ou âge gestationnel saisi à partir d'une echographie entre 11 et 14 SA." },
+          { name: "Calculer la date prévue d'accouchement", text: "À partir des dernieres regles : DPA = DDR + 280 jours (regle de Naegele, 40 SA). À partir de la conception : DPA = date conception + 266 jours (38 SA). Marge echographique : +/- 3 jours." },
+          { name: "Lire les semaines d'aménorrhée et le trimestre en cours", text: "Le calculateur affiche les semaines d'aménorrhée (SA) actuelles, le trimestre (1-13 SA, 14-27 SA, 28-41 SA) et les dates des 3 echographies recommandees (datation, morphologie, croissance)." },
+          { name: "Vérifier les dates de conge maternite", text: "Conge calcule automatiquement : 16 semaines (6 avant + 10 après) pour 1er ou 2e enfant, 26 semaines (8 avant + 18 après) pour 3e enfant et plus, 34 semaines pour des jumeaux." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

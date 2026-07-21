@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-heures-travail" },
@@ -245,6 +246,16 @@ export default function Page() {
           </li>
         </ul>
       </section>
+
+      <HowToJsonLd
+        name="Calculer ses heures de travail et heures supplémentaires"
+        steps={[
+          { name: "Saisir les horaires de chaque journee", text: "Pour chaque jour travaille, entrer l'heure de debut, l'heure de fin et la durée de pause. Heures effectives = fin - debut - pause. Exemple : 9h00 à 17h30 avec 1h de pause = 7h30 effectives." },
+          { name: "Obtenir le total hebdomadaire", text: "Le calculateur additionne les heures journalieres. Au-dela de 35 heures par semaine, les heures en plus sont des heures supplémentaires soumises à majoration." },
+          { name: "Identifier les majorations applicables", text: "Heures supplémentaires de la 36e à la 43e heure : +25% du taux horaire. À partir de la 44e heure : +50%. Exemple : 1h sup à 12 EUR/h = 15 EUR avec la majoration de 25%." },
+          { name: "Lire la remuneration totale brute estimée", text: "Saisir le taux horaire brut pour voir la remuneration de base plus les heures supplémentaires majorees. La durée maximale légale est de 48 heures par semaine." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

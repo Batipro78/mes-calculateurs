@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-percentile-bebe" },
@@ -174,6 +175,16 @@ export default function Page() {
           Study 2006 (Organisation Mondiale de la Santé).
         </p>
       </div>
+
+      <HowToJsonLd
+        name="Calculer le percentile de poids et taille de son bébé"
+        steps={[
+          { name: "Saisir le sexe et l'âge en mois entiers", text: "Entrer le sexe du bébé (fille ou garcon) et l'âge en mois entiers de 0 à 24 mois. Ces valeurs determinent les paramètres LMS (Lambda, Mu, Sigma) de la courbe OMS 2006 correspondante." },
+          { name: "Entrer le poids et la taille mesures", text: "Saisir le poids en kg (ex. 7,5 kg) et la taille en cm (ex. 68 cm) tels que mesures lors de la visite pediatrique. Peser le bébé nu, mesurer la taille couche pour les nourrissons." },
+          { name: "Calculer le Z-score et le percentile via la méthode LMS", text: "Formule OMS : Z = ((mesure / M)^L - 1) / (L x S). Le Z-score est converti en percentile via la loi normale : Z = 0 correspond au P50 (mediane), Z = -2 environ au P2,3, Z = +2 au P97,7." },
+          { name: "Interpréter le résultat dans la courbe individuelle", text: "La zone normale s'etend du P3 au P97. Ce qui compte est la regularite de la courbe : un bébé au P10 qui suit son percentile est en bonne santé. Une cassure brutale (ex. P50 vers P10 en un mois) necessite un avis pediatrique." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-temps-telechargement" },
@@ -336,6 +337,15 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      <HowToJsonLd
+        name="Calculer le temps de telechargement d'un fichier"
+        steps={[
+          { name: "Saisir la taille du fichier", text: "Entrer la taille en gigaoctets (Go) ou megaoctets (Mo). Exemples courants : Fortnite = 30 Go, Cyberpunk 2077 = 70 Go, GTA V = 95 Go, Starfield = 125 Go, Baldur's Gate 3 = 150 Go, Call of Duty MW3 = 220 Go." },
+          { name: "Indiquer le debit internet en Mb/s", text: "Entrer le debit annonce par le fournisseur en megabits par seconde (Mb/s). Conversion en megaoctets par seconde : Mo/s = Mb/s / 8. Exemples : fibre 100 Mb/s = 12,5 Mo/s, fibre 1 000 Mb/s = 125 Mo/s, ADSL 8 Mb/s = 1 Mo/s." },
+          { name: "Lire le temps réel avec overhead réseau", text: "Le calculateur applique un overhead de 10% (protocole TCP/IP, pertes de paquets, saturation serveur). Formule : temps (s) = taille (Mo) / (debit Mb/s x 0,9 / 8). Exemple : 70 Go à 100 Mb/s -> environ 1h 43min en conditions réelles (vs 1h 33min théorique)." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-temps-telechargement" />

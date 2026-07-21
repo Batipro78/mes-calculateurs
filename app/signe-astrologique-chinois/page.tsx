@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/signe-astrologique-chinois" },
@@ -310,6 +311,16 @@ export default function Page() {
           chine.in
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Trouver son signe astrologique chinois et son élément"
+        steps={[
+          { name: "Entrer la date de naissance complète", text: "Saisir le jour, le mois et l'année de naissance. Le signe change au Nouvel An lunaire (entre le 21 janvier et le 20 février), pas le 1er janvier. Ex : naissance le 5 février 2000 -> signe 1999 (Lapin de Terre) car le Nouvel An 2000 tombait ce même jour." },
+          { name: "Identifier l'animal du zodiaque", text: "Le calculateur determine l'un des 12 animaux (Rat, Buffle, Tigre, Lapin, Dragon, Serpent, Cheval, Chevre, Singe, Coq, Chien, Cochon) en tenant compte de la date exacte du Nouvel An lunaire de l'année de naissance." },
+          { name: "Identifier l'élément Wu Xing", text: "L'élément (Bois, Feu, Terre, Metal, Eau) depend du dernier chiffre de l'année lunaire : 4-5=Bois, 6-7=Feu, 8-9=Terre, 0-1=Metal, 2-3=Eau. Ex : année 1994 -> Chien de Bois. La combinaison animal + élément ne revient qu'une fois tous les 60 ans." },
+          { name: "Lire la compatibilite et le profil", text: "Le résultat indique la triade de compatibilite (ex : Rat, Dragon et Singe s'entendent naturellement), le signe oppose (Rat oppose à Cheval) et les traits associes à l'animal et à l'élément pour une lecture complète du profil." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/signe-astrologique-chinois" />

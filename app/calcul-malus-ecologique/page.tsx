@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-malus-ecologique" },
@@ -139,6 +140,16 @@ export default function Page() {
           </div>
         </section>
       ))}
+
+      <HowToJsonLd
+        name="Calculer le malus ecologique de son véhicule"
+        steps={[
+          { name: "Saisir les emissions de CO2 en g/km", text: "Entrer les emissions de CO2 selon la norme WLTP (disponible sur le certificat de conformite ou la carte grise). Le seuil d'exonération est de 113 g/km en 2026 ; à 114 g/km, le malus demarre à 50 EUR." },
+          { name: "Saisir le poids du véhicule en kg", text: "Entrer le poids à vide du véhicule (mentionne sur la carte grise). Le malus au poids s'applique à partir de 1 600 kg, à raison de 10 EUR par kg supplémentaire (ex. 1 800 kg = 2 000 EUR)." },
+          { name: "Retenir le montant le plus eleve des deux malus", text: "Le malus CO2 suit le barème progressif (ex. 150 g/km = 3 000 EUR, 170 g/km = 9 500 EUR). Le malus poids = (poids - 1 600) x 10 EUR. Les deux ne se cumulent pas : seul le plus eleve s'applique, dans la limite de 70 000 EUR." },
+          { name: "Vérifier les exonérations applicables", text: "Véhicules électriques et hybrides rechargeables sous 50 g/km : exoneres des deux malus. Famille de 3 enfants ou plus : abattement de 20 g/km par enfant sur le malus CO2, sur demande de remboursement aupres du fisc." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

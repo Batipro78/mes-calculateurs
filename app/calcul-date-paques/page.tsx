@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-date-paques" },
@@ -269,6 +270,15 @@ jour = (h + l - 7 * m + 114) % 31 + 1
           Conférence des évêques de France, Wikipedia - Computus.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer la date de Paques catholique ou orthodoxe et les fetes mobiles"
+        steps={[
+          { name: "Saisir l'année et choisir la tradition chretienne", text: "Entrer l'année souhaitee (valide de 1900 à 2099) et sélectionner catholique (calendrier gregorien, algorithme Meeus) ou orthodoxe (calendrier julien, decalage de +13 jours en période 1900-2099)." },
+          { name: "Appliquer l'algorithme Meeus pour Paques gregorienne", text: "L algorithme Meeus/Jones/Butcher applique des operations modulo sur l'année pour déterminer la pleine lune pascale : première pleine lune après l'equinoxe du 21 mars, puis calcule le premier dimanche suivant." },
+          { name: "Lire toutes les fetes mobiles derivees de Paques", text: "À partir de Paques : Mercredi des Cendres = Paques - 46 jours, Ascension = Paques + 39 jours, Pentecote = Paques + 49 jours. Pour Paques orthodoxe, la même regle s'applique au calendrier julien." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-date-paques" />

@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-retraite" },
@@ -211,6 +212,16 @@ export default function Page() {
           Globale (EIG)</strong> a 55 et 60 ans.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Simuler sa retraite"
+        steps={[
+          { name: "Saisir l'année de naissance et le salaire annuel moyen", text: "Renseigner l'année de naissance (determine l'âge légal de 62 à 64 ans selon la reforme 2023 et les trimestres requis de 166 à 172), le salaire annuel moyen des 25 meilleures années (plafonne à 47 100 EUR en 2026) et le nombre de trimestres cotises." },
+          { name: "Appliquer le taux de liquidation et la proratisation", text: "Pension de base = SAM x taux x (trimestres cotises / trimestres requis). Le taux plein est de 50% ; la décote le reduit de 0,625% par trimestre manquant (max 20 trimestres = -12,5%) ; la surcote l'augmente de 1,25% par trimestre supplémentaire après l'âge légal et le taux plein." },
+          { name: "Ajouter la complémentaire AGIRC-ARRCO", text: "Multiplier les points accumules par la valeur du point (1,4159 EUR en 2026) pour obtenir la pension complémentaire annuelle. La complémentaire représente 25 à 60% de la pension totale selon le statut cadre ou non-cadre." },
+          { name: "Lire la pension nette mensuelle", text: "Déduire les prelevements sociaux (CSG 8,3% + CRDS 0,5% + Casa 0,3% = 9,1% au total) de la pension brute totale (base + complémentaire) pour obtenir la pension nette." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-fetes-catholiques" },
@@ -255,6 +256,16 @@ export default function Page() {
           Calendrier liturgique romain conforme au Missel romain. Les dates affichées correspondent au rite catholique romain. Pour les Églises orientales ou orthodoxes, certaines fêtes peuvent différer. <strong>Sources&nbsp;:</strong> Vatican.va, Conférence des évêques de France, Code de Droit Canonique.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Trouver les dates des fetes catholiques"
+        steps={[
+          { name: "Sélectionner l'année souhaitee", text: "Choisir l'année dans le selecteur. Le calculateur prend en charge toutes les années du calendrier gregorien (adopte en 1582)." },
+          { name: "Calculer la date de Paques par le comput ecclesiastique", text: "L'algorithme determine Paques : premier dimanche après la première pleine lune de printemps (le 21 mars ou après). En 2026, Paques tombe le 5 avril." },
+          { name: "Déduire les fetes mobiles", text: "Toutes les fetes mobiles decoulent de Paques : Mercredi des Cendres = Paques - 46 jours, Ascension = Paques + 39 jours, Pentecote = Paques + 49 jours, Fete-Dieu = Paques + 60 jours." },
+          { name: "Consulter les fetes fixes et les jours feries", text: "Les fetes fixes (Noel le 25 décembre, Toussaint le 1er novembre, Assomption le 15 aout...) restent identiques chaque année. Parmi elles, 6 sont des jours feries légaux en France." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-fetes-catholiques" />

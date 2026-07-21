@@ -3,6 +3,7 @@ import CalculCapaciteEmprunt from "./CalculCapaciteEmprunt";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-capacite-emprunt" },
@@ -232,6 +233,15 @@ export default function Page() {
           Pour completer votre projet immobilier, simulez vos <a href="/simulateur-pret-immobilier" className="text-indigo-600 underline hover:text-indigo-800">mensualites de pret</a>, estimez les <a href="/frais-de-notaire" className="text-indigo-600 underline hover:text-indigo-800">frais de notaire</a> et verifiez votre <a href="/calcul-taux-endettement" className="text-indigo-600 underline hover:text-indigo-800">taux d&apos;endettement</a>. Si vous prevoyez des travaux de renovation, consultez nos estimateurs artisans : <a href="/prix-electricien" className="text-indigo-600 underline hover:text-indigo-800">prix electricien</a>, <a href="/prix-plombier" className="text-indigo-600 underline hover:text-indigo-800">prix plombier</a>, <a href="/prix-chauffagiste" className="text-indigo-600 underline hover:text-indigo-800">prix chauffagiste</a>, <a href="/prix-macon" className="text-indigo-600 underline hover:text-indigo-800">prix macon</a> et <a href="/prix-couvreur" className="text-indigo-600 underline hover:text-indigo-800">prix couvreur</a>.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer sa capacité d'emprunt immobilier"
+        steps={[
+          { name: "Saisir les revenus nets et les charges existantes", text: "Entrer les revenus nets mensuels du foyer et les charges de credits en cours. La mensualité maximale autorisee = (revenus nets - charges) x 35 pct (regle HCSF 2026, assurance incluse)." },
+          { name: "Choisir le taux d'intérêt et la durée du pret", text: "Sélectionner la durée (15, 20 ou 25 ans max selon HCSF) et le taux. Capital empruntable = mensualité max x [(1 - (1 + taux mensuel)^(-n mois)) / taux mensuel]." },
+          { name: "Ajouter l'apport personnel pour obtenir le budget total", text: "Le prix maximum du bien = capital empruntable + apport. Un apport d au moins 10 pct est recommande pour couvrir les frais de notaire. Plus l'apport est eleve, meilleur est le taux obtenu." },
+        ]}
+      />
 
       <RelatedCalculators currentSlug="/calcul-capacite-emprunt" />
     </div>

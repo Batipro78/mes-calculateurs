@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: {
@@ -196,6 +197,16 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      <HowToJsonLd
+        name="Calculer le budget minimum de survie en France"
+        steps={[
+          { name: "Sélectionner la zone geographique", text: "Choisir la zone de vie : Paris / IDF (~1 800 EUR/mois, dont loyer ~1 050 EUR), grande ville (~1 250 EUR/mois, loyer ~650 EUR), ville moyenne (~1 080 EUR/mois, loyer ~480 EUR), zone rurale (~920 EUR/mois, loyer ~380 EUR). Le logement représente 40 à 58 pct du budget selon la zone." },
+          { name: "Indiquer la situation familiale et le transport", text: "Sélectionner la composition du foyer (seul, couple, avec enfants) et le mode de transport : sans voiture (transports communs 45-91 EUR/mois), avec voiture (200-300 EUR/mois de carburant + assurance + entretien). Le velo est l'option la plus economique." },
+          { name: "Lire le budget minimum mensuel", text: "Le calculateur additionne les postes incompressibles : loyer, alimentation (~250-350 EUR/mois), transport, énergie, mutuelle de base. Exemple : personne seule en ville moyenne sans voiture = environ 880 EUR/mois." },
+          { name: "Comparer avec les aides disponibles", text: "Comparer le budget minimum avec le RSA (647 EUR), le seuil de pauvrete (1 288 EUR) et le SMIC net (1 443 EUR). Identifier les aides applicables : APL (100-300 EUR/mois), prime d'activité (jusqu'à 595 EUR/mois), CSS (mutuelle gratuite sous plafond de 810 EUR/mois de revenu)." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

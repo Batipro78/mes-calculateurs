@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-age" },
@@ -152,6 +153,14 @@ export default function Page() {
         </div>
       </section>
 
+      <HowToJsonLd
+        name="Calculer son âge exact"
+        steps={[
+          { name: "Saisir la date de naissance", text: "Indiquer le jour, le mois et l'année de naissance. L'outil compare cette date à la date du jour pour calculer l'âge exact." },
+          { name: "Obtenir l'âge en années, mois et jours", text: "L'âge exact est calcule en soustrayant la date de naissance à la date actuelle, en tenant compte du nombre de jours dans chaque mois (28, 29, 30 ou 31 selon le mois et les années bissextiles)." },
+          { name: "Lire les conversions et reperes", text: "Le résultat inclut le nombre total de jours vecus, la date du prochain anniversaire, le nombre de jours restants, et le signe astrologique determine par le mois et le jour de naissance." },
+        ]}
+      />
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-age" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

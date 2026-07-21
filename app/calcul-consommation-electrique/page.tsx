@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-consommation-electrique" },
@@ -172,6 +173,15 @@ export default function Page() {
           premier levier d&apos;economie, avant meme de traquer les appareils.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer la consommation électrique d'un appareil"
+        steps={[
+          { name: "Saisir la puissance et la durée d'utilisation", text: "Entrer la puissance de l'appareil en watts (W) et la durée d'utilisation en heures. Formule : kWh = puissance (W) x durée (h) / 1000. Exemple : radiateur 1500 W allume 4h = 6 kWh." },
+          { name: "Choisir le tarif EDF (Base ou HP/HC)", text: "Option Base : 0.2516 EUR/kWh à toute heure. Option HP/HC : 0.27 EUR/kWh en Heures Pleines (environ 16h/jour) et 0.2068 EUR/kWh en Heures Creuses (environ 8h la nuit). Choisir HP/HC si les appareils energivores sont programables." },
+          { name: "Lire le coût sur la journee, le mois et l'année et cumuler plusieurs appareils", text: "Le coût = kWh x prix du kWh. Le mode multi-appareils permet d'additionner plusieurs postes pour estimer la facture totale et identifier les appareils les plus couteux." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-consommation-electrique" />

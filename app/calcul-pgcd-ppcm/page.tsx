@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-pgcd-ppcm" },
@@ -124,6 +125,16 @@ export default function Page() {
           </div>
         </section>
       ))}
+
+      <HowToJsonLd
+        name="Calculer le PGCD et le PPCM de deux nombres"
+        steps={[
+          { name: "Saisir les deux entiers", text: "Entrer les deux nombres entiers a et b dans les champs (ex. a = 48, b = 36)." },
+          { name: "Appliquer l'algorithme d'Euclide", text: "Diviser le plus grand par le plus petit ; remplacer par le diviseur et le reste jusqu'à ce que le reste soit zero. Le dernier reste non nul est le PGCD (ex. PGCD de 48 et 36 = 12)." },
+          { name: "Déduire le PPCM avec la relation fondamentale", text: "Appliquer la formule PPCM(a, b) = (a x b) / PGCD(a, b). Ex. PPCM(48, 36) = (48 x 36) / 12 = 144." },
+          { name: "Vérifier et utiliser le résultat", text: "Confirmer que PGCD x PPCM = a x b (12 x 144 = 1728 = 48 x 36). Utiliser le PGCD pour simplifier une fraction : 36/48 se reduit à 3/4 après division par 12." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-pgcd-ppcm" />

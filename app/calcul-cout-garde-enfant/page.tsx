@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-cout-garde-enfant" },
@@ -186,6 +187,16 @@ export default function Page() {
       </div>
 
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
+
+      <HowToJsonLd
+        name="Calculer le coût réel de la garde d'enfant"
+        steps={[
+          { name: "Choisir le mode de garde et renseigner les heures", text: "Sélectionner le mode : creche municipale (tarif CAF), assistante maternelle (~4,91 EUR/h), garde à domicile (~18 EUR/h charges incluses) ou micro-creche (8 à 9,50 EUR/h). Indiquer les heures mensuelles de garde." },
+          { name: "Calculer le tarif creche avec le barème CAF", text: "Pour une creche, tarif horaire = taux d'effort x revenus annuels / 12. Taux pour 1 enfant : 0,0619%. Plancher 0,50 EUR/h, plafond 5,26 EUR/h. Exemple : 36 000 EUR/an = 1,86 EUR/h." },
+          { name: "Déduire le CMG de la CAF", text: "Le CMG (Complement de libre choix du Mode de Garde) couvre jusqu'à 517 EUR/mois de cotisations pour un enfant de 0 à 3 ans. Il s'applique pour l'assistante maternelle, la garde à domicile et la micro-creche." },
+          { name: "Appliquer le credit d'impôt de 50%", text: "Un credit d'impôt de 50% s'applique sur les dépenses restantes après CMG, plafonne à 3 500 EUR/enfant/an hors domicile, soit 1 750 EUR maximum par enfant. C'est un credit remboursable même sans impôt à payer." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

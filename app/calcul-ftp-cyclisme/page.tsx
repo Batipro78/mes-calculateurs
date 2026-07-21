@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-ftp-cyclisme" },
@@ -295,6 +296,16 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      <HowToJsonLd
+        name="Calculer son FTP et ses watts par kilo en cyclisme"
+        steps={[
+          { name: "Realiser le test FTP 20 minutes", text: "Après 15 min d'echauffement et 2 sprints de 2 min, pedaler 20 min à puissance maximale soutenue et homogene. Enregistrer la puissance moyenne avec un capteur de puissance ou un home-trainer connecte." },
+          { name: "Saisir la puissance moyenne du test et le poids corporel", text: "Entrer la puissance moyenne du test 20 min (watts) et le poids corporel en kg. Le FTP est calcule par FTP = puissance moyenne x 0,95 (le coefficient 0,95 compense la fatigue supplémentaire sur 1 heure complète)." },
+          { name: "Lire le W/kg et le niveau FFC correspondant", text: "W/kg = FTP / poids corporel. Situer dans le tableau : 2,3 W/kg = debutant, 3,3 W/kg = Cat 4, 4,3 W/kg = Cat 2 FFC, 5,3 W/kg = Elite. Pogacar atteint environ 6,5 W/kg." },
+          { name: "Consulter la VAM estimée pour les segments en montee", text: "La Vitesse Ascensionnelle Moyenne (VAM) est calculee à partir du FTP. Une VAM de 1 200 m/h correspond à un amateur confirme, 1 700 m/h à un pro. Utile pour analyser les segments Strava en col." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-ftp-cyclisme" />

@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-ifi" },
@@ -149,6 +150,16 @@ export default function Page() {
           votre estimation par un notaire ou un conseil fiscal.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer son Impôt sur la Fortune Immobiliere (IFI)"
+        steps={[
+          { name: "Saisir la valeur des biens immobiliers", text: "Entrer la valeur venale de la residence principale (l'abattement légal de 30% est applique automatiquement) et des autres biens : residences secondaires, locatifs, terrains, parts de SCPI en direct." },
+          { name: "Déduire les dettes immobilieres", text: "Soustraire les emprunts immobiliers en cours (capital restant du au 1er janvier) pour obtenir le patrimoine net taxable." },
+          { name: "Vérifier le seuil et appliquer le barème progressif", text: "Si le patrimoine net depasse 1 300 000 EUR, appliquer le barème : 0,5% de 800K à 1,3M EUR, 0,7% de 1,3M à 2,57M, 1% de 2,57M à 5M, 1,25% de 5M à 10M, 1,5% au-dela de 10M." },
+          { name: "Appliquer la décote si patrimoine entre 1,3M et 1,4M", text: "Décote = 17 500 - (1,25% x patrimoine net). Exemple : patrimoine 1 350 000 EUR => décote = 17 500 - (0,0125 x 1 350 000) = 625 EUR à déduire de l'IFI calcule." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

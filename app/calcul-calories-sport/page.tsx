@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 import { getTopSports, SPORTS } from "./caloriesSportCalc";
 
 export const metadata: Metadata = {
@@ -211,6 +212,15 @@ export default function Page() {
           </table>
         </div>
       </section>
+
+      <HowToJsonLd
+        name="Calculer les calories brulees par une activité sportive"
+        steps={[
+          { name: "Choisir le sport et son coefficient MET", text: "Sélectionner l'activité parmi 40+ sports. Chaque sport est associe à une valeur MET : course 10 km/h = 10 METs, velo route 30 km/h = 12 METs, yoga = 2.5 METs, sprint = 23 METs." },
+          { name: "Saisir le poids corporel et la durée", text: "Entrer le poids en kg et la durée en minutes. La formule s'applique : Calories = METs x poids (kg) x durée (heures). Exemple : 10 METs x 70 kg x 0.5h = 350 kcal." },
+          { name: "Évaluer le deficit calorique et l'impact sur le poids", text: "Comparer les calories brulees au deficit journalier cible. Un deficit de 500 kcal/jour entraine une perte d'environ 500 g par semaine. Le cumul de plusieurs activités est possible en mode multi-sports." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

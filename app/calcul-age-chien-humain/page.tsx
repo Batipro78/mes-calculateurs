@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-age-chien-humain" },
@@ -248,6 +249,15 @@ export default function Page() {
           santé de votre chien, consultez votre vétérinaire.
         </p>
       </div>
+
+      <HowToJsonLd
+        name="Estimer l'âge d'un chien en années humaines"
+        steps={[
+          { name: "Saisir l'âge et la catégorie de taille du chien", text: "Indiquer l'âge du chien en années et sa catégorie de taille : petit (moins de 10 kg), moyen (10-25 kg), grand (25-45 kg) ou geant (plus de 45 kg). La taille influence directement la vitesse de vieillissement." },
+          { name: "Appliquer la formule AVMA", text: "Année 1 = 15 ans humains, année 2 = +9 ans (total 24). À partir de 3 ans : +4 ans par an pour les petits chiens, +5 pour les moyens, +6 pour les grands et +7 pour les geants." },
+          { name: "Consulter l'estimation Wang 2019", text: "La formule basee sur la methylation de l'ADN (etude Cell Systems 2019) fournit une estimation complémentaire : âge humain = 16 x ln(âge du chien) + 31. Elle modelise le vieillissement biologique de maniere plus précise pour les Labrador." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

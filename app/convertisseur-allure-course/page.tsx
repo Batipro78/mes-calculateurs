@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 import { formatAllure, predireTempsCourse } from "./allureCourseCalc";
 
 export const metadata: Metadata = {
@@ -182,6 +183,15 @@ export default function Page() {
         </div>
       </section>
 
+      <HowToJsonLd
+        name="Convertir une allure de course et predire ses temps de competition"
+        steps={[
+          { name: "Saisir l'allure en min/km", text: "Entrer l'allure cible en minutes et secondes par kilomètre (ex. 5:00 min/km). Le convertisseur accepte aussi une entree en km/h ou en min/mile." },
+          { name: "Calculer la vitesse équivalente en km/h", text: "Formule : vitesse (km/h) = 60 / allure (min/km). Une allure de 5:00 min/km donne 60 / 5 = 12 km/h. Une allure de 6:00 min/km = 10 km/h." },
+          { name: "Predire les temps sur les distances de competition", text: "Temps = allure (min/km) x distance (km). Ex. : 5:00 min/km sur 42,195 km (marathon) = 3 h 30 min ; sur 10 km = 50 min ; sur 21,0975 km (semi) = 1 h 45 min." },
+          { name: "Situer son profil de coureur", text: "Debutant : 7:00 à 8:30 min/km (7 à 8,5 km/h). Amateur : 5:30 à 7:00 min/km. Confirme : 4:00 à 5:30 min/km. Elite : moins de 4:00 min/km (plus de 15 km/h)." },
+        ]}
+      />
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/convertisseur-allure-course" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

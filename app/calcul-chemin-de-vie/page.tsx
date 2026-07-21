@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-chemin-de-vie" },
@@ -351,6 +352,15 @@ export default function Page() {
           (médical, juridique, financier).
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer son chemin de vie en numerologie pythagoricienne"
+        steps={[
+          { name: "Saisir la date de naissance complète", text: "Entrer le jour, le mois et l'année en chiffres. Tous les chiffres de la date seront additionnes, donc l'année entiere est nécessaire (ex : 1990 = 1+9+9+0)." },
+          { name: "Additionner tous les chiffres de la date", text: "Sommer chaque chiffre du jour, du mois et de l'année. Exemple : 15/10/1990 = 1+5+1+0+1+9+9+0 = 26." },
+          { name: "Reduire jusqu'au chiffre final et lire le profil", text: "Reduire le total en additionnant ses chiffres (26 = 2+6 = 8). Exception : s'arreter si le résultat intermediaire est 11, 22 ou 33 (nombres maitres). Le chiffre final (1 à 9 ou 11/22/33) est le chemin de vie." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

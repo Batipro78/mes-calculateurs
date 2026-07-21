@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-chomage" },
@@ -190,6 +191,16 @@ export default function Page() {
           plus le taux de remplacement est bas (a cause du plafond).
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer son allocation chomage (ARE)"
+        steps={[
+          { name: "Calculer le Salaire Journalier de Référence (SJR)", text: "SJR = somme des salaires bruts des 24 derniers mois divise par le nombre de jours calendaires de la période (mois x 30) ; ex. 2 000 EUR brut/mois pendant 24 mois = 48 000 EUR / 720 jours = 66,67 EUR/jour." },
+          { name: "Appliquer les deux formules et retenir la plus avantageuse", text: "France Travail calcule : méthode 1 = 57,4 % du SJR ; méthode 2 = 40,4 % du SJR + 13,18 EUR ; il retient la plus elevee des deux. Le plancher est 31,59 EUR/jour (~948 EUR/mois) et le plafond 274,80 EUR/jour." },
+          { name: "Vérifier la durée d'indemnisation", text: "Elle est egale aux mois travailles, plafonnee à 18 mois avant 53 ans, 22,5 mois entre 53 et 54 ans, et 27 mois à partir de 55 ans (condition minimale : 6 mois travailles sur les 24 ou 36 derniers mois)." },
+          { name: "Identifier la degressivite eventuelle", text: "Si le salaire brut mensuel depassait 4 965 EUR, l'ARE est reduite de 30 % après 6 mois d'indemnisation ; cette regle ne s'applique pas aux personnes de 57 ans et plus." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

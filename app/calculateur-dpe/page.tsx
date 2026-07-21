@@ -4,6 +4,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import LeadCaptureForm from "../components/LeadCaptureForm";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calculateur-dpe" },
@@ -184,6 +185,16 @@ export default function Page() {
 
         <p className="text-xs text-slate-400 mt-4">Mis a jour le 8 avril 2026</p>
       </section>
+
+      <HowToJsonLd
+        name="Simuler le DPE de son logement"
+        steps={[
+          { name: "Renseigner la surface et l'année de construction", text: "Saisir la surface habitable en m2 et l'année de construction du logement. Les batiments anterieurs à 1975 (avant la 1re reglementation thermique) consomment en général 2 à 4 fois plus que les constructions recentes (RT 2012 / RE 2020)." },
+          { name: "Choisir le type de chauffage", text: "Sélectionner l'énergie de chauffage : électrique, gaz, fioul, pompe à chaleur ou bois / pellets. Une pompe à chaleur (COP 3 à 5) consomme jusqu'à 3 fois moins en énergie primaire qu'un radiateur électrique à effet joule, ce qui peut faire passer un logement de classe D à classe B." },
+          { name: "Évaluer la qualite de l'isolation", text: "Indiquer le niveau d'isolation : simple vitrage sans isolation des combles (mauvais), double vitrage avec isolation partielle (moyen), ou triple vitrage + isolation des murs et de la toiture (bon). Une mauvaise isolation ajoute 50 à 150 kWh/m2/an à la consommation estimée." },
+          { name: "Lire la classe DPE et le coût annuel", text: "Le résultat affiche la classe energetique (A inférieur à 70 kWh/m2/an jusqu'à G supérieur à 420 kWh/m2/an), les emissions de CO2 en kg/m2/an et le coût annuel de chauffage estime. Les logements G sont interdits à la location depuis 2025, les F le seront en 2028." },
+        ]}
+      />
 
       <RelatedCalculators currentSlug="/calculateur-dpe" />
     </div>

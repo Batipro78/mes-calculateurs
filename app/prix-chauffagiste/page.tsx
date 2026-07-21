@@ -5,6 +5,8 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import VillesLinks from "../components/VillesLinks";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
+import CTAMonDevisMinute from "../components/CTAMonDevisMinute";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/prix-chauffagiste" },
@@ -124,6 +126,16 @@ export default function Page() {
 
       <VillesLinks metierSlug="/prix-chauffagiste" />
 
+      <HowToJsonLd
+        name="Estimer le prix d'une intervention de chauffagiste"
+        steps={[
+          { name: "Choisir la prestation", text: "Sélectionner le type de travaux parmi les 10 disponibles : entretien chaudiere (100-180 EUR), installation PAC air-eau (10 000-18 000 EUR), remplacement chauffe-eau (400-4 500 EUR), plancher chauffant, desembouage, depannage, etc." },
+          { name: "Saisir la surface ou la quantité", text: "Indiquer la surface en m2 pour un plancher chauffant (ex : 80 m2) ou le nombre d'unités pour les equipements (ex : 1 chaudiere gaz 24 kW). L'entretien annuel et le depannage sont des forfaits sans surface." },
+          { name: "Sélectionner la region", text: "Appliquer le coefficient : Ile-de-France (+20 %), grandes villes (+10 %), province (prix de référence), rural (-10 %). Ex : entretien chaudiere 140 EUR en province = 168 EUR en Ile-de-France." },
+          { name: "Lire la fourchette et vérifier les aides", text: "L'estimateur affiche le coût total fournitures + main d'oeuvre. Les installations PAC et chauffe-eau thermodynamique sont eligibles à MaPrimeRenov' (jusqu'à 5 000 EUR) et à la TVA à 5,5 % si l'artisan est certifie RGE." },
+        ]}
+      />
+
       <Faq items={FAQ_ITEMS} />
 
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
@@ -155,6 +167,12 @@ export default function Page() {
           .
         </p>
       </section>
+
+      <CTAMonDevisMinute
+        campaign="prix-chauffagiste"
+        variant="devis"
+        guide={{ href: "/guides/taux-tva-travaux-renovation", label: "Quel taux de TVA appliquer sur vos travaux" }}
+      />
 
       <RelatedCalculators currentSlug="/prix-chauffagiste" />
     </div>

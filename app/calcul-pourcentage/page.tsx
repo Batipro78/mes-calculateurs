@@ -175,8 +175,8 @@ export default function Page() {
         name="Calculer un pourcentage"
         steps={[
           { name: "Pourcentage d'un nombre", text: "Pour calculer X pour cent d'un nombre, multiplier le nombre par X puis diviser par 100." },
-          { name: "Hausse ou baisse", text: "Pour une augmentation de X pour cent, multiplier par (1 plus X/100) ; pour une reduction, multiplier par (1 moins X/100)." },
-          { name: "Part en pourcentage", text: "Pour savoir quel pourcentage represente une part, diviser la part par le total puis multiplier par 100." },
+          { name: "Hausse ou baisse", text: "Pour une augmentation de X pour cent, multiplier par (1 plus X/100) ; pour une réduction, multiplier par (1 moins X/100)." },
+          { name: "Part en pourcentage", text: "Pour savoir quel pourcentage représente une part, diviser la part par le total puis multiplier par 100." },
         ]}
       />
 

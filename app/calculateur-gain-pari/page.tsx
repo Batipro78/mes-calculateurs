@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: {
@@ -159,6 +160,16 @@ export default function Page() {
           </p>
         </div>
       </section>
+
+      <HowToJsonLd
+        name="Calculer le gain d'un pari sportif"
+        steps={[
+          { name: "Saisir la mise et la cote decimale", text: "Entrer le montant mise en EUR et la cote decimale du bookmaker. Exemple : 10 EUR sur une cote de 3.50." },
+          { name: "Calculer le gain total et le benefice net", text: "Gain total = mise x cote decimale. Exemple : 10 x 3.50 = 35 EUR. Benefice net = gain total - mise = 35 - 10 = 25 EUR." },
+          { name: "Convertir le format de cote si nécessaire", text: "Cote fractionnelle = cote decimale - 1. Exemple : 3.50 - 1 = 2.50 = 5/2. Cote americaine : si cote >= 2.00, appliquer (cote - 1) x 100, soit +250 ; si cote inférieure à 2.00, appliquer -100 / (cote - 1), soit -200 pour une cote de 1.50." },
+          { name: "Lire la probabilité implicite", text: "Probabilité implicite (%) = (1 / cote decimale) x 100. Exemple : cote 3.50 donne 1 / 3.50 x 100 = 28,6 pct. Cette probabilité inclut la marge du bookmaker (5 à 8 pct) et ne représente pas la probabilité réelle de l'evenement." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
     </div>

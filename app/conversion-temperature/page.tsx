@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/conversion-temperature" },
@@ -130,6 +131,15 @@ export default function Page() {
           Exemple : 20&deg;C &asymp; 20 &times; 2 + 30 = 70&deg;F (valeur exacte : 68&deg;F). Cette methode est precise a &plusmn;3&deg;F pour les temperatures courantes (0 a 40&deg;C).
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Convertir une température entre Celsius, Fahrenheit et Kelvin"
+        steps={[
+          { name: "Saisir la température en Celsius", text: "Entrer la valeur en degrés Celsius (ex. 20). Le convertisseur accepte aussi une entree directe en Fahrenheit ou en Kelvin comme point de depart." },
+          { name: "Appliquer les formules de conversion", text: "Celsius vers Fahrenheit : F = C x 9/5 + 32 (ex. 20 C = 68 F). Celsius vers Kelvin : K = C + 273,15 (ex. 20 C = 293,15 K). Fahrenheit vers Celsius : C = (F - 32) x 5/9." },
+          { name: "Lire les trois echelles et les reperes pratiques", text: "Les valeurs en Celsius, Fahrenheit et Kelvin s'affichent simultanement avec les reperes cles : 0 C = 32 F (gel), 37 C = 98,6 F (corps humain), 100 C = 212 F (ebullition de l'eau)." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

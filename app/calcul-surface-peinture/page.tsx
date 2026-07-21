@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-surface-peinture" },
@@ -257,6 +258,15 @@ export default function Page() {
           main d&apos;oeuvre incluses.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer la surface à peindre et la quantité de peinture"
+        steps={[
+          { name: "Mesurer les murs et le plafond", text: "Relever la largeur et la hauteur de chaque mur en mètres. Surface d'un mur = largeur x hauteur. Additionner tous les murs. Ajouter la surface du plafond (longueur x largeur de la piece) si applicable." },
+          { name: "Déduire les ouvertures", text: "Soustraire la surface des portes (1,89 m2 par porte standard : 0,90 m x 2,10 m) et des fenetres (1,44 m2 par fenetre standard : 1,20 m x 1,20 m). Surface nette = surface totale murs + plafond - ouvertures." },
+          { name: "Calculer la quantité de peinture et le budget", text: "Surface totale à peindre = surface nette x nombre de couches (generalement 2). Litres nécessaires = surface totale / rendement (10 à 12 m2/L pour peinture acrylique). Exemple : 65 m2 x 2 couches / 10 m2/L = 13 L. Budget : 13 x prix au litre (5 à 40 EUR/L selon la gamme choisie)." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-surface-peinture" />

@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-date-ramadan" },
@@ -199,6 +200,15 @@ export default function Page() {
           annoncée la veille par les autorités musulmanes.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Consulter les dates du Ramadan et des Aid en France"
+        steps={[
+          { name: "Lire la date confirmee du Ramadan 2026", text: "Le Ramadan 2026 commence le mercredi 18 février 2026 en France, confirme par la CFCM et la Mosquee de Paris. Un compte à rebours indique le nombre de jours restant jusqu'au debut du jeune." },
+          { name: "Connaitre les dates des deux grandes fetes", text: "L Aid al-Fitr (rupture du jeune) est le 20 mars 2026, soit 30 jours après le debut du Ramadan. L Aid al-Adha est le 27 mai 2026, soit 70 jours après l'Aid al-Fitr." },
+          { name: "Consulter le calendrier 2026-2030", text: "Le Ramadan avance d'environ 11 jours chaque année car l'année hijri compte 354 à 355 jours (11 jours de moins que l'année solaire). Le tableau affiche les dates estimées Umm al-Qura pour 2026-2030, avec une marge de +/- 1 jour." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-date-ramadan" />

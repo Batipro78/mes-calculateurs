@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
@@ -146,6 +147,15 @@ export default function Page() {
           global).
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer l'amortissement LMNP en régime réel"
+        steps={[
+          { name: "Saisir le prix d'acquisition et la part terrain", text: "Entrer le prix total du bien, la part terrain non amortissable (typiquement 10 à 20%) et la valeur du mobilier. Seule la valeur hors terrain est amortissable." },
+          { name: "Choisir les durées d'amortissement", text: "Appliquer 30 ans pour le bien immobilier (usage courant) et 7 ans pour le mobilier. L amortissement annuel = valeur amortissable / durée. Ex : 170 000 EUR / 30 = 5 667 EUR/an." },
+          { name: "Comparer régime réel et micro-BIC", text: "En régime réel : résultat imposable = loyers - charges - amortissement. En micro-BIC : abattement forfaitaire de 50% sur les loyers. Retenir le régime qui reduit le plus l'impôt." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

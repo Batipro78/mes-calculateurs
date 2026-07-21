@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-interet-compose" },
@@ -118,6 +119,16 @@ export default function Page() {
           aussi important que viser un bon rendement.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer les intérêts composes sur une epargne"
+        steps={[
+          { name: "Saisir le capital et le taux annuel", text: "Entrer le capital initial (ex. 10 000 EUR) et le taux annuel brut (ex. 5 %). Ces deux valeurs determinent la base de la croissance exponentielle." },
+          { name: "Renseigner les versements et la durée", text: "Saisir le montant des versements mensuels eventuels (ex. 200 EUR/mois) et la durée en années (ex. 20 ans). Le simulateur cumule le capital initial et les versements capitalises." },
+          { name: "Appliquer la formule des intérêts composes", text: "Capital final = capital initial x (1 + taux)^années. A 5 % sur 20 ans, 10 000 EUR deviennent 26 533 EUR sans versements, ou 108 065 EUR avec 200 EUR/mois en plus." },
+          { name: "Lire le tableau annuel et la regle des 72", text: "Le tableau annuel montre la progression an par an. La regle des 72 indique le doublement : 72 divise par le taux = années de doublement (ex. 72 / 6 = 12 ans à 6 % par an)." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

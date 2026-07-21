@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-poids-ideal" },
@@ -209,6 +210,16 @@ export default function Page() {
           Mis a jour le 8 avril 2026
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer son poids ideal"
+        steps={[
+          { name: "Saisir la taille, le sexe et l'âge", text: "Entrer la taille en cm, sélectionner homme ou femme, et indiquer l'âge (utilise uniquement par la formule de Creff)." },
+          { name: "Appliquer la formule de Lorentz", text: "Homme : taille - 100 - (taille - 150) / 4. Femme : taille - 100 - (taille - 150) / 2,5. Ex. femme 165 cm : 165 - 100 - 15 / 2,5 = 59 kg." },
+          { name: "Comparer Devine et Creff", text: "Devine (usage medical) : homme 50 + 2,3 x (taille en pouces - 60). Creff : (taille - 100 + âge / 10) x 0,9 x coefficient morphologie (0,9 mince / 1 normal / 1,1 large)." },
+          { name: "Lire la fourchette de poids sain", text: "La plage saine correspond à un IMC entre 18,5 et 24,9. Pour 165 cm, cela donne 50,3 à 67,8 kg. Prendre la moyenne des 3 formules comme référence indicative." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

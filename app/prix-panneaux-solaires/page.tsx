@@ -5,6 +5,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import VillesLinks from "../components/VillesLinks";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/prix-panneaux-solaires" },
@@ -123,6 +124,16 @@ export default function Page() {
       </section>
 
       <VillesLinks metierSlug="/prix-panneaux-solaires" />
+
+      <HowToJsonLd
+        name="Estimer le prix d'une installation de panneaux solaires"
+        steps={[
+          { name: "Choisir la puissance ou la prestation", text: "Sélectionner parmi les 10 options : installation 3 kWc (~9 panneaux, 8 000-12 000 EUR), 6 kWc (~18 panneaux, 14 000-20 000 EUR), 9 kWc (~27 panneaux, 20 000-28 000 EUR), batterie domestique 5 kWh ou 10 kWh, solaire thermique, nettoyage, audit energetique, etc." },
+          { name: "Saisir la quantité si nécessaire", text: "Pour une batterie, préciser la capacité (5 kWh : 5 000-8 000 EUR ; 10 kWh : 8 000-13 000 EUR). Pour un nettoyage, saisir la surface des panneaux en m2. Pour une installation photovoltaique, la puissance en kWc suffit." },
+          { name: "Sélectionner la region", text: "Appliquer le coefficient : Ile-de-France (+20 %), grandes villes (+10 %), province (référence), rural (-10 %). Ex : installation 3 kWc en province = 8 000 à 12 000 EUR, en Ile-de-France = 9 600 à 14 400 EUR." },
+          { name: "Vérifier les aides disponibles", text: "Les installations jusqu'à 9 kWc en autoconsommation sont eligibles à la prime à l'autoconsommation (~80 EUR/kWc pour 3 kWc) et au tarif d'achat du surplus garanti 20 ans par EDF OA. La TVA est reduite à 10 % pour les installations jusqu'à 3 kWc. L'installateur doit etre certifie RGE QualiPV." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-amende-exces-vitesse" },
@@ -90,6 +91,16 @@ export default function Page() {
           ou via un <strong>stage de sensibilisation</strong> (4 points recuperes, max 1 fois/an, 150-250 EUR).
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Simuler une amende pour exces de vitesse"
+        steps={[
+          { name: "Saisir le depassement et la zone", text: "Entrer le nombre de km/h depasses par rapport à la limite autorisee et choisir la zone : agglomeration (50 km/h ou zone 30) ou hors agglomeration (route, autoroute)." },
+          { name: "Lire l'amende et les points retires", text: "Le barème 2026 affiche l'amende forfaitaire (ex. 135 EUR en agglomeration pour un exces inférieur à 20 km/h, -1 point) ou l'amende delit de 1 500 EUR avec -6 points si le depassement depasse 50 km/h." },
+          { name: "Identifier le delai de paiement", text: "Payer sous 15 jours reduit l'amende (ex. 90 EUR au lieu de 135 EUR) ; payer après 45 jours declenche l'amende majoree (ex. 375 EUR), soit 2,8 fois le montant forfaitaire." },
+          { name: "Vérifier l'impact sur le capital de points", text: "Le permis francais part de 12 points (6 en probatoire) ; la perte cumulee peut conduire à l'invalidation et un stage de sensibilisation permet de recuperer jusqu'à 4 points." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/simulateur-amende-exces-vitesse" />

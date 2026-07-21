@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-epargne" },
@@ -220,6 +221,16 @@ export default function Page() {
           30 ans pour doubler votre capital.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Simuler la croissance d'une epargne avec intérêts composes"
+        steps={[
+          { name: "Saisir le capital initial et les versements", text: "Indiquer le capital de depart en EUR (ex : 5 000 EUR) et le montant du versement mensuel regulier (ex : 200 EUR/mois). Même 50 EUR/mois places regulierement font une difference importante sur 20 ans grace aux intérêts composes." },
+          { name: "Choisir le taux et le support d'epargne", text: "Sélectionner un taux pre-rempli (Livret A 2,4%, LDDS 2,4%, LEP 3,5%, assurance-vie 2,5%, PEL 2,25%) ou saisir un taux personnalise. Indiquer la durée du placement en années (1 à 40 ans)." },
+          { name: "Appliquer la formule des intérêts composes", text: "Capital final = Capital initial x (1 + taux)^durée + Versements x ((1 + taux)^durée - 1) / taux. Exemple : 5 000 EUR à 2,4% pendant 10 ans + 200 EUR/mois = environ 32 500 EUR dont 5 500 EUR d'intérêts produits." },
+          { name: "Lire le tableau d'évolution annuelle", text: "Le simulateur affiche année par année le capital total, les intérêts cumules et la part des versements. La regle des 72 estime le doublement du capital : 72 divise par le taux = nombre d'années (72 / 2,4 = 30 ans pour le Livret A)." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/conversion-poids" },
@@ -115,6 +116,16 @@ export default function Page() {
           Exemple : 70 kg &rarr; 70 &times; 2 = 140, puis +10 % (soit 14) = 154 lbs (valeur exacte : 154,3 lbs). Rapide et très proche de la réalité.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Convertir un poids entre kilogrammes et livres"
+        steps={[
+          { name: "Saisir le poids et choisir l'unité source", text: "Entrer la valeur (ex. 70) et sélectionner l'unité parmi kilogrammes, livres (lbs), onces (oz), grammes ou stones (1 stone = 14 lbs = 6,35 kg)." },
+          { name: "Appliquer le facteur de conversion", text: "Le convertisseur applique les facteurs officiels : 1 kg = 2,20462 lbs ; 1 kg = 35,274 oz ; 1 kg = 0,1575 stones. Ex. : 70 kg x 2,20462 = 154,3 lbs." },
+          { name: "Vérifier par le calcul mental", text: "Estimation rapide kg vers livres : doubler le nombre puis ajouter 10 %. Ex. : 70 kg -> 70 x 2 = 140, + 14 = 154 lbs. Valeur exacte : 154,3 lbs." },
+          { name: "Lire les équivalents dans toutes les unités", text: "Le résultat s'affiche simultanement en kilogrammes, livres, onces et stones pour couvrir les usages courants (cuisine, sport, voyages aux Etats-Unis ou au Royaume-Uni)." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

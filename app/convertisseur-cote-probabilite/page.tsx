@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/convertisseur-cote-probabilite" },
@@ -211,6 +212,15 @@ export default function Page() {
         </p>
       </section>
 
+      <HowToJsonLd
+        name="Convertir une cote en probabilité et calculer la marge bookmaker"
+        steps={[
+          { name: "Saisir la cote dans un format", text: "Entrer la cote au format decimal (ex. 2.50), fractionnel (ex. 3/2) ou americain (ex. +150 ou -200). Le convertisseur detecte et convertit automatiquement entre ces trois formats." },
+          { name: "Obtenir la probabilité implicite", text: "Formule : probabilité (%) = (1 / cote decimale) x 100. Ex. : cote 2.50 -> (1 / 2.50) x 100 = 40 %. Cote 1.50 = 66,7 %. Cote 5.00 = 20 %." },
+          { name: "Comparer les formats de cotes", text: "Cote decimale 2.00 = fractionnelle 1/1 = americaine +100 = 50 % de probabilité. Format europeen : montant total recu pour 1 EUR mise. Format americain positif : gain pour 100 EUR ; negatif : mise pour gagner 100 EUR." },
+          { name: "Calculer la marge bookmaker", text: "Additionner les probabilités implicites de tous les résultats. Marge = somme - 100 %. Ex. : deux cotes de 1.90 -> 52,6 % + 52,6 % = 105,2 % ; marge bookmaker = 5,2 % en faveur de la maison." },
+        ]}
+      />
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/convertisseur-cote-probabilite" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

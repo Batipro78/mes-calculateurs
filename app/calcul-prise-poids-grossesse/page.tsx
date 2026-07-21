@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-prise-poids-grossesse" },
@@ -134,6 +135,16 @@ export default function Page() {
           sage-femme.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer la prise de poids recommandee pendant la grossesse"
+        steps={[
+          { name: "Calculer l'IMC avant grossesse", text: "Diviser le poids avant grossesse en kg par le carre de la taille en mètres. Ex. 60 kg pour 1,65 m : IMC = 60 / 2,7225 = 22,1 (corpulence normale)." },
+          { name: "Identifier la fourchette IOM selon la catégorie IMC", text: "Maigreur (IMC < 18,5) : 12,5-18 kg ; Normal (18,5-25) : 11,5-16 kg ; Surpoids (25-30) : 7-11,5 kg ; Obesite (>= 30) : 5-9 kg. Pour une grossesse gemellaire, ajouter environ 5 kg." },
+          { name: "Suivre la courbe semaine par semaine", text: "La prise est faible au 1er trimestre (1-2 kg total) puis s'accelere : environ 350-400 g par semaine aux 2e et 3e trimestres. Le simulateur affiche la cible pour la semaine d'aménorrhée saisie." },
+          { name: "Surveiller les signaux d'alerte", text: "Plus de 1 kg par semaine après 20 SA, gonflements brutaux des pieds ou du visage, ou perte de poids au 3e trimestre justifient une consultation medicale rapide." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

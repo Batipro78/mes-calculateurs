@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-jours-ouvres" },
@@ -165,6 +166,16 @@ export default function Page() {
           </div>
         </section>
       ))}
+
+      <HowToJsonLd
+        name="Calculer le nombre de jours ouvres entre deux dates"
+        steps={[
+          { name: "Saisir la date de debut et de fin", text: "Entrer les deux dates de la période souhaitee. Le calendrier des 11 jours feries francais pour l'année choisie est integre automatiquement." },
+          { name: "Exclure les samedis et dimanches", text: "Tous les week-ends (samedi et dimanche) sont retires automatiquement de la période. Seuls les jours du lundi au vendredi sont comptabilises comme jours ouvres." },
+          { name: "Retirer les jours feries tombant en semaine", text: "En 2026, 9 jours feries tombent un lundi-vendredi et retirent chacun un jour. Deux feries tombent le week-end (Assomption samedi 15 aout, Toussaint dimanche 1er novembre) et n'ont aucun effet." },
+          { name: "Lire le total de jours ouvres", text: "Le résultat donne le nombre exact de jours travailles sur la période, utile pour les preavis (ex. 5 jours ouvres = une semaine de travail), les RTT et les delais contractuels." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-jours-ouvres" />

@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-bonus-ecologique" },
@@ -218,6 +219,16 @@ export default function Page() {
       </div>
 
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
+
+      <HowToJsonLd
+        name="Calculer son bonus ecologique 2026"
+        steps={[
+          { name: "Vérifier l'eligibilite du véhicule", text: "Le véhicule doit etre 100 % électrique neuf (ou hydrogene), prix inférieur à 47 000 EUR, poids inférieur à 2 400 kg et score ADEME supérieur ou egal à 60/80 ; les hybrides et les occasions sont exclus." },
+          { name: "Saisir le revenu fiscal de référence par part", text: "RFR inférieur ou egal à 16 300 EUR/part -> bonus 5 700 EUR ; entre 16 301 et 26 300 EUR/part -> 4 700 EUR ; supérieur à 26 300 EUR/part -> 3 500 EUR ; le RFR figure sur l'avis d'imposition N-2." },
+          { name: "Vérifier l'origine de la batterie", text: "Si la batterie est fabriquee en Europe (ex. Renault 5 E-Tech, Peugeot e-208, Tesla Model 3 Gigafactory Berlin), un surbonus de 1 200 à 2 000 EUR s'ajoute selon les revenus, portant le total jusqu'à 7 700 EUR." },
+          { name: "Lire le bonus total et la procedure", text: "Le montant obtenu est deduit du prix chez le concessionnaire ou verse sous 2-3 mois après immatriculation ; depuis juillet 2025 le dispositif est finance par les CEE (Certificats d'Économie d'Énergie)." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

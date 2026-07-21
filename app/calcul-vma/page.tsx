@@ -11,6 +11,7 @@ import {
   formatAllure,
   fmt,
 } from "./vmaCalc";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-vma" },
@@ -261,6 +262,16 @@ export default function Page() {
           })}
         </div>
       </section>
+
+      <HowToJsonLd
+        name="Calculer sa VMA et ses zones cardiaques"
+        steps={[
+          { name: "Effectuer le test Cooper (12 min)", text: "Courir 12 minutes à allure maximale sur une piste ou terrain mesure. Noter la distance en mètres. VMA (km/h) = distance (m) / 200. Exemple : 2 800 m en 12 min -> VMA = 14 km/h. Variante demi-Cooper (6 min) : VMA = (distance x 2) / 200." },
+          { name: "Estimer la FC max et mesurer la FC repos", text: "FC max : formule de Tanaka 208 - 0,7 x âge (plus précise que 220 - âge). Exemple : 35 ans -> FC max = 208 - 24,5 = 183 bpm. FC repos : mesurer le pouls au reveil, couche, au calme, sur 3 jours consecutifs." },
+          { name: "Calculer les zones cardiaques Karvonen", text: "FC zone = FC repos + (FC max - FC repos) x intensite. 5 zones : Z1 recuperation (50-60%), Z2 endurance (60-70%), Z3 aerobie (70-80%), Z4 seuil anaerobie (80-90%), Z5 VO2max (90-100%). Exemple Z2 avec FC repos 55 et FC max 183 : 55 + (128 x 0,65) = 138 bpm." },
+          { name: "Lire les allures d'entrainement", text: "Allures deduites des pourcentages de VMA. Exemple VMA 14 km/h : endurance fondamentale (70%) = 9,8 km/h soit 6'07''/km ; seuil (87,5%) = 12,25 km/h soit 4'54''/km ; seances VMA (100-110%) = 14 à 15,4 km/h soit 3'54'' à 4'17''/km." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-vma" />

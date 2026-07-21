@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-age-metabolique" },
@@ -193,6 +194,16 @@ export default function Page() {
           Mis a jour le 8 avril 2026
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer son âge metabolique"
+        steps={[
+          { name: "Saisir les données corporelles", text: "Renseigner le sexe, l'âge, le poids en kg, la taille en cm et le tour de taille en cm. Ces valeurs servent à calculer le metabolisme de base (BMR) par la formule Mifflin-St Jeor." },
+          { name: "Calculer le BMR par la formule Mifflin-St Jeor", text: "Homme : BMR = 10 x poids + 6.25 x taille - 5 x âge + 5. Femme : BMR = 10 x poids + 6.25 x taille - 5 x âge - 161. Le BMR représente la dépense energetique au repos en kcal par jour." },
+          { name: "Ajuster selon le mode de vie", text: "Un coefficient correctif est applique selon le niveau d'activité physique (sedentaire à intense), le tour de taille, la consommation de tabac (+2 ans metaboliques) et d'alcool regulier (+1 an)." },
+          { name: "Comparer au BMR de référence et lire l'âge metabolique", text: "Le BMR calcule est compare au BMR d'une personne de même sexe et même âge ayant un IMC de 22. L'âge metabolique correspond à l'âge pour lequel ce BMR de référence est le plus proche de votre BMR réel." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/audit-frais-bancaires" },
@@ -291,6 +292,16 @@ export default function Page() {
       </div>
 
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
+
+      <HowToJsonLd
+        name="Auditer ses frais bancaires"
+        steps={[
+          { name: "Saisir les frais fixes annuels", text: "Renseigner le montant annuel de tenue de compte et le type de carte bancaire (Classic, Premier ou Infinite). Ces frais constituent la base de l'audit." },
+          { name: "Ajouter les frais d'incidents", text: "Indiquer le nombre de commissions d'intervention, de rejets de cheque et de rejets de prelevement sur l'année. Les commissions d'intervention sont plafonnees à 8 EUR par operation et 80 EUR par mois." },
+          { name: "Inclure les frais caches 2026", text: "Saisir les eventuels frais de gestion digitale (2 à 5 EUR/mois), virements instantanes premium (illegaux depuis janvier 2025 selon la loi UE), assurance liee aux moyens de paiement et frais de desolidarisation." },
+          { name: "Comparer au barème de référence", text: "Le total annuel est compare à la moyenne nationale (215 EUR en banque traditionnelle, 35 EUR en banque en ligne). Les depassements des plafonds légaux sont signales comme potentiellement abusifs." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: {
@@ -215,6 +216,15 @@ export default function Page() {
           </table>
         </div>
       </section>
+
+      <HowToJsonLd
+        name="Évaluer son autonomie en cas de blackout"
+        steps={[
+          { name: "Indiquer le type de logement", text: "Préciser si le logement est tout électrique (le plus vulnerable : chauffage, cuisine et eau chaude coupes simultanement), mixte gaz + électricité ou equipe d'un chauffage au bois ou au gaz." },
+          { name: "Cocher les equipements déjà disponibles", text: "Valider les éléments en place : lampe torche, radio à piles, powerbank, rechaud camping gaz, reserves d'eau et de nourriture, station solaire portable (400-1 500 EUR) ou groupe electrogene (300-1 200 EUR)." },
+          { name: "Lire le score et la durée d'autonomie estimée", text: "Le simulateur calcule un score de preparation et la durée d'autonomie : niveau essentiel (~100 EUR, 24-72h), niveau confort (~500 EUR, 3-7 jours), niveau autonome (~1 500 EUR, 1-2 semaines ou plus)." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/simulateur-blackout" />

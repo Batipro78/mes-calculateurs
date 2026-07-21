@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-proteines" },
@@ -187,6 +188,16 @@ export default function Page() {
 
         <p className="text-xs text-slate-400 mt-6">Mis a jour le 8 avril 2026</p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer son besoin journalier en proteines"
+        steps={[
+          { name: "Saisir le poids corporel en kg", text: "Entrer le poids actuel. Le besoin en proteines est exprime en grammes par kilogramme de poids corporel (g/kg)." },
+          { name: "Sélectionner le niveau d'activité et l'objectif", text: "Sedentaire : 0,8-1,0 g/kg. Actif (sport 2-4x/semaine) : 1,0-1,4 g/kg. Sportif intensif : 1,4-1,8 g/kg. Musculation / prise de masse : 1,8-2,2 g/kg. Endurance (marathon) : 1,2-1,6 g/kg." },
+          { name: "Lire le besoin journalier total", text: "Multiplier le poids par le coefficient choisi. Ex. 75 kg en musculation avec coefficient 2,0 : besoin = 150 g de proteines par jour." },
+          { name: "Repartir sur les repas", text: "Diviser l'apport en 3 prises de 30-40 g pour optimiser la synthese musculaire. Ex. 100 g de blanc de poulet (31 g), 100 g de thon (26 g), 2 oeufs (13 g)." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

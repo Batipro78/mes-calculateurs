@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
@@ -164,6 +165,15 @@ export default function Page() {
           compensatrice.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer ses jours et indemnité de conges payes"
+        steps={[
+          { name: "Saisir les mois de travail effectif", text: "Entrer le nombre de mois travailles sur la période de référence (1er juin au 31 mai). Chaque mois ouvre droit à 2.5 jours ouvrables, arrondis au supérieur. 12 mois = 30 jours ouvrables (5 semaines)." },
+          { name: "Saisir le salaire brut annuel et les jours de CP pris", text: "Méthode du 1/10e : indemnité = salaire brut total / 10. Méthode maintien de salaire : salaire journalier x nombre de jours CP pris. Les deux méthodes sont calculees en parallele." },
+          { name: "Lire l'indemnité la plus favorable et le solde de CP", text: "L employeur doit retenir la méthode la plus favorable au salarié. Le simulateur affiche les deux montants et indique lequel s'applique ainsi que le solde de jours restants." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

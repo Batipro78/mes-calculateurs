@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 import { MOIS_HEBRAIQUES } from "./hebraiqueCalc";
 
 export const metadata: Metadata = {
@@ -221,6 +222,15 @@ export default function Page() {
         </ul>
       </section>
 
+      <HowToJsonLd
+        name="Convertir une date gregorienne en calendrier hebraique"
+        steps={[
+          { name: "Saisir la date gregorienne", text: "Entrer le jour, le mois et l'année au format gregorien (ex. 27/06/2026). Le convertisseur prend en compte les années communes (12 mois) et les années embolismiques (13 mois, avec Adar II)." },
+          { name: "Appliquer l'algorithme Hillel II et le cycle Meton", text: "La conversion utilise l'algorithme Hillel II base sur le cycle Meton de 19 ans (235 mois lunaires). L'année 2026 CE correspond à l'année hebraique 5786, année embolismique avec Adar II." },
+          { name: "Lire le mois hebraique et le jour", text: "Le résultat indique le mois hebraique (de Tichri en automne jusqu'à Eloul en ete) et le jour du mois. Les 12 mois ordinaires vont de Tichri (7e mois religieux, 1er de l'année civile) à Eloul." },
+          { name: "Calculer l'âge en années hebraiques", text: "Saisir sa date de naissance gregorienne pour obtenir l'âge en années, mois et jours hebraiques. Une année lunaire commune = 354 jours, soit 11 jours de moins qu'une année solaire." },
+        ]}
+      />
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/convertisseur-calendrier-hebraique" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-pension-reversion" },
@@ -101,6 +102,16 @@ export default function Page() {
           minimum (55 ans) compte.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer sa pension de reversion"
+        steps={[
+          { name: "Saisir la pension mensuelle du defunt", text: "Entrer le montant mensuel brut de la retraite du conjoint decede, separement pour le régime général (Sécurité Sociale) et la complémentaire AGIRC-ARRCO si disponible." },
+          { name: "Appliquer le taux de reversion", text: "Le régime général verse 54 % de la pension du defunt. L'AGIRC-ARRCO verse 60 %. Exemple : pension de 1 500 EUR - reversion régime général = 810 EUR/mois, AGIRC-ARRCO = 900 EUR/mois." },
+          { name: "Vérifier les conditions d'eligibilite", text: "Régime général : avoir au moins 55 ans, ressources annuelles inferieures à environ 23 441 EUR en 2026 (personne seule), avoir ete marie(e) au defunt. AGIRC-ARRCO : 55 ans minimum, pas de condition de ressources." },
+          { name: "Deposer la demande dans les 12 mois", text: "La pension de reversion n'est pas automatique. Deposer la demande unique sur info-retraite.fr dans les 12 mois du deces pour que la pension prenne effet au 1er du mois suivant le deces, sans perte de mensualités." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-cote-argus-voiture" },
@@ -193,6 +194,16 @@ export default function Page() {
           ou un professionnel automobile.
         </p>
       </div>
+
+      <HowToJsonLd
+        name="Estimer la valeur indicative d'une voiture occasion"
+        steps={[
+          { name: "Saisir le prix neuf et l'âge du véhicule", text: "Indiquer le prix neuf du véhicule et son année de mise en circulation pour déterminer son âge et la tranche de décote applicable." },
+          { name: "Appliquer le barème de décote annuel", text: "1re année : -25% de la valeur neuve. Années 2 à 5 : -15% par an sur la valeur residuelle. 6e année et plus : -10% par an. La valeur ne descend pas sous 10% du prix neuf." },
+          { name: "Ajuster selon le type de carburant", text: "Diesel : penalite supplémentaire de 8% (restrictions ZFE). Hybride : bonus de 5% (demande soutenue). Électrique : décote initiale de 5% (évolution rapide de la technologie batterie)." },
+          { name: "Comparer le kilometrage réel au kilometrage moyen", text: "Référence : 15 000 km/an (SDES). Un véhicule de 5 ans à 60 000 km est sous la moyenne et mieux valorise. Au-dessus de 20 000 km/an de moyenne, la valeur est reduite en proportion." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-cote-argus-voiture" />

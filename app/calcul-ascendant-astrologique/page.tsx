@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-ascendant-astrologique" },
@@ -131,6 +132,15 @@ export default function Page() {
           demontree. Ces interpretations sont proposees a titre de divertissement.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer son signe et ascendant astrologique"
+        steps={[
+          { name: "Saisir la date de naissance", text: "Entrer le jour, le mois et l'année de naissance. Le signe solaire est determine par la date (ex : ne le 15 mars = Poissons, ne le 5 mai = Taureau)." },
+          { name: "Saisir l'heure de naissance", text: "L ascendant correspond au signe qui se levait à l'horizon est au moment exact de la naissance. Il change environ toutes les 2 heures : une heure approximative suffit pour une estimation." },
+          { name: "Lire le profil astral complet", text: "Le calculateur retourne le signe solaire (identite profonde), l'ascendant (apparence et première impression), l'élément (Feu, Terre, Air ou Eau) et les qualites et defauts associes." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

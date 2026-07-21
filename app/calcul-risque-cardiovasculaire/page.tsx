@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-risque-cardiovasculaire" },
@@ -168,6 +169,16 @@ export default function Page() {
           Mis a jour le 8 avril 2026
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Estimer son risque cardiovasculaire sur 10 ans"
+        steps={[
+          { name: "Saisir l'âge, le sexe et le cholesterol", text: "Indiquer l'âge en années, le sexe, le cholesterol total (g/L) et le taux de HDL (bon cholesterol). Un HDL supérieur ou egal à 0,6 g/L est protecteur ; en dessous de 0,4 g/L il devient un facteur de risque." },
+          { name: "Renseigner la tension et le tabagisme", text: "Indiquer la tension arterielle systolique (premier chiffre, en mmHg). Optimale : inférieure à 120 mmHg. Hypertension : supérieure ou egale à 140 mmHg. Le tabac actif double egalement le risque cardiovasculaire." },
+          { name: "Indiquer diabete et antecedents familiaux", text: "Le diabete de type 2 multiplie le risque cardiovasculaire par 2 à 4. Un antecedent familial au premier degré (infarctus ou AVC avant 55 ans chez un homme, 65 ans chez une femme) est un facteur de risque independant." },
+          { name: "Lire le score de Framingham et agir", text: "Le risque estime sur 10 ans : inférieur ou egal à 5% = faible ; 6-10% = modere ; 11-20% = eleve ; supérieur à 20% = très eleve. Au-dela de 10%, consulter un medecin pour corriger les facteurs modifiables (tabac, tension, cholesterol)." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

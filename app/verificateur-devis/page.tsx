@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import CTAMonDevisMinute from "../components/CTAMonDevisMinute";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/verificateur-devis" },
@@ -110,9 +111,19 @@ export default function Page() {
         </p>
       </section>
 
+      <HowToJsonLd
+        name="Vérifier la conformite d'un devis"
+        steps={[
+          { name: "Deposer le devis en PDF ou en photo", text: "Importer le devis de l'artisan ou de l'entreprise (format PDF, JPG ou PNG) directement dans l'outil de verification." },
+          { name: "L'IA extrait et analyse les 16 mentions obligatoires", text: "L'intelligence artificielle lit le document et controle la presence des 16 mentions requises en 2026 : date, numéro, SIRET, forme juridique, identite client, description detaillee des travaux, prix unitaires HT, taux TVA (20%, 10% ou 5,5%), totaux HT et TTC, durée de validite, conditions de paiement, assurance decennale (numéro de police + nom assureur), gestion des dechets (loi 2021), date de debut et durée estimée, et signature client." },
+          { name: "Lire le score de conformite et le détail par mention", text: "Le résultat classe chaque mention comme presente, partielle ou absente, et affiche un score global de conformite en pourcentage pour évaluer rapidement l'état du devis." },
+          { name: "Corriger les manques pour etre en conformite", text: "Toute mention absente peut exposer l'artisan à une amende de 3 000 EUR (personne physique) ou 15 000 EUR (personne morale) et fragiliser le recouvrement en cas de litige avec le client." },
+        ]}
+      />
+
       <Faq items={FAQ_ITEMS} />
 
-      <CTAMonDevisMinute campaign="verificateur-devis" variant="devis" />
+      <CTAMonDevisMinute campaign="verificateur-devis" variant="devis" guide={{ href: "/guides/mentions-obligatoires-devis-batiment", label: "Les mentions obligatoires du devis bâtiment" }} />
 
       <RelatedCalculators currentSlug="/verificateur-devis" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/numerologie-nom-prenom" },
@@ -323,6 +324,16 @@ export default function Page() {
           concernant votre santé ou votre vie.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer sa numerologie par le nom et le prenom"
+        steps={[
+          { name: "Saisir le nom complet de naissance", text: "Entrer tous les prenoms et le nom de famille tels qu'ils figurent sur l'acte de naissance. Les accents, traits d'union et espaces sont ignores : 'e', 'e' et 'e' comptent tous comme 'e'." },
+          { name: "Convertir les lettres en chiffres", text: "Attribuer à chaque lettre sa valeur pythagoricienne : A/J/S=1, B/K/T=2, C/L/U=3, D/M/V=4, E/N/W=5, F/O/X=6, G/P/Y=7, H/Q/Z=8, I/R=9. Ex : MARIE = 4+1+9+9+5 = 28." },
+          { name: "Reduire le total à un seul chiffre", text: "Additionner les chiffres du résultat jusqu'à obtenir 1 à 9. Ex : 28 -> 2+8=10 -> 1+0=1. Les totaux 11, 22 et 33 ne sont pas reduits : ce sont des nombres maitres à valeur supérieure." },
+          { name: "Lire les 3 nombres obtenus", text: "Le nombre d'expression (toutes lettres) revele le potentiel global. Le nombre du coeur (voyelles A, E, I, O, U, Y uniquement) revele les motivations profondes. Le nombre de personnalite (consonnes) revele l'image projetee aux autres." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/numerologie-nom-prenom" />

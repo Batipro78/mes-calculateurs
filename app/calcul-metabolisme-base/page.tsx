@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-metabolisme-base" },
@@ -225,6 +226,16 @@ export default function Page() {
           Mis a jour le 8 avril 2026
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer son metabolisme de base (BMR)"
+        steps={[
+          { name: "Saisir sexe, poids, taille et âge", text: "Entrer le sexe, le poids en kg, la taille en cm et l'âge en années. Ces quatre paramètres alimentent les formules Mifflin-St Jeor et Harris-Benedict pour estimer le BMR (Basal Metabolic Rate)." },
+          { name: "Calculer le BMR avec Mifflin-St Jeor", text: "Homme : BMR = 10 x poids + 6,25 x taille - 5 x âge + 5. Femme : BMR = 10 x poids + 6,25 x taille - 5 x âge - 161. Exemple : homme 30 ans, 70 kg, 175 cm = 1 780 kcal brulees au repos par jour." },
+          { name: "Multiplier par le coefficient d'activité pour obtenir le TDEE", text: "Choisir le niveau d'activité : sedentaire x 1,2 ; activité legere x 1,375 ; moderee x 1,55 ; active x 1,725 ; très active x 1,9. Le TDEE est la dépense energetique totale journalière." },
+          { name: "Adapter son alimentation selon l'objectif", text: "Le TDEE correspond aux calories à consommer pour maintenir le poids. Un deficit de 400-500 kcal/jour entraine une perte d'environ 0,5 kg par semaine. Un surplus de 300 kcal favorise la prise de masse musculaire." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-metabolisme-base" />

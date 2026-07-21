@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/conversion-longueur" },
@@ -122,6 +123,16 @@ export default function Page() {
           Un ecran de <strong>27 pouces</strong> fait 68,6 cm. Un smartphone de <strong>6,5 pouces</strong> fait 16,5 cm.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Convertir une longueur entre système metrique et imperial"
+        steps={[
+          { name: "Saisir la valeur et choisir l'unité source", text: "Entrer la mesure (ex. 175) et sélectionner l'unité d'entree parmi centimetres, pouces, pieds, mètres ou millimetres." },
+          { name: "Appliquer la formule de conversion", text: "Le convertisseur applique les facteurs exacts : 1 pouce = 2,54 cm ; 1 pied = 30,48 cm. Pour 175 cm en pouces : 175 / 2,54 = 68,9 pouces." },
+          { name: "Identifier la taille en pieds et pouces", text: "Diviser le total en pouces par 12 : le quotient = pieds, le reste = pouces. Ex. : 175 cm = 68,9 pouces = 5 pieds 8,9 pouces soit 5'9''." },
+          { name: "Lire les équivalents dans toutes les unités", text: "Le résultat s'affiche simultanement en centimetres, pouces, pieds, mètres et millimetres. Un ecran de 55 pouces mesure par exemple 139,7 cm de diagonale." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

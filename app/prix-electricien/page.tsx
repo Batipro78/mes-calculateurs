@@ -5,6 +5,8 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import VillesLinks from "../components/VillesLinks";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
+import CTAMonDevisMinute from "../components/CTAMonDevisMinute";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/prix-electricien" },
@@ -122,6 +124,16 @@ export default function Page() {
         </p>
       </section>
 
+      <HowToJsonLd
+        name="Estimer le prix d'une intervention d'electricien"
+        steps={[
+          { name: "Choisir la prestation", text: "Sélectionner parmi les 10 types de travaux : pose de prise (50-150 EUR/unité), remplacement de tableau électrique (800-2 000 EUR), rénovation complète (90-200 EUR/m2), VMC, borne de recharge IRVE (1 500-2 500 EUR), volet roulant, etc." },
+          { name: "Saisir la surface ou la quantité", text: "Indiquer la surface en m2 pour une rénovation complète (ex : 80 m2) ou le nombre de points électriques (ex : 5 prises à installer). Pour un tableau ou une borne IRVE, c'est un forfait par unité." },
+          { name: "Sélectionner la region", text: "Appliquer le coefficient : Ile-de-France (+25 %), grandes villes (+10 %), province (référence), rural (-10 %). Ex : tableau 10 circuits en province = 800 à 1 500 EUR, en Ile-de-France = 1 000 à 1 875 EUR." },
+          { name: "Vérifier les aides applicables", text: "La rénovation dans un logement de plus de 2 ans beneficie d'une TVA à 10 %. La borne IRVE beneficie d'une TVA à 5,5 % et d'un credit d'impôt de 300 EUR. La VMC est eligible à MaPrimeRenov'. L'electricien doit etre certifie IRVE pour la borne." },
+        ]}
+      />
+
       <Faq items={FAQ_ITEMS} />
 
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
@@ -164,6 +176,12 @@ export default function Page() {
       </section>
 
       <VillesLinks metierSlug="/prix-electricien" />
+      <CTAMonDevisMinute
+        campaign="prix-electricien"
+        variant="devis"
+        guide={{ href: "/guides/chiffrer-un-devis-btp", label: "Chiffrer un devis BTP sans se planter" }}
+      />
+
       <RelatedCalculators currentSlug="/prix-electricien" />
     </div>
   );

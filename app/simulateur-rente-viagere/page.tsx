@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-rente-viagere" },
@@ -95,6 +96,16 @@ export default function Page() {
           (70%) et booste le taux de conversion (~5,7%).
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Convertir un capital en rente viagere et calculer la rente nette"
+        steps={[
+          { name: "Saisir le capital et l'âge au 1er versement", text: "Indiquer le capital à convertir en EUR (assurance-vie, PER ou Madelin) et l'âge de mise en rente. Le taux de conversion indicatif augmente avec l'âge : 4,3% à 60 ans, 4,9% à 65 ans, 5,7% à 70 ans, 6,8% à 75 ans, 8,3% à 80 ans." },
+          { name: "Choisir les options de rente", text: "Sélectionner rente simple ou rente avec reversion (le conjoint percoit 60%, 80% ou 100% de la rente après le deces, ce qui reduit la rente initiale de 15-20%). L'option annuites garanties assure un versement pendant un nombre d'années fixe même en cas de deces premature." },
+          { name: "Appliquer la fiscalite article 158-6 CGI", text: "Pour une rente à titre onereux (assurance-vie), seule une fraction est imposable selon l'âge au 1er versement : 70% avant 50 ans, 50% entre 50-59 ans, 40% entre 60-69 ans, 30% après 70 ans. Cette fraction est soumise à la TMI + 17,2% de prelevements sociaux. Pour un PER, la rente est integralement imposable." },
+          { name: "Lire la rente nette mensuelle et le point mort", text: "Le simulateur affiche la rente brute annuelle (capital x taux de conversion), la part imposable, l'impôt estime et la rente mensuelle nette. Le point mort (durée pour egaliser capital initial et rentes percues) se situe generalement entre 18 et 22 ans de versements." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

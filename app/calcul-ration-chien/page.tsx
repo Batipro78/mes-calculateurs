@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-ration-chien" },
@@ -208,6 +209,16 @@ export default function Page() {
           vétérinaire</strong> avant tout changement alimentaire.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer la ration alimentaire journalière du chien"
+        steps={[
+          { name: "Renseigner le poids, l'âge et le niveau d'activité", text: "Saisir le poids du chien en kg, son stade de vie (chiot, adulte, senior) et son niveau d'activité (sedentaire, normal, actif)." },
+          { name: "Sélectionner la méthode alimentaire", text: "Choisir entre croquettes (dose en g/jour selon le tableau Royal Canin), BARF (pourcentage du poids corporel) ou patee. Chaque méthode produit une ration journalière differente." },
+          { name: "Lire la ration journalière calculee", text: "Ex. chien adulte de 20 kg, activité normale, croquettes : environ 275 g/jour. En BARF (2,5 % du poids) : 500 g/jour = 350 g viande + 50 g os + 50 g legumes + 25 g fruits + 25 g supplements." },
+          { name: "Repartir les repas et adapter progressivement", text: "Un adulte mange 2 repas par jour (matin et soir). Tout changement d'alimentation doit etre progressif sur 7-10 jours : 25 % de nouvel aliment les 2 premiers jours, 50 % les 2 suivants, 75 % les 2 suivants, puis 100 %." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

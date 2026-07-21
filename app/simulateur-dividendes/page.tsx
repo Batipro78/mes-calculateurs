@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-dividendes" },
@@ -108,6 +109,16 @@ export default function Page() {
           Cette regle ne s&apos;applique pas aux presidents de SAS (regime general).
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Simuler l'imposition de ses dividendes"
+        steps={[
+          { name: "Saisir le montant des dividendes", text: "Indiquer le montant brut annuel distribue en EUR et la structure juridique : SAS (pas de cotisations TNS sur dividendes) ou SARL/EURL avec gerant majoritaire (cotisations TNS si depassement du seuil de 10% du capital social)." },
+          { name: "Calculer avec le PFU flat tax 30%", text: "Le PFU applique 12,8% d'impôt sur le revenu plus 17,2% de prelevements sociaux = 30% forfaitaire sur le montant brut. Exemple : 20 000 EUR x 30% = 6 000 EUR d'impôt total." },
+          { name: "Calculer avec le barème progressif", text: "Le barème applique un abattement de 40% puis la TMI sur la base reduite, plus 17,2% de prelevements sociaux sur le brut. TMI 11% : (20 000 x 60% x 11%) + (20 000 x 17,2%) = 1 320 + 3 440 = 4 760 EUR, soit 23,8% effectif." },
+          { name: "Choisir l'option la plus avantageuse", text: "Le barème est preferable si la TMI est 0% ou 11%. À partir de TMI 30%, le PFU 30% est quasi-toujours plus avantageux. Le simulateur compare les deux et indique le gain net de l'option optimale." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-1rm" },
@@ -183,6 +184,15 @@ export default function Page() {
       </section>
 
       <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
+
+      <HowToJsonLd
+        name="Calculer son 1RM (charge maximale)"
+        steps={[
+          { name: "Saisir la charge et les répétitions", text: "Indiquer le poids souleve en kilogrammes et le nombre de répétitions realises sur cet exercice, de préférence entre 2 et 10 reps pour une estimation fiable." },
+          { name: "Appliquer les 5 formules", text: "Les formules Brzycki (poids / (1.0278 - 0.0278 x reps)), Epley (poids x (1 + reps/30)), Lander, Lombardi et O Connor sont appliquees simultanement. La moyenne constitue l'estimation principale." },
+          { name: "Lire le tableau de charges de travail", text: "Le 1RM estime permet de calculer les charges cibles pour 1 à 20 répétitions et leurs pourcentages correspondants : 85-100 pct pour la force maximale, 65-85 pct pour l'hypertrophie, 40-65 pct pour l'endurance musculaire." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

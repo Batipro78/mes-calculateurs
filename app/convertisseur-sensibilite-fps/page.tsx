@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/convertisseur-sensibilite-fps" },
@@ -205,6 +206,15 @@ export default function Page() {
         </p>
       </section>
 
+      <HowToJsonLd
+        name="Convertir sa sensibilité souris entre jeux FPS"
+        steps={[
+          { name: "Saisir le DPI et la sensibilité dans le jeu source", text: "Entrer le DPI de la souris (ex. 800) et la sensibilité dans le jeu de depart (ex. 1.0 en CS2). L'eDPI = DPI x sensibilité ; ici 800 x 1.0 = 800 eDPI." },
+          { name: "Calculer le cm/360 de référence", text: "cm/360 = (2,54 x 360) / (DPI x Sensibilité x Yaw). Pour CS2 à 800 DPI et sens 1.0 : environ 32 cm/360. Cette valeur représente la distance physique de la souris pour effectuer un tour complet de camera." },
+          { name: "Choisir le jeu cible", text: "Sélectionner le jeu de destination : CS2, Valorant, Apex Legends, Fortnite, Overwatch 2 ou Rainbow Six. Chaque jeu possede son propre Yaw (sensibilité angulaire) qui modifie le calcul de la sensibilité équivalente." },
+          { name: "Lire la sensibilité équivalente et vérifier l'eDPI", text: "L'outil calcule la sensibilité dans le jeu cible qui preserve le même cm/360. Ex. : 1.0 en CS2 à 800 DPI correspond à environ 0,43 en Valorant. Le même geste physique produit le même mouvement de camera." },
+        ]}
+      />
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/convertisseur-sensibilite-fps" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

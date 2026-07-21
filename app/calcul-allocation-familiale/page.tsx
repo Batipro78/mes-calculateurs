@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-allocation-familiale" },
@@ -288,6 +289,16 @@ export default function Page() {
       </div>
 
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
+
+      <HowToJsonLd
+        name="Simuler ses allocations familiales CAF"
+        steps={[
+          { name: "Saisir le nombre et l'âge des enfants", text: "Indiquer le nombre d'enfants de moins de 20 ans à charge. Une majoration s'applique automatiquement pour chaque enfant de 14 ans et plus, sauf l'aine dans une famille de 2 enfants." },
+          { name: "Renseigner les revenus annuels du foyer", text: "Indiquer les revenus N-2 (revenus 2024 pour les versements 2026). Ils determinent la tranche applicable : tranche 1 (moins de 74 966 EUR pour 2 enfants), tranche 2 (jusqu'à 99 922 EUR) ou tranche 3 (au-dela). Le plafond augmente de 6 631 EUR par enfant au-dela de 2." },
+          { name: "Appliquer le barème CAF par tranche", text: "Pour 2 enfants : 141,99 EUR/mois en tranche 1, 71 EUR en tranche 2, 35,50 EUR en tranche 3. Chaque enfant supplémentaire ajoute 181,92 EUR/mois en tranche 1. La majoration pour enfant de 14 ans et plus ajoute 71 EUR/mois en tranche 1." },
+          { name: "Calculer le complement familial et l'ARS", text: "Le complement familial (172,77 EUR/mois) s'ajoute si la famille à au moins 3 enfants âges de 3 à 21 ans, sous conditions de ressources. L allocation de rentree scolaire (ARS) est versee en aout pour chaque enfant scolarise de 6 à 18 ans : 416,40 EUR (6-10 ans), 439,38 EUR (11-14 ans), 454,60 EUR (15-18 ans)." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

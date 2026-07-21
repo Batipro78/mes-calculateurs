@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-gratification-stage" },
@@ -137,6 +138,16 @@ export default function Page() {
           </div>
         </section>
       ))}
+
+      <HowToJsonLd
+        name="Calculer la gratification de stage"
+        steps={[
+          { name: "Saisir la durée du stage et le temps de travail hebdomadaire", text: "Entrer la date de debut, la date de fin et le nombre d'heures par semaine (ex. 35h). Le calculateur convertit automatiquement la durée en heures de presence effective." },
+          { name: "Vérifier le seuil d'obligation légale", text: "Si la durée depasse 2 mois consecutifs ou non sur une même année d'enseignement (soit plus de 308 heures de presence), la gratification est obligatoire. En dessous, elle est facultative." },
+          { name: "Appliquer le taux minimum légal 2026", text: "Gratification minimale 2026 = 4,35 EUR par heure de presence (15 % du plafond horaire de la Sécurité sociale). Pour un temps plein de 35h/semaine (151,67 h/mois), cela donne environ 660 EUR par mois." },
+          { name: "Lire le montant mensuel et le total verse", text: "Le simulateur affiche la gratification mensuelle et le montant total sur la durée. La gratification est exoneree d'impôt dans la limite du SMIC annuel et exoneree de cotisations sociales jusqu'au minimum légal." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

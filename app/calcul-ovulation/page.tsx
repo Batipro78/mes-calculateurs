@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-ovulation" },
@@ -272,6 +273,16 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      <HowToJsonLd
+        name="Calculer sa date d'ovulation et sa fenetre fertile"
+        steps={[
+          { name: "Saisir le premier jour des dernieres regles", text: "Entrer la date du premier jour des dernieres regles (J1 du cycle). C'est le point de depart à partir duquel la date d'ovulation et la fenetre fertile sont calculees." },
+          { name: "Indiquer la durée habituelle du cycle", text: "Entrer la durée du cycle en jours (21 à 35 jours, 28 jours en moyenne). La phase luteale après l'ovulation dure toujours 14 jours quelle que soit la longueur du cycle." },
+          { name: "Appliquer la formule de calcul", text: "Jour d'ovulation = durée du cycle - 14. Exemple : cycle de 30 jours = ovulation au jour 16 à compter des dernieres regles. La fenetre fertile couvre J-5 à J-1 avant l'ovulation et le jour J lui-même." },
+          { name: "Lire le calendrier de fertilite", text: "Le résultat affiche la date d'ovulation estimée, la fenetre fertile et la date probable des prochaines regles. Les jours J-2 et J-1 sont les plus fertiles : les spermatozoides survivent 3-5 jours, l'ovule est fecondable 12 à 24 heures." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

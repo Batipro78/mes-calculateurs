@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-impot-societe" },
@@ -97,6 +98,16 @@ export default function Page() {
           <li>Dispense d&apos;acomptes si IS N-1 &lt; 3 000 EUR</li>
         </ul>
       </section>
+
+      <HowToJsonLd
+        name="Calculer l'impôt sur les societes (IS) 2026"
+        steps={[
+          { name: "Saisir le benefice imposable", text: "Indiquer le benefice fiscal de la societe (résultat comptable après retraitements : ajout des charges non deductibles, deduction des produits non imposables). La remuneration du dirigeant et les amortissements sont deductibles dans les limites legales." },
+          { name: "Vérifier l'eligibilite au taux reduit PME 15%", text: "3 conditions cumulatives : CA HT inférieur à 10 000 000 EUR, capital entierement libere, et au moins 75% du capital detenu en continu par des personnes physiques. Si toutes sont remplies, le taux reduit de 15% s'applique aux 42 500 premiers EUR de benefice." },
+          { name: "Appliquer le barème IS 2026", text: "PME eligible : 15% sur les premiers 42 500 EUR + 25% sur le reste. Exemple : 100 000 EUR de benefice = (42 500 x 15%) + (57 500 x 25%) = 6 375 + 14 375 = 20 750 EUR d'IS. Hors PME : 25% sur la totalite = 25 000 EUR (article 219 CGI)." },
+          { name: "Lire l'IS total et les echeances d'acomptes", text: "Le simulateur affiche l'IS annuel et le taux effectif moyen. Les societes dont l'IS depasse 3 000 EUR versent 4 acomptes trimestriels (15 mars, 15 juin, 15 septembre, 15 décembre). Le solde est du au 15 mai de l'année suivante." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

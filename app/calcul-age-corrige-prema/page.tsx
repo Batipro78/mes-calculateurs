@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-age-corrige-prema" },
@@ -236,6 +237,15 @@ export default function Page() {
           systematiquement votre pediatre ou neonatologue.
         </p>
       </div>
+
+      <HowToJsonLd
+        name="Calculer l'âge corrige d'un bébé premature"
+        steps={[
+          { name: "Saisir la date de naissance et le terme prévu", text: "Indiquer la date de naissance réelle du bébé et la date prévue du terme (DPA = 40 semaines d'aménorrhée). L écart entre ces deux dates donne le nombre de semaines de prématurité." },
+          { name: "Calculer les semaines de prématurité", text: "Semaines de prématurité = 40 SA moins l'âge gestationnel à la naissance. Exemple : un bébé né à 32 SA a 8 semaines de prématurité (40 - 32 = 8)." },
+          { name: "Obtenir l'âge corrige", text: "Âge corrige = Âge réel - semaines de prématurité. Exemple : à 6 mois de vie réelle avec 8 semaines de prématurité, l'âge corrige est d'environ 4 mois. Cet âge doit etre utilise pour les bilans de developpement jusqu'à 24 mois selon les recommandations SFN et AAP." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

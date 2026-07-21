@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-exoneration-lodeom" },
@@ -190,6 +191,16 @@ export default function Page() {
           </p>
         </div>
       </section>
+
+      <HowToJsonLd
+        name="Calculer l'exonération LODEOM"
+        steps={[
+          { name: "Choisir le barème et la taille de l'entreprise", text: "Sélectionner le barème applicable : Competitivite (droit commun), Competitivite renforcee (PME secteurs prioritaires) ou Innovation et croissance (salariés R&D/NTIC). Le taux T = 0,3201 pour moins de 11 salariés, T = 0,3241 pour 11 salariés et plus." },
+          { name: "Saisir le salaire mensuel brut", text: "Entrer le salaire mensuel brut du salarié. Le simulateur calcule le ratio remuneration annuelle / SMIC annuel 2026 (base 1 823,03 EUR/mois soit 21 876 EUR/an)." },
+          { name: "Appliquer la formule du coefficient degressif", text: "Si le ratio est inférieur au seuil d'exonération totale (ex. 1,3 SMIC en Competitivite), coefficient = T. En zone degressive, formule : 1,3 x T / 0,9 x (2,2 x SMIC / rem - 1). Au-dela du plafond, coefficient = 0." },
+          { name: "Lire l'exonération mensuelle et annuelle", text: "Exonération annuelle = coefficient x remuneration annuelle brute. Exonération mensuelle = exonération annuelle / 12. Ce montant se deduit des cotisations patronales versees à l'Urssaf." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

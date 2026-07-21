@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-cycles-sommeil" },
@@ -271,6 +272,15 @@ export default function Page() {
           persistants, consultez votre medecin ou un centre du sommeil.
         </p>
       </div>
+
+      <HowToJsonLd
+        name="Calculer l'heure de coucher ou de reveil selon les cycles de sommeil"
+        steps={[
+          { name: "Choisir le mode de calcul", text: "Sélectionner le mode : saisir l'heure de reveil souhaitee pour obtenir l'heure de coucher ideale, ou saisir l'heure de coucher pour obtenir les horaires de reveil recommandes." },
+          { name: "Integrer la latence d'endormissement de 14 minutes", text: "Le calculateur ajoute automatiquement 14 minutes (latence moyenne d'endormissement selon l'INSERM) au moment du coucher pour déterminer le debut réel du 1er cycle de 90 minutes." },
+          { name: "Lire les 5 horaires proposes de 4 à 7 cycles", text: "5 horaires optimaux sont proposes, correspondant à 4, 5, 6 et 7 cycles complets de 90 minutes. La National Sleep Foundation recommande 5 cycles (7h30 de sommeil) pour un adulte de 18 à 64 ans." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-cycles-sommeil" />

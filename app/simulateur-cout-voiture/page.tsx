@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-cout-voiture" },
@@ -151,6 +152,16 @@ export default function Page() {
           ))}
         </div>
       </section>
+
+      <HowToJsonLd
+        name="Calculer le coût total de possession d'une voiture"
+        steps={[
+          { name: "Saisir les données du véhicule", text: "Entrer le prix d'achat, les kilomètres annuels prevus, le type de motorisation (thermique ou électrique), la consommation (L/100 km ou kWh/100 km) et le prix du carburant ou de l'électricité." },
+          { name: "Ajouter assurance, entretien et durée de possession", text: "Renseigner le coût d'assurance annuel, l'entretien annuel et la durée de possession souhaitee ; la depreciation est le poste le plus lourd (ex. une citadine à 18 000 EUR ne vaut plus que ~7 989 EUR après 5 ans, soit ~10 011 EUR de perte)." },
+          { name: "Lire le coût total et le coût kilometrique réel", text: "Le simulateur additionne tous les postes sur la durée choisie (carburant, assurance, entretien, controles techniques, depreciation) et calcule le coût kilometrique réel en EUR/km." },
+          { name: "Comparer thermique et électrique", text: "Sur 5 ans à 15 000 km/an : citadine thermique ~23 445 EUR de coût total net, compacte électrique ~25 914 EUR ; l'avantage de l'électrique s'accentue au-dela de 15 000 km/an grace aux économies de carburant et d'entretien reduit." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/simulateur-cout-voiture" />

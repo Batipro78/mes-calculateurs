@@ -185,9 +185,9 @@ export default function Page() {
       <HowToJsonLd
         name="Calculer son IMC"
         steps={[
-          { name: "Mesurer", text: "Mesurer son poids en kilogrammes et sa taille en metres." },
+          { name: "Mesurer", text: "Mesurer son poids en kilogrammes et sa taille en mètres." },
           { name: "Calculer", text: "Diviser le poids par la taille au carre, soit poids divise par (taille multipliee par taille)." },
-          { name: "Interpreter", text: "Comparer le resultat a la classification de l'OMS : maigreur, corpulence normale, surpoids, obesite." },
+          { name: "Interpréter", text: "Comparer le résultat à la classification de l'OMS : maigreur, corpulence normale, surpoids, obesite." },
         ]}
       />
 

@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-cout-trajet-voiture" },
@@ -237,6 +238,16 @@ export default function Page() {
           operateurs pour les prix exacts.
         </p>
       </div>
+
+      <HowToJsonLd
+        name="Calculer le coût réel d'un trajet en voiture"
+        steps={[
+          { name: "Saisir la distance, le carburant et la consommation", text: "Entrer la distance en km, choisir le type de carburant (essence à 1,80 EUR/L, diesel à 1,72 EUR/L, électrique à 0,30 EUR/kWh ou GPL à 1,00 EUR/L) et la consommation aux 100 km du véhicule." },
+          { name: "Calculer le coût carburant du trajet", text: "Coût carburant = (distance x consommation / 100) x prix. Exemple Paris-Lyon 465 km à 7 L/100 km : (465 x 7 / 100) x 1,80 = 58,50 EUR de carburant." },
+          { name: "Ajouter les peages et obtenir le total", text: "Ajouter le montant estime des peages (exemple Paris-Lyon aller : 38 EUR). Total aller = 58,50 + 38 = 96,50 EUR. Le coût par passager est divise par le nombre de personnes." },
+          { name: "Comparer avec le train et lire l'empreinte CO2", text: "Le calculateur affiche le coût équivalent train (0,18 EUR/km en moyenne) et l'empreinte carbone (essence 2,28 kg CO2/L, électrique 0,06 kg CO2/kWh selon ADEME 2024) pour comparaison." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-cout-trajet-voiture" />

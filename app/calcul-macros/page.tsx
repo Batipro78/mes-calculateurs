@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-macros" },
@@ -200,6 +201,16 @@ export default function Page() {
           communaute scientifique. Consultez un nutritionniste pour un suivi personnalise.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer ses macronutriments journaliers"
+        steps={[
+          { name: "Saisir son profil et son niveau d'activité", text: "Entrer le sexe, le poids en kg, la taille en cm et l'âge. Choisir le niveau d'activité physique : sedentaire, leger, modere, eleve ou très eleve. Ces données servent à calculer le BMR via la formule Mifflin-St Jeor." },
+          { name: "Obtenir le TDEE (besoins caloriques totaux)", text: "Le TDEE = BMR x coefficient d'activité (sedentaire x 1,2 ; modere x 1,55). Pour un homme de 30 ans, 75 kg, 178 cm, sedentaire, le TDEE est d'environ 2 196 kcal/jour." },
+          { name: "Choisir l'objectif nutritionnel", text: "Sélectionner l'objectif : maintien, perte de poids (-400 kcal, ratio 40 % P / 30 % G / 30 % L), prise de masse (+300 kcal, ratio 25 % P / 50 % G / 25 % L), seche ou cetogene (5 % G / 75 % L)." },
+          { name: "Lire les grammes par macronutriment", text: "Le résultat affiche les grammes journaliers de proteines (4 kcal/g), glucides (4 kcal/g) et lipides (9 kcal/g). Les proteines visent 1,6 à 2,2 g par kg de poids corporel pour un sportif." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

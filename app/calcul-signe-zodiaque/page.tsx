@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import { SIGNES, ELEMENTS_INFO, MODES_INFO } from "./signeZodiaqueCalc";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-signe-zodiaque" },
@@ -269,6 +270,15 @@ export default function Page() {
           <strong>Sources:</strong> Tradition astrologique occidentale, astronomie tropicale.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Déterminer son signe du zodiaque occidental"
+        steps={[
+          { name: "Saisir la date de naissance", text: "Entrer le jour et le mois de naissance. Le Soleil change de signe environ tous les 30 jours selon le zodiaque tropical. Les dates limites varient selon les années : le Belier peut commencer le 20 ou le 21 mars." },
+          { name: "Identifier le signe solaire", text: "Le signe est determine par la position du Soleil à la naissance. Exemple : 15 mai -> Taureau (20 avril - 20 mai environ). Les personnes nees un jour de transition (cuspide) doivent utiliser l'année précise pour trancher le signe exact." },
+          { name: "Lire l'élément, le mode et la planete dominante", text: "Chaque signe appartient à un élément (Feu, Terre, Air, Eau) et un mode (Cardinal = initiative, Fixe = stabilite, Mutable = adaptabilite). La planete dominante decrit l'énergie principale du signe : Mars pour le Belier, Venus pour le Taureau, Mercure pour les Gemeaux, etc." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-signe-zodiaque" />

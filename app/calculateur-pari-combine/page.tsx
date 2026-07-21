@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: {
@@ -180,6 +181,16 @@ export default function Page() {
           </table>
         </div>
       </section>
+
+      <HowToJsonLd
+        name="Calculer un pari combine (accumulator)"
+        steps={[
+          { name: "Ajouter les selections et leurs cotes decimales", text: "Entrer chaque selection avec sa cote decimale. Exemple : 3 selections à cotes 1.40, 1.55 et 1.30. Toutes les selections doivent gagner pour remporter le combine." },
+          { name: "Calculer la cote totale", text: "Cote totale = produit de toutes les cotes individuelles. Exemple : 1.40 x 1.55 x 1.30 = 2.821. Chaque selection ajoutee multiplie la cote totale, ce qui augmente le gain potentiel mais reduit la probabilité de gain." },
+          { name: "Saisir la mise et calculer le gain", text: "Gain total = mise x cote totale. Exemple : 10 EUR x 2.821 = 28.21 EUR. Benefice net = 28.21 - 10 = 18.21 EUR. Si un match est annule, sa cote est remplacee par 1.00 et le combine reste actif avec les autres selections." },
+          { name: "Vérifier la probabilité implicite du combine", text: "Probabilité implicite (%) = (1 / cote totale) x 100. Exemple : 1 / 2.821 x 100 = 35,4 pct. Plus le nombre de selections est eleve, plus la probabilité diminue exponentiellement." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

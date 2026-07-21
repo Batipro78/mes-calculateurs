@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calculateur-autonomie" },
@@ -160,6 +161,16 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      <HowToJsonLd
+        name="Calculer sa durée d'autonomie financiere"
+        steps={[
+          { name: "Saisir le capital disponible", text: "Indiquer le montant total de l'epargne utilisable pour l'autonomie (en EUR). Inclure les livrets, le compte courant et toute epargne liquide. Ne pas inclure les actifs bloques (PEA de moins de 5 ans, fonds de pension non disponibles)." },
+          { name: "Choisir la zone et la situation familiale", text: "Sélectionner la zone de residence : Paris / IDF (~1 800 EUR/mois), grande ville (~1 250 EUR/mois), ville moyenne (~1 080 EUR/mois), zone rurale (~920 EUR/mois). Indiquer la situation familiale (seul, couple, avec enfants) qui ajuste le budget minimum." },
+          { name: "Ajouter les revenus complémentaires", text: "Saisir tout revenu mensuel hors epargne : RSA (647 EUR), APL, allocation chomage ARE, revenus freelance, pension, etc. Ces revenus reduisent la part du budget à couvrir par l'epargne chaque mois." },
+          { name: "Lire la durée d'autonomie", text: "Durée = capital / (budget minimum mensuel - revenus complémentaires). Exemple : 20 000 EUR, grande ville, seul, RSA 647 EUR/mois : budget net à financer = 1 250 - 647 = 603 EUR/mois, soit 20 000 / 603 = 33 mois d'autonomie." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 import { MOIS_HIJRI } from "./hijriCalc";
 
 export const metadata: Metadata = {
@@ -217,6 +218,15 @@ export default function Page() {
         </p>
       </section>
 
+      <HowToJsonLd
+        name="Convertir une date gregorienne en calendrier hijri"
+        steps={[
+          { name: "Saisir la date gregorienne", text: "Entrer le jour, le mois et l'année au format gregorien (ex. 27/06/2026). L'année 1 AH du calendrier hijri correspond à l'Hegire de 622 EC ; 2026 CE = environ 1447-1448 AH." },
+          { name: "Choisir la méthode de conversion", text: "Sélectionner TIC (méthode mathematique tabulaire, reguliere et immuable) ou Umm al-Qura (méthode officielle d'Arabie Saoudite basee sur des tables astronomiques). Les deux peuvent differer de +/- 1 jour." },
+          { name: "Lire la date hijri", text: "Le résultat indique l'année AH, le mois hijri (Mouharram à Dhou al-Hijja) et le jour. L'année hijri compte 354 jours car chaque mois lunaire dure 29 ou 30 jours, soit 11 jours de moins qu'une année gregorienne." },
+          { name: "Calculer l'âge en années lunaires", text: "Saisir sa date de naissance gregorienne pour obtenir l'âge en années hijri. Ex. : 33 années gregoriennes equivalentes à environ 34 années hijri car l'année lunaire est 11 jours plus courte." },
+        ]}
+      />
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/convertisseur-calendrier-hijri" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

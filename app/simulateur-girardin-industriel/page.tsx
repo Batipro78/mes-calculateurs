@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-girardin-industriel" },
@@ -149,6 +150,16 @@ export default function Page() {
           de montage et le risque residuel rendent l&apos;operation peu interessante.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer son gain Girardin industriel"
+        steps={[
+          { name: "Saisir l'impôt sur le revenu à effacer", text: "Indiquer le montant exact de l'IR annuel à payer (ex : 10 000 EUR). Le dispositif est pertinent à partir de 5 000 EUR d'impôt. Ne jamais viser une réduction supérieure à l'impôt réel : le surplus n'est pas rembourse." },
+          { name: "Choisir le type d'operation et le rendement", text: "Sélectionner 'de plein droit' (retrocession 56%, operation < 300 000 EUR) ou 'avec agrement' (retrocession 66%, operation >= 300 000 EUR). Indiquer le rendement propose par le monteur (generalement 7% à 14% selon les garanties)." },
+          { name: "Calculer l'apport et la réduction", text: "Formule : Apport = Réduction / (1 + rendement / 100). Exemple : pour 10 000 EUR de réduction à 10% de rendement, l'apport est de 9 091 EUR. La part dans le plafond niches outre-mer (18 000 EUR) est verifiee automatiquement." },
+          { name: "Lire le gain net immédiat", text: "Gain net = Réduction obtenue l'année N+1 moins l'apport verse en N. Exemple : 10 000 EUR de réduction - 9 091 EUR d'apport = 909 EUR de gain net, équivalent à un placement à 10% sur 1 an. L'apport est à fonds perdus : le capital n'est pas recupere." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

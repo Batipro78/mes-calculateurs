@@ -5,6 +5,8 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import VillesLinks from "../components/VillesLinks";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
+import CTAMonDevisMinute from "../components/CTAMonDevisMinute";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/prix-plombier" },
@@ -122,6 +124,16 @@ export default function Page() {
         </p>
       </section>
 
+      <HowToJsonLd
+        name="Estimer le prix d'une intervention de plombier"
+        steps={[
+          { name: "Choisir la prestation", text: "Sélectionner parmi les 10 types de travaux : debouchage (100-450 EUR), installation de robinet (130-350 EUR/unité), remplacement WC, chauffe-eau électrique (500-1 400 EUR), creation de salle de bain (900-2 500 EUR/m2), chaudiere gaz, etc." },
+          { name: "Saisir la quantité ou la surface", text: "Indiquer le nombre d'unités (ex : 2 robinets) ou la surface en m2 (ex : 6 m2 pour une salle de bain complète). Pour un debouchage ou une reparation de fuite, c'est un forfait sans surface." },
+          { name: "Sélectionner la region", text: "Appliquer le coefficient : Ile-de-France (+30 %), grandes villes (+10 %), province (référence), rural (-10 %). Ex : chauffe-eau électrique 150 L en province = 500 à 900 EUR, en Ile-de-France = 650 à 1 170 EUR." },
+          { name: "Vérifier les aides applicables", text: "La TVA est de 10 % pour les travaux dans un logement de plus de 2 ans. Le remplacement d'une chaudiere par une pompe à chaleur ouvre droit à MaPrimeRenov'. Attention : les chaudieres gaz neuves ne sont plus aidees depuis 2024." },
+        ]}
+      />
+
       <Faq items={FAQ_ITEMS} />
 
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
@@ -146,6 +158,12 @@ export default function Page() {
       </section>
 
       <VillesLinks metierSlug="/prix-plombier" />
+      <CTAMonDevisMinute
+        campaign="prix-plombier"
+        variant="devis"
+        guide={{ href: "/guides/devis-depannage-urgence-regles", label: "Dépannage et urgence : les règles à respecter" }}
+      />
+
       <RelatedCalculators currentSlug="/prix-plombier" />
     </div>
   );

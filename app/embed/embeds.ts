@@ -7,6 +7,8 @@ export interface EmbedDef {
   color: string; // Tailwind gradient classes for preview
   defaultHeight: number; // hauteur recommandee pour iframe
   sourcePath: string; // chemin vers la page complete (pour lien "Voir en plein ecran")
+  anchor: string; // libelle du calculateur, affiche en TEXTE dans le credit
+                  // (le lien, lui, porte le nom du site - cf. EmbedCard)
 }
 
 export const EMBEDS: EmbedDef[] = [
@@ -18,6 +20,7 @@ export const EMBEDS: EmbedDef[] = [
     color: "from-rose-500 to-pink-600",
     defaultHeight: 640,
     sourcePath: "/calcul-imc",
+    anchor: "calcul IMC",
   },
   {
     slug: "pourcentage",
@@ -27,6 +30,7 @@ export const EMBEDS: EmbedDef[] = [
     color: "from-purple-500 to-indigo-600",
     defaultHeight: 560,
     sourcePath: "/calcul-pourcentage",
+    anchor: "calcul de pourcentage",
   },
   {
     slug: "tva",
@@ -36,6 +40,7 @@ export const EMBEDS: EmbedDef[] = [
     color: "from-amber-500 to-orange-600",
     defaultHeight: 560,
     sourcePath: "/calcul-tva",
+    anchor: "calcul TVA",
   },
   {
     slug: "salaire-brut-net",
@@ -45,6 +50,7 @@ export const EMBEDS: EmbedDef[] = [
     color: "from-emerald-500 to-teal-600",
     defaultHeight: 640,
     sourcePath: "/salaire-brut-net",
+    anchor: "salaire brut net",
   },
   {
     slug: "pret-immobilier",
@@ -54,6 +60,7 @@ export const EMBEDS: EmbedDef[] = [
     color: "from-blue-500 to-indigo-600",
     defaultHeight: 720,
     sourcePath: "/simulateur-pret-immobilier",
+    anchor: "simulateur de pret immobilier",
   },
   {
     slug: "interet-compose",
@@ -63,6 +70,7 @@ export const EMBEDS: EmbedDef[] = [
     color: "from-teal-500 to-cyan-600",
     defaultHeight: 640,
     sourcePath: "/calcul-interet-compose",
+    anchor: "calcul des interets composes",
   },
   {
     slug: "frais-de-notaire",
@@ -72,6 +80,7 @@ export const EMBEDS: EmbedDef[] = [
     color: "from-cyan-500 to-blue-500",
     defaultHeight: 640,
     sourcePath: "/frais-de-notaire",
+    anchor: "frais de notaire",
   },
 ];
 

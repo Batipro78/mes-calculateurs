@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/test-anxiete-gad7" },
@@ -222,6 +223,16 @@ export default function Page() {
           souffrance, contactez votre medecin ou les numeros d&apos;urgence.
         </p>
       </div>
+
+      <HowToJsonLd
+        name="Évaluer son niveau d'anxiete avec le GAD-7"
+        steps={[
+          { name: "Répondre aux 7 questions sur les 2 dernieres semaines", text: "Pour chacune des 7 questions, sélectionner la fréquence : 0 = Jamais, 1 = Quelques jours, 2 = Plus de la moitie des jours, 3 = Presque tous les jours. Les questions portent sur la nervosite, les inquietudes incontrolables, les tensions, l'irritabilite, la peur et les troubles du sommeil." },
+          { name: "Calculer le score total (0 à 21)", text: "Additionner les 7 reponses. Le score total varie de 0 (aucune anxiete) à 21 (anxiete maximale)." },
+          { name: "Interpréter le score selon les 4 niveaux valides (Spitzer 2006)", text: "0-4 : anxiete minimale, pas de prise en charge nécessaire ; 5-9 : legere, surveillance et relaxation recommandees ; 10-14 : moderee, consultation conseillee (TCC souvent efficace) ; 15-21 : severe, prise en charge medicale recommandee. Au seuil de 10, la sensibilité est de 89% et la specificite de 82% pour le trouble anxieux generalise." },
+          { name: "Agir selon le résultat", text: "Un score de 10 ou plus justifie une consultation aupres d'un medecin generaliste ou d'un psychologue. En cas de souffrance immediate ou de pensees noires, appeler le 3114 (prevention suicide, gratuit, 24h/24) ou le 15." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

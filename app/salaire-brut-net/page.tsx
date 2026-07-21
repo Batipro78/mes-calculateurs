@@ -142,8 +142,8 @@ export default function Page() {
         name="Convertir un salaire brut en net"
         steps={[
           { name: "Partir du brut", text: "Partir du salaire brut, mensuel ou annuel." },
-          { name: "Deduire les cotisations", text: "Deduire les cotisations sociales salariales : environ 22 pour cent pour un non-cadre, 25 pour cent pour un cadre." },
-          { name: "Net a payer", text: "Le resultat est le salaire net ; soustraire le prelevement a la source pour obtenir le net a payer." },
+          { name: "Déduire les cotisations", text: "Déduire les cotisations sociales salariales : environ 22 pour cent pour un non-cadre, 25 pour cent pour un cadre." },
+          { name: "Net à payer", text: "Le résultat est le salaire net ; soustraire le prelevement à la source pour obtenir le net à payer." },
         ]}
       />
 

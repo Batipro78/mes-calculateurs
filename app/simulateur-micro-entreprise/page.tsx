@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-micro-entreprise" },
@@ -192,6 +193,16 @@ export default function Page() {
           professions liberales. Elle vous donne droit a des formations financees.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer son revenu net en micro-entreprise"
+        steps={[
+          { name: "Saisir le chiffre d'affaires et l'activité", text: "Indiquer le CA annuel et sélectionner l'activité : achat-revente BIC (plafond 188 700 EUR, taux URSSAF 12,3%), services BIC (21,2%), services BNC (21,1%), profession liberale BNC (21,2%). La CFP (0,1 ou 0,2% du CA) s'ajoute automatiquement." },
+          { name: "Activer l'ACRE si applicable", text: "L'ACRE reduit les cotisations URSSAF de 50% la première année pour les demandeurs d'emploi, beneficiaires du RSA ou jeunes de 18 à 25 ans. Exemple : un freelance BNC à 50 000 EUR de CA passe de 10 550 EUR à 5 275 EUR de charges la première année." },
+          { name: "Choisir le régime d'imposition", text: "Sélectionner le barème progressif IR (impôt calcule sur le revenu net selon la TMI) ou le versement liberatoire (taux fixe preleve en même temps que les cotisations URSSAF : 1% vente, 1,7% BIC, 2,2% BNC, sous condition de revenu N-2 inférieur à 28 797 EUR par part)." },
+          { name: "Lire le revenu net annuel et mensuel", text: "Le simulateur deduit les cotisations URSSAF, la CFP et l'impôt pour afficher le revenu net. Exemple : graphiste BNC à 30 000 EUR de CA obtient environ 22 000 EUR net annuel (1 830 EUR/mois) après 6 400 EUR de charges sociales et impôt." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

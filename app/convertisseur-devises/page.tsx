@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/convertisseur-devises" },
@@ -215,6 +216,15 @@ export default function Page() {
         </div>
       </section>
 
+      <HowToJsonLd
+        name="Convertir un montant entre devises"
+        steps={[
+          { name: "Saisir le montant et choisir la devise source", text: "Entrer le montant à convertir (ex. 1000) et sélectionner la devise d'origine parmi 14 disponibles : EUR, USD, GBP, CHF, CAD, JPY, MAD, TND, DZD et autres." },
+          { name: "Choisir la devise cible", text: "Sélectionner la devise d'arrivee (ex. USD). Le Franc CFA (XOF/XAF) beneficie d'une parite fixe garantie par le Tresor francais : 1 EUR = 655,957 CFA sans variation possible." },
+          { name: "Appliquer la formule de conversion", text: "Montant converti = montant source x (taux devise cible / taux devise source). Ex. : 1000 EUR x taux EUR/USD 1,0856 = 1 085,60 USD." },
+          { name: "Lire le montant converti et optimiser", text: "Le montant dans la devise cible s'affiche avec le taux indicatif utilise. Pour les transferts internationaux, comparer avec les frais bancaires habituels (2 à 3 %) ou les services en ligne comme Wise." },
+        ]}
+      />
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/convertisseur-devises" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

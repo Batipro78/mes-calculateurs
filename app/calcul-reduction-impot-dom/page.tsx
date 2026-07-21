@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-reduction-impot-dom" },
@@ -174,6 +175,16 @@ export default function Page() {
           important), l&apos;impot final peut etre reduit a zero.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer la réduction d'impôt DOM (réfaction outre-mer)"
+        steps={[
+          { name: "Sélectionner le département d'outre-mer", text: "Choisir parmi Guadeloupe, Martinique, La Reunion (taux 30 %, plafond 2 450 EUR) ou Guyane, Mayotte (taux 40 %, plafond 4 050 EUR). La réfaction s'applique au domicile fiscal au 31 décembre de l'année d'imposition." },
+          { name: "Saisir l'impôt barème avant réfaction", text: "Entrer le montant d'impôt calcule selon le barème progressif, après décote et avant les autres réductions. Ce chiffre figure sur l'avis d'imposition." },
+          { name: "Appliquer le calcul de réfaction", text: "Réduction = minimum entre (taux x impôt barème) et le plafond. Ex. 3 000 EUR d'impôt à La Reunion : 3 000 x 30 % = 900 EUR de réduction (plafond 2 450 EUR non atteint)." },
+          { name: "Lire l'impôt final après réfaction", text: "Impôt après réfaction = impôt barème - réduction. Ex. 3 000 - 900 = 2 100 EUR. La réfaction est appliquee automatiquement par l'administration fiscale ; aucune demarche n'est requise." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

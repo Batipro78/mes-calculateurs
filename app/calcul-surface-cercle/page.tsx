@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-surface-cercle" },
@@ -135,6 +136,15 @@ export default function Page() {
           </div>
         </section>
       ))}
+
+      <HowToJsonLd
+        name="Calculer la surface et le perimetre d'un cercle"
+        steps={[
+          { name: "Saisir le rayon, le diametre ou le perimetre", text: "Entrer l'une des trois mesures connues : rayon (r), diametre (d = 2 x r) ou perimetre (P = 2 x pi x r). Le calculateur deduit automatiquement les deux autres valeurs." },
+          { name: "Appliquer la formule de l'aire", text: "Aire = pi x r carre (pi x r x r). Exemple : rayon 5 cm -> Aire = 3,14159 x 25 = 78,54 cm carre. À partir du diametre 8 cm : r = 4 cm -> Aire = pi x 16 = 50,27 cm carre." },
+          { name: "Lire le perimetre et vérifier les unités", text: "Perimetre (circonference) = 2 x pi x r. Exemple : rayon 5 cm -> Perimetre = 2 x 3,14159 x 5 = 31,42 cm. L'aire s'exprime en unités carrees (cm carre, m carre), le perimetre en unités simples (cm, m)." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-surface-cercle" />

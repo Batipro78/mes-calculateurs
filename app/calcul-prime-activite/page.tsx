@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-prime-activite" },
@@ -207,6 +208,16 @@ export default function Page() {
       </div>
 
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
+
+      <HowToJsonLd
+        name="Calculer sa prime d'activité CAF"
+        steps={[
+          { name: "Saisir la composition du foyer", text: "Indiquer si l'on est seul, en couple, et le nombre d'enfants à charge. Le montant forfaitaire de base est de 633,21 EUR pour une personne seule (2025) ; il est majore de 50 % pour un couple sans enfant." },
+          { name: "Entrer les revenus professionnels nets", text: "Saisir le total des revenus d'activité du foyer sur les 3 derniers mois. 61 % de ce montant s'ajoute au forfaitaire pour alimenter la prime." },
+          { name: "Prendre en compte la bonification et le forfait logement", text: "La bonification individuelle atteint jusqu'à 173,22 EUR/mois par actif du foyer au niveau du SMIC net (environ 1 442 EUR). Si une aide au logement est percue, déduire le forfait logement (75,99 EUR pour 1 personne)." },
+          { name: "Lire le montant mensuel estime", text: "Prime = forfaitaire + 61 % revenus + bonification - ressources du foyer - forfait logement. En dessous de 15 EUR, la prime n'est pas versee. Declarer trimestriellement sur caf.fr pour maintenir le versement." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

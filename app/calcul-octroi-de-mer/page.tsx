@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-octroi-de-mer" },
@@ -153,6 +154,16 @@ export default function Page() {
           </p>
         </div>
       </section>
+
+      <HowToJsonLd
+        name="Calculer l'octroi de mer sur une importation en DOM"
+        steps={[
+          { name: "Saisir la valeur CAF et choisir le territoire", text: "Entrer la valeur CAF (Coût, Assurance, Fret) de la marchandise à la frontiere du territoire, et sélectionner le DROM : Guadeloupe, Martinique, Guyane, La Reunion ou Mayotte." },
+          { name: "Renseigner les taux OM et OMR", text: "Saisir le taux d'octroi de mer vote par la collectivite (0 à 60 %, jusqu'à 90 % pour alcools et tabacs) et le taux d'OMR regional (maximum légal 2,5 %). Ces taux dependent du code NC à 8 chiffres du produit." },
+          { name: "Appliquer la TVA DOM sur la valeur CAF uniquement", text: "En Guadeloupe, Martinique et La Reunion, la TVA est de 8,5 % calculee sur la valeur CAF seule : l'octroi de mer n'entre pas dans la base TVA (art. 267 et 292 du CGI). En Guyane et Mayotte, TVA = 0 %." },
+          { name: "Lire le coût rendu et la majoration totale", text: "Exemple : 1 000 EUR CAF à La Reunion, OM 12,5 %, OMR 2,5 %, TVA 8,5 % : OM = 125 EUR, OMR = 25 EUR, TVA = 85 EUR, coût rendu = 1 235 EUR, soit +23,5 % de majoration sur la valeur initiale." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

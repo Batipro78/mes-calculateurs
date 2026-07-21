@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-electrique-vs-thermique" },
@@ -251,6 +252,16 @@ export default function Page() {
       </div>
 
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
+
+      <HowToJsonLd
+        name="Comparer le coût total d'une voiture électrique et thermique"
+        steps={[
+          { name: "Saisir les prix d'achat", text: "Indiquer le prix du véhicule thermique (ex : 28 000 EUR) et du véhicule électrique (ex : 38 000 EUR) avant deduction du bonus ecologique jusqu'à 7 700 EUR en 2026 sous conditions de revenu et de modele." },
+          { name: "Renseigner les coûts d'énergie", text: "Saisir la consommation du thermique en L/100 km (ex : 6 L) et le prix de l'essence, ainsi que la consommation électrique en kWh/100 km (ex : 15 kWh) et le prix de l'électricité. Sur 15 000 km/an, l'écart depasse souvent 1 200 EUR/an." },
+          { name: "Ajouter l'entretien annuel et l'assurance", text: "L'entretien d'une voiture électrique coute 400-600 EUR/an (pas de vidange ni courroie de distribution) contre 800-1 200 EUR/an pour un thermique. Indiquer aussi les coûts d'assurance et la depreciation estimée des deux véhicules." },
+          { name: "Lire le seuil de rentabilité en années", text: "Le simulateur calcule le coût total de possession sur 1 à 10 ans et indique l'année à partir de laquelle l'électrique devient moins cher. Les gros rouleurs (> 20 000 km/an) atteignent la rentabilité des la 2e année." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

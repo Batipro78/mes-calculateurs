@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-apl" },
@@ -137,6 +138,15 @@ export default function Page() {
           </li>
         </ul>
       </section>
+
+      <HowToJsonLd
+        name="Simuler son APL (aide au logement)"
+        steps={[
+          { name: "Choisir la zone et la situation familiale", text: "Sélectionner la zone geographique du logement (1 = Ile-de-France, loyer plafond 319,41 EUR/mois pour 1 personne ; 2 = grandes agglomerations, 278,28 EUR ; 3 = reste du territoire, 260,82 EUR) et la composition du foyer." },
+          { name: "Entrer le loyer et les ressources", text: "Saisir le loyer mensuel réel (ramene au plafond si supérieur) et les revenus N-2 du foyer ; ces deux données determinent la participation personnelle du locataire (minimum 39,15 EUR/mois)." },
+          { name: "Lire l'APL estimée", text: "APL = loyer plafonne + forfait charges (60,59 EUR pour 1 personne, 73,17 EUR pour 2 personnes) - participation personnelle ; le montant n'est verse par la CAF que s'il depasse 10 EUR/mois." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-rapport-taille-tour-de-taille" },
@@ -272,6 +273,16 @@ export default function Page() {
           évaluation personnalisée de votre risque cardiovasculaire.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer le WtHR (rapport taille sur tour de taille)"
+        steps={[
+          { name: "Mesurer le tour de taille", text: "Placer un mètre souple à mi-distance entre le bas des côtes et le haut des hanches, en fin d'expiration normale et sans rentrer le ventre. Lire la valeur en cm après 2-3 mesures consecutives." },
+          { name: "Mesurer la taille", text: "Se tenir debout, pieds joints et sans chaussures. Lire la taille en cm." },
+          { name: "Calculer le WtHR", text: "Diviser le tour de taille par la taille : WtHR = tour de taille / taille. Ex. 80 cm / 170 cm = 0,47." },
+          { name: "Interpréter le résultat selon les normes", text: "Regle d'or OMS : WtHR inférieur ou egal à 0,5. Normes NHS pour hommes : sain entre 0,43 et 0,52. Normes NHS pour femmes : sain entre 0,42 et 0,48. Au-dessus de 0,5, le risque cardiovasculaire est augmente." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

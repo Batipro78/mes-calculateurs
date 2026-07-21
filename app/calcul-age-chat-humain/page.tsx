@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { FAQSchema, WebAppSchema } from "@/lib/jsonld";
 import CalculAgeChatHumain from "./CalculAgeChatHumain";
 import RelatedCalculators from "@/app/components/RelatedCalculators";
+import HowToJsonLd from "@/app/components/HowToJsonLd";
 
 export const metadata: Metadata = {
   title: "Calcul Âge Chat en Années Humaines | Formule AAFP Vétérinaire",
@@ -128,6 +129,16 @@ export default async function Page() {
             </div>
           </div>
         </section>
+
+        {/* HowTo JSON-LD */}
+        <HowToJsonLd
+          name="Estimer l'âge d'un chat en années humaines"
+          steps={[
+            { name: "Saisir l'âge du chat", text: "Indiquer l'âge du chat en années. L'outil applique la formule officielle AAFP (American Association of Feline Practitioners)." },
+            { name: "Appliquer la formule AAFP", text: "Année 1 du chat = 15 ans humains. Année 2 = +9 ans (total 24 ans). À partir de l'année 3, chaque année supplémentaire ajoute 4 ans humains. Exemple : un chat de 5 ans = 24 + (3 x 4) = 36 ans humains." },
+            { name: "Identifier la phase de vie et les conseils santé", text: "Le résultat associe l'âge humain équivalent à une phase de vie (chaton, junior, adulte, senior, super-senior, vénérable) avec des recommandations vétérinaires spécifiques à chaque stade." },
+          ]}
+        />
 
         {/* Related calculators */}
         <RelatedCalculators currentSlug="/calcul-age-chat-humain" />

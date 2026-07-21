@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-facture-gaz" },
@@ -138,6 +139,16 @@ export default function Page() {
           </li>
         </ul>
       </section>
+
+      <HowToJsonLd
+        name="Estimer sa facture de gaz naturel"
+        steps={[
+          { name: "Choisir l'usage et la zone tarifaire GRDF", text: "Sélectionner l'usage (cuisson, eau chaude ou chauffage) et la zone GRDF selon la ville : zone 1 Paris à 0,1284 EUR/kWh, zone 2 Lyon à 0,1324 EUR/kWh, zone 6 Clermont-Ferrand à 0,1488 EUR/kWh. La zone determine le prix unitaire du kWh." },
+          { name: "Saisir la consommation annuelle en kWh", text: "Indiquer la consommation annuelle lue sur la facture ou estimée selon l'usage (ex : 2 000 kWh pour l'eau chaude, 12 000 kWh pour le chauffage d'un appartement de 70 m2). Le simulateur propose des fourchettes par type d'usage." },
+          { name: "Calculer les composantes de la facture", text: "La facture comprend : abonnement fixe + CTA (Contribution Tarifaire d'Acheminement) soumis à TVA 5,5%, consommation en kWh x prix unitaire + TICGN soumis à TVA 20%. Total mensuel = (part fixe + part variable + taxes) / 12." },
+          { name: "Comparer les offres fournisseurs", text: "Le résultat affiche la facture annuelle et mensuelle au tarif reglemente GRDF. Comparer ensuite avec les offres de marche (EDF, Engie, TotalEnergies, Eni) en verifiant chaque année via le comparateur officiel énergie-info.fr." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

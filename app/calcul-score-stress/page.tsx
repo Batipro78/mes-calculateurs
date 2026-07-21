@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-score-stress" },
@@ -129,6 +130,15 @@ export default function Page() {
           Mis a jour le 23 avril 2026
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Évaluer son niveau de stress avec le test PSS-10"
+        steps={[
+          { name: "Répondre aux 10 questions sur le dernier mois", text: "Pour chaque question, indiquer la fréquence ressentie : 0 = jamais, 1 = presque jamais, 2 = parfois, 3 = assez souvent, 4 = très souvent. Les questions portent sur la perception de debordement et de perte de controle." },
+          { name: "Corriger les questions inversees", text: "Les questions 4, 5, 7 et 8 sont formulees positivement et se cotent en sens inverse : une reponse 4 donne 0 point, une reponse 0 donne 4 points. Les 6 autres questions sont directes (plus la reponse est elevee, plus le stress est fort)." },
+          { name: "Additionner et interpréter le score total", text: "Totaliser les 10 reponses (score de 0 à 40). 0-13 : stress faible, bon equilibre emotionnel. 14-26 : stress modere, techniques de relaxation conseillees (coherence cardiaque 5 min x 3/jour, activité physique 150 min/semaine). 27-40 : stress eleve, consultation professionnelle recommandee." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-score-stress" />

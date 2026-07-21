@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-rentabilite-locative" },
@@ -173,6 +174,16 @@ export default function Page() {
           </div>
         </section>
       ))}
+
+      <HowToJsonLd
+        name="Calculer la rentabilité locative brute et nette"
+        steps={[
+          { name: "Saisir le prix d'achat total et le loyer mensuel", text: "Entrer le prix d'acquisition complet (prix + frais de notaire 7-8 % dans l'ancien + travaux eventuels) et le loyer mensuel hors charges locataires." },
+          { name: "Calculer la rentabilité brute", text: "Rentabilité brute = (loyer annuel / investissement total) x 100. Ex. 800 EUR/mois sur 200 000 EUR : (9 600 / 200 000) x 100 = 4,8 %." },
+          { name: "Déduire les charges pour obtenir la rentabilité nette", text: "Soustraire la taxe fonciere, les charges de copropriete non recuperables, l'assurance PNO, les frais de gestion et la vacance locative estimée. Un mois de vacance représente déjà 8,3 % du loyer annuel." },
+          { name: "Lire le cash-flow mensuel", text: "Cash-flow = loyers encaisses - (mensualité credit + charges + impôts). S'il est positif, le bien s'autofinance. Une rentabilité nette supérieure à 5 % est consideree bonne en France." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

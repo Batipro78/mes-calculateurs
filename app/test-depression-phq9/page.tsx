@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/test-depression-phq9" },
@@ -269,6 +270,16 @@ export default function Page() {
           détresse aiguë, appelez le 3114.
         </p>
       </div>
+
+      <HowToJsonLd
+        name="Évaluer son niveau de depression avec le PHQ-9"
+        steps={[
+          { name: "Répondre aux 9 questions sur les 2 dernieres semaines", text: "Pour chacun des 9 items, sélectionner la fréquence : 0 = Jamais, 1 = Plusieurs jours, 2 = Plus de la moitie des jours, 3 = Presque tous les jours. Les questions couvrent les 9 symptomes cardinaux de la depression : humeur triste, anhedonie, sommeil, fatigue, appetit, devalorisation, concentration, agitation psychomotrice et pensees de mort." },
+          { name: "Additionner les scores pour obtenir le total (0 à 27)", text: "Sommer les 9 reponses. Chaque point supplémentaire indique une intensite depressive plus elevee. Le maximum de 27 correspond à 9 symptomes presents presque tous les jours." },
+          { name: "Interpréter selon les 5 niveaux officiels (Kroenke 2001)", text: "0-4 : minimale (pas d'intervention) ; 5-9 : legere (surveillance) ; 10-14 : moderee (consultation recommandee, TCC souvent efficace) ; 15-19 : moderement severe (traitement actif nécessaire) ; 20-27 : severe (prise en charge medicale immediate). Au seuil de 10, la sensibilité et la specificite atteignent 88% pour la depression majeure." },
+          { name: "Consulter si score eleve ou reponse positive à la question 9", text: "Si la question 9 (pensees de mort ou d'auto-agression) est cotee 1 ou plus, ou si le score total est supérieur ou egal à 10, consulter sans delai un medecin generaliste ou un psychologue. En cas de detresse aigue, appeler le 3114 (prevention suicide, gratuit, 24h/24)." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

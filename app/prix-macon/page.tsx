@@ -5,6 +5,8 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import VillesLinks from "../components/VillesLinks";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
+import CTAMonDevisMinute from "../components/CTAMonDevisMinute";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/prix-macon" },
@@ -119,6 +121,17 @@ export default function Page() {
       </section>
 
       <VillesLinks metierSlug="/prix-macon" />
+
+      <HowToJsonLd
+        name="Estimer le prix d'une intervention de macon"
+        steps={[
+          { name: "Choisir la prestation", text: "Sélectionner parmi les 10 types de travaux : mur en parpaings (50-80 EUR/m2), dalle beton (60-120 EUR/m2), chape (25-40 EUR/m2), terrasse beton (80-150 EUR/m2), ravalement de facade (30-100 EUR/m2), ouverture dans un mur porteur (1 500-4 000 EUR forfait), etc." },
+          { name: "Saisir la surface", text: "Indiquer la surface en m2 pour la plupart des prestations (ex : 50 m2 de mur en parpaings, 20 m2 de dalle beton, 80 m2 de ravalement). Pour une ouverture dans un mur porteur, c'est un forfait independant de la surface." },
+          { name: "Sélectionner la region", text: "Appliquer le coefficient : Ile-de-France (+25 %), grandes villes (+10 %), province (référence), rural (-10 %). Ex : mur parpaings 50 m2 en province = 2 500 à 4 000 EUR, en Ile-de-France = 3 125 à 5 000 EUR." },
+          { name: "Lire la fourchette et la TVA", text: "La main d'oeuvre représente 60 à 70 % du total en maconnerie. Les travaux de rénovation dans un logement de plus de 2 ans beneficient d'une TVA à 10 %. L'isolation par l'exterieur peut ouvrir droit à la TVA à 5,5 % et à MaPrimeRenov'." },
+        ]}
+      />
+
       <Faq items={FAQ_ITEMS} />
 
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
@@ -141,6 +154,12 @@ export default function Page() {
           .
         </p>
       </section>
+
+      <CTAMonDevisMinute
+        campaign="prix-macon"
+        variant="devis"
+        guide={{ href: "/guides/chiffrer-un-devis-btp", label: "Chiffrer un devis BTP sans se planter" }}
+      />
 
       <RelatedCalculators currentSlug="/prix-macon" />
     </div>

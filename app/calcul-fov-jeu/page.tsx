@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-fov-jeu" },
@@ -283,6 +284,16 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      <HowToJsonLd
+        name="Convertir son FOV entre ratios d'ecran"
+        steps={[
+          { name: "Choisir le type de FOV source et la valeur", text: "Sélectionner HFOV (angle horizontal, ex. 90 degrés sur CS2 en 16:9) ou VFOV (angle vertical). Saisir la valeur en degrés et le ratio d'ecran source (4:3, 16:9, 21:9, 32:9...)." },
+          { name: "Sélectionner le ratio cible et le mode de scaling", text: "Choisir le ratio d'ecran cible et le mode : Hor+ (le HFOV augmente avec la largeur de l'ecran, mode le plus courant) ou Vert- (le VFOV reste fixe, comme Fortnite)." },
+          { name: "Appliquer la conversion trigonometrique", text: "Formule Hor+ : HFOV_cible = 2 x atan(tan(HFOV/2) x ratio_cible / ratio_source). Exemple : 90 degrés en 16:9 donne environ 110 degrés en 21:9." },
+          { name: "Entrer le FOV obtenu dans les options du jeu", text: "Lire le HFOV et le VFOV cibles en degrés. Entrer cette valeur dans les paramètres graphiques du jeu (CS2, Valorant, Apex Legends...) pour une vision correctement calibree sur le nouvel ecran." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-fov-jeu" />

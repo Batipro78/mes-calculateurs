@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-racine-carree" },
@@ -141,6 +142,16 @@ export default function Page() {
           </div>
         </section>
       ))}
+
+      <HowToJsonLd
+        name="Calculer une racine carree"
+        steps={[
+          { name: "Saisir le nombre", text: "Entrer le nombre dont on veut la racine carree. Seuls les nombres positifs ou nuls ont une racine carree réelle (la racine de 0 vaut 0)." },
+          { name: "Vérifier si c'est un carre parfait", text: "Comparer le nombre aux carres parfaits : 1, 4, 9, 16, 25, 36, 49, 64, 81, 100... Si c'est un carre parfait, la racine est un entier exact (ex. racine de 144 = 12)." },
+          { name: "Encadrer entre deux carres parfaits", text: "Pour un nombre non parfait (ex. 50), identifier que 49 < 50 < 64, donc la racine de 50 est comprise entre 7 et 8. Comme 50 est très proche de 49, la racine est voisine de 7." },
+          { name: "Affiner et vérifier", text: "Tester 7,07^2 = 49,98 (très proche de 50). Vérifier en elevant le résultat au carre pour retrouver le nombre de depart. La racine de 50 vaut environ 7,071." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

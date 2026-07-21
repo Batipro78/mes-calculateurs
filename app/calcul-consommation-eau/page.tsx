@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-consommation-eau" },
@@ -183,6 +184,15 @@ export default function Page() {
           Mis a jour le 8 avril 2026
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer son besoin quotidien en eau"
+        steps={[
+          { name: "Saisir le poids corporel", text: "Entrer le poids en kg. La formule de base s'applique : besoin minimal = 33 ml x poids (kg). Exemple : 70 kg = 2.31 L/jour. Ce volume correspond à une personne sedentaire en climat tempere." },
+          { name: "Indiquer le niveau d'activité et le climat", text: "Ajouter les bonus selon le profil : activité moderee +0.5 L, athlete ou travail physique +1.2 L, chaleur ou climat tropical +0.5 à +1 L, grossesse +300 ml, allaitement +700 ml." },
+          { name: "Lire le besoin total en litres et en verres et la repartition sur la journee", text: "Le résultat est exprime en litres et en nombre de verres de 250 ml. Le calculateur propose une repartition sur la journee (matin, midi, après-midi, soir) pour faciliter l'hydratation reguliere." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

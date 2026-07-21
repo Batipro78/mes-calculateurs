@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-salaire-alternant" },
@@ -261,6 +262,16 @@ export default function Page() {
           </div>
         </div>
       </section>
+
+      <HowToJsonLd
+        name="Simuler le salaire d'un alternant"
+        steps={[
+          { name: "Choisir le type de contrat", text: "Sélectionner le contrat d'apprentissage (16-29 ans, vise un diplome d'État : CAP, BTS, licence, master) ou de professionnalisation (tous âges, vise une qualification pro CQP ou titre RNCP). Le type de contrat determine la grille de remuneration applicable." },
+          { name: "Sélectionner l'âge et l'année (apprentissage) ou le niveau (professionnalisation)", text: "Pour l'apprentissage, choisir la tranche d'âge (moins de 18 ans, 18-20 ans, 21-25 ans, 26 ans et plus) et l'année de contrat (1ere, 2eme, 3eme). Exemple : 21 ans en 2eme année = 61% du SMIC soit 1 112 EUR brut en 2026. Pour la professionnalisation, sélectionner l'âge et le niveau (sans bac ou bac pro et plus)." },
+          { name: "Calculer le salaire brut à partir du pourcentage SMIC", text: "Le simulateur applique le pourcentage de la grille officielle au SMIC 2026 (1 823 EUR brut/mois). Les taux vont de 27% (492 EUR, moins de 18 ans en 1ere année d'apprentissage) à 100% (1 823 EUR, 26 ans et plus)." },
+          { name: "Obtenir le salaire net après reforme mars 2025", text: "Si le brut depasse 50% du SMIC (912 EUR), la CSG (9,2%) et la CRDS (0,5%) s'appliquent sur la part excedentaire depuis le 1er mars 2025, ce qui donne un net d'environ 78% du brut au-dessus du seuil, soit jusqu'à 115 EUR de moins par mois." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

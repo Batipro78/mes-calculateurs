@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-moyenne" },
@@ -168,6 +169,16 @@ export default function Page() {
           exceptionnelles (souvent 18/20 et plus).
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer une moyenne ponderee avec coefficients"
+        steps={[
+          { name: "Saisir les notes et leurs coefficients", text: "Pour chaque matiere, entrer la note (barème /20, /10 ou /100) et le coefficient associe. Exemple : Maths 14/20 coeff. 5, Francais 12/20 coeff. 4, Sport 16/20 coeff. 2." },
+          { name: "Multiplier chaque note par son coefficient", text: "Chaque note est ponderee par son coefficient : 14 x 5 = 70, 12 x 4 = 48, 16 x 2 = 32. La somme des produits est ici 150. Une note elevee dans une matiere à faible coefficient pese peu sur la moyenne finale." },
+          { name: "Diviser par la somme des coefficients", text: "Additionner les coefficients : 5 + 4 + 2 = 11. Diviser la somme ponderee par ce total : 150 / 11 = 13,64 / 20. C'est la moyenne ponderee finale, arrondie au centieme par convention." },
+          { name: "Vérifier la mention eventuelle au bac", text: "Pour le bac, les coefficients officiels sont : specialite coeff. 16, philosophie coeff. 8, Grand oral coeff. 10. Les seuils de mention : Passable 10, Assez Bien 12, Bien 14, Très Bien 16 sur 20." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-moyenne" />

@@ -4,6 +4,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import Faq, { FaqItem } from "../components/Faq";
 import CTAMonDevisMinute from "../components/CTAMonDevisMinute";
 import { SITE_LAST_UPDATED } from "../lib/site-meta";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/modele-devis-btp" },
@@ -201,7 +202,7 @@ export default function Page() {
       </section>
 
       {/* CTA MonDevisMinute */}
-      <CTAMonDevisMinute campaign="modele-devis-btp" variant="devis" />
+      <CTAMonDevisMinute campaign="modele-devis-btp" variant="devis" guide={{ href: "/guides/mentions-obligatoires-devis-batiment", label: "Les mentions obligatoires du devis bâtiment" }} />
 
       {/* GUIDE : ETAPES */}
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6 sm:p-8">
@@ -437,6 +438,16 @@ export default function Page() {
           pour fixer des prix qui tiennent compte de vos cotisations.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Rediger un devis BTP conforme"
+        steps={[
+          { name: "Renseigner l'en-tete et l'identite", text: "Inscrire le nom de l'entreprise, l'adresse, le SIRET, la forme juridique et le numéro de la police d'assurance decennale. Ajouter un numéro de devis unique (ex : 2026-001) et la date d'etablissement." },
+          { name: "Decrire les prestations ligne par ligne", text: "Pour chaque poste, indiquer la designation précise, la quantité, le prix unitaire HT et le taux de TVA : 20 % en neuf, 10 % en rénovation d'un logement de plus de 2 ans, 5,5 % en rénovation energetique." },
+          { name: "Calculer les totaux et l'acompte", text: "Additionner les lignes pour le total HT, calculer la TVA par taux puis en déduire le total TTC. Préciser l'acompte demande à la signature (usage : 30 % du total TTC). Ex : 570 EUR HT + TVA 10 % = 627 EUR TTC, acompte 30 % = 188 EUR." },
+          { name: "Recueillir la signature du client", text: "Prevoir un espace pour la mention manuscrite 'Bon pour accord' avec date et signature. Sans cette signature, le devis n'engage personne et ne constitue pas un contrat opposable en cas de litige." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

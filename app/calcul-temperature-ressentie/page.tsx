@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-temperature-ressentie" },
@@ -133,6 +134,15 @@ export default function Page() {
           indicatif et ne remplace pas les bulletins de vigilance de Meteo-France.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer la température ressentie (indice Humidex)"
+        steps={[
+          { name: "Saisir la température de l'air en degrés Celsius", text: "Entrer la température affichee par le thermometre (air sec). L'indice Humidex est pertinent principalement au-dessus de 25 degrés Celsius en période de chaleur estivale." },
+          { name: "Renseigner le taux d'humidite relative (%)", text: "Indiquer l'humidite relative de l'air (0 à 100%). Plus l'air est humide, moins la transpiration s'evapore et plus la chaleur reste piegee dans le corps. Un taux supérieur à 60% amplifie fortement la sensation de chaleur." },
+          { name: "Lire l'indice Humidex et le niveau de danger", text: "Formule : Humidex = T + 0,5555 x (e - 10), ou e est la pression de vapeur d'eau. Exemple : 34 degrés C avec 55% d'humidite -> Humidex environ 45. Niveaux : moins de 30 = confortable ; 30-39 = inconfort ; 40-45 = inconfort intense ; 46-53 = danger (coup de chaleur) ; 54 et plus = danger extreme." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

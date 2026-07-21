@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-prestation-compensatoire" },
@@ -135,6 +136,16 @@ export default function Page() {
           beneficiaire. Le choix de la forme a donc un impact fiscal direct.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Estimer la prestation compensatoire au divorce"
+        steps={[
+          { name: "Saisir les revenus et la durée du mariage", text: "Entrer le revenu mensuel net de chaque conjoint et la durée du mariage en années. L'écart de revenus annuel est la base commune des 3 méthodes de calcul." },
+          { name: "Calculer avec la méthode Depondt (CA Paris)", text: "Formule : (écart annuel x durée x 0,4) / 2. Ex. écart 1 200 EUR/mois pendant 15 ans : (14 400 x 15 x 0,4) / 2 = 43 200 EUR." },
+          { name: "Comparer les 3 méthodes", text: "La méthode moyenne (écart mensuel x 12 x durée x 0,5) et la méthode esperance de vie (integrant l'âge et l'esperance restante) donnent des fourchettes complémentaires pour la negociation." },
+          { name: "Lire l'estimation et consulter un avocat", text: "Le simulateur affiche un montant indicatif. Ce capital peut etre verse en une fois ou echelonne sur 8 ans maximum. Seul le juge fixe le montant definitif selon l'article 271 du Code civil." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

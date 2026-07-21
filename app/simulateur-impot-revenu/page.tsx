@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-impot-revenu" },
@@ -268,6 +269,16 @@ export default function Page() {
           </li>
         </ul>
       </section>
+
+      <HowToJsonLd
+        name="Calculer son impôt sur le revenu 2026"
+        steps={[
+          { name: "Saisir le revenu net imposable et la situation familiale", text: "Indiquer le revenu net imposable annuel (après abattement de 10% sur les salaires, plafonne à 14 171 EUR) et la composition du foyer : celibataire = 1 part, couple = 2 parts, +0,5 part par enfant (1er et 2e), +1 part à partir du 3e." },
+          { name: "Calculer le quotient familial", text: "Le revenu net imposable est divise par le nombre de parts. Exemple : un couple avec 2 enfants (3 parts) ayant 60 000 EUR de revenu imposable obtient un quotient de 20 000 EUR, place entierement dans la tranche à 11%." },
+          { name: "Appliquer le barème progressif 2026 par tranche", text: "Tranches 2026 : 0% jusqu'à 11 497 EUR, 11% de 11 497 à 29 315 EUR, 30% de 29 315 à 83 823 EUR, 41% de 83 823 à 180 294 EUR, 45% au-dela. Le résultat est multiplie par le nombre de parts pour obtenir l'impôt brut." },
+          { name: "Appliquer la décote et lire le résultat", text: "Si l'impôt brut est inférieur à 1 929 EUR (celibataire) ou 3 191 EUR (couple), la décote reduit le montant final. Le simulateur affiche l'impôt net à payer, la TMI (tranche la plus haute atteinte) et le taux moyen effectif." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

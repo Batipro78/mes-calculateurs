@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-plus-value-immobiliere" },
@@ -127,6 +128,16 @@ export default function Page() {
           nettement plus lourde.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer l'impôt sur la plus-value immobiliere"
+        steps={[
+          { name: "Calculer le prix d'achat corrige", text: "Ajouter au prix d'achat les frais d'acquisition (forfait 7,5 % ou frais réels) et les travaux (forfait 15 % du prix d'achat si detention supérieure à 5 ans, ou montant réel sur factures). Ex. achat 200 000 EUR + 15 000 frais + 30 000 travaux = 245 000 EUR." },
+          { name: "Calculer la plus-value brute", text: "Soustraire le prix d'achat corrige du prix de vente. Ex. vente 320 000 EUR - prix corrige 245 000 EUR = 75 000 EUR de plus-value brute." },
+          { name: "Appliquer les abattements pour durée de detention", text: "IR : 6 % par an de la 6e à la 21e année, puis 4 % la 22e (exonération totale à 22 ans). PS : 1,65 % par an de la 6e à la 21e année, puis 9 % par an jusqu'à la 30e année (exonération totale à 30 ans)." },
+          { name: "Calculer l'impôt et la surtaxe eventuelle", text: "Impôt = plus-value nette IR x 19 % + plus-value nette PS x 17,2 %. Si la plus-value nette depasse 50 000 EUR, ajouter la surtaxe progressive de 2 % à 6 %." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

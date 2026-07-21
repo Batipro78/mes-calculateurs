@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-revenus-fonciers" },
@@ -159,6 +160,16 @@ export default function Page() {
           justifiees sont admises.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer l'imposition de ses revenus fonciers"
+        steps={[
+          { name: "Saisir les loyers bruts annuels", text: "Entrer le total des loyers percus dans l'année en EUR. Si les loyers sont inferieurs à 15 000 EUR, le régime micro-foncier (abattement 30%) est accessible ; au-dela ou sur option, le régime réel s'applique." },
+          { name: "Comparer micro-foncier et régime réel", text: "Micro-foncier : abattement forfaitaire de 30% sur les loyers bruts, sans justificatif. Régime réel : déduire taxe fonciere, intérêts d'emprunt, travaux, assurance et frais de gestion. Le réel est plus avantageux si les charges réelles depassent 30% des loyers." },
+          { name: "Appliquer la TMI et les prelevements sociaux", text: "Le revenu net impose est soumis à la tranche marginale d'imposition (11, 30, 41 ou 45%) plus 17,2% de prelevements sociaux. Exemple : TMI 30% + PS 17,2% = taux effectif de 47,2% sur le revenu foncier net." },
+          { name: "Identifier le deficit foncier", text: "En régime réel, si les charges (hors intérêts d'emprunt) depassent les loyers, le deficit s'impute sur le revenu global jusqu'à 10 700 EUR par an, reduisant directement l'impôt sur le revenu. L'exces est reportable 10 ans sur les revenus fonciers." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

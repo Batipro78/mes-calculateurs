@@ -152,8 +152,8 @@ export default function Page() {
       <HowToJsonLd
         name="Calculer la puissance de sa climatisation"
         steps={[
-          { name: "Mesurer le volume", text: "Multiplier la surface de la piece par la hauteur sous plafond pour obtenir le volume en metres cubes." },
-          { name: "Appliquer le ratio", text: "Compter environ 100 watts de puissance froid par metre carre pour une isolation standard et un plafond de 2,5 metres." },
+          { name: "Mesurer le volume", text: "Multiplier la surface de la piece par la hauteur sous plafond pour obtenir le volume en mètres cubes." },
+          { name: "Appliquer le ratio", text: "Compter environ 100 watts de puissance froid par mètre carre pour une isolation standard et un plafond de 2,5 mètres." },
           { name: "Ajuster", text: "Majorer selon l'isolation, l'exposition au soleil, l'etage sous les toits et le nombre d'occupants." },
         ]}
       />

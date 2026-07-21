@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 // Prose en chaines JS (guillemets doubles) pour eviter les soucis d'apostrophe.
 const SECTIONS: { title: string; paras: string[] }[] = [
@@ -137,6 +138,15 @@ export default function Page() {
           </div>
         </section>
       ))}
+
+      <HowToJsonLd
+        name="Calculer la durée entre deux dates"
+        steps={[
+          { name: "Saisir la date de debut et la date de fin", text: "Entrer la date de debut et la date de fin dans les champs du calculateur. Par convention, le calcul est exclusif : du 1er au 2 d'un mois = 1 jour." },
+          { name: "Obtenir le nombre exact de jours calendaires", text: "Le calculateur soustrait la date de debut de la date de fin en tenant compte des années bissextiles (29 février) pour un decompte précis." },
+          { name: "Lire les jours ouvres et les equivalences", text: "Le résultat s'affiche en jours calendaires, jours ouvres (lundi-vendredi hors feries), semaines, mois et années. Utile pour un preavis, une echeance de contrat ou le calcul de l'âge exact." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-duree-entre-dates" />

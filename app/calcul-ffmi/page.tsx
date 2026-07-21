@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-ffmi" },
@@ -299,6 +300,16 @@ export default function Page() {
           </table>
         </div>
       </section>
+
+      <HowToJsonLd
+        name="Calculer son FFMI (indice de masse maigre)"
+        steps={[
+          { name: "Saisir le poids, la taille et le taux de masse grasse", text: "Entrer le poids en kg, la taille en mètres et le taux de masse grasse en pourcentage (mesure par impedancemetrie, pince à plis cutanes ou DEXA scan). Exemple : 80 kg, 1,80 m, 15 % MG." },
+          { name: "Calculer la masse maigre", text: "Masse maigre (kg) = Poids x (1 - MG / 100). Exemple : 80 x (1 - 0,15) = 68 kg de masse maigre." },
+          { name: "Appliquer la formule FFMI normalisee de Kouri", text: "FFMI brut = Masse maigre / Taille^2. Puis FFMI normalise = FFMI brut + 6,1 x (1,8 - Taille). Exemple : 68 / 1,80^2 = 20,99 ; normalise = 20,99 + 0 = 20,99." },
+          { name: "Situer le niveau musculaire dans l'echelle", text: "Hommes : FFMI < 18 = maigre, 19-21 = intermediaire, 21-23 = avance, 23-25 = très avance. Au-dela de 25 on approche la limite naturelle ; au-dela de 26,5 l'assistance pharmacologique est probable." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-ffmi" />

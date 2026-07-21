@@ -134,11 +134,11 @@ export default function Page() {
       </section>
 
       <HowToJsonLd
-        name="Calculer le cout d'une climatisation"
+        name="Calculer le coût d'une climatisation"
         steps={[
           { name: "Relever la puissance", text: "Noter la puissance froid de la climatisation (en watts ou en BTU) et son coefficient d'efficacite EER." },
-          { name: "Calculer la consommation", text: "Diviser la puissance froid par l'EER pour obtenir la puissance electrique, puis multiplier par le nombre d'heures d'utilisation." },
-          { name: "Estimer le cout", text: "Multiplier la consommation en kilowattheures par le prix du kilowattheure de votre contrat." },
+          { name: "Calculer la consommation", text: "Diviser la puissance froid par l'EER pour obtenir la puissance électrique, puis multiplier par le nombre d'heures d'utilisation." },
+          { name: "Estimer le coût", text: "Multiplier la consommation en kilowattheures par le prix du kilowattheure de votre contrat." },
         ]}
       />
 

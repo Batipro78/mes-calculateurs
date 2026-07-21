@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-dca" },
@@ -171,6 +172,15 @@ export default function Page() {
           financier avant d&apos;investir.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Simuler un investissement DCA"
+        steps={[
+          { name: "Choisir l'actif et la date de debut", text: "Sélectionner le S&P 500 (rendement historique moyen ~10 %/an sur 50 ans), le CAC 40 (~7 %/an hors dividendes reinvestis) ou le Bitcoin (très volatil) et definir la date de debut de l'investissement (ex. janvier 2010)." },
+          { name: "Definir le montant mensuel investi", text: "Entrer la somme investie chaque mois (ex. 150 EUR) ; le DCA achete plus de parts quand les prix sont bas et moins quand ils sont hauts, lissant le prix d'achat moyen sans necessiter de timer le marche." },
+          { name: "Lire la valeur finale et le gain net", text: "Le simulateur compare le total investi (mensualité x nombre de mois) à la valeur actuelle du portefeuille et calcule le gain net, la performance annualisee et le multiplicateur du capital ; les performances passees ne garantissent pas les résultats futurs." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/simulateur-dca" />

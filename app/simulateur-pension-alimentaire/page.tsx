@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-pension-alimentaire" },
@@ -204,6 +205,16 @@ export default function Page() {
       </div>
 
       <AdSlot adSlot="0987654321" adFormat="rectangle" className="my-8" />
+
+      <HowToJsonLd
+        name="Calculer la pension alimentaire selon le barème Justice"
+        steps={[
+          { name: "Saisir le revenu net mensuel du parent debiteur", text: "Indiquer le revenu net mensuel total : salaires, pensions, allocations, revenus fonciers. Le minimum vital de 648 EUR (RSA socle 2025) est automatiquement deduit avant calcul pour garantir un reste à vivre minimum au parent debiteur." },
+          { name: "Choisir le nombre d'enfants et le type de garde", text: "Sélectionner de 1 à 6 enfants et le type d'hebergement : droit de visite reduit (pourcentage maximal), garde classique (un week-end sur deux, moitie des vacances scolaires) ou garde alternee 50/50 (pourcentage le plus bas car les charges sont partagees)." },
+          { name: "Appliquer le barème du Ministere de la Justice", text: "Formule : (Revenu net - 648 EUR) x Pourcentage par enfant. Exemples : 1 enfant en garde classique = x 13,5% ; 2 enfants en garde alternee = x 7,8% x 2 ; 3 enfants en garde classique = x 10% x 3. Sur 2 500 EUR de revenu, 1 enfant en garde classique = 250 EUR/mois." },
+          { name: "Lire le montant indicatif par enfant et le total mensuel", text: "Le montant calcule est une estimation basee sur le barème indicatif : le juge aux affaires familiales peut s'en ecarter selon les besoins réels de l'enfant, les charges des deux parents et le niveau de vie avant la separation. La pension est generalement indexee sur l'indice des prix INSEE." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

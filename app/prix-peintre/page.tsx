@@ -5,6 +5,8 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import VillesLinks from "../components/VillesLinks";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
+import CTAMonDevisMinute from "../components/CTAMonDevisMinute";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/prix-peintre" },
@@ -112,6 +114,17 @@ export default function Page() {
       </section>
 
       <VillesLinks metierSlug="/prix-peintre" />
+
+      <HowToJsonLd
+        name="Estimer le prix d'une intervention de peintre"
+        steps={[
+          { name: "Choisir la prestation", text: "Sélectionner parmi les 10 types de travaux : peinture de mur interieur (20-40 EUR/m2), plafond (25-45 EUR/m2), facade (25-60 EUR/m2), boiseries, papier peint, enduit decoratif, lessivage, peinture decorative, etc." },
+          { name: "Calculer et saisir la surface en m2", text: "Mesurer la surface à peindre : longueur du mur x hauteur sous plafond, en deduisant les ouvertures (portes, fenetres). Ex : piece de 15 m2 avec plafond à 2,50 m = environ 60 m2 de murs à peindre." },
+          { name: "Sélectionner la region", text: "Appliquer le coefficient : Ile-de-France (+25 %), grandes villes (+10 %), province (référence), rural (-10 %). L'état du support (fissures, taches) ajoute 20 à 50 %. Ex : 80 m2 de murs en province = 1 600 à 3 200 EUR." },
+          { name: "Vérifier la TVA applicable", text: "Pour un logement de plus de 2 ans ou le peintre fournit les matériaux, la TVA est de 10 % au lieu de 20 %. Si le proprietaire fournit lui-même la peinture, seule la main d'oeuvre beneficie du taux reduit." },
+        ]}
+      />
+
       <Faq items={FAQ_ITEMS} />
 
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">
@@ -134,6 +147,12 @@ export default function Page() {
           .
         </p>
       </section>
+
+      <CTAMonDevisMinute
+        campaign="prix-peintre"
+        variant="devis"
+        guide={{ href: "/guides/taux-tva-travaux-renovation", label: "Quel taux de TVA appliquer sur vos travaux" }}
+      />
 
       <RelatedCalculators currentSlug="/prix-peintre" />
     </div>

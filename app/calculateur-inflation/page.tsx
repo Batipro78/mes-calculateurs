@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
@@ -190,6 +191,16 @@ export default function Page() {
           quotidien mais devastatrice sur le long terme.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer l'impact de l'inflation sur son pouvoir d'achat"
+        steps={[
+          { name: "Saisir le montant et l'année de depart", text: "Entrer le montant initial en EUR et l'année de référence. Exemple : salaire de 2 000 EUR net en 2020." },
+          { name: "Choisir l'année d'arrivee", text: "Sélectionner l'année cible. Le calculateur applique l'indice des prix à la consommation (IPC) publie par l'INSEE pour chaque année intermediaire : 2022 (+5,2 pct), 2023 (+4,9 pct), 2024 (+2,0 pct), 2025 (+1,5 pct)." },
+          { name: "Calculer l'inflation cumulee", text: "L'inflation cumulee se calcule par produit des facteurs annuels (composition), pas par addition. Formule : (1 + r1) x (1 + r2) x ... - 1. Exemple 2020-2025 : (1.01) x (1.015) x (1.052) x (1.049) x (1.02) x (1.015) - 1 = environ 15 pct cumule." },
+          { name: "Lire le montant équivalent et la perte de pouvoir d'achat", text: "Le montant équivalent = montant initial x (1 + inflation cumulee). Exemple : 2 000 EUR en 2020 = environ 2 300 EUR équivalents en 2025. La difference (300 EUR) représente la perte réelle de pouvoir d'achat si le salaire n'a pas augmente de 15 pct." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

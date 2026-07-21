@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 import SourcesMethodo from "../components/SourcesMethodo";
 
 export const metadata: Metadata = {
@@ -208,6 +209,15 @@ export default function Page() {
           en etes, puis utilisez le calcul de calories pour definir votre plan alimentaire.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer ses besoins caloriques journaliers (TDEE)"
+        steps={[
+          { name: "Saisir le sexe, le poids, la taille et l'âge", text: "Ces 4 données alimentent la formule Mifflin-St Jeor : Homme MB = 10 x poids(kg) + 6.25 x taille(cm) - 5 x âge + 5 ; Femme MB = 10 x poids(kg) + 6.25 x taille(cm) - 5 x âge - 161." },
+          { name: "Choisir le niveau d'activité physique", text: "Multiplier le MB par le coefficient d'activité : sedentaire 1.2, legerement actif 1.375, moderement actif 1.55, très actif 1.725, extremement actif 1.9. TDEE = MB x coefficient." },
+          { name: "Definir l'objectif et lire les apports cibles", text: "Perte de poids : TDEE - 250 à 500 kcal/jour. Prise de masse : TDEE + 250 à 500 kcal/jour. Proteines : 1.6 à 2.2 g/kg de poids. Lipides : 25 à 35 pct des calories." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 

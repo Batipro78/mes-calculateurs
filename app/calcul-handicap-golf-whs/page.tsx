@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-handicap-golf-whs" },
@@ -274,6 +275,16 @@ export default function Page() {
           Ce calculateur utilise le système WHS officiel et permet d&apos;estimer votre Index. Pour les cartes officielles enregistrées auprès de la FFGolf, consultez votre compte sur le site officiel de la FFGolf ou votre club. Les résultats ne remplacent pas l&apos;Index officiel.
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Calculer son Index WHS et son handicap de jeu au golf"
+        steps={[
+          { name: "Saisir les cartes de score officielles", text: "Entrer pour chaque carte officielle : le score brut obtenu sur le parcours, le SSS (Course Rating, ex. 72) et le Slope du parcours (95 à 155 ; 113 = standard)." },
+          { name: "Calculer le differentiel de chaque carte", text: "Differentiel = (Score brut - SSS) x 113 / Slope. Exemple : score 82, SSS 72, Slope 130 => (82 - 72) x 113 / 130 = 8,5." },
+          { name: "Calculer l'Index WHS", text: "Sélectionner les N meilleurs differentiels selon le nombre total de cartes : 1 carte (meilleur) - 2,0 sur 3 cartes, 8 meilleurs sur 20+ cartes. Index = moyenne des N meilleurs + ajustement." },
+          { name: "Obtenir le handicap de jeu pour un parcours donne", text: "Handicap de jeu = Index x (Slope / 113) + (SSS - Par). Exemple : Index 18, Slope 125, SSS 73, Par 72 => 18 x (125/113) + 1 = 21. Ce handicap change selon le parcours joue." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-handicap-golf-whs" />

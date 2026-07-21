@@ -7,6 +7,7 @@ import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
 import { ALIMENTS } from "./indiceGlycemiqueCalc";
+import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-indice-glycemique" },
@@ -197,6 +198,16 @@ export default function Page() {
           Mis a jour le 8 avril 2026
         </p>
       </section>
+
+      <HowToJsonLd
+        name="Consulter l'indice glycemique et calculer la charge glycemique"
+        steps={[
+          { name: "Rechercher l'aliment dans le tableau", text: "Utiliser le filtre par catégorie (legumineuses, fruits, cereales, feculents, boissons...) ou la barre de recherche pour trouver l'aliment. Le tableau affiche l'IG et les glucides par portion." },
+          { name: "Identifier le niveau d'IG", text: "IG bas (<=55) : absorption lente, favorable au controle glycemique. IG moyen (56-69) : impact modere. IG eleve (>=70) : pic glycemique rapide. Exemples : lentilles IG 32, riz blanc IG 73, baguette IG 95." },
+          { name: "Calculer la charge glycemique de la portion", text: "CG = (IG x glucides par portion en grammes) / 100. Exemple : pain blanc (IG 70, 30 g de glucides pour 50 g de pain) => CG = (70 x 30) / 100 = 21, impact glycemique eleve." },
+          { name: "Interpréter la CG et adapter les choix alimentaires", text: "CG faible (<=10) : impact minimal. CG moyenne (11-19) : modere. CG elevee (>=20) : associer à des proteines ou fibres pour freiner le pic. Viser une CG journalière totale inférieure à 100." },
+        ]}
+      />
 
       <Faq items={FAQ_ITEMS} />
 
