@@ -94,6 +94,16 @@ export default function RootLayout({
     <html lang="fr">
       <head>
         <meta name="google-adsense-account" content="ca-pub-7951968617097687" />
+        {/* Grow by Mediavine (prerequis Journey). Rendu cote serveur pour que le
+            verificateur d'installation de Grow le voie dans le HTML brut.
+            Exclu des pages /embed/ : elles tournent en iframe sur des sites
+            tiers, leur trafic ne doit pas etre compte comme le notre. */}
+        <script
+          data-grow-initializer=""
+          dangerouslySetInnerHTML={{
+            __html: `!(function(){if(location.pathname.indexOf("/embed/")===0)return;window.growMe||((window.growMe=function(e){window.growMe._.push(e);}),(window.growMe._=[]));var e=document.createElement("script");(e.type="text/javascript"),(e.src="https://faves.grow.me/main.js"),(e.defer=!0),e.setAttribute("data-grow-faves-site-id","U2l0ZTplY2M2MWI4Mi0xMTQ2LTRhOGMtYTBiZC0xYjBjZDUyYTUwZTc=");var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t);})();`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
