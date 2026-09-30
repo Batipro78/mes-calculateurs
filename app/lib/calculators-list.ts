@@ -166,4 +166,11 @@ export const ALL_CALCULATORS: Calculator[] = [
   { slug: "/calculateur-gain-pari", title: "Gain de Pari", emoji: "🎰", color: "from-green-500 to-emerald-600" },
   { slug: "/calculateur-pari-combine", title: "Pari Combine", emoji: "🎲", color: "from-violet-500 to-purple-600" },
   { slug: "/convertisseur-cote-probabilite", title: "Cote / Probabilite", emoji: "📈", color: "from-indigo-500 to-blue-600" },
+  // Articles (guides). En FIN de liste : la recherche du site garde l'ordre a
+  // score egal, un guide place plus haut passerait devant son calculateur.
+  { slug: "/comment-connaitre-sa-tranche-imposition", title: "Guide : connaître sa tranche d'imposition", emoji: "🏛️", color: "from-red-500 to-rose-600" },
+  { slug: "/brut-en-net-quel-pourcentage", title: "Guide : brut en net, quel pourcentage ?", emoji: "💰", color: "from-blue-500 to-indigo-500" },
+  { slug: "/comment-calculer-octroi-de-mer", title: "Guide : calculer l'octroi de mer", emoji: "🏝️", color: "from-blue-500 to-indigo-600" },
+  { slug: "/comment-reconnaitre-un-burn-out", title: "Guide : reconnaître un burn-out", emoji: "🧠", color: "from-violet-600 to-purple-700" },
+  { slug: "/comment-calculer-diametre-cercle", title: "Guide : calculer le diamètre d'un cercle", emoji: "⭕", color: "from-blue-500 to-cyan-600" },
 ];

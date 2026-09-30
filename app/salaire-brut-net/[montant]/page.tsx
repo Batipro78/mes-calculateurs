@@ -437,7 +437,7 @@ export default async function Page({ params }: { params: Promise<{ montant: stri
             </p>
             <p className="text-slate-600 mb-4 leading-relaxed">
               Les cotisations sociales representent la difference entre le brut et le net.
-              Elles financent la Securite sociale, la retraite et l&apos;assurance chomage.
+              Elles regroupent notamment la retraite de base, la retraite complementaire, la CSG et la CRDS.
               Pour un cadre, les cotisations sont plus elevees (25%), ce qui signifie qu&apos;il
               faut un brut de <strong>{fmt2(resultats[1].brut)} EUR</strong> pour obtenir {fmt(value)} EUR net.
             </p>
@@ -451,8 +451,8 @@ export default async function Page({ params }: { params: Promise<{ montant: stri
             </p>
             <p className="text-slate-600 mb-4 leading-relaxed">
               Les cotisations salariales de <strong>{fmt2(principal.cotisations)} EUR</strong> par mois
-              (soit {principal.taux * 100}% du brut) financent votre protection sociale : Securite
-              sociale, retraite, assurance chomage. Pour un cadre, le net sera de{" "}
+              (soit {principal.taux * 100}% du brut) regroupent notamment la retraite de base, la
+              retraite complementaire, la CSG et la CRDS. Pour un cadre, le net sera de{" "}
               <strong>{fmt2(resultats[1].net)} EUR</strong> en raison de cotisations plus elevees.
             </p>
           </>

@@ -23,7 +23,7 @@ const SECTIONS: { title: string; paras: string[] }[] = [
   {
     title: "Du brut au net : ce que retient l'employeur",
     paras: [
-      "Le salaire brut est le montant inscrit en haut de votre fiche de paie et dans votre contrat. Le salaire net, lui, est ce qui arrive reellement sur votre compte. Entre les deux, l'employeur preleve les cotisations sociales salariales : assurance maladie, retraite de base et complementaire, assurance chomage, CSG et CRDS.",
+      "Le salaire brut est le montant inscrit en haut de votre fiche de paie et dans votre contrat. Le salaire net, lui, est ce qui arrive reellement sur votre compte. Entre les deux, l'employeur preleve les cotisations sociales salariales : retraite de base (assurance vieillesse), retraite complementaire, CSG et CRDS.",
       "Ces cotisations representent en moyenne environ 22 % du brut pour un non-cadre du prive, 25 % pour un cadre (qui cotise davantage a la retraite complementaire et a la prevoyance), et environ 15 % dans la fonction publique. Ces taux sont indicatifs : le pourcentage exact depend de votre convention collective, de votre niveau de remuneration et de la mutuelle d'entreprise.",
       "Regle rapide pour estimer : multipliez votre brut par 0,78 pour un non-cadre et par 0,75 pour un cadre. Par exemple, 2 500 EUR brut donnent environ 1 950 EUR net pour un non-cadre.",
     ],
@@ -157,7 +157,7 @@ export default function Page() {
       <Faq items={FAQ_ITEMS} />
 
       <SourcesMethodo
-        methode="Le salaire net est obtenu en deduisant du salaire brut les cotisations sociales salariales (Securite sociale, retraite, chomage, CSG/CRDS), soit environ 22 % pour un non-cadre et 25 % pour un cadre. Le net avant impot devient le net a payer apres prelevement a la source. Les taux appliques sont ceux en vigueur fixes par l'URSSAF."
+        methode="Le salaire net est obtenu en deduisant du salaire brut les cotisations sociales salariales (assurance vieillesse, retraite complementaire, CSG/CRDS), soit environ 22 % pour un non-cadre et 25 % pour un cadre. Le net avant impot devient le net a payer apres prelevement a la source. Les taux appliques par le calculateur sont des taux moyens indicatifs, pas les taux exacts de chaque cotisation."
         sources={[
           { label: "URSSAF - Taux de cotisations sociales", url: "https://www.urssaf.fr/accueil/taux-baremes.html" },
           { label: "Service-Public.fr - Bulletin de paie et salaire", url: "https://www.service-public.fr/particuliers/vosdroits/F559" },

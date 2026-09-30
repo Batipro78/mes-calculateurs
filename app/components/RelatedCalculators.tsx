@@ -2,7 +2,12 @@ import { ALL_CALCULATORS } from "../lib/calculators-list";
 
 
 const RELATED_MAP: Record<string, string[]> = {
-  "/salaire-brut-net": ["/simulateur-impot-revenu", "/indemnite-licenciement", "/calcul-heures-travail", "/calcul-indemnites-kilometriques"],
+  "/salaire-brut-net": ["/brut-en-net-quel-pourcentage", "/simulateur-impot-revenu", "/indemnite-licenciement", "/calcul-heures-travail", "/calcul-indemnites-kilometriques"],
+  "/brut-en-net-quel-pourcentage": ["/salaire-brut-net", "/simulateur-impot-revenu", "/comment-connaitre-sa-tranche-imposition", "/simulateur-salaire-alternant"],
+  "/comment-connaitre-sa-tranche-imposition": ["/simulateur-impot-revenu", "/salaire-brut-net", "/brut-en-net-quel-pourcentage", "/simulateur-micro-entreprise"],
+  "/comment-calculer-octroi-de-mer": ["/calcul-octroi-de-mer", "/calcul-reduction-impot-dom", "/calcul-tva", "/calcul-pourcentage"],
+  "/comment-reconnaitre-un-burn-out": ["/test-burnout-mbi", "/calcul-score-stress", "/test-anxiete-gad7", "/test-depression-phq9"],
+  "/comment-calculer-diametre-cercle": ["/calcul-surface-cercle", "/calcul-volume-cylindre", "/calcul-racine-carree", "/conversion-longueur"],
   "/calcul-tva": ["/calcul-pourcentage", "/frais-de-notaire", "/convertisseur-devises", "/salaire-brut-net", "/verificateur-devis"],
   "/simulateur-pret-immobilier": ["/calcul-taux-endettement", "/frais-de-notaire", "/simulateur-epargne", "/simulateur-impot-revenu", "/simulateur-assurance-emprunteur"],
   "/calcul-pourcentage": ["/calcul-tva", "/salaire-brut-net", "/simulateur-epargne", "/convertisseur-devises"],
@@ -16,7 +21,7 @@ const RELATED_MAP: Record<string, string[]> = {
   "/simulateur-epargne": ["/simulateur-impot-revenu", "/simulateur-pret-immobilier", "/salaire-brut-net", "/convertisseur-devises", "/simulateur-rendement-scpi", "/calcul-interet-compose"],
   "/calcul-heures-travail": ["/salaire-brut-net", "/indemnite-licenciement", "/calcul-indemnites-kilometriques", "/simulateur-impot-revenu"],
   "/calcul-indemnites-kilometriques": ["/calcul-heures-travail", "/salaire-brut-net", "/calcul-consommation-electrique", "/simulateur-impot-revenu"],
-  "/simulateur-impot-revenu": ["/salaire-brut-net", "/simulateur-epargne", "/indemnite-licenciement", "/frais-de-notaire"],
+  "/simulateur-impot-revenu": ["/comment-connaitre-sa-tranche-imposition", "/salaire-brut-net", "/simulateur-epargne", "/indemnite-licenciement", "/frais-de-notaire"],
   "/calcul-date-accouchement": ["/calcul-ovulation", "/calcul-age", "/calcul-imc", "/calcul-heures-travail"],
   "/simulateur-dca": ["/simulateur-epargne", "/calculateur-inflation", "/convertisseur-devises", "/simulateur-impot-revenu"],
   "/calculateur-inflation": ["/salaire-brut-net", "/simulateur-epargne", "/simulateur-dca", "/simulateur-impot-revenu"],
@@ -72,7 +77,7 @@ const RELATED_MAP: Record<string, string[]> = {
   "/simulateur-cout-voiture": ["/calcul-cout-kilometrique", "/calcul-consommation-essence", "/calcul-malus-ecologique", "/simulateur-bonus-ecologique", "/calcul-cote-argus-voiture"],
   "/calcul-cout-kilometrique": ["/simulateur-cout-voiture", "/calcul-indemnites-kilometriques", "/calcul-consommation-essence", "/simulateur-impot-revenu"],
   "/calcul-pension-reversion": ["/simulateur-retraite", "/simulateur-impot-revenu", "/calcul-droits-succession", "/salaire-brut-net"],
-  "/calcul-surface-cercle": ["/calcul-volume-cylindre", "/calcul-surface-peinture", "/calcul-pourcentage", "/calcul-racine-carree"],
+  "/calcul-surface-cercle": ["/comment-calculer-diametre-cercle", "/calcul-volume-cylindre", "/calcul-surface-peinture", "/calcul-pourcentage", "/calcul-racine-carree"],
   "/calcul-volume-cylindre": ["/calcul-surface-cercle", "/calcul-surface-peinture", "/calcul-racine-carree", "/calcul-pourcentage"],
   "/calcul-racine-carree": ["/calcul-pgcd-ppcm", "/calcul-moyenne", "/produit-en-croix", "/calcul-surface-cercle"],
   "/calcul-poids-ideal": ["/calcul-imc", "/calcul-masse-grasse", "/calcul-metabolisme-base", "/calcul-calories"],
@@ -106,7 +111,7 @@ const RELATED_MAP: Record<string, string[]> = {
   "/simulateur-dividendes": ["/simulateur-impot-societe", "/simulateur-impot-revenu", "/simulateur-micro-entreprise", "/calcul-taux-endettement"],
   "/audit-frais-bancaires": ["/calcul-taux-endettement", "/simulateur-credit-conso", "/simulateur-epargne", "/calculateur-budget-survie"],
   "/simulateur-girardin-industriel": ["/calcul-reduction-impot-dom", "/simulateur-denormandie", "/simulateur-impot-revenu", "/calcul-amortissement-lmnp"],
-  "/calcul-octroi-de-mer": ["/calcul-reduction-impot-dom", "/calcul-tva", "/calcul-exoneration-lodeom", "/convertisseur-devises"],
+  "/calcul-octroi-de-mer": ["/comment-calculer-octroi-de-mer", "/calcul-reduction-impot-dom", "/calcul-tva", "/calcul-exoneration-lodeom", "/convertisseur-devises"],
   "/calcul-exoneration-lodeom": ["/salaire-brut-net", "/calcul-octroi-de-mer", "/simulateur-impot-societe", "/simulateur-micro-entreprise"],
   "/simulateur-denormandie": ["/simulateur-girardin-industriel", "/calcul-amortissement-lmnp", "/calcul-rentabilite-locative", "/frais-de-notaire"],
   "/calcul-reduction-impot-dom": ["/simulateur-girardin-industriel", "/simulateur-impot-revenu", "/calcul-octroi-de-mer", "/calcul-exoneration-lodeom"],
@@ -151,7 +156,7 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calcul-dette-sommeil": ["/calcul-cycles-sommeil", "/calcul-besoin-sommeil", "/calcul-score-stress", "/test-burnout-mbi"],
   "/test-depression-phq9": ["/test-anxiete-gad7", "/test-burnout-mbi", "/calcul-score-stress", "/calcul-besoin-sommeil"],
   "/test-anxiete-gad7": ["/test-depression-phq9", "/test-burnout-mbi", "/calcul-score-stress", "/calcul-dette-sommeil"],
-  "/test-burnout-mbi": ["/test-depression-phq9", "/test-anxiete-gad7", "/calcul-score-stress", "/calcul-dette-sommeil"],
+  "/test-burnout-mbi": ["/comment-reconnaitre-un-burn-out", "/test-depression-phq9", "/test-anxiete-gad7", "/calcul-score-stress", "/calcul-dette-sommeil"],
   "/calcul-cote-argus-voiture": ["/simulateur-cout-voiture", "/calcul-cout-trajet-voiture", "/calcul-malus-ecologique", "/calcul-vignette-critair"],
   "/calcul-cout-trajet-voiture": ["/calcul-consommation-essence", "/calcul-indemnites-kilometriques", "/calcul-cout-kilometrique", "/simulateur-cout-voiture", "/calcul-cote-argus-voiture"],
   "/prix-travaux-maison": ["/modele-devis-btp", "/prix-macon", "/prix-electricien", "/prix-plombier", "/verificateur-devis"],
@@ -195,7 +200,7 @@ export default function RelatedCalculators({ currentSlug }: RelatedCalculatorsPr
               {calc!.title}
             </p>
             <div className="mt-2 text-xs font-medium text-blue-600 flex items-center gap-1">
-              Calculer
+              {calc!.title.startsWith("Guide") ? "Lire" : "Calculer"}
               <svg className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>

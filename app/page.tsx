@@ -1422,6 +1422,51 @@ const outils = [
     couleur: "from-sky-500 to-blue-600",
     tag: "Nouveau",
   },
+  {
+    titre: "Connaître sa tranche d'imposition",
+    description:
+      "La tranche se lit sur le quotient familial, pas sur le revenu total. Méthode en trois étapes, barème 2026 et exemples chiffrés.",
+    href: "/comment-connaitre-sa-tranche-imposition",
+    icone: "🏛️",
+    couleur: "from-red-500 to-rose-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Brut en net : quel pourcentage ?",
+    description:
+      "Environ 22 % à retirer pour un non-cadre, 25 % pour un cadre, 15 % dans la fonction publique. Exemples et chemin inverse.",
+    href: "/brut-en-net-quel-pourcentage",
+    icone: "💰",
+    couleur: "from-blue-500 to-indigo-500",
+    tag: "Guide",
+  },
+  {
+    titre: "Calculer l'octroi de mer",
+    description:
+      "La formule pas à pas, la valeur retenue, où trouver le taux de votre produit et deux exemples chiffrés.",
+    href: "/comment-calculer-octroi-de-mer",
+    icone: "🏝️",
+    couleur: "from-blue-500 to-indigo-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Reconnaître un burn-out",
+    description:
+      "Les signes décrits par la HAS et l'INRS, la différence avec la dépression et les professionnels à consulter.",
+    href: "/comment-reconnaitre-un-burn-out",
+    icone: "🧠",
+    couleur: "from-violet-600 to-purple-700",
+    tag: "Guide",
+  },
+  {
+    titre: "Calculer le diamètre d'un cercle",
+    description:
+      "Trois méthodes : à partir du rayon, du périmètre ou de l'aire. Exemples, tableau de correspondance et erreurs à éviter.",
+    href: "/comment-calculer-diametre-cercle",
+    icone: "⭕",
+    couleur: "from-blue-500 to-cyan-600",
+    tag: "Guide",
+  },
 ];
 
 export default function Home() {
@@ -1530,7 +1575,7 @@ export default function Home() {
               {outil.description}
             </p>
             <div className="mt-4 text-sm font-medium text-blue-600 flex items-center gap-1">
-              Calculer
+              {outil.tag === "Guide" ? "Lire" : "Calculer"}
               <svg
                 className="w-4 h-4 group-hover:translate-x-1 transition-transform"
                 fill="none"

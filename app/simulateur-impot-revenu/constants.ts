@@ -4,8 +4,12 @@
 //
 // Impôt 2026 sur les revenus 2025 (loi de finances 2026, revalorisation +0,9 %).
 // Source : service-public.gouv.fr F1419 (barème), F34328 (décote), F1989 (abattement).
-// A chaque changement de barème : regenerer aussi le visuel
-// public/images/bareme-impot-revenu-2026.png (scripts/visuels + npm run visuels).
+// A chaque changement de barème :
+//  - regenerer le visuel public/images/bareme-impot-revenu-2026.webp (npm run visuels) ;
+//  - mettre a jour les textes de page.tsx (tableau, FAQ, etapes) ;
+//  - refaire les exemples chiffres de l'article
+//    app/comment-connaitre-sa-tranche-imposition/page.tsx : son tableau suit
+//    TRANCHES tout seul, mais ses exemples et sa FAQ sont ecrits en dur.
 export const TRANCHES = [
   { min: 0, max: 11600, taux: 0 },
   { min: 11600, max: 29579, taux: 0.11 },
