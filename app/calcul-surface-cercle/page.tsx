@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import HowToJsonLd from "../components/HowToJsonLd";
+import Visuel from "../components/Visuel";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-surface-cercle" },
@@ -95,6 +96,12 @@ export default function Page() {
       <p className="text-slate-500 mb-8 ml-[52px]">Calculez l&apos;aire, le perimetre, le rayon et le diametre d&apos;un cercle.</p>
       <CalculateurSurfaceCercle />
       <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
+      <Visuel
+        fichier="formule-aire-perimetre-cercle"
+        alt="Schéma d'un cercle avec son rayon r et son diamètre d, et les formules de l'aire (π × r²) et du périmètre (2 × π × r)"
+        legende="Le rayon r va du centre au bord du cercle ; le diamètre d le traverse de part en part et vaut deux fois le rayon."
+        className="mt-12"
+      />
       <section className="mt-12 bg-white rounded-2xl border border-slate-200 p-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">Tableau de surfaces</h2>
         <div className="overflow-x-auto">

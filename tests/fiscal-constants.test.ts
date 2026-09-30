@@ -13,15 +13,15 @@ import {
 describe("barème IR (simulateur-impot-revenu)", () => {
   it("a 5 tranches avec les bons seuils 2026", () => {
     expect(TRANCHES).toHaveLength(5);
-    expect(TRANCHES[0]).toMatchObject({ min: 0, max: 11497, taux: 0 });
-    expect(TRANCHES[4]).toMatchObject({ min: 180294, max: Infinity, taux: 0.45 });
+    expect(TRANCHES[0]).toMatchObject({ min: 0, max: 11600, taux: 0 });
+    expect(TRANCHES[4]).toMatchObject({ min: 181917, max: Infinity, taux: 0.45 });
   });
 });
 
 describe("barème IR (micro-entreprise, taux en %)", () => {
   it("partage les mêmes seuils mais des taux en pourcentage", () => {
     expect(TRANCHES_IR).toHaveLength(5);
-    expect(TRANCHES_IR[1]).toMatchObject({ min: 11497, taux: 11 });
+    expect(TRANCHES_IR[1]).toMatchObject({ min: 11600, taux: 11 });
     expect(TRANCHES_IR[4]).toMatchObject({ max: Infinity, taux: 45 });
   });
 });

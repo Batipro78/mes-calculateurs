@@ -7,6 +7,7 @@ import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
 import HowToJsonLd from "../components/HowToJsonLd";
+import Visuel from "../components/Visuel";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-octroi-de-mer" },
@@ -123,6 +124,12 @@ export default function Page() {
             <li className="font-bold text-blue-700">Cout rendu La Reunion : <strong>1 235 EUR</strong> (majoration 23,5 %)</li>
           </ul>
         </div>
+        <Visuel
+          fichier="exemple-calcul-octroi-de-mer"
+          alt="Exemple de calcul de l'octroi de mer à La Réunion : 1 000 € de marchandise, 125 € d'octroi de mer, 25 € d'octroi de mer régional et 85 € de TVA, soit 1 235 € de coût rendu"
+          legende="Le même exemple en image : 1 000 € de marchandise importée à La Réunion, avec un octroi de mer de 12,5 %, un octroi de mer régional de 2,5 % et une TVA de 8,5 %."
+          className="mt-6 mb-6"
+        />
 
         <h3 className="font-bold text-slate-800 mt-6 mb-2">Franchises applicables</h3>
         <div className="grid gap-4 sm:grid-cols-2 mb-4">

@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import HowToJsonLd from "../components/HowToJsonLd";
+import Visuel from "../components/Visuel";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/convertisseur-monnaie-jeu" },
@@ -58,6 +59,13 @@ export default function Page() {
       <ConvertisseurMonnaieJeu />
 
       <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
+
+      <Visuel
+        fichier="monnaies-jeux-video-par-jeu"
+        alt="Les monnaies virtuelles des jeux vidéo et leur jeu : V-bucks (Fortnite), RP (League of Legends), Apex Coins, Robux (Roblox), COD Points, FIFA Points, VP (Valorant), Minecoins (Minecraft)"
+        legende="Chaque jeu a sa propre monnaie virtuelle, achetée en euros dans la boutique officielle du jeu."
+        className="mt-12"
+      />
 
       <section className="mt-12 bg-white rounded-2xl border border-slate-200 p-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">

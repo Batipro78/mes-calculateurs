@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import HowToJsonLd from "../components/HowToJsonLd";
+import Visuel from "../components/Visuel";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/test-burnout-mbi" },
@@ -105,6 +106,12 @@ export default function Page() {
             </p>
           </div>
         </div>
+        <Visuel
+          fichier="test-burnout-mbi-3-dimensions"
+          alt="Les 3 dimensions du test de burnout MBI : épuisement émotionnel (9 questions), dépersonnalisation (5 questions) et accomplissement personnel (8 questions)"
+          legende="Le MBI compte 22 questions notées de 0 (jamais) à 6 (chaque jour), réparties en trois dimensions."
+          className="mt-8"
+        />
       </section>
 
       <section className="mt-12 bg-violet-50 border border-violet-200 rounded-2xl p-8">

@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",
-    "indexing:bing": "node scripts/indexnow.mjs"
+    "indexing:bing": "node scripts/indexnow.mjs",
+    "visuels": "node --experimental-strip-types scripts/visuels.mjs"
   },
   "dependencies": {
     "@types/leaflet": "^1.9.21",

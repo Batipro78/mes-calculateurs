@@ -4,7 +4,7 @@ import SimulateurImpot from "../SimulateurImpot";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
-import { TRANCHES } from "../constants";
+import { TRANCHES, DECOTE, ABATTEMENT_10 } from "../constants";
 
 const REVENUS = [
   15000, 18000, 20000, 22000, 25000, 28000, 30000, 32000, 35000, 38000,
@@ -17,7 +17,7 @@ const REVENUS = [
 
 
 function calculImpot(revenuNet: number, nbParts: number) {
-  const abattement = Math.max(495, Math.min(revenuNet * 0.1, 14171));
+  const abattement = Math.max(ABATTEMENT_10.min, Math.min(revenuNet * 0.1, ABATTEMENT_10.max));
   const revenuImposable = Math.max(0, revenuNet - abattement);
   const quotient = revenuImposable / nbParts;
 
@@ -42,14 +42,9 @@ function calculImpot(revenuNet: number, nbParts: number) {
 
   // Decote 2026
   let decote = 0;
-  if (nbParts <= 1.5) {
-    if (impotBrut < 1929) {
-      decote = Math.max(0, 873 - impotBrut * 0.4525);
-    }
-  } else {
-    if (impotBrut < 3191) {
-      decote = Math.max(0, 1444 - impotBrut * 0.4525);
-    }
+  const d = nbParts <= 1.5 ? DECOTE.seul : DECOTE.couple;
+  if (impotBrut <= d.seuil) {
+    decote = Math.max(0, d.forfait - impotBrut * DECOTE.taux);
   }
 
   const impotNet = Math.max(0, impotBrut - decote);
@@ -212,7 +207,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
           <p className="text-sm text-slate-400 mb-1">Abattement 10%</p>
           <p className="text-2xl font-extrabold text-slate-800">{fmt(Math.round(result.abattement))} EUR</p>
-          <p className="text-xs text-slate-400 mt-1">Min 495 EUR — Max 14 171 EUR</p>
+          <p className="text-xs text-slate-400 mt-1">Min {fmt(ABATTEMENT_10.min)} EUR — Max {fmt(ABATTEMENT_10.max)} EUR</p>
         </div>
         <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
           <p className="text-sm text-slate-400 mb-1">Reste a vivre</p>

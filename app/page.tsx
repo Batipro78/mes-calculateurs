@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Visuel from "./components/Visuel";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -1548,6 +1549,12 @@ export default function Home() {
         ))}
       </div>
 
+      <Visuel
+        fichier="calculateurs-en-ligne-par-theme"
+        alt="Les neuf thèmes de calculateurs gratuits du site : finance et impôts, immobilier, emploi et salaire, santé et famille, nutrition, auto, prix des travaux, mathématiques, convertisseurs"
+        legende="Les calculateurs du site sont rangés en neuf thèmes, tous gratuits et sans inscription."
+        className="mt-12"
+      />
     </div>
   );
 }

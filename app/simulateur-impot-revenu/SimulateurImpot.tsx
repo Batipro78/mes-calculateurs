@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { TRANCHES } from "./constants";
+import { TRANCHES, DECOTE, ABATTEMENT_10 } from "./constants";
 
 type Situation = "celibataire" | "couple" | "couple_1revenu";
 
@@ -42,16 +42,10 @@ function calculImpot(revenuImposable: number, nbParts: number) {
 
   // Decote 2026
   let decote = 0;
-  if (nbParts <= 1.5) {
-    // Celibataire
-    if (impotBrut < 1929) {
-      decote = Math.max(0, 873 - impotBrut * 0.4525);
-    }
-  } else {
-    // Couple
-    if (impotBrut < 3191) {
-      decote = Math.max(0, 1444 - impotBrut * 0.4525);
-    }
+  // Celibataire (<= 1,5 part) ou couple
+  const d = nbParts <= 1.5 ? DECOTE.seul : DECOTE.couple;
+  if (impotBrut <= d.seuil) {
+    decote = Math.max(0, d.forfait - impotBrut * DECOTE.taux);
   }
 
   const impotNet = Math.max(0, impotBrut - decote);
@@ -82,7 +76,7 @@ export default function SimulateurImpot() {
 
   // Revenu imposable
   const abattement = deductionForfaitaire
-    ? Math.max(495, Math.min(revenu * 0.1, 14171))
+    ? Math.max(ABATTEMENT_10.min, Math.min(revenu * 0.1, ABATTEMENT_10.max))
     : 0;
   const revenuImposable = Math.max(0, revenu - abattement);
 
@@ -187,7 +181,7 @@ export default function SimulateurImpot() {
             </label>
             {deductionForfaitaire && (
               <p className="text-xs text-slate-400 mt-1 ml-7">
-                Abattement : {fmt(abattement)} EUR (min 495 EUR, max 14 171 EUR)
+                Abattement : {fmt(abattement)} EUR (min {fmt(ABATTEMENT_10.min)} EUR, max {fmt(ABATTEMENT_10.max)} EUR)
               </p>
             )}
           </div>

@@ -60,10 +60,10 @@ export default function SimulateurSCPI() {
         <select value={tmi} onChange={(e) => setTmi(parseInt(e.target.value))}
           className="w-full px-4 py-3 rounded-xl border border-slate-200 text-base focus:outline-none focus:border-teal-400 bg-white">
           <option value="0">0% (non imposable)</option>
-          <option value="11">11% (11 498 - 29 315 EUR)</option>
-          <option value="30">30% (29 316 - 83 823 EUR)</option>
-          <option value="41">41% (83 824 - 180 294 EUR)</option>
-          <option value="45">45% (&gt; 180 294 EUR)</option>
+          <option value="11">11% (11 601 - 29 579 EUR)</option>
+          <option value="30">30% (29 580 - 84 577 EUR)</option>
+          <option value="41">41% (84 578 - 181 917 EUR)</option>
+          <option value="45">45% (&gt; 181 917 EUR)</option>
         </select>
         <p className="text-xs text-slate-400 mt-1">Les revenus SCPI s&apos;ajoutent a la TMI + 17,2% de prelevements sociaux</p>
       </div>

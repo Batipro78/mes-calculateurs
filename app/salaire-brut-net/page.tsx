@@ -8,6 +8,7 @@ import VillesLinks from "../components/VillesLinks";
 import Faq, { FaqItem } from "../components/Faq";
 import HowToJsonLd from "../components/HowToJsonLd";
 import SourcesMethodo from "../components/SourcesMethodo";
+import Visuel from "../components/Visuel";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/salaire-brut-net" },
@@ -118,6 +119,12 @@ export default function Page() {
             <p className="text-xs text-slate-400 mt-1">Etat / Territorial</p>
           </div>
         </div>
+        <Visuel
+          fichier="salaire-brut-net-exemple-2500-euros"
+          alt="Passage du salaire brut au net pour 2 500 € brut par mois : environ 1 950 € net pour un non-cadre, 1 875 € pour un cadre et 2 125 € dans la fonction publique"
+          legende="Pour 2 500 € brut par mois : environ 1 950 € net pour un non-cadre, 1 875 € pour un cadre et 2 125 € dans la fonction publique (taux indicatifs, avant impôt)."
+          className="mt-8"
+        />
       </section>
 
       {SECTIONS.map((section) => (

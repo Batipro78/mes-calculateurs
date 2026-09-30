@@ -7,6 +7,7 @@ import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
 import HowToJsonLd from "../components/HowToJsonLd";
+import Visuel from "../components/Visuel";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-impot-revenu" },
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
 const FAQ_ITEMS: FaqItem[] = [
   {
     q: "Quelles sont les tranches d'imposition en 2026 ?",
-    a: "Le bareme progressif 2026 (revenus 2025) comporte 5 tranches : 0 % jusqu'a 11 497 EUR, 11 % de 11 497 a 29 315 EUR, 30 % de 29 315 a 83 823 EUR, 41 % de 83 823 a 180 294 EUR, et 45 % au-dela. Elles s'appliquent au quotient familial.",
+    a: "Le bareme progressif 2026 (revenus 2025) comporte 5 tranches : 0 % jusqu'a 11 600 EUR, 11 % de 11 600 a 29 579 EUR, 30 % de 29 579 a 84 577 EUR, 41 % de 84 577 a 181 917 EUR, et 45 % au-dela. Elles s'appliquent au quotient familial.",
   },
   {
     q: "Comment fonctionne le quotient familial ?",
@@ -33,11 +34,11 @@ const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "A partir de quel revenu devient-on imposable ?",
-    a: "Cela depend du nombre de parts et de la decote. Pour un celibataire, l'impot reste nul ou tres faible jusqu'a un revenu net imposable d'environ 16 000 a 17 000 EUR par an, grace a la premiere tranche a 0 % et a la decote.",
+    a: "Cela depend du nombre de parts et de la decote. Pour un celibataire, l'impot reste nul ou tres faible jusqu'a un revenu net imposable d'environ 17 000 EUR par an, grace a la premiere tranche a 0 % et a la decote.",
   },
   {
     q: "C'est quoi la decote ?",
-    a: "Un mecanisme qui reduit l'impot des contribuables modestes. En 2026, si l'impot brut est inferieur a 1 929 EUR (celibataire) ou 3 191 EUR (couple), la decote diminue le montant a payer, pour une transition douce vers l'imposition.",
+    a: "Un mecanisme qui reduit l'impot des contribuables modestes. En 2026, si l'impot brut est inferieur a 1 982 EUR (celibataire) ou 3 277 EUR (couple), la decote diminue le montant a payer, pour une transition douce vers l'imposition.",
   },
   {
     q: "Le prelevement a la source remplace-t-il la declaration ?",
@@ -86,6 +87,12 @@ export default function Page() {
         <h3 className="font-bold text-slate-800 mt-6 mb-3">
           Le bareme progressif 2026 (revenus 2025)
         </h3>
+        <Visuel
+          fichier="bareme-impot-revenu-2026"
+          alt="Barème de l'impôt sur le revenu 2026 : les cinq tranches et leur taux, de 0 % à 45 %"
+          legende="Barème de l'impôt sur le revenu 2026 (revenus 2025) : chaque taux s'applique uniquement à la part du revenu comprise dans sa tranche."
+          className="mt-2 mb-6"
+        />
         <div className="overflow-x-auto mb-6">
           <table className="w-full text-sm text-left">
             <thead>
@@ -96,23 +103,23 @@ export default function Page() {
             </thead>
             <tbody className="text-slate-600">
               <tr className="border-b border-slate-100">
-                <td className="py-2">Jusqu&apos;a 11 497 EUR</td>
+                <td className="py-2">Jusqu&apos;a 11 600 EUR</td>
                 <td className="py-2 font-semibold text-green-600">0%</td>
               </tr>
               <tr className="border-b border-slate-100">
-                <td className="py-2">De 11 497 a 29 315 EUR</td>
+                <td className="py-2">De 11 600 a 29 579 EUR</td>
                 <td className="py-2 font-semibold">11%</td>
               </tr>
               <tr className="border-b border-slate-100">
-                <td className="py-2">De 29 315 a 83 823 EUR</td>
+                <td className="py-2">De 29 579 a 84 577 EUR</td>
                 <td className="py-2 font-semibold">30%</td>
               </tr>
               <tr className="border-b border-slate-100">
-                <td className="py-2">De 83 823 a 180 294 EUR</td>
+                <td className="py-2">De 84 577 a 181 917 EUR</td>
                 <td className="py-2 font-semibold">41%</td>
               </tr>
               <tr>
-                <td className="py-2">Au-dela de 180 294 EUR</td>
+                <td className="py-2">Au-dela de 181 917 EUR</td>
                 <td className="py-2 font-semibold text-red-600">45%</td>
               </tr>
             </tbody>
@@ -165,7 +172,7 @@ export default function Page() {
           Par defaut, l&apos;administration fiscale applique un abattement de
           10% sur les salaires et traitements pour tenir compte des frais
           professionnels (transport, repas, vetements). Cet abattement est
-          plafonné a 14 171 EUR et ne peut pas etre inferieur a 495 EUR.
+          plafonné a 14 555 EUR et ne peut pas etre inferieur a 509 EUR.
           Si vos frais reels sont superieurs a 10% de votre revenu, vous
           pouvez opter pour la deduction des frais reels (notamment via les
           indemnites kilometriques).
@@ -182,7 +189,7 @@ export default function Page() {
               tombe votre revenu. Il s&apos;applique uniquement a la portion
               de revenu dans cette tranche, pas a l&apos;ensemble. Exemple :
               si votre taux marginal est 30%, seuls les revenus au-dessus de
-              29 315 EUR sont taxes a 30%.
+              29 579 EUR sont taxes a 30%.
             </p>
           </div>
           <div className="bg-slate-50 rounded-xl p-4">
@@ -201,8 +208,8 @@ export default function Page() {
         </h3>
         <p className="text-slate-600 leading-relaxed mb-4">
           La decote est un mecanisme qui reduit l&apos;impot des contribuables
-          modestes. En 2026, si votre impot brut est inferieur a 1 929 EUR
-          (celibataire) ou 3 191 EUR (couple), une decote vient reduire le
+          modestes. En 2026, si votre impot brut est inferieur a 1 982 EUR
+          (celibataire) ou 3 277 EUR (couple), une decote vient reduire le
           montant a payer. Ce mecanisme permet une transition douce entre
           la non-imposition et l&apos;imposition.
         </p>
@@ -273,10 +280,10 @@ export default function Page() {
       <HowToJsonLd
         name="Calculer son impôt sur le revenu 2026"
         steps={[
-          { name: "Saisir le revenu net imposable et la situation familiale", text: "Indiquer le revenu net imposable annuel (après abattement de 10% sur les salaires, plafonne à 14 171 EUR) et la composition du foyer : celibataire = 1 part, couple = 2 parts, +0,5 part par enfant (1er et 2e), +1 part à partir du 3e." },
+          { name: "Saisir le revenu net imposable et la situation familiale", text: "Indiquer le revenu net imposable annuel (après abattement de 10% sur les salaires, plafonne à 14 555 EUR) et la composition du foyer : celibataire = 1 part, couple = 2 parts, +0,5 part par enfant (1er et 2e), +1 part à partir du 3e." },
           { name: "Calculer le quotient familial", text: "Le revenu net imposable est divise par le nombre de parts. Exemple : un couple avec 2 enfants (3 parts) ayant 60 000 EUR de revenu imposable obtient un quotient de 20 000 EUR, place entierement dans la tranche à 11%." },
-          { name: "Appliquer le barème progressif 2026 par tranche", text: "Tranches 2026 : 0% jusqu'à 11 497 EUR, 11% de 11 497 à 29 315 EUR, 30% de 29 315 à 83 823 EUR, 41% de 83 823 à 180 294 EUR, 45% au-dela. Le résultat est multiplie par le nombre de parts pour obtenir l'impôt brut." },
-          { name: "Appliquer la décote et lire le résultat", text: "Si l'impôt brut est inférieur à 1 929 EUR (celibataire) ou 3 191 EUR (couple), la décote reduit le montant final. Le simulateur affiche l'impôt net à payer, la TMI (tranche la plus haute atteinte) et le taux moyen effectif." },
+          { name: "Appliquer le barème progressif 2026 par tranche", text: "Tranches 2026 : 0% jusqu'à 11 600 EUR, 11% de 11 600 à 29 579 EUR, 30% de 29 579 à 84 577 EUR, 41% de 84 577 à 181 917 EUR, 45% au-dela. Le résultat est multiplie par le nombre de parts pour obtenir l'impôt brut." },
+          { name: "Appliquer la décote et lire le résultat", text: "Si l'impôt brut est inférieur à 1 982 EUR (celibataire) ou 3 277 EUR (couple), la décote reduit le montant final. Le simulateur affiche l'impôt net à payer, la TMI (tranche la plus haute atteinte) et le taux moyen effectif." },
         ]}
       />
 
