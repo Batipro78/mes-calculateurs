@@ -173,4 +173,9 @@ export const ALL_CALCULATORS: Calculator[] = [
   { slug: "/comment-calculer-octroi-de-mer", title: "Guide : calculer l'octroi de mer", emoji: "🏝️", color: "from-blue-500 to-indigo-600" },
   { slug: "/comment-reconnaitre-un-burn-out", title: "Guide : reconnaître un burn-out", emoji: "🧠", color: "from-violet-600 to-purple-700" },
   { slug: "/comment-calculer-diametre-cercle", title: "Guide : calculer le diamètre d'un cercle", emoji: "⭕", color: "from-blue-500 to-cyan-600" },
+  { slug: "/comment-est-calculee-la-taxe-fonciere", title: "Guide : comment est calculée la taxe foncière", emoji: "🏠", color: "from-amber-500 to-yellow-600" },
+  { slug: "/comment-convertir-fahrenheit-en-celsius", title: "Guide : convertir des Fahrenheit en Celsius", emoji: "🌡️", color: "from-blue-500 to-indigo-600" },
+  { slug: "/comment-calculer-un-pourcentage-d-augmentation", title: "Guide : calculer un pourcentage d'augmentation", emoji: "📊", color: "from-orange-500 to-amber-500" },
+  { slug: "/droits-de-succession-combien-qui-paie", title: "Guide : droits de succession, combien et qui paie", emoji: "⚖️", color: "from-slate-700 to-slate-900" },
+  { slug: "/frais-de-notaire-quel-pourcentage", title: "Guide : frais de notaire, quel pourcentage ?", emoji: "📋", color: "from-cyan-500 to-blue-500" },
 ];

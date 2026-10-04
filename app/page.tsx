@@ -1467,6 +1467,51 @@ const outils = [
     couleur: "from-blue-500 to-cyan-600",
     tag: "Guide",
   },
+  {
+    titre: "Convertir des Fahrenheit en Celsius",
+    description:
+      "Les deux formules, la méthode pas à pas, un tableau des valeurs courantes et un calcul mental avec son écart réel.",
+    href: "/comment-convertir-fahrenheit-en-celsius",
+    icone: "🌡️",
+    couleur: "from-blue-500 to-indigo-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Calculer un pourcentage d'augmentation",
+    description:
+      "La formule entre deux nombres, les remises, le prix avant remise, les hausses successives et la formule Excel.",
+    href: "/comment-calculer-un-pourcentage-d-augmentation",
+    icone: "📊",
+    couleur: "from-orange-500 to-amber-500",
+    tag: "Guide",
+  },
+  {
+    titre: "Droits de succession : combien, qui paie ?",
+    description:
+      "100 000 € d'abattement par enfant, puis un barème de 5 à 45 %. Qui paie, dans quel délai, et comment étaler le paiement.",
+    href: "/droits-de-succession-combien-qui-paie",
+    icone: "⚖️",
+    couleur: "from-slate-700 to-slate-900",
+    tag: "Guide",
+  },
+  {
+    titre: "Comment est calculée la taxe foncière",
+    description:
+      "La moitié de la valeur locative multipliée par les taux votés. Dates 2026 de l'avis et du paiement, mensualisation.",
+    href: "/comment-est-calculee-la-taxe-fonciere",
+    icone: "🏠",
+    couleur: "from-amber-500 to-yellow-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Frais de notaire : quel pourcentage ?",
+    description:
+      "En moyenne 7 à 8 % du prix dans l'ancien et 2 à 3 % dans le neuf. Ce qui les compose et un exemple chiffré.",
+    href: "/frais-de-notaire-quel-pourcentage",
+    icone: "📋",
+    couleur: "from-cyan-500 to-blue-500",
+    tag: "Guide",
+  },
 ];
 
 export default function Home() {

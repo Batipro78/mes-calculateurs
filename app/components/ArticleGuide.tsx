@@ -3,6 +3,7 @@ import AdSlot from "./AdSlot";
 import Breadcrumb from "./Breadcrumb";
 import RelatedCalculators from "./RelatedCalculators";
 import Faq, { FaqItem } from "./Faq";
+import Visuel from "./Visuel";
 
 // Gabarit des articles « une question, une reponse, un calculateur ».
 // La page ne fournit que des donnees (ArticleData) : tout le texte passe par des
@@ -16,7 +17,7 @@ import Faq, { FaqItem } from "./Faq";
 // quels (et la FAQ part aussi dans le balisage FAQPage), donc texte brut seulement.
 
 // Ordre d'affichage d'une section, quel que soit l'ordre d'ecriture :
-// paras, liste, etapes, tableau, suite, encadre.
+// paras, liste, etapes, tableau, suite, visuel, encadre.
 export interface ArticleSection {
   titre: string;
   paras?: string[]; // avant les etapes ou le tableau
@@ -26,6 +27,9 @@ export interface ArticleSection {
   // colonnes apres la premiere sont alignees a droite (chiffres).
   tableau?: { colonnes: string[]; lignes: string[][]; texte?: boolean };
   suite?: string[]; // apres les etapes ou le tableau (la conclusion d'un exemple)
+  // Image de public/images/<fichier>.webp, fabriquee par `npm run visuels`.
+  // Le premier visuel de l'article sert aussi d'image au balisage Article.
+  visuel?: { fichier: string; alt: string; legende: string };
   encadre?: string;
 }
 
@@ -89,11 +93,13 @@ function BlocCalculateur({ c }: { c: ArticleData["calculateur"] }) {
 
 export default function ArticleGuide({ article: a }: { article: ArticleData }) {
   const url = `https://mescalculateurs.fr${a.slug}`;
+  const visuel = a.sections.find((s) => s.visuel)?.visuel;
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: a.h1,
     description: a.chapo,
+    ...(visuel && { image: `https://mescalculateurs.fr/images/${visuel.fichier}.webp` }),
     inLanguage: "fr-FR",
     datePublished: a.datePublication,
     dateModified: a.datePublication,
@@ -214,6 +220,7 @@ export default function ArticleGuide({ article: a }: { article: ArticleData }) {
               ))}
             </div>
           )}
+          {s.visuel && <Visuel {...s.visuel} className="mt-6" />}
           {s.encadre && (
             <div className="mt-4 rounded-xl bg-amber-50 border border-amber-200 px-4 py-3 text-sm text-amber-900 leading-relaxed">
               {riche(s.encadre)}

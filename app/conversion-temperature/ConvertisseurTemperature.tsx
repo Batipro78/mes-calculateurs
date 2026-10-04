@@ -135,9 +135,9 @@ export default function ConvertisseurTemperature() {
         <div className="bg-slate-50 rounded-2xl p-4">
           <p className="text-xs font-medium text-slate-400 mb-2">Formules</p>
           <div className="space-y-1 text-sm text-slate-600">
-            <p>\u00b0F = \u00b0C \u00d7 9/5 + 32</p>
-            <p>\u00b0C = (\u00b0F \u2212 32) \u00d7 5/9</p>
-            <p>K = \u00b0C + 273,15</p>
+            <p>°F = °C × 9/5 + 32</p>
+            <p>°C = (°F − 32) × 5/9</p>
+            <p>K = °C + 273,15</p>
           </div>
         </div>
 
@@ -153,7 +153,7 @@ export default function ConvertisseurTemperature() {
             ].map((r) => (
               <div key={r.label} className="flex justify-between items-center">
                 <span className="text-slate-600">{r.label}</span>
-                <span className="font-semibold text-slate-800">{r.c}\u00b0C / {r.f}\u00b0F</span>
+                <span className="font-semibold text-slate-800">{r.c}°C / {r.f}°F</span>
               </div>
             ))}
           </div>

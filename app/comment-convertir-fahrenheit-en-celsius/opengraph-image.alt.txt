@@ -1,0 +1,1 @@
+Formules de conversion des températures : °F = °C × 1,8 + 32 et °C = (°F − 32) ÷ 1,8, avec une échelle de repères de -40 °C (-40 °F) à 180 °C (356 °F)

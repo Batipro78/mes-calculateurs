@@ -104,7 +104,7 @@ export default function Page() {
             <tbody>
               {[
                 { c: -40, f: -40, k: 233.15, r: "Point de croisement C/F" },
-                { c: -18, f: 0, k: 255.15, r: "Zero Fahrenheit" },
+                { c: -17.78, f: 0, k: 255.37, r: "Zero Fahrenheit" },
                 { c: 0, f: 32, k: 273.15, r: "Gel de l'eau" },
                 { c: 10, f: 50, k: 283.15, r: "Frais" },
                 { c: 20, f: 68, k: 293.15, r: "Temperature ambiante" },
@@ -113,9 +113,9 @@ export default function Page() {
                 { c: 100, f: 212, k: 373.15, r: "Ebullition de l'eau" },
               ].map((row) => (
                 <tr key={row.c} className="border-b border-slate-100">
-                  <td className="py-2.5 px-2 font-bold text-slate-700">{row.c}&deg;C</td>
-                  <td className="py-2.5 px-2 text-right font-semibold text-blue-600">{row.f}&deg;F</td>
-                  <td className="py-2.5 px-2 text-right text-slate-600">{row.k} K</td>
+                  <td className="py-2.5 px-2 font-bold text-slate-700">{String(row.c).replace(".", ",")}&deg;C</td>
+                  <td className="py-2.5 px-2 text-right font-semibold text-blue-600">{String(row.f).replace(".", ",")}&deg;F</td>
+                  <td className="py-2.5 px-2 text-right text-slate-600">{String(row.k).replace(".", ",")} K</td>
                   <td className="py-2.5 px-2 text-slate-500 text-xs">{row.r}</td>
                 </tr>
               ))}
@@ -128,7 +128,7 @@ export default function Page() {
         </h3>
         <p className="text-slate-600 leading-relaxed">
           Pour une estimation rapide de Celsius vers Fahrenheit : <strong>doublez la valeur et ajoutez 30</strong>.
-          Exemple : 20&deg;C &asymp; 20 &times; 2 + 30 = 70&deg;F (valeur exacte : 68&deg;F). Cette methode est precise a &plusmn;3&deg;F pour les temperatures courantes (0 a 40&deg;C).
+          Exemple : 20&deg;C &asymp; 20 &times; 2 + 30 = 70&deg;F (valeur exacte : 68&deg;F). Cette methode reste a 3&deg;F pres entre 0 et 25&deg;C ; au-dela, l'ecart grandit (6&deg;F de trop a 40&deg;C).
         </p>
       </section>
 

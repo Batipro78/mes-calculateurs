@@ -59,7 +59,8 @@ export default function CalculateurNotaire() {
   const emoluments = calculerEmoluments(prixNum);
   const emolumentsTVA = emoluments * 0.2; // TVA 20% sur emoluments
   const debours = Math.min(1500, prixNum * 0.001) + 400; // estimation forfaitaire
-  const contributionSecu = prixNum >= 10000 ? 15 : 0; // contribution securite immobiliere
+  // contribution de securite immobiliere : 0,1 % du prix, jamais moins de 15 € (impots.gouv.fr)
+  const contributionSecu = prixNum > 0 ? Math.max(15, prixNum * 0.001) : 0;
 
   const totalFrais =
     droitsMutation + emoluments + emolumentsTVA + debours + contributionSecu;

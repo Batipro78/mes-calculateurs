@@ -1,0 +1,1 @@
+Trois formules de pourcentage : évolution = (arrivée − départ) ÷ départ × 100, X % d'une somme = somme × X ÷ 100, et prix avant une remise de 25 % : 60 € ÷ 0,75 = 80 €

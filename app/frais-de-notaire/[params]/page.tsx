@@ -45,7 +45,8 @@ function calculerFrais(prix: number, type: TypeBien) {
   const emoluments = calculerEmoluments(prix);
   const emolumentsTVA = emoluments * 0.2;
   const debours = Math.min(1500, prix * 0.001) + 400;
-  const contributionSecu = prix >= 10000 ? 15 : 0;
+  // contribution de securite immobiliere : 0,1 % du prix, jamais moins de 15 € (impots.gouv.fr)
+  const contributionSecu = prix > 0 ? Math.max(15, prix * 0.001) : 0;
   const totalFrais = droitsMutation + emoluments + emolumentsTVA + debours + contributionSecu;
   const pourcentage = prix > 0 ? (totalFrais / prix) * 100 : 0;
   return { droitsMutation, emoluments, emolumentsTVA, debours, contributionSecu, totalFrais, pourcentage };
@@ -278,6 +279,7 @@ function VilleNotairePage({ ville }: { ville: Ville }) {
           <li><strong>Emoluments du notaire</strong> : {fmt(fraisMedianAncien.emoluments)} EUR HT (remuneration du notaire)</li>
           <li><strong>TVA sur emoluments</strong> : {fmt(fraisMedianAncien.emolumentsTVA)} EUR</li>
           <li><strong>Debours</strong> : {fmt(fraisMedianAncien.debours)} EUR (formalites administratives, cadastre, hypotheque)</li>
+          <li><strong>Contribution de securite immobiliere</strong> : {fmt(fraisMedianAncien.contributionSecu)} EUR (0,1 % du prix, minimum 15 EUR)</li>
         </ul>
         <h3 className="font-bold text-slate-800 mt-6 mb-2">
           Comment reduire les frais de notaire a {ville.nom} ?
@@ -360,7 +362,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         name: `Quel est le detail des frais de notaire pour ${fmtInt(prix)} EUR ?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Pour un achat de ${fmtInt(prix)} EUR ${TYPE_LABELS[type]} : droits de mutation ${fmt(frais.droitsMutation)} EUR, emoluments du notaire ${fmt(frais.emoluments)} EUR (+ ${fmt(frais.emolumentsTVA)} EUR de TVA), debours ${fmt(frais.debours)} EUR.`,
+          text: `Pour un achat de ${fmtInt(prix)} EUR ${TYPE_LABELS[type]} : droits de mutation ${fmt(frais.droitsMutation)} EUR, emoluments du notaire ${fmt(frais.emoluments)} EUR (+ ${fmt(frais.emolumentsTVA)} EUR de TVA), debours ${fmt(frais.debours)} EUR, contribution de securite immobiliere ${fmt(frais.contributionSecu)} EUR.`,
         },
       },
     ],
@@ -429,7 +431,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
           <p className="text-sm text-slate-400 mb-1">Debours</p>
           <p className="text-2xl font-extrabold text-slate-800">{fmt(frais.debours)} EUR</p>
-          <p className="text-xs text-slate-400 mt-1">Formalites administratives</p>
+          <p className="text-xs text-slate-400 mt-1">Formalites, + {fmt(frais.contributionSecu)} EUR de securite immobiliere</p>
         </div>
         <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
           <p className="text-sm text-slate-400 mb-1">Part des frais</p>

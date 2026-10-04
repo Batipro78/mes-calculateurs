@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 const FAQ_ITEMS: FaqItem[] = [
   {
     q: "Comment est calculee la taxe fonciere ?",
-    a: "La taxe fonciere est calculee sur la base de la valeur locative cadastrale du bien, revalorisee chaque annee par un coefficient fixe par la loi de finances. Cette valeur est ensuite reduite d'un abattement forfaitaire de 50% pour obtenir la base imposable. Le taux d'imposition (commune + intercommunalite + taxes speciales) est applique a cette base.",
+    a: "La taxe fonciere est calculee sur la base de la valeur locative cadastrale du bien, revalorisee chaque annee par un coefficient forfaitaire. Cette valeur est ensuite reduite d'un abattement forfaitaire de 50% pour obtenir la base imposable. Le taux d'imposition (commune + intercommunalite + taxes speciales) est applique a cette base.",
   },
   {
     q: "Peut-on etre exonere de taxe fonciere ?",
@@ -76,7 +76,7 @@ export default function Page() {
 
         <h3 className="font-bold text-slate-800 mt-6 mb-3">Revalorisation 2026</h3>
         <p className="text-sm text-slate-600 mb-4">
-          Chaque annee, la loi de finances fixe un coefficient de revalorisation des valeurs locatives. Pour 2026, ce coefficient est estime a <strong>+3,5%</strong>, en ligne avec l&apos;indice des prix a la consommation harmonise (IPCH). Cette hausse s&apos;applique automatiquement a tous les biens, avant meme toute decision locale sur les taux.
+          Chaque annee, les valeurs locatives sont revalorisees par un coefficient forfaitaire. Pour 2026, ce coefficient est fixe a <strong>1,008, soit +0,8 %</strong>, d&apos;apres l&apos;indice des prix a la consommation harmonise (IPCH) de novembre 2025 (source : impots.gouv.fr). Cette hausse s&apos;applique automatiquement a tous les biens, avant meme toute decision locale sur les taux.
         </p>
 
         <h3 className="font-bold text-slate-800 mt-6 mb-3">Taux par ville : de grandes disparites</h3>
@@ -163,9 +163,9 @@ export default function Page() {
       <HowToJsonLd
         name="Estimer sa taxe fonciere 2026"
         steps={[
-          { name: "Saisir la valeur locative cadastrale (VLC)", text: "La VLC est le loyer annuel théorique fixe par l'administration. Elle figure sur l'avis de taxe fonciere de l'année precedente. En 2026, elle est revaloriee de +3,5% par rapport à l'année precedente (coefficient loi de finances)." },
-          { name: "Calculer la base imposable", text: "Base imposable = VLC x coefficient de revalorisation (1,035 en 2026) x 50% (abattement forfaitaire légal). Exemple : VLC 4 000 EUR x 1,035 x 50% = 2 070 EUR de base imposable." },
-          { name: "Appliquer le taux d'imposition de la commune", text: "Le taux varie fortement selon la commune : Paris 13,5%, Nice 27%, Strasbourg 34%, Lyon 30,5%, Marseille 40,5%, Toulouse 44,5%, Bordeaux 52%. Taxe = base imposable x taux global. Exemple : 2 070 EUR x 44,5% = 921 EUR." },
+          { name: "Saisir la valeur locative cadastrale (VLC)", text: "La VLC est le loyer annuel théorique fixe par l'administration. Elle figure sur l'avis de taxe fonciere de l'année precedente. En 2026, elle est revalorisée de +0,8 % par rapport à l'année precedente (coefficient 1,008)." },
+          { name: "Calculer la base imposable", text: "Base imposable = VLC x coefficient de revalorisation (1,008 en 2026) x 50% (abattement forfaitaire légal). Exemple : VLC 4 000 EUR x 1,008 x 50% = 2 016 EUR de base imposable." },
+          { name: "Appliquer le taux d'imposition de la commune", text: "Le taux varie fortement selon la commune : Paris 13,5%, Nice 27%, Strasbourg 34%, Lyon 30,5%, Marseille 40,5%, Toulouse 44,5%, Bordeaux 52%. Taxe = base imposable x taux global. Exemple : 2 016 EUR x 44,5% = 897 EUR." },
           { name: "Vérifier les exonérations applicables", text: "Construction neuve : exonération 2 ans sur demande (formulaire H1 ou H2 dans les 90 jours suivant l'achevement). Personnes agees de plus de 75 ans sous conditions de revenus : exonération totale. Beneficiaires de l'AAH ou de l'ASPA : exonération totale sous conditions de cohabitation et ressources." },
         ]}
       />

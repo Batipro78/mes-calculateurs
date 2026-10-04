@@ -34,8 +34,9 @@ export const TAUX_VILLES: Record<string, number> = {
 
 export const VILLES = Object.keys(TAUX_VILLES);
 
-// Coefficient de revalorisation forfaitaire 2026 (base loi de finances)
-const COEFF_REVALORISATION = 1.035;
+// Coefficient de revalorisation forfaitaire 2026 : 1,008 (+0,8 %), source impots.gouv.fr
+// « comment est calculee ma taxe fonciere, pourquoi augmente-t-elle en 2026 » (verifie le 04/10/2026)
+const COEFF_REVALORISATION = 1.008;
 
 // Valeur locative estimee par m2/mois selon type
 const VL_PAR_M2_MOIS: Record<string, number> = {

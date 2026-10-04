@@ -104,7 +104,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         name: `Comment est calculee la taxe fonciere a ${ville.nom} ?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `La taxe fonciere a ${ville.nom} est calculee a partir de la valeur locative cadastrale du bien, revalorisee chaque annee (x1.035 en 2026), puis reduite d'un abattement de 50% pour obtenir la base imposable. Le taux communal global de ${ville.nom} (${taux}%) est ensuite applique a cette base.`,
+          text: `La taxe fonciere a ${ville.nom} est calculee a partir de la valeur locative cadastrale du bien, revalorisee chaque annee (x1,008 en 2026), puis reduite d'un abattement de 50% pour obtenir la base imposable. Le taux communal global de ${ville.nom} (${taux}%) est ensuite applique a cette base.`,
         },
       },
       {
@@ -228,7 +228,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
           Cette valeur est :
         </p>
         <ol className="list-decimal list-inside text-slate-600 space-y-1 mb-4">
-          <li>Revalorisee chaque annee par un coefficient (x1,035 en 2026)</li>
+          <li>Revalorisee chaque annee par un coefficient (x1,008 en 2026)</li>
           <li>Reduite d&apos;un abattement forfaitaire de 50% → <em>base imposable</em></li>
           <li>Multipliee par le taux global de {ville.nom} ({taux}%) → <em>taxe annuelle</em></li>
         </ol>

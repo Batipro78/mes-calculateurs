@@ -7,7 +7,10 @@ import { useState, useMemo } from "react";
 // Abattements 2026
 const ABATTEMENTS: Record<string, number> = {
   "enfant": 100000,
-  "petit-enfant": 31865,
+  // 1 594 € si son parent est vivant (service-public F14198). S'il herite a la place
+  // de son parent decede ou renoncant, il reprend l'abattement de 100 000 € de ce parent,
+  // partage a parts egales avec ses freres et soeurs.
+  "petit-enfant": 1594,
   "frere-soeur": 15932,
   "neveu-niece": 7967,
   "conjoint": 0, // exonere total
@@ -153,7 +156,7 @@ export default function CalculateurSuccession() {
           <div className="space-y-1 text-sm text-slate-600">
             <p>Conjoint/Pacse : <strong>exonere total</strong></p>
             <p>Enfant : <strong>100 000 &euro;</strong></p>
-            <p>Petit-enfant : <strong>31 865 &euro;</strong></p>
+            <p>Petit-enfant : <strong>1 594 &euro;</strong> (si son parent est vivant ; s&apos;il herite a la place de son parent decede ou renoncant, il partage avec ses freres et soeurs l&apos;abattement de 100 000 &euro; de ce parent)</p>
             <p>Frere/Soeur : <strong>15 932 &euro;</strong></p>
             <p>Neveu/Niece : <strong>7 967 &euro;</strong></p>
           </div>

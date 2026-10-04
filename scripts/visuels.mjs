@@ -320,7 +320,291 @@ function visuelAccueil() {
   };
 }
 
-const visuels = [
+// ------------------------------------------- Articles « question » (serie 2)
+// Nombre a la francaise : 14 517,50 (espace normale pour les milliers).
+const nombre = (n, decimales = 0) => {
+  const [ent, dec] = n.toFixed(decimales).split(".");
+  const milliers = ent.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  return dec ? `${milliers},${dec}` : milliers;
+};
+
+// Carte translucide bordee de la couleur donnee.
+const carte = (x, y, w, h, couleur) =>
+  `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="22" fill="#ffffff" fill-opacity="0.06" stroke="${couleur}" stroke-opacity="0.55" stroke-width="2"/>`;
+
+// --------------------------------------------- 8. Celsius / Fahrenheit
+function visuelTemperature() {
+  const versF = (c) => c * 1.8 + 32;
+  const formules = [
+    { x: 64, label: "CELSIUS → FAHRENHEIT", formule: "°F = °C × 1,8 + 32", ex: `180 °C × 1,8 + 32 = ${nombre(versF(180))} °F`, couleur: "#f87171" },
+    { x: 608, label: "FAHRENHEIT → CELSIUS", formule: "°C = (°F − 32) ÷ 1,8", ex: `(350 °F − 32) ÷ 1,8 ≈ ${nombre((350 - 32) / 1.8, 2)} °C`, couleur: "#38bdf8" },
+  ];
+  const cartes = formules.map((f) => [
+    carte(f.x, 160, 528, 150, f.couleur),
+    t(f.x + 28, 198, 19, 700, f.couleur, f.label, 'letter-spacing="2"'),
+    t(f.x + 28, 252, 38, 800, "#ffffff", f.formule),
+    t(f.x + 28, 290, 23, 400, "#cbd5e1", f.ex),
+  ].join("\n  ")).join("\n  ");
+  // Echelle double : meme position = meme temperature, de -40 a 200 °C.
+  const x0 = 200;
+  const largeur = 920;
+  const xDe = (c) => x0 + ((c + 40) / 240) * largeur;
+  const reperes = [
+    { c: -40, legende: "même nombre" },
+    { c: 0, legende: "l'eau gèle" },
+    { c: 37, legende: "corps humain" },
+    { c: 100, legende: "l'eau bout" },
+    { c: 180, legende: "four" },
+  ];
+  const points = reperes.map((r) => {
+    const x = xDe(r.c).toFixed(1);
+    const f = versF(r.c);
+    const texteF = Number.isInteger(f) ? nombre(f) : nombre(f, 1);
+    return [
+      `<line x1="${x}" y1="402" x2="${x}" y2="446" stroke="#ffffff" stroke-opacity="0.5" stroke-width="2"/>`,
+      `<circle cx="${x}" cy="424" r="9" fill="#ffffff"/>`,
+      t(x, 390, 30, 800, "#ffffff", nombre(r.c), 'text-anchor="middle"'),
+      t(x, 480, 30, 800, "#fde68a", texteF, 'text-anchor="middle"'),
+      t(x, 510, 18, 400, "#94a3b8", r.legende, 'text-anchor="middle"'),
+    ].join("\n  ");
+  }).join("\n  ");
+  const corps = `
+  <defs>
+    <linearGradient id="thermo" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#f87171"/>
+    </linearGradient>
+  </defs>
+  ${cartes}
+  ${t(64, 390, 30, 800, "#ffffff", "°C")}
+  ${t(64, 480, 30, 800, "#fde68a", "°F")}
+  <rect x="${x0}" y="418" width="${largeur}" height="12" rx="6" fill="url(#thermo)"/>
+  ${points}`;
+  return {
+    nom: "formule-conversion-celsius-fahrenheit",
+    route: "comment-convertir-fahrenheit-en-celsius",
+    alt: "Formules de conversion des températures : °F = °C × 1,8 + 32 et °C = (°F − 32) ÷ 1,8, avec une échelle de repères de -40 °C (-40 °F) à 180 °C (356 °F)",
+    svg: cadre({
+      accent: "#f87171",
+      kicker: "TEMPÉRATURES · LES DEUX FORMULES ET LES REPÈRES",
+      titre: "Convertir Celsius et Fahrenheit",
+      note: "-40 °C = -40 °F",
+      corps,
+    }),
+  };
+}
+
+// ------------------------------------------------------ 9. Taxe fonciere
+function visuelTaxeFonciere() {
+  // Exemple fictif de l'article : valeur locative 4 000 EUR, coefficient 2026
+  // de 1,008 (impots.gouv.fr), base = 50 %, taux global suppose de 40 %.
+  const valeur = 4000;
+  const revalorisee = valeur * 1.008;
+  const base = revalorisee * 0.5;
+  const taxe = base * 0.4;
+  const etapes = [
+    { label: "VALEUR LOCATIVE", montant: `${nombre(valeur)} €`, op: "loyer théorique" },
+    { label: "REVALORISÉE 2026", montant: `${nombre(revalorisee)} €`, op: "× 1,008" },
+    { label: "BASE (MOITIÉ)", montant: `${nombre(base)} €`, op: "× 50 %" },
+    { label: "TAXE FONCIÈRE", montant: `${nombre(taxe, 2)} €`, op: "× taux de 40 %" },
+  ];
+  const couleurs = ["#94a3b8", "#fbbf24", "#fb923c", "#f87171"];
+  const cartes = etapes.map((e, i) => {
+    const x = 64 + i * 278;
+    const fleche = i < etapes.length - 1
+      ? `<path d="M${x + 248} 232 l14 18 l-14 18" fill="none" stroke="#ffffff" stroke-opacity="0.6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>`
+      : "";
+    return [
+      carte(x, 160, 236, 168, couleurs[i]),
+      t(x + 22, 200, 17, 700, couleurs[i], e.label, 'letter-spacing="1"'),
+      t(x + 22, 262, 40, 800, "#ffffff", e.montant),
+      t(x + 22, 304, 21, 400, "#cbd5e1", e.op),
+      fleche,
+    ].join("\n  ");
+  }).join("\n  ");
+  const dates = [
+    { date: "15 octobre", texte: "autres moyens, si 300 € ou moins" },
+    { date: "20 octobre", texte: "paiement en ligne" },
+    { date: "26 octobre", texte: "date du prélèvement" },
+  ];
+  const lignesDates = dates.map((d, i) => {
+    const x = 96 + i * 352;
+    return [
+      t(x, 456, 36, 800, "#ffffff", d.date),
+      t(x, 494, 20, 400, "#cbd5e1", d.texte),
+    ].join("\n  ");
+  }).join("\n  ");
+  const corps = `
+  ${cartes}
+  <rect x="64" y="358" width="1072" height="160" rx="22" fill="#fbbf24" fill-opacity="0.08" stroke="#fbbf24" stroke-opacity="0.45" stroke-width="2"/>
+  ${t(96, 400, 19, 700, "#fbbf24", "PAIEMENT 2026 : LES DATES À RETENIR", 'letter-spacing="2"')}
+  ${lignesDates}`;
+  return {
+    nom: "calcul-taxe-fonciere-2026-exemple",
+    route: "comment-est-calculee-la-taxe-fonciere",
+    alt: "Calcul de la taxe foncière 2026 sur un exemple : valeur locative de 4 000 €, revalorisée à 4 032 €, base de 2 016 €, taxe de 806,40 € avec un taux de 40 %, et dates de paiement des 15, 20 et 26 octobre 2026",
+    svg: cadre({
+      accent: "#fbbf24",
+      kicker: "EXEMPLE FICTIF · VALEUR LOCATIVE 4 000 € · TAUX 40 %",
+      titre: "Comment est calculée la taxe foncière",
+      note: "Le vrai taux est celui de votre commune",
+      corps,
+    }),
+  };
+}
+
+// ---------------------------------------------------------- 10. Pourcentage
+function visuelPourcentage() {
+  const evolution = ((2150 - 2000) / 2000) * 100;
+  const corps = `
+  ${carte(64, 160, 1072, 170, "#fb923c")}
+  ${t(96, 200, 19, 700, "#fb923c", "ÉVOLUTION ENTRE DEUX NOMBRES (HAUSSE OU BAISSE)", 'letter-spacing="2"')}
+  ${t(96, 262, 46, 800, "#ffffff", "(arrivée − départ) ÷ départ × 100")}
+  ${t(96, 306, 25, 400, "#cbd5e1", `2 000 € → 2 150 € : 150 ÷ 2 000 × 100 = + ${nombre(evolution, 1)} %`)}
+  ${carte(64, 350, 528, 168, "#fbbf24")}
+  ${t(96, 390, 19, 700, "#fbbf24", "X % D'UNE SOMME", 'letter-spacing="2"')}
+  ${t(96, 446, 38, 800, "#ffffff", "somme × X ÷ 100")}
+  ${t(96, 490, 23, 400, "#cbd5e1", `20 % de 150 € = ${nombre((150 * 20) / 100)} €`)}
+  ${carte(608, 350, 528, 168, "#f87171")}
+  ${t(640, 390, 19, 700, "#f87171", "PRIX AVANT UNE REMISE DE 25 %", 'letter-spacing="2"')}
+  ${t(640, 446, 38, 800, "#ffffff", `60 € ÷ 0,75 = ${nombre(60 / 0.75)} €`)}
+  ${t(640, 490, 23, 400, "#cbd5e1", `et non 60 € + 25 % = ${nombre(60 * 1.25)} €`)}`;
+  return {
+    nom: "formule-calcul-pourcentage-augmentation",
+    route: "comment-calculer-un-pourcentage-d-augmentation",
+    alt: "Trois formules de pourcentage : évolution = (arrivée − départ) ÷ départ × 100, X % d'une somme = somme × X ÷ 100, et prix avant une remise de 25 % : 60 € ÷ 0,75 = 80 €",
+    svg: cadre({
+      accent: "#fb923c",
+      kicker: "AUGMENTATION · PART D'UNE SOMME · REMISE",
+      titre: "Calculer un pourcentage : 3 formules",
+      note: "On divise par la valeur de départ",
+      corps,
+    }),
+  };
+}
+
+// ----------------------------------------------------------- 11. Succession
+function visuelSuccession() {
+  // Bareme en ligne directe (service-public.gouv.fr F14198) : droits d'un
+  // enfant qui recoit 150 000 EUR, pour la note en bas de l'image.
+  const bareme = [
+    [8072, 0.05], [12109, 0.1], [15932, 0.15], [552324, 0.2],
+    [902838, 0.3], [1805677, 0.4], [Infinity, 0.45],
+  ];
+  let reste = 150000 - 100000;
+  let bas = 0;
+  let droits = 0;
+  for (const [haut, taux] of bareme) {
+    const tranche = Math.min(reste, haut - bas);
+    if (tranche <= 0) break;
+    droits += tranche * taux;
+    reste -= tranche;
+    bas = haut;
+  }
+  const liens = [
+    { lien: "Conjoint ou partenaire de PACS", abattement: "Exonéré", taux: "aucun droit", couleur: "#4ade80" },
+    { lien: "Enfant, père, mère, grand-parent", abattement: "100 000 €", taux: "5 % à 45 %", couleur: "#60a5fa" },
+    { lien: "Frère ou sœur", abattement: "15 932 €", taux: "35 % puis 45 %", couleur: "#a78bfa" },
+    { lien: "Neveu ou nièce", abattement: "7 967 €", taux: "55 %", couleur: "#fb923c" },
+    { lien: "Cousin ou sans lien", abattement: "1 594 €", taux: "55 % ou 60 %", couleur: "#f87171" },
+  ];
+  const lignes = liens.map((l, i) => {
+    const y = 204 + i * 64;
+    return [
+      i % 2 === 0 ? `<rect x="64" y="${y}" width="1072" height="60" rx="14" fill="#ffffff" fill-opacity="0.05"/>` : "",
+      `<circle cx="92" cy="${y + 30}" r="10" fill="${l.couleur}"/>`,
+      t(120, y + 40, 27, 700, "#ffffff", l.lien),
+      t(664, y + 42, 33, 800, l.couleur, l.abattement),
+      t(892, y + 40, 27, 600, "#e2e8f0", l.taux),
+    ].join("\n  ");
+  }).join("\n  ");
+  const corps = `
+  ${t(120, 186, 18, 700, "#94a3b8", "LIEN AVEC LE DÉFUNT", 'letter-spacing="2"')}
+  ${t(664, 186, 18, 700, "#94a3b8", "ABATTEMENT", 'letter-spacing="2"')}
+  ${t(892, 186, 18, 700, "#94a3b8", "TAUX ENSUITE", 'letter-spacing="2"')}
+  ${lignes}`;
+  return {
+    nom: "droits-succession-abattement-taux-par-lien",
+    route: "droits-de-succession-combien-qui-paie",
+    alt: "Droits de succession selon le lien avec le défunt : conjoint ou partenaire de PACS exonéré, enfant, père, mère ou grand-parent 100 000 € d'abattement puis 5 % à 45 %, frère ou sœur 15 932 €, neveu ou nièce 7 967 €, cousin ou personne sans lien 1 594 €",
+    svg: cadre({
+      accent: "#a78bfa",
+      kicker: "DROITS DE SUCCESSION · SUR LA PART DE CHAQUE HÉRITIER",
+      titre: "Succession : abattement et taux",
+      note: `Un enfant qui reçoit 150 000 € paie ${nombre(droits, 2)} €`,
+      corps,
+    }),
+  };
+}
+
+// ------------------------------------------------------- 12. Frais de notaire
+function visuelNotaire() {
+  // Exemple de l'article : 250 000 EUR dans l'ancien, tel que le calcule
+  // /frais-de-notaire (droits 5,807 %, emoluments au bareme + TVA 20 %,
+  // debours forfaitaires 650 EUR, securite immobiliere 0,10 %).
+  const prix = 250000;
+  const droits = prix * 0.05807;
+  const tranches = [[6500, 0.0387], [17000, 0.01596], [60000, 0.01064], [Infinity, 0.00799]];
+  let emoluments = 0;
+  let bas = 0;
+  for (const [haut, taux] of tranches) {
+    if (prix <= bas) break;
+    emoluments += (Math.min(prix, haut) - bas) * taux;
+    bas = haut;
+  }
+  const parts = [
+    { label: "Droits de mutation", montant: droits, couleur: "#38bdf8" },
+    { label: "Émoluments + TVA", montant: emoluments * 1.2, couleur: "#a78bfa" },
+    { label: "Débours (estimés)", montant: 650, couleur: "#fbbf24" },
+    { label: "Sécurité immobilière", montant: Math.max(15, prix * 0.001), couleur: "#4ade80" },
+  ];
+  const total = parts.reduce((s, p) => s + p.montant, 0);
+  const montant = (n) => (Number.isInteger(Math.round(n * 100) / 100) ? nombre(n) : nombre(n, 2));
+  let x = 64;
+  const segments = parts.map((p) => {
+    const w = (p.montant / total) * 1072;
+    const seg = `<rect x="${x.toFixed(1)}" y="382" width="${Math.max(2, w - 3).toFixed(1)}" height="46" fill="${p.couleur}"/>`;
+    x += w;
+    return seg;
+  }).join("\n  ");
+  const legende = parts.map((p, i) => {
+    const xl = 64 + i * 268;
+    return [
+      `<circle cx="${xl + 9}" cy="462" r="9" fill="${p.couleur}"/>`,
+      t(xl + 28, 469, 20, 600, "#cbd5e1", p.label),
+      t(xl, 510, 30, 800, p.couleur, `${montant(p.montant)} €`),
+    ].join("\n  ");
+  }).join("\n  ");
+  const cartes = [
+    { x: 64, label: "ANCIEN", chiffre: "7 à 8 %", couleur: "#38bdf8" },
+    { x: 608, label: "NEUF (MOINS DE 5 ANS)", chiffre: "2 à 3 %", couleur: "#4ade80" },
+  ].map((c) => [
+    carte(c.x, 156, 528, 150, c.couleur),
+    t(c.x + 28, 196, 19, 700, c.couleur, c.label, 'letter-spacing="2"'),
+    t(c.x + 28, 274, 64, 800, "#ffffff", c.chiffre),
+    t(c.x + 290, 272, 23, 400, "#cbd5e1", "du prix, en moyenne"),
+  ].join("\n  ")).join("\n  ");
+  const pct = nombre((total / prix) * 100, 2);
+  const corps = `
+  ${cartes}
+  ${t(64, 362, 26, 700, "#ffffff", `Exemple : 250 000 € dans l'ancien → ${montant(total)} € de frais (${pct} %)`)}
+  ${segments}
+  ${legende}`;
+  return {
+    nom: "frais-de-notaire-pourcentage-ancien-neuf",
+    route: "frais-de-notaire-quel-pourcentage",
+    alt: `Frais de notaire : 7 à 8 % du prix dans l'ancien et 2 à 3 % dans le neuf en moyenne, et détail d'un achat ancien à 250 000 € : ${montant(total)} € de frais, dont ${montant(droits)} € de droits de mutation`,
+    svg: cadre({
+      accent: "#38bdf8",
+      kicker: "ACHAT IMMOBILIER · PAYÉS PAR L'ACHETEUR EN PLUS DU PRIX",
+      titre: "Frais de notaire : quel pourcentage ?",
+      note: "Montant exact : devis du notaire",
+      corps,
+    }),
+  };
+}
+
+const tous = [
   visuelImpot(),
   visuelCercle(),
   visuelOctroi(),
@@ -328,7 +612,20 @@ const visuels = [
   visuelMonnaieJeu(),
   visuelSalaire(),
   visuelAccueil(),
+  visuelTemperature(),
+  visuelTaxeFonciere(),
+  visuelPourcentage(),
+  visuelSuccession(),
+  visuelNotaire(),
 ];
+
+// `npm run visuels -- <nom> [<nom>...]` ne refait que les visuels nommes.
+const demandes = process.argv.slice(2);
+const visuels = demandes.length ? tous.filter((v) => demandes.includes(v.nom)) : tous;
+if (demandes.length && visuels.length !== demandes.length) {
+  console.error(`Nom inconnu. Noms possibles : ${tous.map((v) => v.nom).join(", ")}`);
+  process.exit(1);
+}
 
 await mkdir(path.join(ROOT, "public", "images"), { recursive: true });
 

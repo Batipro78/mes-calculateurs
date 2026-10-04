@@ -568,6 +568,36 @@ function generateAllUrls(): SitemapEntry[] {
       priority: 0.8,
     },
     {
+      url: `${BASE_URL}/comment-est-calculee-la-taxe-fonciere`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/comment-convertir-fahrenheit-en-celsius`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/comment-calculer-un-pourcentage-d-augmentation`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/droits-de-succession-combien-qui-paie`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/frais-de-notaire-quel-pourcentage`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${BASE_URL}/cout-climatisation`,
       lastModified: new Date(),
       changeFrequency: "monthly",

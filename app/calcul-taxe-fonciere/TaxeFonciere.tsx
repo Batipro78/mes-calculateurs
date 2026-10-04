@@ -219,7 +219,7 @@ export default function TaxeFonciere() {
                   <span className="font-bold">{fmt(resultat.valeurLocative)} &euro;/an</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-slate-600">Apres revalorisation (x1,035)</span>
+                  <span className="text-slate-600">Apres revalorisation (x1,008)</span>
                   <span className="font-bold">{fmt(resultat.valeurLocativeRevisee)} &euro;</span>
                 </div>
                 <div className="flex justify-between">
