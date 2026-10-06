@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { TAUX_EPARGNE } from "./tauxEpargne";
 
 const PLACEMENTS: { label: string; taux: number; desc: string }[] = [
-  { label: "Livret A", taux: 2.4, desc: "Taux 2026 - Net d'impot" },
-  { label: "LDDS", taux: 2.4, desc: "Taux 2026 - Net d'impot" },
-  { label: "LEP", taux: 3.5, desc: "Taux 2026 - Sous conditions" },
-  { label: "Assurance-vie (fonds euro)", taux: 2.5, desc: "Rendement moyen 2025" },
-  { label: "PEL (depuis 2024)", taux: 2.25, desc: "Taux fixe a l'ouverture" },
+  { label: "Livret A", taux: TAUX_EPARGNE.livretA, desc: "Taux d'octobre 2026 - Net d'impot" },
+  { label: "LDDS", taux: TAUX_EPARGNE.ldds, desc: "Taux d'octobre 2026 - Net d'impot" },
+  { label: "LEP", taux: TAUX_EPARGNE.lep, desc: "Taux d'octobre 2026 - Sous conditions" },
+  { label: "Assurance-vie (fonds euro)", taux: TAUX_EPARGNE.assuranceVie, desc: "Ordre de grandeur, selon le contrat" },
+  { label: "PEL (ouvert en 2026)", taux: TAUX_EPARGNE.pel, desc: "Taux fixe a l'ouverture" },
   { label: "Personnalise", taux: 0, desc: "Saisir votre propre taux" },
 ];
 

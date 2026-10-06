@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 const FAQ_ITEMS: FaqItem[] = [
   {
     q: "Quel est le taux du Livret A en 2026 ?",
-    a: "Le taux du Livret A est de 2,4% net en 2026. Les interets sont exoneres d'impot sur le revenu et de prelevements sociaux. Le plafond de depots est de 22 950 EUR (hors interets capitalises).",
+    a: "Le taux du Livret A est de 1,7% net (taux en vigueur du 1er aout 2026 au 31 janvier 2027). Les interets sont exoneres d'impot sur le revenu et de prelevements sociaux. Le plafond de depots est de 22 950 EUR (hors interets capitalises).",
   },
   {
     q: "Comment fonctionnent les interets composes ?",
@@ -29,7 +29,7 @@ const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Quel est le meilleur placement en 2026 ?",
-    a: "Le LEP (Livret d'Epargne Populaire) offre le meilleur taux a 3,5% net, mais il est reserve aux revenus modestes. Le Livret A (2,4%) et le LDDS (2,4%) sont accessibles a tous et sans impot. L'assurance-vie en fonds euros (~2,5%) est ideale pour l'epargne long terme grace a sa fiscalite avantageuse apres 8 ans.",
+    a: "Le LEP (Livret d'Epargne Populaire) offre le meilleur taux des livrets a 2,5% net, mais il est reserve aux revenus modestes. Le Livret A (1,7%) et le LDDS (1,7%) sont accessibles a tous et sans impot. L'assurance-vie en fonds euros (~2,5%) est ideale pour l'epargne long terme grace a sa fiscalite avantageuse apres 8 ans.",
   },
   {
     q: "A partir de quel montant vaut-il la peine d'epargner ?",
@@ -84,7 +84,7 @@ export default function Page() {
             Capital final = Capital initial x (1 + taux)^duree + Versement x ((1 + taux)^duree - 1) / taux
           </p>
           <p className="text-xs text-slate-400 mt-2">
-            Exemple : 5 000 EUR a 2,4% pendant 10 ans + 200 EUR/mois = 32 500 EUR environ
+            Exemple : 5 000 EUR a 1,7% pendant 10 ans + 200 EUR/mois = 32 066 EUR environ
           </p>
         </div>
 
@@ -96,7 +96,7 @@ export default function Page() {
             <p className="font-semibold text-slate-700 text-sm">
               Livret A
             </p>
-            <p className="text-emerald-600 font-bold text-lg">2,4%</p>
+            <p className="text-emerald-600 font-bold text-lg">1,7%</p>
             <p className="text-xs text-slate-500 mt-1">
               Plafond : 22 950 EUR. Interets exoneres d&apos;impot et de
               prelevements sociaux. Disponibilite immediate. Le placement
@@ -107,7 +107,7 @@ export default function Page() {
             <p className="font-semibold text-slate-700 text-sm">
               LDDS (Livret Developpement Durable)
             </p>
-            <p className="text-emerald-600 font-bold text-lg">2,4%</p>
+            <p className="text-emerald-600 font-bold text-lg">1,7%</p>
             <p className="text-xs text-slate-500 mt-1">
               Plafond : 12 000 EUR. Meme taux et fiscalite que le Livret A.
               Complement ideal pour continuer a epargner sans impot une fois
@@ -118,10 +118,10 @@ export default function Page() {
             <p className="font-semibold text-slate-700 text-sm">
               LEP (Livret d&apos;Epargne Populaire)
             </p>
-            <p className="text-emerald-600 font-bold text-lg">3,5%</p>
+            <p className="text-emerald-600 font-bold text-lg">2,5%</p>
             <p className="text-xs text-slate-500 mt-1">
               Plafond : 10 000 EUR. Reserve aux revenus modestes (revenu
-              fiscal de reference &lt; 22 419 EUR pour une personne seule).
+              fiscal de reference de 23 028 EUR au plus pour une part, en metropole, en 2026).
               Le livret le mieux remunere et le plus avantageux fiscalement.
             </p>
           </div>
@@ -140,9 +140,9 @@ export default function Page() {
             <p className="font-semibold text-slate-700 text-sm">
               PEL (Plan Epargne Logement)
             </p>
-            <p className="text-emerald-600 font-bold text-lg">2,25%</p>
+            <p className="text-emerald-600 font-bold text-lg">2%</p>
             <p className="text-xs text-slate-500 mt-1">
-              Plafond : 61 200 EUR. Taux fixe a l&apos;ouverture. Duree
+              Plafond : 61 200 EUR. Taux fixe a l&apos;ouverture (2% pour un PEL ouvert en 2026). Duree
               minimum 4 ans. Permet d&apos;obtenir un pret immobilier a
               taux preferentiel. Soumis au PFU de 30% depuis 2018.
             </p>
@@ -151,7 +151,7 @@ export default function Page() {
             <p className="font-semibold text-slate-700 text-sm">
               Livret Jeune (12-25 ans)
             </p>
-            <p className="text-emerald-600 font-bold text-lg">&ge; 2,4%</p>
+            <p className="text-emerald-600 font-bold text-lg">&ge; 1,7%</p>
             <p className="text-xs text-slate-500 mt-1">
               Plafond : 1 600 EUR. Taux libre fixe par chaque banque, au
               minimum egal au Livret A. Exonere d&apos;impot. Reserve aux
@@ -217,8 +217,8 @@ export default function Page() {
           Cette regle simple permet d&apos;estimer le temps necessaire pour
           doubler votre capital : divisez 72 par le taux d&apos;interet annuel.
           Exemple : a 3%, il faut environ 72 / 3 = 24 ans pour doubler son
-          argent. A 6%, seulement 12 ans. A 2,4% (Livret A 2026), comptez
-          30 ans pour doubler votre capital.
+          argent. A 6%, seulement 12 ans. A 1,7% (Livret A en octobre 2026),
+          comptez environ 42 ans pour doubler votre capital.
         </p>
       </section>
 
@@ -226,9 +226,9 @@ export default function Page() {
         name="Simuler la croissance d'une epargne avec intérêts composes"
         steps={[
           { name: "Saisir le capital initial et les versements", text: "Indiquer le capital de depart en EUR (ex : 5 000 EUR) et le montant du versement mensuel regulier (ex : 200 EUR/mois). Même 50 EUR/mois places regulierement font une difference importante sur 20 ans grace aux intérêts composes." },
-          { name: "Choisir le taux et le support d'epargne", text: "Sélectionner un taux pre-rempli (Livret A 2,4%, LDDS 2,4%, LEP 3,5%, assurance-vie 2,5%, PEL 2,25%) ou saisir un taux personnalise. Indiquer la durée du placement en années (1 à 40 ans)." },
-          { name: "Appliquer la formule des intérêts composes", text: "Capital final = Capital initial x (1 + taux)^durée + Versements x ((1 + taux)^durée - 1) / taux. Exemple : 5 000 EUR à 2,4% pendant 10 ans + 200 EUR/mois = environ 32 500 EUR dont 5 500 EUR d'intérêts produits." },
-          { name: "Lire le tableau d'évolution annuelle", text: "Le simulateur affiche année par année le capital total, les intérêts cumules et la part des versements. La regle des 72 estime le doublement du capital : 72 divise par le taux = nombre d'années (72 / 2,4 = 30 ans pour le Livret A)." },
+          { name: "Choisir le taux et le support d'epargne", text: "Sélectionner un taux pre-rempli (Livret A 1,7%, LDDS 1,7%, LEP 2,5%, assurance-vie environ 2,5%, PEL 2%) ou saisir un taux personnalise. Indiquer la durée du placement en années (1 à 40 ans)." },
+          { name: "Appliquer la formule des intérêts composes", text: "Capital final = Capital initial x (1 + taux)^durée + Versements x ((1 + taux)^durée - 1) / taux. Exemple : 5 000 EUR à 1,7% pendant 10 ans + 200 EUR/mois = environ 32 066 EUR dont 3 066 EUR d'intérêts produits." },
+          { name: "Lire le tableau d'évolution annuelle", text: "Le simulateur affiche année par année le capital total, les intérêts cumules et la part des versements. La regle des 72 estime le doublement du capital : 72 divise par le taux = nombre d'années (72 / 1,7 = environ 42 ans pour le Livret A)." },
         ]}
       />
 

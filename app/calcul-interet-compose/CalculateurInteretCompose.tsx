@@ -1,6 +1,7 @@
 "use client";
 import { fmtInt } from "@/app/lib/fmt";
 import { useState, useMemo } from "react";
+import { TAUX_EPARGNE } from "@/app/simulateur-epargne/tauxEpargne";
 
 import { fmtEUR as fmt } from "@/app/lib/fmt";
 
@@ -76,8 +77,8 @@ export default function CalculateurInteretCompose() {
               className="w-full border border-slate-300 rounded-xl px-4 py-3.5 text-lg font-semibold focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 outline-none transition-all" />
             <div className="flex flex-wrap gap-2 mt-2">
               {[
-                { v: "3", l: "Livret A (3%)" },
-                { v: "5", l: "Fonds euros (5%)" },
+                { v: String(TAUX_EPARGNE.livretA), l: `Livret A (${String(TAUX_EPARGNE.livretA).replace(".", ",")}%)` },
+                { v: String(TAUX_EPARGNE.assuranceVie), l: `Fonds euros (~${String(TAUX_EPARGNE.assuranceVie).replace(".", ",")}%)` },
                 { v: "8", l: "Actions (8%)" },
                 { v: "10", l: "ETF World (10%)" },
               ].map((t) => (

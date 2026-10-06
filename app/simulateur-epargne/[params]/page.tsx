@@ -4,15 +4,16 @@ import SimulateurEpargne from "../SimulateurEpargne";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
+import { TAUX_EPARGNE } from "../tauxEpargne";
 
 const CAPITAUX = [1000, 2000, 5000, 10000, 15000, 20000, 30000, 50000, 100000];
 
 const PLACEMENTS_MAP: Record<string, { label: string; taux: number; desc: string }> = {
-  "livret-a": { label: "Livret A", taux: 2.4, desc: "Net d'impot" },
-  "ldds": { label: "LDDS", taux: 2.4, desc: "Net d'impot" },
-  "lep": { label: "LEP", taux: 3.5, desc: "Sous conditions de revenus" },
-  "assurance-vie": { label: "Assurance-vie (fonds euro)", taux: 2.5, desc: "Rendement moyen 2025" },
-  "pel": { label: "PEL (depuis 2024)", taux: 2.25, desc: "Taux fixe a l'ouverture" },
+  "livret-a": { label: "Livret A", taux: TAUX_EPARGNE.livretA, desc: "Net d'impot" },
+  "ldds": { label: "LDDS", taux: TAUX_EPARGNE.ldds, desc: "Net d'impot" },
+  "lep": { label: "LEP", taux: TAUX_EPARGNE.lep, desc: "Sous conditions de revenus" },
+  "assurance-vie": { label: "Assurance-vie (fonds euro)", taux: TAUX_EPARGNE.assuranceVie, desc: "Ordre de grandeur, selon le contrat" },
+  "pel": { label: "PEL (ouvert en 2026)", taux: TAUX_EPARGNE.pel, desc: "Taux fixe a l'ouverture" },
 };
 
 const PLACEMENT_SLUGS = Object.keys(PLACEMENTS_MAP);
