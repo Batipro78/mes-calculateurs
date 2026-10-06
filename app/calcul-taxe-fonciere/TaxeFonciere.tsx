@@ -200,7 +200,7 @@ export default function TaxeFonciere() {
               <div className="h-px bg-white/20 my-3" />
               <div className="grid grid-cols-2 gap-3 text-sm">
                 <div>
-                  <p className="text-amber-200">Par mois</p>
+                  <p className="text-amber-200">Par mois si mensualise (10 mois)</p>
                   <p className="font-semibold text-lg">{fmt(resultat.taxeMensuelle)} &euro;</p>
                 </div>
                 <div>

@@ -19,9 +19,9 @@ export const metadata: Metadata = {
 
 const FAQ_ITEMS: FaqItem[] = [
   { q: "Quel est le montant de la pension de reversion ?", a: "La pension de reversion du regime general represente 54% de la retraite du conjoint decede. La complementaire AGIRC-ARRCO represente 60%. Ces montants sont soumis a des conditions de ressources." },
-  { q: "A quel age peut-on toucher la pension de reversion ?", a: "L'age minimum est de 55 ans pour le regime general. Pour l'AGIRC-ARRCO, l'age minimum est egalement de 55 ans, mais sans condition de ressources a partir de 55 ans." },
-  { q: "Le remariage supprime-t-il la pension de reversion ?", a: "Pour le regime general (Securite Sociale), le remariage, la vie en concubinage ou le PACS supprime la pension de reversion. Pour l'AGIRC-ARRCO (complementaire), la pension de reversion est maintenue meme en cas de remariage depuis 2017." },
-  { q: "La pension de reversion est-elle soumise a conditions de ressources ?", a: "Oui, pour le regime general. Les ressources annuelles du conjoint survivant ne doivent pas depasser un plafond fixe chaque annee (environ 23 441 euros en 2026 pour une personne seule). Pour l'AGIRC-ARRCO, il n'y a pas de condition de ressources." },
+  { q: "A quel age peut-on toucher la pension de reversion ?", a: "L'age minimum est de 55 ans pour le regime general. Pour l'AGIRC-ARRCO, l'age minimum est egalement de 55 ans, sans condition de ressources ; il peut etre plus bas si le conjoint a 2 enfants a charge ou est invalide." },
+  { q: "Le remariage supprime-t-il la pension de reversion ?", a: "Pour l'AGIRC-ARRCO (complementaire), oui : le remariage eteint definitivement le droit a la reversion, meme s'il est suivi d'un divorce. Pour le regime general (Securite sociale), un ex-epoux peut toucher la reversion meme s'il vit de nouveau en couple ; le plafond de ressources est alors celui d'un couple (40 002,56 euros par an). Le PACS et le concubinage n'ouvrent pas droit a la reversion." },
+  { q: "La pension de reversion est-elle soumise a conditions de ressources ?", a: "Oui, pour le regime general. Les ressources annuelles du conjoint survivant ne doivent pas depasser un plafond fixe chaque annee (25 001,60 euros par an en 2026 pour une personne seule, 40 002,56 euros en couple). Pour l'AGIRC-ARRCO, il n'y a pas de condition de ressources." },
 ];
 
 export default function Page() {
@@ -83,7 +83,7 @@ export default function Page() {
           <li>Reunir les pieces : acte de deces, livret de famille, vos justificatifs de ressources, RIB</li>
           <li>Deposer la demande en ligne sur info-retraite.fr (ou par formulaire papier Cerfa)</li>
           <li>Indiquer tous les regimes du defunt (salarie, independant, agricole, public...)</li>
-          <li>Attendre l&apos;instruction : comptez generalement 2 a 4 mois de traitement</li>
+          <li>Attendre l&apos;instruction : au regime general, une absence de reponse pendant plus de 4 mois vaut refus</li>
         </ol>
         <h3 className="font-bold text-slate-800 mt-6 mb-2">Attention au point de depart</h3>
         <p className="text-slate-600 mb-4 leading-relaxed">
@@ -98,8 +98,8 @@ export default function Page() {
           Au regime general, la reversion est soumise a un plafond de ressources : vos pensions de retraite
           personnelles, revenus d&apos;activite et certains biens sont pris en compte. Si vos ressources
           augmentent (reprise d&apos;activite, heritage), le montant peut etre revu a la baisse. La
-          complementaire AGIRC-ARRCO, elle, n&apos;impose aucune condition de ressources : seul l&apos;age
-          minimum (55 ans) compte.
+          complementaire AGIRC-ARRCO, elle, n&apos;impose aucune condition de ressources, mais le droit
+          s&apos;eteint definitivement en cas de remariage.
         </p>
       </section>
 
@@ -108,7 +108,7 @@ export default function Page() {
         steps={[
           { name: "Saisir la pension mensuelle du defunt", text: "Entrer le montant mensuel brut de la retraite du conjoint decede, separement pour le régime général (Sécurité Sociale) et la complémentaire AGIRC-ARRCO si disponible." },
           { name: "Appliquer le taux de reversion", text: "Le régime général verse 54 % de la pension du defunt. L'AGIRC-ARRCO verse 60 %. Exemple : pension de 1 500 EUR - reversion régime général = 810 EUR/mois, AGIRC-ARRCO = 900 EUR/mois." },
-          { name: "Vérifier les conditions d'eligibilite", text: "Régime général : avoir au moins 55 ans, ressources annuelles inferieures à environ 23 441 EUR en 2026 (personne seule), avoir ete marie(e) au defunt. AGIRC-ARRCO : 55 ans minimum, pas de condition de ressources." },
+          { name: "Vérifier les conditions d'eligibilite", text: "Régime général : avoir au moins 55 ans, ressources annuelles inferieures à 25 001,60 EUR en 2026 (personne seule), avoir ete marie(e) au defunt. AGIRC-ARRCO : 55 ans minimum, pas de condition de ressources." },
           { name: "Deposer la demande dans les 12 mois", text: "La pension de reversion n'est pas automatique. Deposer la demande unique sur info-retraite.fr dans les 12 mois du deces pour que la pension prenne effet au 1er du mois suivant le deces, sans perte de mensualités." },
         ]}
       />
@@ -119,7 +119,7 @@ export default function Page() {
         methode={`La pension de reversion est une fraction de la retraite du conjoint decede (54 % au regime general), versee sous conditions d'age et de ressources. Le simulateur applique ces regles selon le regime.`}
         sources={[
           { label: "Info-retraite.fr - Pension de reversion", url: "https://www.info-retraite.fr" },
-          { label: "Service-Public.fr - Pension de reversion", url: "https://www.service-public.fr/particuliers/vosdroits/F1928" },
+          { label: "Service-Public.fr - Pension de reversion du regime general", url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F13104" },
         ]}
       />
 

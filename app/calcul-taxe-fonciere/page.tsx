@@ -3,6 +3,7 @@ import TaxeFonciere from "./TaxeFonciere";
 import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
+import Visuel from "../components/Visuel";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import SourcesMethodo from "../components/SourcesMethodo";
@@ -150,6 +151,12 @@ export default function Page() {
           coup dur, vous pouvez opter pour la <strong>mensualisation</strong> sur impots.gouv.fr : le montant est
           preleve en 10 mensualites de janvier a octobre, avec ajustement en fin d&apos;annee.
         </p>
+        <Visuel
+          fichier="taxe-fonciere-mensualisation-10-prelevements"
+          alt="Taxe foncière mensualisée : 10 prélèvements le 15 de chaque mois, de janvier à octobre ; si la taxe augmente, le solde est prélevé en novembre, voire en décembre. Exemple : 806,40 € de taxe, soit 10 prélèvements de 80,64 €."
+          legende="La mensualisation de la taxe foncière : dix prélèvements, le 15 de chaque mois de janvier à octobre, chacun égal au dixième de la taxe de l'année précédente (source : impots.gouv.fr)."
+          className="mt-2 mb-6"
+        />
         <h3 className="font-bold text-slate-800 mt-6 mb-2">Vente en cours d&apos;annee et logement vacant</h3>
         <p className="text-slate-600 leading-relaxed">
           La taxe est due par le proprietaire au <strong>1er janvier</strong> : en cas de vente, l&apos;acte prevoit

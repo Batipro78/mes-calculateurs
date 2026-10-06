@@ -50,7 +50,7 @@ const INFOS_SEMAINES: Record<number, InfoSemaine> = {
   37: { taille: "48,6 cm", poids: "2,9 kg", developpement: "Le bebe est considere comme a terme ! Il peut naitre en bonne sante.", conseil: "Bebe peut arriver a tout moment. Gardez votre telephone charge !" },
   38: { taille: "49,8 cm", poids: "3,1 kg", developpement: "Le lanugo a presque disparu. Le bebe se prepare a la naissance.", conseil: "Restez active (marche) pour favoriser la descente du bebe." },
   39: { taille: "50,7 cm", poids: "3,3 kg", developpement: "Le bebe est pret a naitre. Il mesure environ 50 cm et pese environ 3,3 kg.", conseil: "Reconnaissez les vrais signes du travail : contractions regulieres, perte des eaux." },
-  40: { taille: "51,2 cm", poids: "3,5 kg", developpement: "Date prevue d'accouchement ! Seuls 5% des bebes naissent pile a la DPA.", conseil: "Si pas de signes de travail, votre medecin surveillera de pres." },
+  40: { taille: "51,2 cm", poids: "3,5 kg", developpement: "Date prevue d'accouchement ! Peu de bebes naissent le jour exact.", conseil: "Si pas de signes de travail, votre medecin surveillera de pres." },
   41: { taille: "51,5 cm", poids: "3,6 kg", developpement: "Terme depasse. Surveillance renforcee (monitoring). Declenchement envisage a 41 SA + 6 jours.", conseil: "Consultations tous les 2 jours. Declenchement probable bientot." },
 };
 

@@ -150,7 +150,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
           {fmt(ref.taxeApp)} <span className="text-2xl font-semibold">EUR/an</span>
         </p>
         <p className="text-amber-100 mt-2">
-          Soit environ {fmt(Math.round(ref.taxeApp / 12))} EUR par mois
+          Soit environ {fmt(Math.round(ref.taxeApp / 10))} EUR par mois si vous etes mensualise (dix prelevements, de janvier a octobre)
         </p>
         <div className="h-px bg-white/20 my-4" />
         <div className="grid grid-cols-3 gap-4 text-sm">

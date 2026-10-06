@@ -56,29 +56,21 @@ export function calcCapaciteEmprunt(
   tauxAssurance: number = TAUX_ASSURANCE_DEFAUT
 ): ResultatEmprunt {
   const revenuTotal = revenu1 + revenu2;
-  const mensualiteMax = (revenuTotal - charges) * (TAUX_ENDETTEMENT_MAX / 100);
+  // Regle du HCSF : l'ensemble des mensualites de credit (credits en cours +
+  // nouveau pret, assurance comprise) ne doit pas depasser 35 % des revenus.
+  // Les credits en cours se retirent donc de ces 35 %, pas des revenus.
+  const mensualiteMax = revenuTotal * (TAUX_ENDETTEMENT_MAX / 100) - charges;
 
   const tauxMensuel = tauxAnnuel / 100 / 12;
   const nbMois = dureeAnnees * 12;
-
-  // Capital empruntable (hors assurance)
+  // L'assurance est un pourcentage annuel du capital emprunte.
   const tauxAssuranceMensuel = tauxAssurance / 100 / 12;
-  const mensualiteHorsAssurance = mensualiteMax / (1 + (tauxAssuranceMensuel * nbMois * 12) / (tauxAnnuel > 0 ? nbMois : 1));
 
-  let capitalMax: number;
-  if (tauxMensuel === 0) {
-    capitalMax = mensualiteMax * nbMois;
-  } else {
-    // On deduit le cout de l'assurance de la mensualite max
-    const mensualiteAssurance = (mensualiteMax * tauxAssurance / 100) / 12;
-    const mensualiteCredit = mensualiteMax - mensualiteAssurance;
-
-    if (mensualiteCredit <= 0) {
-      capitalMax = 0;
-    } else {
-      capitalMax = mensualiteCredit * ((1 - Math.pow(1 + tauxMensuel, -nbMois)) / tauxMensuel);
-    }
-  }
+  // Capital C tel que mensualite du credit + assurance = mensualiteMax,
+  // soit C x (facteur d'annuite + taux d'assurance mensuel) = mensualiteMax.
+  const facteurAnnuite =
+    tauxMensuel === 0 ? 1 / nbMois : tauxMensuel / (1 - Math.pow(1 + tauxMensuel, -nbMois));
+  let capitalMax = mensualiteMax > 0 ? mensualiteMax / (facteurAnnuite + tauxAssuranceMensuel) : 0;
 
   capitalMax = Math.max(0, Math.round(capitalMax));
 
@@ -98,9 +90,11 @@ export function calcCapaciteEmprunt(
   const coutTotal = coutInterets + coutAssurance;
 
   const mensualiteReelle = mensualiteCreditReelle + mensualiteAssuranceReelle;
-  const tauxEndettement = revenuTotal > 0 ? (mensualiteReelle / revenuTotal) * 100 : 0;
+  // Taux d'endettement : toutes les mensualites de credit, y compris celles en cours.
+  const tauxEndettement = revenuTotal > 0 ? ((mensualiteReelle + charges) / revenuTotal) * 100 : 0;
   const resteAVivre = revenuTotal - charges - mensualiteReelle;
-  const conforme = tauxEndettement <= TAUX_ENDETTEMENT_MAX && resteAVivre >= 700;
+  // Compare au dixieme pres (le capital est arrondi a l'euro).
+  const conforme = Math.round(tauxEndettement * 10) / 10 <= TAUX_ENDETTEMENT_MAX && resteAVivre >= 700;
 
   return {
     revenuTotal,

@@ -33,7 +33,7 @@ const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "La date prevue d'accouchement est-elle toujours exacte ?",
-    a: "Non, la DPA est une estimation : seulement 5 % des bebes naissent exactement a la date prevue. La majorite des naissances surviennent entre 38 et 42 SA. Un bebe est considere a terme a partir de 37 SA. Au-dela de 41 SA, une surveillance renforcee est mise en place et un declenchement est souvent propose a 41 SA + 6 jours.",
+    a: "Non, la DPA est une estimation : peu de bebes naissent le jour exact. D'apres ameli, l'accouchement a lieu entre 37 et 42 SA. Un bebe est considere a terme a partir de 37 SA. Au-dela de 41 SA, une surveillance renforcee est mise en place et un declenchement est souvent propose a 41 SA + 6 jours.",
   },
   {
     q: "Quand doit-on declarer sa grossesse ?",
@@ -239,9 +239,9 @@ export default function Page() {
           Quand le bebe peut-il naitre ?
         </h3>
         <p className="text-slate-600 leading-relaxed mb-4">
-          La DPA est une estimation : seulement <strong>5% des bebes</strong>
-          naissent exactement a la date prevue. La majorite des naissances
-          surviennent entre 38 et 42 SA. Un bebe est considere comme &quot;a
+          La DPA est une estimation : <strong>peu de bebes</strong> naissent le
+          jour exact. D&apos;apres ameli, l&apos;accouchement a lieu entre 37 et
+          42 SA. Un bebe est considere comme &quot;a
           terme&quot; a partir de 37 SA. Avant 37 SA, on parle de prematurite.
           Au-dela de 41 SA, une surveillance renforcee est mise en place et
           un declenchement est souvent propose a 41 SA + 6 jours.

@@ -1,7 +1,8 @@
-// Prime d'activite 2026 — Bareme CAF avril 2025-mars 2026 + revalorisation avril 2026
+// Prime d'activite — bareme en vigueur depuis le 1er avril 2026.
+// Sources : caf.fr « Bareme prime d'activite » et service-public.gouv.fr F2882 (verifies le 05/10/2026).
 
-// Montant forfaitaire de base (personne seule, avril 2025)
-export const FORFAITAIRE_BASE = 633.21;
+// Montant forfaitaire de base (personne seule, au 1er avril 2026)
+export const FORFAITAIRE_BASE = 638.28;
 
 // Majorations selon composition du foyer
 // +50% pour la 1ere personne supplementaire, +30% par enfant/personne en plus
@@ -49,9 +50,9 @@ export function getMontantForfaitaire(situation: string, enfants: number, parent
 
 // Bonification individuelle (par membre actif du foyer)
 export function getBonification(revenuMensuel: number): number {
-  const seuilMin = 709.18; // 0.5 SMIC net mensuel approx
-  const seuilMax = 1442.40; // ~SMIC net mensuel
-  const bonifMax = 173.22; // montant max bonification individuelle
+  const seuilMin = 709.18; // pas de bonification en dessous (caf.fr, 2026)
+  const seuilMax = 1658.76; // maximum atteint a partir de ce revenu (caf.fr, 2026)
+  const bonifMax = 240.63; // montant max de la bonification individuelle (caf.fr, 2026)
 
   if (revenuMensuel < seuilMin) return 0;
   if (revenuMensuel >= seuilMax) return bonifMax;
@@ -65,7 +66,8 @@ export function getForfaitLogement(situation: string, enfants: number): number {
   const nbPersonnes = (situation === "couple" ? 2 : 1) + enfants;
   if (nbPersonnes === 1) return FORFAITAIRE_BASE * 0.12;
   if (nbPersonnes === 2) return FORFAITAIRE_BASE * 0.24;
-  return FORFAITAIRE_BASE * 0.2978; // 3 personnes et plus
+  // 3 personnes et plus : 189,57 EUR au bareme caf.fr 2026, soit 0,297 x base.
+  return FORFAITAIRE_BASE * 0.297;
 }
 
 export interface ResultatPrimeActivite {
@@ -108,9 +110,9 @@ export function calcPrimeActivite(
 
   const montantForfaitaire = getMontantForfaitaire(situation, enfants, parentIsole);
 
-  // 61% des revenus professionnels du foyer
+  // 59,85 % des revenus professionnels du foyer (service-public F2882, 2026)
   const totalRevenusPro = revenuNetMensuel + revenuConjoint;
-  const partRevenus = totalRevenusPro * 0.61;
+  const partRevenus = totalRevenusPro * 0.5985;
 
   // Bonifications individuelles
   const bonification = getBonification(revenuNetMensuel);

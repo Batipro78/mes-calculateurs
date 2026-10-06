@@ -329,9 +329,9 @@ export default function CalculateurDPA() {
 
         <div className="bg-purple-50 rounded-2xl border border-purple-200 p-4">
           <p className="text-xs text-purple-700">
-            La date prevue d&apos;accouchement est une estimation. Seulement
-            5% des bebes naissent a la date prevue. La plupart naissent entre
-            38 et 42 semaines d&apos;amenorrhee. Consultez votre medecin ou
+            La date prevue d&apos;accouchement est une estimation : peu de bebes
+            naissent le jour exact. D&apos;apres ameli, l&apos;accouchement a lieu entre
+            37 et 42 semaines d&apos;amenorrhee. Consultez votre medecin ou
             sage-femme pour un suivi personnalise.
           </p>
         </div>

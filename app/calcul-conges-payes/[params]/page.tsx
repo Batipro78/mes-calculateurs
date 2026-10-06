@@ -55,8 +55,10 @@ export default async function Page({ params }: { params: Promise<{ params: strin
   const joursExacts = mois * 2.5;
   const totalBrut = salaire * mois;
   const indemniteDixieme = totalBrut / 10;
+  // Jours acquis = jours OUVRABLES ; 30 ouvrables = 25 ouvres (F33359), d'ou le 5/6,
+  // puis 21,67 jours ouvres par mois (meme calcul que le calculateur).
   const salaireJournalier = salaire / 21.67;
-  const indemniteMainitien = salaireJournalier * jours;
+  const indemniteMainitien = salaireJournalier * jours * (5 / 6);
   const indemniteRetenue = Math.max(indemniteDixieme, indemniteMainitien);
   const methodeRetenue = indemniteDixieme >= indemniteMainitien ? "1/10e" : "maintien";
 

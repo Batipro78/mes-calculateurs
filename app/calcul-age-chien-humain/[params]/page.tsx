@@ -124,10 +124,10 @@ export default async function Page({ params }: { params: Promise<{ params: strin
       },
       {
         "@type": "Question",
-        name: `Formule scientifique Wang 2019 pour ${age} ans ${tailleInfo.nomTaille}`,
+        name: `Formule scientifique Wang 2020 pour ${age} ans ${tailleInfo.nomTaille}`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Selon l'étude Wang et al. 2019 (méthylation ADN), la formule 16 × ln(${age}) + 31 = ${resultat.ageHumainWang} ans humains. Cette méthode scientifique complète la formule AVMA pratique.`,
+          text: `Selon l'étude Wang et al. 2020 (méthylation ADN), la formule 16 × ln(${age}) + 31 = ${resultat.ageHumainWang} ans humains. Cette méthode scientifique complète la formule AVMA pratique.`,
         }
       }
     ]
@@ -172,7 +172,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
           </div>
 
           <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-            <p className="text-sm text-blue-700 font-medium">Étude Wang 2019</p>
+            <p className="text-sm text-blue-700 font-medium">Étude Wang 2020</p>
             <p className="text-3xl font-bold text-blue-900 mt-1">{resultat.ageHumainWang}</p>
             <p className="text-sm text-blue-700 mt-1">ans humains (ADN méthylation)</p>
           </div>

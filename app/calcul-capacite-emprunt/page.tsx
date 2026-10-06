@@ -95,7 +95,7 @@ export default function Page() {
           <div className="bg-blue-50 rounded-xl p-4 mb-4">
             <p className="text-sm font-semibold text-blue-800 mb-2">Formule de calcul :</p>
             <p className="text-sm text-blue-700 font-mono">
-              Mensualite max = (Revenus nets - Charges) x 35%
+              Mensualite max = Revenus nets x 35% - Credits en cours
             </p>
             <p className="text-sm text-blue-700 font-mono mt-1">
               Capital max = Mensualite x [(1 - (1 + taux)^(-n)) / taux]
@@ -188,9 +188,9 @@ export default function Page() {
           </h2>
           <div className="space-y-4">
             {[
-              { num: "1", title: "Remboursez vos credits en cours", desc: "Chaque credit rembourse libere de la capacite d'endettement. Un credit auto de 300 €/mois = 60 000 € de capacite d'emprunt en moins sur 20 ans." },
+              { num: "1", title: "Remboursez vos credits en cours", desc: "Chaque credit rembourse libere de la capacite d'endettement. Un credit auto de 300 €/mois = environ 52 000 € de capacite d'emprunt en moins sur 20 ans (a 3,35 %, hors assurance)." },
               { num: "2", title: "Empruntez a deux", desc: "Un co-emprunteur double potentiellement vos revenus declares et donc votre capacite d'emprunt." },
-              { num: "3", title: "Allongez la duree", desc: "Passer de 20 a 25 ans augmente votre capacite d'environ 20%, mais le cout total du credit augmente aussi." },
+              { num: "3", title: "Allongez la duree", desc: "Passer de 20 a 25 ans augmente votre capacite d'environ 15 % (aux taux par defaut du calculateur), mais le cout total du credit augmente aussi." },
               { num: "4", title: "Negociez le taux et l'assurance", desc: "Faire jouer la concurrence entre banques et utiliser la loi Lemoine pour choisir une assurance externe peut economiser des dizaines de milliers d'euros." },
               { num: "5", title: "Augmentez votre apport", desc: "Un apport de 20% ou plus rassure les banques et peut vous obtenir un meilleur taux, ce qui augmente indirectement votre capacite." },
             ].map((conseil) => (
@@ -237,7 +237,7 @@ export default function Page() {
       <HowToJsonLd
         name="Calculer sa capacité d'emprunt immobilier"
         steps={[
-          { name: "Saisir les revenus nets et les charges existantes", text: "Entrer les revenus nets mensuels du foyer et les charges de credits en cours. La mensualité maximale autorisee = (revenus nets - charges) x 35 pct (regle HCSF 2026, assurance incluse)." },
+          { name: "Saisir les revenus nets et les charges existantes", text: "Entrer les revenus nets mensuels du foyer et les charges de credits en cours. La mensualité maximale autorisee = revenus nets x 35 pct - credits en cours (regle HCSF, assurance incluse)." },
           { name: "Choisir le taux d'intérêt et la durée du pret", text: "Sélectionner la durée (15, 20 ou 25 ans max selon HCSF) et le taux. Capital empruntable = mensualité max x [(1 - (1 + taux mensuel)^(-n mois)) / taux mensuel]." },
           { name: "Ajouter l'apport personnel pour obtenir le budget total", text: "Le prix maximum du bien = capital empruntable + apport. Un apport d au moins 10 pct est recommande pour couvrir les frais de notaire. Plus l'apport est eleve, meilleur est le taux obtenu." },
         ]}

@@ -3,6 +3,7 @@ import SimulateurRenteViagere from "./SimulateurRenteViagere";
 import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
+import Visuel from "../components/Visuel";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import HowToJsonLd from "../components/HowToJsonLd";
@@ -91,6 +92,12 @@ export default function Page() {
           <li>60-69 ans : <strong>60% d&apos;abattement</strong> (40% imposable — cas le plus frequent)</li>
           <li>70 ans et plus : 70% d&apos;abattement (30% imposable — optimal)</li>
         </ul>
+        <Visuel
+          fichier="rente-viagere-part-imposable-age"
+          alt="Rente viagère à titre onéreux : part imposable selon l'âge au premier versement, 70 % (moins de 50 ans), 50 % (50 à 59 ans), 40 % (60 à 69 ans), 30 % (70 ans et plus). Sur 10 000 € de rente par an, 7 000 €, 5 000 €, 4 000 €, 3 000 € sont imposables."
+          legende="La part d'une rente viagère à titre onéreux soumise à l'impôt dépend de l'âge au premier versement (barème du BOFiP, celui qu'applique le simulateur)."
+          className="mt-2 mb-6"
+        />
         <p className="text-slate-600 leading-relaxed">
           <strong>Astuce</strong> : attendre 70 ans pour demander la conversion en rente maximise l&apos;abattement
           (70%) et booste le taux de conversion (~5,7%).

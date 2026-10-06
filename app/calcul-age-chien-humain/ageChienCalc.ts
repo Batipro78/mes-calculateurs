@@ -73,7 +73,7 @@ export function calculerAgeChien(ageChien: number, taille: TailleChien): Resulta
     ageHumain = 24 + info.ajoutAnnuel * (ageChien - 2);
   }
 
-  // Wang 2019 : 16 × ln(age) + 31
+  // Wang 2020 : 16 × ln(age) + 31
   const ageHumainWang = ageChien > 0 ? Math.round(16 * Math.log(ageChien) + 31) : 0;
 
   // Proportion vie écoulée selon taille

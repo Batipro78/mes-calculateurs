@@ -9,17 +9,17 @@ import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-age-chien-humain" },
-  title: "Calcul Âge Chien en Années Humaines - Formule AVMA",
+  title: "Calcul Âge Chien en Années Humaines - Méthode par taille",
   description:
-    "Convertissez l'âge de votre chien en années humaines. Formule AVMA vétérinaire + étude Wang 2019 (ADN méthylation). Petit, moyen, grand ou géant chien.",
+    "Convertissez l'âge de votre chien en années humaines. Méthode par taille + étude Wang 2020 (ADN méthylation). Petit, moyen, grand ou géant chien.",
   keywords:
-    "age chien humain, convertir age chien, mon chien quel age, calcul age chien, formule AVMA, wang 2019, esperance vie chien, age chien en ans humains",
+    "age chien humain, convertir age chien, mon chien quel age, calcul age chien, formule AVMA, wang 2020, esperance vie chien, age chien en ans humains",
 };
 
 const FAQ_ITEMS: FaqItem[] = [
   {
     q: "Comment calculer l'âge d'un chien en années humaines ?",
-    a: "La formule AVMA (American Veterinary Medical Association) est : la 1ère année du chien = 15 ans humains, la 2ème année = +9 ans (total 24), puis à partir de 3 ans, on ajoute +4 à +7 ans par année selon la taille (petit, moyen, grand ou géant). Par exemple, un chien moyen de 5 ans = 15 + 9 + 5×5 = 49 ans humains.",
+    a: "La règle rapportée par l'AKC d'après les vétérinaires américains (AVMA) : la 1ère année du chien = 15 ans humains, la 2ème année = +9 ans (total 24), puis environ +5 ans par année. Le calculateur la décline selon la taille : +4 à +7 ans par année à partir de 3 ans (petit, moyen, grand ou géant). Par exemple, un chien moyen de 5 ans = 15 + 9 + 3×5 = 39 ans humains.",
   },
   {
     q: "Pourquoi pas 1 an = 7 ans humains ?",
@@ -34,8 +34,8 @@ const FAQ_ITEMS: FaqItem[] = [
     a: "L'espérance de vie varie selon la taille : petit chien 14-16 ans, chien moyen 12-14 ans, grand chien 10-12 ans, chien géant 8-10 ans. Ces moyennes peuvent varier selon la race, la génétique et la qualité des soins vétérinaires.",
   },
   {
-    q: "Qu'est-ce que l'étude Wang 2019 sur l'âge des chiens ?",
-    a: "En 2019, des chercheurs ont publié dans Cell Systems une formule basée sur la méthylation de l'ADN : âge humain = 16 × ln(âge chien) + 31. Elle modélise le vieillissement biologique plus précisément. Pour un Labrador de 5 ans, cela donne environ 56 ans humains, contre 44 ans avec la formule AVMA.",
+    q: "Qu'est-ce que l'étude Wang 2020 sur l'âge des chiens ?",
+    a: "En 2020, des chercheurs ont publié dans Cell Systems une formule basée sur la méthylation de l'ADN : âge humain = 16 × ln(âge chien) + 31. Elle modélise le vieillissement biologique plus précisément. Pour un Labrador de 5 ans, cela donne environ 57 ans humains, contre 42 ans avec la méthode par taille (grand chien).",
   },
 ];
 
@@ -54,8 +54,8 @@ export default function Page() {
         </h1>
       </div>
       <p className="text-slate-500 mb-8 ml-[52px]">
-        Découvrez en vrai l&apos;âge de votre compagnon. Formule AVMA officielle,
-        calcul adapté à la taille + étude scientifique Wang 2019.
+        Découvrez en vrai l&apos;âge de votre compagnon. Méthode par taille
+        et étude scientifique Wang 2020.
       </p>
 
       <CalculAgeChienHumain />
@@ -106,32 +106,32 @@ export default function Page() {
           <div className="bg-amber-50 rounded-lg p-3 border border-amber-200">
             <p className="font-semibold text-amber-900">Petit chien (≤10 kg)</p>
             <p className="text-sm text-amber-800">+4 ans humains par année</p>
-            <p className="text-xs text-amber-700 mt-1">Ex : 5 ans = 39 ans humain</p>
+            <p className="text-xs text-amber-700 mt-1">Ex : 5 ans = 36 ans humain</p>
           </div>
           <div className="bg-orange-50 rounded-lg p-3 border border-orange-200">
             <p className="font-semibold text-orange-900">Moyen (10-25 kg)</p>
             <p className="text-sm text-orange-800">+5 ans humains par année</p>
-            <p className="text-xs text-orange-700 mt-1">Ex : 5 ans = 44 ans humain</p>
+            <p className="text-xs text-orange-700 mt-1">Ex : 5 ans = 39 ans humain</p>
           </div>
           <div className="bg-red-50 rounded-lg p-3 border border-red-200">
             <p className="font-semibold text-red-900">Grand (25-45 kg)</p>
             <p className="text-sm text-red-800">+6 ans humains par année</p>
-            <p className="text-xs text-red-700 mt-1">Ex : 5 ans = 49 ans humain</p>
+            <p className="text-xs text-red-700 mt-1">Ex : 5 ans = 42 ans humain</p>
           </div>
           <div className="bg-rose-50 rounded-lg p-3 border border-rose-200">
             <p className="font-semibold text-rose-900">Géant (plus de 45 kg)</p>
             <p className="text-sm text-rose-800">+7 ans humains par année</p>
-            <p className="text-xs text-rose-700 mt-1">Ex : 5 ans = 54 ans humain</p>
+            <p className="text-xs text-rose-700 mt-1">Ex : 5 ans = 45 ans humain</p>
           </div>
         </div>
       </section>
 
       <section className="mt-12 bg-blue-50 border border-blue-200 rounded-2xl p-8">
         <h2 className="text-xl font-bold text-blue-900 mb-4 flex items-center gap-2">
-          🧬 Étude scientifique Wang 2019
+          🧬 Étude scientifique Wang 2020
         </h2>
         <p className="text-blue-800 mb-4 leading-relaxed">
-          En 2019, Trey Idso et ses collègues ont publié une étude révolutionnaire
+          En 2020, une équipe de chercheurs (Wang et al.) a publié une étude
           dans <strong>Cell Systems</strong> analysant la méthylation de l&apos;ADN
           pour comparer le vieillissement des chiens et des humains.
         </p>
@@ -148,7 +148,7 @@ export default function Page() {
             Exemple pour un Labrador de 5 ans :
           </p>
           <p className="text-sm text-blue-800 mt-1">
-            16 × ln(5) + 31 = 16 × 1.609 + 31 = <strong>56 ans humain</strong>
+            16 × ln(5) + 31 = 16 × 1,609 + 31 = 56,75, soit <strong>environ 57 ans humains</strong>
           </p>
         </div>
 
@@ -245,7 +245,7 @@ export default function Page() {
         <p>
           <strong>Disclaimer :</strong> Ce calcul est indicatif et basé sur les formules
           de l&apos;AVMA (American Veterinary Medical Association) et l&apos;étude Wang
-          et al. 2019 publiée dans Cell Systems. Pour des conseils spécifiques sur la
+          et al. 2020 publiée dans Cell Systems. Pour des conseils spécifiques sur la
           santé de votre chien, consultez votre vétérinaire.
         </p>
       </div>
@@ -255,7 +255,7 @@ export default function Page() {
         steps={[
           { name: "Saisir l'âge et la catégorie de taille du chien", text: "Indiquer l'âge du chien en années et sa catégorie de taille : petit (moins de 10 kg), moyen (10-25 kg), grand (25-45 kg) ou geant (plus de 45 kg). La taille influence directement la vitesse de vieillissement." },
           { name: "Appliquer la formule AVMA", text: "Année 1 = 15 ans humains, année 2 = +9 ans (total 24). À partir de 3 ans : +4 ans par an pour les petits chiens, +5 pour les moyens, +6 pour les grands et +7 pour les geants." },
-          { name: "Consulter l'estimation Wang 2019", text: "La formule basee sur la methylation de l'ADN (etude Cell Systems 2019) fournit une estimation complémentaire : âge humain = 16 x ln(âge du chien) + 31. Elle modelise le vieillissement biologique de maniere plus précise pour les Labrador." },
+          { name: "Consulter l'estimation Wang 2020", text: "La formule basee sur la methylation de l'ADN (etude Cell Systems 2020) fournit une estimation complémentaire : âge humain = 16 x ln(âge du chien) + 31. Elle modelise le vieillissement biologique de maniere plus précise pour les Labrador." },
         ]}
       />
 

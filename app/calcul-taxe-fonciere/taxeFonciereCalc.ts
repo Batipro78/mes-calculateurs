@@ -73,7 +73,8 @@ export function calculerTaxeFonciere(config: TaxeFonciereConfig): ResultatTaxeFo
 
   // Calcul taxe
   const taxeAnnuelle = baseImposable * (tauxCommunal / 100);
-  const taxeMensuelle = taxeAnnuelle / 12;
+  // Mensualisation : dix prelevements, de janvier a octobre (impots.gouv.fr).
+  const taxeMensuelle = taxeAnnuelle / 10;
 
   // Exoneration 2 ans si construction neuve
   const exoneration = neuf;

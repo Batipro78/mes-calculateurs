@@ -1,6 +1,7 @@
 "use client";
 import { fmtInt as fmt } from "@/app/lib/fmt";
 import { useState, useMemo } from "react";
+import { taxePlusValueElevee } from "./plusValueCalc";
 
 
 function fmtP(n: number): string {
@@ -88,7 +89,7 @@ export default function CalculateurPlusValue() {
 
     const ir = pvImposableIR * 0.19; // 19% flat
     const ps = pvImposablePS * 0.172; // 17.2% prelevements sociaux
-    const surtaxe = pvImposableIR > 50000 ? pvImposableIR * 0.06 : 0; // surtaxe si > 50K
+    const surtaxe = taxePlusValueElevee(pvImposableIR);
     const total = ir + ps + surtaxe;
 
     return {

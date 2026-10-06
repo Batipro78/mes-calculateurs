@@ -214,7 +214,7 @@ export default function CalculateurPrimeActivite() {
               <span className="font-bold text-slate-800">+ {fmt(r.montantForfaitaire)} EUR</span>
             </div>
             <div className="flex justify-between items-center py-2 border-b border-slate-100">
-              <span className="text-sm text-slate-600">61% des revenus professionnels</span>
+              <span className="text-sm text-slate-600">59,85 % des revenus professionnels</span>
               <span className="font-bold text-slate-800">+ {fmt(r.partRevenus)} EUR</span>
             </div>
             <div className="flex justify-between items-center py-2 border-b border-slate-100">
@@ -283,7 +283,7 @@ export default function CalculateurPrimeActivite() {
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
           <p className="text-sm text-amber-800">
             <strong>Estimation indicative</strong> — Le calcul reel de la CAF prend en compte les revenus des 3 derniers mois glissants,
-            les prestations familiales et d&apos;autres parametres. Montant forfaitaire de base : {fmt(FORFAITAIRE_BASE)} EUR (2025).
+            les prestations familiales et d&apos;autres parametres. Montant forfaitaire de base : {fmt(FORFAITAIRE_BASE)} EUR (depuis le 1er avril 2026).
           </p>
         </div>
       </div>

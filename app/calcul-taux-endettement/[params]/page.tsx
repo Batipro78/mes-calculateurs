@@ -45,7 +45,7 @@ export async function generateMetadata({
   return {
     alternates: { canonical: `/calcul-taux-endettement/${slug}` },
     title: `Taux d'Endettement : ${fmt(parsed.revenus)} EUR de revenus, ${fmt(parsed.charges)} EUR de charges = ${taux}%`,
-    description: `Avec ${fmt(parsed.revenus)} EUR de revenus mensuels et ${fmt(parsed.charges)} EUR de charges, votre taux d'endettement est de ${taux}%. ${Number(taux) <= 33 ? "Vous respectez le seuil bancaire de 33%." : "Vous depassez le seuil bancaire de 33%."}`,
+    description: `Avec ${fmt(parsed.revenus)} EUR de revenus mensuels et ${fmt(parsed.charges)} EUR de charges, votre taux d'endettement est de ${taux}%. ${Number(taux) <= 35 ? "Vous respectez la norme de 35% du HCSF." : "Vous depassez la norme de 35% du HCSF."}`,
   };
 }
 
@@ -61,7 +61,7 @@ export default async function Page({
   const { revenus, charges } = parsed;
   const taux = (charges / revenus) * 100;
   const resteAVivre = revenus - charges;
-  const capacite33 = Math.max(0, revenus * 0.33 - charges);
+  const capacite35 = Math.max(0, revenus * 0.35 - charges);
 
   return (
     <div>
@@ -77,7 +77,7 @@ export default async function Page({
                 name: `Quel est le taux d'endettement pour ${fmt(revenus)} EUR de revenus et ${fmt(charges)} EUR de charges ?`,
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: `Le taux d'endettement est de ${taux.toFixed(1)}% (${fmt(charges)} / ${fmt(revenus)} x 100). ${taux <= 33 ? `Ce taux est inferieur au seuil de 33% impose par les banques. Vous pouvez encore supporter une mensualite supplementaire de ${fmt(Math.round(capacite33))} EUR.` : `Ce taux depasse le seuil de 33% impose par les banques. Il faudrait reduire vos charges de ${fmt(Math.round(charges - revenus * 0.33))} EUR pour respecter ce seuil.`}`,
+                  text: `Le taux d'endettement est de ${taux.toFixed(1)}% (${fmt(charges)} / ${fmt(revenus)} x 100). ${taux <= 35 ? `Ce taux est sous la norme de 35% du HCSF. Il reste ${fmt(Math.round(capacite35))} EUR de mensualite possible avant 35%.` : `Ce taux depasse la norme de 35% du HCSF. Il faudrait reduire vos charges de ${fmt(Math.round(charges - revenus * 0.35))} EUR pour revenir a 35%.`}`,
                 },
               },
             ],
@@ -125,8 +125,8 @@ export default async function Page({
           </div>
           <div className="bg-slate-50 rounded-xl p-4 border border-slate-200 text-center">
             <p className="text-sm text-slate-600 font-medium">Capacite restante</p>
-            <p className="text-3xl font-extrabold text-slate-700 mt-1">{fmt(Math.round(capacite33))} EUR</p>
-            <p className="text-xs text-slate-400">avant 33%</p>
+            <p className="text-3xl font-extrabold text-slate-700 mt-1">{fmt(Math.round(capacite35))} EUR</p>
+            <p className="text-xs text-slate-400">avant 35%</p>
           </div>
         </div>
 
@@ -163,7 +163,7 @@ export default async function Page({
                     </td>
                     <td className="py-2.5 px-2 text-right text-slate-500">{fmt(revenus - c)} EUR</td>
                     <td className="py-2.5 px-2 text-right text-slate-500">
-                      {t <= 25 ? "Excellent" : t <= 33 ? "OK" : t <= 40 ? "Eleve" : "Critique"}
+                      {t <= 25 ? "Excellent" : t <= 35 ? "OK" : t <= 40 ? "Eleve" : "Tres eleve"}
                     </td>
                   </tr>
                 );
@@ -205,7 +205,7 @@ export default async function Page({
                     </td>
                     <td className="py-2.5 px-2 text-right text-slate-500">{fmt(r - charges)} EUR</td>
                     <td className="py-2.5 px-2 text-right text-slate-500">
-                      {t <= 25 ? "Excellent" : t <= 33 ? "OK" : t <= 40 ? "Eleve" : "Critique"}
+                      {t <= 25 ? "Excellent" : t <= 35 ? "OK" : t <= 40 ? "Eleve" : "Tres eleve"}
                     </td>
                   </tr>
                 );

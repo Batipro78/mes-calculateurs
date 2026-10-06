@@ -24,8 +24,9 @@ export default function CalculateurPensionReversion() {
     const taux = regime === "general" ? tauxGeneral : tauxComplementaire;
     const pensionReversion = pension * taux;
 
-    // Plafond de ressources 2026 (regime general) : ~23 441€/an pour une personne seule
-    const plafondAnnuel = 23441;
+    // Plafond de ressources 2026 (regime general), personne seule : 25 001,60 €/an
+    // (40 002,56 € en couple, non gere ici). Source : service-public.gouv.fr F13104.
+    const plafondAnnuel = 25001.6;
     const plafondMensuel = plafondAnnuel / 12;
     const revenuTotal = revenus + pensionReversion;
     const depassement = Math.max(0, revenuTotal - plafondMensuel);
@@ -33,8 +34,8 @@ export default function CalculateurPensionReversion() {
     // Si depassement, la pension est reduite
     const pensionEffective = regime === "general" ? Math.max(0, pensionReversion - depassement) : pensionReversion;
 
-    // Minimum : 314,72€/mois (si 60 trimestres cotises)
-    const minimum = 314.72;
+    // Minimum : 334,92 €/mois si le defunt a 60 trimestres (service-public F13104, 2026)
+    const minimum = 334.92;
 
     // Age minimum : 55 ans regime general, pas de condition age AGIRC-ARRCO si marié
     const ageMinimum = regime === "general" ? 55 : 55;
@@ -131,8 +132,8 @@ export default function CalculateurPensionReversion() {
             <p>Age minimum : 55 ans</p>
             <p>Regime general : 54% de la pension</p>
             <p>AGIRC-ARRCO : 60% de la pension</p>
-            <p>Plafond ressources : {fmt(23441)} &euro;/an</p>
-            <p>Minimum : 314,72 &euro;/mois</p>
+            <p>Plafond ressources : 25 001,60 &euro;/an (seul), 40 002,56 &euro;/an (en couple)</p>
+            <p>Minimum : 334,92 &euro;/mois</p>
           </div>
         </div>
       </div>

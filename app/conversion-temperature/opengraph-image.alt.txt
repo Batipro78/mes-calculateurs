@@ -1,0 +1,1 @@
+Températures de four converties de Fahrenheit en Celsius : 250 °F = 121 °C, 275 °F = 135 °C, 300 °F = 149 °C, 325 °F = 163 °C, 350 °F = 177 °C, 375 °F = 191 °C, 400 °F = 204 °C, 425 °F = 218 °C, 450 °F = 232 °C, 475 °F = 246 °C, 500 °F = 260 °C. Formule : °C = (°F − 32) × 5/9.

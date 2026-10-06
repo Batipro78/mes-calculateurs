@@ -5,16 +5,9 @@ import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
 
-const INFLATION_FR: Record<number, number> = {
-  2000: 1.8, 2001: 1.8, 2002: 1.9, 2003: 2.2, 2004: 2.3,
-  2005: 1.9, 2006: 1.9, 2007: 1.6, 2008: 3.2, 2009: 0.1,
-  2010: 1.7, 2011: 2.3, 2012: 2.2, 2013: 1.0, 2014: 0.6,
-  2015: 0.1, 2016: 0.3, 2017: 1.2, 2018: 2.1, 2019: 1.3,
-  2020: 0.5, 2021: 1.6, 2022: 5.2, 2023: 4.9, 2024: 2.0,
-  2025: 1.5,
-};
+import { INFLATION_FR, DERNIERE_ANNEE } from "../inflationData";
 
-const CURRENT_YEAR = 2025;
+const CURRENT_YEAR = DERNIERE_ANNEE;
 const MONTANTS = [1000, 1500, 2000, 2500, 3000, 3500, 4000, 5000];
 const ANNEES = [2000, 2005, 2010, 2015, 2018, 2020, 2022, 2023];
 

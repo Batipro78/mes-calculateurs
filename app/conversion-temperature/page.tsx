@@ -3,6 +3,7 @@ import ConvertisseurTemperature from "./ConvertisseurTemperature";
 import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
+import Visuel from "../components/Visuel";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import HowToJsonLd from "../components/HowToJsonLd";
@@ -65,6 +66,13 @@ export default function Page() {
           Les trois echelles de temperature les plus utilisees sont le <strong>Celsius</strong> (utilise en France et dans la plupart du monde),
           le <strong>Fahrenheit</strong> (utilise aux Etats-Unis) et le <strong>Kelvin</strong> (utilise en sciences).
         </p>
+
+        <Visuel
+          fichier="conversion-four-fahrenheit-celsius"
+          alt="Températures de four converties de Fahrenheit en Celsius : 250 °F = 121 °C, 275 °F = 135 °C, 300 °F = 149 °C, 325 °F = 163 °C, 350 °F = 177 °C, 375 °F = 191 °C, 400 °F = 204 °C, 425 °F = 218 °C, 450 °F = 232 °C, 475 °F = 246 °C, 500 °F = 260 °C. Formule : °C = (°F − 32) × 5/9."
+          legende="Les températures de four des recettes en anglais (de 250 à 500 °F), converties en degrés Celsius avec la formule exacte et arrondies au degré."
+          className="mt-2 mb-6"
+        />
 
         <h3 className="font-bold text-slate-800 mt-6 mb-3">
           Formules de conversion

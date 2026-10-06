@@ -10,9 +10,9 @@
 // Les chiffres du bareme de l'impot sont lus dans le code du simulateur : si le
 // bareme change, relancer ce script suffit a remettre l'image a jour.
 
-import { mkdir, writeFile } from "node:fs/promises";
+import { mkdir, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import sharp from "sharp";
 import { TRANCHES } from "../app/simulateur-impot-revenu/constants.ts";
 
@@ -618,6 +618,20 @@ const tous = [
   visuelSuccession(),
   visuelNotaire(),
 ];
+
+// A partir de la serie 3, un visuel = un fichier dans scripts/visuels/ (plusieurs
+// personnes peuvent en ecrire en meme temps sans toucher a ce fichier). Chaque
+// module exporte par defaut une fonction qui recoit les outils communs et
+// renvoie { nom, route, alt, svg }, comme les fonctions ci-dessus.
+const outils = { t, cadre, euros, esc, W, H };
+const dossierModules = path.join(ROOT, "scripts", "visuels");
+const modules = (await readdir(dossierModules).catch(() => []))
+  .filter((f) => f.endsWith(".mjs"))
+  .sort();
+for (const f of modules) {
+  const mod = await import(pathToFileURL(path.join(dossierModules, f)).href);
+  tous.push(mod.default(outils));
+}
 
 // `npm run visuels -- <nom> [<nom>...]` ne refait que les visuels nommes.
 const demandes = process.argv.slice(2);

@@ -152,11 +152,11 @@ const ARTICLE: ArticleData = {
     {
       titre: "Estimer sa taxe avec le calculateur du site",
       paras: [
-        "Le [calculateur de taxe foncière](/calcul-taxe-fonciere) propose un type de bien, une surface et une ville parmi dix grandes villes, ou un taux personnalisé avec « Autre ». Il applique le calcul de cet article et affiche la taxe annuelle, le détail du calcul et le total divisé par douze.",
+        "Le [calculateur de taxe foncière](/calcul-taxe-fonciere) propose un type de bien, une surface et une ville parmi dix grandes villes, ou un taux personnalisé avec « Autre ». Il applique le calcul de cet article et affiche la taxe annuelle, le détail du calcul et le montant d'un prélèvement si vous êtes mensualisé (le total divisé par dix).",
         "Pour un résultat plus proche de votre avis, ouvrez le mode avancé et saisissez la valeur locative cadastrale de votre bien avant la revalorisation de 2026, plutôt que l'estimation automatique, qui est calculée à partir de la surface. Ne saisissez pas la base d'imposition : elle est déjà divisée par deux, et le calculateur applique lui-même les 50 %. Si votre commune n'est pas dans la liste, choisissez « Autre » et saisissez le taux global.",
       ],
       encadre:
-        "Le calculateur applique le coefficient officiel de 2026 (1,008), mais les taux des villes proposées sont approximatifs. Pour le montant exact, fiez-vous à votre avis. Le total divisé par douze n'est pas la mensualité réelle du prélèvement, qui est un dixième de l'impôt de l'année précédente.",
+        "Le calculateur applique le coefficient officiel de 2026 (1,008), mais les taux des villes proposées sont approximatifs. Pour le montant exact, fiez-vous à votre avis. Le montant mensuel affiché est le total divisé par dix ; le prélèvement réel est un dixième de l'impôt de l'année précédente.",
     },
   ],
   calculateur: {

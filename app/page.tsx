@@ -1512,6 +1512,78 @@ const outils = [
     couleur: "from-cyan-500 to-blue-500",
     tag: "Guide",
   },
+  {
+    titre: "Pension de réversion : quel montant ?",
+    description:
+      "54 % de la retraite de base au régime général, 60 % à l'Agirc-Arrco, 50 % dans la fonction publique. Conditions et plafond 2026.",
+    href: "/pension-de-reversion-quel-montant",
+    icone: "💜",
+    couleur: "from-violet-500 to-purple-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Prime d'activité : pour qui, jusqu'à quel salaire ?",
+    description:
+      "Les conditions, le barème d'avril 2026 (forfait de 638,28 €, 59,85 % des revenus) et le montant selon le salaire.",
+    href: "/prime-d-activite-pour-qui-quel-salaire",
+    icone: "💶",
+    couleur: "from-emerald-500 to-teal-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Date d'accouchement : le calcul est-il exact ?",
+    description:
+      "Dernières règles, conception ou échographie : comment on calcule le terme, et pourquoi c'est une fenêtre et pas une date.",
+    href: "/date-d-accouchement-calcul-exact",
+    icone: "🤰",
+    couleur: "from-purple-500 to-pink-500",
+    tag: "Guide",
+  },
+  {
+    titre: "Quel âge a mon chien en âge humain ?",
+    description:
+      "Pourquoi « multiplier par 7 » est faux : un chien de 5 ans a 36 à 45 ans humains selon sa taille.",
+    href: "/quel-age-a-mon-chien-en-age-humain",
+    icone: "🐕",
+    couleur: "from-amber-500 to-orange-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Taux d'endettement : comment le calculer ?",
+    description:
+      "Charges de crédit divisées par les revenus. La norme du HCSF : 35 % au maximum, assurance comprise.",
+    href: "/taux-d-endettement-comment-calculer",
+    icone: "🏦",
+    couleur: "from-blue-500 to-indigo-500",
+    tag: "Guide",
+  },
+  {
+    titre: "Quelle capacité d'emprunt pour quel salaire ?",
+    description:
+      "Le capital empruntable salaire par salaire, sur 20 et 25 ans, avec la règle des 35 %.",
+    href: "/capacite-d-emprunt-quel-salaire",
+    icone: "🏠",
+    couleur: "from-blue-500 to-indigo-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Plus-value immobilière : qui la calcule, quand payer ?",
+    description:
+      "Le notaire calcule et paie l'impôt à la vente : 19 % + 17,2 %, après abattements pour durée de détention.",
+    href: "/plus-value-immobiliere-qui-calcule-quand-payer",
+    icone: "🏡",
+    couleur: "from-green-500 to-emerald-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Congés payés : quelle année, quand les poser ?",
+    description:
+      "Acquis du 1er juin au 31 mai, à prendre au moins entre le 1er mai et le 31 octobre. Qui décide des dates, report, maladie.",
+    href: "/conges-payes-quelle-annee-quand-les-poser",
+    icone: "🏖️",
+    couleur: "from-teal-500 to-cyan-600",
+    tag: "Guide",
+  },
 ];
 
 export default function Home() {

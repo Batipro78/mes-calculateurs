@@ -4,6 +4,7 @@ import CalculateurPlusValue from "../CalculateurPlusValue";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
+import { taxePlusValueElevee } from "../plusValueCalc";
 
 const PRIX_ACHAT = [100000, 150000, 200000, 250000, 300000, 400000, 500000];
 const PLUS_VALUES = [25000, 50000, 75000, 100000, 150000, 200000];
@@ -48,12 +49,13 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   const abPS_ = abattementPS(annees);
   const pvPS = plusValue * (1 - abPS_ / 100);
   const ps = pvPS * 0.172;
-  const total = ir + ps;
+  const surtaxe = taxePlusValueElevee(pvIR);
+  const total = ir + ps + surtaxe;
 
   return {
     alternates: { canonical: `/calcul-plus-value-immobiliere/${slug}` },
     title: `Plus-value ${fmt(plusValue)} \u20ac apres ${annees} ans = ${fmt(total)} \u20ac d'impot`,
-    description: `Plus-value immobiliere de ${fmt(plusValue)} \u20ac apres ${annees} ans de detention : ${fmt(total)} \u20ac d'impot (IR ${fmt(ir)} \u20ac + PS ${fmt(ps)} \u20ac). Abattement IR ${abIR.toFixed(0)}%.`,
+    description: `Plus-value immobiliere de ${fmt(plusValue)} \u20ac apres ${annees} ans de detention : ${fmt(total)} \u20ac d'impot (IR ${fmt(ir)} \u20ac + PS ${fmt(ps)} \u20ac${surtaxe > 0 ? ` + taxe sur plus-value elevee ${fmt(surtaxe)} \u20ac` : ""}). Abattement IR ${abIR.toFixed(0)}%.`,
   };
 }
 
@@ -69,7 +71,8 @@ export default async function Page({ params }: { params: Promise<{ params: strin
   const pvPS = plusValue * (1 - abPS_ / 100);
   const ir = pvIR * 0.19;
   const ps = pvPS * 0.172;
-  const total = ir + ps;
+  const surtaxe = taxePlusValueElevee(pvIR);
+  const total = ir + ps + surtaxe;
   const prixVente = prixAchat + plusValue;
 
   return (
@@ -91,6 +94,9 @@ export default async function Page({ params }: { params: Promise<{ params: strin
           <div><p className="text-green-200">Abatt. IR</p><p className="font-semibold text-lg">{abIR.toFixed(0)}%</p></div>
           <div><p className="text-green-200">Abatt. PS</p><p className="font-semibold text-lg">{abPS_.toFixed(1)}%</p></div>
         </div>
+        {surtaxe > 0 && (
+          <p className="text-sm text-green-100 mt-3">Dont {fmt(surtaxe)} &euro; de taxe sur les plus-values elevees (plus-value imposable de plus de 50 000 &euro;).</p>
+        )}
       </div>
 
       <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm mb-8">
@@ -108,7 +114,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
                 const aIR = abattementIR(a); const aPS = abattementPS(a);
                 const pIR = plusValue * (1 - aIR / 100) * 0.19;
                 const pPS = plusValue * (1 - aPS / 100) * 0.172;
-                const t = pIR + pPS;
+                const t = pIR + pPS + taxePlusValueElevee(plusValue * (1 - aIR / 100));
                 return (
                   <tr key={a} className={`border-b border-slate-100 ${a === annees ? "bg-green-50/50" : ""}`}>
                     <td className="py-2.5 px-2">{a === annees ? <span className="font-bold text-green-600">{a} ans</span> : <a href={`/calcul-plus-value-immobiliere/${prixAchat}-euros-plus-value-${plusValue}-euros-${a}-ans`} className="text-slate-700 hover:text-green-600">{a} ans</a>}</td>

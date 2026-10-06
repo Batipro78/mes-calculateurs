@@ -70,7 +70,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   return {
     alternates: { canonical: `/calcul-prime-activite/${slug}` },
     title: `Prime d'activite ${sitLabel} a ${fmtInt(revenu)} EUR = ${r.eligible ? fmt(r.primeActivite) : "0"} EUR/mois`,
-    description: `Simulation prime d'activite pour ${sitLabel} avec ${fmtInt(revenu)} EUR net/mois : ${r.eligible ? `${fmt(r.primeActivite)} EUR/mois estimes` : "non eligible"}. Forfaitaire : ${fmt(r.montantForfaitaire)} EUR. Bonification : ${fmt(r.bonification)} EUR.`,
+    description: `Simulation prime d'activite pour ${sitLabel} avec ${fmtInt(revenu)} EUR net/mois : ${r.eligible ? `${fmt(r.primeActivite)} EUR/mois estimes` : "non eligible"}. Forfaitaire : ${fmt(r.montantForfaitaire)} EUR. Bonification : ${fmt(r.bonification)} EUR. Hypothese : aide au logement percue (forfait logement deduit).`,
     keywords: `prime activite ${fmtInt(revenu)} euros, prime activite ${situation}, calcul prime activite ${enfants} enfant${enfants > 1 ? "s" : ""}`,
     openGraph: {
       title: `${sitLabel}, ${fmtInt(revenu)} EUR → ${r.eligible ? fmt(r.primeActivite) : "0"} EUR de prime d'activite`,
@@ -142,7 +142,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
                 name: `Quel est le detail du calcul a ${fmtInt(revenu)} EUR ?`,
                 acceptedAnswer: {
                   "@type": "Answer",
-                  text: `Forfaitaire : ${fmt(r.montantForfaitaire)} EUR + 61% revenus : ${fmt(r.partRevenus)} EUR + Bonification : ${fmt(r.bonification)} EUR - Ressources : ${fmt(r.ressourcesFoyer)} EUR - Forfait logement : ${fmt(r.forfaitLogement)} EUR = ${fmt(r.primeActivite)} EUR.`,
+                  text: `Forfaitaire : ${fmt(r.montantForfaitaire)} EUR + 59,85 % des revenus : ${fmt(r.partRevenus)} EUR + Bonification : ${fmt(r.bonification)} EUR - Ressources : ${fmt(r.ressourcesFoyer)} EUR - Forfait logement : ${fmt(r.forfaitLogement)} EUR = ${fmt(r.primeActivite)} EUR.`,
                 },
               },
             ],
@@ -181,7 +181,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
             <span className="font-bold">+ {fmt(r.montantForfaitaire)} EUR</span>
           </div>
           <div className="flex justify-between py-2 border-b border-slate-100">
-            <span className="text-slate-600">61% des revenus pro</span>
+            <span className="text-slate-600">59,85 % des revenus pro</span>
             <span className="font-bold">+ {fmt(r.partRevenus)} EUR</span>
           </div>
           <div className="flex justify-between py-2 border-b border-slate-100">

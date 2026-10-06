@@ -79,7 +79,7 @@ export default function CalculAgeChienHumain() {
         <div className="bg-gradient-to-br from-amber-500 to-orange-600 rounded-2xl p-8 text-white shadow-lg">
           <p className="text-sm font-medium opacity-90 mb-2">Âge en années humaines</p>
           <p className="text-5xl font-bold mb-1">{resultat.ageHumainAVMA}</p>
-          <p className="text-sm opacity-90 mb-6">ans humains (Formule AVMA)</p>
+          <p className="text-sm opacity-90 mb-6">ans humains (méthode par taille)</p>
 
           <div className="space-y-3 text-sm opacity-95 border-t border-white border-opacity-30 pt-4">
             <div className="flex justify-between">
@@ -124,14 +124,14 @@ export default function CalculAgeChienHumain() {
         </div>
       </div>
 
-      {/* Méthode scientifique Wang 2019 */}
+      {/* Méthode scientifique Wang 2020 */}
       <div className="bg-blue-50 border border-blue-200 rounded-2xl p-8">
         <div className="flex items-start gap-4">
           <span className="text-3xl">🧬</span>
           <div className="flex-1">
-            <h3 className="font-bold text-blue-900 mb-2">Étude Wang 2019 (ADN Méthylation)</h3>
+            <h3 className="font-bold text-blue-900 mb-2">Étude Wang 2020 (ADN Méthylation)</h3>
             <p className="text-sm text-blue-800 mb-3">
-              Selon la recherche scientifique de Wang et al. (2019, Cell Systems), basée sur l&apos;analyse de la méthylation de l&apos;ADN :
+              Selon la recherche scientifique de Wang et al. (2020, Cell Systems), basée sur l&apos;analyse de la méthylation de l&apos;ADN :
             </p>
             <div className="bg-white border border-blue-200 rounded-lg p-4 mb-3">
               <p className="text-center">

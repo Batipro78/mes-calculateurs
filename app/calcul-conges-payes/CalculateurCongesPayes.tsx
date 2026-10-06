@@ -7,25 +7,27 @@ import { useState, useMemo } from "react";
 export default function CalculateurCongesPayes() {
   const [moisTravailles, setMoisTravailles] = useState<string>("12");
   const [salaireBrut, setSalaireBrut] = useState<string>("2500");
-  const [tempsPartiel, setTempsPartiel] = useState<string>("100");
   const [methode, setMethode] = useState<"dixieme" | "maintien">("dixieme");
 
   const resultat = useMemo(() => {
     const mois = parseFloat(moisTravailles.replace(",", "."));
     const salaire = parseFloat(salaireBrut.replace(",", "."));
-    const tp = parseFloat(tempsPartiel.replace(",", "."));
-    if (isNaN(mois) || isNaN(salaire) || isNaN(tp) || mois <= 0 || salaire <= 0 || tp <= 0) return null;
+    if (isNaN(mois) || isNaN(salaire) || mois <= 0 || salaire <= 0) return null;
 
-    const joursAcquis = Math.min(mois, 12) * 2.5 * (tp / 100);
+    // 2,5 jours ouvrables par mois, a temps plein comme a temps partiel
+    // (service-public.gouv.fr F2258).
+    const joursAcquis = Math.min(mois, 12) * 2.5;
     const joursAcquisArrondi = Math.ceil(joursAcquis); // Arrondi au superieur
 
     // Methode du 1/10e
     const totalBrutAnnuel = salaire * Math.min(mois, 12);
     const indemniteDixieme = totalBrutAnnuel / 10;
 
-    // Methode du maintien de salaire (26 jours ouvres / mois)
-    const salaireJournalier = salaire / 21.67; // jours ouvres par mois
-    const indemniteMainitien = salaireJournalier * joursAcquisArrondi;
+    // Methode du maintien de salaire : les jours acquis sont des jours OUVRABLES
+    // (6 par semaine) ; 30 jours ouvrables = 25 jours ouvres (F33359), d'ou le 5/6,
+    // puis 21,67 jours ouvres par mois en moyenne.
+    const salaireJournalier = salaire / 21.67; // par jour ouvre
+    const indemniteMainitien = salaireJournalier * joursAcquisArrondi * (5 / 6);
 
     const indemniteRetenue = Math.max(indemniteDixieme, indemniteMainitien);
 
@@ -39,7 +41,7 @@ export default function CalculateurCongesPayes() {
       salaireJournalier,
       totalBrutAnnuel,
     };
-  }, [moisTravailles, salaireBrut, tempsPartiel]);
+  }, [moisTravailles, salaireBrut]);
 
   return (
     <div className="grid gap-8 lg:grid-cols-5">
@@ -73,26 +75,10 @@ export default function CalculateurCongesPayes() {
           />
         </div>
 
-        <div className="mb-6">
-          <label className="block text-sm font-semibold text-slate-700 mb-2">
-            Temps de travail (%)
-          </label>
-          <div className="flex gap-2">
-            {[100, 80, 60, 50].map((t) => (
-              <button
-                key={t}
-                onClick={() => setTempsPartiel(String(t))}
-                className={`flex-1 py-2.5 rounded-xl text-sm font-medium transition-all ${
-                  tempsPartiel === String(t)
-                    ? "bg-teal-500 text-white shadow-sm"
-                    : "border border-slate-200 text-slate-600 hover:border-teal-300"
-                }`}
-              >
-                {t}%
-              </button>
-            ))}
-          </div>
-        </div>
+        <p className="mb-6 text-xs text-slate-500">
+          Temps partiel : vous acquerez autant de jours qu&apos;a temps plein (2,5 jours ouvrables
+          par mois). Seule l&apos;indemnite change, puisqu&apos;elle se calcule sur votre salaire.
+        </p>
 
         {/* Raccourcis salaire */}
         <div>
@@ -117,7 +103,7 @@ export default function CalculateurCongesPayes() {
             <div className="bg-gradient-to-br from-teal-500 to-cyan-600 text-white rounded-2xl p-6 shadow-lg shadow-teal-200/50">
               <p className="text-teal-200 text-sm mb-1">Jours de conges acquis</p>
               <p className="text-4xl font-extrabold tracking-tight">
-                {resultat.joursAcquis} <span className="text-xl font-semibold">jours ouvres</span>
+                {resultat.joursAcquis} <span className="text-xl font-semibold">jours ouvrables</span>
               </p>
               <p className="text-teal-200 text-xs mt-1">({fmt(resultat.joursExacts)} jours exacts, arrondi au superieur)</p>
             </div>
@@ -153,7 +139,7 @@ export default function CalculateurCongesPayes() {
               <div className="space-y-1 text-sm text-slate-600">
                 <p>Salaire journalier : {fmt(resultat.salaireJournalier)} &euro;</p>
                 <p>Total brut annuel : {fmt(resultat.totalBrutAnnuel)} &euro;</p>
-                <p>Acquisition : 2,5 jours/mois travaille</p>
+                <p>Acquisition : 2,5 jours ouvrables/mois travaille</p>
               </div>
             </div>
           </>

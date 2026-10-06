@@ -10,7 +10,7 @@ interface ResultsType {
   totalCharges: number;
   taux: number;
   resteAVivre: number;
-  capaciteEmprunt33: number;
+  capaciteEmprunt35: number;
 }
 
 export default function CalculateurEndettement({
@@ -40,36 +40,37 @@ export default function CalculateurEndettement({
 
     const taux = (totalCharges / totalRevenus) * 100;
     const resteAVivre = totalRevenus - totalCharges;
-    const capaciteEmprunt33 = totalRevenus * 0.33 - totalCharges;
+    // Norme du HCSF : 35 % des revenus au maximum.
+    const capaciteEmprunt35 = totalRevenus * 0.35 - totalCharges;
 
     setResults({
       totalRevenus,
       totalCharges,
       taux,
       resteAVivre,
-      capaciteEmprunt33: Math.max(0, capaciteEmprunt33),
+      capaciteEmprunt35: Math.max(0, capaciteEmprunt35),
     });
   }
 
   function getTauxColor(taux: number): string {
     if (taux <= 25) return "text-green-600";
-    if (taux <= 33) return "text-amber-600";
+    if (taux <= 35) return "text-amber-600";
     if (taux <= 40) return "text-orange-600";
     return "text-red-600";
   }
 
   function getTauxBg(taux: number): string {
     if (taux <= 25) return "from-green-500 to-emerald-500";
-    if (taux <= 33) return "from-amber-500 to-yellow-500";
+    if (taux <= 35) return "from-amber-500 to-yellow-500";
     if (taux <= 40) return "from-orange-500 to-amber-500";
     return "from-red-500 to-rose-500";
   }
 
   function getTauxLabel(taux: number): string {
-    if (taux <= 25) return "Excellent - Situation confortable";
-    if (taux <= 33) return "Acceptable - Seuil bancaire respecte";
-    if (taux <= 40) return "Eleve - Risque de refus bancaire";
-    return "Critique - Surendettement";
+    if (taux <= 25) return "Confortable";
+    if (taux <= 35) return "Sous la norme du HCSF (35 %)";
+    if (taux <= 40) return "Au-dessus de 35 % : hors norme du HCSF";
+    return "Tres eleve : bien au-dessus de la norme";
   }
 
   return (
@@ -218,7 +219,7 @@ export default function CalculateurEndettement({
               <div className="flex justify-between text-xs text-white/60 mt-1">
                 <span>0%</span>
                 <span>25%</span>
-                <span>33%</span>
+                <span>35%</span>
                 <span>50%</span>
               </div>
             </div>
@@ -242,9 +243,9 @@ export default function CalculateurEndettement({
               <div className="bg-white rounded-2xl border border-slate-200 p-5">
                 <p className="text-slate-500 text-sm font-medium">Capacite de remboursement</p>
                 <p className="text-2xl font-bold text-blue-600 mt-1">
-                  {fmt(results.capaciteEmprunt33)} EUR/mois
+                  {fmt(results.capaciteEmprunt35)} EUR/mois
                 </p>
-                <p className="text-xs text-slate-400 mt-1">Mensualite max pour rester a 33%</p>
+                <p className="text-xs text-slate-400 mt-1">Mensualite max pour rester a 35%</p>
               </div>
             </div>
 
@@ -282,7 +283,7 @@ export default function CalculateurEndettement({
             <div className="bg-blue-50 rounded-2xl border border-blue-100 p-6">
               <h3 className="font-bold text-blue-800 mb-3">Capacite d&apos;emprunt estimee</h3>
               <p className="text-sm text-blue-700 mb-4">
-                Avec une mensualite maximale de <strong>{fmt(results.capaciteEmprunt33)} EUR</strong> (seuil 33%),
+                Avec une mensualite maximale de <strong>{fmt(results.capaciteEmprunt35)} EUR</strong> (norme HCSF de 35%),
                 voici le montant que vous pourriez emprunter :
               </p>
               <div className="grid gap-3 sm:grid-cols-3">
@@ -291,7 +292,7 @@ export default function CalculateurEndettement({
                   { duree: 20, taux: 3.4 },
                   { duree: 25, taux: 3.5 },
                 ].map(({ duree, taux }) => {
-                  const mensualite = results.capaciteEmprunt33;
+                  const mensualite = results.capaciteEmprunt35;
                   const r = taux / 100 / 12;
                   const n = duree * 12;
                   const capital = r > 0 ? mensualite * ((1 - Math.pow(1 + r, -n)) / r) : mensualite * n;
@@ -309,7 +310,7 @@ export default function CalculateurEndettement({
             </div>
 
             {/* Conseils */}
-            {results.taux > 33 && (
+            {results.taux > 35 && (
               <div className="bg-red-50 rounded-2xl border border-red-100 p-6">
                 <h3 className="font-bold text-red-800 mb-3">Comment reduire votre taux d&apos;endettement ?</h3>
                 <ul className="space-y-2 text-sm text-red-700">

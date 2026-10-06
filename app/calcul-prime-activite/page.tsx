@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 const FAQ_ITEMS: FaqItem[] = [
   {
     q: "Comment est calculee la prime d'activite ?",
-    a: "La prime d'activite = Montant forfaitaire + 61% des revenus professionnels + Bonification individuelle - Ressources du foyer - Forfait logement. Le montant forfaitaire de base est de 633,21 EUR pour une personne seule en 2025.",
+    a: "La prime d'activite = Montant forfaitaire + 59,85 % des revenus professionnels + Bonification individuelle - Ressources du foyer - Forfait logement. Le montant forfaitaire de base est de 638,28 EUR pour une personne seule depuis le 1er avril 2026.",
   },
   {
     q: "Qui a droit a la prime d'activite ?",
@@ -32,7 +32,7 @@ const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Qu'est-ce que la bonification individuelle ?",
-    a: "La bonification est un bonus accorde a chaque membre du foyer dont les revenus depassent 709 EUR/mois. Elle augmente progressivement jusqu'a un maximum de 173,22 EUR/mois pour un revenu egal ou superieur au SMIC net (1 442 EUR).",
+    a: "La bonification est un bonus accorde a chaque membre du foyer dont les revenus depassent 709 EUR/mois. Elle augmente progressivement jusqu'a un maximum de 240,63 EUR/mois pour un revenu egal ou superieur a 1 658,76 EUR (montants CAF 2026).",
   },
 ];
 
@@ -72,12 +72,12 @@ export default function Page() {
         <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5 my-6 not-prose">
           <h3 className="font-bold text-emerald-800 mb-2">Formule de calcul</h3>
           <p className="text-emerald-700 text-sm mb-3">
-            <strong>Prime = Montant forfaitaire + 61% des revenus pro + Bonification - Ressources du foyer - Forfait logement</strong>
+            <strong>Prime = Montant forfaitaire + 59,85 % des revenus pro + Bonification - Ressources du foyer - Forfait logement</strong>
           </p>
           <ul className="text-sm text-emerald-700 space-y-1">
-            <li>Montant forfaitaire de base : <strong>633,21 EUR/mois</strong> (personne seule, 2025)</li>
-            <li>Part des revenus professionnels : <strong>61%</strong> du total des revenus d&apos;activite</li>
-            <li>Bonification individuelle : jusqu&apos;a <strong>173,22 EUR</strong> par actif du foyer</li>
+            <li>Montant forfaitaire de base : <strong>638,28 EUR/mois</strong> (personne seule, depuis le 1er avril 2026)</li>
+            <li>Part des revenus professionnels : <strong>59,85 %</strong> du total des revenus d&apos;activite</li>
+            <li>Bonification individuelle : jusqu&apos;a <strong>240,63 EUR</strong> par actif du foyer</li>
             <li>Seuil minimum de versement : <strong>15 EUR/mois</strong></li>
           </ul>
         </div>
@@ -98,32 +98,32 @@ export default function Page() {
             <tbody>
               <tr className="border-b border-slate-100">
                 <td className="p-3 text-slate-700">Personne seule</td>
-                <td className="p-3 text-right font-bold">633,21 EUR</td>
+                <td className="p-3 text-right font-bold">638,28 EUR</td>
                 <td className="p-3 text-right text-slate-500">Base</td>
               </tr>
               <tr className="border-b border-slate-100 bg-slate-50">
                 <td className="p-3 text-slate-700">Couple sans enfant</td>
-                <td className="p-3 text-right font-bold">949,82 EUR</td>
+                <td className="p-3 text-right font-bold">957,42 EUR</td>
                 <td className="p-3 text-right text-slate-500">+50%</td>
               </tr>
               <tr className="border-b border-slate-100">
                 <td className="p-3 text-slate-700">Seul + 1 enfant</td>
-                <td className="p-3 text-right font-bold">949,82 EUR</td>
+                <td className="p-3 text-right font-bold">957,42 EUR</td>
                 <td className="p-3 text-right text-slate-500">+50%</td>
               </tr>
               <tr className="border-b border-slate-100 bg-slate-50">
                 <td className="p-3 text-slate-700">Couple + 1 enfant</td>
-                <td className="p-3 text-right font-bold">1 139,78 EUR</td>
+                <td className="p-3 text-right font-bold">1 148,90 EUR</td>
                 <td className="p-3 text-right text-slate-500">+30%</td>
               </tr>
               <tr className="border-b border-slate-100">
                 <td className="p-3 text-slate-700">Couple + 2 enfants</td>
-                <td className="p-3 text-right font-bold">1 329,74 EUR</td>
+                <td className="p-3 text-right font-bold">1 340,38 EUR</td>
                 <td className="p-3 text-right text-slate-500">+30%</td>
               </tr>
               <tr className="border-b border-slate-100 bg-slate-50">
                 <td className="p-3 text-slate-700">Parent isole + 1 enfant</td>
-                <td className="p-3 text-right font-bold">1 084,18 EUR</td>
+                <td className="p-3 text-right font-bold">1 092,84 EUR</td>
                 <td className="p-3 text-right text-slate-500">Majoration isolement</td>
               </tr>
             </tbody>
@@ -136,11 +136,11 @@ export default function Page() {
         <p>
           Chaque membre du foyer qui travaille peut recevoir une <strong>bonification individuelle</strong>.
           Elle demarre a partir de <strong>709 EUR net/mois</strong> (environ 0,5 SMIC) et atteint son maximum
-          de <strong>173,22 EUR/mois</strong> a partir du SMIC net (environ 1 442 EUR).
+          de <strong>240,63 EUR/mois</strong> a partir de 1 658,76 EUR net (environ 1,15 SMIC), depuis la reforme d&apos;avril 2026.
         </p>
         <p>
-          Dans un couple ou les deux travaillent au SMIC, la bonification totale peut atteindre
-          <strong> 346,44 EUR/mois</strong> (173,22 x 2).
+          Dans un couple ou les deux gagnent au moins 1 658,76 EUR net, la bonification totale atteint
+          <strong> 481,26 EUR/mois</strong> (240,63 x 2). Au SMIC (1 442,40 EUR), elle est d&apos;environ 186 EUR par personne.
         </p>
 
         <h2 className="text-2xl font-bold text-slate-800 mb-4 mt-8">
@@ -151,9 +151,9 @@ export default function Page() {
           un <strong>forfait logement</strong> est deduit de votre prime :
         </p>
         <ul>
-          <li>1 personne : <strong>75,99 EUR</strong> (12% du forfaitaire)</li>
-          <li>2 personnes : <strong>151,97 EUR</strong> (24% du forfaitaire)</li>
-          <li>3 personnes et plus : <strong>188,62 EUR</strong> (29,78% du forfaitaire)</li>
+          <li>1 personne : <strong>76,59 EUR</strong></li>
+          <li>2 personnes : <strong>153,19 EUR</strong></li>
+          <li>3 personnes et plus : <strong>189,57 EUR</strong> (montants CAF 2026)</li>
         </ul>
 
         <h2 className="text-2xl font-bold text-slate-800 mb-4 mt-8">
@@ -174,24 +174,24 @@ export default function Page() {
 
         <div className="grid md:grid-cols-2 gap-4 not-prose mb-6">
           <div className="bg-white border border-slate-200 rounded-xl p-5">
-            <h4 className="font-bold text-slate-800 mb-2">Salarie au SMIC (seul)</h4>
-            <p className="text-sm text-slate-600 mb-2">Revenu net : 1 400 EUR/mois, locataire</p>
-            <p className="text-2xl font-black text-emerald-600">~245 EUR/mois</p>
+            <h4 className="font-bold text-slate-800 mb-2">Salarie seul, sans enfant</h4>
+            <p className="text-sm text-slate-600 mb-2">Revenu net : 1 400 EUR/mois, sans aide au logement</p>
+            <p className="text-2xl font-black text-emerald-600">~251 EUR/mois</p>
           </div>
           <div className="bg-white border border-slate-200 rounded-xl p-5">
             <h4 className="font-bold text-slate-800 mb-2">Couple bi-actif + 2 enfants</h4>
-            <p className="text-sm text-slate-600 mb-2">1 400 EUR + 1 200 EUR, locataires</p>
-            <p className="text-2xl font-black text-emerald-600">~290 EUR/mois</p>
+            <p className="text-sm text-slate-600 mb-2">1 400 EUR + 1 200 EUR, sans aide au logement</p>
+            <p className="text-2xl font-black text-emerald-600">~596 EUR/mois</p>
           </div>
           <div className="bg-white border border-slate-200 rounded-xl p-5">
             <h4 className="font-bold text-slate-800 mb-2">Temps partiel (seul)</h4>
             <p className="text-sm text-slate-600 mb-2">Revenu net : 900 EUR/mois, aide logement</p>
-            <p className="text-2xl font-black text-emerald-600">~340 EUR/mois</p>
+            <p className="text-2xl font-black text-emerald-600">~249 EUR/mois</p>
           </div>
           <div className="bg-white border border-slate-200 rounded-xl p-5">
             <h4 className="font-bold text-slate-800 mb-2">Parent isole + 1 enfant</h4>
-            <p className="text-sm text-slate-600 mb-2">Revenu net : 1 200 EUR/mois, locataire</p>
-            <p className="text-2xl font-black text-emerald-600">~520 EUR/mois</p>
+            <p className="text-sm text-slate-600 mb-2">Revenu net : 1 200 EUR/mois, sans aide au logement</p>
+            <p className="text-2xl font-black text-emerald-600">~735 EUR/mois</p>
           </div>
         </div>
 
@@ -212,10 +212,10 @@ export default function Page() {
       <HowToJsonLd
         name="Calculer sa prime d'activité CAF"
         steps={[
-          { name: "Saisir la composition du foyer", text: "Indiquer si l'on est seul, en couple, et le nombre d'enfants à charge. Le montant forfaitaire de base est de 633,21 EUR pour une personne seule (2025) ; il est majore de 50 % pour un couple sans enfant." },
-          { name: "Entrer les revenus professionnels nets", text: "Saisir le total des revenus d'activité du foyer sur les 3 derniers mois. 61 % de ce montant s'ajoute au forfaitaire pour alimenter la prime." },
-          { name: "Prendre en compte la bonification et le forfait logement", text: "La bonification individuelle atteint jusqu'à 173,22 EUR/mois par actif du foyer au niveau du SMIC net (environ 1 442 EUR). Si une aide au logement est percue, déduire le forfait logement (75,99 EUR pour 1 personne)." },
-          { name: "Lire le montant mensuel estime", text: "Prime = forfaitaire + 61 % revenus + bonification - ressources du foyer - forfait logement. En dessous de 15 EUR, la prime n'est pas versee. Declarer trimestriellement sur caf.fr pour maintenir le versement." },
+          { name: "Saisir la composition du foyer", text: "Indiquer si l'on est seul, en couple, et le nombre d'enfants à charge. Le montant forfaitaire de base est de 638,28 EUR pour une personne seule (depuis le 1er avril 2026) ; il est majore de 50 % pour un couple sans enfant." },
+          { name: "Entrer les revenus professionnels nets", text: "Saisir le total des revenus d'activité du foyer sur les 3 derniers mois. 59,85 % de ce montant s'ajoute au forfaitaire pour alimenter la prime." },
+          { name: "Prendre en compte la bonification et le forfait logement", text: "La bonification individuelle atteint jusqu'à 240,63 EUR/mois par actif du foyer, atteints à partir de 1 658,76 EUR net. Si une aide au logement est percue, déduire le forfait logement (76,59 EUR pour 1 personne)." },
+          { name: "Lire le montant mensuel estime", text: "Prime = forfaitaire + 59,85 % des revenus + bonification - ressources du foyer - forfait logement. En dessous de 15 EUR, la prime n'est pas versee. Declarer trimestriellement sur caf.fr pour maintenir le versement." },
         ]}
       />
 

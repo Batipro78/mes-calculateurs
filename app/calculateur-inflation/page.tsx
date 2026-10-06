@@ -7,6 +7,7 @@ import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import HowToJsonLd from "../components/HowToJsonLd";
 import SourcesMethodo from "../components/SourcesMethodo";
+import Visuel from "../components/Visuel";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calculateur-inflation" },
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
 const FAQ_ITEMS: FaqItem[] = [
   {
     q: "Quel est le taux d'inflation en France en 2025 ?",
-    a: "Le taux d'inflation en France est d'environ 1,5% en 2025 selon l'INSEE, après 2,0% en 2024 et 4,9% en 2023. Après le pic historique de 5,2% en 2022 (crise énergétique post-Covid), l'inflation revient progressivement vers la cible de la BCE de 2%.",
+    a: "Selon l'Insee, l'inflation en France est de 0,9 % en moyenne en 2025, après 2,0 % en 2024, 4,9 % en 2023 et 5,2 % en 2022. Le chiffre de 2022 est la plus forte hausse annuelle depuis 2000.",
   },
   {
     q: "Combien a-t-on perdu de pouvoir d'achat depuis 2020 ?",
@@ -28,7 +29,7 @@ const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Comment protéger son argent contre l'inflation ?",
-    a: "Pour protéger son épargne contre l'inflation, il faut placer son argent à un taux supérieur à l'inflation : le Livret A (2,4%), le LEP (3,5%), l'assurance-vie, ou les investissements en bourse (ETF). Laisser son argent sur un compte courant (0%) garantit une perte de pouvoir d'achat chaque année.",
+    a: "Pour protéger son épargne contre l'inflation, il faut placer son argent à un taux supérieur à l'inflation : le Livret A (1,7 % en octobre 2026), le LEP (2,5 %, réservé aux revenus modestes), l'assurance-vie, ou les investissements en bourse (ETF). Laisser son argent sur un compte courant (0%) garantit une perte de pouvoir d'achat chaque année.",
   },
   {
     q: "Comment fonctionne le calcul de l'inflation cumulée ?",
@@ -69,8 +70,8 @@ export default function Page() {
         </h2>
         <p className="text-slate-600 leading-relaxed mb-4">
           L&apos;<strong>inflation</strong> est la hausse generalisee et durable
-          des prix. Chaque annee, les prix augmentent en moyenne de 1 a 3% en
-          France. Cela signifie que votre argent perd de la valeur : ce que vous
+          des prix. Depuis 2000, les prix ont augmente en France de 0 a 2,8% par
+          an, sauf en 2022 et 2023 (5,2% et 4,9%). Cela signifie que votre argent perd de la valeur : ce que vous
           pouviez acheter avec 100 EUR hier coute plus cher aujourd&apos;hui. Si
           votre salaire n&apos;augmente pas au meme rythme, votre{" "}
           <strong>pouvoir d&apos;achat diminue</strong>.
@@ -84,7 +85,7 @@ export default function Page() {
             <p className="text-3xl font-bold text-red-600">5,2%</p>
             <p className="font-semibold text-slate-700 text-sm mt-1">2022</p>
             <p className="text-xs text-slate-500 mt-1">
-              Record depuis 1985. Crise energetique, guerre en Ukraine, ruptures
+              Plus forte hausse annuelle depuis 2000. Crise energetique, guerre en Ukraine, ruptures
               d&apos;approvisionnement post-Covid.
             </p>
           </div>
@@ -106,14 +107,21 @@ export default function Page() {
           </div>
         </div>
 
+        <Visuel
+          fichier="inflation-france-par-annee-insee"
+          alt="Inflation annuelle moyenne en France de 2000 à 2025 selon l'Insee : entre 0 et 2,8 % par an jusqu'en 2021, puis 5,2 % en 2022, 4,9 % en 2023, 2,0 % en 2024 et 0,9 % en 2025. 100 € de 2000 valent 151 € de 2025."
+          legende="L'inflation en France année par année depuis 2000 (évolution moyenne de l'indice des prix à la consommation, Insee). Ce sont les taux qu'applique le calculateur."
+          className="mt-2 mb-6"
+        />
+
         <h3 className="font-bold text-slate-800 mt-6 mb-3">
           Comment l&apos;inflation est-elle mesuree ?
         </h3>
         <p className="text-slate-600 leading-relaxed mb-4">
           L&apos;INSEE mesure l&apos;inflation via l&apos;<strong>Indice des
-          Prix a la Consommation</strong> (IPC). Chaque mois, les agents de
-          l&apos;INSEE relevent les prix de plus de 200 000 produits et services
-          dans 30 000 points de vente a travers la France. L&apos;IPC couvre
+          Prix a la Consommation</strong> (IPC). Chaque mois, les enqueteurs de
+          l&apos;INSEE relevent 150 000 prix dans 30 000 points de vente, et
+          2,5 millions d&apos;autres prix sont collectes sur internet. L&apos;IPC couvre
           l&apos;alimentation, le logement, les transports, les loisirs, la
           sante et tous les postes de depenses des menages.
         </p>
@@ -148,9 +156,9 @@ export default function Page() {
           <div className="bg-slate-50 rounded-xl p-4">
             <p className="font-semibold text-slate-700 text-sm">Epargne</p>
             <p className="text-xs text-slate-500 mt-1">
-              L&apos;argent laisse sur un compte courant (0%) perd 2% par an de
-              pouvoir d&apos;achat. Meme le Livret A (2,4%) ne couvre pas
-              toujours l&apos;inflation.
+              L&apos;argent laisse sur un compte courant (0%) perd chaque annee
+              l&apos;equivalent de l&apos;inflation. Le Livret A (1,7 % en
+              octobre 2026) ne la couvre pas toujours.
             </p>
           </div>
         </div>
@@ -165,8 +173,8 @@ export default function Page() {
             acceptez de fait une baisse de salaire reel.
           </li>
           <li>
-            <strong>Placer son epargne :</strong> le Livret A (2,4%), le LEP
-            (3,5%) ou l&apos;investissement en bourse (ETF) permettent de battre
+            <strong>Placer son epargne :</strong> le Livret A (1,7 % en octobre
+            2026), le LEP (2,5 %) ou l&apos;investissement en bourse (ETF) permettent de battre
             ou suivre l&apos;inflation.
           </li>
           <li>
@@ -196,8 +204,8 @@ export default function Page() {
         name="Calculer l'impact de l'inflation sur son pouvoir d'achat"
         steps={[
           { name: "Saisir le montant et l'année de depart", text: "Entrer le montant initial en EUR et l'année de référence. Exemple : salaire de 2 000 EUR net en 2020." },
-          { name: "Choisir l'année d'arrivee", text: "Sélectionner l'année cible. Le calculateur applique l'indice des prix à la consommation (IPC) publie par l'INSEE pour chaque année intermediaire : 2022 (+5,2 pct), 2023 (+4,9 pct), 2024 (+2,0 pct), 2025 (+1,5 pct)." },
-          { name: "Calculer l'inflation cumulee", text: "L'inflation cumulee se calcule par produit des facteurs annuels (composition), pas par addition. Formule : (1 + r1) x (1 + r2) x ... - 1. Exemple 2020-2025 : (1.01) x (1.015) x (1.052) x (1.049) x (1.02) x (1.015) - 1 = environ 15 pct cumule." },
+          { name: "Choisir l'année d'arrivee", text: "Sélectionner l'année cible. Le calculateur applique l'indice des prix à la consommation (IPC) publie par l'INSEE pour chaque année intermediaire : 2022 (+5,2 pct), 2023 (+4,9 pct), 2024 (+2,0 pct), 2025 (+0,9 pct)." },
+          { name: "Calculer l'inflation cumulee", text: "L'inflation cumulee se calcule par produit des facteurs annuels (composition), pas par addition. Formule : (1 + r1) x (1 + r2) x ... - 1. Exemple de 2020 a 2025 : (1,016) x (1,052) x (1,049) x (1,020) x (1,009) - 1 = environ 15,4 pct cumule." },
           { name: "Lire le montant équivalent et la perte de pouvoir d'achat", text: "Le montant équivalent = montant initial x (1 + inflation cumulee). Exemple : 2 000 EUR en 2020 = environ 2 300 EUR équivalents en 2025. La difference (300 EUR) représente la perte réelle de pouvoir d'achat si le salaire n'a pas augmente de 15 pct." },
         ]}
       />
@@ -208,7 +216,7 @@ export default function Page() {
         methode={`L'inflation est mesuree par l'indice des prix a la consommation (IPC) publie par l'INSEE. Le simulateur convertit un montant d'une annee a une autre en appliquant l'evolution de cet indice officiel.`}
         sources={[
           { label: "INSEE - Indice des prix a la consommation", url: "https://www.insee.fr/fr/statistiques/serie/000436391" },
-          { label: "INSEE - Pouvoir d'achat de l'euro", url: "https://www.insee.fr" },
+          { label: "INSEE - L'essentiel sur l'inflation (evolution annuelle moyenne de l'IPC)", url: "https://www.insee.fr/fr/statistiques/4268033" },
         ]}
       />
 

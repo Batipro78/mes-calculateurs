@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/calcul-taux-endettement" },
   title: "Calcul Taux d'Endettement 2026 - Simulateur gratuit",
   description:
-    "Calculez votre taux d'endettement gratuitement. Seuil des 33%, reste a vivre, capacite d'emprunt. Outil indispensable avant une demande de credit immobilier.",
+    "Calculez votre taux d'endettement gratuitement. Norme des 35% du HCSF, reste a vivre, capacite d'emprunt. Outil indispensable avant une demande de credit immobilier.",
   keywords:
     "calcul taux endettement, taux endettement 33%, simulateur endettement, capacite emprunt, reste a vivre, credit immobilier taux endettement, seuil endettement banque",
 };
@@ -24,15 +24,15 @@ const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Quel est le taux d'endettement maximum pour un credit immobilier ?",
-    a: "Depuis janvier 2022, le Haut Conseil de Stabilite Financiere (HCSF) a fixe le taux d'endettement maximum a 35% (assurance emprunteur comprise). En pratique, les banques visent souvent un taux de 33% hors assurance. Un depassement est possible dans 20% des dossiers, principalement pour les primo-accedants et les hauts revenus.",
+    a: "Depuis janvier 2022, le Haut Conseil de Stabilite Financiere (HCSF) a fixe le taux d'endettement maximum a 35% (assurance emprunteur comprise). Les banques peuvent depasser ces criteres pour 20% de leurs nouveaux credits immobiliers chaque trimestre, en priorite pour l'achat d'une residence principale.",
   },
   {
     q: "Quels revenus sont pris en compte pour le taux d'endettement ?",
     a: "Les banques prennent en compte : les salaires nets (fixes), les revenus fonciers (a 70%), les pensions de retraite, les allocations familiales, les revenus d'activite non salariee (moyenne sur 3 ans). Les primes exceptionnelles, les heures supplementaires variables et les revenus de placements ne sont generalement pas retenus.",
   },
   {
-    q: "Peut-on emprunter avec un taux d'endettement superieur a 33% ?",
-    a: "Oui, c'est possible dans certains cas. Les banques peuvent accorder un credit avec un taux jusqu'a 35% (regles HCSF) si le reste a vivre est suffisant (en general > 1 000 EUR par personne). Les hauts revenus, les primo-accedants et les fonctionnaires beneficient souvent de plus de souplesse.",
+    q: "Peut-on emprunter avec un taux d'endettement superieur a 35% ?",
+    a: "Oui, mais seulement dans la marge de derogation des banques : chaque trimestre, 20% de leurs nouveaux credits immobiliers peuvent depasser les criteres du HCSF. Au moins 70% de cette marge va a l'achat d'une residence principale, et au moins 30% aux primo-accedants.",
   },
 ];
 
@@ -68,8 +68,8 @@ export default function Page() {
           Le <strong>taux d&apos;endettement</strong> mesure la part de vos
           revenus consacree au remboursement de vos dettes. C&apos;est le
           premier critere analyse par les banques lors d&apos;une demande de
-          credit immobilier. Au-dela de <strong>33%</strong>, la plupart des
-          banques refusent le dossier (sauf exceptions).
+          credit immobilier. Au-dela de <strong>35%</strong>, assurance comprise, la
+          banque ne peut preter que dans sa marge de derogation (norme du HCSF).
         </p>
 
         <h3 className="font-bold text-slate-800 mt-6 mb-3">La formule de calcul</h3>
@@ -90,19 +90,19 @@ export default function Page() {
             <p className="text-xs text-green-500 mt-1">Dossier tres solide</p>
           </div>
           <div className="bg-amber-50 rounded-xl p-4 border border-amber-100 text-center">
-            <p className="text-2xl font-extrabold text-amber-700">25-33%</p>
+            <p className="text-2xl font-extrabold text-amber-700">25-35%</p>
             <p className="text-sm font-medium text-amber-600 mt-1">Acceptable</p>
-            <p className="text-xs text-amber-500 mt-1">Seuil bancaire respecte</p>
+            <p className="text-xs text-amber-500 mt-1">Norme du HCSF respectee</p>
           </div>
           <div className="bg-orange-50 rounded-xl p-4 border border-orange-100 text-center">
-            <p className="text-2xl font-extrabold text-orange-700">33-40%</p>
+            <p className="text-2xl font-extrabold text-orange-700">35-40%</p>
             <p className="text-sm font-medium text-orange-600 mt-1">Eleve</p>
-            <p className="text-xs text-orange-500 mt-1">Risque de refus</p>
+            <p className="text-xs text-orange-500 mt-1">Hors norme du HCSF</p>
           </div>
           <div className="bg-red-50 rounded-xl p-4 border border-red-100 text-center">
             <p className="text-2xl font-extrabold text-red-700">&gt; 40%</p>
-            <p className="text-sm font-medium text-red-600 mt-1">Critique</p>
-            <p className="text-xs text-red-500 mt-1">Surendettement</p>
+            <p className="text-sm font-medium text-red-600 mt-1">Tres eleve</p>
+            <p className="text-xs text-red-500 mt-1">Bien au-dela de la norme</p>
           </div>
         </div>
 
@@ -166,7 +166,7 @@ export default function Page() {
             <p className="font-semibold text-slate-700 text-sm">Taux max : 35%</p>
             <p className="text-xs text-slate-500 mt-1">
               Le taux d&apos;endettement ne doit pas depasser 35% (assurance
-              emprunteur incluse). En pratique, 33% hors assurance.
+              emprunteur incluse).
             </p>
           </div>
           <div className="bg-slate-50 rounded-xl p-4">
@@ -180,8 +180,8 @@ export default function Page() {
         <p className="text-slate-600 mb-4 leading-relaxed">
           Les banques disposent d&apos;une <strong>marge de flexibilite de
           20%</strong> de leur production de credits pour depasser ces seuils.
-          Cette souplesse est reservee en priorite aux <strong>primo-accedants</strong>
-          (80% de la marge) et aux achats de <strong>residence principale</strong>.
+          Au moins 70% de cette marge va aux achats de <strong>residence principale</strong>,
+          et au moins 30% aux <strong>primo-accedants</strong> ; le reste est libre.
         </p>
 
         <h3 className="font-bold text-slate-800 mt-6 mb-3">Le reste a vivre</h3>

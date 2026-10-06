@@ -119,7 +119,7 @@ export default function Page() {
           {[
             { cas: "Temps partiel", detail: "Memes droits que le temps plein (2,5 j/mois)" },
             { cas: "CDD", detail: "Indemnite compensatrice = 10% du salaire brut total" },
-            { cas: "Maladie", detail: "Ne donne pas droit a conges (sauf accident du travail)" },
+            { cas: "Maladie", detail: "Depuis le 24 avril 2024 : 2 jours ouvrables par mois d'arret (24 par an au maximum)" },
             { cas: "Maternite", detail: "Assimilee a du travail effectif" },
             { cas: "Conges sans solde", detail: "N'ouvre pas de droits a conges payes" },
             { cas: "RTT", detail: "Ne sont pas des conges payes (regime different)" },
@@ -145,7 +145,7 @@ export default function Page() {
           1er mai et le 31 octobre, avec au moins <strong>12 jours ouvrables continus</strong> sur cette periode.
           C&apos;est l&apos;employeur qui fixe l&apos;ordre des departs (selon l&apos;anciennete, la situation
           familiale, l&apos;activite chez d&apos;autres employeurs), mais il doit respecter un{" "}
-          <strong>delai de prevenance d&apos;un mois</strong> et ne peut plus modifier les dates moins de 30 jours
+          <strong>delai de prevenance d&apos;un mois</strong> et ne peut plus modifier les dates moins d&apos;un mois
           avant le depart, sauf circonstances exceptionnelles.
         </p>
         <h3 className="font-bold text-slate-800 mt-6 mb-2">Le fractionnement peut rapporter des jours</h3>

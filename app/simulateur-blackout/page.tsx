@@ -3,6 +3,7 @@ import SimulateurBlackout from "./SimulateurBlackout";
 import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
+import Visuel from "../components/Visuel";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import HowToJsonLd from "../components/HowToJsonLd";
@@ -165,6 +166,13 @@ export default function Page() {
             </div>
           ))}
         </div>
+
+        <Visuel
+          fichier="kit-urgence-72h-liste-officielle"
+          alt="Kit d'urgence 72 h recommandé par l'État (georisques.gouv.fr) : radio à piles et piles de rechange, lampe de poche, bougies, briquet, chargeur de téléphone, trousse de premiers secours, médicaments, nourriture sans cuisson, vêtements chauds, couverture de survie, couteau multifonction, ouvre-boîte, argent liquide, copies des papiers, double des clés, lunettes de secours, jeux, et 6 litres d'eau en bouteilles par personne, soit 24 litres pour 4 personnes."
+          legende="Le kit d'urgence recommandé par l'État pour tenir les 72 premières heures d'une crise, dont une coupure d'électricité (source : georisques.gouv.fr)."
+          className="mt-2 mb-8"
+        />
 
         {/* Checklist rapide */}
         <h3 className="text-lg font-bold text-slate-700 mb-3">

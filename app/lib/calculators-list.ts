@@ -178,4 +178,12 @@ export const ALL_CALCULATORS: Calculator[] = [
   { slug: "/comment-calculer-un-pourcentage-d-augmentation", title: "Guide : calculer un pourcentage d'augmentation", emoji: "📊", color: "from-orange-500 to-amber-500" },
   { slug: "/droits-de-succession-combien-qui-paie", title: "Guide : droits de succession, combien et qui paie", emoji: "⚖️", color: "from-slate-700 to-slate-900" },
   { slug: "/frais-de-notaire-quel-pourcentage", title: "Guide : frais de notaire, quel pourcentage ?", emoji: "📋", color: "from-cyan-500 to-blue-500" },
+  { slug: "/pension-de-reversion-quel-montant", title: "Guide : pension de réversion, quel montant ?", emoji: "💜", color: "from-violet-500 to-purple-600" },
+  { slug: "/prime-d-activite-pour-qui-quel-salaire", title: "Guide : prime d'activité, pour qui et quel salaire ?", emoji: "💶", color: "from-emerald-500 to-teal-600" },
+  { slug: "/date-d-accouchement-calcul-exact", title: "Guide : calculer sa date d'accouchement", emoji: "🤰", color: "from-purple-500 to-pink-500" },
+  { slug: "/quel-age-a-mon-chien-en-age-humain", title: "Guide : l'âge de mon chien en âge humain", emoji: "🐕", color: "from-amber-500 to-orange-600" },
+  { slug: "/taux-d-endettement-comment-calculer", title: "Guide : calculer son taux d'endettement", emoji: "🏦", color: "from-blue-500 to-indigo-500" },
+  { slug: "/capacite-d-emprunt-quel-salaire", title: "Guide : capacité d'emprunt selon le salaire", emoji: "🏠", color: "from-blue-500 to-indigo-600" },
+  { slug: "/plus-value-immobiliere-qui-calcule-quand-payer", title: "Guide : plus-value immobilière, qui calcule et quand payer", emoji: "🏡", color: "from-green-500 to-emerald-600" },
+  { slug: "/conges-payes-quelle-annee-quand-les-poser", title: "Guide : congés payés, quelle année et quand les poser", emoji: "🏖️", color: "from-teal-500 to-cyan-600" },
 ];
