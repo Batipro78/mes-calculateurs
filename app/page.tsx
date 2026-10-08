@@ -1335,7 +1335,7 @@ const outils = [
   {
     titre: "Mention au Bac",
     description:
-      "Quelle mention pour votre moyenne au bac ? Passable, AB, B, TB, TB Felicitations. Bareme officiel.",
+      "Quelle mention pour votre moyenne au bac ? Admis des 10, assez bien 12, bien 14, tres bien 16, felicitations 18.",
     href: "/calcul-mention-bac",
     icone: "🎓",
     couleur: "from-blue-500 to-indigo-600",
@@ -1582,6 +1582,69 @@ const outils = [
     href: "/conges-payes-quelle-annee-quand-les-poser",
     icone: "🏖️",
     couleur: "from-teal-500 to-cyan-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Excès de vitesse : combien de points et d'amende ?",
+    description:
+      "De 5 à 19 km/h : 1 point et 68 ou 135 €. À partir de 50 km/h, c'est un délit : 300 € et 6 points.",
+    href: "/exces-de-vitesse-combien-de-points-et-d-amende",
+    icone: "🚨",
+    couleur: "from-red-500 to-orange-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Combien consomme un radiateur électrique ?",
+    description:
+      "1 000 W = 1 kWh par heure à pleine puissance, environ 0,20 € au tarif Base d'EDF. Par jour, par mois, et quel radiateur consomme le moins.",
+    href: "/combien-consomme-un-radiateur-electrique",
+    icone: "⚡",
+    couleur: "from-yellow-500 to-orange-500",
+    tag: "Guide",
+  },
+  {
+    titre: "Comment calculer sa VMA ?",
+    description:
+      "Demi-Cooper : la distance en mètres divisée par 100. Cooper : divisée par 200. Et le tableau des allures en % de VMA.",
+    href: "/comment-calculer-sa-vma",
+    icone: "🏃",
+    couleur: "from-emerald-600 to-teal-700",
+    tag: "Guide",
+  },
+  {
+    titre: "Comment calculer sa moyenne ?",
+    description:
+      "Moyenne simple, coefficients, notes sur un autre barème, le piège de la moyenne de moyennes, et le calcul de la note du bac.",
+    href: "/comment-calculer-sa-moyenne",
+    icone: "🎓",
+    couleur: "from-violet-500 to-purple-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Combien de calories par jour pour maigrir ?",
+    description:
+      "Le besoin du jour se calcule (métabolisme de base × activité), puis on mange un peu moins. Exemples pour une femme et un homme.",
+    href: "/combien-de-calories-par-jour-pour-maigrir",
+    icone: "🔥",
+    couleur: "from-green-500 to-emerald-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Combien d'heures de sommeil par nuit ?",
+    description:
+      "7 à 9 heures pour un adulte, 8 à 10 pour un adolescent, 9 à 11 pour un enfant de 6 à 13 ans. Un cycle dure environ 90 minutes.",
+    href: "/combien-d-heures-de-sommeil-par-nuit",
+    icone: "🌙",
+    couleur: "from-indigo-500 to-purple-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Combien de litres d'eau boire par jour ?",
+    description:
+      "2 L pour une femme et 2,5 L pour un homme, aliments compris : il reste environ 1 à 1,5 L à boire. 3 ou 4 litres ne sont pas un objectif.",
+    href: "/combien-de-litres-d-eau-par-jour",
+    icone: "💧",
+    couleur: "from-blue-500 to-cyan-500",
     tag: "Guide",
   },
 ];

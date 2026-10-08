@@ -1,0 +1,1 @@
+Les trois tests de VMA : demi-Cooper sur 6 minutes (VMA = distance divisée par 100, 1 500 m donnent 15 km/h), Cooper sur 12 minutes (distance divisée par 200, 3 000 m donnent 15 km/h) et VAMEVAL (vitesse du dernier palier, ici 15 km/h)

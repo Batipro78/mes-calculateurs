@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { calculerCoutClim } from "./coutClimCalc";
 
-const TARIF_BASE = 0.2516; // EUR/kWh, tarif EDF Bleu 2026
+const TARIF_BASE = 0.2001; // EUR/kWh TTC, tarif Bleu EDF option Base au 1er aout 2026 (particulier.edf.fr/fr/accueil/electricite-gaz/tarif-bleu.html)
 
 interface Modele {
   nom: string;

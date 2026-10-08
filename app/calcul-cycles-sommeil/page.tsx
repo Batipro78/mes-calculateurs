@@ -36,7 +36,7 @@ const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Combien de temps pour s'endormir en moyenne ?",
-    a: "Le temps moyen d'endormissement (latence) chez un adulte est de 14 minutes selon l'INSERM. En dessous de 5 minutes, cela peut indiquer une dette de sommeil. Au-dela de 30 minutes, cela peut etre un signe d'insomnie. Le calculateur prend cette latence en compte par defaut.",
+    a: "Le temps moyen d'endormissement (latence) chez un adulte est de 25 minutes en moyenne selon le Barometre de Sante publique France 2017. Le calculateur utilise un reglage de 14 minutes, que vous pouvez desactiver. En dessous de 5 minutes, cela peut indiquer une dette de sommeil. Au-dela de 30 minutes, cela peut etre un signe d'insomnie. Le calculateur prend cette latence en compte par defaut.",
   },
   {
     q: "Cycle de 90 minutes : est-ce universel ?",
@@ -277,7 +277,7 @@ export default function Page() {
         name="Calculer l'heure de coucher ou de reveil selon les cycles de sommeil"
         steps={[
           { name: "Choisir le mode de calcul", text: "Sélectionner le mode : saisir l'heure de reveil souhaitee pour obtenir l'heure de coucher ideale, ou saisir l'heure de coucher pour obtenir les horaires de reveil recommandes." },
-          { name: "Integrer la latence d'endormissement de 14 minutes", text: "Le calculateur ajoute automatiquement 14 minutes (latence moyenne d'endormissement selon l'INSERM) au moment du coucher pour déterminer le debut réel du 1er cycle de 90 minutes." },
+          { name: "Integrer la latence d'endormissement de 14 minutes", text: "Le calculateur ajoute automatiquement 14 minutes (reglage par defaut du calculateur ; la moyenne mesuree par Sante publique France en 2017 est de 25 minutes) au moment du coucher pour déterminer le debut réel du 1er cycle de 90 minutes." },
           { name: "Lire les 5 horaires proposes de 4 à 7 cycles", text: "5 horaires optimaux sont proposes, correspondant à 4, 5, 6 et 7 cycles complets de 90 minutes. La National Sleep Foundation recommande 5 cycles (7h30 de sommeil) pour un adulte de 18 à 64 ans." },
         ]}
       />

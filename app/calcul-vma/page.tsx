@@ -12,6 +12,7 @@ import {
   fmt,
 } from "./vmaCalc";
 import HowToJsonLd from "../components/HowToJsonLd";
+import Visuel from "../components/Visuel";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-vma" },
@@ -134,18 +135,33 @@ export default function Page() {
             </p>
           </div>
           <div className="bg-slate-50 rounded-xl p-6 border border-slate-200">
-            <h3 className="font-bold text-slate-800 mb-3">VAMEVAL (1500m)</h3>
+            <h3 className="font-bold text-slate-800 mb-3">VAMEVAL (dernier palier)</h3>
             <p className="text-sm text-slate-600 mb-4">
-              Courez 1500m le plus vite possible. Notez le temps précis.
+              Test progressif sur piste : départ à 8 km/h, puis +0,5 km/h chaque minute. Notez la vitesse du dernier palier réalisé.
             </p>
             <p className="text-xs font-mono text-emerald-600">
-              VMA = 1.5 km / temps(h)
+              VMA = vitesse du dernier palier
             </p>
             <p className="text-xs text-slate-500 mt-2">
-              Test précis et court. Demande une bonne puissance.
+              Test de référence en EPS, mais il demande une piste balisée et une bande sonore.
             </p>
           </div>
         </div>
+
+        <Visuel
+          fichier="vma-trois-tests-formules"
+          alt="Les trois tests de VMA : demi-Cooper sur 6 minutes (VMA = distance divisée par 100, 1 500 m donnent 15 km/h), Cooper sur 12 minutes (distance divisée par 200, 3 000 m donnent 15 km/h) et VAMEVAL (vitesse du dernier palier, ici 15 km/h)"
+          legende="Les formules du calculateur pour un même coureur de VMA 15 km/h. Ce sont des estimations : le demi-Cooper est donné à environ plus ou moins 1 km/h (EMSLB)."
+          className="mt-6"
+        />
+        <p className="text-sm text-slate-600 mt-4 leading-relaxed">
+          Pour le détail de chaque test, les limites des montres et un tableau
+          des allures en pourcentage de VMA, lisez{" "}
+          <a href="/comment-calculer-sa-vma" className="text-blue-600 hover:underline font-medium">
+            Comment calculer sa VMA
+          </a>
+          .
+        </p>
       </section>
 
       {/* Tableau allures */}

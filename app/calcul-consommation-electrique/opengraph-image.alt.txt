@@ -1,0 +1,1 @@
+Coût par jour de sept appareils au tarif de 0,2001 euro le kWh, avec les valeurs par défaut du calculateur : ampoule led (9 W, 5 h) 0,01 euro, box internet (15 W, 24 h) 0,07 euro, téléviseur (120 W, 4 h) 0,10 euro, réfrigérateur (150 W, 24 h) 0,72 euro, lave-linge (1200 W, 1 h) 0,24 euro, four électrique (2500 W, 1 h) 0,50 euro, radiateur électrique (1500 W, 8 h) 2,40 euro

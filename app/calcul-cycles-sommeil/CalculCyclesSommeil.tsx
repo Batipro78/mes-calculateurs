@@ -136,7 +136,7 @@ export default function CalculCyclesSommeil() {
                 />
               </button>
               <span className="text-sm text-slate-700">
-                Inclure {DUREE_ENDORMISSEMENT_MINUTES} min (moyenne adulte)
+                Inclure {DUREE_ENDORMISSEMENT_MINUTES} min (reglage du calculateur)
               </span>
             </div>
             <p className="text-xs text-slate-500 mt-1">

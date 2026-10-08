@@ -150,7 +150,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         name: `Combien de calories pour maigrir a ${poids} kg ?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Pour perdre du poids a ${poids} kg, visez ${fmt(perteRapide)} kcal/jour (perte rapide, -0,5 kg/sem) ou ${fmt(perteLente)} kcal/jour (perte lente, -0,25 kg/sem). Ne descendez pas en dessous de ${sexe === "homme" ? "1 500" : "1 200"} kcal/jour.`,
+          text: `Pour perdre du poids a ${poids} kg, visez ${fmt(perteRapide)} kcal/jour (perte rapide, -0,5 kg/sem) ou ${fmt(perteLente)} kcal/jour (perte lente, -0,25 kg/sem). Ces valeurs sont des estimations : pour un deficit important ou prolonge, demandez l'avis d'un medecin ou d'un dieteticien.`,
         },
       },
     ],

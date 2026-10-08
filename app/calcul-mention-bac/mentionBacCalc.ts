@@ -15,7 +15,6 @@ export interface ResultatMention {
   moyenne: number;
   mention: MentionInfo;
   obtenu: boolean;
-  pointsBonusParcoursup: number;
   felicitationsJury: boolean;
   prochainePalier: MentionInfo | null;
   pointsPourProchainePalier: number;
@@ -29,18 +28,18 @@ export const MENTIONS: MentionInfo[] = [
     seuilMax: 9.99,
     emoji: "❌",
     couleur: "red",
-    description: "Moyenne inferieure a 10/20. Bac non obtenu (rattrapage possible entre 8 et 10).",
-    bonus: "Aucun bonus. Possibilite de rattrapage oral si moyenne entre 8 et 10.",
+    description: "Moyenne inferieure a 10/20. De 8 a moins de 10 : second groupe d'epreuves (rattrapage). En dessous de 8 : ajourne.",
+    bonus: "Aucun bonus. Second groupe d'epreuves possible si la moyenne est d'au moins 8 et inferieure a 10.",
   },
   {
     id: "passable",
-    nom: "Mention Passable",
+    nom: "Pas de mention (admis)",
     seuilMin: 10,
     seuilMax: 11.99,
     emoji: "✅",
     couleur: "slate",
-    description: "Bac obtenu sans mention. Moyenne comprise entre 10 et 11,99/20.",
-    bonus: "Aucun bonus officiel mais bac validé.",
+    description: "Bac obtenu sans mention : le code de l'éducation ne prévoit de mention qu'à partir de 12/20. Moyenne comprise entre 10 et 11,99/20.",
+    bonus: "Bac obtenu, sans mention.",
   },
   {
     id: "assez-bien",
@@ -50,7 +49,7 @@ export const MENTIONS: MentionInfo[] = [
     emoji: "🥉",
     couleur: "amber",
     description: "Mention Assez Bien. Moyenne entre 12 et 13,99/20.",
-    bonus: "Valorisation sur CV et dossiers Parcoursup.",
+    bonus: "Seuil fixé par l'article D334-11 du code de l'éducation : moyenne d'au moins 12 et inférieure à 14.",
   },
   {
     id: "bien",
@@ -60,7 +59,7 @@ export const MENTIONS: MentionInfo[] = [
     emoji: "🥈",
     couleur: "blue",
     description: "Mention Bien. Moyenne entre 14 et 15,99/20.",
-    bonus: "Atout important Parcoursup, certaines bourses au mérite.",
+    bonus: "Seuil fixé par l'article D334-11 du code de l'éducation : moyenne d'au moins 14 et inférieure à 16.",
   },
   {
     id: "tres-bien",
@@ -70,7 +69,7 @@ export const MENTIONS: MentionInfo[] = [
     emoji: "🥇",
     couleur: "violet",
     description: "Mention Très Bien. Moyenne entre 16 et 17,99/20.",
-    bonus: "1 point Parcoursup sur certaines formations sélectives, bourse au mérite possible (échelon variable).",
+    bonus: "Seuil fixé par l'article D334-11 du code de l'éducation : moyenne d'au moins 16.",
   },
   {
     id: "tres-bien-felicitations",
@@ -80,20 +79,23 @@ export const MENTIONS: MentionInfo[] = [
     emoji: "🏆",
     couleur: "rose",
     description: "Très Bien avec Félicitations du jury. Moyenne 18+/20. Distinction maximale.",
-    bonus: "1 point Parcoursup, bourse au mérite échelon supérieur possible, distinction au CV pour grandes écoles.",
+    bonus: "Seuil fixé par l'article D334-11 du code de l'éducation : moyenne d'au moins 18, avec les félicitations du jury.",
   },
 ];
 
 export function getMentionFromMoyenne(moyenne: number): MentionInfo {
-  const m = MENTIONS.find((x) => moyenne >= x.seuilMin && moyenne <= x.seuilMax);
-  return m || MENTIONS[0];
+  // On compare au seuil bas seulement : le code de l'éducation (D. 334-11) dit « au moins égale à 12
+  // et inférieure à 14 », donc sans trou entre 11,99 et 12.
+  for (let i = MENTIONS.length - 1; i >= 0; i--) {
+    if (moyenne >= MENTIONS[i].seuilMin) return MENTIONS[i];
+  }
+  return MENTIONS[0];
 }
 
 export function calculerMention(moyenne: number): ResultatMention {
   const moyClamped = Math.max(0, Math.min(20, moyenne));
   const mention = getMentionFromMoyenne(moyClamped);
   const obtenu = moyClamped >= 10;
-  const pointsBonusParcoursup = moyClamped >= 16 ? 1 : 0;
   const felicitationsJury = moyClamped >= 18;
 
   // Prochaine palier
@@ -107,7 +109,6 @@ export function calculerMention(moyenne: number): ResultatMention {
     moyenne: moyClamped,
     mention,
     obtenu,
-    pointsBonusParcoursup,
     felicitationsJury,
     prochainePalier,
     pointsPourProchainePalier,

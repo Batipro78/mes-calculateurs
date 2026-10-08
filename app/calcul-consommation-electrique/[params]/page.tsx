@@ -34,7 +34,7 @@ const APPAREILS: Appareil[] = [
 
 const APPAREIL_SLUGS = APPAREILS.map((a) => a.slug);
 
-const TARIF_BASE = 0.2516;
+const TARIF_BASE = 0.2001;
 
 
 

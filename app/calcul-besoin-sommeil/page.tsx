@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import HowToJsonLd from "../components/HowToJsonLd";
+import Visuel from "../components/Visuel";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-besoin-sommeil" },
@@ -136,6 +137,13 @@ export default function Page() {
           Un <strong>cycle de sommeil</strong> dure en moyenne <strong>90 minutes</strong> et
           se repete 4 a 6 fois par nuit. Chaque cycle comprend plusieurs phases successives :
         </p>
+
+        <Visuel
+          fichier="sommeil-heure-coucher-lever-7h-cycles"
+          alt="Heure de coucher pour se lever à 7 h : 3 cycles (4 h 30 de sommeil) = coucher à 2 h 30, 4 cycles (6 h de sommeil) = 1 h 00, 5 cycles (7 h 30) = 23 h 30, 6 cycles (9 h) = 22 h 00, 7 cycles (10 h 30) = 20 h 30. Calcul : heure de lever moins des cycles complets de 90 minutes, sans temps d'endormissement"
+          legende="Heures de coucher pour un lever à 7 h, en comptant des cycles complets de 90 minutes, sans temps d'endormissement. Le calculateur ci-dessus part, lui, de votre nombre d'heures conseillé : 8 h pour un adulte, soit un coucher à 23 h 00."
+          className="mt-2 mb-6"
+        />
 
         <div className="grid gap-3 sm:grid-cols-3 mb-6">
           <div className="bg-purple-50 rounded-xl p-4 border border-purple-100">

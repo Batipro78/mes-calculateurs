@@ -4,6 +4,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
+import Visuel from "../components/Visuel";
 import Faq, { FaqItem } from "../components/Faq";
 import HowToJsonLd from "../components/HowToJsonLd";
 
@@ -19,11 +20,11 @@ export const metadata: Metadata = {
 const FAQ_ITEMS: FaqItem[] = [
   {
     q: "Comment calculer la consommation electrique d'un appareil ?",
-    a: "La consommation se calcule avec la formule : Puissance (en watts) x Duree d'utilisation (en heures) / 1000 = Consommation en kWh. Pour obtenir le cout, multipliez les kWh par le prix du kWh (environ 0,2516 EUR en tarif EDF Base 2026).",
+    a: "La consommation se calcule avec la formule : Puissance (en watts) x Duree d'utilisation (en heures) / 1000 = Consommation en kWh. Pour obtenir le cout, multipliez les kWh par le prix du kWh (environ 0,2001 EUR en tarif EDF Base 2026).",
   },
   {
     q: "Quel est le prix du kWh en France en 2026 ?",
-    a: "Le tarif reglemente EDF (Tarif Bleu) est d'environ 0,2516 EUR/kWh en option Base pour les particuliers (6 kVA). En option Heures Pleines / Heures Creuses, le tarif est de 0,27 EUR/kWh en HP et 0,2068 EUR/kWh en HC.",
+    a: "Le tarif reglemente EDF (Tarif Bleu) est d'environ 0,2001 EUR/kWh en option Base pour les particuliers (6 kVA). En option Heures Pleines / Heures Creuses, le tarif est de 0,2142 EUR/kWh en HP et 0,1589 EUR/kWh en HC.",
   },
   {
     q: "Quels sont les appareils qui consomment le plus d'electricite ?",
@@ -31,7 +32,7 @@ const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Quelle est la difference entre l'option Base et l'option Heures Pleines / Heures Creuses ?",
-    a: "L'option Base propose un tarif unique (0,2516 EUR/kWh) quelle que soit l'heure. L'option HP/HC propose un tarif plus cher en Heures Pleines (0,27 EUR/kWh, environ 16h/jour) et moins cher en Heures Creuses (0,2068 EUR/kWh, environ 8h la nuit). L'option HP/HC est avantageuse si vous pouvez decaler vos usages (lave-linge, lave-vaisselle, chauffe-eau) sur les heures creuses.",
+    a: "L'option Base propose un tarif unique (0,2001 EUR/kWh) quelle que soit l'heure. L'option HP/HC propose un tarif plus cher en Heures Pleines (0,2142 EUR/kWh, environ 16h/jour) et moins cher en Heures Creuses (0,1589 EUR/kWh, environ 8h la nuit). L'option HP/HC est avantageuse si vous pouvez decaler vos usages (lave-linge, lave-vaisselle, chauffe-eau) sur les heures creuses.",
   },
   {
     q: "Comment reduire sa facture d'electricite ?",
@@ -81,6 +82,13 @@ export default function Page() {
           Cout = Consommation (kWh) x Prix du kWh
         </div>
 
+        <Visuel
+          fichier="cout-par-jour-appareils-courants-electricite"
+          alt="Coût par jour de sept appareils au tarif de 0,2001 euro le kWh : ampoule LED (9 W, 5 h) 0,01 euro, box internet (15 W, 24 h) 0,07 euro, téléviseur (120 W, 4 h) 0,10 euro, réfrigérateur (150 W, 24 h) 0,72 euro, lave-linge (1 200 W, 1 h) 0,24 euro, four électrique (2 500 W, 1 h) 0,50 euro, radiateur électrique (1 500 W, 8 h) 2,40 euros"
+          legende="Coût par jour de sept appareils avec les puissances et les durées par défaut du calculateur, au tarif Base de 0,2001 € le kWh (Tarif Bleu EDF, en vigueur depuis le 1er août 2026)."
+          className="mt-6"
+        />
+
         <h3 className="font-bold text-slate-800 mt-6 mb-3">
           Consommation typique des appareils
         </h3>
@@ -128,18 +136,18 @@ export default function Page() {
         <ul className="list-disc list-inside text-slate-600 space-y-1 mb-3">
           <li>
             <strong>Option Base</strong> : tarif unique de{" "}
-            <strong>0,2516 EUR/kWh</strong>, quelle que soit l&apos;heure de la journee.
+            <strong>0,2001 EUR/kWh</strong>, quelle que soit l&apos;heure de la journee.
           </li>
           <li>
             <strong>Option HP/HC</strong> : tarif plus eleve en Heures Pleines
-            (<strong>0,27 EUR/kWh</strong>, ~16h/jour) et reduit en Heures Creuses
-            (<strong>0,2068 EUR/kWh</strong>, ~8h la nuit).
+            (<strong>0,2142 EUR/kWh</strong>, ~16h/jour) et reduit en Heures Creuses
+            (<strong>0,1589 EUR/kWh</strong>, ~8h la nuit).
           </li>
         </ul>
         <p className="text-slate-600 leading-relaxed">
           L&apos;option HP/HC est avantageuse si vous pouvez programmer vos appareils
           energivores (lave-linge, lave-vaisselle, chauffe-eau, borne de recharge VE)
-          pendant les heures creuses, generalement entre 22h et 6h du matin.
+          pendant les heures creuses (les horaires sont indiques sur votre contrat).
         </p>
       </section>
 
@@ -147,22 +155,21 @@ export default function Page() {
         <h2 className="text-xl font-bold text-slate-800 mb-4">Ou part votre facture d&apos;electricite ?</h2>
         <p className="text-slate-600 mb-4 leading-relaxed">
           Connaitre la puissance d&apos;un appareil, c&apos;est utile ; savoir quels postes pesent le plus dans la
-          facture, c&apos;est ce qui permet de vraiment economiser. Voici la repartition moyenne d&apos;un foyer
-          francais (hors logement tout electrique, ou le chauffage pese encore plus).
+          facture, c&apos;est ce qui permet de vraiment economiser. Voici les principaux postes d&apos;un foyer.
         </p>
         <ul className="list-disc list-inside text-slate-600 space-y-1 mb-4">
-          <li><strong>Chauffage</strong> : jusqu&apos;a <strong>60 %</strong> de la facture dans un logement chauffe a l&apos;electricite — de loin le premier poste</li>
-          <li><strong>Eau chaude sanitaire</strong> : environ <strong>15 %</strong> (le chauffe-eau)</li>
-          <li><strong>Electromenager et froid</strong> (frigo, congelateur, lave-linge) : environ <strong>15 %</strong></li>
-          <li><strong>Eclairage, multimedia et veilles</strong> : environ <strong>10 %</strong></li>
+          <li><strong>Chauffage</strong> : souvent le premier poste de la facture dans un logement chauffe a l&apos;electricite</li>
+          <li><strong>Eau chaude sanitaire</strong> : le chauffe-eau est un autre poste important</li>
+          <li><strong>Electromenager et froid</strong> (frigo, congelateur, lave-linge) : des appareils utilises toute l&apos;annee</li>
+          <li><strong>Eclairage, multimedia et veilles</strong> : des petits postes, mais qui tournent longtemps</li>
         </ul>
         <h3 className="font-bold text-slate-800 mt-6 mb-2">Les gestes qui reduisent vraiment la facture</h3>
         <ul className="list-disc list-inside text-slate-600 space-y-1 mb-4">
-          <li>Baisser le chauffage de <strong>1 &deg;C</strong> = environ <strong>7 %</strong> de consommation de chauffage en moins</li>
-          <li>Chasser les <strong>veilles</strong> (box, TV, consoles) avec une multiprise a interrupteur : jusqu&apos;a 80 &euro;/an</li>
-          <li>Regler le chauffe-eau a <strong>55 &deg;C</strong> et le programmer en heures creuses</li>
-          <li>Remplacer les vieilles ampoules par des <strong>LED</strong> (jusqu&apos;a 8 fois moins gourmandes)</li>
-          <li>Degivrer le congelateur : 4 mm de givre, et la consommation grimpe de 30 %</li>
+          <li>Ne pas chauffer plus que necessaire : <strong>19 &deg;C</strong> dans les pieces de vie occupees, 16 a 17 &deg;C quand elles sont inoccupees (recommandation de l&apos;ADEME)</li>
+          <li>Chasser les <strong>veilles</strong> (box, TV, consoles) avec une multiprise a interrupteur</li>
+          <li>Programmer le chauffe-eau en heures creuses si vous avez l&apos;option HP/HC</li>
+          <li>Remplacer les vieilles ampoules par des <strong>LED</strong> (bien moins gourmandes)</li>
+          <li>Degivrer regulierement le congelateur : le givre fait travailler l&apos;appareil davantage</li>
         </ul>
         <h3 className="font-bold text-slate-800 mt-6 mb-2">Abonnement et consommation : deux lignes distinctes</h3>
         <p className="text-slate-600 leading-relaxed">
@@ -178,7 +185,7 @@ export default function Page() {
         name="Calculer la consommation électrique d'un appareil"
         steps={[
           { name: "Saisir la puissance et la durée d'utilisation", text: "Entrer la puissance de l'appareil en watts (W) et la durée d'utilisation en heures. Formule : kWh = puissance (W) x durée (h) / 1000. Exemple : radiateur 1500 W allume 4h = 6 kWh." },
-          { name: "Choisir le tarif EDF (Base ou HP/HC)", text: "Option Base : 0.2516 EUR/kWh à toute heure. Option HP/HC : 0.27 EUR/kWh en Heures Pleines (environ 16h/jour) et 0.2068 EUR/kWh en Heures Creuses (environ 8h la nuit). Choisir HP/HC si les appareils energivores sont programables." },
+          { name: "Choisir le tarif EDF (Base ou HP/HC)", text: "Option Base : 0.2001 EUR/kWh à toute heure. Option HP/HC : 0.2142 EUR/kWh en Heures Pleines (environ 16h/jour) et 0.1589 EUR/kWh en Heures Creuses (environ 8h la nuit). Choisir HP/HC si les appareils energivores sont programables." },
           { name: "Lire le coût sur la journee, le mois et l'année et cumuler plusieurs appareils", text: "Le coût = kWh x prix du kWh. Le mode multi-appareils permet d'additionner plusieurs postes pour estimer la facture totale et identifier les appareils les plus couteux." },
         ]}
       />

@@ -7,6 +7,7 @@ import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import HowToJsonLd from "../components/HowToJsonLd";
 import SourcesMethodo from "../components/SourcesMethodo";
+import Visuel from "../components/Visuel";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-calories" },
@@ -24,7 +25,7 @@ const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Combien de calories par jour pour maigrir ?",
-    a: "Creez un deficit de 250 a 500 kcal sous votre TDEE. Un deficit de 500 kcal/jour fait perdre environ 0,5 kg par semaine. Ne descendez pas sous 1 200 kcal/jour (femmes) ou 1 500 kcal/jour (hommes).",
+    a: "Creez un deficit de 250 a 500 kcal sous votre TDEE. Selon la regle courante, un deficit de 500 kcal/jour fait perdre environ 0,5 kg par semaine, mais c'est une approximation : le corps depense moins en perdant du poids, la perte ralentit. Pour un deficit important ou prolonge, demandez l'avis d'un medecin ou d'un dieteticien.",
   },
   {
     q: "Quelle difference entre metabolisme de base et TDEE ?",
@@ -86,8 +87,7 @@ export default function Page() {
         </h3>
         <p className="text-slate-600 mb-3 leading-relaxed">
           Publiee en 1990, la formule <strong>Mifflin-St Jeor</strong> est
-          consideree comme la plus precise par l&apos;Academy of Nutrition and
-          Dietetics. Elle remplace l&apos;ancienne formule de Harris-Benedict.
+          une equation d&apos;estimation du metabolisme de base. Elle remplace l&apos;ancienne formule de Harris-Benedict.
         </p>
         <div className="bg-slate-50 rounded-xl p-4 font-mono text-sm text-slate-700 space-y-2">
           <p>
@@ -145,19 +145,26 @@ export default function Page() {
           </table>
         </div>
 
+        <Visuel
+          fichier="besoin-calorique-selon-niveau-activite"
+          alt="Besoin calorique par jour selon le niveau d'activite du calculateur, pour une femme de 35 ans, 65 kg, 165 cm et un homme de 35 ans, 80 kg, 180 cm : sedentaire 1 614 et 2 106 kcal, legerement actif 1 850 et 2 413, moderement actif 2 085 et 2 720, tres actif 2 321 et 3 027, extremement actif 2 556 et 3 335."
+          legende="Besoin du jour = metabolisme de base (formule de Mifflin-St Jeor) multiplie par le coefficient d'activite du calculateur, pour une femme de 65 kg et un homme de 80 kg, 35 ans."
+          className="mt-6 mb-2"
+        />
+
         <h3 className="font-bold text-slate-800 mt-6 mb-3">
           Exemples de besoins caloriques
         </h3>
         <div className="grid gap-3 sm:grid-cols-2">
           <div className="bg-blue-50 rounded-xl p-4 border border-blue-100">
             <p className="font-semibold text-blue-700 text-sm">Homme 30 ans, 80 kg, 180 cm</p>
-            <p className="text-xs text-blue-600 mt-1">Sedentaire : ~2 050 kcal/jour</p>
-            <p className="text-xs text-blue-600">Actif : ~2 650 kcal/jour</p>
+            <p className="text-xs text-blue-600 mt-1">Sedentaire : ~2 136 kcal/jour</p>
+            <p className="text-xs text-blue-600">Moderement actif : ~2 759 kcal/jour</p>
           </div>
           <div className="bg-pink-50 rounded-xl p-4 border border-pink-100">
             <p className="font-semibold text-pink-700 text-sm">Femme 25 ans, 60 kg, 165 cm</p>
-            <p className="text-xs text-pink-600 mt-1">Sedentaire : ~1 600 kcal/jour</p>
-            <p className="text-xs text-pink-600">Active : ~2 050 kcal/jour</p>
+            <p className="text-xs text-pink-600 mt-1">Sedentaire : ~1 614 kcal/jour</p>
+            <p className="text-xs text-pink-600">Moderement active : ~2 085 kcal/jour</p>
           </div>
         </div>
 
@@ -170,8 +177,8 @@ export default function Page() {
         </p>
         <ul className="list-disc list-inside text-slate-600 space-y-1 mb-4">
           <li><strong>-250 kcal/jour</strong> = perte d&apos;environ 0,25 kg/semaine (perte lente et durable)</li>
-          <li><strong>-500 kcal/jour</strong> = perte d&apos;environ 0,5 kg/semaine (recommande)</li>
-          <li>Ne jamais descendre en dessous de <strong>1 200 kcal</strong> (femmes) ou <strong>1 500 kcal</strong> (hommes)</li>
+          <li><strong>-500 kcal/jour</strong> = perte d&apos;environ 0,5 kg/semaine selon la regle courante (approximative, la perte ralentit avec le temps)</li>
+          <li>Pour un deficit important ou prolonge, demandez l&apos;avis d&apos;un medecin ou d&apos;un dieteticien</li>
         </ul>
 
         <h3 className="font-bold text-slate-800 mt-6 mb-3">

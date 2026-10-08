@@ -281,7 +281,7 @@ export default function CalculateurConsommationEau() {
 
         {/* Repartition par moment */}
         <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
-          <p className="text-xs font-medium text-slate-400 mb-4">Repartition recommandee</p>
+          <p className="text-xs font-medium text-slate-400 mb-4">Repartition proposee</p>
           <div className="space-y-3">
             {REPARTITION_MOMENTS.map((m) => {
               const ml = res.repartition[m.key];
@@ -318,7 +318,7 @@ export default function CalculateurConsommationEau() {
             </li>
             <li className="flex items-start gap-2 text-xs text-blue-600">
               <span className="mt-0.5">🥗</span>
-              <span>Les fruits et legumes couvrent 20% de vos besoins en eau</span>
+              <span>Les aliments apportent environ 1 L d&apos;eau par jour (Vidal)</span>
             </li>
             <li className="flex items-start gap-2 text-xs text-blue-600">
               <span className="mt-0.5">🏃</span>

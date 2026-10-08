@@ -50,7 +50,7 @@ const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Combien coute une climatisation par jour ?",
-    a: "Pour une clim de 2,5 kW froid (EER 3,2) utilisee 8 heures par jour au tarif EDF 2026 (0,2516 EUR/kWh), comptez environ 1,60 EUR par jour, soit a peu pres 48 EUR par mois. Le cout depend surtout de la puissance, du nombre d'heures et de la temperature de consigne.",
+    a: "Pour une clim de 2,5 kW froid (EER 3,2) utilisee 8 heures par jour au tarif EDF Base du 1er aout 2026 (0,2001 EUR/kWh), comptez environ 1,25 EUR par jour, soit a peu pres 38 EUR par mois. Le cout depend surtout de la puissance, du nombre d'heures et de la temperature de consigne.",
   },
   {
     q: "Une clim trop puissante, est-ce un probleme ?",

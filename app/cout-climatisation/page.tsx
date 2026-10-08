@@ -26,18 +26,18 @@ const MODELES_TABLE = [
   { nom: "Reversible 18000 BTU (5 kW)", froid: 5000, eer: 3.8 },
   { nom: "Multi-split (7 kW)", froid: 7000, eer: 4.0 },
 ].map((m) => {
-  const r = calculerCoutClim({ puissanceFroidW: m.froid, eer: m.eer, heuresJour: 8, prixKwh: 0.2516 });
+  const r = calculerCoutClim({ puissanceFroidW: m.froid, eer: m.eer, heuresJour: 8, prixKwh: 0.2001 });
   return { nom: m.nom, jour: r.coutJour, mois: r.coutMois };
 });
 
 const FAQ_ITEMS: FaqItem[] = [
   {
     q: "Combien coute une climatisation par jour ?",
-    a: "Pour un split mural de 2,5 kW froid (9000 BTU, EER 3,4) utilise 8 heures par jour au tarif EDF 2026 (0,2516 EUR/kWh), comptez environ 1,50 EUR par jour. Un climatiseur mobile, moins efficace, revient plutot a 2 EUR par jour pour la meme duree. Le cout depend de la puissance, de l'efficacite (EER) et du nombre d'heures.",
+    a: "Pour un split mural de 2,5 kW froid (9000 BTU, EER 3,4) utilise 8 heures par jour au tarif EDF Base du 1er aout 2026 (0,2001 EUR/kWh), comptez environ 1,20 EUR par jour. Un climatiseur mobile, moins efficace, revient plutot a 1,60 EUR par jour pour la meme duree. Le cout depend de la puissance, de l'efficacite (EER) et du nombre d'heures.",
   },
   {
     q: "Combien coute une clim par mois en ete ?",
-    a: "En utilisant une clim split de 2,5 kW environ 8 heures par jour, la facture tourne autour de 45 EUR par mois. Pour un usage plus intensif (12 h/jour) ou un appareil plus puissant, elle peut depasser 80 a 100 EUR par mois. Sur un ete complet (3 mois), comptez en moyenne 130 a 300 EUR selon l'appareil et l'usage.",
+    a: "En utilisant une clim split de 2,5 kW environ 8 heures par jour, la facture tourne autour de 35 EUR par mois. Pour un usage plus intensif (12 h/jour) ou un appareil plus puissant, elle peut atteindre 50 a 130 EUR par mois. Sur un ete complet (90 jours, comme le calculateur), comptez environ 105 EUR pour un split de 2,5 kW utilise 8 heures par jour, et jusqu'a 380 EUR pour un multi-split de 7 kW utilise 12 heures par jour.",
   },
   {
     q: "Le climatiseur mobile coute-t-il plus cher qu'un split ?",
@@ -77,8 +77,8 @@ export default function Page() {
       <section className="mt-12 bg-white rounded-2xl border border-slate-200 p-8">
         <h2 className="text-xl font-bold text-slate-800 mb-4">Cout moyen par type de climatiseur</h2>
         <p className="text-slate-600 mb-4 leading-relaxed text-sm">
-          Estimation pour <strong>8 heures d&apos;utilisation par jour</strong> au tarif EDF 2026
-          (0,2516 &euro;/kWh). Le cout reel varie selon la temperature de consigne et l&apos;isolation.
+          Estimation pour <strong>8 heures d&apos;utilisation par jour</strong> au tarif EDF Base du 1er aout 2026
+          (0,2001 &euro;/kWh). Le cout reel varie selon la temperature de consigne et l&apos;isolation.
         </p>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">

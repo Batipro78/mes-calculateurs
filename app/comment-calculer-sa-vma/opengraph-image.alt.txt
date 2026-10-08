@@ -1,0 +1,1 @@
+Tableau des allures en pourcentage de VMA : pour une VMA de 14 km/h, 70 % donne 9,8 km/h soit 6:07 par km, 80 % donne 5:21 par km, 100 % donne 4:17 par km ; colonnes pour des VMA de 10, 12, 14 et 16 km/h, lignes de 60 à 100 %

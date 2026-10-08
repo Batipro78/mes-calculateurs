@@ -37,11 +37,11 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   return {
     alternates: { canonical: `/calcul-mention-bac/${slug}` },
     title: `${moyenne}/20 au bac : ${resultat.mention.nom}`,
-    description: `Avec ${moyenne}/20 au baccalauréat, vous obtenez la ${resultat.mention.nom}. ${resultat.mention.bonus} Barème officiel Éducation Nationale.`,
+    description: `Avec ${moyenne}/20 au baccalauréat, vous obtenez : ${resultat.mention.nom}. ${resultat.mention.bonus} Barème officiel Éducation Nationale.`,
     keywords: `${moyenne} sur 20 bac, mention bac ${moyenne}, ${resultat.mention.nom}, moyenne ${moyenne} baccalaureat`,
     openGraph: {
       title: `${moyenne}/20 au bac = ${resultat.mention.nom}`,
-      description: `Mention obtenue avec ${moyenne}/20 au baccalauréat. Détails et avantages.`,
+      description: `Mention obtenue avec ${moyenne}/20 au baccalauréat. Détails.`,
     },
   };
 }
@@ -64,12 +64,12 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         name: `Avec ${moyenne}/20 au bac, quelle mention obtient-on ?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Avec une moyenne de ${moyenne}/20 au baccalauréat, vous obtenez la ${resultat.mention.nom}. ${resultat.mention.description}`,
+          text: `Avec une moyenne de ${moyenne}/20 au baccalauréat, vous obtenez : ${resultat.mention.nom}. ${resultat.mention.description}`,
         }
       },
       {
         "@type": "Question",
-        name: `Quel est l'avantage d'une moyenne de ${moyenne}/20 au bac ?`,
+        name: `Que dit le code de l'éducation pour une moyenne de ${moyenne}/20 au bac ?`,
         acceptedAnswer: {
           "@type": "Answer",
           text: resultat.mention.bonus,
@@ -77,12 +77,12 @@ export default async function Page({ params }: { params: Promise<{ params: strin
       },
       {
         "@type": "Question",
-        name: `Combien de points pour passer à la mention supérieure depuis ${moyenne}/20 ?`,
+        name: `Combien de points pour atteindre le palier supérieur depuis ${moyenne}/20 ?`,
         acceptedAnswer: {
           "@type": "Answer",
           text: resultat.prochainePalier
-            ? `Il manque ${resultat.pointsPourProchainePalier.toFixed(2)} point(s) pour obtenir la mention ${resultat.prochainePalier.nom} (seuil ${resultat.prochainePalier.seuilMin}/20).`
-            : `Vous avez déjà atteint la mention maximale.`,
+            ? `Il manque ${resultat.pointsPourProchainePalier.toFixed(2)} point(s) pour atteindre le palier ${resultat.prochainePalier.nom} (seuil ${resultat.prochainePalier.seuilMin}/20).`
+            : `Vous avez déjà atteint le palier maximal.`,
         }
       }
     ]
@@ -107,7 +107,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         </h1>
       </div>
       <p className="text-slate-500 mb-8 ml-[52px]">
-        Avec une moyenne de {moyenne}/20 au baccalauréat, vous obtenez la <strong>{resultat.mention.nom}</strong>.
+        Avec une moyenne de {moyenne}/20 au baccalauréat, vous obtenez : <strong>{resultat.mention.nom}</strong>.
         {resultat.felicitationsJury && " Avec les Félicitations du jury (18+)."}
       </p>
 
@@ -124,16 +124,6 @@ export default async function Page({ params }: { params: Promise<{ params: strin
             <p className="text-sm text-blue-700 font-medium">Mention obtenue</p>
             <p className="text-2xl font-bold text-blue-900 mt-1">{resultat.mention.nom}</p>
             <p className="text-sm text-blue-700 mt-1">{resultat.mention.emoji}</p>
-          </div>
-
-          <div className="bg-violet-50 rounded-lg p-4 border border-violet-200">
-            <p className="text-sm text-violet-700 font-medium">Point Parcoursup</p>
-            <p className="text-3xl font-bold text-violet-900 mt-1">
-              {resultat.pointsBonusParcoursup === 1 ? "+1" : "0"}
-            </p>
-            <p className="text-sm text-violet-700 mt-1">
-              {resultat.pointsBonusParcoursup === 1 ? "Bonus formations sélectives" : "Aucun bonus"}
-            </p>
           </div>
         </div>
 
@@ -152,7 +142,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
           </div>
           {resultat.prochainePalier && (
             <div className="flex justify-between">
-              <span className="text-slate-700">Pour la mention suivante</span>
+              <span className="text-slate-700">Pour le palier suivant</span>
               <span className="font-semibold text-slate-800">
                 +{resultat.pointsPourProchainePalier.toFixed(2)} pt vers {resultat.prochainePalier.nom}
               </span>
@@ -161,7 +151,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         </div>
 
         <div className="mt-4 bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <p className="text-blue-900 font-semibold mb-1">Avantages</p>
+          <p className="text-blue-900 font-semibold mb-1">Précision</p>
           <p className="text-blue-800 text-sm">{resultat.mention.bonus}</p>
         </div>
       </section>

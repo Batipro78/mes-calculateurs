@@ -125,7 +125,7 @@ export default async function Page({
         name: `Combien de litres d'eau pour ${poids} kg avec une activite ${ACTIVITE_LABELS[activite]} ?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Pour une personne de ${poids} kg avec un niveau d'activite ${ACTIVITE_LABELS[activite]} en ${CLIMAT_LABELS[climat]}, le besoin quotidien en eau est de ${fmtL(res.total)} litres par jour, soit ${res.verres} verres de 250 ml. Ce calcul inclut la base de ${fmtL(res.base)} L (${poids} kg x 33 ml/kg) plus ${fmtL(res.activiteBonus)} L pour l'activite physique et ${fmtL(res.climatBonus)} L pour le climat.`,
+          text: `Pour une personne de ${poids} kg avec un niveau d'activite ${ACTIVITE_LABELS[activite]} en ${CLIMAT_LABELS[climat]}, le calculateur estime le besoin quotidien en eau a ${fmtL(res.total)} litres par jour, soit ${res.verres} verres de 250 ml. Ce calcul inclut la base de ${fmtL(res.base)} L (${poids} kg x 33 ml/kg) plus ${fmtL(res.activiteBonus)} L pour l'activite physique et ${fmtL(res.climatBonus)} L pour le climat.`,
         },
       },
       {
@@ -133,7 +133,7 @@ export default async function Page({
         name: `Comment repartir ${fmtL(res.total)} L d'eau dans la journee ?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Pour ${fmtL(res.total)} litres par jour, la repartition recommandee est : ${fmtMl(res.repartition.matin)} ml le matin (30%), ${fmtMl(res.repartition.midi)} ml a midi (25%), ${fmtMl(res.repartition.apres_midi)} ml l'apres-midi (25%), et ${fmtMl(res.repartition.soir)} ml le soir (20%). Il est conseille de boire regulierement sans attendre la soif.`,
+          text: `Pour ${fmtL(res.total)} litres par jour, la repartition proposee par le calculateur est : ${fmtMl(res.repartition.matin)} ml le matin (30%), ${fmtMl(res.repartition.midi)} ml a midi (25%), ${fmtMl(res.repartition.apres_midi)} ml l'apres-midi (25%), et ${fmtMl(res.repartition.soir)} ml le soir (20%). Il est conseille de boire regulierement sans attendre la soif.`,
         },
       },
       {
@@ -197,7 +197,7 @@ export default async function Page({
       {/* Detail repartition */}
       <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm mb-8">
         <h2 className="text-lg font-bold text-slate-800 mb-4">
-          Repartition recommandee sur la journee
+          Repartition proposee sur la journee
         </h2>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           <div className="rounded-xl border p-4 text-center bg-blue-100 text-blue-700 border-blue-200">
@@ -321,8 +321,8 @@ export default async function Page({
         <p className="text-slate-600 mb-4 leading-relaxed">
           Pour une personne de <strong>{poids} kg</strong> avec un niveau
           d&apos;activite <strong>{ACTIVITE_LABELS[activite]}</strong> en{" "}
-          <strong>{CLIMAT_LABELS[climat]}</strong>, le besoin quotidien en eau
-          est de <strong>{fmtL(res.total)} litres</strong>, soit{" "}
+          <strong>{CLIMAT_LABELS[climat]}</strong>, le calculateur estime le besoin quotidien en eau
+          a <strong>{fmtL(res.total)} litres</strong>, soit{" "}
           <strong>{res.verres} verres de 250 ml</strong>.
         </p>
         <p className="text-slate-600 mb-4 leading-relaxed">
@@ -335,12 +335,12 @@ export default async function Page({
           pour un total de <strong>{fmtL(res.total)} L/jour</strong>.
         </p>
         <p className="text-slate-600 leading-relaxed">
-          La repartition optimale sur la journee est :{" "}
+          La repartition proposee par le calculateur sur la journee est :{" "}
           <strong>{fmtMl(res.repartition.matin)} ml le matin</strong>,{" "}
           <strong>{fmtMl(res.repartition.midi)} ml a midi</strong>,{" "}
           <strong>{fmtMl(res.repartition.apres_midi)} ml l&apos;apres-midi</strong>,{" "}
-          <strong>{fmtMl(res.repartition.soir)} ml le soir</strong>. Il est
-          recommande de boire regulierement, sans attendre la sensation de soif.
+          <strong>{fmtMl(res.repartition.soir)} ml le soir</strong>. Les sources officielles conseillent de
+          boire regulierement, sans attendre la sensation de soif.
         </p>
         <p className="text-xs text-slate-400 mt-6">
           Mis a jour le 8 avril 2026

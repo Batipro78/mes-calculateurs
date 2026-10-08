@@ -88,12 +88,8 @@ export default function CalculMentionBac() {
 
         <div className="space-y-3 text-sm opacity-95 border-t border-white border-opacity-30 pt-4">
           <div className="flex justify-between">
-            <span>Bac obtenu :</span>
+            <span>Bac obtenu (dès 10/20) :</span>
             <span className="font-semibold">{resultat.obtenu ? "Oui" : "Non (rattrapage possible si 8-10)"}</span>
-          </div>
-          <div className="flex justify-between">
-            <span>Point Parcoursup bonus :</span>
-            <span className="font-semibold">{resultat.pointsBonusParcoursup === 1 ? "+1 point" : "Aucun"}</span>
           </div>
           <div className="flex justify-between">
             <span>Félicitations du jury :</span>
@@ -110,7 +106,7 @@ export default function CalculMentionBac() {
           </p>
           <p className="text-blue-800">
             Il vous manque <strong>{resultat.pointsPourProchainePalier.toFixed(2)} point(s)</strong> pour
-            obtenir la mention <strong>{resultat.prochainePalier.nom}</strong> (seuil : {resultat.prochainePalier.seuilMin}/20).
+            atteindre le palier <strong>{resultat.prochainePalier.nom}</strong> (seuil : {resultat.prochainePalier.seuilMin}/20).
           </p>
         </div>
       )}
@@ -120,7 +116,7 @@ export default function CalculMentionBac() {
         <h3 className="font-bold mb-2">Détails de la mention</h3>
         <p className="text-sm mb-3">{resultat.mention.description}</p>
         <div className="bg-white bg-opacity-50 rounded-lg p-3 text-sm">
-          <strong>Avantages :</strong> {resultat.mention.bonus}
+          <strong>Précision :</strong> {resultat.mention.bonus}
         </div>
       </div>
 
@@ -135,7 +131,7 @@ export default function CalculMentionBac() {
               <tr className="border-b border-slate-200">
                 <th className="text-left py-3 px-3 font-semibold text-slate-700">Mention</th>
                 <th className="text-left py-3 px-3 font-semibold text-slate-700">Moyenne</th>
-                <th className="text-left py-3 px-3 font-semibold text-slate-700">Avantage</th>
+                <th className="text-left py-3 px-3 font-semibold text-slate-700">Précision</th>
               </tr>
             </thead>
             <tbody>
@@ -158,7 +154,7 @@ export default function CalculMentionBac() {
           </table>
         </div>
         <p className="text-xs text-slate-500 mt-3">
-          Source : Ministère de l&apos;Éducation Nationale (code de l&apos;éducation, art. D334-4).
+          Source : Ministère de l&apos;Éducation Nationale (code de l&apos;éducation, art. D. 334-8 et D. 334-11). Un candidat admis après le second groupe d&apos;épreuves (rattrapage) ne peut pas obtenir de mention.
         </p>
       </div>
     </div>

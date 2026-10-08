@@ -7,7 +7,7 @@ import {
   type Exposition,
 } from "./climatisationCalc";
 
-const TARIF_BASE = 0.2516; // EUR/kWh, tarif EDF Bleu 2026
+const TARIF_BASE = 0.2001; // EUR/kWh TTC, tarif Bleu EDF option Base au 1er aout 2026 (particulier.edf.fr/fr/accueil/electricite-gaz/tarif-bleu.html)
 const EER_DEFAUT = 3.2;
 
 function fmt(n: number, dec = 0): string {

@@ -14,11 +14,11 @@ export function calculerVMADemiCooper(distanceM: number): number {
   return Math.round(((distanceM * 2) / 200) * 100) / 100;
 }
 
-// Test VAMEVAL : VMA = vitesse moyenne en km/h (saisie directe via temps 1500m)
-export function calculerVMAVameval(distance1500mM: number): number {
-  if (distance1500mM <= 0) return 0;
-  const vitesseKmh = (1.5 / distance1500mM) * 60;
-  return Math.round(vitesseKmh * 100) / 100;
+// Test VAMEVAL (test progressif continu : 8 km/h au depart, +0,5 km/h par minute) :
+// la VMA est la vitesse du dernier palier realise (saisie directe en km/h).
+export function calculerVMAVameval(vitesseDernierPalierKmh: number): number {
+  if (vitesseDernierPalierKmh <= 0) return 0;
+  return Math.round(vitesseDernierPalierKmh * 100) / 100;
 }
 
 // FC max Tanaka (plus precise) : FC max = 208 - 0.7 × âge
@@ -53,15 +53,16 @@ export function calculerAllureSelonPourcentVMA(
   const minKm = kmh > 0 ? 60 / kmh : 0;
   return {
     kmh: Math.round(kmh * 100) / 100,
-    minKm: Math.round(minKm * 100) / 100,
+    minKm: Math.round(minKm * 10000) / 10000,
   };
 }
 
 // Format allure décimale en MM:SS (ex: 5.5 → "5:30")
 export function formatAllure(minutesDecimal: number): string {
   if (minutesDecimal <= 0) return "0:00";
-  const minutes = Math.floor(minutesDecimal);
-  const secondes = Math.round((minutesDecimal - minutes) * 60);
+  const total = Math.round(minutesDecimal * 60);
+  const minutes = Math.floor(total / 60);
+  const secondes = total % 60;
   return `${minutes}:${secondes.toString().padStart(2, "0")}`;
 }
 

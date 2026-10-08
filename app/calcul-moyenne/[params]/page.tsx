@@ -20,11 +20,13 @@ function parseSlug(slug: string): { moyenne: number; bareme: number } | null {
 
 function getMention(moyenne: number, bareme: number): { mention: string; couleur: string } {
   const sur20 = bareme === 20 ? moyenne : (moyenne / bareme) * 20;
+  if (sur20 >= 18) return { mention: "Tres bien avec felicitations du jury", couleur: "text-emerald-600" };
   if (sur20 >= 16) return { mention: "Tres bien", couleur: "text-green-600" };
   if (sur20 >= 14) return { mention: "Bien", couleur: "text-blue-600" };
   if (sur20 >= 12) return { mention: "Assez bien", couleur: "text-cyan-600" };
-  if (sur20 >= 10) return { mention: "Passable", couleur: "text-amber-600" };
-  return { mention: "Insuffisant", couleur: "text-red-500" };
+  if (sur20 >= 10) return { mention: "Sans mention", couleur: "text-amber-600" };
+  if (sur20 >= 8) return { mention: "Second groupe d'epreuves (rattrapage)", couleur: "text-orange-600" };
+  return { mention: "Ajourne", couleur: "text-red-500" };
 }
 
 export function generateStaticParams() {
@@ -53,7 +55,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   return {
     alternates: { canonical: `/calcul-moyenne/${slug}` },
     title: `Moyenne de ${moyenne}/${bareme} — ${mention}${bareme !== 20 ? ` (${sur20}/20)` : ""}`,
-    description: `Une moyenne de ${moyenne}/${bareme} correspond a la mention "${mention}". ${bareme !== 20 ? `Equivalence : ${sur20}/20.` : ""} Conseils pour ameliorer sa moyenne et coefficients du bac.`,
+    description: `Une moyenne de ${moyenne}/${bareme} correspond, au bac general, a : ${mention}. ${bareme !== 20 ? `Equivalence : ${sur20}/20.` : ""} Conseils pour ameliorer sa moyenne et coefficients du bac.`,
     keywords: `moyenne ${moyenne} sur ${bareme}, ${moyenne}/${bareme} mention, ameliorer sa moyenne, moyenne bac, note ${moyenne}`,
   };
 }
@@ -77,7 +79,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         name: `${moyenne}/${bareme} c'est quelle mention ?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Une moyenne de ${moyenne}/${bareme} (soit ${sur20.toLocaleString("fr-FR", { maximumFractionDigits: 1 })}/20) correspond a la mention "${mention}". ${sur20 >= 10 ? "La moyenne est au-dessus de la moyenne." : "La moyenne est en dessous du seuil de validation (10/20)."}`,
+          text: `Une moyenne de ${moyenne}/${bareme} (soit ${sur20.toLocaleString("fr-FR", { maximumFractionDigits: 1 })}/20) correspond, au bac general, a : ${mention}. ${sur20 >= 10 ? "Au bac, le seuil d'admission est 10/20." : sur20 >= 8 ? "Au bac, une moyenne d'au moins 8 et inferieure a 10 donne acces au second groupe d'epreuves (rattrapage)." : "Au bac, une moyenne inferieure a 8/20 entraine l'ajournement."}`,
         },
       },
     ],
@@ -118,7 +120,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
           </div>
           <div>
             <p className="text-violet-200">Statut</p>
-            <p className="font-semibold text-lg">{sur20 >= 10 ? "Valide" : "Non valide"}</p>
+            <p className="font-semibold text-lg">{sur20 >= 10 ? "Admis (bac)" : sur20 >= 8 ? "Second groupe" : "Ajourne"}</p>
           </div>
         </div>
       </div>
@@ -128,11 +130,13 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         <h2 className="text-lg font-bold text-slate-800 mb-4">Echelle des mentions</h2>
         <div className="space-y-2">
           {[
-            { label: "Tres bien", min: "16/20", range: "80-100%", color: "bg-green-100 text-green-700", active: sur20 >= 16 },
+            { label: "Tres bien avec felicitations du jury", min: "18/20", range: "90-100%", color: "bg-emerald-100 text-emerald-700", active: sur20 >= 18 },
+            { label: "Tres bien", min: "16/20", range: "80-89%", color: "bg-green-100 text-green-700", active: sur20 >= 16 && sur20 < 18 },
             { label: "Bien", min: "14/20", range: "70-79%", color: "bg-blue-100 text-blue-700", active: sur20 >= 14 && sur20 < 16 },
             { label: "Assez bien", min: "12/20", range: "60-69%", color: "bg-cyan-100 text-cyan-700", active: sur20 >= 12 && sur20 < 14 },
-            { label: "Passable", min: "10/20", range: "50-59%", color: "bg-amber-100 text-amber-700", active: sur20 >= 10 && sur20 < 12 },
-            { label: "Insuffisant", min: "<10/20", range: "<50%", color: "bg-red-100 text-red-700", active: sur20 < 10 },
+            { label: "Sans mention", min: "10/20", range: "50-59%", color: "bg-amber-100 text-amber-700", active: sur20 >= 10 && sur20 < 12 },
+            { label: "Second groupe d'epreuves (rattrapage)", min: "8/20", range: "40-49%", color: "bg-orange-100 text-orange-700", active: sur20 >= 8 && sur20 < 10 },
+            { label: "Ajourne", min: "<8/20", range: "<40%", color: "bg-red-100 text-red-700", active: sur20 < 8 },
           ].map((m) => (
             <div key={m.label} className={`rounded-xl p-3 flex justify-between items-center ${m.active ? m.color + " ring-2 ring-offset-1 ring-current" : "bg-slate-50 text-slate-500"}`}>
               <span className="text-sm font-semibold">{m.label}</span>
@@ -188,14 +192,15 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         <p className="text-slate-600 mb-4 leading-relaxed">
           Une moyenne de <strong>{moyenne}/{bareme}</strong> correspond a <strong>{pourcent}%</strong> de reussite,
           soit <strong>{sur20.toLocaleString("fr-FR", { maximumFractionDigits: 1 })}/20</strong>.
-          C&apos;est une moyenne qualifiee de &quot;<strong className={couleur}>{mention}</strong>&quot;.
+          Au bac general, c&apos;est le palier &quot;<strong className={couleur}>{mention}</strong>&quot;.
         </p>
         <p className="text-slate-600 leading-relaxed">
-          {sur20 >= 16 && "Felicitations ! C'est une excellente moyenne qui ouvre les portes des meilleures formations. Au bac, cela donne la mention Tres bien."}
+          {sur20 >= 18 && "Excellente moyenne. Au bac general, a partir de 18/20, c'est la mention Tres bien avec les felicitations du jury."}
+          {sur20 >= 16 && sur20 < 18 && "Tres belle moyenne. Au bac general, cela donne la mention Tres bien."}
           {sur20 >= 14 && sur20 < 16 && "C'est une tres bonne moyenne. Au bac, cela correspond a la mention Bien. Continuez sur cette lancee !"}
-          {sur20 >= 12 && sur20 < 14 && "C'est une bonne moyenne, au-dessus de la mediane. Au bac, cela donne la mention Assez bien."}
+          {sur20 >= 12 && sur20 < 14 && "C'est une bonne moyenne. Au bac, cela donne la mention Assez bien."}
           {sur20 >= 10 && sur20 < 12 && "La moyenne est validee mais sans mention. Pour progresser, concentrez-vous sur les matieres a fort coefficient."}
-          {sur20 < 10 && "La moyenne est en dessous du seuil de validation. Pour remonter, ciblez les matieres avec les plus gros coefficients — c'est la ou chaque point gagne compte le plus."}
+          {sur20 < 10 && "La moyenne est en dessous de 10/20 (au bac, 10 est le seuil d'admission ; de 8 a moins de 10, second groupe d'epreuves). Pour remonter, ciblez les matieres avec les plus gros coefficients — c'est la ou chaque point gagne compte le plus."}
         </p>
       </section>
 

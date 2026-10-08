@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import HowToJsonLd from "../components/HowToJsonLd";
+import Visuel from "../components/Visuel";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-consommation-eau" },
@@ -19,11 +20,11 @@ export const metadata: Metadata = {
 const FAQ_ITEMS: FaqItem[] = [
   {
     q: "Combien de litres d'eau faut-il boire par jour ?",
-    a: "Le besoin en eau varie selon le poids, l'activite physique et le climat. La formule de base est de 33 ml par kg de poids corporel. Pour une personne de 70 kg avec une activite moderee en climat tempere, le besoin est d'environ 2,8 litres par jour, soit environ 11 verres de 250 ml. Les femmes enceintes doivent ajouter 300 ml et les femmes qui allaitent 700 ml supplementaires.",
+    a: "Le besoin en eau varie selon le poids, l'activite physique et le climat. La formule de base est de 33 ml par kg de poids corporel. Pour une personne de 70 kg avec une activite moderee en climat tempere, le besoin est d'environ 2,8 litres par jour, soit 12 verres de 250 ml. Attention : c'est une estimation du calculateur du site, plus haute que les reperes officiels (eau totale de 2,0 L par jour pour une femme et 2,5 L pour un homme selon l'EFSA, aliments compris). Les reperes de l'EFSA ajoutent 300 ml par jour pendant la grossesse et environ 700 ml pendant l'allaitement.",
   },
   {
     q: "La regle des 8 verres d'eau par jour est-elle valable ?",
-    a: "La regle des 8 verres (2 litres) est une approximation valable pour une personne de 60 kg sedentaire en climat tempere. En realite, le besoin en eau depend du poids corporel (33 ml/kg), du niveau d'activite physique (jusqu'a +1,2 L pour un athlete), du climat (+0,5 a +1 L par forte chaleur) et de la grossesse ou l'allaitement. Un homme de 90 kg pratiquant un sport intensif aura besoin de 3,5 a 4 litres par jour.",
+    a: "La regle des 8 verres (2 litres) est une approximation valable pour une personne de 60 kg sedentaire en climat tempere. En realite, le calculateur du site tient compte du poids corporel (33 ml/kg, une regle choisie par ce site), du niveau d'activite physique (jusqu'a +1,2 L pour un athlete), du climat (+0,5 a +1 L par forte chaleur) et de la grossesse ou l'allaitement. Pour un homme de 90 kg pratiquant un sport intensif en climat tempere, le calculateur donne environ 4,17 litres par jour (2,97 + 1,2).",
   },
   {
     q: "Quels sont les signes d'une mauvaise hydratation ?",
@@ -31,7 +32,7 @@ const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Faut-il compter l'eau contenue dans les aliments ?",
-    a: "Oui. Les aliments representent environ 20 % de nos apports hydriques quotidiens. Les fruits et legumes (concombre, tomate, pastèque) contiennent 90 a 95 % d'eau. Les soupes et bouillons comptent aussi. En pratique, les recommandations en ml/kg s'entendent pour les boissons ; les apports alimentaires viennent en complement naturel.",
+    a: "Oui. D'apres Vidal, les aliments nous apportent environ un litre d'eau par jour, et l'EFSA compte l'eau des aliments dans ses reperes d'eau totale. Les fruits et legumes (concombre, tomate, pastèque) contiennent 90 a 95 % d'eau. Les soupes et bouillons comptent aussi. Le calculateur du site estime une quantite d'eau par jour sans retirer la part des aliments : la part qui vient de la nourriture reste a deduire si vous voulez savoir ce qu'il faut boire.",
   },
 ];
 
@@ -51,7 +52,7 @@ export default function Page() {
       </div>
       <p className="text-slate-500 mb-8 ml-[52px]">
         Calculez votre besoin exact en eau selon votre poids, activite physique
-        et climat. Repartition optimale sur la journee.
+        et climat. Repartition proposee par le calculateur sur la journee.
       </p>
 
       <CalculateurConsommationEau />
@@ -73,12 +74,32 @@ export default function Page() {
           de deficit.
         </p>
         <p className="text-slate-600 mb-6 leading-relaxed">
-          L&apos;OMS recommande une consommation d&apos;eau adaptee au poids et aux
-          conditions de vie. La formule de <strong>33 ml par kg de poids corporel</strong>{" "}
-          est aujourd&apos;hui la reference la plus utilisee pour estimer les besoins
-          de base, a laquelle s&apos;ajoutent des bonus selon l&apos;activite,
-          le climat et les conditions particulieres.
+          Ce calculateur part d&apos;une regle simple : <strong>33 ml par kg de
+          poids corporel</strong>, a laquelle s&apos;ajoutent des bonus selon
+          l&apos;activite, le climat et les situations particulieres. C&apos;est une
+          regle choisie par ce site, pas une recommandation officielle : les
+          reperes officiels sont donnes en litres par jour, sans calcul au kilo.
         </p>
+        <p className="text-slate-600 mb-4 leading-relaxed">
+          Pour comparer : l&apos;EFSA (Autorite europeenne de securite des aliments)
+          fixe l&apos;eau <strong>totale</strong>, aliments compris, a 2,0 L par jour
+          pour une femme et 2,5 L pour un homme, avec 300 ml de plus pendant la
+          grossesse et environ 700 ml de plus pendant l&apos;allaitement. D&apos;apres
+          Vidal, les aliments apportent environ un litre d&apos;eau par jour ; les
+          sites de sante francais (ameli, ANSES) parlent de 1 a 2 litres a boire.
+          Le resultat du calculateur peut donc depasser ces reperes : prenez-le comme
+          une estimation, pas comme une prescription. Pour les details, lisez{" "}
+          <a href="/combien-de-litres-d-eau-par-jour" className="text-blue-600 hover:underline font-medium">
+            combien de litres d&apos;eau boire par jour
+          </a>
+          .
+        </p>
+        <Visuel
+          fichier="eau-besoins-selon-situation-sources"
+          alt="Besoin en eau totale par jour selon l'EFSA : femme adulte 2,0 L, homme adulte 2,5 L, femme enceinte 2,3 L (2,0 + 0,3), femme allaitante 2,7 L (2,0 + 0,7). Chaleur : au moins 1,5 à 2 L à boire ; fièvre : 0,5 L de plus par jour et par degré de température en plus."
+          legende="Repères en eau totale (boissons et aliments) de l'EFSA, 2010, et conseils chaleur et fièvre d'ameli.fr : seuls des chiffres de sources, sans les bonus du calculateur."
+          className="mt-2 mb-6"
+        />
 
         <h3 className="font-bold text-slate-800 mt-6 mb-3">
           Besoins en eau selon le poids (activite moderee, climat tempere)
@@ -164,15 +185,15 @@ export default function Page() {
             ou tropical
           </li>
           <li>
-            <strong>Grossesse</strong> : +300 ml/jour recommandes par l&apos;ANSES
+            <strong>Grossesse</strong> : +300 ml/jour dans les reperes de l&apos;EFSA
           </li>
           <li>
             <strong>Allaitement</strong> : +700 ml/jour pour compenser la production
             de lait
           </li>
           <li>
-            <strong>Maladie febrile</strong> : chaque degre de fievre au-dessus de
-            37°C necessite 500 ml supplementaires
+            <strong>Maladie febrile</strong> : 0,5 L d&apos;eau en plus par jour et par
+            degre de temperature corporelle en plus (ameli)
           </li>
           <li>
             <strong>Altitude</strong> : la respiration acceleree en altitude augmente
@@ -181,7 +202,7 @@ export default function Page() {
         </ul>
 
         <p className="text-xs text-slate-400 mt-6">
-          Mis a jour le 8 avril 2026
+          Mis a jour le 7 octobre 2026
         </p>
       </section>
 

@@ -16,13 +16,13 @@ export interface ResultatBesoinSommeil {
 
 function getHeuresParAge(age: number): HeuresRecommandees {
   if (age <= 0.25) return { min: 14, max: 17, ideal: 15.5 };  // 0-3 mois
-  if (age <= 1) return { min: 12, max: 15, ideal: 13.5 };     // 4-11 mois
-  if (age <= 2) return { min: 11, max: 14, ideal: 12.5 };     // 1-2 ans
-  if (age <= 5) return { min: 10, max: 13, ideal: 11.5 };     // 3-5 ans
-  if (age <= 13) return { min: 9, max: 11, ideal: 10 };       // 6-13 ans
-  if (age <= 17) return { min: 8, max: 10, ideal: 9 };        // 14-17 ans
-  if (age <= 25) return { min: 7, max: 9, ideal: 8 };         // 18-25 ans
-  if (age <= 64) return { min: 7, max: 9, ideal: 8 };         // 26-64 ans
+  if (age < 1) return { min: 12, max: 15, ideal: 13.5 };     // 4-11 mois
+  if (age < 3) return { min: 11, max: 14, ideal: 12.5 };     // 1-2 ans
+  if (age < 6) return { min: 10, max: 13, ideal: 11.5 };     // 3-5 ans
+  if (age < 14) return { min: 9, max: 11, ideal: 10 };       // 6-13 ans
+  if (age < 18) return { min: 8, max: 10, ideal: 9 };        // 14-17 ans
+  if (age < 26) return { min: 7, max: 9, ideal: 8 };         // 18-25 ans
+  if (age < 65) return { min: 7, max: 9, ideal: 8 };         // 26-64 ans
   return { min: 7, max: 8, ideal: 7.5 };                      // 65+
 }
 

@@ -186,4 +186,11 @@ export const ALL_CALCULATORS: Calculator[] = [
   { slug: "/capacite-d-emprunt-quel-salaire", title: "Guide : capacité d'emprunt selon le salaire", emoji: "🏠", color: "from-blue-500 to-indigo-600" },
   { slug: "/plus-value-immobiliere-qui-calcule-quand-payer", title: "Guide : plus-value immobilière, qui calcule et quand payer", emoji: "🏡", color: "from-green-500 to-emerald-600" },
   { slug: "/conges-payes-quelle-annee-quand-les-poser", title: "Guide : congés payés, quelle année et quand les poser", emoji: "🏖️", color: "from-teal-500 to-cyan-600" },
+  { slug: "/exces-de-vitesse-combien-de-points-et-d-amende", title: "Guide : excès de vitesse, combien de points et d'amende", emoji: "🚨", color: "from-red-500 to-orange-600" },
+  { slug: "/combien-consomme-un-radiateur-electrique", title: "Guide : combien consomme un radiateur électrique", emoji: "⚡", color: "from-yellow-500 to-orange-500" },
+  { slug: "/comment-calculer-sa-vma", title: "Guide : comment calculer sa VMA", emoji: "🏃", color: "from-emerald-600 to-teal-700" },
+  { slug: "/comment-calculer-sa-moyenne", title: "Guide : comment calculer sa moyenne", emoji: "🎓", color: "from-violet-500 to-purple-600" },
+  { slug: "/combien-de-calories-par-jour-pour-maigrir", title: "Guide : combien de calories par jour pour maigrir", emoji: "🔥", color: "from-green-500 to-emerald-600" },
+  { slug: "/combien-d-heures-de-sommeil-par-nuit", title: "Guide : combien d'heures de sommeil par nuit", emoji: "🌙", color: "from-indigo-500 to-purple-600" },
+  { slug: "/combien-de-litres-d-eau-par-jour", title: "Guide : combien de litres d'eau par jour", emoji: "💧", color: "from-blue-500 to-cyan-500" },
 ];

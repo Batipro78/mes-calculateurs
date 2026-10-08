@@ -1,0 +1,1 @@
+Besoin calorique par jour selon le niveau d'activité du calculateur, pour une femme de 35 ans, 65 kg, 165 cm et un homme de 35 ans, 80 kg, 180 cm : sédentaire 1 614 et 2 106 kcal, légèrement actif 1 850 et 2 413, modérément actif 2 085 et 2 720, très actif 2 321 et 3 027, extrêmement actif 2 556 et 3 335.

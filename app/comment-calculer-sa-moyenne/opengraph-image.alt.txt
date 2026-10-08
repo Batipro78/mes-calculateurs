@@ -1,0 +1,1 @@
+Deux calculs de moyenne. Avec coefficients : Maths 14 coefficient 5 donne 70, Français 12 coefficient 4 donne 48, Sport 16 coefficient 2 donne 32 ; 150 divisé par 11 donne 13,64. Piège de la moyenne de moyennes : moyennes de 10 et 14 donnent 12 pour la moyenne des deux moyennes, alors que la moyenne de toutes les notes est 13

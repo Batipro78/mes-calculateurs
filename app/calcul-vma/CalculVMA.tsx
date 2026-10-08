@@ -18,7 +18,7 @@ import {
 export default function CalculVMA() {
   const [methode, setMethode] = useState<MethodeTest>("cooper");
   const [distanceM, setDistanceM] = useState<string>("3000");
-  const [tempsVameval, setTempsVameval] = useState<string>("6");
+  const [vitessePalier, setVitessePalier] = useState<string>("15");
   const [vmaSaisie, setVmaSaisie] = useState<string>("15");
   const [age, setAge] = useState<string>("30");
   const [fcRepos, setFcRepos] = useState<string>("60");
@@ -32,8 +32,8 @@ export default function CalculVMA() {
     const dist = parseFloat(distanceM) || 0;
     if (dist > 0) vma = calculerVMADemiCooper(dist);
   } else if (methode === "vameval") {
-    const temps = parseFloat(tempsVameval) || 0;
-    if (temps > 0) vma = calculerVMAVameval(temps);
+    const vitesse = parseFloat(vitessePalier) || 0;
+    if (vitesse > 0) vma = calculerVMAVameval(vitesse);
   } else if (methode === "saisie-directe") {
     const val = parseFloat(vmaSaisie) || 0;
     if (val > 0) vma = val;
@@ -56,7 +56,7 @@ export default function CalculVMA() {
             {[
               { value: "cooper", label: "Test Cooper (12 min)" },
               { value: "demi-cooper", label: "Demi-Cooper (6 min)" },
-              { value: "vameval", label: "VAMEVAL (1500m)" },
+              { value: "vameval", label: "VAMEVAL (dernier palier)" },
               { value: "saisie-directe", label: "Saisie directe" },
             ].map((opt) => (
               <button
@@ -106,32 +106,32 @@ export default function CalculVMA() {
           </div>
         )}
 
-        {/* Input temps VAMEVAL */}
+        {/* Input vitesse du dernier palier VAMEVAL */}
         {methode === "vameval" && (
           <div>
             <label
-              htmlFor="temps-vameval"
+              htmlFor="vitesse-vameval"
               className="block text-sm font-medium text-slate-600 mb-2"
             >
-              Temps 1500m (minutes décimales)
+              Vitesse du dernier palier réalisé (km/h)
             </label>
             <div className="relative">
               <input
-                id="temps-vameval"
+                id="vitesse-vameval"
                 type="number"
-                value={tempsVameval}
-                onChange={(e) => setTempsVameval(e.target.value)}
-                placeholder="ex: 6.5"
+                value={vitessePalier}
+                onChange={(e) => setVitessePalier(e.target.value)}
+                placeholder="ex: 15"
                 className="w-full border border-slate-300 rounded-xl px-4 py-3.5 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-shadow"
                 min="0"
-                step="0.1"
+                step="0.5"
               />
               <span className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 font-medium">
-                min
+                km/h
               </span>
             </div>
             <p className="text-xs text-slate-400 mt-2">
-              Exemple : 6 min 30 s = 6.5
+              Dernier palier complet (le palier en cours à l'arrêt ne compte pas). Exemple : 15 km/h
             </p>
           </div>
         )}

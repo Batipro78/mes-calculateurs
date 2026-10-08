@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import HowToJsonLd from "../components/HowToJsonLd";
+import Visuel from "../components/Visuel";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/calcul-moyenne" },
@@ -19,8 +20,8 @@ export const metadata: Metadata = {
 const FAQ_ITEMS: FaqItem[] = [
   { q: "Comment calculer une moyenne ponderee ?", a: "Pour calculer une moyenne ponderee, multipliez chaque note par son coefficient, additionnez les resultats, puis divisez par la somme des coefficients. Formule : Moyenne = (note1 x coef1 + note2 x coef2 + ...) / (coef1 + coef2 + ...)." },
   { q: "Quelle est la difference entre moyenne simple et moyenne ponderee ?", a: "Une moyenne simple additionne toutes les notes et divise par leur nombre (chaque note a le meme poids). Une moyenne ponderee attribue un coefficient a chaque note, donnant plus de poids aux matieres importantes. Au bac, par exemple, les matieres de specialite ont un coefficient plus eleve." },
-  { q: "Comment calculer sa moyenne du bac ?", a: "La moyenne du bac se calcule en multipliant chaque note par son coefficient officiel, puis en divisant par la somme des coefficients (total = 100). Les specialites comptent coefficient 16, la philosophie coefficient 8, le grand oral coefficient 10." },
-  { q: "Comment arrondir une moyenne scolaire ?", a: "Par convention scolaire, les moyennes sont generalement arrondies au centieme (ex : 13,64/20). Certains etablissements arondissent au dixieme (13,6) ou a l'entier inferieur (13). Pour les concours et le bac, l'arrondi officiel se fait au centieme." },
+  { q: "Comment calculer sa moyenne du bac ?", a: "La moyenne du bac se calcule en multipliant chaque note par son coefficient officiel, puis en divisant par la somme des coefficients (total = 100 sans option). A compter de la session 2027, en voie generale, les specialites de terminale comptent coefficient 16 chacune, la philosophie coefficient 8, le grand oral coefficient 8 et l'epreuve anticipee de mathematiques coefficient 2 ; le controle continu compte pour 40 coefficients." },
+  { q: "Comment arrondir une moyenne scolaire ?", a: "Il n'y a pas d'arrondi unique pour toutes les moyennes : on arrondit souvent au centieme (ex : 13,64/20), certains etablissements au dixieme (13,6). Pour le bac, le code de l'education (article D334-8) prevoit que, dans chaque enseignement evalue en controle continu, la note retenue est la note du cycle terminal arrondie au dixieme de point superieur." },
 ];
 
 export default function Page() {
@@ -104,15 +105,17 @@ export default function Page() {
           Moyenne = 150 &divide; 11 = <strong>13,64/20</strong>
         </p>
 
-        <h3 className="font-bold text-slate-800 mt-6 mb-3">Coefficients du Bac 2026</h3>
+        <h3 className="font-bold text-slate-800 mt-6 mb-3">Coefficients du Bac general (session 2027)</h3>
         <div className="grid gap-2 sm:grid-cols-2">
           {[
             { m: "Specialite 1", c: 16 },
             { m: "Specialite 2", c: 16 },
+            { m: "Specialite suivie seulement en 1re", c: 8 },
             { m: "Philosophie", c: 8 },
-            { m: "Grand oral", c: 10 },
+            { m: "Grand oral", c: 8 },
             { m: "Francais ecrit", c: 5 },
             { m: "Francais oral", c: 5 },
+            { m: "Mathematiques (epreuve anticipee en 1re)", c: 2 },
             { m: "Histoire-geo", c: 6 },
             { m: "LV1", c: 6 },
             { m: "LV2", c: 6 },
@@ -152,7 +155,7 @@ export default function Page() {
         <h3 className="font-bold text-slate-800 mt-6 mb-2">Les seuils de mention</h3>
         <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            { m: "Passable", s: "10 a 12" },
+            { m: "Admis sans mention", s: "10 a 12" },
             { m: "Assez bien", s: "12 a 14" },
             { m: "Bien", s: "14 a 16" },
             { m: "Tres bien", s: "16 et +" },
@@ -163,10 +166,16 @@ export default function Page() {
             </div>
           ))}
         </div>
+        <Visuel
+          fichier="mentions-bac-seuils-moyenne-et-points"
+          alt="Seuils du baccalauréat général : ajourné sous 8 sur 20, second groupe d'épreuves de 8 à moins de 10, admis sans mention de 10 à moins de 12 (dès 1000 points), assez bien dès 12 (1200 points), bien dès 14 (1400), très bien dès 16 (1600), très bien avec félicitations du jury dès 18 (1800 points sur 2000), pour un total de 100 coefficients"
+          legende="Seuils de la moyenne du bac général (code de l'éducation, articles D334-8 et D334-11), et total de points correspondant pour un élève sans option : moyenne × 100 coefficients."
+          className="mt-6 mb-2"
+        />
         <p className="text-slate-600 leading-relaxed mt-4">
-          Au bac, ces seuils s&apos;appliquent a la moyenne generale ponderee par les coefficients officiels. Une
-          mention &laquo; Tres bien avec felicitations du jury &raquo; recompense en plus les moyennes
-          exceptionnelles (souvent 18/20 et plus).
+          Au bac general, ces seuils s&apos;appliquent a la moyenne generale ponderee par les coefficients officiels (code de
+          l&apos;education, articles D334-8 et D334-11). En dessous de 12/20, il n&apos;y a pas de mention : de 10 a 12, le bac est obtenu sans mention.
+          La mention &laquo; Tres bien avec les felicitations du jury &raquo; est attribuee a partir de 18/20.
         </p>
       </section>
 
@@ -176,7 +185,7 @@ export default function Page() {
           { name: "Saisir les notes et leurs coefficients", text: "Pour chaque matiere, entrer la note (barème /20, /10 ou /100) et le coefficient associe. Exemple : Maths 14/20 coeff. 5, Francais 12/20 coeff. 4, Sport 16/20 coeff. 2." },
           { name: "Multiplier chaque note par son coefficient", text: "Chaque note est ponderee par son coefficient : 14 x 5 = 70, 12 x 4 = 48, 16 x 2 = 32. La somme des produits est ici 150. Une note elevee dans une matiere à faible coefficient pese peu sur la moyenne finale." },
           { name: "Diviser par la somme des coefficients", text: "Additionner les coefficients : 5 + 4 + 2 = 11. Diviser la somme ponderee par ce total : 150 / 11 = 13,64 / 20. C'est la moyenne ponderee finale, arrondie au centieme par convention." },
-          { name: "Vérifier la mention eventuelle au bac", text: "Pour le bac, les coefficients officiels sont : specialite coeff. 16, philosophie coeff. 8, Grand oral coeff. 10. Les seuils de mention : Passable 10, Assez Bien 12, Bien 14, Très Bien 16 sur 20." },
+          { name: "Vérifier la mention eventuelle au bac", text: "Pour le bac general (a compter de la session 2027), les coefficients officiels sont : specialite coeff. 16 (x2), philosophie coeff. 8, Grand oral coeff. 8, mathematiques anticipees coeff. 2, total 100 sans option. Les seuils : admis des 10, Assez Bien 12, Bien 14, Très Bien 16, felicitations du jury 18 sur 20." },
         ]}
       />
 

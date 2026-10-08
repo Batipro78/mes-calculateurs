@@ -40,10 +40,10 @@ const APPAREILS_PREDEFINIS: AppareilPredefini[] = [
   { nom: "Borne recharge VE", emoji: "\u{1F697}", puissance: 7400, heuresDefaut: 4 },
 ];
 
-// Tarifs EDF 2026
-const TARIF_BASE = 0.2516;
-const TARIF_HP = 0.27;
-const TARIF_HC = 0.2068;
+// Tarif Bleu EDF (TTC, 3 et 6 kVA), en vigueur depuis le 1er aout 2026 : https://particulier.edf.fr/fr/accueil/electricite-gaz/tarif-bleu.html
+const TARIF_BASE = 0.2001;
+const TARIF_HP = 0.2142;
+const TARIF_HC = 0.1589;
 
 type OptionTarif = "base" | "hphc";
 
