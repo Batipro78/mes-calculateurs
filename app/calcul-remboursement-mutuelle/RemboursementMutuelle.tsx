@@ -16,34 +16,30 @@ import {
 
 
 const COUT_DEFAUT: Record<TypeActe, number> = {
-  "consultation-generaliste": 30,
+  "consultation-generaliste": 40,
   "consultation-specialiste": 50,
-  hospitalisation: 2000,
   "dentaire-couronne": 500,
-  "dentaire-implant": 1800,
-  "optique-verres": 200,
+  "optique-verres": 100,
   "optique-monture": 150,
-  pharmacie: 30,
+  pharmacie: 7.95,
   kine: 25,
-  "radio-irm": 250,
+  "radio-irm": 66.42,
 };
 
 const COUT_MAX: Record<TypeActe, number> = {
   "consultation-generaliste": 100,
   "consultation-specialiste": 200,
-  hospitalisation: 10000,
   "dentaire-couronne": 1500,
-  "dentaire-implant": 4000,
-  "optique-verres": 800,
+  "optique-verres": 400,
   "optique-monture": 500,
-  pharmacie: 200,
+  pharmacie: 100,
   kine: 80,
-  "radio-irm": 1000,
+  "radio-irm": 300,
 };
 
 export default function RemboursementMutuelle() {
   const [typeActe, setTypeActe] = useState<TypeActe>("consultation-generaliste");
-  const [coutReel, setCoutReel] = useState(30);
+  const [coutReel, setCoutReel] = useState(40);
   const [niveau, setNiveau] = useState<NiveauMutuelle>("intermediaire");
 
   const resultat = calcRemboursementMutuelle(typeActe, coutReel, niveau);
@@ -99,7 +95,7 @@ export default function RemboursementMutuelle() {
                 type="number"
                 min={0}
                 max={COUT_MAX[typeActe]}
-                step={1}
+                step={0.01}
                 value={coutReel}
                 onChange={(e) => setCoutReel(Math.max(0, Number(e.target.value)))}
                 className="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 text-slate-800 font-semibold"
@@ -110,14 +106,14 @@ export default function RemboursementMutuelle() {
               type="range"
               min={0}
               max={COUT_MAX[typeActe]}
-              step={1}
+              step={0.01}
               value={coutReel}
               onChange={(e) => setCoutReel(Number(e.target.value))}
               className="w-full mt-2 accent-cyan-500"
             />
             <div className="flex justify-between text-xs text-slate-400 mt-1">
               <span>0 €</span>
-              <span>Base SS : {fmt(ACTES[typeActe].baseSS)} €</span>
+              <span>Base SS : {fmt(resultat.baseSS)} €</span>
               <span>{fmt(COUT_MAX[typeActe])} €</span>
             </div>
           </div>
@@ -149,7 +145,7 @@ export default function RemboursementMutuelle() {
                       <div className="text-xs opacity-70 mt-0.5">
                         {n === "basique" && "100% BR"}
                         {n === "intermediaire" && "200% BR"}
-                        {n === "premium" && "300%+ BR"}
+                        {n === "premium" && "300% BR"}
                       </div>
                     </div>
                   </button>
@@ -157,7 +153,7 @@ export default function RemboursementMutuelle() {
               })}
             </div>
             <p className="text-xs text-slate-400 mt-2">
-              BR = Base de Remboursement de la Securite Sociale
+              BR = base de remboursement de la Securite Sociale. Avec 200 % BR, la Securite Sociale et la mutuelle remboursent ensemble jusqu'a 2 fois la base.
             </p>
           </div>
         </div>

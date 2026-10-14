@@ -1647,6 +1647,42 @@ const outils = [
     couleur: "from-blue-500 to-cyan-500",
     tag: "Guide",
   },
+  {
+    titre: "Quelle température régler pour le chauffage ?",
+    description:
+      "19 °C dans les pièces de vie, 17 à 18 °C la nuit, hors gel si vous partez. Un degré de moins, c'est environ 7 % de chauffage en moins : 132 € par an pour 13 000 kWh de gaz.",
+    href: "/quelle-temperature-pour-le-chauffage",
+    icone: "🌡️",
+    couleur: "from-orange-500 to-red-500",
+    tag: "Guide",
+  },
+  {
+    titre: "Surcote retraite : comment est-elle calculée et combien de temps travailler en plus ?",
+    description:
+      "Chaque trimestre travaillé en plus ajoute 1,25 % à la retraite de base : un an de plus, c'est +5 %. Âge légal après la suspension de la réforme, exemple chiffré et revalorisation.",
+    href: "/surcote-retraite-comment-est-elle-calculee",
+    icone: "📈",
+    couleur: "from-amber-500 to-orange-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Remboursement mutuelle : comment savoir ce qu'elle rembourse ?",
+    description:
+      "Consultation à 30 € : la Sécu rembourse 70 %, la mutuelle le reste, sauf la participation forfaitaire de 2 €. Ce que veulent dire 100 %, 200 % et 300 % de la base de remboursement.",
+    href: "/remboursement-mutuelle-comment-ca-marche",
+    icone: "🩺",
+    couleur: "from-teal-500 to-emerald-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Chômage : comment est calculé le montant de l'allocation ?",
+    description:
+      "57 % du salaire journalier, ou 40,4 % plus 13,18 €, minimum 32,13 € et maximum 300,21 € par jour : le calcul pas à pas, la durée selon l'âge et les délais avant le premier paiement.",
+    href: "/chomage-comment-est-calcule-le-montant",
+    icone: "📋",
+    couleur: "from-sky-500 to-blue-600",
+    tag: "Guide",
+  },
 ];
 
 export default function Home() {

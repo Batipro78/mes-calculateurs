@@ -2,7 +2,7 @@
 import { fmtEUR as fmt } from "@/app/lib/fmt";
 
 import { useState } from "react";
-import { calcRetraite, PASS_ANNUEL } from "./calcRetraite";
+import { calcRetraite, PASS_ANNUEL, ageEnTexte } from "./calcRetraite";
 
 
 
@@ -84,7 +84,7 @@ export default function SimulateurRetraite() {
             <span className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 font-medium">EUR</span>
           </div>
           <div className="flex flex-wrap gap-2 mt-2">
-            {[20000, 25000, 30000, 35000, 40000, 47100].map((s) => (
+            {[20000, 25000, 30000, 35000, 40000, PASS_ANNUEL].map((s) => (
               <button
                 key={s}
                 onClick={() => setSalaireMoyen(s.toString())}
@@ -94,7 +94,7 @@ export default function SimulateurRetraite() {
                     : "border-slate-200 text-slate-400 hover:border-slate-300"
                 }`}
               >
-                {(s / 1000).toFixed(0)}k EUR
+                {fmtInt(s)} EUR
               </button>
             ))}
           </div>
@@ -133,7 +133,7 @@ export default function SimulateurRetraite() {
               </button>
             ))}
           </div>
-          <p className="text-xs text-slate-400 mt-1">Requis pour le taux plein (generation {annee >= 1965 ? "1965+" : annee}) : {r.trimestresRequis} trimestres</p>
+          <p className="text-xs text-slate-400 mt-1">Requis pour le taux plein (generation {annee >= 1966 ? "1966 et apres" : annee}) : {r.trimestresRequis} trimestres</p>
         </div>
 
         {/* Age de depart */}
@@ -171,7 +171,7 @@ export default function SimulateurRetraite() {
           </div>
           {ageSouhaite < r.ageLegal && (
             <p className="text-xs text-red-500 mt-1">
-              Age legal pour votre generation : {r.ageLegal % 1 === 0 ? r.ageLegal : r.ageLegal.toFixed(1)} ans. Votre depart sera recale a cet age.
+              Age legal pour votre generation : {ageEnTexte(r.ageLegal)}. Votre depart sera recale a cet age.
             </p>
           )}
         </div>
@@ -185,7 +185,7 @@ export default function SimulateurRetraite() {
               <span className="font-medium text-slate-700">{fmtInt(r.samPlafonne)} EUR</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-slate-500">Taux de liquidation</span>
+              <span className="text-slate-500">Taux effectif (decote et surcote comprises)</span>
               <span className="font-bold text-slate-800">{(r.taux * 100).toFixed(2)}%</span>
             </div>
             <div className="flex justify-between">
@@ -219,8 +219,8 @@ export default function SimulateurRetraite() {
               <span className="text-amber-700">{fmt(r.pensionTotaleBrute)} EUR/mois</span>
             </div>
             <div className="flex justify-between text-xs">
-              <span className="text-slate-400">Prelevements (CSG/CRDS/Casa : 9,1%)</span>
-              <span className="text-slate-400">-{fmt(r.pensionTotaleBrute * r.tauxPrelevements)} EUR</span>
+              <span className="text-slate-400">Prelevements (9,1% + 1% d'assurance maladie sur la complementaire)</span>
+              <span className="text-slate-400">-{fmt(r.pensionTotaleBrute - r.pensionTotaleNette)} EUR</span>
             </div>
           </div>
         </div>
@@ -250,9 +250,9 @@ export default function SimulateurRetraite() {
         <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
           <p className="text-xs font-medium text-slate-400 mb-1">Age de depart effectif</p>
           <p className="text-3xl font-extrabold text-slate-800">
-            {r.ageDepart % 1 === 0 ? r.ageDepart : r.ageDepart.toFixed(1)} ans
+            {ageEnTexte(r.ageDepart)}
           </p>
-          <p className="text-sm text-slate-500 mt-1">Age legal : {r.ageLegal % 1 === 0 ? r.ageLegal : r.ageLegal.toFixed(1)} ans</p>
+          <p className="text-sm text-slate-500 mt-1">Age legal : {ageEnTexte(r.ageLegal)}</p>
           <div className="h-px bg-slate-100 my-3" />
           <p className="text-xs font-medium text-slate-400 mb-1">Trimestres</p>
           <p className="text-2xl font-extrabold text-slate-800">{trim} / {r.trimestresRequis}</p>
@@ -283,7 +283,7 @@ export default function SimulateurRetraite() {
             <div>
               <div className="flex justify-between text-sm mb-1">
                 <span className="text-slate-600">Complementaire AGIRC-ARRCO</span>
-                <span className="font-bold text-slate-700">{fmt(r.complementaireEffective * (1 - r.tauxPrelevements))} EUR</span>
+                <span className="font-bold text-slate-700">{fmt(r.complementaireEffective * (1 - r.tauxPrelevementsCompl))} EUR</span>
               </div>
               <div className="w-full bg-slate-100 rounded-full h-2">
                 <div className="h-2 rounded-full bg-orange-500" style={{ width: `${r.pensionTotaleBrute > 0 ? (r.complementaireEffective / r.pensionTotaleBrute) * 100 : 0}%` }} />
@@ -316,9 +316,9 @@ export default function SimulateurRetraite() {
         </div>
 
         <div className="rounded-xl bg-slate-50 border border-slate-200 px-4 py-3 text-xs text-slate-400 leading-relaxed">
-          Estimation indicative basee sur les regles 2026 (reforme retraites 2023).
+          Estimation indicative basee sur les regles en vigueur au 14 octobre 2026 (reforme de 2023 suspendue jusqu'en 2028).
           Les montants reels dependent de votre releve de carriere (info-retraite.fr).
-          La complementaire AGIRC-ARRCO est estimee de facon simplifiee.
+          La complementaire AGIRC-ARRCO est estimee de facon simplifiee (salaire moyen suppose constant toute la carriere, point achete au prix de 2026). Le minimum contributif suppose que tous les trimestres sont cotises.
         </div>
       </div>
     </div>

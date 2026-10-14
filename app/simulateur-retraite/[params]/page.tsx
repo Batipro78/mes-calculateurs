@@ -1,7 +1,7 @@
 import { fmtEUR as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import SimulateurRetraite from "../SimulateurRetraite";
-import { calcRetraite } from "../calcRetraite";
+import { calcRetraite, ageEnTexte, getTrimestresRequis } from "../calcRetraite";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
@@ -37,17 +37,17 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
   if (!parsed) return {};
 
   const { annee, salaire } = parsed;
-  const r172 = calcRetraite(annee, salaire, 172, 64);
+  const r172 = calcRetraite(annee, salaire, getTrimestresRequis(annee), 64);
   const r160 = calcRetraite(annee, salaire, 160, 64);
 
   return {
     alternates: { canonical: `/simulateur-retraite/${slug}` },
     title: `Retraite ne(e) en ${annee}, ${fmtInt(salaire)} EUR/an = ${fmtInt(r172.pensionTotaleNette)} EUR/mois net`,
-    description: `Simulation retraite pour une personne nee en ${annee} avec un SAM de ${fmtInt(salaire)} EUR : pension nette estimee ${fmtInt(r172.pensionTotaleNette)} EUR/mois (carriere complete) ou ${fmtInt(r160.pensionTotaleNette)} EUR/mois (160 trimestres). Age legal : ${r172.ageLegal} ans.`,
+    description: `Simulation retraite pour une personne nee en ${annee} avec un SAM de ${fmtInt(salaire)} EUR : pension nette estimee ${fmtInt(r172.pensionTotaleNette)} EUR/mois (carriere complete, depart a 64 ans) ou ${fmtInt(r160.pensionTotaleNette)} EUR/mois (160 trimestres). Age legal : ${ageEnTexte(r172.ageLegal)}.`,
     keywords: `retraite ${annee}, pension retraite ${fmtInt(salaire)} euros, simulation retraite ne en ${annee}, age legal retraite ${annee}`,
     openGraph: {
       title: `Ne(e) en ${annee}, ${fmtInt(salaire)} EUR/an → ${fmtInt(r172.pensionTotaleNette)} EUR net/mois de retraite`,
-      description: `Pension base : ${fmt(r172.pensionBase)} EUR. Complementaire : ${fmt(r172.complementaireEffective)} EUR. Age legal : ${r172.ageLegal} ans. ${r172.trimestresRequis} trimestres requis.`,
+      description: `Pension base : ${fmt(r172.pensionBase)} EUR. Complementaire : ${fmt(r172.complementaireEffective)} EUR. Age legal : ${ageEnTexte(r172.ageLegal)}. ${r172.trimestresRequis} trimestres requis.`,
     },
   };
 }
@@ -61,24 +61,25 @@ export default async function Page({ params }: { params: Promise<{ params: strin
   if (!ANNEES.includes(annee) || !SALAIRES.includes(salaire)) notFound();
 
   // Scenarios par trimestres
-  const trimScenarios = [120, 140, 150, 160, 168, 172, 180].map((t) => {
+  const requis = getTrimestresRequis(annee);
+  const trimScenarios = Array.from(new Set([120, 140, 150, 160, 168, requis, 180])).sort((a, b) => a - b).map((t) => {
     const res = calcRetraite(annee, salaire, t, 64);
     return { trimestres: t, ...res };
   });
 
-  // Scenarios par age de depart (avec 172 trimestres)
+  // Scenarios par age de depart (avec la duree du taux plein)
   const ageScenarios = [62, 63, 64, 65, 66, 67].map((age) => {
-    const res = calcRetraite(annee, salaire, 172, age);
+    const res = calcRetraite(annee, salaire, requis, age);
     return { age, ...res };
   });
 
-  // Comparaison par salaire (172 trim, 64 ans)
+  // Comparaison par salaire (duree du taux plein, 64 ans)
   const salaireComparaison = SALAIRES.map((s) => {
-    const res = calcRetraite(annee, s, 172, 64);
+    const res = calcRetraite(annee, s, requis, 64);
     return { salaire: s, ...res, isCurrent: s === salaire };
   });
 
-  const r = calcRetraite(annee, salaire, 172, 64);
+  const r = calcRetraite(annee, salaire, requis, 64);
 
   const faqJsonLd = {
     "@context": "https://schema.org",
@@ -89,7 +90,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         name: `Quelle retraite pour un salaire de ${fmtInt(salaire)} EUR/an, ne(e) en ${annee} ?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `Avec un SAM de ${fmtInt(salaire)} EUR et une carriere complete (${r.trimestresRequis} trimestres), la pension nette estimee est de ${fmtInt(r.pensionTotaleNette)} EUR/mois. Base : ${fmt(r.pensionBase)} EUR + complementaire : ${fmt(r.complementaireEffective)} EUR - prelevements 9,1%.`,
+          text: `Avec un SAM de ${fmtInt(salaire)} EUR et une carriere complete (${r.trimestresRequis} trimestres), la pension nette estimee est de ${fmtInt(r.pensionTotaleNette)} EUR/mois. Base : ${fmt(r.pensionBase)} EUR + complementaire : ${fmt(r.complementaireEffective)} EUR - prelevements (9,1% + 1% sur la complementaire).`,
         },
       },
       {
@@ -97,7 +98,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         name: `Quel est l'age legal de depart pour les personnes nees en ${annee} ?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `L'age legal de depart a la retraite pour les personnes nees en ${annee} est de ${r.ageLegal % 1 === 0 ? r.ageLegal : r.ageLegal.toFixed(1)} ans (reforme 2023). Le nombre de trimestres requis pour le taux plein est de ${r.trimestresRequis}. L'age du taux plein automatique (sans condition de trimestres) est de 67 ans.`,
+          text: `L'age legal de depart a la retraite pour les personnes nees en ${annee} est de ${ageEnTexte(r.ageLegal)} (reforme de 2023, suspendue jusqu'en 2028 : valeur valable pour un depart a partir du 1er septembre 2026). Le nombre de trimestres requis pour le taux plein est de ${r.trimestresRequis}. L'age du taux plein automatique (sans condition de trimestres) est de 67 ans.`,
         },
       },
     ],
@@ -140,7 +141,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
           </div>
           <div>
             <p className="text-white/70">Age legal</p>
-            <p className="font-semibold">{r.ageLegal % 1 === 0 ? r.ageLegal : r.ageLegal.toFixed(1)} ans</p>
+            <p className="font-semibold">{ageEnTexte(r.ageLegal)}</p>
           </div>
           <div>
             <p className="text-white/70">Trimestres requis</p>
@@ -167,9 +168,9 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
           <p className="text-xs font-medium text-slate-400 mb-1">Complementaire AGIRC-ARRCO</p>
           <p className="text-3xl font-extrabold text-slate-800">{fmt(r.complementaireEffective)} EUR</p>
-          <p className="text-xs text-slate-500 mt-1">brut/mois — net : {fmt(r.complementaireEffective * 0.909)} EUR</p>
+          <p className="text-xs text-slate-500 mt-1">brut/mois — net : {fmt(r.complementaireEffective * 0.899)} EUR</p>
           <div className="mt-3 text-xs text-slate-400">
-            <p>Estimation basee sur un taux moyen de cotisation de 7,87%</p>
+            <p>Estimation simplifiee : cotisation Agirc-Arrco de 7,87 % jusqu'au plafond, point achete 20,1877 EUR, valeur du point 1,4386 EUR</p>
           </div>
         </div>
       </div>
@@ -177,7 +178,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
       {/* Pension selon l'age de depart */}
       <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm mb-8">
         <h2 className="text-lg font-bold text-slate-800 mb-4">
-          Pension nette selon l&apos;age de depart ({fmtInt(salaire)} EUR, 172 trim.)
+          Pension nette selon l&apos;age de depart ({fmtInt(salaire)} EUR, {requis} trim.)
         </h2>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
@@ -192,15 +193,15 @@ export default async function Page({ params }: { params: Promise<{ params: strin
             </thead>
             <tbody>
               {ageScenarios.map((s) => (
-                <tr key={s.age} className={`border-b border-slate-100 ${s.age === 64 ? "bg-amber-50/50" : ""}`}>
-                  <td className={`py-2.5 px-2 font-medium ${s.age === 64 ? "text-amber-600" : "text-slate-700"}`}>
+                <tr key={s.age} className={`border-b border-slate-100 ${s.age === Math.ceil(r.ageLegal) ? "bg-amber-50/50" : ""}`}>
+                  <td className={`py-2.5 px-2 font-medium ${s.age === Math.ceil(r.ageLegal) ? "text-amber-600" : "text-slate-700"}`}>
                     {s.age} ans
                     {s.age < s.ageLegal && <span className="text-xs text-red-400 ml-1">(impossible)</span>}
                   </td>
-                  <td className={`py-2.5 px-2 text-right ${s.age === 64 ? "text-amber-600" : "text-slate-500"}`}>{(s.taux * 100).toFixed(1)}%</td>
-                  <td className={`py-2.5 px-2 text-right ${s.age === 64 ? "text-amber-600" : "text-slate-500"}`}>{fmt(s.pensionBase)}</td>
-                  <td className={`py-2.5 px-2 text-right ${s.age === 64 ? "text-amber-600" : "text-slate-500"}`}>{fmt(s.complementaireEffective)}</td>
-                  <td className={`py-2.5 px-2 text-right font-bold ${s.age === 64 ? "text-amber-600" : "text-slate-700"}`}>{fmtInt(s.pensionTotaleNette)} EUR</td>
+                  <td className={`py-2.5 px-2 text-right ${s.age === Math.ceil(r.ageLegal) ? "text-amber-600" : "text-slate-500"}`}>{(s.taux * 100).toFixed(1)}%</td>
+                  <td className={`py-2.5 px-2 text-right ${s.age === Math.ceil(r.ageLegal) ? "text-amber-600" : "text-slate-500"}`}>{fmt(s.pensionBase)}</td>
+                  <td className={`py-2.5 px-2 text-right ${s.age === Math.ceil(r.ageLegal) ? "text-amber-600" : "text-slate-500"}`}>{fmt(s.complementaireEffective)}</td>
+                  <td className={`py-2.5 px-2 text-right font-bold ${s.age === Math.ceil(r.ageLegal) ? "text-amber-600" : "text-slate-700"}`}>{fmtInt(s.pensionTotaleNette)} EUR</td>
                 </tr>
               ))}
             </tbody>
@@ -215,15 +216,15 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         </h2>
         <div className="space-y-2">
           {trimScenarios.map((s) => (
-            <div key={s.trimestres} className={`flex items-center justify-between px-4 py-3 rounded-xl border ${s.trimestres === 172 ? "bg-amber-50 border-amber-300" : "border-slate-100"}`}>
+            <div key={s.trimestres} className={`flex items-center justify-between px-4 py-3 rounded-xl border ${s.trimestres === requis ? "bg-amber-50 border-amber-300" : "border-slate-100"}`}>
               <div>
-                <span className={`font-semibold text-sm ${s.trimestres === 172 ? "text-amber-700" : "text-slate-600"}`}>
+                <span className={`font-semibold text-sm ${s.trimestres === requis ? "text-amber-700" : "text-slate-600"}`}>
                   {s.trimestres} trimestres
                 </span>
                 <span className="text-xs text-slate-400 ml-2">({(s.trimestres / 4).toFixed(0)} ans)</span>
               </div>
               <div className="text-right">
-                <span className={`font-extrabold ${s.trimestres === 172 ? "text-amber-700" : "text-slate-700"}`}>{fmtInt(s.pensionTotaleNette)} EUR</span>
+                <span className={`font-extrabold ${s.trimestres === requis ? "text-amber-700" : "text-slate-700"}`}>{fmtInt(s.pensionTotaleNette)} EUR</span>
                 <span className="text-xs text-slate-400 ml-1">/mois</span>
               </div>
             </div>
@@ -234,7 +235,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
       {/* Comparaison par salaire */}
       <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm mb-8">
         <h2 className="text-lg font-bold text-slate-800 mb-4">
-          Pension selon le salaire (ne(e) en {annee}, 172 trim., 64 ans)
+          Pension selon le salaire (ne(e) en {annee}, {requis} trim., 64 ans)
         </h2>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
@@ -284,16 +285,16 @@ export default async function Page({ params }: { params: Promise<{ params: strin
           Pour une personne nee en <strong>{annee}</strong> avec un Salaire Annuel Moyen
           de <strong>{fmtInt(salaire)} EUR</strong>, la pension de retraite nette estimee
           est de <strong>{fmtInt(r.pensionTotaleNette)} EUR/mois</strong> (carriere complete
-          de {r.trimestresRequis} trimestres, depart a {r.ageLegal % 1 === 0 ? r.ageLegal : r.ageLegal.toFixed(1)} ans).
+          de {r.trimestresRequis} trimestres, depart a 64 ans).
         </p>
         <p className="text-slate-600 mb-4 leading-relaxed">
           La pension se decompose en <strong>{fmt(r.pensionBase)} EUR/mois</strong> de regime
           general et <strong>{fmt(r.complementaireEffective)} EUR/mois</strong> de complementaire
-          AGIRC-ARRCO. Apres prelevements sociaux de 9,1% (CSG, CRDS, Casa), la pension
+          AGIRC-ARRCO. Apres prelevements sociaux de 9,1% (CSG, CRDS, Casa) et 1% de cotisation d'assurance maladie sur la complementaire, la pension
           brute de {fmt(r.pensionTotaleBrute)} EUR donne un net de {fmtInt(r.pensionTotaleNette)} EUR.
         </p>
         <p className="text-slate-600 leading-relaxed">
-          L&apos;age legal de depart pour la generation {annee} est de <strong>{r.ageLegal % 1 === 0 ? r.ageLegal : r.ageLegal.toFixed(1)} ans</strong>.
+          L&apos;age legal de depart pour la generation {annee} est de <strong>{ageEnTexte(r.ageLegal)}</strong>.
           Le taux de remplacement (pension nette / dernier salaire net) est d&apos;environ <strong>{r.tauxRemplacement.toFixed(1)}%</strong>.
           Attendre 67 ans supprime toute decote quel que soit le nombre de trimestres.
         </p>

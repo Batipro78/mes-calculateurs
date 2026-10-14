@@ -6,33 +6,38 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
 import HowToJsonLd from "../components/HowToJsonLd";
+import Visuel from "../components/Visuel";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/simulateur-facture-gaz" },
   title: "Simulateur Facture Gaz 2026 - Estimez votre Facture Gratuit",
   description:
-    "Estimez votre facture de gaz naturel 2026 : abonnement GRDF, prix kWh par zone, taxes (CTA, TICGN, TVA). Comparaison EDF, Engie, TotalEnergies, Eni. Calcul gratuit et instantane.",
+    "Estimez votre facture de gaz naturel avec le prix repère de la CRE d'octobre 2026 : abonnement, prix du kWh, CTA, TICGN et TVA. Cuisson, eau chaude ou chauffage. Calcul gratuit.",
   keywords:
-    "simulateur facture gaz, calcul facture gaz, prix gaz naturel 2026, tarif reglemente GRDF, zone tarifaire gaz, abonnement gaz, kWh gaz prix, comparer fournisseurs gaz",
+    "simulateur facture gaz, calcul facture gaz, comment calculer une facture de gaz, prix gaz naturel 2026, prix repère gaz CRE, abonnement gaz, kWh gaz prix, réduire sa facture de gaz",
   openGraph: {
     title: "Simulateur Facture Gaz 2026 - Calculez votre Facture",
     description:
-      "Calculez votre facture de gaz avec les tarifs reglementes GRDF 2026. Cuisson, eau chaude ou chauffage. Comparaison fournisseurs incluse.",
+      "Calculez votre facture de gaz avec le prix repère de la CRE d'octobre 2026. Cuisson, eau chaude ou chauffage. Fourchette de prix incluse.",
   },
 };
 
 const FAQ_ITEMS: FaqItem[] = [
   {
-    q: "Comment est calculee une facture de gaz naturel en France ?",
-    a: "La facture de gaz comprend : l'abonnement (part fixe selon l'usage), la consommation (kWh x prix unitaire), la CTA (Contribution Tarifaire d'Acheminement), la TVA a 5,5% sur l'abonnement et la CTA, la TVA a 20% sur la consommation, et la TICGN (Taxe Interieure de Consommation sur le Gaz Naturel). Le prix du kWh varie selon la zone tarifaire GRDF (1 a 6).",
+    q: "Comment est calculée une facture de gaz naturel en France ?",
+    a: "La facture de gaz comprend l'abonnement (part fixe), la consommation (kWh multipliés par le prix du kWh), la CTA (contribution tarifaire d'acheminement), la TICGN (taxe intérieure de consommation sur le gaz naturel) et la TVA à 20 %. Le simulateur calcule l'abonnement TTC plus le nombre de kWh multiplié par le prix TTC du kWh du prix repère de la CRE.",
   },
   {
-    q: "Quelles sont les zones tarifaires du gaz en France ?",
-    a: "GRDF divise la France en 6 zones tarifaires. La zone 1 (Paris, Nord) est la moins chere avec environ 0,1284 EUR/kWh, tandis que la zone 6 (Clermont-Ferrand, Limoges) atteint 0,1488 EUR/kWh. La zone est determinee par votre reseau de distribution local et influe directement sur le prix du kWh de votre contrat.",
+    q: "Quel est le prix du gaz en octobre 2026 ?",
+    a: "Le prix repère de vente de gaz de la CRE pour octobre 2026 est de 0,14557 EUR le kWh TTC en moyenne pour un logement chauffé au gaz, avec un abonnement de 360,79 EUR TTC par an. Pour la cuisson et l'eau chaude : 0,17832 EUR le kWh TTC et 152,46 EUR d'abonnement. Ce prix est publié chaque mois et change : en novembre 2026, le kWh de chauffage passe à 0,15760 EUR TTC en moyenne.",
   },
   {
-    q: "Vaut-il mieux rester au tarif reglemente ou passer a une offre de marche ?",
-    a: "Le tarif reglemente GRDF sert de reference. Les offres de marche (EDF, Engie, TotalEnergies, Eni...) peuvent etre plus avantageuses, notamment en periode de stabilite des prix du gaz. Il est conseille de comparer les offres tous les ans via les comparateurs officiels (energie-info.fr). Attention aux contrats indexes sur le marche qui peuvent etre volatils.",
+    q: "Existe-t-il encore un tarif réglementé du gaz ?",
+    a: "Non. Les tarifs réglementés de vente de gaz ont pris fin le 30 juin 2023. La CRE publie depuis un prix repère mensuel, à titre indicatif : chaque fournisseur fixe librement ses offres, qui peuvent être plus chères ou moins chères que ce repère.",
+  },
+  {
+    q: "Comment réduire sa facture de gaz ?",
+    a: "Baisser le chauffage de 1 °C représente environ 7 % de consommation en moins selon le ministère de la Transition écologique et l'ADEME. Vous pouvez aussi faire entretenir la chaudière (révision annuelle obligatoire), isoler le logement et comparer les offres sur le comparateur du Médiateur national de l'énergie.",
   },
 ];
 
@@ -42,7 +47,7 @@ export default function Page() {
       <WebAppJsonLd name="Simulateur Facture Gaz" />
       <Breadcrumb
         currentPage="Simulateur Facture Gaz"
-        lastUpdated="8 avril 2026"
+        lastUpdated="14 octobre 2026"
       />
 
       <div className="flex items-center gap-3 mb-2">
@@ -54,11 +59,24 @@ export default function Page() {
         </h1>
       </div>
       <p className="text-slate-500 mb-8 ml-[52px]">
-        Estimez votre facture de gaz naturel selon votre usage, votre zone GRDF et votre consommation.
-        Tarifs reglementes Q1 2026. Mis a jour le 8 avril 2026.
+        Estimez votre facture de gaz naturel selon votre usage et votre consommation, avec le prix repère de vente de gaz
+        de la CRE d&apos;octobre 2026. Ce prix change chaque mois. Mis à jour le 14 octobre 2026.
       </p>
 
       <SimulateurFactureGaz />
+
+      <Visuel
+        fichier="facture-gaz-chauffage-80m2-baisse-un-degre"
+        alt="Facture de gaz pour un logement chauffé au gaz de 13 000 kWh par an avec le prix repère de la CRE d'octobre 2026 : 2 253 euros par an ; 2 121 euros en baissant le chauffage de 1 degré, soit 132 euros économisés ; 1 988 euros en baissant de 2 degrés, soit 265 euros économisés ; 1 856 euros en baissant de 3 degrés, soit 397 euros économisés. Repère de 7 % de consommation en moins par degré."
+        legende="Exemple calculé par le simulateur : 13 000 kWh par an (hypothèse du simulateur pour 80 m²), prix repère moyen de la CRE d'octobre 2026. Le gain de 7 % par degré est un repère officiel (ministère de la Transition écologique et ADEME), appliqué ici à la consommation ; l'abonnement ne baisse pas."
+        className="mt-8"
+      />
+      <p className="text-sm text-slate-600 mt-4 leading-relaxed">
+        Pour savoir à quelle température régler le chauffage dans chaque pièce, la nuit ou quand vous partez, lisez{" "}
+        <a href="/quelle-temperature-pour-le-chauffage" className="text-orange-600 hover:underline font-medium">
+          Quelle température régler pour le chauffage ?
+        </a>
+      </p>
 
       <AdSlot adSlot="1234567890" adFormat="horizontal" className="my-8" />
 
@@ -68,50 +86,58 @@ export default function Page() {
           Comment fonctionne la facturation du gaz en France ?
         </h2>
         <p className="text-slate-600 leading-relaxed">
-          Votre facture de gaz naturel se decompose en plusieurs composantes :
-          une <strong>part fixe</strong> (abonnement GRDF + CTA) et une{" "}
-          <strong>part variable</strong> proportionnelle a votre consommation en kWh.
-          Des taxes specifiques s&apos;appliquent selon la nature des postes.
+          Votre facture de gaz naturel se décompose en une <strong>part fixe</strong> (l&apos;abonnement, avec la CTA, la
+          contribution tarifaire d&apos;acheminement) et une <strong>part variable</strong> proportionnelle à votre
+          consommation en kWh (avec la TICGN, la taxe intérieure de consommation sur le gaz naturel). La TVA de 20 % porte
+          sur l&apos;ensemble.
         </p>
 
         <h3 className="font-bold text-slate-800 mt-6">
-          Les zones tarifaires GRDF expliquees
+          Le prix repère de la CRE, mois par mois
         </h3>
         <p className="text-slate-600 leading-relaxed">
-          GRDF (Gestionnaire du Reseau de Distribution de Gaz) divise la France en{" "}
-          <strong>6 zones tarifaires</strong>, chacune correspondant a un reseau de
-          distribution local. Plus le reseau est eloigne des sources de gaz ou
-          dense, plus le prix de l&apos;acheminement est eleve. Votre zone determine
-          directement le <strong>prix unitaire du kWh</strong> qui figure sur votre contrat.
+          Les tarifs réglementés de vente de gaz ont pris fin le 30 juin 2023. Depuis, la Commission de régulation de
+          l&apos;énergie (CRE) publie chaque mois un <strong>prix repère</strong>, à titre indicatif, pour la zone de
+          distribution de GRDF. Chaque fournisseur fixe librement ses offres : une offre à prix fixe peut être très
+          différente de ce repère. Le simulateur utilise ce repère, car c&apos;est le seul prix public et officiel.
         </p>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-          {[
-            { zone: "Zone 1", prix: "0,1284", villes: "Paris, Nord, Ile-de-France" },
-            { zone: "Zone 2", prix: "0,1324", villes: "Lyon, Bordeaux, Rennes" },
-            { zone: "Zone 3", prix: "0,1365", villes: "Marseille, Toulouse, Nantes" },
-            { zone: "Zone 4", prix: "0,1406", villes: "Strasbourg, Metz, Reims" },
-            { zone: "Zone 5", prix: "0,1447", villes: "Montpellier, Nice, Grenoble" },
-            { zone: "Zone 6", prix: "0,1488", villes: "Clermont-Ferrand, Limoges, Poitiers" },
-          ].map((z) => (
-            <div key={z.zone} className="bg-slate-50 rounded-xl p-4">
-              <p className="font-semibold text-slate-700">{z.zone}</p>
-              <p className="text-lg font-bold text-orange-600">{z.prix} EUR/kWh</p>
-              <p className="text-xs text-slate-400">{z.villes}</p>
-            </div>
-          ))}
+        <div className="overflow-x-auto">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-slate-200">
+                <th className="text-left py-3 px-3 text-slate-500 font-medium">Prix repère CRE (TTC)</th>
+                <th className="text-right py-3 px-3 text-slate-500 font-medium">Octobre 2026</th>
+                <th className="text-right py-3 px-3 text-slate-500 font-medium">Novembre 2026</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="border-b border-slate-100">
+                <td className="py-2.5 px-3 text-slate-600">Chauffage : kWh moyen</td>
+                <td className="py-2.5 px-3 text-right text-slate-700">0,14557 EUR</td>
+                <td className="py-2.5 px-3 text-right text-slate-700">0,15760 EUR</td>
+              </tr>
+              <tr className="border-b border-slate-100">
+                <td className="py-2.5 px-3 text-slate-600">Chauffage : abonnement par an</td>
+                <td className="py-2.5 px-3 text-right text-slate-700">360,79 EUR</td>
+                <td className="py-2.5 px-3 text-right text-slate-700">360,79 EUR</td>
+              </tr>
+              <tr className="border-b border-slate-100">
+                <td className="py-2.5 px-3 text-slate-600">Cuisson et eau chaude : kWh moyen</td>
+                <td className="py-2.5 px-3 text-right text-slate-700">0,17832 EUR</td>
+                <td className="py-2.5 px-3 text-right text-slate-700">0,19027 EUR</td>
+              </tr>
+              <tr className="border-b border-slate-100">
+                <td className="py-2.5 px-3 text-slate-600">Cuisson et eau chaude : abonnement par an</td>
+                <td className="py-2.5 px-3 text-right text-slate-700">152,46 EUR</td>
+                <td className="py-2.5 px-3 text-right text-slate-700">152,46 EUR</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-
-        <h3 className="font-bold text-slate-800 mt-6">
-          Tarif reglemente vs marche libre
-        </h3>
-        <p className="text-slate-600 leading-relaxed">
-          Le <strong>tarif reglemente</strong> (TRV gaz) est fixe par les pouvoirs publics
-          et sert de reference. Il est actuellement reserve aux contrats en vigueur
-          depuis avant la fin du TRV pour les nouveaux abonnes. Les{" "}
-          <strong>offres de marche</strong> proposees par EDF, Engie,
-          TotalEnergies, Eni et d&apos;autres peuvent etre indexees ou fixes.
-          Elles sont parfois plus avantageuses, surtout sur les offres a prix fixe
-          en periode de baisse du marche du gaz.
+        <p className="text-xs text-slate-400">
+          Source : CRE, prix repère de vente de gaz naturel pour les clients résidentiels (grilles d&apos;octobre et de
+          novembre 2026). Le simulateur est réglé sur octobre 2026. Pour un autre mois ou pour
+          votre contrat, multipliez vos kWh par le prix du kWh TTC de votre facture et ajoutez l&apos;abonnement.
         </p>
 
         <h3 className="font-bold text-slate-800 mt-6">
@@ -119,34 +145,39 @@ export default function Page() {
         </h3>
         <ul className="list-disc list-inside text-slate-600 space-y-1">
           <li>
-            Regler votre thermostat a <strong>19°C le jour</strong> et 16°C la nuit
+            Régler le chauffage selon la pièce et le moment (19 °C dans les pièces de vie occupées, 17 °C dans la chambre la nuit
+            d&apos;après l&apos;ADEME). Baisser de 1 °C fait environ 7 % de consommation en moins.
           </li>
           <li>
-            Faire entretenir votre chaudiere chaque annee (obligation legale, gain de rendement jusqu&apos;a 15%)
+            Faire entretenir votre chaudière chaque année (révision annuelle obligatoire pour les chaudières gaz)
           </li>
           <li>
-            Installer une tete thermostatique sur chaque radiateur pour ajuster piece par piece
+            Installer une tête thermostatique sur chaque radiateur pour ajuster pièce par pièce
           </li>
           <li>
-            Isoler les combles et les murs pour reduire les deperditions thermiques
+            Isoler les combles et les murs pour réduire les besoins de chauffage
           </li>
           <li>
-            Opter pour un chauffe-eau thermodynamique si vous consommez beaucoup d&apos;eau chaude
-          </li>
-          <li>
-            Comparer les offres chaque annee via le comparateur officiel{" "}
+            Comparer les offres sur le comparateur du Médiateur national de l&apos;énergie{" "}
             <strong>energie-info.fr</strong>
           </li>
         </ul>
+        <p className="text-slate-600 leading-relaxed">
+          Si vous vous chauffez à l&apos;électricité, regardez aussi{" "}
+          <a href="/combien-consomme-un-radiateur-electrique" className="text-orange-600 hover:underline font-medium">
+            combien consomme un radiateur électrique
+          </a>
+          .
+        </p>
       </section>
 
       <HowToJsonLd
         name="Estimer sa facture de gaz naturel"
         steps={[
-          { name: "Choisir l'usage et la zone tarifaire GRDF", text: "Sélectionner l'usage (cuisson, eau chaude ou chauffage) et la zone GRDF selon la ville : zone 1 Paris à 0,1284 EUR/kWh, zone 2 Lyon à 0,1324 EUR/kWh, zone 6 Clermont-Ferrand à 0,1488 EUR/kWh. La zone determine le prix unitaire du kWh." },
-          { name: "Saisir la consommation annuelle en kWh", text: "Indiquer la consommation annuelle lue sur la facture ou estimée selon l'usage (ex : 2 000 kWh pour l'eau chaude, 12 000 kWh pour le chauffage d'un appartement de 70 m2). Le simulateur propose des fourchettes par type d'usage." },
-          { name: "Calculer les composantes de la facture", text: "La facture comprend : abonnement fixe + CTA (Contribution Tarifaire d'Acheminement) soumis à TVA 5,5%, consommation en kWh x prix unitaire + TICGN soumis à TVA 20%. Total mensuel = (part fixe + part variable + taxes) / 12." },
-          { name: "Comparer les offres fournisseurs", text: "Le résultat affiche la facture annuelle et mensuelle au tarif reglemente GRDF. Comparer ensuite avec les offres de marche (EDF, Engie, TotalEnergies, Eni) en verifiant chaque année via le comparateur officiel énergie-info.fr." },
+          { name: "Choisir l'usage du gaz", text: "Sélectionner l'usage (cuisson, eau chaude ou chauffage) et, pour le chauffage, la surface du logement. Le simulateur propose une consommation indicative en kWh par an." },
+          { name: "Saisir la consommation annuelle en kWh", text: "Indiquer la consommation annuelle lue sur la facture ou estimée selon l'usage. Les valeurs proposées par le simulateur sont des ordres de grandeur, pas des valeurs officielles." },
+          { name: "Choisir le prix du kWh", text: "Garder le prix repère moyen de la CRE d'octobre 2026 (0,14557 EUR le kWh TTC pour le chauffage) ou choisir le bas ou le haut de la fourchette." },
+          { name: "Lire la facture estimée", text: "Le résultat affiche la facture annuelle et mensuelle TTC : abonnement, consommation, CTA, TICGN et TVA à 20 %. Comparer ensuite les offres sur energie-info.fr." },
         ]}
       />
 

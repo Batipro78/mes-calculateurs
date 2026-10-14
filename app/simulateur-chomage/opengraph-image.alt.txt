@@ -1,0 +1,1 @@
+Allocation chômage brute par mois selon le salaire brut, pour 24 mois travaillés à 35 ans : 1 500 € brut donnent 993 € par mois, 2 000 € brut donnent 1 192 € par mois, 2 500 € brut donnent 1 406 € par mois, 3 000 € brut donnent 1 687 € par mois, 4 000 € brut donnent 2 249 € par mois, 6 000 € brut donnent 3 373 € par mois

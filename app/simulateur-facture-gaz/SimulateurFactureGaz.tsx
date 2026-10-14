@@ -1,16 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import { calcFactureGaz, CONSOMMATIONS_TYPIQUES } from "./factureGazCalc";
-
-const PRIX_KWH_ZONE_MAP: Record<string, string> = {
-  zone1: "0,1284",
-  zone2: "0,1324",
-  zone3: "0,1365",
-  zone4: "0,1406",
-  zone5: "0,1447",
-  zone6: "0,1488",
-};
+import { calcFactureGaz, CONSOMMATIONS_TYPIQUES, MOIS_GRILLE, NIVEAUX } from "./factureGazCalc";
 
 function fmt(n: number, decimals = 2): string {
   return n.toLocaleString("fr-FR", {
@@ -18,15 +9,6 @@ function fmt(n: number, decimals = 2): string {
     maximumFractionDigits: decimals,
   });
 }
-
-const ZONES = [
-  { id: "zone1", label: "Zone 1", villes: "Paris, Ile-de-France, Nord" },
-  { id: "zone2", label: "Zone 2", villes: "Lyon, Bordeaux, Rennes" },
-  { id: "zone3", label: "Zone 3", villes: "Marseille, Toulouse, Nantes" },
-  { id: "zone4", label: "Zone 4", villes: "Strasbourg, Metz, Reims" },
-  { id: "zone5", label: "Zone 5", villes: "Montpellier, Nice, Grenoble" },
-  { id: "zone6", label: "Zone 6", villes: "Clermont-Ferrand, Limoges, Poitiers" },
-];
 
 const USAGES_CARDS = [
   {
@@ -122,14 +104,13 @@ function PieChart({
 
 export default function SimulateurFactureGaz() {
   const [usage, setUsage] = useState("chauffage");
-  const [zone, setZone] = useState("zone2");
+  const [niveau, setNiveau] = useState("moyenne");
   const [surface, setSurface] = useState(80);
   const [consommationKwh, setConsommationKwh] = useState(13000);
-  const [fournisseur] = useState("tarif-reglemente");
 
   const resultat = useMemo(
-    () => calcFactureGaz(consommationKwh, zone, usage, fournisseur),
-    [consommationKwh, zone, usage, fournisseur]
+    () => calcFactureGaz(consommationKwh, niveau, usage),
+    [consommationKwh, niveau, usage]
   );
 
   function handleUsageChange(u: string) {
@@ -153,9 +134,8 @@ export default function SimulateurFactureGaz() {
     { label: "Abonnement", value: resultat.abonnementMensuel, color: "#3b82f6" },
     { label: "Consommation", value: resultat.consommationMensuelle, color: "#f97316" },
     { label: "CTA", value: resultat.ctaMensuelle, color: "#8b5cf6" },
-    { label: "TVA 5,5%", value: resultat.tva55, color: "#10b981" },
-    { label: "TVA 20%", value: resultat.tva20, color: "#f59e0b" },
     { label: "TICGN", value: resultat.ticgn, color: "#ec4899" },
+    { label: "TVA 20%", value: resultat.tva, color: "#f59e0b" },
   ];
 
   return (
@@ -255,31 +235,40 @@ export default function SimulateurFactureGaz() {
             </p>
           </div>
 
-          {/* Zone tarifaire */}
+          {/* Niveau dans la fourchette du prix repere */}
           <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
             <label className="block text-sm font-medium text-slate-600 mb-3">
-              Zone tarifaire GRDF
+              Prix du kWh (prix repère CRE, {MOIS_GRILLE})
             </label>
-            <div className="grid grid-cols-2 gap-2">
-              {ZONES.map((z) => (
-                <button
-                  key={z.id}
-                  onClick={() => setZone(z.id)}
-                  className={`px-3 py-3 rounded-xl text-left border-2 transition-colors ${
-                    zone === z.id
-                      ? "bg-orange-50 border-orange-400"
-                      : "border-slate-200 hover:border-slate-300"
-                  }`}
-                >
-                  <span
-                    className={`block text-sm font-semibold ${zone === z.id ? "text-orange-700" : "text-slate-700"}`}
+            <div className="grid grid-cols-3 gap-2">
+              {NIVEAUX.map((n) => {
+                const prix = calcFactureGaz(1, n.id, usage).prixKwh;
+                return (
+                  <button
+                    key={n.id}
+                    onClick={() => setNiveau(n.id)}
+                    className={`px-3 py-3 rounded-xl text-left border-2 transition-colors ${
+                      niveau === n.id
+                        ? "bg-orange-50 border-orange-400"
+                        : "border-slate-200 hover:border-slate-300"
+                    }`}
                   >
-                    {z.label} — {PRIX_KWH_ZONE_MAP[z.id]} EUR/kWh
-                  </span>
-                  <span className="block text-xs text-slate-400 mt-0.5">{z.villes}</span>
-                </button>
-              ))}
+                    <span
+                      className={`block text-sm font-semibold ${niveau === n.id ? "text-orange-700" : "text-slate-700"}`}
+                    >
+                      {n.label}
+                    </span>
+                    <span className="block text-xs text-slate-500 mt-0.5">
+                      {prix.toLocaleString("fr-FR", { minimumFractionDigits: 5, maximumFractionDigits: 5 })} EUR/kWh TTC
+                    </span>
+                  </button>
+                );
+              })}
             </div>
+            <p className="text-xs text-slate-400 mt-3 leading-relaxed">
+              La CRE publie un prix moyen et une fourchette qui tient compte du coût du transport et du stockage du gaz selon
+              l&apos;endroit où l&apos;on habite. Le plus simple : gardez le prix moyen.
+            </p>
           </div>
         </div>
 
@@ -324,21 +313,15 @@ export default function SimulateurFactureGaz() {
                 </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-sm text-slate-500">TVA 5,5%</span>
-                <span className="text-sm font-semibold text-emerald-600">
-                  {fmt(resultat.tva55)} EUR
+                <span className="text-sm text-slate-500">TICGN</span>
+                <span className="text-sm font-semibold text-pink-600">
+                  {fmt(resultat.ticgn)} EUR
                 </span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-sm text-slate-500">TVA 20%</span>
                 <span className="text-sm font-semibold text-amber-600">
-                  {fmt(resultat.tva20)} EUR
-                </span>
-              </div>
-              <div className="flex justify-between items-center">
-                <span className="text-sm text-slate-500">TICGN</span>
-                <span className="text-sm font-semibold text-pink-600">
-                  {fmt(resultat.ticgn)} EUR
+                  {fmt(resultat.tva)} EUR
                 </span>
               </div>
               <div className="h-px bg-slate-100" />
@@ -354,47 +337,47 @@ export default function SimulateurFactureGaz() {
 
           {/* Note tarif */}
           <div className="rounded-xl bg-slate-50 border border-slate-200 px-4 py-3 text-xs text-slate-400 leading-relaxed">
-            Estimations basees sur le tarif reglemente GRDF Q1 2026. Votre facture reelle depend de votre contrat, de votre isolation et de vos habitudes.
+            Estimation basée sur le prix repère de vente de gaz de la CRE (grille du 1er octobre 2026, zone GRDF), qui change chaque mois : en novembre 2026, le kWh de chauffage passe à 0,15760 EUR TTC en moyenne. Les tarifs réglementés ont pris fin en juin 2023 : votre facture réelle dépend de votre contrat, de votre logement et de vos habitudes.
           </div>
         </div>
       </div>
 
-      {/* Comparaison fournisseurs */}
+      {/* Fourchette du prix repere */}
       <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
         <h2 className="text-lg font-bold text-slate-800 mb-4">
-          Comparaison fournisseurs de gaz (estimation annuelle)
+          Fourchette du prix repère de la CRE (estimation annuelle)
         </h2>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-slate-200">
-                <th className="text-left py-3 px-3 text-slate-500 font-medium">Fournisseur</th>
+                <th className="text-left py-3 px-3 text-slate-500 font-medium">Niveau de prix</th>
                 <th className="text-right py-3 px-3 text-slate-500 font-medium">Prix kWh</th>
                 <th className="text-right py-3 px-3 text-slate-500 font-medium">Facture annuelle</th>
-                <th className="text-right py-3 px-3 text-slate-500 font-medium">vs tarif reglemente</th>
+                <th className="text-right py-3 px-3 text-slate-500 font-medium">écart avec le prix moyen</th>
               </tr>
             </thead>
             <tbody>
-              {resultat.comparaisonFournisseurs.map((f, i) => {
-                const ref = resultat.comparaisonFournisseurs[0].factureAnnuelle;
+              {resultat.comparaisonNiveaux.map((f, i) => {
+                const ref = resultat.comparaisonNiveaux[1].factureAnnuelle;
                 const diff = f.factureAnnuelle - ref;
                 return (
                   <tr
                     key={f.nom}
-                    className={`border-b border-slate-100 ${i === 0 ? "bg-orange-50/50" : ""}`}
+                    className={`border-b border-slate-100 ${i === 1 ? "bg-orange-50/50" : ""}`}
                   >
-                    <td className={`py-2.5 px-3 font-medium ${i === 0 ? "text-orange-700" : "text-slate-700"}`}>
+                    <td className={`py-2.5 px-3 font-medium ${i === 1 ? "text-orange-700" : "text-slate-700"}`}>
                       {f.nom}
                     </td>
                     <td className="py-2.5 px-3 text-right text-slate-600">
-                      {f.prixKwh.toLocaleString("fr-FR", { minimumFractionDigits: 4, maximumFractionDigits: 4 })} EUR
+                      {f.prixKwh.toLocaleString("fr-FR", { minimumFractionDigits: 5, maximumFractionDigits: 5 })} EUR
                     </td>
-                    <td className={`py-2.5 px-3 text-right font-bold ${i === 0 ? "text-orange-700" : "text-slate-700"}`}>
+                    <td className={`py-2.5 px-3 text-right font-bold ${i === 1 ? "text-orange-700" : "text-slate-700"}`}>
                       {fmt(f.factureAnnuelle)} EUR
                     </td>
                     <td className="py-2.5 px-3 text-right">
-                      {i === 0 ? (
-                        <span className="text-slate-400 text-xs">Reference</span>
+                      {i === 1 ? (
+                        <span className="text-slate-400 text-xs">Référence</span>
                       ) : (
                         <span className={`text-xs font-semibold ${diff < 0 ? "text-green-600" : "text-red-500"}`}>
                           {diff > 0 ? "+" : ""}{fmt(diff)} EUR
@@ -408,46 +391,41 @@ export default function SimulateurFactureGaz() {
           </table>
         </div>
         <p className="text-xs text-slate-400 mt-3">
-          * Les prix des fournisseurs alternatifs sont indicatifs et peuvent varier selon les offres en cours.
+          * Fourchette publiée par la CRE (zone GRDF, octobre 2026). Ce ne sont pas des offres de fournisseurs : chaque fournisseur fixe librement ses prix. Comparez sur le comparateur du Médiateur national de l'énergie (energie-info.fr).
         </p>
       </div>
 
       {/* Conseils */}
       <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
         <h2 className="text-lg font-bold text-slate-800 mb-4">
-          Conseils pour reduire sa facture de gaz
+          Conseils pour réduire sa facture de gaz
         </h2>
         <div className="grid sm:grid-cols-2 gap-3">
           {[
             {
               emoji: "🌡️",
               titre: "Baisser le thermostat",
-              texte: "Reduire de 1°C = 7% d'economie. 19°C est la temperature recommandee.",
+              texte: "Baisser le chauffage de 1 °C, c'est environ 7 % de consommation en moins (ministère de la Transition écologique et ADEME). Repère ADEME : 19 °C dans les pièces de vie occupées.",
             },
             {
               emoji: "🔧",
-              titre: "Entretenir la chaudiere",
-              texte: "Un entretien annuel obligatoire ameliore le rendement jusqu'a 15%.",
-            },
-            {
-              emoji: "🪟",
-              titre: "Isolation renforcee",
-              texte: "Double vitrage et isolation des combles peuvent reduire la facture de 30%.",
+              titre: "Entretenir la chaudière",
+              texte: "La révision annuelle est obligatoire pour les chaudières gaz (ADEME). Une chaudière mal entretenue consomme plus.",
             },
             {
               emoji: "📅",
               titre: "Programmer le chauffage",
-              texte: "Reduire de 3-4°C la nuit et en absence = economie de 10 a 15%.",
+              texte: "Un thermostat programmable permet de baisser la température quand personne n'est là. Le guide du ministère de la Transition écologique et de l'ADEME avance jusqu'à 15 % d'économie de chauffage.",
             },
             {
               emoji: "💧",
-              titre: "Reduire la consommation eau chaude",
-              texte: "Douches courtes, mousseurs robinet, regulateur de debit.",
+              titre: "Réduire la consommation d'eau chaude",
+              texte: "Douches courtes, mousseurs sur les robinets, douchette économe.",
             },
             {
               emoji: "🔄",
               titre: "Comparer les offres",
-              texte: "Le marche libre peut proposer des tarifs inferieurs selon les periodes.",
+              texte: "Le prix repère de la CRE change chaque mois et n'est qu'indicatif : comparez les offres sur le comparateur du Médiateur national de l'énergie.",
             },
           ].map((conseil) => (
             <div key={conseil.titre} className="flex gap-3 p-4 bg-slate-50 rounded-xl">

@@ -193,4 +193,8 @@ export const ALL_CALCULATORS: Calculator[] = [
   { slug: "/combien-de-calories-par-jour-pour-maigrir", title: "Guide : combien de calories par jour pour maigrir", emoji: "🔥", color: "from-green-500 to-emerald-600" },
   { slug: "/combien-d-heures-de-sommeil-par-nuit", title: "Guide : combien d'heures de sommeil par nuit", emoji: "🌙", color: "from-indigo-500 to-purple-600" },
   { slug: "/combien-de-litres-d-eau-par-jour", title: "Guide : combien de litres d'eau par jour", emoji: "💧", color: "from-blue-500 to-cyan-500" },
+  { slug: "/quelle-temperature-pour-le-chauffage", title: "Guide : quelle température pour le chauffage", emoji: "🌡️", color: "from-orange-500 to-red-500" },
+  { slug: "/surcote-retraite-comment-est-elle-calculee", title: "Guide : surcote retraite, comment est-elle calculée", emoji: "📈", color: "from-amber-500 to-orange-600" },
+  { slug: "/remboursement-mutuelle-comment-ca-marche", title: "Guide : remboursement mutuelle, comment ça marche", emoji: "🩺", color: "from-teal-500 to-emerald-600" },
+  { slug: "/chomage-comment-est-calcule-le-montant", title: "Guide : chômage, comment est calculé le montant", emoji: "📋", color: "from-sky-500 to-blue-600" },
 ];

@@ -688,6 +688,30 @@ function generateAllUrls(): SitemapEntry[] {
       priority: 0.8,
     },
     {
+      url: `${BASE_URL}/quelle-temperature-pour-le-chauffage`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/surcote-retraite-comment-est-elle-calculee`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/remboursement-mutuelle-comment-ca-marche`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/chomage-comment-est-calcule-le-montant`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${BASE_URL}/cout-climatisation`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -3367,9 +3391,9 @@ function generateAllUrls(): SitemapEntry[] {
     }
   }
 
-  // Pages dynamiques Simulateur Facture Gaz (5 usages x 6 zones = 30 pages)
+  // Pages dynamiques Simulateur Facture Gaz (5 usages, page zone1 uniquement = 5 pages)
   const FAC_GAZ_USAGES = ["cuisson", "eau-chaude", "chauffage-50m2", "chauffage-80m2", "chauffage-120m2"];
-  const FAC_GAZ_ZONES = ["zone1", "zone2", "zone3", "zone4", "zone5", "zone6"];
+  const FAC_GAZ_ZONES = ["zone1"]; // zone2 a zone6 redirigent vers zone1 (pas de zones de prix)
   const facGazPages: SitemapEntry[] = [];
   for (const u of FAC_GAZ_USAGES) {
     for (const z of FAC_GAZ_ZONES) {

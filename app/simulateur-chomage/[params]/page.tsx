@@ -1,6 +1,7 @@
 import { fmtEUR as fmt } from "@/app/lib/fmt";
 import type { Metadata } from "next";
 import CalculateurChomage from "../CalculateurChomage";
+import { calculerARE, SEUIL_DEGRESSIVITE } from "../chomageCalc";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
 import { notFound } from "next/navigation";
@@ -9,29 +10,23 @@ const SALAIRES = [1400, 1600, 1800, 2000, 2200, 2500, 2800, 3000, 3500, 4000, 45
 const MOIS_TRAVAILLES = [6, 12, 18, 24];
 const AGES = [25, 30, 35, 40, 45, 50, 53, 55, 60];
 
-const PART_FIXE = 13.18;
-
 function calcARE(salaire: number, mois: number, age: number) {
-  const sjr = (salaire * mois) / (mois * 30);
-  const methode1 = sjr * 0.574;
-  const methode2 = sjr * 0.404 + PART_FIXE;
-  let areJour = Math.max(methode1, methode2);
-  areJour = Math.max(areJour, 31.59);
-  areJour = Math.min(areJour, 274.80);
-  if (sjr <= 0) areJour = 0;
-
-  let dureeMax: number;
-  if (age < 53) dureeMax = Math.min(mois, 18);
-  else if (age < 55) dureeMax = Math.min(mois, 22.5);
-  else dureeMax = Math.min(mois, 27);
-
-  const isDegressif = salaire > 4965 && age < 57;
-  const areApresDegressivite = areJour * 0.7;
-
-  return { sjr, methode1, methode2, areJour, areMois: areJour * 30, dureeMax, dureeMaxJours: Math.round(dureeMax * 30), montantTotal: areJour * Math.round(dureeMax * 30), tauxRemplacement: salaire > 0 ? ((areJour * 30) / salaire) * 100 : 0, isDegressif, areApresDegressivite };
+  const r = calculerARE(salaire, mois, age);
+  const dureeMax = r.dureeMois.toLocaleString("fr-FR", { maximumFractionDigits: 1 });
+  return {
+    sjr: r.sjr,
+    methode1: r.formule1,
+    methode2: r.formule2,
+    areJour: r.areJour,
+    areMois: r.areMois,
+    dureeMax,
+    dureeMaxJours: r.dureeJours,
+    montantTotal: r.montantTotal,
+    tauxRemplacement: r.tauxRemplacement,
+    isDegressif: r.isDegressif,
+    areApresDegressivite: r.areJourApresDegressivite,
+  };
 }
-
-
 
 function fmtInt(n: number): string {
   return Math.round(n).toLocaleString("fr-FR");
@@ -70,7 +65,7 @@ export async function generateMetadata({ params }: { params: Promise<{ params: s
     keywords: `chomage ${salaire} euros, allocation chomage ${salaire} euros brut, ARE ${salaire} euros, simulation chomage ${age} ans`,
     openGraph: {
       title: `${salaire.toLocaleString("fr-FR")} EUR brut → ${fmt(r.areMois)} EUR/mois de chomage`,
-      description: `ARE : ${fmt(r.areJour)} EUR/jour. Duree max : ${r.dureeMax} mois. Total estime : ${fmtInt(r.montantTotal)} EUR.`,
+      description: `ARE : ${fmt(r.areJour)} EUR/jour. Duree estimee : ${r.dureeMax} mois. Total estime : ${fmtInt(r.montantTotal)} EUR.`,
     },
   };
 }
@@ -120,7 +115,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         name: `Combien de temps de chomage a ${age} ans avec ${mois} mois de travail ?`,
         acceptedAnswer: {
           "@type": "Answer",
-          text: `A ${age} ans avec ${mois} mois travailles, la duree d'indemnisation maximale est de ${r.dureeMax} mois (${r.dureeMaxJours} jours). Le montant total estime est de ${fmtInt(r.montantTotal)} EUR.`,
+          text: `A ${age} ans avec ${mois} mois travailles, la duree d'indemnisation estimee est de ${r.dureeMax} mois (${r.dureeMaxJours} jours). Le montant total estime est de ${fmtInt(r.montantTotal)} EUR.`,
         },
       },
     ],
@@ -186,7 +181,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
           </div>
           <div className="flex justify-between">
             <span className="text-slate-500">Periode de reference</span>
-            <span className="font-medium text-slate-700">{mois} mois ({mois * 30} jours)</span>
+            <span className="font-medium text-slate-700">{mois} mois ({Math.round((mois * 365) / 12)} jours)</span>
           </div>
           <div className="flex justify-between">
             <span className="text-slate-500">SJR</span>
@@ -194,11 +189,11 @@ export default async function Page({ params }: { params: Promise<{ params: strin
           </div>
           <div className="h-px bg-slate-200" />
           <div className="flex justify-between">
-            <span className="text-slate-500">57,4% du SJR</span>
+            <span className="text-slate-500">57 % du SJR</span>
             <span className="text-slate-700">{fmt(r.methode1)} EUR/j</span>
           </div>
           <div className="flex justify-between">
-            <span className="text-slate-500">40,4% SJR + 13,18 EUR</span>
+            <span className="text-slate-500">40,4 % du SJR + 13,18 EUR</span>
             <span className="text-slate-700">{fmt(r.methode2)} EUR/j</span>
           </div>
           <div className="flex justify-between font-bold">
@@ -212,7 +207,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         <div className="bg-amber-50 rounded-2xl border border-amber-200 p-6 mb-8">
           <h2 className="text-lg font-bold text-amber-800 mb-2">Degressivite applicable</h2>
           <p className="text-sm text-amber-700 leading-relaxed">
-            Votre salaire depasse 4 965 EUR brut. Apres 6 mois, votre ARE sera reduite de 30% :
+            Votre allocation depasse {fmt(SEUIL_DEGRESSIVITE)} EUR par jour et vous avez moins de 55 ans. A partir du 7e mois, elle baisse de 30 %, sans descendre sous {fmt(SEUIL_DEGRESSIVITE)} EUR par jour :
           </p>
           <p className="text-2xl font-extrabold text-amber-800 mt-2">{fmt(r.areApresDegressivite * 30)} EUR/mois</p>
         </div>
@@ -265,7 +260,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
             <thead>
               <tr className="border-b border-slate-200">
                 <th className="text-left py-3 px-2 text-slate-500 font-medium">Age</th>
-                <th className="text-right py-3 px-2 text-slate-500 font-medium">Duree max</th>
+                <th className="text-right py-3 px-2 text-slate-500 font-medium">Duree estimee</th>
                 <th className="text-right py-3 px-2 text-slate-500 font-medium">Total estime</th>
               </tr>
             </thead>
@@ -329,12 +324,12 @@ export default async function Page({ params }: { params: Promise<{ params: strin
           ({fmt(r.areJour)} EUR/jour), soit un taux de remplacement de <strong>{r.tauxRemplacement.toFixed(1)}%</strong>.
         </p>
         <p className="text-slate-600 mb-4 leading-relaxed">
-          La duree maximale d&apos;indemnisation est de <strong>{r.dureeMax} mois</strong> ({r.dureeMaxJours} jours).
+          La duree d&apos;indemnisation estimee est de <strong>{r.dureeMax} mois</strong> ({r.dureeMaxJours} jours).
           Le montant total estime sur toute la periode est de <strong>{fmtInt(r.montantTotal)} EUR</strong>.
         </p>
         <p className="text-slate-600 leading-relaxed">
           Le SJR (Salaire Journalier de Reference) est de <strong>{fmt(r.sjr)} EUR</strong>.
-          France Travail retient la methode la plus avantageuse : 57,4% du SJR ({fmt(r.methode1)} EUR)
+          France Travail retient la methode la plus avantageuse : 57 % du SJR ({fmt(r.methode1)} EUR)
           ou 40,4% du SJR + 13,18 EUR ({fmt(r.methode2)} EUR).
         </p>
       </section>
