@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import {
   calculerVMACooper,
   calculerAllureSelonPourcentVMA,
@@ -288,6 +289,8 @@ export default function Page() {
           { name: "Lire les allures d'entrainement", text: "Allures deduites des pourcentages de VMA. Exemple VMA 14 km/h : endurance fondamentale (70%) = 9,8 km/h soit 6'07''/km ; seuil (87,5%) = 12,25 km/h soit 4'54''/km ; seances VMA (100-110%) = 14 à 15,4 km/h soit 3'54'' à 4'17''/km." },
         ]}
       />
+
+      <AmazonReco page="calcul-vma" />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-vma" />

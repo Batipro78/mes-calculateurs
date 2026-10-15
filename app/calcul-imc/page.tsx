@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 import SourcesMethodo from "../components/SourcesMethodo";
 
@@ -190,6 +191,8 @@ export default function Page() {
           { name: "Interpréter", text: "Comparer le résultat à la classification de l'OMS : maigreur, corpulence normale, surpoids, obesite." },
         ]}
       />
+
+      <AmazonReco page="calcul-imc" />
 
       <Faq items={FAQ_ITEMS} />
 

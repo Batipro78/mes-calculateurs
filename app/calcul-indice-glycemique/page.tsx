@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import SourcesMethodo from "../components/SourcesMethodo";
 import { ALIMENTS } from "./indiceGlycemiqueCalc";
 import HowToJsonLd from "../components/HowToJsonLd";
@@ -208,6 +209,8 @@ export default function Page() {
           { name: "Interpréter la CG et adapter les choix alimentaires", text: "CG faible (<=10) : impact minimal. CG moyenne (11-19) : modere. CG elevee (>=20) : associer à des proteines ou fibres pour freiner le pic. Viser une CG journalière totale inférieure à 100." },
         ]}
       />
+
+      <AmazonReco page="calcul-indice-glycemique" />
 
       <Faq items={FAQ_ITEMS} />
 

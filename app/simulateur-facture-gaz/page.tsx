@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 import Visuel from "../components/Visuel";
 
@@ -180,6 +181,8 @@ export default function Page() {
           { name: "Lire la facture estimée", text: "Le résultat affiche la facture annuelle et mensuelle TTC : abonnement, consommation, CTA, TICGN et TVA à 20 %. Comparer ensuite les offres sur energie-info.fr." },
         ]}
       />
+
+      <AmazonReco page="simulateur-facture-gaz" />
 
       <Faq items={FAQ_ITEMS} />
 

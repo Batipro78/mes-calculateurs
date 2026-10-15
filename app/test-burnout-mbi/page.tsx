@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 import Visuel from "../components/Visuel";
 
@@ -250,6 +251,8 @@ export default function Page() {
           { name: "Detecter le burnout et decider de la marche à suivre", text: "Le burnout est avere si au moins 2 dimensions sur 3 atteignent simultanement leur seuil critique. En cas de résultat preoccupant, consulter un medecin du travail, un medecin traitant ou un psychologue. En cas de detresse, appeler le 3114 (24h/24)." },
         ]}
       />
+
+      <AmazonReco page="test-burnout-mbi" />
 
       <Faq items={FAQ_ITEMS} />
 

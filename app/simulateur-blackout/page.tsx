@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import Visuel from "../components/Visuel";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
@@ -233,6 +234,8 @@ export default function Page() {
           { name: "Lire le score et la durée d'autonomie estimée", text: "Le simulateur calcule un score de preparation et la durée d'autonomie : niveau essentiel (~100 EUR, 24-72h), niveau confort (~500 EUR, 3-7 jours), niveau autonome (~1 500 EUR, 1-2 semaines ou plus)." },
         ]}
       />
+
+      <AmazonReco page="simulateur-blackout" />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/simulateur-blackout" />

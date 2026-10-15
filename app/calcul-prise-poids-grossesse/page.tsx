@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import SourcesMethodo from "../components/SourcesMethodo";
 import HowToJsonLd from "../components/HowToJsonLd";
 
@@ -145,6 +146,8 @@ export default function Page() {
           { name: "Surveiller les signaux d'alerte", text: "Plus de 1 kg par semaine après 20 SA, gonflements brutaux des pieds ou du visage, ou perte de poids au 3e trimestre justifient une consultation medicale rapide." },
         ]}
       />
+
+      <AmazonReco page="calcul-prise-poids-grossesse" />
 
       <Faq items={FAQ_ITEMS} />
 

@@ -6,6 +6,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 import SourcesMethodo from "../components/SourcesMethodo";
 
@@ -141,6 +142,8 @@ export default function Page() {
           { name: "Estimer le coût", text: "Multiplier la consommation en kilowattheures par le prix du kilowattheure de votre contrat." },
         ]}
       />
+
+      <AmazonReco page="cout-climatisation" />
 
       <Faq items={FAQ_ITEMS} />
 

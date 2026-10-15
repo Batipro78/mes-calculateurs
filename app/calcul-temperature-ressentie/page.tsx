@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import SourcesMethodo from "../components/SourcesMethodo";
 import HowToJsonLd from "../components/HowToJsonLd";
 
@@ -143,6 +144,8 @@ export default function Page() {
           { name: "Lire l'indice Humidex et le niveau de danger", text: "Formule : Humidex = T + 0,5555 x (e - 10), ou e est la pression de vapeur d'eau. Exemple : 34 degrés C avec 55% d'humidite -> Humidex environ 45. Niveaux : moins de 30 = confortable ; 30-39 = inconfort ; 40-45 = inconfort intense ; 46-53 = danger (coup de chaleur) ; 54 et plus = danger extreme." },
         ]}
       />
+
+      <AmazonReco page="calcul-temperature-ressentie" />
 
       <Faq items={FAQ_ITEMS} />
 

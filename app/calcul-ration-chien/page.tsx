@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
@@ -219,6 +220,8 @@ export default function Page() {
           { name: "Repartir les repas et adapter progressivement", text: "Un adulte mange 2 repas par jour (matin et soir). Tout changement d'alimentation doit etre progressif sur 7-10 jours : 25 % de nouvel aliment les 2 premiers jours, 50 % les 2 suivants, 75 % les 2 suivants, puis 100 %." },
         ]}
       />
+
+      <AmazonReco page="calcul-ration-chien" />
 
       <Faq items={FAQ_ITEMS} />
 

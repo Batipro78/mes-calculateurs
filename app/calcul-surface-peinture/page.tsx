@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
@@ -267,6 +268,8 @@ export default function Page() {
           { name: "Calculer la quantité de peinture et le budget", text: "Surface totale à peindre = surface nette x nombre de couches (generalement 2). Litres nécessaires = surface totale / rendement (10 à 12 m2/L pour peinture acrylique). Exemple : 65 m2 x 2 couches / 10 m2/L = 13 L. Budget : 13 x prix au litre (5 à 40 EUR/L selon la gamme choisie)." },
         ]}
       />
+
+      <AmazonReco page="calcul-surface-peinture" />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-surface-peinture" />

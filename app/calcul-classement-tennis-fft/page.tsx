@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
@@ -244,6 +245,8 @@ export default function Page() {
           { name: "Lire le score V-E-2I-5G et le classement estime", text: "Le bilan V (victoires) - E (egalites) - 2I (penalites defaites) + 5G (bonus or) donne un score indicatif de progression ou de regression dans l'echelle FFT." },
         ]}
       />
+
+      <AmazonReco page="calcul-classement-tennis-fft" />
 
       <Faq items={FAQ_ITEMS} />
 

@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Visuel from "../components/Visuel";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
@@ -189,6 +190,8 @@ export default function Page() {
           { name: "Lire le coût sur la journee, le mois et l'année et cumuler plusieurs appareils", text: "Le coût = kWh x prix du kWh. Le mode multi-appareils permet d'additionner plusieurs postes pour estimer la facture totale et identifier les appareils les plus couteux." },
         ]}
       />
+
+      <AmazonReco page="calcul-consommation-electrique" />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-consommation-electrique" />

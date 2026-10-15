@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
@@ -204,6 +205,8 @@ export default function Page() {
           { name: "Comparer au BMR de référence et lire l'âge metabolique", text: "Le BMR calcule est compare au BMR d'une personne de même sexe et même âge ayant un IMC de 22. L'âge metabolique correspond à l'âge pour lequel ce BMR de référence est le plus proche de votre BMR réel." },
         ]}
       />
+
+      <AmazonReco page="calcul-age-metabolique" />
 
       <Faq items={FAQ_ITEMS} />
 

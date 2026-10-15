@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 import SourcesMethodo from "../components/SourcesMethodo";
 import Visuel from "../components/Visuel";
@@ -225,6 +226,8 @@ export default function Page() {
           { name: "Definir l'objectif et lire les apports cibles", text: "Perte de poids : TDEE - 250 à 500 kcal/jour. Prise de masse : TDEE + 250 à 500 kcal/jour. Proteines : 1.6 à 2.2 g/kg de poids. Lipides : 25 à 35 pct des calories." },
         ]}
       />
+
+      <AmazonReco page="calcul-calories" />
 
       <Faq items={FAQ_ITEMS} />
 

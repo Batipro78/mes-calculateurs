@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
@@ -207,6 +208,8 @@ export default function Page() {
           { name: "Comparer avec les aides disponibles", text: "Comparer le budget minimum avec le RSA (647 EUR), le seuil de pauvrete (1 288 EUR) et le SMIC net (1 443 EUR). Identifier les aides applicables : APL (100-300 EUR/mois), prime d'activité (jusqu'à 595 EUR/mois), CSS (mutuelle gratuite sous plafond de 810 EUR/mois de revenu)." },
         ]}
       />
+
+      <AmazonReco page="calculateur-budget-survie" />
 
       <Faq items={FAQ_ITEMS} />
 

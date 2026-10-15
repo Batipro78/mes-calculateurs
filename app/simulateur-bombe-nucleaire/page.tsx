@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
@@ -238,6 +239,8 @@ export default function Page() {
           { name: "Lire les 6 zones d'effet", text: "Le simulateur affiche : boule de feu (vaporisation totale), radiation letale à 500 rem, souffle violent à 20 psi (beton detruit, mortalite ~90 %), souffle modere à 5 psi (immeubles effondres), brulures au 3e degré, et souffle leger à 1 psi (vitres brisees)." },
         ]}
       />
+
+      <AmazonReco page="simulateur-bombe-nucleaire" />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/simulateur-bombe-nucleaire" />
