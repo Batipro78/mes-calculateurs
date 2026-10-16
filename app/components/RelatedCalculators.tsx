@@ -34,6 +34,9 @@ const RELATED_MAP: Record<string, string[]> = {
   "/combien-consomme-un-frigo": ["/calcul-consommation-electrique", "/combien-consomme-un-radiateur-electrique", "/calcul-puissance-climatisation", "/simulateur-facture-gaz"],
   "/combien-de-litres-de-peinture": ["/calcul-surface-peinture", "/prix-peintre", "/calcul-pourcentage", "/conversion-longueur"],
   "/combien-de-croquettes-par-jour": ["/calcul-calories-chien-chat", "/calcul-ration-chien", "/calcul-age-chien-humain", "/quel-age-a-mon-chien-en-age-humain"],
+  "/combien-consomme-une-climatisation": ["/cout-climatisation", "/calcul-puissance-climatisation", "/rafraichir-maison-sans-clim", "/calcul-consommation-electrique"],
+  "/que-mettre-dans-un-kit-de-survie": ["/simulateur-blackout", "/calculateur-budget-survie", "/simulateur-bunker", "/calcul-consommation-electrique"],
+  "/combien-coute-le-chauffage-au-gaz": ["/simulateur-facture-gaz", "/quelle-temperature-pour-le-chauffage", "/prix-chauffagiste", "/calculateur-dpe"],
   "/chomage-comment-est-calcule-le-montant": ["/simulateur-chomage", "/indemnite-licenciement", "/salaire-brut-net", "/brut-en-net-quel-pourcentage"],
   "/calcul-tva":["/calcul-pourcentage", "/frais-de-notaire", "/convertisseur-devises", "/salaire-brut-net", "/verificateur-devis"],
   "/simulateur-pret-immobilier": ["/calcul-taux-endettement", "/frais-de-notaire", "/simulateur-epargne", "/simulateur-impot-revenu", "/simulateur-assurance-emprunteur"],
@@ -72,7 +75,7 @@ const RELATED_MAP: Record<string, string[]> = {
   "/simulateur-salaire-alternant": ["/salaire-brut-net", "/simulateur-chomage", "/simulateur-micro-entreprise", "/calcul-prime-activite"],
   "/calculateur-budget-survie": ["/calculateur-autonomie", "/simulateur-apl", "/calcul-prime-activite", "/salaire-brut-net"],
   "/calculateur-autonomie": ["/calculateur-budget-survie", "/simulateur-epargne", "/simulateur-chomage", "/calcul-prime-activite"],
-  "/simulateur-blackout": ["/calcul-consommation-electrique", "/prix-electricien", "/simulateur-bunker", "/calculateur-budget-survie"],
+  "/simulateur-blackout": ["/que-mettre-dans-un-kit-de-survie", "/calcul-consommation-electrique", "/prix-electricien", "/simulateur-bunker", "/calculateur-budget-survie"],
   "/calcul-capacite-emprunt": ["/capacite-d-emprunt-quel-salaire", "/simulateur-pret-immobilier", "/calcul-taux-endettement", "/frais-de-notaire", "/simulateur-epargne", "/simulateur-assurance-emprunteur"],
   "/prix-macon": ["/prix-couvreur", "/prix-peintre", "/prix-electricien", "/prix-plombier", "/prix-travaux-maison"],
   "/prix-peintre": ["/calcul-surface-peinture", "/prix-macon", "/prix-couvreur", "/prix-electricien"],
@@ -116,7 +119,7 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calcul-indice-glycemique": ["/calcul-calories", "/calcul-macros", "/calcul-imc", "/calcul-metabolisme-base"],
   "/calcul-age-metabolique": ["/calcul-metabolisme-base", "/calcul-imc", "/calcul-calories", "/calcul-masse-grasse"],
   "/calculateur-dpe": ["/calcul-puissance-climatisation", "/calcul-consommation-electrique", "/simulateur-pret-immobilier", "/calcul-rentabilite-locative"],
-  "/simulateur-facture-gaz": ["/quelle-temperature-pour-le-chauffage", "/calcul-consommation-electrique", "/simulateur-pret-immobilier", "/prix-chauffagiste", "/calculateur-dpe"],
+  "/simulateur-facture-gaz": ["/combien-coute-le-chauffage-au-gaz", "/quelle-temperature-pour-le-chauffage", "/calcul-consommation-electrique", "/simulateur-pret-immobilier", "/prix-chauffagiste", "/calculateur-dpe"],
   "/simulateur-credit-auto": ["/simulateur-credit-conso", "/simulateur-cout-voiture", "/calcul-taux-endettement", "/calcul-capacite-emprunt", "/simulateur-loa-lld"],
   "/calcul-score-stress": ["/calcul-risque-cardiovasculaire", "/calcul-besoin-sommeil", "/calcul-imc", "/calcul-age-metabolique"],
   "/simulateur-electrique-vs-thermique": ["/simulateur-cout-voiture", "/calcul-malus-ecologique", "/simulateur-bonus-ecologique", "/calcul-consommation-essence"],
@@ -193,7 +196,7 @@ const RELATED_MAP: Record<string, string[]> = {
   "/calcul-puissance-climatisation": ["/cout-climatisation", "/rafraichir-maison-sans-clim", "/calcul-consommation-electrique", "/calcul-temperature-ressentie"],
   "/calcul-temperature-ressentie": ["/rafraichir-maison-sans-clim", "/calcul-puissance-climatisation", "/calcul-consommation-eau", "/conversion-temperature"],
   "/rafraichir-maison-sans-clim": ["/cout-climatisation", "/calcul-puissance-climatisation", "/calcul-temperature-ressentie", "/calcul-consommation-electrique"],
-  "/cout-climatisation": ["/calcul-puissance-climatisation", "/rafraichir-maison-sans-clim", "/calcul-consommation-electrique", "/calcul-temperature-ressentie"],
+  "/cout-climatisation": ["/combien-consomme-une-climatisation", "/calcul-puissance-climatisation", "/rafraichir-maison-sans-clim", "/calcul-consommation-electrique", "/calcul-temperature-ressentie"],
 };
 
 interface RelatedCalculatorsProps {

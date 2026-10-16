@@ -42,7 +42,7 @@ const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Le climatiseur mobile coute-t-il plus cher qu'un split ?",
-    a: "Oui, a confort egal. Le climatiseur mobile est moins efficace (EER souvent autour de 2,6 contre 3,4 a 4 pour un split) et son tuyau d'evacuation laisse rentrer de l'air chaud. Selon l'ADEME, un climatiseur mobile coute environ 140 EUR d'electricite par an, contre environ 8 EUR pour un simple ventilateur.",
+    a: "Oui, a confort egal. Le climatiseur mobile est moins efficace (EER souvent autour de 2,6 contre 3,4 a 4 pour un split) et son tuyau d'evacuation laisse rentrer de l'air chaud. Selon EDF, un climatiseur mobile consomme en moyenne 710 kWh par an (environ 142 EUR au tarif de 0,2001 EUR/kWh), contre 250 kWh pour une pompe a chaleur air/air fixe et 5 kWh pour un ventilateur.",
   },
   {
     q: "Qu'est-ce que l'EER d'une climatisation ?",
@@ -50,7 +50,7 @@ const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Comment reduire le cout de sa climatisation ?",
-    a: "Reglez la temperature a 26 degres (passer de 23 a 26 degres divise la consommation par trois selon l'ADEME), fermez volets et fenetres en journee pour limiter les apports de chaleur, entretenez les filtres, ne climatisez que les pieces occupees et choisissez un modele classe A+++. Un bon dimensionnement evite aussi la surconsommation.",
+    a: "Reglez la temperature a 26 degres (passer de 23 a 26 degres divise la consommation par 2,5 a 4,2 selon la ville, d'apres EDF), fermez volets et fenetres en journee pour limiter les apports de chaleur, entretenez les filtres, ne climatisez que les pieces occupees et choisissez un modele classe A+++. Un bon dimensionnement evite aussi la surconsommation.",
   },
 ];
 

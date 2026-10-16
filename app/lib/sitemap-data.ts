@@ -730,6 +730,24 @@ function generateAllUrls(): SitemapEntry[] {
       priority: 0.8,
     },
     {
+      url: `${BASE_URL}/combien-consomme-une-climatisation`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/que-mettre-dans-un-kit-de-survie`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/combien-coute-le-chauffage-au-gaz`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${BASE_URL}/cout-climatisation`,
       lastModified: new Date(),
       changeFrequency: "monthly",

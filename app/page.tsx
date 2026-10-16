@@ -1710,6 +1710,33 @@ const outils = [
     couleur: "from-amber-500 to-orange-600",
     tag: "Guide",
   },
+  {
+    titre: "Combien consomme une climatisation ?",
+    description:
+      "250 kWh par an en moyenne pour une clim fixe, 710 kWh pour un climatiseur mobile, soit 2,8 fois plus. Les watts, le coût par jour et par mois, et le bon réglage.",
+    href: "/combien-consomme-une-climatisation",
+    icone: "❄️",
+    couleur: "from-sky-500 to-blue-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Que mettre dans un kit de survie ?",
+    description:
+      "La liste officielle du kit d'urgence 72 heures : eau (6 litres par personne), nourriture sans cuisson, radio à piles, lampe, médicaments, papiers. Et le calcul de l'eau selon le foyer.",
+    href: "/que-mettre-dans-un-kit-de-survie",
+    icone: "🎒",
+    couleur: "from-red-500 to-orange-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Combien coûte le chauffage au gaz ?",
+    description:
+      "Environ 2 016 € par an, soit 168 € par mois, pour le client type de la CRE au prix repère d'octobre 2026. Le calcul, le coût selon la surface et au m².",
+    href: "/combien-coute-le-chauffage-au-gaz",
+    icone: "🔥",
+    couleur: "from-orange-500 to-red-600",
+    tag: "Guide",
+  },
 ];
 
 export default function Home() {

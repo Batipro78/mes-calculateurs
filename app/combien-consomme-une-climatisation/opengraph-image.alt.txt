@@ -1,0 +1,1 @@
+Consommation moyenne par an d'un ventilateur, d'une climatisation fixe et d'un climatiseur mobile avec le coût au tarif de 0,2001 euro le kWh : ventilateur 5 kWh soit 1 euro, clim fixe 250 kWh soit 50 euros, climatiseur mobile 710 kWh soit 142 euros

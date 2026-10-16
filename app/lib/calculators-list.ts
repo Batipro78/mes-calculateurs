@@ -200,4 +200,7 @@ export const ALL_CALCULATORS: Calculator[] = [
   { slug: "/combien-consomme-un-frigo", title: "Guide : combien consomme un frigo", emoji: "🧊", color: "from-cyan-500 to-blue-600" },
   { slug: "/combien-de-litres-de-peinture", title: "Guide : combien de litres de peinture", emoji: "🎨", color: "from-fuchsia-500 to-pink-600" },
   { slug: "/combien-de-croquettes-par-jour", title: "Guide : combien de croquettes par jour", emoji: "🐕", color: "from-amber-500 to-orange-600" },
+  { slug: "/combien-consomme-une-climatisation", title: "Guide : combien consomme une climatisation", emoji: "❄️", color: "from-sky-500 to-blue-600" },
+  { slug: "/que-mettre-dans-un-kit-de-survie", title: "Guide : que mettre dans un kit de survie", emoji: "🎒", color: "from-red-500 to-orange-600" },
+  { slug: "/combien-coute-le-chauffage-au-gaz", title: "Guide : combien coûte le chauffage au gaz", emoji: "🔥", color: "from-orange-500 to-red-600" },
 ];
