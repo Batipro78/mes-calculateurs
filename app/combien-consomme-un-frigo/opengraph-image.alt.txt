@@ -1,0 +1,1 @@
+Consommation moyenne d'un frigo, d'un congélateur et d'un frigo américain avec le coût au tarif de 0,2001 euro le kWh : frigo 332,3 kWh par an soit 66,49 euros, congélateur 253,6 kWh soit 50,74 euros, frigo américain 664,6 kWh soit 132,99 euros

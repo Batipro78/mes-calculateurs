@@ -197,4 +197,7 @@ export const ALL_CALCULATORS: Calculator[] = [
   { slug: "/surcote-retraite-comment-est-elle-calculee", title: "Guide : surcote retraite, comment est-elle calculée", emoji: "📈", color: "from-amber-500 to-orange-600" },
   { slug: "/remboursement-mutuelle-comment-ca-marche", title: "Guide : remboursement mutuelle, comment ça marche", emoji: "🩺", color: "from-teal-500 to-emerald-600" },
   { slug: "/chomage-comment-est-calcule-le-montant", title: "Guide : chômage, comment est calculé le montant", emoji: "📋", color: "from-sky-500 to-blue-600" },
+  { slug: "/combien-consomme-un-frigo", title: "Guide : combien consomme un frigo", emoji: "🧊", color: "from-cyan-500 to-blue-600" },
+  { slug: "/combien-de-litres-de-peinture", title: "Guide : combien de litres de peinture", emoji: "🎨", color: "from-fuchsia-500 to-pink-600" },
+  { slug: "/combien-de-croquettes-par-jour", title: "Guide : combien de croquettes par jour", emoji: "🐕", color: "from-amber-500 to-orange-600" },
 ];

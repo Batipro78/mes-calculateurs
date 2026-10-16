@@ -1683,6 +1683,33 @@ const outils = [
     couleur: "from-sky-500 to-blue-600",
     tag: "Guide",
   },
+  {
+    titre: "Combien consomme un frigo ?",
+    description:
+      "332 kWh par an en moyenne, soit 0,91 kWh par jour et environ 66 € par an. Pourquoi la puissance en watts trompe et comment lire l'étiquette énergie.",
+    href: "/combien-consomme-un-frigo",
+    icone: "🧊",
+    couleur: "from-cyan-500 to-blue-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Combien de litres de peinture pour 10, 20, 50 ou 100 m² ?",
+    description:
+      "À 10 m² par litre : 2 litres pour 20 m² en une couche, 4 litres en deux. La formule, un exemple de pièce complète et ce que couvrent 5 litres.",
+    href: "/combien-de-litres-de-peinture",
+    icone: "🎨",
+    couleur: "from-fuchsia-500 to-pink-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Combien de croquettes par jour pour un chien ou un chat ?",
+    description:
+      "On calcule d'abord des calories, puis des grammes : environ 166 g par jour pour un chien de 10 kg avec un aliment à 380 kcal pour 100 g. Chiots, chats et chatons aussi.",
+    href: "/combien-de-croquettes-par-jour",
+    icone: "🐕",
+    couleur: "from-amber-500 to-orange-600",
+    tag: "Guide",
+  },
 ];
 
 export default function Home() {

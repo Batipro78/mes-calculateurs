@@ -22,7 +22,7 @@ const APPAREILS: Appareil[] = [
   { slug: "lave-linge", nom: "Lave-linge", emoji: "🧺", puissance: 1200, heuresDefaut: 1 },
   { slug: "lave-vaisselle", nom: "Lave-vaisselle", emoji: "🍽️", puissance: 1400, heuresDefaut: 1 },
   { slug: "radiateur-electrique", nom: "Radiateur electrique", emoji: "🔥", puissance: 1500, heuresDefaut: 8 },
-  { slug: "refrigerateur", nom: "Refrigerateur", emoji: "❄️", puissance: 150, heuresDefaut: 24 },
+  { slug: "refrigerateur", nom: "Refrigerateur", emoji: "❄️", puissance: 38, heuresDefaut: 24 },
   { slug: "four-electrique", nom: "Four electrique", emoji: "🍳", puissance: 2500, heuresDefaut: 1 },
   { slug: "micro-ondes", nom: "Micro-ondes", emoji: "📡", puissance: 1000, heuresDefaut: 0.5 },
   { slug: "plaque-induction", nom: "Plaque induction", emoji: "🍲", puissance: 2500, heuresDefaut: 1 },

@@ -29,7 +29,7 @@ const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Quels sont les appareils qui consomment le plus d'electricite ?",
-    a: "Les appareils les plus energivores sont la borne de recharge pour vehicule electrique (7400 W), le four electrique et la plaque a induction (2500 W), la climatisation (2000 W), le seche-cheveux et l'aspirateur (1800 W), et le radiateur electrique (1500 W). Le refrigerateur, bien que peu puissant (150 W), consomme beaucoup car il fonctionne 24h/24.",
+    a: "Les appareils les plus energivores sont la borne de recharge pour vehicule electrique (7400 W), le four electrique et la plaque a induction (2500 W), la climatisation (2000 W), le seche-cheveux et l'aspirateur (1800 W), et le radiateur electrique (1500 W). Le refrigerateur est branche 24h/24 mais son moteur s'arrete regulierement : sa puissance moyenne est d'environ 38 W (332 kWh par an en moyenne d'apres EDF).",
   },
   {
     q: "Quelle est la difference entre l'option Base et l'option Heures Pleines / Heures Creuses ?",
@@ -85,7 +85,7 @@ export default function Page() {
 
         <Visuel
           fichier="cout-par-jour-appareils-courants-electricite"
-          alt="Coût par jour de sept appareils au tarif de 0,2001 euro le kWh : ampoule LED (9 W, 5 h) 0,01 euro, box internet (15 W, 24 h) 0,07 euro, téléviseur (120 W, 4 h) 0,10 euro, réfrigérateur (150 W, 24 h) 0,72 euro, lave-linge (1 200 W, 1 h) 0,24 euro, four électrique (2 500 W, 1 h) 0,50 euro, radiateur électrique (1 500 W, 8 h) 2,40 euros"
+          alt="Coût par jour de sept appareils au tarif de 0,2001 euro le kWh : ampoule LED (9 W, 5 h) 0,01 euro, box internet (15 W, 24 h) 0,07 euro, téléviseur (120 W, 4 h) 0,10 euro, réfrigérateur (38 W de puissance moyenne, 24 h) 0,18 euro, lave-linge (1 200 W, 1 h) 0,24 euro, four électrique (2 500 W, 1 h) 0,50 euro, radiateur électrique (1 500 W, 8 h) 2,40 euros"
           legende="Coût par jour de sept appareils avec les puissances et les durées par défaut du calculateur, au tarif Base de 0,2001 € le kWh (Tarif Bleu EDF, en vigueur depuis le 1er août 2026)."
           className="mt-6"
         />

@@ -27,7 +27,7 @@ const APPAREILS_PREDEFINIS: AppareilPredefini[] = [
   { nom: "Lave-linge", emoji: "\u{1F9FA}", puissance: 1200, heuresDefaut: 1 },
   { nom: "Lave-vaisselle", emoji: "\u{1F37D}\uFE0F", puissance: 1400, heuresDefaut: 1 },
   { nom: "Radiateur electrique", emoji: "\u{1F525}", puissance: 1500, heuresDefaut: 8 },
-  { nom: "Refrigerateur", emoji: "\u{2744}\uFE0F", puissance: 150, heuresDefaut: 24 },
+  { nom: "Refrigerateur (puissance moyenne)", emoji: "\u{2744}\uFE0F", puissance: 38, heuresDefaut: 24 },
   { nom: "Four electrique", emoji: "\u{1F373}", puissance: 2500, heuresDefaut: 1 },
   { nom: "Micro-ondes", emoji: "\u{1F4E1}", puissance: 1000, heuresDefaut: 0.5 },
   { nom: "Plaque induction", emoji: "\u{1F372}", puissance: 2500, heuresDefaut: 1 },

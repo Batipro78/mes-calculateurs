@@ -9,7 +9,7 @@ export default function ({ t, cadre, W, H }) {
     { nom: "Ampoule LED", w: 9, h: 5, couleur: "#4ade80" },
     { nom: "Box internet", w: 15, h: 24, couleur: "#4ade80" },
     { nom: "Téléviseur", w: 120, h: 4, couleur: "#38bdf8" },
-    { nom: "Réfrigérateur", w: 150, h: 24, couleur: "#38bdf8" },
+    { nom: "Réfrigérateur", w: 38, h: 24, couleur: "#38bdf8" },
     { nom: "Lave-linge", w: 1200, h: 1, couleur: "#fbbf24" },
     { nom: "Four électrique", w: 2500, h: 1, couleur: "#fb923c" },
     { nom: "Radiateur électrique", w: 1500, h: 8, couleur: "#f87171" },
