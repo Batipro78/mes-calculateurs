@@ -40,20 +40,20 @@ export interface ResultatCoutTrajet {
 export const CARBURANTS: CarburantInfo[] = [
   {
     id: "essence",
-    nom: "Essence (SP95/SP98)",
-    prixMoyen: 1.8,
+    nom: "Essence (SP95-E10)",
+    prixMoyen: 2.14,
     unite: "L",
     emoji: "⛽",
-    description: "Prix moyen France 2026",
+    description: "SP95-E10, relevé du ministère du 9 octobre 2026",
     empreinte: 2.28,
   },
   {
     id: "diesel",
     nom: "Diesel (Gazole)",
-    prixMoyen: 1.72,
+    prixMoyen: 2.33,
     unite: "L",
     emoji: "🛢️",
-    description: "Prix moyen France 2026",
+    description: "Relevé du ministère du 9 octobre 2026",
     empreinte: 2.62,
   },
   {
@@ -68,7 +68,7 @@ export const CARBURANTS: CarburantInfo[] = [
   {
     id: "hybride",
     nom: "Hybride",
-    prixMoyen: 1.8,
+    prixMoyen: 2.14,
     unite: "L",
     emoji: "🔋",
     description: "Prix essence (consommation reduite)",
@@ -77,10 +77,10 @@ export const CARBURANTS: CarburantInfo[] = [
   {
     id: "gpl",
     nom: "GPL",
-    prixMoyen: 1.0,
+    prixMoyen: 1.03,
     unite: "L",
     emoji: "⛽",
-    description: "Prix moyen France 2026",
+    description: "GPLc, relevé du ministère du 9 octobre 2026",
     empreinte: 1.65,
   },
 ];

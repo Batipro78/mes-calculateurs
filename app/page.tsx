@@ -1737,6 +1737,33 @@ const outils = [
     couleur: "from-orange-500 to-red-600",
     tag: "Guide",
   },
+  {
+    titre: "Combien coûte un trajet en voiture ?",
+    description:
+      "La formule du carburant, les prix à la pompe du ministère au 9 octobre 2026 et un tableau par distance : 500 km coûtent environ 75 € en essence, 70 € en diesel, 17 € en électrique à domicile.",
+    href: "/combien-coute-un-trajet-en-voiture",
+    icone: "🛣️",
+    couleur: "from-sky-500 to-blue-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Quel est mon poids idéal ?",
+    description:
+      "Une fourchette plutôt qu'un chiffre : pour 1,70 m, de 53,5 à 72 kg. Le tableau par taille, les formules de Lorentz, Devine et Creff et leurs limites.",
+    href: "/quel-est-mon-poids-ideal",
+    icone: "⚖️",
+    couleur: "from-violet-500 to-purple-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Comment calculer son IMC ?",
+    description:
+      "Poids divisé par la taille au carré : 70 kg pour 1,70 m font 24,2. Les seuils de l'OMS et du CDC, un exemple pas à pas et les limites de l'indice.",
+    href: "/comment-calculer-son-imc",
+    icone: "⚖️",
+    couleur: "from-rose-500 to-pink-500",
+    tag: "Guide",
+  },
 ];
 
 export default function Home() {

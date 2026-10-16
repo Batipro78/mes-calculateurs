@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/calcul-cout-trajet-voiture" },
   title: "Calcul Cout Trajet Voiture - Essence, Diesel, Electrique 2026",
   description:
-    "Calculez le cout reel d'un trajet voiture en France 2026. Carburant + peages + comparaison train/avion + empreinte CO2. Prix moyens essence 1.80 €, diesel 1.72 €, electrique 0.30 €/kWh.",
+    "Calculez le cout reel d'un trajet voiture en France 2026. Carburant + peages + comparaison train/avion + empreinte CO2. Prix moyens (ministere, 9 octobre 2026) : essence SP95-E10 2.14 €, gazole 2.33 €, electrique 0.30 €/kWh (valeur indicative).",
   keywords:
     "cout trajet voiture, prix essence trajet, calcul cout carburant, comparaison train voiture, prix kilometre voiture, cout km auto, empreinte CO2 trajet",
 };
@@ -19,15 +19,15 @@ export const metadata: Metadata = {
 const FAQ_ITEMS: FaqItem[] = [
   {
     q: "Comment calculer le cout d'un trajet en voiture ?",
-    a: "Formule : Cout = (distance x consommation / 100) x prix carburant + peages. Exemple : 500 km x 7 L/100 x 1.80 € + 40 € de peages = 63 + 40 = 103 €. Le calcul integre aussi les peages pour un total realiste, et permet de comparer avec le train ou l'avion.",
+    a: "Formule : Cout = (distance x consommation / 100) x prix carburant + peages. Exemple : 500 km x 7 L/100 x 2.14 € + 40 € de peages = 74.90 + 40 = 114.90 €. Le calcul integre aussi les peages pour un total realiste, et permet de comparer avec le train ou l'avion.",
   },
   {
     q: "Quels sont les prix moyens des carburants en France en 2026 ?",
-    a: "Prix moyens France 2026 : Essence (SP95/SP98) 1.80 €/L, Diesel (Gazole) 1.72 €/L, Electrique 0.30 €/kWh a domicile (jusqu'a 0.59 €/kWh en borne rapide), GPL 1.00 €/L. Source : Ministere de la Transition Ecologique.",
+    a: "Prix moyens a la pompe en France au 9 octobre 2026 : Essence SP95-E10 2.14 €/L, Gazole 2.33 €/L, GPL carburant 1.03 €/L (releve hebdomadaire du Ministere de la Transition Ecologique, qui varie chaque semaine). Electrique : 0.30 €/kWh a domicile (valeur indicative du calculateur), jusqu'a 0.59 €/kWh en borne rapide.",
   },
   {
     q: "Voiture electrique vraiment moins chere a l'usage ?",
-    a: "Oui en general : pour 500 km, une electrique consommant 17 kWh/100 a domicile coute ~25 €, contre ~63 € pour une essence (7 L/100). Soit 60% d'economie. Attention : en borne rapide autoroute (0.50-0.59 €/kWh), l'avantage se reduit a 30-40%.",
+    a: "Oui en general : pour 500 km, une electrique consommant 17 kWh/100 a domicile coute ~25 €, contre ~75 € pour une essence (7 L/100 a 2.14 €/L). Soit environ 65% d'economie. Attention : en borne rapide autoroute (0.50-0.59 €/kWh), l'avantage se reduit a 35-45%.",
   },
   {
     q: "Quand le train est-il moins cher que la voiture ?",
@@ -78,37 +78,37 @@ export default function Page() {
         <ul className="text-slate-600 space-y-2 mb-4 ml-4 list-disc">
           <li>Distance : 465 km (aller simple)</li>
           <li>Consommation moyenne essence : 7 L / 100 km</li>
-          <li>Carburant consomme : 465 × 7 / 100 = 32,5 L</li>
-          <li>Cout carburant : 32,5 × 1,80 € = 58,50 €</li>
+          <li>Carburant consomme : 465 × 7 / 100 = 32,55 L</li>
+          <li>Cout carburant : 32,55 × 2,14 € = 69,66 €</li>
           <li>Peages aller : ~38 €</li>
-          <li><strong>Total aller simple : 96,50 €</strong></li>
-          <li>Aller-retour : <strong>193 €</strong></li>
+          <li><strong>Total aller simple : 107,66 €</strong></li>
+          <li>Aller-retour : <strong>215,31 €</strong></li>
         </ul>
       </section>
 
       <section className="mt-12 bg-amber-50 border border-amber-200 rounded-2xl p-8">
         <h2 className="text-xl font-bold text-amber-900 mb-4 flex items-center gap-2">
-          ⛽ Prix moyens carburants France 2026
+          ⛽ Prix moyens carburants France, 9 octobre 2026
         </h2>
         <div className="grid gap-3 sm:grid-cols-2 mb-4">
           <div className="bg-white rounded-lg p-3 border border-amber-200">
-            <p className="font-semibold text-amber-900">Essence (SP95/SP98)</p>
-            <p className="text-2xl font-bold text-amber-800">1,80 €/L</p>
-            <p className="text-xs text-amber-700 mt-1">Moyenne pondérée nationale</p>
+            <p className="font-semibold text-amber-900">Essence (SP95-E10)</p>
+            <p className="text-2xl font-bold text-amber-800">2,14 €/L</p>
+            <p className="text-xs text-amber-700 mt-1">SP95-E10, relevé du ministère</p>
           </div>
           <div className="bg-white rounded-lg p-3 border border-amber-200">
             <p className="font-semibold text-amber-900">Diesel (Gazole)</p>
-            <p className="text-2xl font-bold text-amber-800">1,72 €/L</p>
-            <p className="text-xs text-amber-700 mt-1">Reste moins cher que l&apos;essence</p>
+            <p className="text-2xl font-bold text-amber-800">2,33 €/L</p>
+            <p className="text-xs text-amber-700 mt-1">Relevé du ministère, plus cher que l&apos;essence en ce moment</p>
           </div>
           <div className="bg-white rounded-lg p-3 border border-amber-200">
             <p className="font-semibold text-amber-900">Electrique (domicile)</p>
             <p className="text-2xl font-bold text-amber-800">0,30 €/kWh</p>
-            <p className="text-xs text-amber-700 mt-1">Tarif reglemente EDF base</p>
+            <p className="text-xs text-amber-700 mt-1">Valeur indicative : 0,20 € à domicile en base EDF, plus en borne publique</p>
           </div>
           <div className="bg-white rounded-lg p-3 border border-amber-200">
             <p className="font-semibold text-amber-900">GPL</p>
-            <p className="text-2xl font-bold text-amber-800">1,00 €/L</p>
+            <p className="text-2xl font-bold text-amber-800">1,03 €/L</p>
             <p className="text-xs text-amber-700 mt-1">Option encore tres economique</p>
           </div>
         </div>
@@ -242,9 +242,9 @@ export default function Page() {
       <HowToJsonLd
         name="Calculer le coût réel d'un trajet en voiture"
         steps={[
-          { name: "Saisir la distance, le carburant et la consommation", text: "Entrer la distance en km, choisir le type de carburant (essence à 1,80 EUR/L, diesel à 1,72 EUR/L, électrique à 0,30 EUR/kWh ou GPL à 1,00 EUR/L) et la consommation aux 100 km du véhicule." },
-          { name: "Calculer le coût carburant du trajet", text: "Coût carburant = (distance x consommation / 100) x prix. Exemple Paris-Lyon 465 km à 7 L/100 km : (465 x 7 / 100) x 1,80 = 58,50 EUR de carburant." },
-          { name: "Ajouter les peages et obtenir le total", text: "Ajouter le montant estime des peages (exemple Paris-Lyon aller : 38 EUR). Total aller = 58,50 + 38 = 96,50 EUR. Le coût par passager est divise par le nombre de personnes." },
+          { name: "Saisir la distance, le carburant et la consommation", text: "Entrer la distance en km, choisir le type de carburant (essence à 2,14 EUR/L, gazole à 2,33 EUR/L, électrique à 0,30 EUR/kWh ou GPL à 1,03 EUR/L) et la consommation aux 100 km du véhicule." },
+          { name: "Calculer le coût carburant du trajet", text: "Coût carburant = (distance x consommation / 100) x prix. Exemple Paris-Lyon 465 km à 7 L/100 km : (465 x 7 / 100) x 2,14 = 69,66 EUR de carburant." },
+          { name: "Ajouter les peages et obtenir le total", text: "Ajouter le montant estime des peages (exemple Paris-Lyon aller : 38 EUR). Total aller = 69,66 + 38 = 107,66 EUR. Le coût par passager est divise par le nombre de personnes." },
           { name: "Comparer avec le train et lire l'empreinte CO2", text: "Le calculateur affiche le coût équivalent train (0,18 EUR/km en moyenne) et l'empreinte carbone (essence 2,28 kg CO2/L, électrique 0,06 kg CO2/kWh selon ADEME 2024) pour comparaison." },
         ]}
       />

@@ -121,7 +121,7 @@ export async function generateMetadata({
 
   const desc =
     parsed.type === "trajet" && parsed.origine && parsed.destination
-      ? `Trajet ${parsed.origine}-${parsed.destination} (${parsed.distanceKm} km) en ${info.nom.toLowerCase()} : cout total ${resultat.coutTotal.toFixed(2)} € (carburant + peages). Prix moyens France 2026.`
+      ? `Trajet ${parsed.origine}-${parsed.destination} (${parsed.distanceKm} km) en ${info.nom.toLowerCase()} : cout total ${resultat.coutTotal.toFixed(2)} € (carburant + peages). Prix moyens du ministere au 9 octobre 2026.`
       : `Trajet de ${parsed.distanceKm} km avec une consommation de ${parsed.consommation} ${info.unite}/100 km en ${info.nom.toLowerCase()} = ${resultat.coutTotal.toFixed(2)} € au prix moyen ${info.prixMoyen} €/${info.unite}.`;
 
   return {

@@ -203,4 +203,7 @@ export const ALL_CALCULATORS: Calculator[] = [
   { slug: "/combien-consomme-une-climatisation", title: "Guide : combien consomme une climatisation", emoji: "❄️", color: "from-sky-500 to-blue-600" },
   { slug: "/que-mettre-dans-un-kit-de-survie", title: "Guide : que mettre dans un kit de survie", emoji: "🎒", color: "from-red-500 to-orange-600" },
   { slug: "/combien-coute-le-chauffage-au-gaz", title: "Guide : combien coûte le chauffage au gaz", emoji: "🔥", color: "from-orange-500 to-red-600" },
+  { slug: "/combien-coute-un-trajet-en-voiture", title: "Guide : combien coûte un trajet en voiture", emoji: "🛣️", color: "from-sky-500 to-blue-600" },
+  { slug: "/quel-est-mon-poids-ideal", title: "Guide : quel est mon poids idéal", emoji: "⚖️", color: "from-violet-500 to-purple-600" },
+  { slug: "/comment-calculer-son-imc", title: "Guide : comment calculer son IMC", emoji: "⚖️", color: "from-rose-500 to-pink-500" },
 ];

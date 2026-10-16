@@ -12,7 +12,7 @@ export default function CalculCoutTrajetVoiture() {
   const [distance, setDistance] = useState<number>(465);
   const [consommation, setConsommation] = useState<number>(7);
   const [carburant, setCarburant] = useState<TypeCarburant>("essence");
-  const [prixUnitaire, setPrixUnitaire] = useState<number>(1.8);
+  const [prixUnitaire, setPrixUnitaire] = useState<number>(2.14);
   const [peages, setPeages] = useState<number>(38);
 
   // Auto-update prix moyen quand on change de carburant
@@ -115,10 +115,10 @@ export default function CalculCoutTrajetVoiture() {
               value={prixUnitaire}
               onChange={(e) => setPrixUnitaire(parseFloat(e.target.value) || 0)}
               className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none font-medium text-slate-800"
-              placeholder="Ex: 1.80"
+              placeholder="Ex: 2.14"
             />
             <p className="text-xs text-slate-500 mt-1">
-              Prix moyen 2026 : {carburantInfo.prixMoyen} €/{carburantInfo.unite}
+              Prix moyen (ministère, 9 octobre 2026) : {carburantInfo.prixMoyen} €/{carburantInfo.unite}
             </p>
           </div>
 

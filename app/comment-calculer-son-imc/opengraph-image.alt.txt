@@ -1,0 +1,1 @@
+IMC d'une personne de 1,70 m selon son poids avec les seuils de 18,5, 25 et 30 : 50 kg donnent 17,3 soit insuffisance ; 60 kg donnent 20,8 soit poids normal ; 70 kg donnent 24,2 soit poids normal ; 80 kg donnent 27,7 soit surpoids ; 90 kg donnent 31,1 soit obésité

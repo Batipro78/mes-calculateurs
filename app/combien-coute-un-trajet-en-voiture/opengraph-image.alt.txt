@@ -1,0 +1,1 @@
+Coût du carburant pour un trajet de 500 kilomètres avec les prix du 9 octobre 2026 : essence (7 L/100 km à 2,14 € le litre) soit 74,90 euros, diesel (6 L/100 km à 2,33 € le litre) soit 69,90 euros, électrique, borne rapide (17 kWh/100 km à 0,50 € le kWh (exemple)) soit 42,50 euros, électrique, à domicile (17 kWh/100 km à 0,2001 € le kWh) soit 17,01 euros
