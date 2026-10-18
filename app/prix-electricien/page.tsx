@@ -7,6 +7,7 @@ import VillesLinks from "../components/VillesLinks";
 import Faq, { FaqItem } from "../components/Faq";
 import HowToJsonLd from "../components/HowToJsonLd";
 import CTAMonDevisMinute from "../components/CTAMonDevisMinute";
+import CTAElectricienLocal from "../components/CTAElectricienLocal";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/prix-electricien" },
@@ -63,6 +64,7 @@ export default function Page() {
       </p>
 
       <EstimateurElectricien />
+      <CTAElectricienLocal />
 
 
       <section className="mt-12 bg-white rounded-2xl border border-slate-200 p-8">

@@ -28,6 +28,7 @@ const SECTIONS: { title: string; paras: string[] }[] = [
     title: "Gratuit, et comment c'est finance",
     paras: [
       "Le site est et reste 100 % gratuit, sans inscription. Il est finance, sur certaines pages, par la mise en relation avec des professionnels partenaires.",
+      "Une precision d'honnetete : sur la page Prix electricien, l'encart de mise en relation renvoie vers Amatech, l'entreprise d'electricite de l'auteur de ce site (Mantes-la-Ville, 78). Ce n'est pas un partenaire tiers et cet emplacement n'est pas vendu. C'est signale directement dans l'encart.",
       "Cela nous permet de developper de nouveaux calculateurs et de maintenir les existants a jour, sans jamais facturer l'utilisateur.",
     ],
   },
