@@ -206,4 +206,7 @@ export const ALL_CALCULATORS: Calculator[] = [
   { slug: "/combien-coute-un-trajet-en-voiture", title: "Guide : combien coûte un trajet en voiture", emoji: "🛣️", color: "from-sky-500 to-blue-600" },
   { slug: "/quel-est-mon-poids-ideal", title: "Guide : quel est mon poids idéal", emoji: "⚖️", color: "from-violet-500 to-purple-600" },
   { slug: "/comment-calculer-son-imc", title: "Guide : comment calculer son IMC", emoji: "⚖️", color: "from-rose-500 to-pink-500" },
+  { slug: "/comment-calculer-le-ht-avec-la-tva", title: "Guide : comment calculer le HT avec la TVA", emoji: "🧾", color: "from-emerald-500 to-teal-600" },
+  { slug: "/comment-calculer-la-date-de-paques", title: "Guide : quand tombe Pâques", emoji: "🐣", color: "from-yellow-400 to-amber-500" },
+  { slug: "/comment-calculer-un-pourcentage", title: "Guide : comment calculer un pourcentage", emoji: "📊", color: "from-cyan-500 to-sky-600" },
 ];

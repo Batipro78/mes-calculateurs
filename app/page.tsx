@@ -1764,6 +1764,33 @@ const outils = [
     couleur: "from-rose-500 to-pink-500",
     tag: "Guide",
   },
+  {
+    titre: "Comment calculer le HT avec la TVA ?",
+    description:
+      "Pour trouver le HT, on divise le TTC par 1 + le taux : 120 € TTC à 20 % donnent 100 € HT. Le tableau des taux de 20 %, 10 % et 5,5 %.",
+    href: "/comment-calculer-le-ht-avec-la-tva",
+    icone: "🧾",
+    couleur: "from-emerald-500 to-teal-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Quand tombe Pâques ?",
+    description:
+      "Le dimanche qui suit la pleine lune après le 21 mars. Les dates de 2026 à 2030, et la date orthodoxe (12 avril 2026).",
+    href: "/comment-calculer-la-date-de-paques",
+    icone: "🐣",
+    couleur: "from-yellow-400 to-amber-500",
+    tag: "Guide",
+  },
+  {
+    titre: "Comment calculer un pourcentage ?",
+    description:
+      "15 % de 80 font 12. Les trois calculs de base, un tableau de repère et l'erreur de la hausse suivie d'une baisse.",
+    href: "/comment-calculer-un-pourcentage",
+    icone: "📊",
+    couleur: "from-cyan-500 to-sky-600",
+    tag: "Guide",
+  },
 ];
 
 export default function Home() {
