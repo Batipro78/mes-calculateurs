@@ -1,7 +1,7 @@
 // Liens Partenaires Amazon (affiliation).
 // Tant que AMAZON_TAG est vide, le composant AmazonReco n'affiche rien.
 // Renseigner l'identifiant de suivi du compte Partenaires (format "xxxxx-21"), puis pousser.
-export const AMAZON_TAG = "";
+export const AMAZON_TAG = "mescalculat04-21";
 
 export interface AmazonItem {
   label: string;
