@@ -3,6 +3,7 @@ import AdSlot from "../components/AdSlot";
 import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 
 const SOURCES = [
@@ -240,6 +241,8 @@ export default function Page() {
           { name: "Rafraichir le ressenti", text: "Utiliser un ventilateur avec la peau humide, et placer un linge humide ou de la glace dans le courant d'air." },
         ]}
       />
+
+      <AmazonReco page="rafraichir-maison-sans-clim" />
 
       <Faq items={FAQ_ITEMS} />
 

@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
@@ -193,6 +194,8 @@ export default function Page() {
           { name: "Lire le tableau de charges de travail", text: "Le 1RM estime permet de calculer les charges cibles pour 1 à 20 répétitions et leurs pourcentages correspondants : 85-100 pct pour la force maximale, 65-85 pct pour l'hypertrophie, 40-65 pct pour l'endurance musculaire." },
         ]}
       />
+
+      <AmazonReco page="calcul-1rm" />
 
       <Faq items={FAQ_ITEMS} />
 

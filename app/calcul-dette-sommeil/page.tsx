@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
@@ -206,6 +207,8 @@ export default function Page() {
           { name: "Lire la dette cumulee et le niveau de severite", text: "La dette totale est la somme des deficits nocturnes. Inférieure à 5h : dette legere, recuperation en 1 à 2 nuits. De 5 à 10h : moderee, recuperation en 1 à 2 semaines avec siestes de 20 min. Supérieure à 10h : severe, consultation medicale recommandee." },
         ]}
       />
+
+      <AmazonReco page="calcul-dette-sommeil" />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-dette-sommeil" />

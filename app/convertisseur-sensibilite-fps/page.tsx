@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
@@ -215,6 +216,8 @@ export default function Page() {
           { name: "Lire la sensibilité équivalente et vérifier l'eDPI", text: "L'outil calcule la sensibilité dans le jeu cible qui preserve le même cm/360. Ex. : 1.0 en CS2 à 800 DPI correspond à environ 0,43 en Valorant. Le même geste physique produit le même mouvement de camera." },
         ]}
       />
+      <AmazonReco page="convertisseur-sensibilite-fps" />
+
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/convertisseur-sensibilite-fps" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

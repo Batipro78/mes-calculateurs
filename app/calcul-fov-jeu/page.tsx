@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
@@ -294,6 +295,8 @@ export default function Page() {
           { name: "Entrer le FOV obtenu dans les options du jeu", text: "Lire le HFOV et le VFOV cibles en degrés. Entrer cette valeur dans les paramètres graphiques du jeu (CS2, Valorant, Apex Legends...) pour une vision correctement calibree sur le nouvel ecran." },
         ]}
       />
+
+      <AmazonReco page="calcul-fov-jeu" />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-fov-jeu" />

@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 import { formatAllure, predireTempsCourse } from "./allureCourseCalc";
 
@@ -192,6 +193,8 @@ export default function Page() {
           { name: "Situer son profil de coureur", text: "Debutant : 7:00 à 8:30 min/km (7 à 8,5 km/h). Amateur : 5:30 à 7:00 min/km. Confirme : 4:00 à 5:30 min/km. Elite : moins de 4:00 min/km (plus de 15 km/h)." },
         ]}
       />
+      <AmazonReco page="convertisseur-allure-course" />
+
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/convertisseur-allure-course" />
       <AdSlot adSlot="0987654321" adFormat="horizontal" className="mt-8" />

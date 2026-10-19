@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 import Visuel from "../components/Visuel";
 
@@ -216,6 +217,8 @@ export default function Page() {
           { name: "Lire les horaires de coucher optimaux bases sur les cycles de 90 min", text: "Un cycle de sommeil dure 90 minutes. Le calculateur propose des heures de coucher alignees sur 4, 5 ou 6 cycles complets (6h, 7h30 ou 9h) pour eviter l'inertie du sommeil au reveil." },
         ]}
       />
+
+      <AmazonReco page="calcul-besoin-sommeil" />
 
       <Faq items={FAQ_ITEMS} />
 

@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
@@ -220,6 +221,8 @@ export default function Page() {
           { name: "Lire la fourchette de poids sain", text: "La plage saine correspond à un IMC entre 18,5 et 24,9. Pour 165 cm, cela donne 50,3 à 67,8 kg. Prendre la moyenne des 3 formules comme référence indicative." },
         ]}
       />
+
+      <AmazonReco page="calcul-poids-ideal" />
 
       <Faq items={FAQ_ITEMS} />
 

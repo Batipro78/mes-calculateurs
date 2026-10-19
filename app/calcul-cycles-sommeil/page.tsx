@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
@@ -281,6 +282,8 @@ export default function Page() {
           { name: "Lire les 5 horaires proposes de 4 à 7 cycles", text: "5 horaires optimaux sont proposes, correspondant à 4, 5, 6 et 7 cycles complets de 90 minutes. La National Sleep Foundation recommande 5 cycles (7h30 de sommeil) pour un adulte de 18 à 64 ans." },
         ]}
       />
+
+      <AmazonReco page="calcul-cycles-sommeil" />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-cycles-sommeil" />

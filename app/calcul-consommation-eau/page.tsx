@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 import Visuel from "../components/Visuel";
 
@@ -214,6 +215,8 @@ export default function Page() {
           { name: "Lire le besoin total en litres et en verres et la repartition sur la journee", text: "Le résultat est exprime en litres et en nombre de verres de 250 ml. Le calculateur propose une repartition sur la journee (matin, midi, après-midi, soir) pour faciliter l'hydratation reguliere." },
         ]}
       />
+
+      <AmazonReco page="calcul-consommation-eau" />
 
       <Faq items={FAQ_ITEMS} />
 

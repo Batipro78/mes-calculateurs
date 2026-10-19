@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 import Visuel from "../components/Visuel";
 
@@ -188,6 +189,8 @@ export default function Page() {
           { name: "Vérifier la mention eventuelle au bac", text: "Pour le bac general (a compter de la session 2027), les coefficients officiels sont : specialite coeff. 16 (x2), philosophie coeff. 8, Grand oral coeff. 8, mathematiques anticipees coeff. 2, total 100 sans option. Les seuils : admis des 10, Assez Bien 12, Bien 14, Très Bien 16, felicitations du jury 18 sur 20." },
         ]}
       />
+
+      <AmazonReco page="calcul-moyenne" />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-moyenne" />

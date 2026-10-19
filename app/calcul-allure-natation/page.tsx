@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 import {
   formatAllureNatation,
@@ -305,6 +306,8 @@ export default function Page() {
           { name: "Lire les predictions de temps sur les distances cles", text: "Le calculateur applique la formule : temps = allure x (distance / 100) pour estimer les temps sur 200m, 400m, 1500m, Half Ironman 1900m et Ironman 3800m." },
         ]}
       />
+
+      <AmazonReco page="calcul-allure-natation" />
 
       <Faq items={FAQ_ITEMS} />
 

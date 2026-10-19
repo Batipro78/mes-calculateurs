@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
@@ -230,6 +231,8 @@ export default function Page() {
           { name: "Suivre son évolution dans le temps", text: "Répéter les mesures toutes les 4 à 6 semaines dans les mêmes conditions (matin à jeun, mêmes points de mesure). La tendance sur plusieurs semaines est plus significative qu'une mesure isolee." },
         ]}
       />
+
+      <AmazonReco page="calcul-masse-grasse" />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-masse-grasse" />

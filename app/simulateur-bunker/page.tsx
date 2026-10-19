@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
@@ -183,6 +184,8 @@ export default function Page() {
           { name: "Lire le budget total et la surface recommandee", text: "Le simulateur calcule la surface totale (espaces de vie + communs + stockage) et le coût de construction estime ; pour 2 personnes en basique : à partir de 30 000 EUR ; pour une famille en NRBC : 200 000 EUR et plus." },
         ]}
       />
+
+      <AmazonReco page="simulateur-bunker" />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/simulateur-bunker" />

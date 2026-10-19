@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 import { genererTableauBER } from "./caloriesAnimauxCalc";
 
@@ -311,6 +312,8 @@ export default function Page() {
           { name: "Lire le DER et la ration journalière", text: "DER (Besoin Energetique Quotidien) = BER x facteur d'activité. Le résultat en kcal/jour permet de calculer la quantité d'aliment à distribuer selon la densite calorique de la croquette ou patee choisie." },
         ]}
       />
+
+      <AmazonReco page="calcul-calories-chien-chat" />
 
       <Faq items={FAQ_ITEMS} />
 

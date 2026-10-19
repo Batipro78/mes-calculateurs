@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 import { getTopSports, SPORTS } from "./caloriesSportCalc";
 
@@ -221,6 +222,8 @@ export default function Page() {
           { name: "Évaluer le deficit calorique et l'impact sur le poids", text: "Comparer les calories brulees au deficit journalier cible. Un deficit de 500 kcal/jour entraine une perte d'environ 500 g par semaine. Le cumul de plusieurs activités est possible en mode multi-sports." },
         ]}
       />
+
+      <AmazonReco page="calcul-calories-sport" />
 
       <Faq items={FAQ_ITEMS} />
 

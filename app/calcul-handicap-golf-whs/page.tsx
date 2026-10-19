@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
@@ -285,6 +286,8 @@ export default function Page() {
           { name: "Obtenir le handicap de jeu pour un parcours donne", text: "Handicap de jeu = Index x (Slope / 113) + (SSS - Par). Exemple : Index 18, Slope 125, SSS 73, Par 72 => 18 x (125/113) + 1 = 21. Ce handicap change selon le parcours joue." },
         ]}
       />
+
+      <AmazonReco page="calcul-handicap-golf-whs" />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-handicap-golf-whs" />

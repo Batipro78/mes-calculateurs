@@ -6,6 +6,7 @@ import RelatedCalculators from "../components/RelatedCalculators";
 import Visuel from "../components/Visuel";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
@@ -148,6 +149,8 @@ export default function Page() {
           { name: "Lire les trois echelles et les reperes pratiques", text: "Les valeurs en Celsius, Fahrenheit et Kelvin s'affichent simultanement avec les reperes cles : 0 C = 32 F (gel), 37 C = 98,6 F (corps humain), 100 C = 212 F (ebullition de l'eau)." },
         ]}
       />
+
+      <AmazonReco page="conversion-temperature" />
 
       <Faq items={FAQ_ITEMS} />
 

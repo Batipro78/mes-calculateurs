@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
@@ -236,6 +237,8 @@ export default function Page() {
           { name: "Adapter son alimentation selon l'objectif", text: "Le TDEE correspond aux calories à consommer pour maintenir le poids. Un deficit de 400-500 kcal/jour entraine une perte d'environ 0,5 kg par semaine. Un surplus de 300 kcal favorise la prise de masse musculaire." },
         ]}
       />
+
+      <AmazonReco page="calcul-metabolisme-base" />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-metabolisme-base" />

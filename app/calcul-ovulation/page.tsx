@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import SourcesMethodo from "../components/SourcesMethodo";
 import HowToJsonLd from "../components/HowToJsonLd";
 
@@ -283,6 +284,8 @@ export default function Page() {
           { name: "Lire le calendrier de fertilite", text: "Le résultat affiche la date d'ovulation estimée, la fenetre fertile et la date probable des prochaines regles. Les jours J-2 et J-1 sont les plus fertiles : les spermatozoides survivent 3-5 jours, l'ovule est fecondable 12 à 24 heures." },
         ]}
       />
+
+      <AmazonReco page="calcul-ovulation" />
 
       <Faq items={FAQ_ITEMS} />
 

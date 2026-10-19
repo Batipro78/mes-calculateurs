@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
@@ -160,6 +161,8 @@ export default function Page() {
           { name: "Savoir ou chercher les effets sur Parcoursup", text: "Les notes de bulletins de 1re et de terminale et les resultats aux epreuves anticipees sont pris en compte dans Parcoursup (education.gouv.fr). Les criteres de chaque formation sont sur parcoursup.fr." },
         ]}
       />
+
+      <AmazonReco page="calcul-mention-bac" />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-mention-bac" />

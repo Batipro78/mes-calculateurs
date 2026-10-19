@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import SourcesMethodo from "../components/SourcesMethodo";
 import HowToJsonLd from "../components/HowToJsonLd";
 
@@ -185,6 +186,8 @@ export default function Page() {
           { name: "Interpréter le résultat dans la courbe individuelle", text: "La zone normale s'etend du P3 au P97. Ce qui compte est la regularite de la courbe : un bébé au P10 qui suit son percentile est en bonne santé. Une cassure brutale (ex. P50 vers P10 en un mois) necessite un avis pediatrique." },
         ]}
       />
+
+      <AmazonReco page="calcul-percentile-bebe" />
 
       <Faq items={FAQ_ITEMS} />
 

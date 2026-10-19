@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
@@ -306,6 +307,8 @@ export default function Page() {
           { name: "Consulter la VAM estimée pour les segments en montee", text: "La Vitesse Ascensionnelle Moyenne (VAM) est calculee à partir du FTP. Une VAM de 1 200 m/h correspond à un amateur confirme, 1 700 m/h à un pro. Utile pour analyser les segments Strava en col." },
         ]}
       />
+
+      <AmazonReco page="calcul-ftp-cyclisme" />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-ftp-cyclisme" />

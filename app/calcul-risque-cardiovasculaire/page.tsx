@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import SourcesMethodo from "../components/SourcesMethodo";
 import HowToJsonLd from "../components/HowToJsonLd";
 
@@ -179,6 +180,8 @@ export default function Page() {
           { name: "Lire le score de Framingham et agir", text: "Le risque estime sur 10 ans : inférieur ou egal à 5% = faible ; 6-10% = modere ; 11-20% = eleve ; supérieur à 20% = très eleve. Au-dela de 10%, consulter un medecin pour corriger les facteurs modifiables (tabac, tension, cholesterol)." },
         ]}
       />
+
+      <AmazonReco page="calcul-risque-cardiovasculaire" />
 
       <Faq items={FAQ_ITEMS} />
 

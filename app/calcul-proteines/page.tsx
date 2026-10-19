@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import SourcesMethodo from "../components/SourcesMethodo";
 import HowToJsonLd from "../components/HowToJsonLd";
 
@@ -198,6 +199,8 @@ export default function Page() {
           { name: "Repartir sur les repas", text: "Diviser l'apport en 3 prises de 30-40 g pour optimiser la synthese musculaire. Ex. 100 g de blanc de poulet (31 g), 100 g de thon (26 g), 2 oeufs (13 g)." },
         ]}
       />
+
+      <AmazonReco page="calcul-proteines" />
 
       <Faq items={FAQ_ITEMS} />
 

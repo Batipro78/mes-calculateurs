@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
@@ -283,6 +284,8 @@ export default function Page() {
           { name: "Interpréter le résultat selon les normes", text: "Regle d'or OMS : WtHR inférieur ou egal à 0,5. Normes NHS pour hommes : sain entre 0,43 et 0,52. Normes NHS pour femmes : sain entre 0,42 et 0,48. Au-dessus de 0,5, le risque cardiovasculaire est augmente." },
         ]}
       />
+
+      <AmazonReco page="calcul-rapport-taille-tour-de-taille" />
 
       <Faq items={FAQ_ITEMS} />
 

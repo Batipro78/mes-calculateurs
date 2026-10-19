@@ -6,6 +6,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 import SourcesMethodo from "../components/SourcesMethodo";
 
@@ -157,6 +158,8 @@ export default function Page() {
           { name: "Ajuster", text: "Majorer selon l'isolation, l'exposition au soleil, l'etage sous les toits et le nombre d'occupants." },
         ]}
       />
+
+      <AmazonReco page="calcul-puissance-climatisation" />
 
       <Faq items={FAQ_ITEMS} />
 

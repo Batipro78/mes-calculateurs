@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import HowToJsonLd from "../components/HowToJsonLd";
 
 export const metadata: Metadata = {
@@ -310,6 +311,8 @@ export default function Page() {
           { name: "Situer le niveau musculaire dans l'echelle", text: "Hommes : FFMI < 18 = maigre, 19-21 = intermediaire, 21-23 = avance, 23-25 = très avance. Au-dela de 25 on approche la limite naturelle ; au-dela de 26,5 l'assistance pharmacologique est probable." },
         ]}
       />
+
+      <AmazonReco page="calcul-ffmi" />
 
       <Faq items={FAQ_ITEMS} />
       <RelatedCalculators currentSlug="/calcul-ffmi" />

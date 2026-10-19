@@ -4,6 +4,7 @@ import Breadcrumb from "./Breadcrumb";
 import RelatedCalculators from "./RelatedCalculators";
 import Faq, { FaqItem } from "./Faq";
 import Visuel from "./Visuel";
+import AmazonReco from "./AmazonReco";
 
 // Gabarit des articles « une question, une reponse, un calculateur ».
 // La page ne fournit que des donnees (ArticleData) : tout le texte passe par des
@@ -230,6 +231,8 @@ export default function ArticleGuide({ article: a }: { article: ArticleData }) {
       ))}
 
       <BlocCalculateur c={a.calculateur} />
+
+      <AmazonReco page={a.slug.replace(/^\//, "")} />
 
       <Faq items={a.faq} title="Questions fréquentes" />
 

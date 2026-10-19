@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import ConvertisseurTemperature from "../ConvertisseurTemperature";
 import Breadcrumb from "../../components/Breadcrumb";
 import RelatedCalculators from "../../components/RelatedCalculators";
+import AmazonReco from "../../components/AmazonReco";
 import { notFound } from "next/navigation";
 
 const CELSIUS_VALS = [-40, -20, -10, 0, 5, 10, 15, 20, 25, 30, 35, 37, 40, 50, 60, 80, 100, 150, 200, 250];
@@ -225,6 +226,8 @@ export default async function Page({ params }: { params: Promise<{ params: strin
           {de === "celsius" ? " multipliez par 1,8 et ajoutez 32." : " soustrayez 32 et multipliez par 5/9."}
         </p>
       </section>
+
+      <AmazonReco page="conversion-temperature" />
 
       {/* Liens vers autres conversions */}
       <section className="mt-8 bg-white rounded-2xl border border-slate-200 p-6">

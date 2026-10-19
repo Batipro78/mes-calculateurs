@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import SourcesMethodo from "../components/SourcesMethodo";
 import HowToJsonLd from "../components/HowToJsonLd";
 
@@ -211,6 +212,8 @@ export default function Page() {
           { name: "Lire les grammes par macronutriment", text: "Le résultat affiche les grammes journaliers de proteines (4 kcal/g), glucides (4 kcal/g) et lipides (9 kcal/g). Les proteines visent 1,6 à 2,2 g par kg de poids corporel pour un sportif." },
         ]}
       />
+
+      <AmazonReco page="calcul-macros" />
 
       <Faq items={FAQ_ITEMS} />
 

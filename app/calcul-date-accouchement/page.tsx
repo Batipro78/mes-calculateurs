@@ -5,6 +5,7 @@ import Breadcrumb from "../components/Breadcrumb";
 import RelatedCalculators from "../components/RelatedCalculators";
 import WebAppJsonLd from "../components/WebAppJsonLd";
 import Faq, { FaqItem } from "../components/Faq";
+import AmazonReco from "../components/AmazonReco";
 import SourcesMethodo from "../components/SourcesMethodo";
 import HowToJsonLd from "../components/HowToJsonLd";
 
@@ -319,6 +320,8 @@ export default function Page() {
           { name: "Vérifier les dates de conge maternite", text: "Conge calcule automatiquement : 16 semaines (6 avant + 10 après) pour 1er ou 2e enfant, 26 semaines (8 avant + 18 après) pour 3e enfant et plus, 34 semaines pour des jumeaux." },
         ]}
       />
+
+      <AmazonReco page="calcul-date-accouchement" />
 
       <Faq items={FAQ_ITEMS} />
 
