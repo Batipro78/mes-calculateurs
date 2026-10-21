@@ -209,4 +209,5 @@ export const ALL_CALCULATORS: Calculator[] = [
   { slug: "/comment-calculer-le-ht-avec-la-tva", title: "Guide : comment calculer le HT avec la TVA", emoji: "🧾", color: "from-emerald-500 to-teal-600" },
   { slug: "/comment-calculer-la-date-de-paques", title: "Guide : quand tombe Pâques", emoji: "🐣", color: "from-yellow-400 to-amber-500" },
   { slug: "/comment-calculer-un-pourcentage", title: "Guide : comment calculer un pourcentage", emoji: "📊", color: "from-cyan-500 to-sky-600" },
+  { slug: "/comment-calculer-le-volume-d-une-cuve", title: "Guide : volume d'une cuve en litres", emoji: "🛢️", color: "from-teal-500 to-emerald-600" },
 ];

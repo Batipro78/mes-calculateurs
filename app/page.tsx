@@ -1791,6 +1791,15 @@ const outils = [
     couleur: "from-cyan-500 to-sky-600",
     tag: "Guide",
   },
+  {
+    titre: "Comment calculer le volume d'une cuve ?",
+    description:
+      "π × rayon² × hauteur, puis ÷ 1 000 : une cuve de 100 cm sur 120 cm fait 942 litres. Cuve couchée à moitié pleine et erreurs de mesure.",
+    href: "/comment-calculer-le-volume-d-une-cuve",
+    icone: "🛢️",
+    couleur: "from-teal-500 to-emerald-600",
+    tag: "Guide",
+  },
 ];
 
 export default function Home() {
