@@ -6,10 +6,10 @@ type Unite = "kg" | "livres" | "oz" | "g" | "stones";
 
 const UNITES: { id: Unite; label: string; symbole: string }[] = [
   { id: "kg", label: "Kilogrammes", symbole: "kg" },
-  { id: "livres", label: "Livres (lbs)", symbole: "lbs" },
-  { id: "oz", label: "Onces (oz)", symbole: "oz" },
+  { id: "livres", label: "Livres", symbole: "lbs" },
+  { id: "oz", label: "Onces", symbole: "oz" },
   { id: "g", label: "Grammes", symbole: "g" },
-  { id: "stones", label: "Stones (st)", symbole: "st" },
+  { id: "stones", label: "Stones", symbole: "st" },
 ];
 
 function convertir(valeur: number, de: Unite, vers: Unite): number {

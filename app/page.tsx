@@ -1800,6 +1800,69 @@ const outils = [
     couleur: "from-teal-500 to-emerald-600",
     tag: "Guide",
   },
+  {
+    titre: "Combien fait une livre en kg ?",
+    description:
+      "1 livre = 0,45359237 kg exactement, mais « une livre » au marché fait 500 g. Conversion kg en livres, onces et stones.",
+    href: "/combien-fait-une-livre-en-kg",
+    icone: "⚖️",
+    couleur: "from-amber-500 to-orange-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Comment calculer son âge exact ?",
+    description:
+      "Âge en années, mois et jours ou en nombre de jours, cas des personnes nées un 29 février et formule DATEDIF pour Excel.",
+    href: "/comment-calculer-son-age-exact",
+    icone: "🎂",
+    couleur: "from-pink-500 to-rose-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Combien fait un pouce en cm ?",
+    description:
+      "1 pouce = 2,54 cm exactement : un écran de 24 pouces a une diagonale de 60,96 cm. Pieds, tailles de jean et tableau de conversion.",
+    href: "/combien-fait-un-pouce-en-cm",
+    icone: "📏",
+    couleur: "from-sky-500 to-blue-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Comment convertir des heures en centièmes ?",
+    description:
+      "Minutes ÷ 60 : 7 h 45 font 7,75 h. Tableau de 5 en 5 minutes et conversion inverse des centièmes en minutes.",
+    href: "/comment-convertir-des-heures-en-centiemes",
+    icone: "⏱️",
+    couleur: "from-violet-500 to-purple-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Comment calculer une racine carrée ?",
+    description:
+      "√2 ≈ 1,414214 et √3 ≈ 1,732051 : carrés parfaits, encadrement et méthode de Héron pour la trouver sans calculatrice.",
+    href: "/comment-calculer-une-racine-carree",
+    icone: "√",
+    couleur: "from-indigo-500 to-blue-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Comment calculer des intérêts composés ?",
+    description:
+      "La formule C × (1 + t)^n, la capitalisation chaque mois et la règle de 72, avec des exemples chiffrés et la différence avec les intérêts simples.",
+    href: "/comment-calculer-des-interets-composes",
+    icone: "📈",
+    couleur: "from-emerald-500 to-green-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Comment calculer le PGCD ?",
+    description:
+      "Le PGCD de 36 et 48 vaut 12 : listes de diviseurs, algorithme d'Euclide, facteurs premiers, PPCM et fractions irréductibles.",
+    href: "/comment-calculer-le-pgcd",
+    icone: "🔢",
+    couleur: "from-orange-500 to-red-600",
+    tag: "Guide",
+  },
 ];
 
 export default function Home() {
