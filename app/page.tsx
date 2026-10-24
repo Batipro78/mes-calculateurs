@@ -1863,6 +1863,15 @@ const outils = [
     couleur: "from-orange-500 to-red-600",
     tag: "Guide",
   },
+  {
+    titre: "Combien de jours ouvrés en 2027 ?",
+    description:
+      "254 jours ouvrés en 2027 (252 en 2026) : le détail mois par mois, les 11 jours fériés, les ponts de mai et de novembre et le cas de l'Alsace-Moselle.",
+    href: "/combien-de-jours-ouvres-en-2027",
+    icone: "📅",
+    couleur: "from-indigo-500 to-purple-600",
+    tag: "Guide",
+  },
 ];
 
 export default function Home() {

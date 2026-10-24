@@ -217,4 +217,5 @@ export const ALL_CALCULATORS: Calculator[] = [
   { slug: "/comment-calculer-une-racine-carree", title: "Guide : calculer une racine carrée", emoji: "√", color: "from-indigo-500 to-blue-600" },
   { slug: "/comment-calculer-des-interets-composes", title: "Guide : calculer des intérêts composés", emoji: "📈", color: "from-emerald-500 to-green-600" },
   { slug: "/comment-calculer-le-pgcd", title: "Guide : calculer le PGCD", emoji: "🔢", color: "from-orange-500 to-red-600" },
+  { slug: "/combien-de-jours-ouvres-en-2027", title: "Guide : combien de jours ouvrés en 2027", emoji: "📅", color: "from-indigo-500 to-purple-600" },
 ];

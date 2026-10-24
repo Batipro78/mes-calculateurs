@@ -832,6 +832,12 @@ function generateAllUrls(): SitemapEntry[] {
       priority: 0.8,
     },
     {
+      url: `${BASE_URL}/combien-de-jours-ouvres-en-2027`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${BASE_URL}/cout-climatisation`,
       lastModified: new Date(),
       changeFrequency: "monthly",

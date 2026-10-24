@@ -44,7 +44,7 @@ const SECTIONS: { title: string; paras: string[] }[] = [
 const FAQ_ITEMS: FaqItem[] = [
   {
     q: "Combien de jours ouvrés en 2026 ?",
-    a: "L'année 2026 compte environ 253 jours ouvrés (lundi-vendredi hors jours fériés). Ce nombre peut varier légèrement selon les conventions collectives qui peuvent ajouter des jours fériés locaux.",
+    a: "L'année 2026 compte 252 jours ouvrés (lundi-vendredi hors jours fériés), et 2027 en compte 254. Ce nombre peut varier légèrement selon les conventions collectives qui peuvent ajouter des jours fériés locaux.",
   },
   {
     q: "Quelle différence entre jour ouvré et jour ouvrable ?",
