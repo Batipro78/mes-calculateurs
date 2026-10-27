@@ -13,7 +13,7 @@ const ANCIENNES = [1, 2, 3, 5, 8, 10, 12, 15, 18, 20, 25, 30];
 
 
 function calculIndemnite(salaire: number, annees: number): number {
-  if (annees < 0.6667) return 0;
+  if (Math.round(annees * 12) < 8) return 0; // au moins 8 mois
   const partAvant10 = Math.min(annees, 10);
   const partApres10 = Math.max(annees - 10, 0);
   return salaire * (partAvant10 * (1 / 4) + partApres10 * (1 / 3));

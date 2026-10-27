@@ -1828,6 +1828,42 @@ const outils = [
     tag: "Guide",
   },
   {
+    titre: "Comment faire un produit en croix ?",
+    description:
+      "x = b × c ÷ a : une recette pour 4 adaptée à 6 personnes, un prix au kilo, une échelle de carte. Et les cas où la règle de trois ne marche pas.",
+    href: "/comment-faire-un-produit-en-croix",
+    icone: "✖️",
+    couleur: "from-violet-500 to-purple-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Comment calculer l'indemnité de licenciement ?",
+    description:
+      "1/4 de mois par année jusqu'à 10 ans, 1/3 au-delà, dès 8 mois d'ancienneté : 1 500 € et 3 ans et 6 mois donnent 1 312,50 €. Salaire de référence et pièges.",
+    href: "/comment-calculer-l-indemnite-de-licenciement",
+    icone: "📦",
+    couleur: "from-slate-600 to-slate-800",
+    tag: "Guide",
+  },
+  {
+    titre: "Comment calculer les indemnités kilométriques ?",
+    description:
+      "Barème fiscal 2026 selon les CV et les kilomètres : 5 CV et 12 000 km donnent 5 679 €. Véhicule électrique +20 %, limite des 40 km et frais réels.",
+    href: "/comment-calculer-les-indemnites-kilometriques",
+    icone: "🚗",
+    couleur: "from-sky-500 to-blue-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Comment calculer sa période d'ovulation ?",
+    description:
+      "L'ovulation a lieu en moyenne 14 jours avant les règles suivantes : vers le 18e jour d'un cycle de 32 jours. Fenêtre fertile de 6 jours et limites du calcul.",
+    href: "/comment-calculer-sa-periode-d-ovulation",
+    icone: "🌸",
+    couleur: "from-pink-500 to-rose-600",
+    tag: "Guide",
+  },
+  {
     titre: "Comment convertir des heures en centièmes ?",
     description:
       "Minutes ÷ 60 : 7 h 45 font 7,75 h. Tableau de 5 en 5 minutes et conversion inverse des centièmes en minutes.",

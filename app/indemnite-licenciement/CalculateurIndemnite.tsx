@@ -40,12 +40,14 @@ export default function CalculateurIndemnite() {
   const annees = parseInt(ancienneteAnnees) || 0;
   const moisSupp = parseInt(ancienneteMois) || 0;
   const ancienneteTotale = annees + moisSupp / 12;
+  // Au moins 8 mois : compare en mois entiers (8/12 = 0,666... echouait face a 0.6667)
+  const ancienneteSuffisante = annees * 12 + moisSupp >= 8;
 
   // Indemnite legale de licenciement (Code du travail)
   // 1/4 de mois par annee pour les 10 premieres annees
   // 1/3 de mois par annee au-dela de 10 ans
   let indemnite = 0;
-  if (ancienneteTotale >= 0.6667) {
+  if (ancienneteSuffisante) {
     // 8 mois minimum d'anciennete
     const partAvant10 = Math.min(ancienneteTotale, 10);
     const partApres10 = Math.max(ancienneteTotale - 10, 0);
@@ -222,7 +224,7 @@ export default function CalculateurIndemnite() {
           </div>
         </div>
 
-        {ancienneteTotale < 0.6667 && (
+        {!ancienneteSuffisante && (
           <div className="bg-amber-50 border border-amber-200 rounded-2xl p-5">
             <p className="text-sm font-medium text-amber-800">
               Anciennete insuffisante

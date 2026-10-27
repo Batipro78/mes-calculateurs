@@ -218,4 +218,8 @@ export const ALL_CALCULATORS: Calculator[] = [
   { slug: "/comment-calculer-des-interets-composes", title: "Guide : calculer des intérêts composés", emoji: "📈", color: "from-emerald-500 to-green-600" },
   { slug: "/comment-calculer-le-pgcd", title: "Guide : calculer le PGCD", emoji: "🔢", color: "from-orange-500 to-red-600" },
   { slug: "/combien-de-jours-ouvres-en-2027", title: "Guide : combien de jours ouvrés en 2027", emoji: "📅", color: "from-indigo-500 to-purple-600" },
+  { slug: "/comment-faire-un-produit-en-croix", title: "Guide : comment faire un produit en croix", emoji: "✖️", color: "from-violet-500 to-purple-600" },
+  { slug: "/comment-calculer-l-indemnite-de-licenciement", title: "Guide : calculer l'indemnité de licenciement", emoji: "📦", color: "from-slate-600 to-slate-800" },
+  { slug: "/comment-calculer-les-indemnites-kilometriques", title: "Guide : calculer les indemnités kilométriques", emoji: "🚗", color: "from-sky-500 to-blue-600" },
+  { slug: "/comment-calculer-sa-periode-d-ovulation", title: "Guide : calculer sa période d'ovulation", emoji: "🌸", color: "from-pink-500 to-rose-600" },
 ];
