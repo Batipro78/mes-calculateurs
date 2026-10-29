@@ -180,6 +180,14 @@ export default function Page() {
           puissance trop juste fait disjoncter. Adapter ces deux parametres a vos usages reels est souvent le
           premier levier d&apos;economie, avant meme de traquer les appareils.
         </p>
+        <p className="text-slate-600 leading-relaxed mt-4">
+          Votre compteur disjoncte souvent, ou votre tableau electrique ne suit plus vos nouveaux appareils ?
+          Dans les Yvelines (78), les Hauts-de-Seine (92) et l&apos;ouest de Paris, vous pouvez faire appel a{" "}
+          <a href="https://www.sparx-elec.fr/" target="_blank" rel="noopener" className="text-blue-600 hover:underline">
+            Sparx Élec, electricien dans le 78 et le 92
+          </a>{" "}
+          pour un diagnostic ou une mise aux normes.
+        </p>
       </section>
 
       <HowToJsonLd
