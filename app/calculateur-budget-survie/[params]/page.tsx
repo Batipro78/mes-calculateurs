@@ -275,7 +275,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         </p>
         <p className="text-slate-600 mb-4 leading-relaxed">
           Le RSA ({fmt(Math.round(rsaRef))} EUR) ne couvre que <strong>{Math.round((rsaRef / r.total) * 100)}%</strong> de ce budget.
-          Le SMIC net (1 443 EUR) {SMIC_NET >= r.total
+          Le SMIC net ({fmt(Math.round(SMIC_NET))} EUR) {SMIC_NET >= r.total
             ? `permet de couvrir ce budget avec une marge de ${fmt(Math.round(SMIC_NET - r.total))} EUR.`
             : `ne suffit pas — il manque ${fmt(Math.round(r.total - SMIC_NET))} EUR/mois.`}
         </p>

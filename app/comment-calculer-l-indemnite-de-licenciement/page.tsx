@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     siteName: "Mes Calculateurs",
     title: TITRE,
     description: DESCRIPTION,
+    images: [{ url: "/images/indemnite-licenciement-carton.webp", width: 1200, height: 630 }],
   },
 };
 

@@ -29,7 +29,7 @@ const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Quel est le SMIC horaire en 2026 ?",
-    a: "Le SMIC horaire brut est de 11,88 EUR en 2026, soit un SMIC mensuel brut de 1 801,80 EUR pour 35 heures par semaine (151,67 heures mensualisees). Aucun salarie ne peut etre remunere en dessous de ce seuil.",
+    a: "Le SMIC horaire brut est de 12,31 EUR depuis le 1er juin 2026, soit un SMIC mensuel brut de 1 867,02 EUR pour 35 heures par semaine (151,67 heures mensualisees). Aucun salarie ne peut etre remunere en dessous de ce seuil.",
   },
   {
     q: "Combien de temps de pause est obligatoire dans la journee ?",
@@ -215,8 +215,8 @@ export default function Page() {
         </h3>
         <p className="text-slate-600 leading-relaxed mb-4">
           Le SMIC (Salaire Minimum Interprofessionnel de Croissance) horaire
-          brut est de <strong>11,88 EUR</strong> en 2026, soit un SMIC mensuel
-          brut de 1 801,80 EUR pour 35 heures (151,67 heures mensualisees).
+          brut est de <strong>12,31 EUR</strong> depuis le 1er juin 2026, soit un SMIC mensuel
+          brut de 1 867,02 EUR pour 35 heures (151,67 heures mensualisees).
           Aucun salarie ne peut etre remunere en dessous de ce seuil, quelle
           que soit la forme du contrat (CDI, CDD, interim, alternance).
         </p>

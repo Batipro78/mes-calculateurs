@@ -2,9 +2,9 @@
 // Source : Urssaf / LFSS 2026 — baremes en vigueur au 1er janvier 2026
 // Territoires : Guadeloupe, Guyane, Martinique, La Reunion
 
-// SMIC mensuel brut 2026 (meme valeur que sur tout le site)
-export const SMIC_MENSUEL = 1823.03;
-export const SMIC_ANNUEL = SMIC_MENSUEL * 12; // 21 876,36 EUR
+// SMIC brut depuis le 1er juin 2026 (service-public F2300) : 12,31 EUR/h, 1 867,02 EUR/mois
+export const SMIC_MENSUEL = 1867.02;
+export const SMIC_ANNUEL = 22404.2; // 12,31 x 1 820 h = 22 404,20 EUR (valeur annuelle officielle)
 
 // Taux T (somme des cotisations exonerees)
 // Moins de 11 salaries : FNAL 0,10 % → T = 0,3201

@@ -101,7 +101,7 @@ export default function CalculateurLodeom() {
             />
             <span className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs">EUR</span>
           </div>
-          <p className="text-xs text-slate-400 mt-1">SMIC mensuel 2026 : 1 823,03 EUR</p>
+          <p className="text-xs text-slate-400 mt-1">SMIC mensuel depuis le 1er juin 2026 : 1 867,02 EUR</p>
         </div>
       </div>
 

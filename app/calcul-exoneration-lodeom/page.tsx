@@ -145,9 +145,9 @@ export default function Page() {
         </p>
         <ul className="list-disc list-inside text-slate-600 space-y-1 mb-4">
           <li>Remuneration annuelle : 2 500 x 12 = <strong>30 000 EUR</strong></li>
-          <li>SMIC annuel 2026 : 1 823,03 x 12 = <strong>21 876,36 EUR</strong></li>
-          <li>Ratio : 30 000 / 21 876,36 = <strong>1,371 SMIC</strong></li>
-          <li>1,371 est inferieur a 2 SMIC : zone d&apos;exoneration <strong>totale</strong></li>
+          <li>SMIC annuel (depuis le 1er juin 2026) : 12,31 x 1 820 h = <strong>22 404,20 EUR</strong></li>
+          <li>Ratio : 30 000 / 22 404,20 = <strong>1,339 SMIC</strong></li>
+          <li>1,339 est inferieur a 2 SMIC : zone d&apos;exoneration <strong>totale</strong></li>
           <li>Coefficient = T = <strong>0,3201</strong></li>
           <li>Exoneration annuelle = 0,3201 x 30 000 = <strong>9 603 EUR</strong></li>
           <li>Exoneration mensuelle = 9 603 / 12 = <strong>800,25 EUR</strong></li>
@@ -196,7 +196,7 @@ export default function Page() {
         name="Calculer l'exonération LODEOM"
         steps={[
           { name: "Choisir le barème et la taille de l'entreprise", text: "Sélectionner le barème applicable : Competitivite (droit commun), Competitivite renforcee (PME secteurs prioritaires) ou Innovation et croissance (salariés R&D/NTIC). Le taux T = 0,3201 pour moins de 11 salariés, T = 0,3241 pour 11 salariés et plus." },
-          { name: "Saisir le salaire mensuel brut", text: "Entrer le salaire mensuel brut du salarié. Le simulateur calcule le ratio remuneration annuelle / SMIC annuel 2026 (base 1 823,03 EUR/mois soit 21 876 EUR/an)." },
+          { name: "Saisir le salaire mensuel brut", text: "Entrer le salaire mensuel brut du salarié. Le simulateur calcule le ratio remuneration annuelle / SMIC annuel (base 1 867,02 EUR/mois depuis le 1er juin 2026, soit 22 404 EUR/an)." },
           { name: "Appliquer la formule du coefficient degressif", text: "Si le ratio est inférieur au seuil d'exonération totale (ex. 1,3 SMIC en Competitivite), coefficient = T. En zone degressive, formule : 1,3 x T / 0,9 x (2,2 x SMIC / rem - 1). Au-dela du plafond, coefficient = 0." },
           { name: "Lire l'exonération mensuelle et annuelle", text: "Exonération annuelle = coefficient x remuneration annuelle brute. Exonération mensuelle = exonération annuelle / 12. Ce montant se deduit des cotisations patronales versees à l'Urssaf." },
         ]}
@@ -205,7 +205,7 @@ export default function Page() {
       <Faq items={FAQ_ITEMS} />
 
       <SourcesMethodo
-        methode="Le simulateur applique les baremes LODEOM en vigueur au 1er janvier 2026 tels que publies par l'Urssaf et LégiSocial. Le coefficient est calcule selon les formules reglementaires et arrondi a 4 decimales. L'exoneration est le produit du coefficient par la remuneration annuelle brute. Les seuils sont exprimes en multiples du SMIC mensuel brut 2026 (1 823,03 EUR)."
+        methode="Le simulateur applique les baremes LODEOM en vigueur au 1er janvier 2026 tels que publies par l'Urssaf et LégiSocial. Le coefficient est calcule selon les formules reglementaires et arrondi a 4 decimales. L'exoneration est le produit du coefficient par la remuneration annuelle brute. Les seuils sont exprimes en multiples du SMIC mensuel brut (1 867,02 EUR depuis le 1er juin 2026)."
         sources={[
           {
             label: "Urssaf — Exoneration LODEOM (baremes officiels)",

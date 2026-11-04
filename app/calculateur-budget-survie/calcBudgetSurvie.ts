@@ -97,8 +97,9 @@ export const RSA_SEUL = 646.52;
 export const RSA_COUPLE = 969.78;
 export const RSA_COUPLE_1_ENFANT = 1163.74;
 export const RSA_COUPLE_2_ENFANTS = 1357.69;
-export const SMIC_NET = 1443.11;
-export const SMIC_BRUT = 1823.03;
+// SMIC depuis le 1er juin 2026 (service-public F2300)
+export const SMIC_NET = 1477.93;
+export const SMIC_BRUT = 1867.02;
 export const SEUIL_PAUVRETE = 1288;
 
 export interface PosteBudget {

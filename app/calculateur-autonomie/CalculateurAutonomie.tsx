@@ -186,7 +186,7 @@ export default function CalculateurAutonomie() {
               { label: "RSA (647)", v: 647 },
               { label: "RSA+APL (~950)", v: 950 },
               { label: "ARE moyen (~1 200)", v: 1200 },
-              { label: "SMIC (1 443)", v: 1443 },
+              { label: "SMIC (1 478)", v: 1478 },
             ].map((r) => (
               <button
                 key={r.v}

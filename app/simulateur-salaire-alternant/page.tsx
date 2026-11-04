@@ -242,8 +242,8 @@ export default function Page() {
           <div>
             <p className="font-semibold text-slate-700">Un apprenti paye-t-il des impots ?</p>
             <p className="text-slate-600 text-sm leading-relaxed">
-              Les apprentis sont exoneres d&apos;impot sur le revenu jusqu&apos;a un plafond egal au SMIC annuel
-              (environ 21 876 EUR en 2026). Au-dela, seule la part depassant ce seuil est imposable.
+              Les apprentis sont exoneres d&apos;impot sur le revenu jusqu&apos;a un plafond egal au montant annuel
+              du SMIC (service-public). Au-dela, seule la part depassant ce seuil est imposable.
             </p>
           </div>
           <div>

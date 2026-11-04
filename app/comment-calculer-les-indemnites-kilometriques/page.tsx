@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     siteName: "Mes Calculateurs",
     title: TITRE,
     description: DESCRIPTION,
+    images: [{ url: "/images/indemnites-kilometriques-route.webp", width: 1200, height: 630 }],
   },
 };
 

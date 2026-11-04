@@ -7,7 +7,7 @@ import { notFound } from "next/navigation";
 
 const HEURES = [20, 24, 28, 32, 35, 37, 39, 40, 42, 45, 48];
 const TAUX = [12, 13, 15, 18, 20, 25, 30];
-const SMIC_HORAIRE = 11.88;
+const SMIC_HORAIRE = 12.31; // SMIC brut horaire depuis le 1er juin 2026 (service-public F2300)
 
 
 

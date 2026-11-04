@@ -34,7 +34,7 @@ const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Peut-on vivre avec le SMIC en 2026 ?",
-    a: "Le SMIC net de 1 443 EUR/mois permet de couvrir le budget minimum en zone rurale et en ville moyenne pour une personne seule. A Paris ou en grande ville, c'est tres juste. Pour un couple ou une famille, le SMIC seul est insuffisant sans aides complementaires.",
+    a: "Le SMIC net de 1 478 EUR/mois permet de couvrir le budget minimum en zone rurale et en ville moyenne pour une personne seule. A Paris ou en grande ville, c'est tres juste. Pour un couple ou une famille, le SMIC seul est insuffisant sans aides complementaires.",
   },
   {
     q: "Quel est le seuil de pauvrete en France ?",
@@ -134,7 +134,7 @@ export default function Page() {
           </div>
           <div className="bg-emerald-50 rounded-xl p-4 border border-emerald-100">
             <p className="font-semibold text-emerald-700 text-sm">SMIC net</p>
-            <p className="text-2xl font-extrabold text-emerald-800 mt-1">1 443 EUR</p>
+            <p className="text-2xl font-extrabold text-emerald-800 mt-1">1 478 EUR</p>
             <p className="text-xs text-emerald-600 mt-1">Suffisant en province (seul)</p>
           </div>
         </div>
@@ -205,7 +205,7 @@ export default function Page() {
           { name: "Sélectionner la zone geographique", text: "Choisir la zone de vie : Paris / IDF (~1 800 EUR/mois, dont loyer ~1 050 EUR), grande ville (~1 250 EUR/mois, loyer ~650 EUR), ville moyenne (~1 080 EUR/mois, loyer ~480 EUR), zone rurale (~920 EUR/mois, loyer ~380 EUR). Le logement représente 40 à 58 pct du budget selon la zone." },
           { name: "Indiquer la situation familiale et le transport", text: "Sélectionner la composition du foyer (seul, couple, avec enfants) et le mode de transport : sans voiture (transports communs 45-91 EUR/mois), avec voiture (200-300 EUR/mois de carburant + assurance + entretien). Le velo est l'option la plus economique." },
           { name: "Lire le budget minimum mensuel", text: "Le calculateur additionne les postes incompressibles : loyer, alimentation (~250-350 EUR/mois), transport, énergie, mutuelle de base. Exemple : personne seule en ville moyenne sans voiture = environ 880 EUR/mois." },
-          { name: "Comparer avec les aides disponibles", text: "Comparer le budget minimum avec le RSA (647 EUR), le seuil de pauvrete (1 288 EUR) et le SMIC net (1 443 EUR). Identifier les aides applicables : APL (100-300 EUR/mois), prime d'activité (jusqu'à 595 EUR/mois), CSS (mutuelle gratuite sous plafond de 810 EUR/mois de revenu)." },
+          { name: "Comparer avec les aides disponibles", text: "Comparer le budget minimum avec le RSA (647 EUR), le seuil de pauvrete (1 288 EUR) et le SMIC net (1 478 EUR). Identifier les aides applicables : APL (100-300 EUR/mois), prime d'activité (jusqu'à 595 EUR/mois), CSS (mutuelle gratuite sous plafond de 810 EUR/mois de revenu)." },
         ]}
       />
 
