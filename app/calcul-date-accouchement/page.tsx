@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 const FAQ_ITEMS: FaqItem[] = [
   {
     q: "Comment calculer sa date d'accouchement ?",
-    a: "La date prevue d'accouchement (DPA) se calcule en ajoutant 280 jours (40 semaines d'amenorrhee) au premier jour des dernieres regles. Si vous connaissez la date de conception, ajoutez 266 jours (38 semaines). L'echographie de datation (11-14 SA) est la methode la plus precise avec une marge de +/- 3 jours.",
+    a: "La date prevue d'accouchement (DPA) se calcule, en France, en ajoutant 287 jours (41 semaines d'amenorrhee) au premier jour des dernieres regles. Si vous connaissez la date de conception, ajoutez 273 jours (39 semaines). L'echographie de datation, faite entre 11 et 13 SA + 6 jours, est le repere le plus fiable : le medecin ou la sage-femme peut corriger la DPA d'apres elle.",
   },
   {
     q: "Quelle difference entre semaines d'amenorrhee et semaines de grossesse ?",
@@ -72,12 +72,12 @@ export default function Page() {
         </h2>
         <p className="text-slate-600 leading-relaxed mb-4">
           La date prevue d&apos;accouchement (DPA) est calculee a partir du
-          premier jour des dernieres regles en utilisant la <strong>regle de
-          Naegele</strong> : on ajoute 280 jours (soit 40 semaines
-          d&apos;amenorrhee) a cette date. C&apos;est la methode la plus
-          couramment utilisee par les professionnels de sante. Si vous
-          connaissez la date de conception, la DPA se situe 266 jours
-          (38 semaines) plus tard.
+          premier jour des dernieres regles. En France, elle est fixee par
+          convention a <strong>41 semaines d&apos;amenorrhee</strong>, soit 287 jours
+          apres cette date (environ 9 mois et 2 semaines). La regle de Naegele,
+          utilisee dans d&apos;autres pays, compte 280 jours et donne une date une semaine plus tot. Si vous
+          connaissez la date de conception, la DPA se situe 273 jours
+          (39 semaines) plus tard.
         </p>
 
         <h3 className="font-bold text-slate-800 mt-6 mb-3">
@@ -89,10 +89,10 @@ export default function Page() {
               Dernieres regles (DDR)
             </p>
             <p className="font-mono text-sm text-slate-600 mt-2">
-              DDR + 280 jours
+              DDR + 287 jours
             </p>
             <p className="text-xs text-slate-400 mt-1">
-              Methode standard, la plus utilisee. Suppose un cycle de 28 jours.
+              Convention francaise (41 SA). Suppose un cycle de 28 jours.
             </p>
           </div>
           <div className="bg-slate-50 rounded-xl p-4">
@@ -100,7 +100,7 @@ export default function Page() {
               Date de conception
             </p>
             <p className="font-mono text-sm text-slate-600 mt-2">
-              Conception + 266 jours
+              Conception + 273 jours
             </p>
             <p className="text-xs text-slate-400 mt-1">
               Plus precise si vous connaissez la date exacte (FIV, ovulation
@@ -315,7 +315,7 @@ export default function Page() {
         name="Calculer la date prévue d'accouchement et les semaines d'aménorrhée"
         steps={[
           { name: "Choisir la méthode de calcul", text: "Sélectionner parmi 3 méthodes : date des dernieres regles (DDR), date de conception connue (FIV, ovulation surveillee) ou âge gestationnel saisi à partir d'une echographie entre 11 et 14 SA." },
-          { name: "Calculer la date prévue d'accouchement", text: "À partir des dernieres regles : DPA = DDR + 280 jours (regle de Naegele, 40 SA). À partir de la conception : DPA = date conception + 266 jours (38 SA). Marge echographique : +/- 3 jours." },
+          { name: "Calculer la date prévue d'accouchement", text: "À partir des dernieres regles : DPA = DDR + 287 jours (41 SA, convention francaise). À partir de la conception : DPA = date conception + 273 jours (39 semaines de grossesse). L'echographie de datation permet de corriger cette date." },
           { name: "Lire les semaines d'aménorrhée et le trimestre en cours", text: "Le calculateur affiche les semaines d'aménorrhée (SA) actuelles, le trimestre (1-13 SA, 14-27 SA, 28-41 SA) et les dates des 3 echographies recommandees (datation, morphologie, croissance)." },
           { name: "Vérifier les dates de conge maternite", text: "Conge calcule automatiquement : 16 semaines (6 avant + 10 après) pour 1er ou 2e enfant, 26 semaines (8 avant + 18 après) pour 3e enfant et plus, 34 semaines pour des jumeaux." },
         ]}

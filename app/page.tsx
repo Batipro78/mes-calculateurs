@@ -1864,6 +1864,42 @@ const outils = [
     tag: "Guide",
   },
   {
+    titre: "Comment calculer l'aire d'un cercle ?",
+    description:
+      "Aire = π × r² : un rayon de 3 cm donne 28,27 cm². Avec le diamètre, le demi-cercle, l'anneau, et une pizza de 30 cm comparée à deux pizzas de 20 cm.",
+    href: "/comment-calculer-l-aire-d-un-cercle",
+    icone: "⭕",
+    couleur: "from-blue-500 to-cyan-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Comment calculer la mensualité d'un prêt immobilier ?",
+    description:
+      "200 000 € sur 20 ans à 3,5 % : 1 159,92 € par mois. La formule pas à pas, le tableau d'amortissement et la règle des 35 % d'endettement.",
+    href: "/comment-calculer-la-mensualite-d-un-pret-immobilier",
+    icone: "🏠",
+    couleur: "from-violet-500 to-purple-500",
+    tag: "Guide",
+  },
+  {
+    titre: "Combien de jours entre deux dates ?",
+    description:
+      "Date de fin moins date de début : du 4 novembre au 25 décembre 2026, il y a 51 jours. Jour de départ compté ou non, années bissextiles et calcul dans un tableur.",
+    href: "/combien-de-jours-entre-deux-dates",
+    icone: "📆",
+    couleur: "from-fuchsia-500 to-pink-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Comment calculer le salaire d'un alternant ?",
+    description:
+      "Apprenti de 18 à 20 ans en 1re année : au moins 43 % du SMIC, soit 802,82 € brut par mois depuis le 1er juin 2026. Barème par âge, contrat de professionnalisation et net estimé.",
+    href: "/comment-calculer-le-salaire-d-un-alternant",
+    icone: "🎓",
+    couleur: "from-indigo-500 to-purple-500",
+    tag: "Guide",
+  },
+  {
     titre: "Comment convertir des heures en centièmes ?",
     description:
       "Minutes ÷ 60 : 7 h 45 font 7,75 h. Tableau de 5 en 5 minutes et conversion inverse des centièmes en minutes.",

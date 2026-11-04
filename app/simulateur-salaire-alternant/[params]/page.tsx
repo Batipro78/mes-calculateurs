@@ -183,7 +183,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
         acceptedAnswer: {
           "@type": "Answer",
           text: r.cotisations > 0
-            ? `Le montant de ${fmt(r.brut)} EUR est le salaire brut. Apres deduction des cotisations (${fmt(r.cotisations)} EUR/mois), le net estime est de ${fmt(r.net)} EUR/mois. Les cotisations s'appliquent car le salaire depasse 50% du SMIC.`
+            ? `Le montant de ${fmt(r.brut)} EUR est le salaire brut. Apres deduction des cotisations (${fmt(r.cotisations)} EUR/mois), le net estime est de ${fmt(r.net)} EUR/mois. ${parsed.type === "apprentissage" ? "Les cotisations s'appliquent car le salaire depasse 50% du SMIC." : "En contrat de professionnalisation, il n'y a pas d'exoneration : les cotisations portent sur tout le salaire."}`
             : `Le montant de ${fmt(r.brut)} EUR est le salaire brut, mais comme il est inferieur ou egal a 50% du SMIC, le brut est egal au net : aucune cotisation n'est prelevee.`,
         },
       },
@@ -247,7 +247,7 @@ export default async function Page({ params }: { params: Promise<{ params: strin
 
       {/* Jauge SMIC */}
       <div className="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm mb-8">
-        <p className="text-sm font-medium text-slate-500 mb-3">Position par rapport au SMIC (1 823 EUR brut)</p>
+        <p className="text-sm font-medium text-slate-500 mb-3">Position par rapport au SMIC (1 867 EUR brut)</p>
         <div className="relative h-5 bg-slate-100 rounded-full overflow-hidden">
           <div
             className="absolute inset-y-0 left-0 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full"

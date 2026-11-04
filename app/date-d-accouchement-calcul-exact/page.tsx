@@ -1,195 +1,210 @@
 import type { Metadata } from "next";
 import ArticleGuide, { ArticleData } from "../components/ArticleGuide";
 
-const TITRE = "Date d'accouchement : calcul exact ou estimation ? (2026)";
+const TITRE = "Comment calculer sa date d'accouchement ?";
 const DESCRIPTION =
-  "Peut-on calculer la date d'accouchement de façon exacte ? Méthode (dernières règles, conception, échographie), SA ou semaines de grossesse, terme à 40 ou 41 SA, exemple chiffré.";
+  "En France, la date présumée d'accouchement se calcule à partir du premier jour des dernières règles : on ajoute 287 jours (41 SA). Méthode pas à pas, exemples datés, conception, échographie et limites de l'estimation.";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/date-d-accouchement-calcul-exact" },
   title: TITRE,
   description: DESCRIPTION,
   keywords:
-    "date d'accouchement calcul exact, calcul de la date d'accouchement, calcul date accouchement avec date de conception, date terme accouchement calcul, accouchement à combien de SA, date prévue d'accouchement, semaines d'aménorrhée, échographie de datation",
+    "date d'accouchement, calcul date accouchement, date d'accouchement calcul exact, date présumée d'accouchement, DPA, calcul date accouchement avec date de conception, accouchement à combien de SA",
   openGraph: {
     type: "article",
     locale: "fr_FR",
     siteName: "Mes Calculateurs",
     title: TITRE,
     description: DESCRIPTION,
+    images: [{ url: "/images/date-accouchement-chambre.webp", width: 1200, height: 630 }],
   },
 };
 
 const ARTICLE: ArticleData = {
   slug: "/date-d-accouchement-calcul-exact",
-  fil: "Date d'accouchement : calcul exact",
+  fil: "Date d'accouchement",
   emoji: "🤰",
   couleur: "from-purple-500 to-pink-500",
-  h1: "Date d'accouchement : le calcul est-il exact ?",
+  h1: "Comment calculer sa date d'accouchement ?",
   chapo:
-    "Cet article s'adresse aux futures mères et aux futurs pères qui veulent savoir à quelle date le bébé est attendu, et à quel point cette date est fiable. Il explique comment elle se calcule, ce que veulent dire SA, terme et dépassement de terme, et pourquoi l'échographie du premier trimestre compte.",
+    "À partir de la date de vos dernières règles, de la conception ou d'une échographie, vous pouvez estimer la date présumée d'accouchement. Voici la méthode française, des exemples datés et ce qu'il faut savoir sur la fiabilité de cette date.",
   reponse:
-    "Non : il n'existe pas de date d'accouchement exacte, seulement une date prévue. Pour des dernières règles le 20 janvier 2026, le calculateur du site donne le **mardi 27 octobre 2026**, soit 280 jours (40 semaines d'aménorrhée). Mais d'après ameli, la durée d'une grossesse **n'est pas fixe : elle varie entre 280 et 290 jours**, avec une moyenne de 284 jours. La naissance peut donc très bien tomber quelques jours avant ou après la date prévue. Le médecin ou la sage-femme confirme la date lors de l'échographie du premier trimestre.",
+    "**En France, la date présumée d'accouchement (DPA) se situe à 41 semaines d'aménorrhée (SA) après le premier jour des dernières règles, soit 287 jours.** Cela revient à ajouter environ 9 mois et 2 semaines. C'est une estimation : un examen échographique permet de l'affiner.",
   sections: [
     {
-      titre: "Pourquoi il n'existe pas de date exacte",
+      titre: "La règle de calcul de la DPA",
       paras: [
-        "La date prévue d'accouchement est un calcul, pas une mesure. Elle part d'un repère (le début des dernières règles, la conception ou une échographie) et y ajoute une durée standard. Or, selon ameli, « la durée de la gestation n'est pas fixe » : elle varie entre 280 et 290 jours, soit entre 40 et 41,3 semaines d'aménorrhée, avec une durée moyenne de 284 jours.",
-        "Ameli précise aussi que l'accouchement a lieu entre la 37e et la 42e semaine d'aménorrhée. La fenêtre est large : de 37 à 42 SA, soit de 3 semaines avant à 2 semaines après la date calculée à 40 SA. Nous n'avons pas trouvé, sur une page officielle française, de proportion de bébés nés exactement le jour prévu : mieux vaut ne retenir aucun pourcentage que d'en inventer un.",
-      ],
-      encadre:
-        "Pour organiser votre congé maternité ou vos rendez-vous, la date prévue suffit. Pour toute décision médicale, c'est votre médecin ou votre sage-femme qui fait foi, pas un calculateur.",
-    },
-    {
-      titre: "Calculer avec les dernières règles ou avec la date de conception",
-      paras: [
-        "Trois repères permettent de dater une grossesse. Le calculateur du site les propose tous les trois, et la méthode des dernières règles est la plus courante.",
-      ],
-      tableau: {
-        colonnes: ["Repère connu", "Calcul", "Remarque"],
-        lignes: [
-          ["Premier jour des dernières règles", "+ 280 jours (40 SA)", "Suppose une ovulation vers le 14e jour du cycle"],
-          ["Date de conception", "+ 266 jours (38 semaines)", "Équivaut à retirer 14 jours pour retrouver les dernières règles, puis à ajouter 280 jours"],
-          ["Échographie de datation", "Selon la mesure de l'embryon", "Le calculateur demande les semaines d'aménorrhée trouvées à l'échographie"],
-        ],
-        texte: true,
-      },
-      suite: [
-        "Pour la conception, l'écart de 14 jours vient de la définition donnée par ameli : les semaines de grossesse sont les semaines « estimées depuis la fécondation (14 jours après le premier jour des dernières règles en cas de cycles réguliers) ». Si votre cycle est plus long, l'ovulation a lieu plus tard et la date calculée à partir des règles tombe trop tôt. C'est la raison pour laquelle les professionnels se fient à l'échographie.",
-        "Pour estimer la période de conception, vous pouvez utiliser le [calcul de la date d'ovulation](/calcul-ovulation).",
-      ],
-    },
-    {
-      titre: "Exemple chiffré : trois méthodes, une même date ou presque",
-      paras: [
-        "Prenons des dernières règles le 20 janvier 2026, avec un cycle de 28 jours, puis un deuxième cas où l'ovulation a eu lieu plus tard. Le calculateur du site ajoute 280 jours aux dernières règles, 266 jours à la conception, et retire à l'échographie ses semaines d'aménorrhée pour retrouver le début de grossesse.",
-      ],
-      etapes: [
-        "**Dernières règles** : 20 janvier 2026 + 280 jours = **mardi 27 octobre 2026** (40 SA).",
-        "**Conception** (ovulation au 14e jour, le 3 février 2026) : 3 février + 266 jours = **27 octobre 2026**, la même date.",
-        "**Les 37 SA** (naissance considérée comme à terme) tombent 259 jours après les règles, soit le **6 octobre 2026**. À 41 SA (287 jours), on est le **3 novembre 2026**.",
-        "**Cycle plus long** : si l'ovulation n'a eu lieu que le 10 février 2026, la conception est 7 jours plus tard. Le calcul à partir de cette conception donne le **3 novembre 2026**, soit 7 jours après la première date.",
-      ],
-      suite: [
-        "Une échographie du premier trimestre faite le 14 avril 2026 qui mesure l'embryon à 11 SA donne un début de grossesse au 27 janvier 2026 (14 avril moins 77 jours) et une date prévue au 3 novembre 2026. C'est la date qui est alors retenue : calculée à partir des règles seules, elle aurait été 7 jours trop tôt pour ce cycle.",
-        "Si vous avez des dernières règles précises et un cycle régulier de 28 jours, les deux méthodes concordent. Sinon, un écart d'une semaine est courant, et la datation par l'échographie sert à le corriger. Le calcul du calculateur ne gère que des semaines entières pour l'échographie : votre professionnel de santé peut donner une datation plus fine, en semaines et en jours.",
+        "La date présumée d'accouchement est fixée par convention, en France, à **41 semaines d'aménorrhée** à partir du **premier jour des dernières règles**. Cela représente 287 jours (41 semaines), soit environ 9 mois et 2 semaines.",
+        "La formule est donc simple : **DPA = premier jour des dernières règles + 287 jours**.",
+        "Cette règle suppose un cycle régulier de 28 jours. C'est une estimation statistique, pas une date certaine : peu de bébés naissent le jour prévu.",
       ],
       visuel: {
-        fichier: "date-accouchement-calcul-terme",
-        alt: "Frise de la fin de grossesse pour des dernières règles le 20 janvier 2026 : 37 SA le 6 octobre, 40 SA (280 jours) le 27 octobre, 41 SA (287 jours) le 3 novembre, 41 SA + 6 jours le 9 novembre. La gestation observée va de 280 à 290 jours, avec une moyenne de 284 jours.",
+        fichier: "date-accouchement-chambre",
+        alt: "Coin d'une chambre de bébé dans la lumière du matin, avec un petit bonnet tricoté et une paire de chaussons de naissance posés sur une commode en bois clair, une plante et un mur blanc.",
         legende:
-          "Les repères de fin de grossesse pour des dernières règles le 20 janvier 2026 : dates calculées comme le fait le calculateur du site, durées observées d'après ameli.fr, surveillance d'après la HAS.",
+          "Connaître la date présumée d'accouchement aide à préparer l'arrivée du bébé, sans oublier qu'il s'agit d'une estimation.",
       },
     },
     {
-      titre: "SA ou semaines de grossesse : quelle différence ?",
+      titre: "SA ou SG : ne pas les confondre",
       paras: [
-        "D'après ameli, l'âge d'une grossesse s'exprime de deux façons. Les **semaines d'aménorrhée (SA)** sont le nombre de semaines écoulées depuis le premier jour des dernières règles. Les **semaines de grossesse** sont le nombre de semaines estimées depuis la fécondation, soit 14 jours après le premier jour des dernières règles en cas de cycles réguliers.",
-        "Les pages de l'Assurance Maladie et de la HAS citées ici comptent en SA. Le calculateur affiche les deux : les semaines de grossesse y sont égales aux SA moins 2. Pour suivre votre prise de poids semaine après semaine, voir le [calcul de la prise de poids pendant la grossesse](/calcul-prise-poids-grossesse).",
+        "Deux façons de compter les semaines existent, et elles diffèrent de 2 semaines.",
       ],
-      tableau: {
-        colonnes: ["Exemple", "SA (depuis les règles)", "Semaines de grossesse (depuis la fécondation)"],
-        lignes: [
-          ["Échographie du premier trimestre", "12 SA", "10 semaines"],
-          ["Seuil du terme (ameli)", "37 SA", "35 semaines"],
-          ["Date prévue (calculateur)", "40 SA", "38 semaines"],
-        ],
-      },
-      encadre:
-        "Quand on vous dit « vous en êtes à 12 SA », ce n'est pas 12 semaines depuis la conception : ajoutez 2 semaines pour passer des semaines de grossesse aux SA.",
-    },
-    {
-      titre: "Le rôle de l'échographie de datation",
-      paras: [
-        "Ameli décrit la première échographie comme une échographie « de datation » : elle permet de dater précisément le début de la grossesse en mesurant l'embryon. Elle est réalisée entre 11 et 13 semaines d'aménorrhée + 6 jours, et elle fixe le terme de la grossesse.",
-        "La Haute Autorité de santé (HAS) explique pourquoi c'est important : cette échographie « permet une détermination précise du terme » à partir de la mesure du fœtus, et sa pratique systématique « contribue à réduire la fréquence des termes considérés à tort comme dépassés ». Autrement dit, une date mal calée sur les dernières règles peut faire croire à un retard qui n'existe pas.",
+      liste: [
+        "**Les semaines d'aménorrhée (SA)** se comptent depuis le premier jour des dernières règles. C'est l'unité utilisée dans le suivi médical.",
+        "**Les semaines de grossesse (SG)** se comptent depuis la fécondation. On a donc : **SG = SA − 2 semaines**.",
       ],
-    },
-    {
-      titre: "Terme, prématuré, dépassement : à quelles SA ?",
-      paras: [
-        "D'après ameli, un nouveau-né est dit à terme entre 37 et 41 semaines d'aménorrhée, et une naissance avant 37 SA définit la prématurité. En 2021, le taux de prématurité était de 7,0 % d'après la même page.",
-        "Pour la suite après le terme, la HAS décrit un schéma de surveillance : si la femme n'a pas accouché à 41 SA + 0 jour, une surveillance du fœtus toutes les 48 heures est recommandée ; en l'absence d'accouchement, un déclenchement est recommandé à 41 SA + 6 jours. Un déclenchement est aussi possible dès 41 SA + 0 jour si le col est favorable et si la femme est d'accord.",
-      ],
-      tableau: {
-        colonnes: ["Période", "Ce que disent les sources officielles"],
-        lignes: [
-          ["Avant 37 SA", "Naissance prématurée (ameli)"],
-          ["De 37 à 41 SA", "Nouveau-né dit à terme (ameli)"],
-          ["41 SA + 0 jour", "Surveillance du fœtus toutes les 48 heures si pas d'accouchement (HAS)"],
-          ["41 SA + 6 jours", "Déclenchement recommandé en l'absence d'accouchement (HAS)"],
-        ],
-        texte: true,
-      },
       suite: [
-        "Reste la question du « terme » lui-même : 40 ou 41 SA ? Les pages officielles ouvertes pour cet article ne donnent pas une seule date de terme. Ameli indique la fourchette de 280 à 290 jours, et la HAS organise la surveillance autour de 41 SA. Le calculateur du site, lui, affiche la date à 40 SA (280 jours). Demandez à votre maternité quelle date de terme elle retient : c'est la sienne qui compte pour votre suivi.",
+        "Le terme en France est à 41 SA, ce qui correspond à 39 SG. Pour la question « accouchement à combien de SA ? », la réponse de référence est donc 41 SA, soit la DPA.",
+      ],
+    },
+    {
+      titre: "Exemple 1 : dernières règles le 1er février 2026",
+      paras: [
+        "Le premier jour des dernières règles est le 1er février 2026. On ajoute 287 jours.",
+      ],
+      etapes: [
+        "On part du 1er février 2026.",
+        "On ajoute 287 jours, soit 41 semaines.",
+        "On obtient le **dimanche 15 novembre 2026**.",
+      ],
+      suite: [
+        "Le congé prénatal d'un premier ou d'un deuxième enfant commence 6 semaines avant la DPA. Ici, 6 semaines avant le 15 novembre 2026 : le **4 octobre 2026**.",
+      ],
+    },
+    {
+      titre: "Exemple 2 : dernières règles le 20 septembre 2026",
+      paras: [
+        "Même méthode, avec des règles qui commencent le 20 septembre 2026.",
+      ],
+      etapes: [
+        "On part du 20 septembre 2026.",
+        "On ajoute 287 jours.",
+        "On obtient le **dimanche 4 juillet 2027**.",
+      ],
+      suite: [
+        "Le calcul traverse le changement d'année, mais la règle ne change pas : 287 jours, quelle que soit la date de départ.",
+      ],
+    },
+    {
+      titre: "Exemple 3 : à partir de la date de conception",
+      paras: [
+        "Si vous connaissez la date de conception, vous pouvez calculer à partir d'elle. La conception a lieu environ 2 semaines après le début des dernières règles : la DPA tombe donc **273 jours après la conception** (287 − 14).",
+        "Prenons une conception le 15 mars 2026.",
+      ],
+      etapes: [
+        "On part du 15 mars 2026.",
+        "On ajoute 273 jours.",
+        "On obtient le **dimanche 13 décembre 2026**.",
+      ],
+      suite: [
+        "Pour vérifier, on remonte de 14 jours : les dernières règles correspondantes seraient le 1er mars 2026, et 1er mars + 287 jours donne bien le 13 décembre 2026.",
+        "Cette méthode suppose, comme la précédente, une ovulation environ 14 jours après le début des règles. Si vos cycles sont plus longs ou plus courts, la date de conception ne tombe pas forcément 14 jours après les règles. Pour mieux situer votre ovulation, consultez [comment calculer sa période d'ovulation](/comment-calculer-sa-periode-d-ovulation).",
+      ],
+    },
+    {
+      titre: "Exemple 4 : à quelle date est-on à 12 SA ?",
+      paras: [
+        "Avec des dernières règles le 1er février 2026, à quelle date atteint-on 12 SA ? Les SA se comptent depuis le premier jour des règles : 12 SA, c'est 12 × 7 = 84 jours.",
+      ],
+      etapes: [
+        "On part du 1er février 2026.",
+        "On ajoute 84 jours.",
+        "On obtient le **dimanche 26 avril 2026**.",
+      ],
+      suite: [
+        "La même méthode donne n'importe quel jalon : on multiplie le nombre de SA par 7 et on ajoute le résultat à la date des dernières règles.",
+      ],
+    },
+    {
+      titre: "Résumé des exemples",
+      tableau: {
+        colonnes: ["Situation", "Calcul", "Résultat"],
+        lignes: [
+          ["Règles le 1er février 2026", "+ 287 jours", "15 novembre 2026"],
+          ["Règles le 20 septembre 2026", "+ 287 jours", "4 juillet 2027"],
+          ["Conception le 15 mars 2026", "+ 273 jours", "13 décembre 2026"],
+          ["12 SA, règles le 1er février 2026", "+ 84 jours", "26 avril 2026"],
+        ],
+      },
+    },
+    {
+      titre: "Pourquoi la DPA n'est qu'une estimation",
+      paras: [
+        "La règle des 41 SA repose sur l'hypothèse d'un cycle standard. Si vos cycles sont irréguliers, ou si vous n'êtes pas sûre de la date de vos dernières règles, la date calculée peut être décalée.",
+        "L'**échographie de datation**, faite entre 11 et 13 SA + 6 jours, est le repère le plus fiable. Le médecin ou la sage-femme peut s'appuyer sur elle pour affiner ou corriger la DPA, surtout si les cycles sont irréguliers ou la date des dernières règles incertaine.",
+        "Autre source d'écart : certains sites, notamment étrangers, utilisent la **règle de Naegele**, qui ajoute 280 jours, soit 40 SA. Elle donne une date une semaine plus tôt que la convention française. Pour les règles du 1er février 2026, on obtient le 8 novembre 2026 au lieu du 15 novembre.",
       ],
       encadre:
-        "Passé 41 SA, la HAS recommande un suivi plus rapproché. Si vous approchez de la date prévue, votre maternité vous dit quand revenir. Si votre bébé naît prématurément, le [calcul de l'âge corrigé](/calcul-age-corrige-prema) aide à situer son développement.",
+        "Cet article ne remplace pas un avis médical. Pour toute question sur votre grossesse ou votre date d'accouchement, adressez-vous à votre médecin, à votre gynécologue ou à votre sage-femme.",
+    },
+    {
+      titre: "Comment utiliser le calculateur de date d'accouchement",
+      paras: [
+        "Le calculateur propose **trois modes**, à choisir en haut du formulaire.",
+      ],
+      liste: [
+        "**Dernières règles** : vous saisissez la date du premier jour de vos dernières règles. Le calculateur ajoute 287 jours.",
+        "**Conception** : vous saisissez la date estimée de conception. Le calculateur ajoute 273 jours.",
+        "**Échographie** : vous saisissez la date de l'échographie et le nombre de semaines d'aménorrhée indiqué à cette échographie. Le calculateur en déduit le début de grossesse, puis ajoute 287 jours.",
+      ],
+      suite: [
+        "Par défaut, les champs date sont remplis avec la date du jour : pensez à les modifier.",
+        "Le résultat principal est la **date prévue d'accouchement**, avec le jour de la semaine. Le calculateur indique aussi où vous en êtes aujourd'hui : semaines d'aménorrhée, semaines de grossesse, mois de grossesse, trimestre en cours et nombre de jours restants, avec une barre de progression.",
+        "Il affiche enfin quelques dates clés : la fin du 1er trimestre, la fin du 2e trimestre, le début du congé prénatal (6 semaines avant la DPA) et la DPA. Il ajoute le signe astrologique correspondant à la DPA, à titre indicatif.",
+        "Avec les règles du 1er février 2026, le calculateur donne donc le 15 novembre 2026, comme dans l'exemple 1. Pour en savoir plus sur le cycle, voir aussi le [calculateur d'ovulation](/calcul-ovulation).",
+      ],
+    },
+    {
+      titre: "Erreurs fréquentes",
+      liste: [
+        "**Partir de la date de conception avec la règle des 287 jours.** Les 287 jours se comptent depuis les dernières règles. Depuis la conception, il faut ajouter 273 jours.",
+        "**Confondre SA et SG.** Il y a 2 semaines d'écart : 41 SA correspondent à 39 SG.",
+        "**Compter depuis la fin des règles.** Le départ du calcul est le premier jour des dernières règles.",
+        "**Voir la DPA comme une date certaine.** C'est une estimation. L'examen échographique permet de la préciser.",
+        "**S'étonner d'un écart avec un site étranger.** Il utilise peut-être la règle de Naegele (280 jours), qui donne une date une semaine plus tôt.",
+      ],
     },
   ],
   calculateur: {
     href: "/calcul-date-accouchement",
     nom: "Date d'accouchement",
-    titre: "Calculez votre date prévue d'accouchement",
+    titre: "Calculez votre date d'accouchement",
     texte:
-      "Choisissez la méthode (dernières règles, date de conception ou échographie) : le calculateur donne la date prévue à 40 SA, vos semaines d'aménorrhée et de grossesse, le trimestre et la date de début du congé maternité.",
+      "Choisissez le mode (dernières règles, conception ou échographie), saisissez la date : le calculateur affiche la date prévue d'accouchement, vos semaines d'aménorrhée et les dates clés.",
     bouton: "Ouvrir le calculateur de date d'accouchement",
   },
   faq: [
     {
-      q: "Peut-on calculer la date d'accouchement exacte ?",
-      a: "Non. On calcule une date prévue, pas une date exacte. Selon ameli, la durée de la grossesse varie entre 280 et 290 jours, avec une moyenne de 284 jours. La date prévue sert de repère pour le suivi et le congé maternité.",
-    },
-    {
-      q: "Accouchement : à combien de SA ?",
-      a: "D'après ameli, l'accouchement a lieu entre la 37e et la 42e semaine d'aménorrhée, et un nouveau-né est dit à terme entre 37 et 41 SA. Avant 37 SA, on parle de naissance prématurée.",
+      q: "Comment calculer sa date d'accouchement ?",
+      a: "Ajoutez 287 jours (41 semaines d'aménorrhée) au premier jour de vos dernières règles. Cela revient à ajouter environ 9 mois et 2 semaines.",
     },
     {
       q: "Comment calculer la date d'accouchement avec la date de conception ?",
-      a: "Le calculateur du site ajoute 266 jours à la date de conception. Par exemple, une conception le 3 février 2026 donne le 27 octobre 2026. Si l'ovulation a eu lieu plus tard qu'au 14e jour du cycle, la date calculée à partir des règles tombe trop tôt, et c'est l'échographie du premier trimestre qui corrige la date.",
+      a: "Ajoutez 273 jours à la date de conception. Pour une conception le 15 mars 2026, on obtient le 13 décembre 2026.",
     },
     {
-      q: "Pourquoi la date d'accouchement change-t-elle après l'échographie ?",
-      a: "Parce que la première date vient souvent des dernières règles, qui supposent un cycle de 28 jours. L'échographie de datation mesure l'embryon, ce qui permet de dater plus précisément le début de la grossesse. Si l'écart est important, le professionnel de santé retient la date de l'échographie.",
+      q: "Accouchement à combien de SA ?",
+      a: "En France, la date présumée d'accouchement est fixée à 41 SA, ce qui correspond à 39 semaines de grossesse (SG = SA − 2 semaines).",
     },
     {
-      q: "Que se passe-t-il si je dépasse la date prévue ?",
-      a: "Rien d'automatique à la date prévue elle-même. D'après la HAS, si l'accouchement n'a pas eu lieu à 41 SA + 0 jour, une surveillance du fœtus toutes les 48 heures est recommandée, et un déclenchement est recommandé à 41 SA + 6 jours. Votre maternité vous donne ses rendez-vous.",
+      q: "La date d'accouchement calculée est-elle exacte ?",
+      a: "Non, c'est une estimation statistique qui suppose un cycle régulier de 28 jours. L'échographie de datation, entre 11 et 13 SA + 6 jours, permet au médecin ou à la sage-femme de l'affiner ou de la corriger.",
     },
     {
-      q: "La date prévue décide-t-elle de mon congé maternité ?",
-      a: "Les dates du congé maternité sont déterminées à partir de la date présumée d'accouchement, d'après ameli. Pour un premier ou un deuxième enfant, le congé prénatal dure 6 semaines : dans l'exemple de cet article, il commencerait le 15 septembre 2026. En cas d'accouchement tardif, la durée du congé postnatal reste celle initialement prévue.",
+      q: "Pourquoi un site étranger donne-t-il une date différente ?",
+      a: "Certains pays utilisent la règle de Naegele, qui ajoute 280 jours (40 SA) aux dernières règles. Elle donne une date une semaine plus tôt que la convention française à 41 SA.",
     },
   ],
   sources: [
     {
-      label: "Ameli.fr : grossesse, premiers signes et déroulement",
-      url: "https://www.ameli.fr/assure/sante/devenir-parent/grossesse/grossesse-en-bonne-sante/grossesse/premiers-symptomes-grossesse",
-    },
-    {
-      label: "Ameli.fr : le programme de suivi et la première consultation",
-      url: "https://www.ameli.fr/assure/sante/devenir-parent/grossesse/grossesse-en-bonne-sante/grossesse/grossesse-soins-dentaires-dentiste-consultation",
-    },
-    {
-      label: "Ameli.fr : comment se déroule un accouchement ?",
-      url: "https://www.ameli.fr/assure/sante/devenir-parent/accouchement-nouveau-ne-et-retour-la-maison/accouchement",
-    },
-    {
-      label: "Ameli.fr : difficultés à l'accouchement et à la naissance (prématurité)",
-      url: "https://www.ameli.fr/assure/sante/devenir-parent/accouchement-nouveau-ne-et-retour-la-maison/difficultes-accouchement-naissance",
-    },
-    {
-      label: "Ameli.fr : la durée du congé maternité d'une salariée",
-      url: "https://www.ameli.fr/assure/droits-demarches/famille/maternite-paternite-adoption/duree-du-conge-maternite/conge-maternite-salariee",
-    },
-    {
-      label: "HAS : déclenchement artificiel du travail à partir de 37 semaines d'aménorrhée",
-      url: "https://www.has-sante.fr/jcms/c_666473/fr/declenchement-artificiel-du-travail-a-partir-de-37-semaines-d-amenorrhee",
+      label: "Santé.fr - Âge de la grossesse et date de l'accouchement",
+      url: "https://www.sante.fr/node/1068443",
     },
   ],
-  datePublication: "2026-10-06",
-  dateAffichee: "6 octobre 2026",
+  datePublication: "2026-11-04",
+  dateAffichee: "4 novembre 2026",
 };
 
 export default function Page() {

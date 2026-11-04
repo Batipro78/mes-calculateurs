@@ -222,4 +222,8 @@ export const ALL_CALCULATORS: Calculator[] = [
   { slug: "/comment-calculer-l-indemnite-de-licenciement", title: "Guide : calculer l'indemnité de licenciement", emoji: "📦", color: "from-slate-600 to-slate-800" },
   { slug: "/comment-calculer-les-indemnites-kilometriques", title: "Guide : calculer les indemnités kilométriques", emoji: "🚗", color: "from-sky-500 to-blue-600" },
   { slug: "/comment-calculer-sa-periode-d-ovulation", title: "Guide : calculer sa période d'ovulation", emoji: "🌸", color: "from-pink-500 to-rose-600" },
+  { slug: "/comment-calculer-l-aire-d-un-cercle", title: "Guide : calculer l'aire d'un cercle", emoji: "⭕", color: "from-blue-500 to-cyan-600" },
+  { slug: "/comment-calculer-la-mensualite-d-un-pret-immobilier", title: "Guide : calculer la mensualité d'un prêt immobilier", emoji: "🏠", color: "from-violet-500 to-purple-500" },
+  { slug: "/combien-de-jours-entre-deux-dates", title: "Guide : combien de jours entre deux dates", emoji: "📆", color: "from-fuchsia-500 to-pink-600" },
+  { slug: "/comment-calculer-le-salaire-d-un-alternant", title: "Guide : calculer le salaire d'un alternant", emoji: "🎓", color: "from-indigo-500 to-purple-500" },
 ];

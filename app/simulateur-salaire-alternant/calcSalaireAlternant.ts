@@ -1,6 +1,6 @@
-// SMIC 2026
-export const SMIC_BRUT = 1823.03;
-export const SMIC_HORAIRE = 12.02;
+// SMIC au 1er juin 2026 (arrete du 22 mai 2026)
+export const SMIC_BRUT = 1867.02;
+export const SMIC_HORAIRE = 12.31;
 
 // Grille Apprentissage 2026 (% du SMIC)
 // [tranche_age][annee_contrat - 1]
@@ -85,7 +85,9 @@ export function calcSalaireAlternant(
   // Contrats apres mars 2025 : exoneration jusqu'a 50% SMIC
   // Simplification : si brut <= 50% SMIC → net = brut (exonere)
   // Si brut > 50% SMIC → cotisations sur la part au-dessus de 50%
-  const seuilExoneration = SMIC_BRUT * 0.5;
+  // L'exoneration ne vaut que pour l'apprentissage : en contrat de professionnalisation,
+  // les cotisations portent sur tout le salaire.
+  const seuilExoneration = type === "apprentissage" ? SMIC_BRUT * 0.5 : 0;
   let cotisations = 0;
   if (brut > seuilExoneration) {
     // ~22% de charges sur la part depassant le seuil (CSG 9.2% + CRDS 0.5% + cotisations salariales ~12%)

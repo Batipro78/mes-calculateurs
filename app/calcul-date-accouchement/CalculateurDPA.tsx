@@ -86,16 +86,16 @@ export default function CalculateurDPA() {
 
   if (mode === "regles") {
     dateDebutGrossesse = new Date(dateRegles);
-    dpa = addDays(dateDebutGrossesse, 280); // 40 semaines
+    dpa = addDays(dateDebutGrossesse, 287); // 41 SA, convention francaise
   } else if (mode === "conception") {
     const conception = new Date(dateConception);
     dateDebutGrossesse = addDays(conception, -14); // 2 semaines avant = DDR estimee
-    dpa = addDays(conception, 266); // 38 semaines apres conception
+    dpa = addDays(conception, 273); // 39 semaines apres conception (= 41 SA)
   } else {
     const echo = new Date(dateEcho);
     const sEcho = parseInt(semainesEcho) || 12;
     dateDebutGrossesse = addDays(echo, -(sEcho * 7));
-    dpa = addDays(dateDebutGrossesse, 280);
+    dpa = addDays(dateDebutGrossesse, 287);
   }
 
   const joursEcoules = diffDays(dateDebutGrossesse, today);
@@ -103,7 +103,7 @@ export default function CalculateurDPA() {
   const joursReste = Math.max(0, 7 - (joursEcoules % 7 || 7));
   const semainesGrossesse = Math.max(0, semainesAmenorrhee - 2);
   const joursRestants = Math.max(0, diffDays(today, dpa));
-  const progression = Math.min(100, Math.max(0, (joursEcoules / 280) * 100));
+  const progression = Math.min(100, Math.max(0, (joursEcoules / 287) * 100));
 
   // Trimestre actuel
   const trimestreIdx = semainesAmenorrhee < 14 ? 0 : semainesAmenorrhee < 28 ? 1 : 2;
@@ -162,7 +162,7 @@ export default function CalculateurDPA() {
               className="w-full border border-slate-300 rounded-xl px-4 py-3.5 text-lg font-semibold focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
             />
             <p className="text-xs text-slate-400 mt-1">
-              Premier jour de vos dernieres regles (methode de Naegele : +280 jours)
+              Premier jour de vos dernieres regles (convention francaise : 41 SA, soit +287 jours)
             </p>
           </div>
         )}

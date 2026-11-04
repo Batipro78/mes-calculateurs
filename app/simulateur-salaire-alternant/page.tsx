@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 const FAQ_ITEMS: FaqItem[] = [
   {
     q: "Quel est le salaire d'un apprenti en 2026 ?",
-    a: "Le salaire d'un apprenti en 2026 depend de son age et de son annee de contrat. Il varie de 27% du SMIC (492 EUR brut/mois pour un moins de 18 ans en 1ere annee) a 78% du SMIC (1 422 EUR brut pour un 21-25 ans en 3eme annee). Les 26 ans et plus touchent 100% du SMIC soit 1 823 EUR brut.",
+    a: "Le salaire d'un apprenti en 2026 depend de son age et de son annee de contrat. Il varie de 27% du SMIC (504 EUR brut/mois pour un moins de 18 ans en 1ere annee) a 78% du SMIC (1 456 EUR brut pour un 21-25 ans en 3eme annee). Les 26 ans et plus touchent 100% du SMIC soit 1 867 EUR brut.",
   },
   {
     q: "Quelle est la difference entre apprentissage et professionnalisation ?",
@@ -27,11 +27,11 @@ const FAQ_ITEMS: FaqItem[] = [
   },
   {
     q: "Le salaire d'un alternant est-il net ou brut ?",
-    a: "Les grilles officielles indiquent le salaire brut. Depuis mars 2025, les apprentis dont le salaire depasse 50% du SMIC (912 EUR) paient des cotisations (CSG, CRDS). En dessous de ce seuil, le brut est egal au net. Au-dessus, comptez environ 78% du brut en net.",
+    a: "Les grilles officielles indiquent le salaire brut. Depuis mars 2025, les apprentis dont le salaire depasse 50% du SMIC (934 EUR) paient des cotisations (CSG, CRDS). En dessous de ce seuil, le brut est egal au net. Au-dessus, comptez environ 78% du brut en net.",
   },
   {
     q: "Qu'est-ce qui a change pour les alternants en mars 2025 ?",
-    a: "Depuis le 1er mars 2025, le seuil d'exoneration de cotisations salariales est passe de 79% a 50% du SMIC pour les nouveaux contrats. Cela signifie que les apprentis gagnant plus de 912 EUR brut/mois paient desormais des charges (CSG 9,2% + CRDS 0,5% + cotisations). Impact : jusqu'a 115 EUR/mois de moins en net.",
+    a: "Depuis le 1er mars 2025, le seuil d'exoneration de cotisations salariales est passe de 79% a 50% du SMIC pour les nouveaux contrats. Cela signifie que les apprentis gagnant plus de 934 EUR brut/mois paient desormais des charges (CSG 9,2% + CRDS 0,5% + cotisations). Impact : jusqu'a 115 EUR/mois de moins en net.",
   },
   {
     q: "Quelles aides complementaires pour les alternants ?",
@@ -68,7 +68,7 @@ export default function Page() {
           Grille de salaire en apprentissage 2026
         </h2>
         <p className="text-slate-600 mb-4 leading-relaxed">
-          Le salaire d&apos;un <strong>apprenti</strong> est fixe en pourcentage du <strong>SMIC</strong> (1 823,03 EUR brut/mois en 2026).
+          Le salaire d&apos;un <strong>apprenti</strong> est fixe en pourcentage du <strong>SMIC</strong> (1 867,02 EUR brut/mois depuis le 1er juin 2026).
           Il augmente avec l&apos;age et l&apos;annee de contrat. Voici la grille officielle :
         </p>
 
@@ -85,25 +85,25 @@ export default function Page() {
             <tbody>
               <tr className="border-b border-slate-100">
                 <td className="py-2.5 px-3 font-medium text-slate-700">Moins de 18 ans</td>
-                <td className="py-2.5 px-3 text-right text-slate-600">27% — 492 EUR</td>
-                <td className="py-2.5 px-3 text-right text-slate-600">39% — 711 EUR</td>
-                <td className="py-2.5 px-3 text-right text-slate-600">55% — 1 003 EUR</td>
+                <td className="py-2.5 px-3 text-right text-slate-600">27% — 504 EUR</td>
+                <td className="py-2.5 px-3 text-right text-slate-600">39% — 728 EUR</td>
+                <td className="py-2.5 px-3 text-right text-slate-600">55% — 1 027 EUR</td>
               </tr>
               <tr className="border-b border-slate-100">
                 <td className="py-2.5 px-3 font-medium text-slate-700">18-20 ans</td>
-                <td className="py-2.5 px-3 text-right text-slate-600">43% — 784 EUR</td>
-                <td className="py-2.5 px-3 text-right text-slate-600">51% — 930 EUR</td>
-                <td className="py-2.5 px-3 text-right text-slate-600">67% — 1 221 EUR</td>
+                <td className="py-2.5 px-3 text-right text-slate-600">43% — 803 EUR</td>
+                <td className="py-2.5 px-3 text-right text-slate-600">51% — 952 EUR</td>
+                <td className="py-2.5 px-3 text-right text-slate-600">67% — 1 251 EUR</td>
               </tr>
               <tr className="border-b border-slate-100">
                 <td className="py-2.5 px-3 font-medium text-slate-700">21-25 ans</td>
-                <td className="py-2.5 px-3 text-right text-slate-600">53% — 966 EUR</td>
-                <td className="py-2.5 px-3 text-right text-slate-600">61% — 1 112 EUR</td>
-                <td className="py-2.5 px-3 text-right text-slate-600">78% — 1 422 EUR</td>
+                <td className="py-2.5 px-3 text-right text-slate-600">53% — 990 EUR</td>
+                <td className="py-2.5 px-3 text-right text-slate-600">61% — 1 139 EUR</td>
+                <td className="py-2.5 px-3 text-right text-slate-600">78% — 1 456 EUR</td>
               </tr>
               <tr>
                 <td className="py-2.5 px-3 font-medium text-slate-700">26 ans et plus</td>
-                <td className="py-2.5 px-3 text-right font-bold text-slate-700" colSpan={3}>100% — 1 823 EUR (SMIC integral)</td>
+                <td className="py-2.5 px-3 text-right font-bold text-slate-700" colSpan={3}>100% — 1 867 EUR (SMIC integral)</td>
               </tr>
             </tbody>
           </table>
@@ -129,17 +129,17 @@ export default function Page() {
             <tbody>
               <tr className="border-b border-slate-100">
                 <td className="py-2.5 px-3 font-medium text-slate-700">Moins de 21 ans</td>
-                <td className="py-2.5 px-3 text-right text-slate-600">55% — 1 003 EUR</td>
-                <td className="py-2.5 px-3 text-right text-slate-600">65% — 1 185 EUR</td>
+                <td className="py-2.5 px-3 text-right text-slate-600">55% — 1 027 EUR</td>
+                <td className="py-2.5 px-3 text-right text-slate-600">65% — 1 214 EUR</td>
               </tr>
               <tr className="border-b border-slate-100">
                 <td className="py-2.5 px-3 font-medium text-slate-700">21-25 ans</td>
-                <td className="py-2.5 px-3 text-right text-slate-600">70% — 1 276 EUR</td>
-                <td className="py-2.5 px-3 text-right text-slate-600">80% — 1 458 EUR</td>
+                <td className="py-2.5 px-3 text-right text-slate-600">70% — 1 307 EUR</td>
+                <td className="py-2.5 px-3 text-right text-slate-600">80% — 1 494 EUR</td>
               </tr>
               <tr>
                 <td className="py-2.5 px-3 font-medium text-slate-700">26 ans et plus</td>
-                <td className="py-2.5 px-3 text-right font-bold text-slate-700" colSpan={2}>100% — 1 823 EUR (SMIC integral)</td>
+                <td className="py-2.5 px-3 text-right font-bold text-slate-700" colSpan={2}>100% — 1 867 EUR (SMIC integral)</td>
               </tr>
             </tbody>
           </table>
@@ -154,7 +154,7 @@ export default function Page() {
         </p>
         <ul className="list-disc list-inside text-slate-600 space-y-2 mb-4">
           <li>Le seuil d&apos;exoneration passe de <strong>79% a 50% du SMIC</strong></li>
-          <li>Les alternants gagnant plus de <strong>912 EUR brut/mois</strong> paient des cotisations</li>
+          <li>Les alternants gagnant plus de <strong>934 EUR brut/mois</strong> paient des cotisations</li>
           <li>Application de la <strong>CSG (9,2%) et CRDS (0,5%)</strong> sur la part depassant le seuil</li>
           <li>Impact estime : jusqu&apos;a <strong>115 EUR/mois de moins</strong> en salaire net</li>
         </ul>
@@ -267,9 +267,9 @@ export default function Page() {
         name="Simuler le salaire d'un alternant"
         steps={[
           { name: "Choisir le type de contrat", text: "Sélectionner le contrat d'apprentissage (16-29 ans, vise un diplome d'État : CAP, BTS, licence, master) ou de professionnalisation (tous âges, vise une qualification pro CQP ou titre RNCP). Le type de contrat determine la grille de remuneration applicable." },
-          { name: "Sélectionner l'âge et l'année (apprentissage) ou le niveau (professionnalisation)", text: "Pour l'apprentissage, choisir la tranche d'âge (moins de 18 ans, 18-20 ans, 21-25 ans, 26 ans et plus) et l'année de contrat (1ere, 2eme, 3eme). Exemple : 21 ans en 2eme année = 61% du SMIC soit 1 112 EUR brut en 2026. Pour la professionnalisation, sélectionner l'âge et le niveau (sans bac ou bac pro et plus)." },
-          { name: "Calculer le salaire brut à partir du pourcentage SMIC", text: "Le simulateur applique le pourcentage de la grille officielle au SMIC 2026 (1 823 EUR brut/mois). Les taux vont de 27% (492 EUR, moins de 18 ans en 1ere année d'apprentissage) à 100% (1 823 EUR, 26 ans et plus)." },
-          { name: "Obtenir le salaire net après reforme mars 2025", text: "Si le brut depasse 50% du SMIC (912 EUR), la CSG (9,2%) et la CRDS (0,5%) s'appliquent sur la part excedentaire depuis le 1er mars 2025, ce qui donne un net d'environ 78% du brut au-dessus du seuil, soit jusqu'à 115 EUR de moins par mois." },
+          { name: "Sélectionner l'âge et l'année (apprentissage) ou le niveau (professionnalisation)", text: "Pour l'apprentissage, choisir la tranche d'âge (moins de 18 ans, 18-20 ans, 21-25 ans, 26 ans et plus) et l'année de contrat (1ere, 2eme, 3eme). Exemple : 21 ans en 2eme année = 61% du SMIC soit 1 139 EUR brut depuis le 1er juin 2026. Pour la professionnalisation, sélectionner l'âge et le niveau (sans bac ou bac pro et plus)." },
+          { name: "Calculer le salaire brut à partir du pourcentage SMIC", text: "Le simulateur applique le pourcentage de la grille officielle au SMIC en vigueur depuis le 1er juin 2026 (1 867 EUR brut/mois). Les taux vont de 27% (504 EUR, moins de 18 ans en 1ere année d'apprentissage) à 100% (1 867 EUR, 26 ans et plus)." },
+          { name: "Obtenir le salaire net après reforme mars 2025", text: "Si le brut depasse 50% du SMIC (934 EUR), la CSG (9,2%) et la CRDS (0,5%) s'appliquent sur la part excedentaire depuis le 1er mars 2025, ce qui donne un net d'environ 78% du brut au-dessus du seuil, soit jusqu'à 115 EUR de moins par mois." },
         ]}
       />
 
