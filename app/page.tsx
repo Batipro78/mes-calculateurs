@@ -1900,6 +1900,51 @@ const outils = [
     tag: "Guide",
   },
   {
+    titre: "Comment calculer le périmètre d'un cercle ?",
+    description:
+      "Le périmètre d'un cercle se calcule avec la formule 2 × π × r, ou π × d avec le diamètre. Exemples chiffrés, roue de vélo, table ronde, demi-cercle et arc de cercle.",
+    href: "/comment-calculer-le-perimetre-d-un-cercle",
+    icone: "⭕",
+    couleur: "from-blue-500 to-cyan-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Comment passer du salaire net au brut ?",
+    description:
+      "Pour passer du net au brut, on divise le net par 0,78 (non-cadre), 0,75 (cadre) ou 0,85 (fonction publique). Exemples à 2 000 € net, taux horaire, tableau et pièges.",
+    href: "/comment-passer-du-salaire-net-au-brut",
+    icone: "💶",
+    couleur: "from-emerald-500 to-teal-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Comment calculer son impôt sur le revenu ?",
+    description:
+      "L'impôt sur le revenu se calcule en cinq étapes : abattement de 10 %, quotient familial, barème par tranches, parts, décote. Exemples chiffrés pas à pas, barème 2026.",
+    href: "/comment-calculer-son-impot-sur-le-revenu",
+    icone: "🧾",
+    couleur: "from-indigo-500 to-blue-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Combien consomme une PS5 ou un PC gamer ?",
+    description:
+      "Une PS5 consomme environ 200 W en jeu et un PC gamer 350 W. Méthode de calcul, coût par heure, par mois et par an avec des exemples chiffrés, écran compris.",
+    href: "/combien-consomme-une-ps5-ou-un-pc-gamer",
+    icone: "🎮",
+    couleur: "from-violet-500 to-fuchsia-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Comment calculer sa consommation d'essence aux 100 km ?",
+    description:
+      "La consommation aux 100 km se calcule avec la méthode du plein à plein : litres ÷ kilomètres × 100. Exemples chiffrés, coût d'un trajet, km par litre et pièges à éviter.",
+    href: "/comment-calculer-sa-consommation-aux-100-km",
+    icone: "⛽",
+    couleur: "from-orange-500 to-amber-600",
+    tag: "Guide",
+  },
+  {
     titre: "Comment convertir des heures en centièmes ?",
     description:
       "Minutes ÷ 60 : 7 h 45 font 7,75 h. Tableau de 5 en 5 minutes et conversion inverse des centièmes en minutes.",

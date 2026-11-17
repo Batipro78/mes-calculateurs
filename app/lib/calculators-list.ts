@@ -226,4 +226,9 @@ export const ALL_CALCULATORS: Calculator[] = [
   { slug: "/comment-calculer-la-mensualite-d-un-pret-immobilier", title: "Guide : calculer la mensualité d'un prêt immobilier", emoji: "🏠", color: "from-violet-500 to-purple-500" },
   { slug: "/combien-de-jours-entre-deux-dates", title: "Guide : combien de jours entre deux dates", emoji: "📆", color: "from-fuchsia-500 to-pink-600" },
   { slug: "/comment-calculer-le-salaire-d-un-alternant", title: "Guide : calculer le salaire d'un alternant", emoji: "🎓", color: "from-indigo-500 to-purple-500" },
+  { slug: "/comment-calculer-le-perimetre-d-un-cercle", title: "Guide : calculer le périmètre d'un cercle", emoji: "⭕", color: "from-blue-500 to-cyan-600" },
+  { slug: "/comment-passer-du-salaire-net-au-brut", title: "Guide : passer du salaire net au brut", emoji: "💶", color: "from-emerald-500 to-teal-600" },
+  { slug: "/comment-calculer-son-impot-sur-le-revenu", title: "Guide : calculer son impôt sur le revenu", emoji: "🧾", color: "from-indigo-500 to-blue-600" },
+  { slug: "/combien-consomme-une-ps5-ou-un-pc-gamer", title: "Guide : consommation d'une PS5 ou d'un PC gamer", emoji: "🎮", color: "from-violet-500 to-fuchsia-600" },
+  { slug: "/comment-calculer-sa-consommation-aux-100-km", title: "Guide : calculer sa consommation aux 100 km", emoji: "⛽", color: "from-orange-500 to-amber-600" },
 ];
