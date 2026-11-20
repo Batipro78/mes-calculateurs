@@ -12,7 +12,7 @@ npm run lint     # Linting
 
 ## Stack
 
-- Next.js 15.3.2, React 19, TypeScript 5.8
+- Next.js 15.5.29 (mise a jour de securite du 20/11/2026 ; derniere 15.x = tag npm `backport`), React 19, TypeScript 5.8
 - Tailwind CSS 4.1 (classes en dur dans JSX, jamais d'objets JS dynamiques)
 - Deploy : Vercel
 - Domaine : mescalculateurs.fr

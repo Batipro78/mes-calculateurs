@@ -9,6 +9,9 @@ on:
     paths:
       - "app/lib/sitemap-data.ts"
 
+permissions:
+  contents: read
+
 jobs:
   push:
     runs-on: ubuntu-latest
