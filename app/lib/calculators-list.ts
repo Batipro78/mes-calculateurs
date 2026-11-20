@@ -231,4 +231,9 @@ export const ALL_CALCULATORS: Calculator[] = [
   { slug: "/comment-calculer-son-impot-sur-le-revenu", title: "Guide : calculer son impôt sur le revenu", emoji: "🧾", color: "from-indigo-500 to-blue-600" },
   { slug: "/combien-consomme-une-ps5-ou-un-pc-gamer", title: "Guide : consommation d'une PS5 ou d'un PC gamer", emoji: "🎮", color: "from-violet-500 to-fuchsia-600" },
   { slug: "/comment-calculer-sa-consommation-aux-100-km", title: "Guide : calculer sa consommation aux 100 km", emoji: "⛽", color: "from-orange-500 to-amber-600" },
+  { slug: "/loa-ou-lld-quelle-difference", title: "Guide : LOA ou LLD, quelle différence", emoji: "🚗", color: "from-sky-500 to-blue-600" },
+  { slug: "/comment-calculer-ses-heures-de-travail", title: "Guide : calculer ses heures de travail", emoji: "⏱️", color: "from-amber-500 to-orange-600" },
+  { slug: "/comment-calculer-l-inflation", title: "Guide : calculer l'inflation", emoji: "📈", color: "from-rose-500 to-red-600" },
+  { slug: "/comment-calculer-sa-numerologie-avec-son-prenom", title: "Guide : calculer sa numérologie avec son prénom", emoji: "🔢", color: "from-purple-500 to-indigo-600" },
+  { slug: "/combien-coute-une-voiture-par-mois", title: "Guide : coût d'une voiture par mois", emoji: "💸", color: "from-teal-500 to-emerald-600" },
 ];

@@ -1945,6 +1945,51 @@ const outils = [
     tag: "Guide",
   },
   {
+    titre: "LOA ou LLD : quelle différence et laquelle choisir ?",
+    description:
+      "LOA ou LLD : la LOA permet d'acheter la voiture à la fin, pas la LLD. Différences, coût total de chaque formule avec deux exemples chiffrés, pièges et questions à se poser.",
+    href: "/loa-ou-lld-quelle-difference",
+    icone: "🚗",
+    couleur: "from-sky-500 to-blue-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Comment calculer ses heures de travail et ses heures supplémentaires ?",
+    description:
+      "Durée d'une journée avec pause, total de la semaine, heures supplémentaires au-delà de 35 h, majoration de 25 % et 50 % : méthode pas à pas, exemples chiffrés et calcul à la main.",
+    href: "/comment-calculer-ses-heures-de-travail",
+    icone: "⏱️",
+    couleur: "from-amber-500 to-orange-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Comment calculer l'inflation et la perte de pouvoir d'achat ?",
+    description:
+      "L'inflation se cumule en multipliant les coefficients annuels, pas en additionnant les taux. Méthode, exemples chiffrés (100 € de 2000, salaire de 2 000 €), francs en euros et perte de pouvoir d'achat.",
+    href: "/comment-calculer-l-inflation",
+    icone: "📈",
+    couleur: "from-rose-500 to-red-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Comment calculer sa numérologie avec son nom et son prénom ?",
+    description:
+      "Tableau lettres-chiffres, addition, réduction, nombres maîtres : la méthode pour calculer ses nombres d'expression, du cœur et de personnalité, avec des exemples détaillés.",
+    href: "/comment-calculer-sa-numerologie-avec-son-prenom",
+    icone: "🔢",
+    couleur: "from-purple-500 to-indigo-600",
+    tag: "Guide",
+  },
+  {
+    titre: "Combien coûte une voiture par mois ?",
+    description:
+      "Le coût d'une voiture se calcule en additionnant la perte de valeur, le carburant, l'assurance, l'entretien et le contrôle technique, puis en divisant par la durée. Méthode, trois exemples chiffrés et pièges à éviter.",
+    href: "/combien-coute-une-voiture-par-mois",
+    icone: "💸",
+    couleur: "from-teal-500 to-emerald-600",
+    tag: "Guide",
+  },
+  {
     titre: "Comment convertir des heures en centièmes ?",
     description:
       "Minutes ÷ 60 : 7 h 45 font 7,75 h. Tableau de 5 en 5 minutes et conversion inverse des centièmes en minutes.",

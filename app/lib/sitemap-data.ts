@@ -886,6 +886,36 @@ function generateAllUrls(): SitemapEntry[] {
       priority: 0.8,
     },
     {
+      url: `${BASE_URL}/loa-ou-lld-quelle-difference`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/comment-calculer-ses-heures-de-travail`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/comment-calculer-l-inflation`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/comment-calculer-sa-numerologie-avec-son-prenom`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${BASE_URL}/combien-coute-une-voiture-par-mois`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${BASE_URL}/comment-convertir-des-heures-en-centiemes`,
       lastModified: new Date(),
       changeFrequency: "monthly",

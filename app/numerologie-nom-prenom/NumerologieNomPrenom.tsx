@@ -74,7 +74,7 @@ export default function NumerologieNomPrenom() {
         <div className="space-y-6">
           {/* Titre resultats */}
           <div className="text-center">
-            <p className="text-slate-500 mb-2">Numerologie numerologie pythagoricienne</p>
+            <p className="text-slate-500 mb-2">Numerologie pythagoricienne</p>
             <h2 className="text-2xl font-extrabold bg-gradient-to-r from-purple-600 to-fuchsia-700 bg-clip-text text-transparent">
               {resultat.nomComplet}
             </h2>
