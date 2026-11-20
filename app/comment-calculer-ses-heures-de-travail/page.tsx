@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     siteName: "Mes Calculateurs",
     title: TITRE,
     description: DESCRIPTION,
+    images: [{ url: "/images/heures-travail-feuille.webp", width: 1200, height: 630 }],
   },
 };
 
@@ -37,6 +38,12 @@ const ARTICLE: ArticleData = {
         "La formule est simple : on prend l'heure de fin, on retire l'heure de début, puis on retire la pause. En général, la pause déjeuner n'est pas comptée comme du temps de travail, mais votre contrat ou votre convention collective peut prévoir autre chose.",
         "Le plus sûr est de tout compter en **minutes**, puis de convertir en heures et minutes. Pour obtenir des heures décimales, on divise les minutes par 60 : 7 h 45 = 465 minutes = 7,75 h. Si vous devez convertir des heures et minutes en centièmes, voyez [comment convertir des heures en centièmes](/comment-convertir-des-heures-en-centiemes).",
       ],
+      visuel: {
+        fichier: "heures-travail-feuille",
+        alt: "Feuille d'heures de la semaine sur un porte-bloc, posée sur un établi d'atelier à côté d'un crayon et d'une tasse de café ; une horloge murale à l'arrière-plan.",
+        legende:
+          "Noter chaque jour l'heure d'arrivée, l'heure de départ et la pause : c'est la base pour compter ses heures de travail et ses heures supplémentaires.",
+      },
     },
     {
       titre: "Exemple 1 : 9 h 00 - 17 h 30 avec 1 h de pause",

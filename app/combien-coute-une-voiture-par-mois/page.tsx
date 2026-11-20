@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     siteName: "Mes Calculateurs",
     title: TITRE,
     description: DESCRIPTION,
+    images: [{ url: "/images/cout-voiture-maison.webp", width: 1200, height: 630 }],
   },
 };
 
@@ -46,6 +47,12 @@ const ARTICLE: ArticleData = {
       suite: [
         "Ce qui n'est pas compté : le stationnement, les péages, un éventuel crédit et les amendes. Si vous financez la voiture, voyez le [simulateur de crédit auto](/simulateur-credit-auto) ; si vous hésitez avec une location, lisez [LOA ou LLD : quelle différence](/loa-ou-lld-quelle-difference).",
       ],
+      visuel: {
+        fichier: "cout-voiture-maison",
+        alt: "Petite voiture citadine grise garée devant une maison à la tombée de la nuit, entre une haie et un portail, la lampe de l'entrée allumée.",
+        legende:
+          "Même garée devant la maison, une voiture coûte chaque mois : assurance, entretien et perte de valeur s'ajoutent au carburant.",
+      },
     },
     {
       titre: "Pourquoi la perte de valeur pèse autant",

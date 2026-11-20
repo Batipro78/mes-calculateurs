@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     siteName: "Mes Calculateurs",
     title: TITRE,
     description: DESCRIPTION,
+    images: [{ url: "/images/inflation-panier-courses.webp", width: 1200, height: 630 }],
   },
 };
 
@@ -46,6 +47,12 @@ const ARTICLE: ArticleData = {
       suite: [
         "Pourquoi multiplier ? Parce que chaque année, la hausse s'applique à des prix déjà augmentés. C'est le même principe que les [intérêts composés](/comment-calculer-des-interets-composes), mais à l'envers : ici, l'argent perd de sa valeur.",
       ],
+      visuel: {
+        fichier: "inflation-panier-courses",
+        alt: "Panier en osier rempli de pain, de lait, de pommes, de pâtes et d'œufs sur une table de cuisine, à côté d'un ticket de caisse, de quelques pièces et d'un porte-monnaie.",
+        legende:
+          "Le même panier de courses coûte plus cher d'une année à l'autre : c'est cette hausse des prix que mesure l'inflation.",
+      },
     },
     {
       titre: "Quelles années compte-t-on ?",

@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     siteName: "Mes Calculateurs",
     title: TITRE,
     description: DESCRIPTION,
+    images: [{ url: "/images/numerologie-carnet.webp", width: 1200, height: 630 }],
   },
 };
 
@@ -37,6 +38,12 @@ const ARTICLE: ArticleData = {
         "La numérologie est une pratique traditionnelle qui associe des nombres aux lettres. Aucune étude scientifique ne montre qu'elle décrit une personnalité ou prédit quoi que ce soit. Beaucoup de gens y trouvent pourtant un plaisir de lecture, un sujet de conversation ou une façon de s'interroger sur eux-mêmes, et c'est très bien ainsi.",
         "Le calcul, lui, est de l'arithmétique simple et se vérifie à la main, avec la méthode du calculateur.",
       ],
+      visuel: {
+        fichier: "numerologie-carnet",
+        alt: "Carnet ouvert couvert de petites notes manuscrites, un crayon posé dessus, une tasse de tisane et une bougie, sur un bureau éclairé le soir par une lampe.",
+        legende:
+          "Un crayon et une feuille suffisent : la numérologie du prénom repose sur de simples additions de lettres.",
+      },
     },
     {
       titre: "Le tableau lettres-chiffres",

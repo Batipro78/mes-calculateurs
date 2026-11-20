@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     siteName: "Mes Calculateurs",
     title: TITRE,
     description: DESCRIPTION,
+    images: [{ url: "/images/loa-lld-cles-voiture.webp", width: 1200, height: 630 }],
   },
 };
 
@@ -37,6 +38,12 @@ const ARTICLE: ArticleData = {
         "La **LOA** (location avec option d'achat, aussi appelée leasing) est une location pour une durée fixée. À la fin, vous avez la possibilité, mais pas l'obligation, d'acheter la voiture en payant l'**option d'achat**, c'est-à-dire la valeur résiduelle fixée dès le départ dans le contrat. Si vous ne la payez pas, vous rendez la voiture.",
         "La **LLD** (location longue durée) est une location sans option d'achat : à la fin, vous rendez la voiture. Selon le contrat, des services peuvent être inclus, comme l'entretien ou l'assistance.",
       ],
+      visuel: {
+        fichier: "loa-lld-cles-voiture",
+        alt: "Clés de voiture posées sur un contrat de location imprimé, à côté d'un stylo, sur un bureau de concession ; une voiture grise neuve, floue, à l'arrière-plan.",
+        legende:
+          "En LOA comme en LLD, on signe un contrat de location : la différence se joue à la fin, quand on rend la voiture ou qu'on l'achète.",
+      },
     },
     {
       titre: "Les différences à connaître",
