@@ -1,9 +1,10 @@
 name: Build statique (Cloudflare)
 
 # Construit le site statique (out/) sur les serveurs de GitHub, parce que le PC
-# (8 Go) n'a pas la memoire pour 11 000 pages. Le resultat est publie en
-# artefact « site-statique » ; la mise en ligne se fait ensuite avec
-# `npx wrangler deploy` depuis le PC.
+# (8 Go) n'a pas la memoire pour 11 000 pages. Le resultat (site.tgz) est publie
+# dans une release « site-statique-<commit> » (telechargeable sans identifiant,
+# le depot est public) ; la mise en ligne se fait ensuite depuis le PC :
+# extraire dans out/ puis `npx wrangler deploy`.
 
 on:
   push:
@@ -11,7 +12,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   build:
@@ -28,9 +29,15 @@ jobs:
         env:
           NEXT_TELEMETRY_DISABLED: "1"
       - run: tar -czf site.tgz out
-      - uses: actions/upload-artifact@v4
-        with:
-          name: site-statique
-          path: site.tgz
-          retention-days: 7
-          compression-level: 0
+      - name: Publier le site construit (release)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="site-statique-${GITHUB_SHA::7}"
+          gh release create "$TAG" site.tgz --prerelease --target "$GITHUB_SHA" \
+            --title "Site statique ${GITHUB_SHA::7}" \
+            --notes "Construit automatiquement pour Cloudflare (branche ${GITHUB_REF_NAME})."
+          # Ne garder que la derniere release de ce type.
+          gh release list --limit 100 --json tagName -q '.[].tagName' \
+            | grep '^site-statique-' | grep -vx "$TAG" \
+            | xargs -r -n1 gh release delete --yes --cleanup-tag
