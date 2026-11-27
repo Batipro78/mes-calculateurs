@@ -10,7 +10,8 @@ export const revalidate = 3600;
 
 export async function generateStaticParams() {
   const count = getSitemapsCount();
-  return Array.from({ length: count }, (_, i) => ({ id: String(i) }));
+  // Suffixe .xml dans l'id : le site statique produit out/sitemap/<id>.xml
+  return Array.from({ length: count }, (_, i) => ({ id: `${i}.xml` }));
 }
 
 function escapeXml(value: string): string {
@@ -54,7 +55,7 @@ export async function GET(
   context: { params: Promise<{ id: string }> },
 ) {
   const { id } = await context.params;
-  const numericId = Number.parseInt(id, 10);
+  const numericId = Number.parseInt(id.replace(/\.xml$/, ""), 10);
   const chunk = getSitemapChunk(Number.isFinite(numericId) ? numericId : 0);
 
   if (chunk.length === 0) {

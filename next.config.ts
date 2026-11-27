@@ -1,58 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  async redirects() {
-    return [
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "mes-calculateurs.vercel.app" }],
-        destination: "https://mescalculateurs.fr/:path*",
-        permanent: true,
-      },
-    ];
-  },
-  async rewrites() {
-    return [
-      {
-        source: "/sitemap/:id.xml",
-        destination: "/sitemap/:id",
-      },
-    ];
-  },
-  async headers() {
-    return [
-      // Headers securite stricts pour tout le site
-      {
-        source: "/(.*)",
-        headers: [
-          { key: "X-Content-Type-Options", value: "nosniff" },
-          { key: "X-XSS-Protection", value: "1; mode=block" },
-          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
-          {
-            key: "Strict-Transport-Security",
-            value: "max-age=31536000; includeSubDomains; preload",
-          },
-          {
-            key: "Permissions-Policy",
-            value:
-              "geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=(), bluetooth=()",
-          },
-        ],
-      },
-      // Hors /embed/* : interdire iframing
-      {
-        source: "/((?!embed).*)",
-        headers: [{ key: "X-Frame-Options", value: "DENY" }],
-      },
-      // /embed/* : autoriser iframing depuis n'importe quel site (widgets)
-      {
-        source: "/embed/:path*",
-        headers: [
-          { key: "Content-Security-Policy", value: "frame-ancestors *;" },
-        ],
-      },
-    ];
-  },
+  output: "export",
+  // Sur le PC (8 Go) : un seul processus de generation des pages, sinon le build est tue faute de
+  // memoire. Chez Cloudflare (Workers Builds, WORKERS_CI=1) : reglage par defaut.
+  experimental: { cpus: process.env.WORKERS_CI ? undefined : 1 },
 };
 
 export default nextConfig;

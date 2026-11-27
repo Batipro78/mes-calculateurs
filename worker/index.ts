@@ -1,7 +1,23 @@
-import { NextResponse } from "next/server";
-import { LEAD_NICHES } from "../../lib/leads-config";
+// Worker Cloudflare de mescalculateurs.fr (remplace les routes /api de Next.js
+// depuis le passage en site statique, 27/11/2026).
+// Le reste du site = fichiers statiques de out/, servis par env.ASSETS.
+// /api/leads et /api/indexnow : meme logique, memes codes et memes reponses
+// que les anciennes app/api/leads/route.ts et app/api/indexnow/route.ts.
 
-export const runtime = "nodejs";
+import { LEAD_NICHES } from "../app/lib/leads-config";
+
+interface Env {
+  ASSETS: { fetch(request: Request): Promise<Response> };
+  BREVO_API_KEY?: string;
+  LEADS_NOTIFY_EMAIL?: string;
+  ADMIN_STATS_TOKEN?: string;
+}
+
+const json = (data: unknown, init?: ResponseInit) => Response.json(data, init);
+
+/* ------------------------------------------------------------------ */
+/* /api/leads (POST)                                                   */
+/* ------------------------------------------------------------------ */
 
 type LeadPayload = {
   nicheId?: string;
@@ -38,9 +54,8 @@ function esc(s: string): string {
   );
 }
 
-// Rate-limit en memoire (best-effort, par instance serverless). Premier rempart
-// anti-flood ; pour une protection forte multi-instances il faudrait un store
-// partage (ex: Upstash). Suffisant ici combine au honeypot.
+// Rate-limit en memoire (best-effort, par instance du Worker). Premier rempart
+// anti-flood, combine au honeypot.
 const RL_WINDOW_MS = 10 * 60 * 1000;
 const RL_MAX = 5;
 const rlHits = new Map<string, number[]>();
@@ -70,14 +85,15 @@ const MAX = {
   nicheId: 50,
 };
 
-export async function POST(req: Request) {
+async function handleLeads(req: Request, env: Env): Promise<Response> {
   const ip =
+    req.headers.get("cf-connecting-ip") ||
     req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
     req.headers.get("x-real-ip") ||
     "unknown";
 
   if (isRateLimited(ip)) {
-    return NextResponse.json(
+    return json(
       { error: "Trop de demandes, reessayez dans quelques minutes." },
       { status: 429 }
     );
@@ -87,12 +103,12 @@ export async function POST(req: Request) {
   try {
     body = (await req.json()) as LeadPayload;
   } catch {
-    return NextResponse.json({ error: "JSON invalide" }, { status: 400 });
+    return json({ error: "JSON invalide" }, { status: 400 });
   }
 
   // Honeypot : un bot remplit ce champ cache, un humain non. On simule un succes.
   if ((body.website ?? "").trim() !== "") {
-    return NextResponse.json({ ok: true });
+    return json({ ok: true });
   }
 
   const nom = (body.nom ?? "").trim();
@@ -107,7 +123,7 @@ export async function POST(req: Request) {
   const source = (body.source ?? "").trim();
 
   if (!nom || !email || !telephone || !codePostal || !projet || !nicheId) {
-    return NextResponse.json({ error: "Champs obligatoires manquants" }, { status: 400 });
+    return json({ error: "Champs obligatoires manquants" }, { status: 400 });
   }
 
   // Limites de longueur (anti-abus / anti-payload geant).
@@ -123,17 +139,17 @@ export async function POST(req: Request) {
     source.length > MAX.source ||
     nicheId.length > MAX.nicheId
   ) {
-    return NextResponse.json({ error: "Champ trop long" }, { status: 400 });
+    return json({ error: "Champ trop long" }, { status: 400 });
   }
 
   if (!isValidEmail(email)) {
-    return NextResponse.json({ error: "Email invalide" }, { status: 400 });
+    return json({ error: "Email invalide" }, { status: 400 });
   }
   if (!isValidPhone(telephone)) {
-    return NextResponse.json({ error: "Telephone invalide" }, { status: 400 });
+    return json({ error: "Telephone invalide" }, { status: 400 });
   }
   if (!body.consentement) {
-    return NextResponse.json({ error: "Consentement RGPD requis" }, { status: 400 });
+    return json({ error: "Consentement RGPD requis" }, { status: 400 });
   }
 
   const niche = LEAD_NICHES[nicheId];
@@ -142,8 +158,8 @@ export async function POST(req: Request) {
   const partenaires = niche?.partenairesCibles.join(", ") ?? "n/a";
 
   // Notification Brevo (envoi email a Fethi avec le lead)
-  const brevoKey = process.env.BREVO_API_KEY;
-  const notifyEmail = process.env.LEADS_NOTIFY_EMAIL ?? "ameur.fethi78@gmail.com";
+  const brevoKey = env.BREVO_API_KEY;
+  const notifyEmail = env.LEADS_NOTIFY_EMAIL ?? "ameur.fethi78@gmail.com";
 
   if (brevoKey) {
     const subject = `[Lead ${nicheLabel}] ${nom} - ${ville || codePostal}`;
@@ -192,5 +208,127 @@ export async function POST(req: Request) {
     console.warn(`[leads] BREVO_API_KEY absent, lead non envoye (niche=${nicheId})`);
   }
 
-  return NextResponse.json({ ok: true });
+  return json({ ok: true });
 }
+
+/* ------------------------------------------------------------------ */
+/* /api/indexnow (GET) : pousse toutes les adresses des sitemaps       */
+/* ------------------------------------------------------------------ */
+
+const HOST = "mescalculateurs.fr";
+const KEY = "8f4d3c2b1a9e8f7d6c5b4a3e2d1c9b8a";
+const KEY_LOCATION = `https://${HOST}/${KEY}.txt`;
+const ENDPOINT = "https://api.indexnow.org/IndexNow";
+const CHUNK = 10000;
+
+async function fetchAllUrls(sitemapIndexUrl: string): Promise<string[]> {
+  const indexRes = await fetch(sitemapIndexUrl, { method: "GET" });
+  if (!indexRes.ok) {
+    throw new Error(
+      `Failed to fetch sitemap index ${sitemapIndexUrl}: ${indexRes.status}`
+    );
+  }
+  const indexXml = await indexRes.text();
+  const sitemapUrls = [
+    ...indexXml.matchAll(/<loc>([^<]+)<\/loc>/g),
+  ].map((m) => m[1].trim());
+
+  const all: string[] = [];
+  for (const sitemapUrl of sitemapUrls) {
+    const res = await fetch(sitemapUrl, { method: "GET" });
+    if (!res.ok) {
+      console.warn(`Skipping ${sitemapUrl}: HTTP ${res.status}`);
+      continue;
+    }
+    const xml = await res.text();
+    const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) =>
+      m[1].trim()
+    );
+    all.push(...urls);
+  }
+  return all;
+}
+
+async function handleIndexNow(req: Request, env: Env): Promise<Response> {
+  const token = req.headers.get("x-admin-token");
+  const expectedToken = env.ADMIN_STATS_TOKEN;
+
+  if (!expectedToken || token !== expectedToken) {
+    return json({ error: "Unauthorized" }, { status: 403 });
+  }
+
+  try {
+    const sitemapIndex = `https://${HOST}/sitemap-index.xml`;
+    const urls = await fetchAllUrls(sitemapIndex);
+
+    let totalOk = 0;
+    let totalFail = 0;
+
+    for (let i = 0; i < urls.length; i += CHUNK) {
+      const batch = urls.slice(i, i + CHUNK);
+      const res = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json; charset=utf-8" },
+        body: JSON.stringify({
+          host: HOST,
+          key: KEY,
+          keyLocation: KEY_LOCATION,
+          urlList: batch,
+        }),
+      });
+
+      const ok = res.ok || res.status === 202;
+      if (ok) {
+        totalOk += batch.length;
+      } else {
+        totalFail += batch.length;
+        console.warn(
+          `Batch ${Math.floor(i / CHUNK) + 1} failed: HTTP ${res.status}`
+        );
+      }
+    }
+
+    return json(
+      {
+        pushed: totalOk,
+        failed: totalFail,
+        status: "ok",
+        totalUrls: urls.length,
+      },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("IndexNow push error:", error);
+    return json(
+      {
+        error: error instanceof Error ? error.message : "Unknown error",
+      },
+      { status: 500 }
+    );
+  }
+}
+
+/* ------------------------------------------------------------------ */
+
+const methodNotAllowed = (allow: string) =>
+  new Response(null, { status: 405, headers: { allow } });
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const { pathname } = new URL(request.url);
+
+    if (pathname === "/api/leads") {
+      return request.method === "POST"
+        ? handleLeads(request, env)
+        : methodNotAllowed("POST");
+    }
+
+    if (pathname === "/api/indexnow") {
+      return request.method === "GET" || request.method === "HEAD"
+        ? handleIndexNow(request, env)
+        : methodNotAllowed("GET, HEAD");
+    }
+
+    return env.ASSETS.fetch(request);
+  },
+};

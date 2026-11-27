@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
+// Site statique (Cloudflare) : image generee une fois au build.
+export const dynamic = "force-static";
 
 export const alt = "Mes Calculateurs - Calculateurs et simulateurs gratuits en ligne";
 export const size = { width: 1200, height: 630 };

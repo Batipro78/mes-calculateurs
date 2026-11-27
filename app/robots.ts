@@ -1,5 +1,8 @@
 import type { MetadataRoute } from "next";
 
+// Site statique (Cloudflare) : robots.txt genere une fois au build.
+export const dynamic = "force-static";
+
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
