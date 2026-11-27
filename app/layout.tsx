@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/next";
 import ConditionalScripts from "./components/ConditionalScripts";
 import ConditionalChrome from "./components/ConditionalChrome";
 import SearchBar from "./components/SearchBar";
@@ -208,7 +207,12 @@ export default function RootLayout({
         >
           {children}
         </ConditionalChrome>
-        <Analytics />
+        {/* Compteur de visites Cloudflare Web Analytics (sans cookie). */}
+        <script
+          type="module"
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={JSON.stringify({ token: "5d34257c8f074d0dabaf5c5d9326bfa6" })}
+        ></script>
       </body>
     </html>
   );
