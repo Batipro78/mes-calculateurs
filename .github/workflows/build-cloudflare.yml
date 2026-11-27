@@ -1,0 +1,36 @@
+name: Build statique (Cloudflare)
+
+# Construit le site statique (out/) sur les serveurs de GitHub, parce que le PC
+# (8 Go) n'a pas la memoire pour 11 000 pages. Le resultat est publie en
+# artefact « site-statique » ; la mise en ligne se fait ensuite avec
+# `npx wrangler deploy` depuis le PC.
+
+on:
+  push:
+    branches: [cloudflare]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+        env:
+          NEXT_TELEMETRY_DISABLED: "1"
+      - run: tar -czf site.tgz out
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site-statique
+          path: site.tgz
+          retention-days: 7
+          compression-level: 0
