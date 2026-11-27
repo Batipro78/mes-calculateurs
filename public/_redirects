@@ -1,0 +1,8 @@
+# Cloudflare (fichiers statiques) : redirections permanentes.
+# Ces 5 adresses du plan du site etaient servies a la demande par Vercel (le
+# parseur accepte « slope-<n> »), mais la page fabriquee porte un nom plus long.
+/calcul-handicap-golf-whs/slope-100 /calcul-handicap-golf-whs/slope-100-parcours-facile 301
+/calcul-handicap-golf-whs/slope-113 /calcul-handicap-golf-whs/slope-113-parcours-standard 301
+/calcul-handicap-golf-whs/slope-125 /calcul-handicap-golf-whs/slope-125-parcours-difficile 301
+/calcul-handicap-golf-whs/slope-135 /calcul-handicap-golf-whs/slope-135-parcours-tres-difficile 301
+/calcul-handicap-golf-whs/slope-145 /calcul-handicap-golf-whs/slope-145-parcours-extreme 301
