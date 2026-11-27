@@ -19,10 +19,9 @@
 // IRVE. Ne remettre cette prestation dans l'encart que le jour ou la
 // certification est affichee sur electricien-mantes.
 
-// URL provisoire : Amatech est encore sur un sous-domaine vercel.app
-// (cf electricien-mantes/src/lib/site.ts, « remplace par ton vrai domaine »).
-// A mettre a jour ici le jour de l'achat du nom de domaine.
-const AMATECH_URL = "https://electricien-mantes.vercel.app";
+// Site d'Amatech (domaine propre depuis le 11/11/2026, servi par Cloudflare).
+// L'ancienne adresse electricien-mantes.vercel.app ne marche plus.
+const AMATECH_URL = "https://amatech-electricite.fr";
 
 export default function CTAElectricienLocal() {
   const url = `${AMATECH_URL}/?utm_source=mescalculateurs&utm_medium=referral&utm_campaign=prix-electricien`;
