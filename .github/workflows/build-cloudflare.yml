@@ -8,7 +8,7 @@ name: Build statique (Cloudflare)
 
 on:
   push:
-    branches: [cloudflare]
+    branches: [main]
   workflow_dispatch:
 
 permissions:

@@ -14,8 +14,19 @@ npm run lint     # Linting
 
 - Next.js 15.5.29 (mise a jour de securite du 20/11/2026 ; derniere 15.x = tag npm `backport`), React 19, TypeScript 5.8
 - Tailwind CSS 4.1 (classes en dur dans JSX, jamais d'objets JS dynamiques)
-- Deploy : Vercel
+- Deploy : **Cloudflare Workers, site 100 % statique** (`output: "export"`, depuis le 27/11/2026 ; Vercel n'est plus utilise)
 - Domaine : mescalculateurs.fr
+
+## Mise en ligne (Cloudflare)
+
+1. Pousser sur `main` : GitHub Actions (`.github/workflows/build-cloudflare.yml`) construit le site (le PC n'a pas
+   assez de memoire pour 11 000 pages) et publie `site.tgz` dans une release `site-statique-<7 premiers caracteres du commit>`.
+2. Depuis le PC, une fois la release publiee : telecharger `site.tgz`, `rm -rf out`, extraire avec
+   `tar --force-local -xzf <chemin>/site.tgz` (sans `--force-local`, Git Bash prend `C:` pour une machine distante),
+   puis `npx wrangler deploy`.
+3. `/api/leads` et `/api/indexnow` sont dans `worker/index.ts` (pas dans `app/api`). Les redirections sont dans
+   `public/_redirects`, les en-tetes dans `public/_headers`. Pas de middleware (filtre anti-robots = regles pare-feu
+   Cloudflare). Compteur de visites : Cloudflare Web Analytics (balise dans `app/layout.tsx`).
 
 ## Structure
 
